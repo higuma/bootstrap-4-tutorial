@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンテント(1): Reboot / タイポグラフィ / コード</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンテント(1): <a href="#reboot">Reboot</a> / <a href="#typography">タイポグラフィ</a> / <a href="#code">コード</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/content-1.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="reboot"><a href="https://getbootstrap.com/docs/4.1/content/reboot/" target="_blank">Reboot</a>
+      </h2>
+      <p>Reboot(Bootstrap 4の新しいリセットCSS)の解説。</p>
+      <h2 class="mt-5" id="typography"><a href="https://getbootstrap.com/docs/4.1/content/typography/" target="_blank">タイポグラフィ</a>
+      </h2>
+      <h4 class="mt-3 mt-1" id="typo-headings"><a href="https://getbootstrap.com/docs/4.1/content/typography/#headings" target="_blank">見出し</a>
+      </h4>
+      <p class="my-1"><code>h1</code> , <code>h2</code> , <code>h3</code> , <code>h4</code> , <code>h5</code> , <code>h6</code> の各要素は次のように表示される。</p>
+      <h1>h1. Sample サンプル</h1>
+      <h2>h2. Sample サンプル</h2>
+      <h3>h3. Sample サンプル</h3>
+      <h4>h4. Sample サンプル</h4>
+      <h5>h5. Sample サンプル</h5>
+      <h6>h6. Sample サンプル</h6>
+      <p class="mt-4 mb-2">同じ表示を他の要素に適用する場合は <code>.h(1|2|3|4|5|6)</code> を用いる。次は <code>span</code> に使った場合の例。</p>
+      <p class="my-0"><code>span.h(1|2|3|4|5|6)</code></p><span class="h1"> span.h1 </span><span class="h2"> span.h2 </span><span class="h3"> span.h3 </span><span class="h4"> span.h4 </span><span class="h5"> span.h5 </span><span class="h6"> span.h6 </span>
+      <h4 class="mt-4 mb-1" id="typo-customizing-headings"><a href="https://getbootstrap.com/docs/4.1/content/typography/#customizing-headings" target="_blank">見出しのカスタマイズ</a>
+      </h4>
+      <p class="my-2"><code>.text-muted</code> (⇒ <a href="utilities-2.html#colors-color">文字色</a>)を用いた例</p>
+      <h3>Fancy display heading <small class="text-muted">With faded secondary text</small></h3>
+      <h4 class="mt-4 mb-1" id="typo-display-headings"><a href="https://getbootstrap.com/docs/4.1/content/typography/#display-headings" target="_blank">ディスプレイ用見出し</a>
+      </h4>
+      <p class="mt-1 mb-0"><code>.display-(1|2|3|4)</code> トップレベルのタイトル表示等に用いる(以下は <code>h1</code> の設定例)
+        <h1 class="display-1">h1.display-1</h1>
+        <h1 class="display-2">h1.display-2</h1>
+        <h1 class="display-3">h1.display-3</h1>
+        <h1 class="display-4">h1.display-4</h1>
+      </p>
+      <p class="mt-4 mb-2"><code>.display-(1|2|3|4)</code> も任意要素に設定可。次は <code>span</code> への設定例.</p>
+      <p class="my-1"><span class="display-4">span.display-4</span></p>
+      <h4 class="mt-4 mb-1" id="typo-lead"><a href="https://getbootstrap.com/docs/4.1/content/typography/#lead" target="_blank">リード</a>
+      </h4>
+      <p class="mt-1"><code>.lead</code> を用いると通常よりも目立ちやすい表示に設定する。</p>
+      <p><code>.lead</code> なしの場合: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <p class="lead"><code>.lead</code> ありの場合: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <h4 class="mt-4 mb-2" id="typo-inline-text-elements"><a href="https://getbootstrap.com/docs/4.1/content/typography/#inline-text-elements" target="_blank">インラインテキスト用の要素</a>
+      </h4>
+      <p class="my-2"><code>mark</code> の例 ⇒ You can use the mark tag to 
+        <mark>highlight</mark> text.
+      </p>
+      <p class="my-2"><code>del</code> の例 ⇒ 
+        <del>This line of text is meant to be treated as deleted text.</del>
+      </p>
+      <p class="my-2"><code>s</code> の例 ⇒ 
+        <s>This line of text is meant to be treated as no longer accurate.</s>
+      </p>
+      <p class="my-2"><code>ins</code> の例 ⇒ <ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+      <p class="my-2"><code>u</code> の例 ⇒ 
+        <u>This line of text will render as underlined</u>
+      </p>
+      <p class="my-2"><code>small</code> の例 ⇒ <small>This line of text is meant to be treated as fine print.</small></p>
+      <p class="my-2"><code>strong</code> の例 ⇒ <strong>This line rendered as bold text.</strong></p>
+      <p class="my-2"><code>em</code> の例 ⇒ <em>This line rendered as italicized text.</em></p>
+      <h4 class="mt-4 mb-2" id="typo-abbreviations"><a href="https://getbootstrap.com/docs/4.1/content/typography/#abbreviations" target="_blank">略語の表現</a>
+      </h4>
+      <p class="my-2"><code>abbr</code> は略語に対して用いる要素で、点線の下線付きで表示される。</p>
+      <ul class="struct">
+        <li><code>abbr</code>
+          <ul>
+            <li class="att">属性 <code>title="{説明文}"</code> で完全表現を記述(ホバーするとポップアップ表示)</li>
+            <li class="cls">クラス <code>.initialism</code> を用いると若干小さめに表示(イニシャル略語用)</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-0"><code>attr</code> の例</p>
+      <P class="ml-3 my-1"><abbr title="attribute">attr</abbr></P>
+      <p class="ml-3 my-1"><abbr title="HyperText Markup Language">HTML</abbr></p>
+      <p class="mt-2 mb-1"><code>attr.initialism</code> の例(若干小さくなる)</p>
+      <p class="ml-3 my-1"><abbr class="initialism" title="HyperText Markup Language">HTML</abbr></p>
+      <h4 class="mt-4 mb-1" id="typo-blockquotes"><a href="https://getbootstrap.com/docs/4.1/content/typography/#blockquotes" target="_blank">引用</a>
+      </h4>
+      <p class="mt-1 mb-3"><code>blockquote</code> は引用に対して用いる要素。例を示す。</p>
+      <blockquote class="blockquote">
+        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <footer class="blockquote-footer">Someone famous in
+          <cite title="Source Title">Source Title</cite>
+        </footer>
+      </blockquote><a class="btn btn-outline-info" data-toggle="collapse" href="#blockquote-structure" aria-control="#blockquote-structure" aria-expanded="false">構造</a>
+      <ul class="struct my-3 collapse" id="blockquote-structure">
+        <li>引用 <code>blockquote.blockquote</code>
+          <ul>
+            <li>文面 <code>p.mb-1</code>
+              <ul>
+                <li class="txt">テキスト <code>Lorem ipsum ...</code></li>
+              </ul>
+            </li>
+            <li>引用ソース <code>footer.blockquote-footer</code>
+              <ul>
+                <li class="txt">テキスト <code>Someone famous in</code>
+                  <ul>
+                    <li>引用名 <code>cite </code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a1-1">属性 <code>title="Source Title"</code></li>
+                        <li class="txt">テキスト <code>Source Title</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-1" id="typo-alignment"><a href="https://getbootstrap.com/docs/4.1/content/typography/#alignment" target="_blank">アラインメント</a>
+      </h4>
+      <p class="mt-1"><code>.text-(left|center|right)</code> を用いる(⇒ <a href="utilities-5.html#text">Textユーティリティ</a> )</p>
+      <p>上と同じ構造の例: 中央、右揃え(デフォルトは左揃え)</p>
+      <p class="my-0"><code>.text-center</code></p>
+      <blockquote class="blockquote text-center">
+        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <footer class="blockquote-footer">Someone famous in
+          <cite title="Source Title">Source Title</cite>
+        </footer>
+      </blockquote>
+      <p class="my-0"><code>.text-right</code></p>
+      <blockquote class="blockquote text-right">
+        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <footer class="blockquote-footer">Someone famous in
+          <cite title="Source Title">Source Title</cite>
+        </footer>
+      </blockquote>
+      <h4 class="mt-4 mb-1" id="typo-lists"><a href="https://getbootstrap.com/docs/4.1/content/typography/#lists" target="_blank">リスト(ul, ol)</a>
+      </h4>
+      <h5 class="mt-3 mb-1" id="typo-list-unstyled"><a href="https://getbootstrap.com/docs/4.1/content/typography/#unstyled" target="_blank">デフォルト書式の解除</a>
+      </h5>
+      <p class="my-2">ブラウザ既定の <code>list-style</code> のCSS設定を <code>.list-unstyled</code> で解除して通常テキストと同じように表示できる(左インデント、先頭シンボルともなし)。ただし設定レベルのみ有効でネストの内側に適用されない。次の例では外側の <code>ul</code> にのみ <code>.list-unstyled</code> を設定しており、ネストしたリストの要素(4,5行目)はリストのデフォルト書式で表示される。</p>
+      <ul class="list-unstyled mt-3">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+        <ul>
+          <li>Ut enim ad minim veniam,</li>
+          <li>Quis nostrud exercitation ullamco</li>
+        </ul>
+        <li>Laboris nisi ut aliquip ex ea commodo consequat.</li>
+        <li>Duis aute irure dolor in</li>
+      </ul>
+      <h5 class="mt-3 mb-1" id="typo-list-inline"><a href="https://getbootstrap.com/docs/4.1/content/typography/#inline" target="_blank">インライン表示</a>
+      </h5>
+      <p class="mb-2"><code>.list-inline</code> を用いて横一列に表示できる。</p>
+      <ul class="list-inline my-3">
+        <li class="list-inline-item">Lorem ipsum</li>
+        <li class="list-inline-item">Phasellus iaculis</li>
+        <li class="list-inline-item">Nulla volutpat</li>
+      </ul>
+      <h4 class="mt-4 mb-1" id="typo-description-list-alignment"><a href="https://getbootstrap.com/docs/4.1/content/typography/#description-list-alignment" target="_blank">説明リストのレイアウト</a>
+      </h4>
+      <p class="mt-2 mb-3">説明リスト用の要素( <code>dl</code> , <code>dt</code> , <code>dd</code> )は <a href="layout-1.html#grid">grid</a> を使ってレスポンシブにレイアウトできる。次の例は公式ドキュメントの例を少しだけ変えたもの(ブレークポイントをsmからmdに変更)。</p>
+      <ul class="struct mb-4">
+        <li>説明リスト <code>dl.row</code>
+          <ul>
+            <li>説明する用語 <code>dt.col-md-3</code> (&ge;mdで左3/12に配置)
+              <ul>
+                <li class="cls">テキストを切り詰める場合は <code>.text-truncate</code> を追加</li>
+              </ul>
+            </li>
+            <li>詳細説明 <code>dd.col-md-9</code> (&ge;mdで右9/12に配置)
+              <li>(オプション) ネストした説明リスト <code>dl.row</code> (内部は上記と同様)</li>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <dl class="row">
+        <dt class="col-md-3">説明リスト</dt>
+        <dd class="col-md-9">説明リストは用語の詳細説明に用いる</dd>
+        <dt class="col-md-3">Euismod</dt>
+        <dd class="col-md-9">
+          <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+          <p>Donec id elit non mi porta gravida at eget metus.</p></p>
+        </dd>
+        <dt class="col-md-3">Malesuada porta</dt>
+        <dd class="col-md-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+        <dt class="col-md-3 text-truncate"><code>.text-truncate</code> を用いた用語項目</dt>
+        <dd class="col-md-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+        <dt class="col-md-3">ネスト</dt>
+        <dd class="col-md-9">
+          <dl class="row">
+            <dt class="col-md-4">ネストした説明リスト</dt>
+            <dd class="col-md-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+          </dl>
+        </dd>
+      </dl>
+      <h2 class="mt-4" id="code"><a href="https://getbootstrap.com/docs/4.1/content/code/" target="_blank">コード</a>
+      </h2>
+      <h4 class="mt-4 mb-1" id="code-inline-code"><a href="https://getbootstrap.com/docs/4.1/content/code/#inline-code" target="_blank">インラインコード</a>
+      </h4>
+      <p class="mb-2"><code>code</code> を用いる</p>
+      <p class="ml-4 mt-2">例 ⇒ <code>Math.sqrt(a*a + b*b)</code></p>
+      <h4 class="mt-4 mb-1" id="code-code-blocks"><a href="https://getbootstrap.com/docs/4.1/content/code/#code-blocks" target="_blank">コードブロック</a>
+      </h4>
+      <p class="my-2"><code>pre</code> の内部で <code>code</code> を用いる
+        <pre class="p-2 border bg-light"><code>function determinant(a, b, c, d) {
+  return a*d - b*c;
+}</code></pre>
+      </p>
+      <ul>
+        <li><code>pre.p-2.border.bg-light</code>
+          <ul>
+            <li><code>code</code>
+              <ul>
+                <li><code>function determinant(...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning" role="alert">マークアップ文字( <code>&lt;</code> , <code>&gt;</code> など)は適宜文字実体参照( <code>&amp;lt;</code> , <code>&amp;gt;</code> , ... )に変換する必要がある。</div>
+      <h4 class="mt-4 mb-1" id="code-variables"><a href="https://getbootstrap.com/docs/4.1/content/code/#variables" target="_blank">変数</a>
+      </h4>
+      <p><code>var</code> を用いる(斜体で表示)</p>
+      <p class="ml-4 mt-2">例 ⇒ 
+        <var>D</var> =
+        <var>b</var><sup>2</sup> - 4
+        <var>a</var>
+        <var>c</var>
+      </p>
+      <h4 class="mt-4 mb-1" id="code-user-input"><a href="https://getbootstrap.com/docs/4.1/content/code/#user-input" target="_blank">ユーザ入力</a>
+      </h4>
+      <p class="mb-2"><code>kbd</code> を用いる</p>
+      <p class="ml-4 mt-2">例 ⇒ <kbd>npm install --save-dev bootstrap</kbd></p>
+      <h4 class="mt-4 mb-1" id="code-sample-output"><a href="https://getbootstrap.com/docs/4.1/content/code/#sample-output" target="_blank">サンプル出力</a>
+      </h4>
+      <p class="mb-2"><code>samp</code> を用いる</p>
+      <p class="ml-4 mt-2">例 ⇒ <samp>webpack: Compiled successfully.</samp></p>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンテント(1): Reboot/タイポグラフィ/コード</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

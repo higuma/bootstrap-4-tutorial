@@ -1,0 +1,646 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Getting started
+
+block body
+  div.container
+    +pageHeader("getting-started")
+      p.lead Getting started
+
+    h2.mt-4#intro
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/") Startup with CDN
+    p.my-2 The easiest way to start up with Bootstrap 4 is using 
+      +extLink("https://en.wikipedia.org/wiki/Content_delivery_network") CDN
+      | . This tutorial is also made throughout with CDN.
+    ul
+      li Can be used directly with HTML only
+      li No download, no extra tools needed
+    p.my-2 The structure of the starter template is shown as follows. ⇒ 
+      +collapseButton("#intro-structure") Structure
+    ul.struct.collapse#intro-structure
+      li
+        a(href="#intro-doctype") DOCTYPE declaration 
+        code= "<!DOCTYPE html>"
+      li
+        code html
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Attribute (
+            a(href="#intro-lang") language code
+            | ) 
+            code lang="{language-code}"
+          li
+            code head
+            ul
+              li
+                a(href="#intro-encoding") Character encoding 
+                code meta
+                +attrBtn(".a1-2")
+                ul.collapse.a1-2
+                  li.att Attribute 
+                    code charset="utf-8"
+              li
+                a(href="#intro-viewport") Setting viewport 
+                code meta
+                +attrsBtn(".a1-3")
+                ul.collapse.a1-3
+                  li.att Attribute 
+                    code name="viewport"
+                  li.att Attribute 
+                    code content="width=device-width, initial-scale=1, shrink-to-fit=no"
+              li
+                a(href="#intro-bootstrap-css") Loading Bootstrap CSS 
+                code link
+                +attrsBtn(".a1-4")
+                ul.collapse.a1-4
+                  li.att Attribute 
+                    code rel="stylesheet"
+                  li.att Attribute 
+                    code href="{URL of Bootstrap CSS CDN}"
+                  li.att Attribute 
+                    code integrity="sha384-{SHA-384 string}"
+                  li.att Attribute 
+                    code crossorigin="anonymous"
+              li Title 
+                code title
+                ul
+                  li.txt Text 
+                    code {page-title}
+              li (Optional) 
+                code style
+                |  , etc.
+          li
+            code body
+            ul
+              li (Document content here ...)
+              each lib in [[1,"jQuery"], [2,"Popper.js"], [3,"Bootstrap JavaScript"]]
+                - let cls = `a1-5-${lib[0]}`
+                li
+                  a(href="#intro-javascript") Loading JavaScript
+                  = ` (${lib[1]}) `
+                  code script
+                  +attrsBtn(`.${cls}`)
+                  ul(class=`collapse ${cls}`)
+                    li.att Attribute 
+                      code=`src="{URL of ${lib[1]} CDN}"`
+                    li.att Attribute 
+                      code integrity="sha384-{SHA-384 string}"
+                    li.att Attribute 
+                      code crossorigin="anonymous"
+    h4.mt-4#intro-doctype DOCTYPE declaration
+    p.my-2 HTML documents must start with 
+      code= "<!DOCTYPE html>"
+      | .  It is required for backward compatibility to indicate it is a HTML 5.X document. ⇒ 
+      +collapseButton("#intro-doctype-reference") Reference
+      |  
+      +collapseButton("#intro-doctype-note") Note
+    ul.collapse#intro-doctype-reference
+      li
+        +extLink("https://developer.mozilla.org/en-US/docs/Glossary/Doctype") MDN - DOCTYPE
+      li
+        +extLink("https://www.w3.org/TR/html52/syntax.html#the-doctype") W3C - HTML5.2 - DOCTYPE
+      li If you are interested in history, see 
+        +extLink("https://en.wikipedia.org/wiki/Document_type_declaration") Wikipedia - Document type declaration
+    div.alert.alert-info.collapse#intro-doctype-note(role="alert")
+      code DOCTYPE
+      |  is usually written in uppercase. It is required for older HTML's (XHTML, HTML4, etc.), influenced by their ancestor 
+      +extLink("https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language") SGML
+      | . But it is now case-insensitive (since HTML5.0, see 
+      +extLink("https://www.w3.org/TR/html52/syntax.html#the-doctype") W3C reference
+      | ). Bootstrap 
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+      |  uses lowercase 
+      code= `<!doctype html>`
+      | . It is valid but still rare.
+    h4.mt-4#intro-lang Language code
+    p.my-2 Set the main language of the page with the attribute 
+      code lang="{language code}"
+      |  to the root element 
+      code html
+      | . Use one of two-letter codes in 
+      +extLink("https://en.wikipedia.org/wiki/ISO_639-1") ISO 639-1
+      |  (i.e. 
+      code lang="en"
+      |  for English). ⇒ 
+      +collapseButton("#intro-lang-reference") Reference
+      ul.mt-3.collapse#intro-lang-reference
+        li
+          +extLink("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html") MDN reference - html
+          |  (⇒ 
+          +extLink("https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang") Global attribute 
+            code lang
+          | )
+        li
+          +extLink("https://www.w3.org/TR/html52/dom.html#the-lang-and-xmllang-attributes") W3C - HTML5.2 - The lang and xml:lang attributes
+        li
+          +extLink("https://tools.ietf.org/html/bcp47") BCP 47 - Tags for Identifying Languages
+          |  (complete specification for current language code)
+        li
+          +extLink("https://en.wikipedia.org/wiki/IETF_language_tag") Wikipedia - IETF language tag
+          |  (article for BCP 47)
+        li
+          +extLink("https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes") Wikipedia - List of ISO 639-1 codes
+          |  - usually, ISO 639-1 two-letter codes are used
+    h4.mt-4.mb-3#intro-encoding Character encoding
+    p.my-2
+      +extLink("https://en.wikipedia.org/wiki/UTF-8") UTF-8
+      |  must be used for the character encoding. ⇒ 
+      +collapseButton("#intro-encoding-summary") Summary
+      |  
+      +collapseButton("#intro-encoding-reference") Reference
+    ul.mt-3.collapse#intro-encoding-summary
+      li Always choose 
+        +extLink("https://en.wikipedia.org/wiki/UTF-8") UTF-8
+        |  for a HTML file character encoding
+      li Use a 
+        code meta
+        |  tag
+        ul
+          li Set an attribute 
+            code charset="utf-8"
+            ul
+              li Case-insensitive: 
+                code "UTF-8"
+                |  and 
+                code "Utf-8"
+                |  are also valid
+          li Must be written within 1024 bytes from the file-head
+    ul.mt-3.collapse#intro-encoding-reference
+      li
+        +extLink("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#Attributes") MDN Reference - meta
+        |  (see 
+        code charset
+        | )
+      li
+        +extLink("https://www.w3.org/TR/html52/document-metadata.html#specifying-the-documents-character-encoding") W3C - HTML5.2 - Specifying the document's character encoding
+      li
+        +extLink("https://www.w3.org/International/questions/qa-choosing-encodings") W3C - Choosing & applying a character encoding
+        |  (article - see 
+        +extLink("https://www.w3.org/International/questions/qa-choosing-encodings#useunicode") Why use UTF-8?
+        | )
+    h4.mt-4#intro-viewport Setting viewport
+    p.my-2 Viewport setting are required for mobile devices. ⇒ 
+      +collapseButton("#intro-viewport-reference") Reference
+      |  
+      +collapseButton("#intro-viewport-note") Note
+      |  
+      +collapseButton("#intro-viewport-ios9") About iOS 9
+    ul.collapse#intro-viewport-reference
+      li
+        +extLink("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#Attributes") MDN reference - meta
+        |  (see 
+        code viewport
+        | )
+      li
+        +extLink("https://www.w3.org/TR/css-device-adapt-1/#viewport-meta") W3C Working draft - CSS Device Adaptation Module Level 1 - Viewport &lt;meta&gt; element
+    div.alert.alert-info.collapse#intro-viewport-note(role="alert")
+      p
+        strong Note (May 2018): 
+        | Setting a viewport using a 
+        code meta
+        |  tag with 
+        code name="viewport" content="..."
+        |  was first implemented by Safari. As other mobile divices followed later, it has become a de-facto standard.
+      p The original iPhone/Safari syntax uses 
+        code meta
+        |  only. But the working draft has been made as a part of CSS. Most present mobile browsers support 
+        code meta
+        |  but only a few browsers support its CSS implementation (see 
+        +extLink("https://caniuse.com/#search=%40viewport") caniuse - @viewport
+        |  and 
+        +extLink("https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/@viewport") MDN - @viewport
+        |  for CSS support).
+      p.mb-0 The working draft has a 
+        +extLink("https://www.w3.org/TR/css-device-adapt-1/#parsing-algorithm") mapping rule
+        |  between 
+        code content
+        |  value (delimited by comma 
+        code ,
+        |  ) and CSS 
+        code @viewport
+        |  (delemited by semicolon 
+        code ;
+        | ). 
+    div.alert.alert-warning.collapse#intro-viewport-ios9(role="alert")
+      strong Note for iOS9: 
+      code shrink-to-fit=no
+      |  is a iPhone iOS 9 (Safari 9)-only setting. Without this, it ignores 
+      code initial-scale=1
+      |  to fit (shrink) to the viewport (as Safari 9 default). See 
+      +extLink("https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_0.html") What's New in Safari - 9.0
+      | . It is not written in W3C editor's draft as Safari 10 removed this feature. Other browsers just ignore it.
+    h4.mt-4#intro-cdn Loading from CDN
+    p Set attributes 
+      code integrity="sha384-{SHA-384 string}"
+      |  and 
+      code crossorigin="anonymous"
+      |  to loader tags (
+      code link
+      |  for CSS, 
+      code script
+      |  for JavaScript) on using CDN. ⇒ 
+      +collapseButton("#intro-cdn-reference") Reference
+      |  
+      +collapseButton("#intro-cdn-note") Note
+    ul.collapse#intro-cdn-reference
+      li
+        code integrity
+        ul
+          li
+            +extLink("https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity") MDN - Subresource Integrity
+          li
+            +extLink("https://w3c.github.io/webappsec-subresource-integrity/") W3C - Subresource Integrity
+      li
+        code crossorigin
+        ul
+          li
+            +extLink("https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes") MDN - CORS settings attributes
+          li
+            +extLink("https://html.spec.whatwg.org/multipage/urls-and-fetching.html#cors-settings-attributes") WHATWG - CORS settings attributes
+    div.alert.alert-info.collapse#intro-cdn-note(role="alert")
+      p SHA-384 is one of 
+        +extLink("https://en.wikipedia.org/wiki/SHA-2") SHA-2
+        |  
+        +extLink("https://en.wikipedia.org/wiki/Cryptographic_hash_function") Cryptographic hash function
+        |  family, and is regarded to have enough cryptographic strength for current Web applications. It is used to have CDN verify a fingerprint (
+        +extLink("https://en.wikipedia.org/wiki/Base64") Base64
+        |  string of SHA-384) of data.
+      p.mb-0 You can copy and paste fingerprint strings from Bootstrap 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+        | . You can also calculate strings by yourself using terminal command-line (see 
+        +extLink("https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity/#Tools_for_generating_SRI_hashes")
+          em Tools for generating SRI hashes
+        |  of 
+        +extLink("https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity") MDN - Subresource Integrity
+        |  for detail).
+    h5.mt-4#intro-bootstrap-css Loading Bootstrap CSS
+    p Load the 
+      +extLink("https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css") CSS file
+      |  from 
+      +extLink("https://www.bootstrapcdn.com/") BootstrapCDN
+      | . See 
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+      |  for actual attributes. ⇒ 
+      +collapseButton("#intro-bootstrap-css-note") Note
+    div.alert.alert-info.collapse#intro-bootstrap-css-note(role="alert")
+      strong Note: 
+      | CDN host of Bootstrap has been changing several times (formaly used NetDNA or MaxCDN). Current CDN is 
+      +extLink("https://www.bootstrapcdn.com/") BootstrapCDN
+      |  (powered by 
+      +extLink("https://www.stackpath.com/") StackPath
+      | ). You can also use previous versions of Bootstrap (see 
+      +extLink("https://www.bootstrapcdn.com/legacy/bootstrap/") Bootstrap Legacy
+      | ).
+    h5.mt-4#intro-javascript Loading JavaScript
+    p Bootstrap is mostly a CSS library. But some dynamic features are implemented with JavaScript. It depends on 
+      +extLink("http://jquery.com/") jQuery
+      |  and is (historically) called "(Bootstrap) JavaScript plugin" as it is written as a jQuery plugin. Bootstrap (&ge;v4.0) also depends on 
+      +extLink("https://popper.js.org/") Popper.js
+      | .
+    p Both of them must be loaded before Bootstrap JavaScript plugin. Usually, JavaScript libraries are loaded in the following order. But you can exchange 1 and 2 as jQuery and Popper.js are independent. See 
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+      |  for actual attributes.
+    ol
+      li jQuery - 1.9.1 or above (see package.json), Slim build (without AJAX, Effects) can be used
+      li Popper.js
+      li Bootstrap JavaScript
+    div.alert.alert-info(role="alert") Using CDN is the fastest way for startup. But you may want to optimize a website (or a web application) with customizing Bootstrap CSS and/or JavaScript. Contents below are mostly about costomizing Bootstrap. You can skip to 
+      a(href="#accessibility") Accessibility
+      |  if you are not interested in customization.
+
+    h2.mt-4#download
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/") Download
+    p.my-2 You can get and use Bootstrap in various ways. 
+    ul
+      li Downloading procompiled files ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
+        |  (see 
+        a(href="#contents-precompiled") Precompiled bootstrap
+        | )
+      li Getting source code ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#source-files") Source files
+        |  (see 
+        a(href="#contents-source-code") Bootstrap source code
+        | )
+      li Using CDN ⇒ see 
+        a(href="#intro") Startup with CDN
+      li Using a package manager for each environment ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#package-managers") Package managers
+        ul
+          li JavaScript (node.js) ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#npm") npm
+            ul
+              li Bootstrap itself uses npm as a buid tool ⇒ see 
+                a(href="#build") Building Bootstrap
+          li Ruby ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#rubygems") RubyGems
+          li PHP ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") Composer
+          li .NET ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") NuGet
+    div.alert.alert-info(role="alert")
+      +extLink("https://github.com/twbs/bootstrap") Bootstrap repositry
+      |  is published in GitHub. You can get full source code of all versions from 
+      +extLink("https://github.com/twbs/bootstrap/releases") Releases
+      |  page. You can also build Bootstrap distribution files (CSS, JavaScript, and documentation) from source code (see 
+      a(href="#build") Building Bootstrap
+      |  for detail).
+
+    h2.mt-4#contents
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/") Contents
+    h4.ht-4#contents-precompiled
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#precompiled-bootstrap") Precompiled bootstrap
+    p.my-2 (
+      code .map
+      |  files are omitted)
+    ul
+      li
+        code bootstrap/
+        +filesBtn(".pre")
+        ul.collapse.pre
+          li
+            code css/
+            +filesBtn(".pre-css")
+            ul.collapse.pre-css
+              li
+                code bootstrap(.min).css
+                |  - Full version
+              li
+                code bootstrap-grid-(.min).css
+                |  - 
+                a(href="layout-1.html#grid") Grid system
+                |  and 
+                a(href="utilities-3.html#flex") Flex utilities
+                |  only
+              li
+                code bootstrap-reboot-(.min).css
+                |  - 
+                a(href="content-1.html#reboot") Reboot (reset CSS)
+                |  only
+          li
+            code js/
+            +filesBtn(".pre-js")
+            ul.collapse.pre-js
+              li
+                code bootstrap.bundle(.min).js
+                |  - Popper.js and Bootstrap JS (jQuery requied as prerequisites)
+              li
+                code bootstrap(.min).js
+                |  - Bootstrap JS only (jQuery and Popper.js requied as prerequisites)
+    h4.mt-4#contents-source-code
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#bootstrap-source-code") Bootstrap source code
+    p.my-2 (Partial items only)
+    ul
+      li
+        code bootstrap-4.X.X/
+        +filesBtn(".src")
+        ul.collapse.src
+          li
+            code assets/
+            |  - CSS, JavaScript, and image files for documentation
+          li
+            code build/
+            |  - Script files and settings for building Bootstrap
+          li
+            code dist/
+            |  - Precompiled files (same as 
+            a(href="#contents-precompiled") Precompiled Bootstrap
+            | )
+          li
+            code docs/
+            |  - Documentation source files (Markdown)
+          li
+            code js/
+            |  JavaScript files
+            +filesBtn(".src-js")
+            ul.collapse.src-js
+              li
+                code dist/
+                |  - JavaScript module files processed by Babel
+              li
+                code src/
+                |  - JavaScript module source files
+              li
+                code tests/
+                |  - Files for tests
+          li
+            code nuget/
+            |  - Files for NuGet (pacage manager for .NET)
+          li
+            code scss/
+            |  Sass (.scss) source files
+          li
+            code package.json
+
+    h2.mt-4#browsers-devices
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/browsers-devices/") Browsers and devices
+    p.my-2 Bootstrap 4 supports major browsers and platforms. Supported browsers are written in 
+      code package.json
+      |  (see 
+      a(href="#contents-source-code") Bootstrap source code
+      | ) by 
+      +extLink("https://github.com/browserslist/browserslist") browserslist
+      |  format (see 
+      +extLink("https://github.com/browserslist/browserslist#best-practices") Best Practices
+      |  and 
+      +extLink("https://github.com/browserslist/browserslist#full-list") Full List
+      |  for the query syntax). ⇒ 
+      +collapseButton("#browserslist") Show entry
+    pre.mt-3.p-2.border.bg-light.collapse#browserslist
+      code
+        = `"browserslist": [\n`
+        = `  "last 1 major version",\n`
+        = `  ">= 1%",\n`
+        = `  "Chrome >= 45",\n`
+        = `  "Firefox >= 38",\n`
+        = `  "Edge >= 12",\n`
+        = `  "Explorer >= 10",\n`
+        = `  "iOS >= 9",\n`
+        = `  "Safari >= 9",\n`
+        = `  "Android >= 4.4",\n`
+        = `  "Opera >= 30"\n`
+        = `],`
+    p.my-2 It is referenced by 
+      +extLink("https://github.com/postcss/autoprefixer") Autoprefixer
+      |  to process CSS with adding vendor prefixes. Autoprefixer is a required tool for customizing Bootstrap CSS (&ge; ver. 3.2, see 
+      a(href="css") Customizing CSS
+      |  for detail).
+
+    h2.mt-4#javascript
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/javascript/") JavaScript
+    p.my-2 (TODO)
+
+    h2.mt-4#css
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/theming/") Customizing CSS
+    p.my-2 Bootstrap 4 CSS source files are written in 
+      +extLink("https://sass-lang.com/") Sass
+      |  (⇒ 
+      +extLink("https://en.wikipedia.org/wiki/Sass_(stylesheet_language)") Wikipedia
+      | ). The official document recommends writing an extension Sass code to customize Bootstrap styles. It enables you to modify all-over features of Bootstrap styles but requires skills for Sass, Autoprefixer and so on.
+    h4.mt-3#css-overriding Overriding CSS
+    p.my-2 Former official documents (until version 3.1.1) recommended appending your CSS code to override Bootstrap styles. It does not require knowledge of Sass and Autoprefixer (much easier). This tutorial employs this method. Overriding CSS is actually used for these two topics.
+    ul
+      li
+        a(href="components-1.html#breadcrumb-changing-the-separator") Breadcrumb - Changing the separator
+      li
+        a(href="components-5.html#translating-or-customizing-the-strings") Forms - Translating or customizing the strings
+        |  (press 
+        button.btn.btn-outline-info CSS example
+        |  to display)
+    p.my-2 Basically, you can override styles by appending your own CSS code (just) 
+      strong after
+      |  Bootstrap CSS (Styles are overridden by order).
+    h4.mt-3#css-customizing Customizing from Sass source code
+    p.my-2 Current official document recommends writing a Sass extension code to customize Bootstrap styles. A typical workflow is as follows.
+    ul
+      li Make your own Sass file for extension
+        ul
+          li Initialize customization variables
+          li Import Bootstrap Sass code
+          li (Optional) append your own styles
+      li Compile Sass source code to CSS
+      li Process vendor prefixes with Autoprefixer
+      li (Optional) Minify CSS
+    p.mt-2 However, information about tools (Sass, Autoprefixer, etc.) is very few in the whole official documents. It only explains about Bootstrap source code (for experienced Sass developers). So we have made a separate tutorial for Bootstrap style customization.
+    p.mt-2 ⇒ 
+      +extLink("https://higuma.github.io/bootstrap-4-css-customization/en/")
+        strong Bootstrap 4 CSS customization tutorial (external site)
+    div.alert.alert-info This separate tutorial has been made as an npm package (⇒ 
+      +extLink("https://github.com/higuma/bootstrap-4-css-customization/archive/master.zip") Download ZIP
+      | ). You can install required tools and build samples (in fact, site contents themselves) with npm commands.
+
+    h2.mt-4#build
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/build-tools/") Building Bootstrap
+    div.alert.alert-info(role="alert") You do not have to read this section if you just want to use precompiled Bootstrap distribution. But customizing Bootstrap styles needs basic knowlkedge of node.js and npm. Building bootstrap by yourself is a good study to learn npm-based development for beginners.
+    p.my-2 Bootstrap repositry is published in GitHub. You can get source code of all versions from 
+      +extLink("https://github.com/twbs/bootstrap/releases") Releases
+      |  page. You can also build Bootstrap distribution files (CSS, JavaScript, and documentation) from source code.
+    p.my-2 This section decribes how to build Bootstrap distribution files from GitHub source code (&ge; v4.0.0).
+    h4.mt-4#build-prerequisites Prerequisites
+    p.my-2 Building Bootstrap requires node.js and Ruby.
+      ul
+        li 
+          +extLink("https://nodejs.org/") node.js
+          |  (&ge; Version 6.0, uses 
+          +extLink("https://npmjs.org/") npm
+          |  as a main build tool)
+        li 
+          +extLink("https://www.ruby-lang.org/en/") Ruby
+          |  (&ge; Version 2.1, needed for 
+          +extLink("https://jekyllrb.com/") jekyll
+          |  documentation tool)
+    div.alert.alert-warning(role="alert")
+      strong (Officially undocumented): 
+      | Some test tools also may need Java (depends on Bootstrap versions). If you see a error message like "cannot find Java", install Java Runtime Envirionment (JRE).
+    h4.mt-4#build-install Installation
+    p.my-2 Before building Bootstrap, you need to install modules on npm and Ruby. ⇒ 
+      +collapseButton("#build-install-list") Instruction
+    ul.collapse#build-install-list
+      li Unzip GitHub source code
+        ul
+          li See 
+            a(href="#contents-source-code") Bootstrap source code
+            | for detail
+      li Move to the folder where 
+        code package.json
+        |  and 
+        code Gemfile
+        |  exist
+      li Install npm tools ⇒ 
+        kbd npm run install
+      li Install Ruby tools (required for documentation) ⇒ 
+        kbd (sudo) bundle install
+        ul
+          li May need 
+            kbd sudo
+            |  for Unix-based environments
+          li Requires 
+            +extLink("https://bundler.io/") Bundler
+            |  gem (
+            code bundle
+            |  command) ⇒ 
+            kbd (sudo) gem install bundler
+            |  if not installed
+
+    h4.mt-4#build-commands Commands
+    p.my-2 Bootstrap 4 uses npm as a build tool. ⇒ 
+      +collapseButton("#build-commands-list") Commands
+    ul.collapse#build-commands-list
+      li
+        kbd npm run dist
+        |  - builds CSS and JavaScript (outputs to 
+        code ./dist
+        | )
+      li
+        kbd npm test
+        |  - builds all and performs tests afterward
+      li
+        kbd npm run docs
+        |  - generates and lints CSS and JavaScript for documentation
+      li
+        kbd npm run docs-serve
+        |  - invokes local server for documentation ⇒ 
+        +extLink("http://localhost:9001/")
+          code http://localhost:9001/
+      li
+        kbd npm run
+        |  - Show the list of all npm scripts (so many!)
+    p.my-2 You can also read 
+      code "scripts":
+      |  entries of 
+      +extLink("https://github.com/twbs/bootstrap/blob/v4.1.0/package.json")
+        code package.json
+      |  directly to check full commands. It is a better way to study how internal building processes are formed using npm scripts.
+
+    h2.mt-4#webpack
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/webpack/") Webpack
+    p.my-2 (May 2018) 
+      +extLink("https://webpack.js.org/") Webpack
+      |  is one of the most popular Web development tools. But Webpack itself has been developing very fast. Webpack 4 was released on Feb. 2018. But Bootstrap documentation (still about Webpack 3) has not catch up with Webpack 4.
+    p.my-2 Then we have made sample start projects for Webpack 4 and Bootstrap 4 as below.
+    ul
+      li
+        +extLink("https://github.com/higuma/webpack-bootstrap-starter") webpack-bootstrap-starter (GitHub)
+    div.alert.alert-info(role="alert") As Webpack develops too fast, starter examples above will get depretated soon. Please check for yourself to find newest examples.
+    div.alert.alert-info(role="alert") This tutorial also uses Webpack for a build tool. But it is actually used only for pug compilation and file operations. CSS and JavaScript files are not customized to avoid complexity for beginners. 
+
+    h2.mt-4#accessibility
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/accessibility/") Accessibility
+    p.my-2 
+      +extLink("https://www.w3.org/WAI/") WAI
+      | -
+      +extLink("https://www.w3.org/WAI/intro/aria") ARIA
+      |  (⇒ 
+      +extLink("https://en.wikipedia.org/wiki/WAI-ARIA") Wikipedia
+      | ) is a web standard specification for accessibility. ⇒ 
+      +collapseButton("#accessibility-reference") Reference
+    ul.collapse#accessibility-reference
+      li
+        +extLink("https://www.w3.org/TR/wai-aria-1.1/") W3C - WAI-ARIA 1.1
+      li
+        +extLink("https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics") MDN - WAI-ARIA basics
+    p.my-2 Actually, two kinds of attributes are used.
+    ul
+      li Role attributes: e.g. 
+        code role="navigation"
+      li ARIA attributes: e.g. 
+        code aria-expanded="false"
+    p.my-2 This tutorial explains these accessibility attributes on showing component structures.
+    p.my-2 ⇒ 
+      a(href="components-8.html#modal-components") Example (Modal)
+      |  - displays with
+      button.btn.btn-outline-info.btn-sm Structure
+      |  , expands attributes with 
+      button.btn.btn-outline-info.btn-sm.px-1.py-0 Attributes
+    p.my-2 Bootstrap also has 
+      a(href="utilities-4.html#screenreaders") Screenreaders
+      |  utility classes (
+      code .sr-only
+      |  and 
+      code .sr-only-focusable
+      |  ). These classes are also explained on showing component structures.
+      explanation.
+
+    +breadcrumbLevel1("Getting started")

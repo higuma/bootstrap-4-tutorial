@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+rm -rf .tmp
+mkdir .tmp
+cp -r www/* .tmp/

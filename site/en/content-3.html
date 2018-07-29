@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Content (3): Tables</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Content (3): <a href="#tables">Tables</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/content-3.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="tables"><a href="https://getbootstrap.com/docs/4.1/content/tables/" target="_blank">Tables</a>
+      </h2>
+      <h4 class="mt-4" id="examples"><a href="https://getbootstrap.com/docs/4.1/content/tables/#examples" target="_blank">Basic example</a>
+      </h4>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#table-structure" aria-control="#table-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="table-structure">
+        <li><code>table.table</code> (Add <code>.table-dark</code> to invert colors)
+          <ul>
+            <li>Head <code>thead</code>
+              <ul>
+                <li>Header column <code>tr</code>
+                  <ul>
+                    <li>Header cell <code>th</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attribute</a>
+                      <ul class="collapse a1-1">
+                        <li class="att">Attribute <code>scope="col"</code> (to column header cells)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Body <code>tbody</code>
+              <ul>
+                <li>Column <code>tr</code>
+                  <ul>
+                    <li>Header cells (typically leftmost) <code>th</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attribute</a>
+                      <ul class="collapse a1-2">
+                        <li class="att">Attribute <code>scope="row"</code> (to row header cells)</li>
+                      </ul>
+                    </li>
+                    <li>Normal cells <code>td</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mb-1"><code>table.table</code></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>table.table.table-dark</code></p>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="table-head-options"><a href="https://getbootstrap.com/docs/4.1/content/tables/#table-head-options" target="_blank">Table head options</a>
+      </h4>
+      <p>Set <code>.thead-(dark|light)</code> to <code>thead</code> (or also <code>.table-(dark|light)</code> )</p>
+      <p class="mb-1"><code>.thead-dark</code></p>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>.thead-light</code></p>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="striped-rows"><a href="https://getbootstrap.com/docs/4.1/content/tables/#striped-rows" target="_blank">Striped rows</a>
+      </h4>
+      <p>Set <code>.table-striped</code> to <code>table</code></p>
+      <p class="mb-1"><code>table.table.table-striped</code></p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>table.table.table-striped.table-dark</code></p>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="bordered-table"><a href="https://getbootstrap.com/docs/4.1/content/tables/#bordered-table" target="_blank">Bordered table</a>
+      </h4>
+      <p class="mb-1">Set <code>.table-bordered</code> to <code>table</code></p>
+      <p class="mb-1"><code>table.table.table-bordered</code></p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>table.table.table-bordered.table-dark</code></p>
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="borderless-table"><a href="https://getbootstrap.com/docs/4.1/content/tables/#borderless-table" target="_blank">Borderless table</a>
+      </h4>
+      <p class="mb-1">Set <code>.table-borderless</code> to <code>table</code></p>
+      <p class="mb-1"><code>table.table.table-borderless</code></p>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>table.table.table-borderless.table-dark</code></p>
+      <table class="table table-borderless table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="hoverable-rows"><a href="https://getbootstrap.com/docs/4.1/content/tables/#hoverable-rows" target="_blank">Hoverable rows</a>
+      </h4>
+      <p>Set <code>.table-hover</code> to <code>table</code></p>
+      <p class="mb-1"><code>table.table.table-hover</code></p>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>table.table.table-hover.table-dark</code></p>
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="small-table"><a href="https://getbootstrap.com/docs/4.1/content/tables/#small-table" target="_blank">Small table</a>
+      </h4>
+      <p>Set <code>.table-sm</code> to <code>table</code> for cutting cell paddings to half</p>
+      <p class="mb-1"><code>table.table.table-sm</code></p>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mb-1"><code>table.table.table-sm.table-dark</code></p>
+      <table class="table table-sm table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="contextual-classes"><a href="https://getbootstrap.com/docs/4.1/content/tables/#contextual-classes" target="_blank">Contextual classes</a>
+      </h4>
+      <p class="my-1"><code>.table-(primary|secondary|success|danger|warning|info|light|dark|active)</code></p>
+      <p class="my-1">Available for all levels ( <code>table</code> , <code>thead</code> , <code>tbody</code> , <code>tr</code> , <code>th</code> , <code>td</code> )</p>
+      <p class="my-2">See differences from <a href="utilities-2.html#colors">basic contextual colors</a> as follows.</p>
+      <ul>
+        <li>No <code>-muted</code> , <code>-white</code> (<code>.table-muted</code> and <code>.table-muted</code> do not exist)</li>
+        <li>Has <code>-active</code> (<code>.table-active</code> )</li>
+      </ul>
+      <h6 class="mt-3 mb-2">Example for <code>tr</code></h6>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th scope="col">(default)</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <tr class="table-primary">
+            <th scope="col"><code>.table-primary</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-secondary">
+            <th scope="col"><code>.table-secondary</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-success">
+            <th scope="col"><code>.table-success</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="col"><code>.table-danger</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-warning">
+            <th scope="col"><code>.table-warning</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="col"><code>.table-info</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="col"><code>.table-light</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-dark">
+            <th scope="col"><code>.table-dark</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-active">
+            <th scope="col"><code>.table-active</code></th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-4"><code>.table-{context}</code> applys to both text and background (in above example, remark <code>.table-dark</code> reverses the text color of cells). Also it sets a background color lighter than <code>.bg-{context}</code>. Setting a background color directly is available. But you may also have to set a text color.</p>
+      <p class="mt-3 mb-1">Example: Used <code>.bg-{context}</code> for background, <code>.text-(dark|white)</code> for text</p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <tr class="bg-primary text-white">
+              <th scope="col"><code class="text-white">.bg-primary.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-secondary text-white">
+              <th scope="col"><code class="text-white">.bg-secondary.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-success text-white">
+              <th scope="col"><code class="text-white">.bg-success.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-danger text-white">
+              <th scope="col"><code class="text-white">.bg-danger.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-warning text-white">
+              <th scope="col"><code class="text-white">.bg-warning.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-info text-white">
+              <th scope="col"><code class="text-white">.bg-info.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-light text-dark">
+              <th scope="col"><code>.bg-light.text-dark</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-dark text-white">
+              <th scope="col"><code class="text-white">.bg-dark.text-white</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr class="bg-white text-dark">
+              <th scope="col"><code>.bg-white.text-dark</code>
+              </th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+          </tr>
+        </thead>
+      </table>
+      <h4 class="mt-4" id="captions"><a href="https://getbootstrap.com/docs/4.1/content/tables/#captions" target="_blank">Captions</a>
+      </h4>
+      <p class="mt-2 mb-1">Use <code>caption</code></p>
+      <ul class="struct">
+        <li><code>table.table</code>
+          <ul>
+            <li><code>caption</code>
+              <ul>
+                <li class="cls">Alignment (optional) <code>.text-(left|center|right)</code> (⇒ <a href="utilities-5.html#text-alignment">Text utilities</a> )</li>
+              </ul>
+            </li>
+            <li><code>thead</code> (same as former examples)</li>
+            <li><code>tbody</code> (same)</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">Example: Caption <strong>List of users</strong> is aligned center with <code>.text-center</code></p>
+      <table class="table">
+        <caption class="text-center">List of users</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">2
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">3
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="responsive-tables"><a href="https://getbootstrap.com/docs/4.1/content/tables/#responsive-tables" target="_blank">Responsive tables</a>
+      </h4>
+      <p class="mt-3 mb-1">Add <code> .table-responsive</code> to <code>table.table</code> ( <code>table.table.table-responsive</code> )</p>
+      <p class="mt-2 mb-3">⇒ Shows a horizontal scroll bar on table width greater than viewport width</p>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-3 mb-1">Use <code>.table-responsive-(sm|md|lg|xl)</code> for responsive tables with specific breakpoints</p>
+      <p class="mt-2 mb-1"><code>table.table.table-responsive-sm</code></p>
+      <table class="table table-responsive-sm">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-2 mb-1"><code>table.table.table-responsive-md</code></p>
+      <table class="table table-responsive-md">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-2 mb-1"><code>table.table.table-responsive-lg</code></p>
+      <table class="table table-responsive-lg">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-2 mb-1"><code>table.table.table-responsive-xl</code></p>
+      <table class="table table-responsive-xl">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+      </table>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Content(3): Tables</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

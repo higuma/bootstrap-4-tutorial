@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (10): Navbar</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (10): <a href="#navbar">Navbar</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-10.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="navbar"><a href="https://getbootstrap.com/docs/4.1/components/navbar/" target="_blank">Navbar</a>
+      </h2>
+      <p>Component suite for navigation bars.</p>
+      <h4 class="my-3" id="supported-content"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#supported-content" target="_blank">Basic example</a>
+      </h4>
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-3"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example" aria-control="#basic-example" aria-expanded="false">Structure</a>
+      <ul class="struct my-2 collapse" id="basic-example">
+        <li>Navbar <code>nav.navbar</code>
+          <ul>
+            <li class="cls">Toggler setting <code>.navbar-expand-md</code> (expands/collapses on md breakpoint)</li>
+            <li class="cls">Color settings <code>.navbar-light.bg-light</code> ⇒ <a href="#color-schemes">Color schemes</a></li>
+            <li><a href="#brand">Brand </a><code>a.navbar-brand</code>
+              <ul>
+                <li class="txt">Text <strong>Navbar</strong></li>
+              </ul>
+            </li>
+            <li><a href="#toggler">Toggler </a><code>button.navbar-toggler</code> (displays on collapsed)
+              <ul>
+                <li>Icon (Triple bar) <code>span.navbar-toggler-icon</code></li>
+              </ul>
+            </li>
+            <li>Collapsing wrapper <code>div.collapse.navbar-collapse</code> (displays on expanded ⇒ <a href="#toggler">Toggler </a> )
+              <ul>
+                <li><a href="#nav">Navigation </a><code>ul.navbar-nav.mr-auto</code>
+                  <ul>
+                    <li>Item <strong>Home Link ...</strong></li>
+                  </ul>
+                </li>
+                <li><a href="#forms">Form </a><code>form.form-inline</code>
+                  <ul>
+                    <li>Input control <code>input.form-control</code></li>
+                    <li>Button <code>button.btn.btn-outline-success</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-1" id="brand"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#brand" target="_blank">Brand</a>
+      </h4>
+      <h6 class="my-2" id="brand-standard">(1) Standard <code>(a|span).navbar-brand</code></h6>
+      <nav class="navbar navbar-light bg-light mb-3"><a class="navbar-brand" href="#">Navbar</a></nav><a class="btn btn-outline-info" data-toggle="collapse" href="#brand-standard-structure" aria-control="#brand-standard-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="brand-standard-structure">
+        <li>Navbar <code>nav.navbar</code>
+          <ul>
+            <li class="cls">See <a href="#color-schemes">Color schemes</a> for colors</li>
+            <li>Brand <code>(a|span).navbar-brand</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a1-1">(For <code>a</code> ) Attribute <code>href="..."</code></li>
+                <li class="txt">Text (e.g.) <code>Navbar</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="brand-heading">(2) Heading-styled <code>(a|span).navbar-brand.h1</code></h6>
+      <nav class="navbar navbar-light bg-light mb-3"><span class="navbar-brand h1 mb-0">Navbar</span></nav><a class="btn btn-outline-info" data-toggle="collapse" href="#brand-heading-structure" aria-control="#brand-heading-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="brand-heading-structure">
+        <li>Navbar (same) 
+          <ul>
+            <li>Brand <code>(a|span).navbar-brand.h1.mb-0</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a2-1">
+                <li class="cls">Heading-styled text <code>.h1</code> (see <a href="content-1.html#typo-headings">Typography - Headings</a> )</li>
+                <li class="cls">Margin adjustment <code>.mb-0</code> (cancels bottom margin for heading)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="brand-image-only">(3) Image only</h6>
+      <nav class="navbar navbar-light bg-light mb-3"><a class="navbar-brand" href="#"><img src="../img/bootstrap-solid.svg" width="30" height="30" alt="Bootstrap logo"></a></nav><a class="btn btn-outline-info" data-toggle="collapse" href="#brand-image-only-structure" aria-control="#brand-image-only-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="brand-image-only-structure">
+        <li>Navbar (same)
+          <ul>
+            <li>Brand <code>(a|span).navbar-brand</code>
+              <ul>
+                <li>Image <code>img</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a3-1">
+                    <li class="att">Attribute <code>href="..."</code></li>
+                    <li class="att">Attribute <code>width="..."</code></li>
+                    <li class="att">Attribute <code>height="..."</code></li>
+                    <li class="att">Attribute <code>alt="..."</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="image-and-text">(4) Image and text</h6>
+      <nav class="navbar navbar-light bg-light mb-3"><a class="navbar-brand" href="#"><img class="d-inline-block align-top" src="../img/bootstrap-solid.svg" width="30" height="30" alt="Bootstrap logo">&nbsp;Bootstrap</a></nav><a class="btn btn-outline-info" data-toggle="collapse" href="#brand-image-and-text-structure" aria-control="#brand-image-and-text-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="brand-image-and-text-structure">
+        <li>Navbar (same) 
+          <ul>
+            <li>Brand <code>(a|span).navbar-brand</code>
+              <ul>
+                <li>Image <code>img</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a4-1">
+                    <li class="cls">Display <code>.d-inline-block</code> (⇒ <a href="utilities-2.html#display">Display</a> )</li>
+                    <li class="cls">Alignment <code>.align-top</code> (⇒ <a href="utilities-5.html#vertical-align">Vertical alignment</a> )</li>
+                    <li class="att">Other attributes are same as <a href="#brand-image-only">(3) Image only</a></li>
+                  </ul>
+                </li>
+                <li class="txt">Text <code>&amp;nbsp;Bootstrap</code> (whitespace required between the image)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="nav"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#nav" target="_blank">Nav</a>
+      </h4>
+      <p class="my-2">A navbar usually has a <a href="components-9.html">nav</a> and also behaves responsively with a <a href="#toggler">toggler</a>. A nav is set inside of a collapsing wrapper. A toggler collapses a nav when the viewport width is smaller than the specified breakpoint.</p>
+      <h6 class="mt-3 mb-2" id="nav-example-basic">(1) Basic example: Nav based on <code>ul</code></h6>
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-3"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          </ul>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#nav-example-basic-structure" aria-control="#nav-example-basic-structure" aria-expanded="false">Structure</a>
+      <ul class="struct my-2 collapse" id="nav-example-basic-structure">
+        <li>Navbar <code>nav.navbar.navbar-expand-md</code> (collapses on md breakpoint)
+          <ul>
+            <li><a href="#brand">Brand</a></li>
+            <li><a href="#toggler">Toggler</a> (see <a href="#toggler-example">Toggler example</a> for detail)</li>
+            <li>Collapsing wrapper <code>div.collapse.navbar-collapse</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a5-1">ID (required) <code>id="navbarNavAltMarkup"</code></li>
+                <li>Nav <code>ul.navbar-nav</code>
+                  <ul>
+                    <li>For the active item: <code>li.nav-item.active</code>
+                      <ul>
+                        <li>Link <code>a.nav-item.nav-link.active</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-2" aria-control=".a5-2" aria-expanded="false">Attribute</a>
+                          <ul>
+                            <li class="att collapse a5-2">Attribute <code>href="..."</code></li>
+                            <li class="txt">Text (e.g.) <code>Home</code></li>
+                            <li>For screen reader <code>span.sr-only</code>
+                              <ul>
+                                <li class="txt">Text <code>(current)</code></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Other (normal and disabled) items are the same way as <a href="components-9.html#base-nav">Nav - Base nav</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="nav-example-div">(2) Nav based on <code>div.navbar-nav</code> (can be built with fewer DOM hierarchy)</h6>
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-3"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-iconaa"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav"><a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a><a class="nav-item nav-link" href="#">Features</a><a class="nav-item nav-link" href="#">Pricing</a><a class="nav-item nav-link disabled" href="#">Disabled</a></div>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#nav-example-div-structure" aria-control="#nav-example-div-structure" aria-expanded="false">Structure</a>
+      <div class="collapse" id="nav-example-div-structure">
+        <p class="my-2">Nav part only (others are the same say)</p>
+        <ul class="struct">
+          <li>Inside the collapsing wrapper: Nav <code>div.navbar-nav</code>
+            <ul>
+              <li>Item/Link <code>a.nav-item.nav-link(.active)</code>
+                <ul>
+                  <li>Inside is the same way as <a href="#nav-example-basic">(1) Basic example</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <h6 class="mt-3 mb-2" id="nav-example-dropdown">(3) With a dropdown</h6>
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-3"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown link</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
+            </li>
+          </ul>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#nav-example-dropdown-structure" aria-control="#nav-example-dropdown-structure" aria-expanded="false">Structure</a>
+      <div class="collapse" id="nav-example-dropdown-structure">
+        <p class="my-2">Nav part only (others are the same say)</p>
+        <ul class="struct">
+          <li>Inside the collapsing wrapper: Nav <code>div.navbar-nav</code>
+            <ul>
+              <li>Text items are the same as <a href="#nav-example-basic">(1) Basic example</a></li>
+              <li>Dropdown <code>li.nav-item.dropdown</code>
+                <ul>
+                  <li>See <a href="components-9.html#using-dropdowns">Navs - Using dropdowns</a> for inner items</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <h4 class="mt-4" id="forms"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#forms" target="_blank">Forms</a>
+      </h4>
+      <p class="my-2"><a href="components-5.html#inline-forms">Inline forms </a><code>form.form-inline</code> can be used within a navbar.</p>
+      <h6 class="mt-3 mb-2" id="forms-example-basic">(1) Basic example (no toggler)</h6>
+      <nav class="navbar navbar-light bg-light mb-3">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#forms-example-basic-structure" aria-control="#forms-example-basic-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="forms-example-basic-structure">
+        <li>Navbar (no toggler)
+          <ul>
+            <li>Inline form <code>form.form-inline</code>
+              <ul>
+                <li> <a href="components-5.html#form-controls">Input control </a><code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a6-1">
+                    <li class="cls">Responsive margin <code>.mr-sm-2</code></li>
+                    <li class="att">Attribute <code>type="search"</code></li>
+                    <li class="att">Attribute <code>placeholder="Search"</code></li>
+                    <li class="att">Accessibility attribute <code>aria-label="Search"</code></li>
+                  </ul>
+                </li>
+                <li><a href="components-2.html#buttons-outline-buttons">Outline button </a><code>button.btn.btn-outline-success</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a6-2">(Responsive) margin <code>.my-2.my-sm-0</code></li>
+                    <li class="att collapse a6-2">Attribute <code>type="submit"</code></li>
+                    <li class="txt">Text <code>Search</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="forms-example-alignment">(2) Alignment</h6>
+      <nav class="navbar navbar-light bg-light justify-content-between mb-3"><a class="navbar-brand">Navbar</a>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#forms-example-alignment-structure" aria-control="#forms-example-alignment-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="forms-example-alignment-structure">
+        <li>Set <code>.justify-content-between</code> to the bar (see <a href="utilities-3.html#flex">Flex</a> )
+          <ul>
+            <li><a href="#brand">Brand</a></li>
+            <li>Inline form - same as <a href="#forms-example-basic">(1) Basic example</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">It is not required if the inline form is the last item inside the collapsing wrapper of the <a href="#toggler">toggler</a> (arranged to the right automatically).</div>
+      <h6 class="mt-3 mb-2" id="forms-example-input-group">(3) Using the <a href="components-6.html#input-group">input group</a></h6>
+      <nav class="navbar navbar-light bg-light mb-3">
+        <form class="form-inline">
+          <div class="input-group">
+            <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">@</span></div>
+          </div>
+          <input class="form-control" type="text" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </form>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#forms-example-input-group-structure" aria-control="#forms-example-input-group-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="forms-example-input-group-structure">
+        <li>Navbar (same) 
+          <ul>
+            <li>Inline form <code>form.form-inline</code>
+              <ul>
+                <li>Input group <code>div.input-group</code>
+                  <ul>
+                    <li>Inside: same way as <a href="components-6.html#basic-example">Input group - Basic example</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="forms-example-buttons">(4) <a href="components-2.html#buttons">Buttons</a> + <a href="components-2.html#buttons-sizes">sizing</a></h6>
+      <nav class="navbar navbar-light bg-light mb-3">
+        <form class="form-inline">
+          <button class="btn btn-outline-success" type="button">Main button</button>
+          <button class="btn btn-sm btn-outline-secondary ml-2" type="button">Smaller button</button>
+        </form>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#forms-example-buttons-structure" aria-control="#forms-example-buttons-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="forms-example-buttons-structure">
+        <li>Navbar
+          <ul>
+            <li>Inline form <code>form.form-inline</code>
+              <ul>
+                <li> <a href="components-2.html#buttons-outline-buttons">Outline button </a><code>button.btn.btn-outline-success</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-1" aria-control=".a7-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a7-1">Attribute <code>type="button"</code></li>
+                    <li class="txt">Text <code>Main button</code></li>
+                  </ul>
+                </li>
+                <li>Small outline button <code>button.btn.btn-sm.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-2" aria-control=".a7-2" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a7-2">Margin <code>.ml-2</code> (⇒ <a href="utilities-4.html#spacing">Spacing</a> )</li>
+                    <li class="att collapse a7-2">Attribute <code>type="button"</code></li>
+                    <li class="txt">Text <code>Smaller button</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="navbar-text"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#text" target="_blank">Text </a>
+      </h4>
+      <p class="my-2">Use <code>span.navbar-text</code> for the plain text inside the navbar.</p>
+      <h6 class="mt-3 mb-2" id="text-example-1">Example (1)</h6>
+      <nav class="navbar navbar-light bg-light"><span class="navbar-text">Navbar text with an inline element</span></nav>
+      <h6 class="mt-3 mb-2" id="text-example-2">Example (2)</h6>
+      <nav class="navbar navbar-expand-md navbar-light bg-light"><a class="navbar-brand" href="#">Navbar w/ text</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+          </ul><span class="navbar-text">Navbar text with an inline element</span>
+        </div>
+      </nav>
+      <h4 class="mt-4" id="color-schemes"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#color-schemes" target="_blank">Color schemes</a>
+      </h4>
+      <p class="my-2">Set both the text color scheme and the background color.</p>
+      <ul>
+        <li>Text color scheme (one of them required) <code>.navbar-(light|dark)</code>
+          <ul>
+            <li><code>.navbar-light</code> : Text color scheme for bright background</li>
+            <li><code>.navbar-dark</code> : Text color scheme for dark background</li>
+          </ul>
+        </li>
+        <li>Background color <code>.bg-(primary|secondary|...)</code>
+          <ul>
+            <li>See <a href="utilities-2.html#colors-background-color">Colors - Background color</a></li>
+            <li>Custom style can be also used (e.g.) <code>style="backgroudnd-color: lightblue;"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-2 mb-1" id="color-schemes-examples">Examples (based on official document examples)</h6>
+      <p class="my-1"><code>nav.navbar.navbar-dark.bg-dark</code></p>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#colorDemo1" aria-controls="colorDemo1" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="colorDemo1">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <p class="mt-3 mb-1"><code>nav.navbar.navbar-dark.bg-primary</code></p>
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#colorDemo2" aria-controls="colorDemo2" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="colorDemo2">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <p class="mt-3 mb-1"><code>nav.navbar.navbar-light</code> + Attribute <code>style="background-color: #e3f2fd;"</code></p>
+      <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#colorDemo3" aria-controls="colorDemo3" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="colorDemo3">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <h4 class="mt-4" id="containers"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#containers" target="_blank">Containers</a>
+      </h4>
+      <p class="my-2">Setting a navbar outside the <a href="layout-1.html#overview-containers">container</a> (usually as a child of <code>body</code> ) displays as 100% width to the viewport (the example below).</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a></nav>
+    <div class="container">
+      <p class="mt-3 mb-2">All other navbars in this page are set as children of a <a href="layout-1.html#overview-containers">container </a><code>div.container</code>. Their widths are responsive to the viewport and display center-aligned.</p>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a></nav>
+      <p class="mt-3 mb-2">The last example looks same as above. But it sets extra padding before a brand on lg or greater.</p>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <div class="container"><a class="navbar-brand" href="#">Navbar</a></div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#container-example-structure" aria-control="#container-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="container-example-structure">
+        <li>Navbar <code>nav.navbar</code>
+          <ul>
+            <li class="cls">Togller setting <code>.navbar-expand-lg</code> (expands/collapses with lg breakpoint)</li>
+            <li>Container <code>div.container</code>
+              <ul>
+                <li class="txt">Text <code>Navbar</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">A container sets horizontal 15px paddings (gutters) on left and right as default. But a container inside a navbar with a collapted state removes gutters.</p>
+      <ul>
+        <li>width&ge;lg (expanded) ⇒ Sets gutters (adds extra 15px spacing before <strong>Navbar</strong> )</li>
+        <li>width&lt;lg (collapsed) ⇒ Removes gutters</li>
+      </ul>
+      <h4 class="mt-4" id="placement"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#placement" target="_blank">Placement</a>
+      </h4>
+      <ul>
+        <li>Default: <code>position: relative</code></li>
+        <li>Fixed top: <code>position: fixed </code> to the top</li>
+        <li>Fixed bottom: <code>position: fixed </code> to the bottom</li>
+        <li>Sticky top: <code>position: sticky</code></li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="placement-example-default">(1) Default <code>nav.navbar</code> (scrolls relative to the page)</h6>
+      <nav class="navbar navbar-light bg-light"><a class="navbar-brand" href="#">Default</a></nav>
+      <h6 class="mt-3" id="placement-fixed-top">(2) Fixed top <code>nav.navbar.fixed-top</code></h6>
+      <p class="ml-4">⇒ <a href="navbar-fixed-top.html">Demo page</a></p>
+      <h6 class="mt-3" id="placement-fixed-bottom">(3) Fixed bottom <code>nav.navbar.fixed-bottom</code></h6>
+      <p class="ml-4">⇒ <a href="navbar-fixed-bottom.html">Demo page</a></p>
+      <h6 class="mt-3" id="placement-sticky-top">(4) Sticky top <code>nav.navbar.sticky-top</code></h6>
+      <p class="ml-4">⇒ <a href="navbar-sticky-top.html">Demo page</a></p>
+      <h4 class="mt-4" id="responsive-behaviors"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#responsive-behaviors" target="_blank">Responsive behaviors</a>
+      </h4>
+      <p class="my-2">A navbar acts responsively with a toggler.</p>
+      <ul>
+        <li>Switchs layouts (expanded/collapsed) with a specific grid breakpoint (lt, md, lg, or xl).</li>
+        <li>On expanded, shows all items (brand, nav, text, form, etc.) horizontally in the navbar</li>
+        <li>On collapsed, hides items and shows a triple bar icon
+          <ul>
+            <li>By clicking an icon, shows(expands) collapted items (stacked vertically)</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="toggler"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#toggler" target="_blank">Toggler</a>
+      </h5>
+      <h5 class="mt-3" id="toggler-example">Basic example</h5>
+      <nav class="navbar navbar-light bg-light navbar-expand-md mb-3"><a class="navbar-brand" href="#">Brand</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler-demo" aria-controls="toggler-demo" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="toggler-demo">
+          <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#toggler-example-structure" aria-control="#toggler-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="toggler-example-structure">
+        <li>Navbar <code>nav.navbar.navbar-light.bg-light</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-1" aria-control=".a8-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="cls collapse a8-1">Toggler setting <code>.navbar-expand-md</code> (expands/collapses on md breakpoint)</li>
+            <li><a href="#brand">Brand </a><code>a.navbar-brand ...</code></li>
+            <li>Toggler <code>button.navbar-toggler</code> (displays on collapsed)  <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-2" aria-control=".a8-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="att collapse a8-2">Attribute <code>type="button"</code></li>
+                <li class="att collapse a8-2">Attribute <code>data-toggle="collapse"</code></li>
+                <li class="att collapse a8-2">Attribute <code>data-target="#toggler-demo"</code> (sets the collasping wrapper)</li>
+                <li class="att collapse a8-2">Accessibility attribute <code>aria-controls="toggler-demo"</code></li>
+                <li class="att collapse a8-2">Accessibility attribute <code>aria-expanded="false"</code></li>
+                <li class="att collapse a8-2">Accessibility attribute <code>aria-label="Toggle navigation"</code></li>
+                <li>Icon (Triple bar) <code>span.navbar-toggler-icon</code></li>
+              </ul>
+            </li>
+            <li>Collasping wrapper <code>div.collapse.navbar-collapse</code> (displays on expanded) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-3" aria-control=".a8-3" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a8-3">ID (required) <code>id="toggler-demo"</code></li>
+                <li>Navigation <code>ul.navbar-nav</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-4" aria-control=".a8-4" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a8-4">(Responsive) margin adjustment <code>.mr-auto.mt-2.mt-md-0</code></li>
+                    <li>Items <code>li.nav-item(.active)</code></li>
+                  </ul>
+                </li>
+                <li><a href="#forms">Form </a><code>form.form-inline ...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-2">Toggler breakpoint is specified with <code>.navbar-expand-(sm|md|lg|xl)</code>. To set navbar always expanded, use <code>.navbar-expand</code>. The example below is identical to above but replacing <code>.nabvar-expand-md</code> to <code>.nabvar-expand</code> (does not collapse).</p>
+      <nav class="navbar navbar-light bg-light navbar-expand"><a class="navbar-brand" href="#">Brand</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler-demo-disabled" aria-controls="toggler-demo-disabled" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="toggler-demo-disabled">
+          <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <h6 class="mt-4 mb-2" id="toggler-variation-1">Variation (1) Hides brand on collapsed (displays an icon only)</h6>
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01"><a class="navbar-brand" href="#">Hidden brand</a>
+          <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#toggler-variation-1-structure" aria-control="#toggler-variation-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="toggler-variation-1-structure">
+        <li>Navbar
+          <ul>
+            <li>Toggler</li>
+            <li>Collapsing wrapper
+              <ul>
+                <li>Brand (moved here)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-4 mb-2" id="toggler-variation-2">Variation (2) On collapsed, shows brand on right, icon on left</h6>
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand" href="#">Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#toggler-variation-2-structure" aria-control="#toggler-variation-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="toggler-variation-2-structure">
+        <li>Change DOM order as follows
+          <ul>
+            <li>Toggler</li>
+            <li>Brand</li>
+            <li>Collapsing wrapper</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="external-content"><a href="https://getbootstrap.com/docs/4.1/components/navbar/#external-content" target="_blank">Collapsing an external content</a>
+      </h5>
+      <p class="my-2">Toggler also can be used to expand/collapse a content outside a navbar. See the example below.</p>
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-secondary p-4">
+          <h4 class="text-white">Collapsed content </h4><span>Toggleable via the navbar icon.</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      </nav><a class="btn btn-outline-info" data-toggle="collapse" href="#external-content-structure" aria-control="#external-content-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="external-content-structure">
+        <li>Collapsing wrapper (outside the bar) <code>div.collapse</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-1" aria-control=".a9-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a9-1">ID (required) <code>id="{wrapper-id}"</code></li>
+            <li>Collapsing content <code>div.bg-dark.p-4</code>
+              <ul>
+                <li class="txt">Inner text <strong>Collapsed content</strong> ...</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Navbar <code>nav.navbar.navbar-dark.bg-dark</code> (always collapsed)
+          <ul>
+            <li>Toggler <code>button.navbar-toggler</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-2" aria-control=".a9-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="att collapse a9-2">Attribute <code>type="button"</code></li>
+                <li class="att collapse a9-2">Attribute <code>data-toggle="collapse"</code></li>
+                <li class="att collapse a9-2">Attribute <code>data-target=&quot;#{wrapper-id}&quot;</code></li>
+                <li class="att collapse a9-2">See <a href="#toggler-example">Toggler example</a> for other settings</li>
+                <li>Icon (Triple bar) <code>span.navbar-toggler-icon</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(10): Navbar</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

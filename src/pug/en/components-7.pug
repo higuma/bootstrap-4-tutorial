@@ -1,0 +1,277 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components (7): List group
+
+block body
+  div.container
+    +pageHeader("components-7")
+      p.lead Components (7): 
+        a(href="#list-group") List group
+
+    h2.mt-2#list-group
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/") List group
+    - const sampleText = ["Cras justo odio", "Dapibus ac facilisis in", "Morbi leo risus", "Porta ac consectetur ac", "Vestibulum at eros"]
+    h4.mt-3#basic-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#basic-example") Basic example
+    ul.list-group.my-3(style="width: 320px;")
+      each item in sampleText
+        li.list-group-item= item
+    +collapseButton("#basic-example-structure") Structure
+    ul.struct.mt-2.collapse#basic-example-structure
+      li List group 
+        code ul.list-group
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Attribute (sets width) 
+            code style="width: 320px;"
+          li Item 
+            code li.list-group-item
+            ul
+              li.txt Text (e.g.) 
+                code Cras justo odio
+    div.alert.alert-info.my-3(role="alert") As default, 
+      code ul.list-group
+      |  sets a width to 100% inside a parent. You can use the same techniques as setting sizes of cards (see 
+      a(href="components-3.html#sizing") Cards - Sizing
+      | ).
+    each opt in ["active", "disabled"]
+      h4.mt-4(id=`${opt}-items`)
+        +extLink(`https://getbootstrap.com/docs/4.1/components/list-group/#${opt}-items`)= `${opt[0].toUpperCase() + opt.slice(1)} items`
+      p.my-1 Add 
+        code= `.${opt}`
+        = ` to a${opt.match("^[aeiou]") ? "n" : ""} ${opt} item. See example below (set to the first item).`
+      ul.list-group(style="width: 320px;")
+        each item in sampleText
+          li(class=`list-group-item${item == "Cras justo odio" ? ` ${opt}` : ""}`)= item
+    h4.mt-4#links-and-buttons
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#links-and-buttons") Links and buttons
+    p.my-2 An interactive list group can be built with a parent 
+      code div.list-group
+      |  and items 
+      code (a|button).list-group-item
+    +collapseButton("#links-and-buttons-structure") Structure
+    ul.struct.mt-2.collapse#links-and-buttons-structure
+      li List group 
+        code div.list-group
+        ul
+          li Item 
+            code (a|button).list-group-item
+            +attrBtn(".a2-1")
+            ul.collapse.a2-1
+              li.cls Add 
+                code .list-group-item-action
+                |  to respond to hover
+    p.mt-3.mb-1 Example for 
+      code a
+      |  : 
+      code a.list-group-item.list-group-item-action(.active)
+    ul.list-group(style="width: 320px;")
+      each item in sampleText
+        a(href="#" class=`list-group-item list-group-item-action${item == "Cras justo odio" ? " active" : ""}`)= item
+    p.mt-3.mb-1 Example for 
+      code button
+      |  : 
+      code button.list-group-item.list-group-item-action(.active)
+    ul.list-group(style="width: 320px;")
+      each item in sampleText
+        button(type="button" class=`list-group-item list-group-item-action${item == "Cras justo odio" ? " active" : ""}`)= item
+    h4.mt-4#flush
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#flush") Flush
+    p.my-1 Add 
+      code .list-group-flush
+      |  to remove rounded border.
+    p.mt-2.mb-1
+      code ul.list-group.list-group-flush
+    ul.list-group.list-group-flush(style="width: 320px;")
+      each item in sampleText
+        li.list-group-item= item
+    h4.mt-4#contextual-classes
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#contextual-classes") Contextual classes
+    - const contexts = ["primary","secondary","success","danger","warning","info","light","dark"]
+    p.mt-2.mb-1 Add 
+      code .list-group-item-(primary|secondary|success|...)
+      |  to items.
+    ul.list-group
+      li.list-group-item (default) Dapibus ac facilisis in
+      each item in contexts
+        li(class=`list-group-item list-group-item-${item}`)
+          code= `.list-group-item-${item}`
+          = ` This is a ${item} list group item`
+    p.mt-3.mb-1 Example with adding 
+      code .list-item-group-action
+      |  (responds to hover)
+    ul.list-group
+      li.list-group-item.list-group-item-action (default) Dapibus ac facilisis in
+      each item in contexts
+        li(class=`list-group-item list-group-item-action list-group-item-${item}`)
+          code= `.list-group-item-${item}`
+          = ` This is a ${item} list group item`
+    h4.mt-4#with-badges
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#with-badges") With badges
+    p.mt-2.mb-3 Example using badges
+    ul.list-group.mt-3(style="width: 320px;")
+      each item in [[sampleText[0],14], [sampleText[1],2], [sampleText[2],1]]
+        li.list-group-item.d-flex.justify-content-between.align-items-center
+          =item[0]
+          span.badge.badge-primary.badge-pill= item[1]
+    div.mt-4.mb-3
+      +collapseButton("#badges-structure") Structure
+    ul.struct.mt-3.collapse#badges-structure
+      li
+        code ul.list-group
+        +attrBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 Sets width 
+            code style="width: 320px;"
+          li Items 
+            code li.list-group-item
+            +attrsBtn(".a3-2")
+            ul
+              li.cls.collapse.a3-2 Uses flex 
+                code .d-flex
+                |  (see 
+                a(href="utilities-3.html#flex") Flex
+                | )
+              li.cls.collapse.a3-2 Horizontal alignment 
+                code .justify-content-between
+              li.cls.collapse.a3-2 Vertical alignment 
+                code .align-items-center
+              li.txt Text (e.g.) 
+                code Cras justo odio
+              li
+                a(href="components-1.html#badges-pill-badges") Pill badge 
+                code span.badge.badge-primary.badge-pill
+                ul
+                  li.txt Text (e.g.) 
+                    code 14
+    h4.mt-4#custom-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#custom-content") Custom content
+    p.mt-2.mb-3 Example using 
+      a(href="utilities-3.html#flex") Flex utilities
+    div.list-group.mt-3
+      each row in [1,2,3]
+        a(href="#" class=`list-group-item list-group-item-action flex-column align-items-start${row == 1 ? " active" : ""}`)
+          div.d-flex.justify-content-between
+            h5.mb-1= `List group item heading (${row})`
+            small 3 days ago
+          p.mb-1 Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+          small Donec id elit non mi porta.
+    div.my-3
+      +collapseButton("#customizing-structure") Structure
+    ul.struct.my-2.collapse#customizing-structure
+      li List group 
+        code div.list-group
+        ul
+          li Item 
+            code a
+            +attrsBtn(".a4-1")
+            ul
+              li.cls.collapse.a4-1 Class 
+                code .active
+                |  (first item only)
+              li.cls.collapse.a4-1 Items to top-down 
+                code .flex-column
+              li.cls.collapse.a4-1 Aligned to top 
+                code .align-items-start
+              li First row 
+                code div
+                +attrsBtn(".a4-2")
+                ul
+                  li.cls.collapse.a4-2 Uses flex 
+                    code .d-flex
+                  li.cls.collapse.a4-2 Force maximum width to the parent 
+                    code .w-100
+                  li.cls.collapse.a4-2 Arrange inner items at start and end edges 
+                    code .justify-content-between
+                  li
+                    code h5
+                    |  (justified to leftmost)
+                    ul
+                      li.txt Text 
+                        code List group item heading ...
+                  li
+                    code small
+                    |  (justified to rightmost)
+                    ul
+                      li.txt Text 
+                        code 3 days ago
+              li Second row (paragraph) 
+                code p
+                ul
+                  li.txt Text 
+                    code Donec id elit non mi porta gravida at eget ...
+                ul
+              li Third row (small text) 
+                code small
+                ul
+                  li.txt Text 
+                    code Donec id elit non mi porta.
+    h4.mt-4#javascript-behavior
+      +extLink("https://getbootstrap.com/docs/4.1/components/list-group/#javascript-behavior") JavaScript behavior (tabbable panes)
+    - const itemTypes = ["home", "profile", "messages", "settings"]
+    - const itemContents = ["Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.", "Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.", "Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet cupidatat cupidatat anim do ut velit mollit consequat enim tempor. Consectetur est minim nostrud nostrud consectetur irure labore voluptate irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod aliquip nulla laborum elit adipisicing pariatur cillum.", "Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure."]
+    - const zippedItems = itemTypes.map((item, i) => [item, itemContents[i]])
+    p.mt-2.mb-4 You can build tabbable panes with a list group (using bootstrap.js) as follows.
+    div.row.mt-3
+      div.col-sm-4.col-md-3.col-xl-2
+        div.list-group(role="tablist")
+          each item in itemTypes
+            - let isActive = (item == "home") ? " active" : ""
+            a(class=`list-group-item list-group-item-action${isActive}` id=`list-${item}-list` data-toggle="list" href=`#list-${item}` role="tab" aria-controls=item)
+              = item[0].toUpperCase() + item.slice(1)
+      div.col-sm-8.col-md-9.col-xl-10
+        div.tab-content
+          each item in zippedItems
+            - let isActive = (item[0] == "home") ? " show active" : ""
+            div(class=`tab-pane fade${isActive}` id=`list-${item[0]}` role="tabpanel" aria-labelledby=`list-${item[0]}-list`)
+              h5= item[0][0].toUpperCase() + item[0].slice(1)
+              = item[1]
+    div.my-3
+      +collapseButton("#js-structure") Structure
+    ul.struct.mt-3.collapse#js-structure
+      li List group 
+        code div.list-group
+        +attrBtn(".a5-1")
+        ul
+          li.att.collapse.a5-1 Accessibility attribute 
+            code role="tablist"
+          li Item 
+            code a.list-group-item(.list-group-item-action)?
+            +attrsBtn(".a5-2")
+            ul.collapse.a5-2
+              li.cls Set 
+                code .active
+                |  to an initially-visible item
+              li.att Attribute 
+                code id="{item-id}"
+              li.att Attribute 
+                code data-toggle="list"
+              li.att Attribute 
+                code= `href="#{content-id}"`
+              li.att Accessibility attribute 
+                code role="tab"
+              li.att Accessibility attribute 
+                code aria-controls="{content-id}"
+      li Content-side 
+        code div.tab-content
+        ul
+          li Content item 
+            code div.tab-pane(.fade)
+            +attrsBtn(".a5-3")
+            ul.collapse.a5-3
+              li.cls Add
+                code .fade
+                |  for animation (fade in/out) effect
+              li.cls Set 
+                code .show.active
+                |  to an initially-visible item
+              li.att Attribute 
+                code id="{content-id}"
+              li.att Accessibility attribute 
+                code role="tabpanel"
+              li.att Accessibility attribute 
+                code aria-labelledby="{item-id}"
+
+    +breadcrumbLevel1("Components(7): List group")

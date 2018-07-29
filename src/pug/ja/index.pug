@@ -1,0 +1,252 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial
+
+block body
+  div.container
+    +pageHeader("index")
+    h2.mt-4#toc 目次
+    ul
+      li
+        a(href="#about") このチュートリアルについて
+      li.mb-2
+        a(href="#notation") 記法について
+      li
+        a(href="getting-started.html") Getting started
+      li レイアウト
+        ol
+          li
+            a(href="layout-1.html") 概要
+            |  / 
+            a(href="layout-1.html#grid") グリッド
+          li
+            a(href="layout-2.html") メディアオブジェクト
+            |  / 
+            a(href="layout-2.html#utilities") レイアウトユーティリティ
+      li コンテント
+        ol
+          li
+            a(href="content-1.html") Reboot
+            |  / 
+            a(href="content-1.html#typography") タイポグラフィ
+            |  / 
+            a(href="content-1.html#code") コード
+          li: a(href="content-2.html") 画像
+          li: a(href="content-3.html") 表
+          li: a(href="content-4.html") 図
+      li コンポーネント
+        ol
+          li
+            a(href="components-1.html") アラート
+            |  / 
+            a(href="components-1.html#badges") バッジ
+            |  / 
+            a(href="components-1.html#breadcrumb") パンくずリスト
+          li
+            a(href="components-2.html") ボタン
+            |  / 
+            a(href="components-2.html#button-group") ボタングループ
+          li
+            a(href="components-3.html") カード
+          li
+            a(href="components-4.html") カルーセル
+            |  / 
+            a(href="components-4.html#collapse") 折り畳み
+            |  / 
+            a(href="components-4.html#dropdowns") ドロップダウン
+          li
+            a(href="components-5.html") フォーム
+          li
+            a(href="components-6.html") インプットグループ
+            |  / 
+            a(href="components-6.html#jumbotron") ジャンボトロン
+          li: a(href="components-7.html") リストグループ
+          li: a(href="components-8.html") モーダル
+          li: a(href="components-9.html") ナビゲーション
+          li: a(href="components-10.html") ナビゲーションバー
+          li
+            a(href="components-11.html") ページネーション
+            |  / 
+            a(href="components-11.html#popovers") ポップオーバー
+          li
+            a(href="components-12.html") プログレスバー
+            |  / 
+            a(href="components-12.html#scrollspy") スクロールスパイ
+            |  / 
+            a(href="components-12.html#tooltips") ツールチップ
+      li ユーティリティ
+        ol
+          li
+            a(href="utilities-1.html") ボーダー
+            |  / 
+            a(href="utilities-1.html#clearfix") クリアフィックス
+            |  / 
+            a(href="utilities-1.html#close-icon") クローズアイコン
+          li
+            a(href="utilities-2.html") 色
+            |  / 
+            a(href="utilities-2.html#display") 表示
+            |  / 
+            a(href="utilities-2.html#embed") 埋め込み
+          li
+            a(href="utilities-3.html") Flexbox
+            |  / 
+            a(href="utilities-3.html#float") フロート
+            |  / 
+            a(href="utilities-3.html#image-replacement") 画像置換
+          li
+            a(href="utilities-4.html") 配置
+            |  / 
+            a(href="utilities-4.html#screenreaders") スクリーンリーダ
+            |  / 
+            a(href="utilities-4.html#shadows") シャドウ
+            |  / 
+            a(href="utilities-4.html#sizing") サイズ
+            |  / 
+            a(href="utilities-4.html#spacing") 空白
+          li
+            a(href="utilities-5.html") テキスト
+            |  / 
+            a(href="utilities-5.html#vertical-align") 上下アライン
+            |  / 
+            a(href="utilities-5.html#visibility") 可視性
+      li
+        a(href="extend+migration+about.html") Extend
+        |  / 
+        a(href="extend+migration+about.html#migration") Migration
+        |  / 
+        a(href="extend+migration+about.html#about") About
+
+    h2.mt-5#about このチュートリアルについて
+    p.my-2 
+      +extLink("https://getbootstrap.com/") Bootstrap
+      |  4の自習用チュートリアルです。
+      +extLink("https://getbootstrap.com/docs/4.1/") 公式ドキュメント
+      | と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
+    p.my-2 このチュートリアル自身は
+      +extLink("https://pugjs.org/") pug
+      | で記述し、
+      +extLink("https://nodejs.org/") node.js
+      | /
+      +extLink("https://docs.npmjs.com/") npm
+      | 環境の
+      +extLink("https://webpack.js.org/") Webpack
+      | でビルドしています。
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial") ソースコード
+      | は
+      +extLink("https://github.com/") GitHub
+      | で公開し、サイトのホスティングは
+      +extLink("https://pages.github.com/") GitHub Pages
+      | を用いています。
+    h2.mt-5#notation 記法について
+    p.mt-2.mb-3 本チュートリアルではHTMLの説明に独自の方法を用います。次の
+      a(href="components-2.html#button-group-button-toolbar") ボタンツールバー
+      | を例に説明します。
+    div.btn-toolbar(role="toolbar" aria-label="Button toolbar")
+      div.btn-group(role="group" aria-label="Group 1")
+        each text in ["1","2","3"]
+          button.btn.btn-secondary(role="button")= text
+      div.btn-group.ml-2(role="group" aria-label="Group 2")
+        each text in ["A","B"]
+          button.btn.btn-secondary(role="button")= text
+    p.my-3 これは次のHTMLで作られています。
+    pre.p-2.border.bg-light
+      code
+        = `<div class="btn-toolbar" role="toolbar" aria-label="Button toolbar">\n`
+        = `  <div class="btn-group" role="group" aria-label="Group 1">\n`
+        = `    <button class="btn btn-secondary" role="button">1</button>\n`
+        = `    <button class="btn btn-secondary" role="button">2</button>\n`
+        = `    <button class="btn btn-secondary" role="button">3</button>\n`
+        = `  </div>\n`
+        = `  <div class="btn-group ml-2" role="group" aria-label="Group 2">\n`
+        = `    <button class="btn btn-secondary" role="button">A</button>\n`
+        = `    <button class="btn btn-secondary" role="button">B</button>\n`
+        = `  </div>\n`
+        = `</div>`
+    p.my-3 これを解説付きの多重リストで表現します。
+    ul
+      li 次の 
+        button.btn.btn-outline-info 構造
+        |  ボタンで全体構造を入れ子のリストで表示します
+        ul
+          li その先の
+            button.btn.btn-sm.btn-outline-info.my-1.px-1.py-0 属性
+            |  ボタンで要素の属性を展開表示します
+    +collapseButton("#example-structure") 構造
+    |  ⇐ ここをクリック
+    ul.struct.collapse.my-3#example-structure
+      li ボタンツールバー 
+        code div.btn-toolbar
+        +attrsBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code role="toolbar"
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code aria-label="Button toolbar"
+          li (第1)ボタングループ 
+            code div.btn-group
+            +attrsBtn(".a1-2")
+            ul
+              li.att.collapse.a1-2 アクセシビリティ属性 
+                code role="group"
+              li.att.collapse.a1-2 アクセシビリティ属性 
+                code aria-label="Group 1"
+              li ボタン 
+                code button.btn
+                |  (&times;3)
+                +attrsBtn(".a1-3")
+                ul
+                  li.cls.collapse.a1-3 ボタン色 
+                    code .btn-secondary
+                  li.att.collapse.a1-3 アクセシビリティ属性 
+                    code role="button"
+                  li.txt テキスト 
+                    code 1
+                    | , 
+                    code 2
+                    | , 
+                    code 3
+          li (第2)ボタングループ 
+            code div.btn-group
+            +attrsBtn(".a1-4")
+            ul
+              li.cls.collapse.a1-4 左マージン 
+                code .ml-2
+              li.att.collapse.a1-4 アクセシビリティ属性 
+                code role="group"
+              li.att.collapse.a1-4 アクセシビリティ属性 
+                code aria-label="Group 2"
+              li ボタン 
+                code button.btn
+                |  (&times;2)
+                +attrsBtn(".a1-5")
+                ul
+                  li.cls.collapse.a1-5 ボタン色 
+                    code .btn-secondary
+                  li.att.collapse.a1-5 アクセシビリティ属性 
+                    code role="button"
+                  li.txt テキスト 
+                    code A
+                    | , 
+                    code B
+    p.mt-3.mb-2 記法のルールは次の通りです。
+    ul.struct
+      li 要素は先頭シンボルが黒丸(disc)、要素名は 
+        code code
+        |  要素の書式(赤色)で表現
+      li クラス付きの要素はCSSドット記法を用いる (例: 
+        code div.modal.fade
+        |  )
+      li 要素の属性と子要素はリストをネストして子アイテムで表現
+        ul
+          li.cls 追加クラスは先頭が白丸(circle)でCSSドット記法 
+            code .{クラス}
+          li.att 属性は先頭が白丸(circle)でHTML属性の記法 
+            code {属性}="{値}"
+          li.txt テキストは先頭文字なし 
+            code テキストコンテント
+          li 子要素は親要素と同じ書式(先頭は黒丸)、以下子孫も同様
+
+    +breadcrumbLevel0

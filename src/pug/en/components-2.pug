@@ -1,0 +1,361 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components (2): Buttons / Button group
+
+block body
+  - const contexts = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+  - const contextRe = `(${contexts.join("|")})`
+
+  div.container
+    +pageHeader("components-2")
+      p.lead.mb-0 Components (2): 
+        a(href="#buttons") Buttons
+        |  / 
+        a(href="#button-group") Button group
+
+    h2.mt-4#buttons
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/") Buttons
+    - const buttons = contexts.slice()
+    - buttons.push("link")
+    - const buttonRe = `(${buttons.join("|")})`
+    h4.mt-3#buttons-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#examples") Contextual examples
+    p.my-0
+      code= `button.btn.btn-${buttonRe}`
+    p.my-1
+      each c in buttons
+        button(type="button" class=`btn btn-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+
+    h4.mt-4#buttons-button-tags
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#button-tags") Various elements and attributes
+    div.row
+      div.col-sm-6.col-xl-4.py-1
+        div
+          a.btn.btn-primary(href="#") Link
+        div
+          ul.struct
+            li
+              code= `a.btn.btn-primary`
+              +attrsBtn(".a1-1")
+              ul
+                li.att.collapse.a1-1 Attribute 
+                  code href="#"
+                li.att.collapse.a1-1 Attribute 
+                  code role="button"
+                li.txt Text 
+                  code Link
+                li Jumps to the top on click
+      div.col-sm-6.col-xl-4.py-1
+        div
+          button.btn.btn-primary(type="submit") Button
+        div
+          ul.struct
+            li
+              code= `button.btn.btn-primary`
+              +attrBtn(".a1-2")
+              ul
+                li.att.collapse.a1-2 Attribute 
+                  code type="submit"
+                li.txt Text 
+                  code Button
+      div.col-sm-6.col-xl-4.py-1
+        div
+          input.btn.btn-primary(type="button" value="Input")
+        div
+          ul.struct
+            li
+              code input.btn.btn-primary
+              +attrsBtn(".a1-3")
+              ul.collapse.a1-3
+                li.att Attribute 
+                  code type="button"
+                li.att Attribute 
+                  code value="Input"
+      div.col-sm-6.col-xl-4.py-1
+        div
+          input.btn.btn-primary(type="submit" value="Submit")
+        div
+          ul.struct
+            li
+              code input.btn.btn-primary
+              +attrsBtn(".a1-4")
+              ul.collapse.a1-4
+                li.att Attribute 
+                  code type="submit"`
+                li.att Attribute 
+                  code value="Submit"
+      div.col-sm-6.col-xl-4.py-1
+        div
+          input.btn.btn-primary(type="reset" value="Reset")
+        div
+          ul.struct
+            li
+              code input.btn.btn-primary
+              +attrsBtn(".a1-5")
+              ul.collapse.a1-5
+                li.att Attribute 
+                  code type="reset"`
+                li.att Attribute 
+                  code value="Reset"
+    h4.mt-4#buttons-outline-buttons
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#outline-buttons") Outline buttons
+    p.my-0
+      code= `button.btn.btn-outline-${contextRe}`
+    p.my-1
+      each c in contexts
+        button(type="button" class=`btn btn-outline-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+    h4.mt-4#buttons-sizes
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#sizes") Sizes
+    p.my-0
+      code (button|...).btn.btn-(lg|sm)
+    p.mt-1.mb-0 Large 
+      code .btn-lg
+    p.my-0
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} btn-lg`) Large button
+    p.mt-2.mb-0 Medium (default)
+    p.my-0
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c}`) Medium button
+    p.mt-2.mb-0 Small 
+      code .btn-sm
+    p.mt-0
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} btn-sm`) Small button
+    h5.mt-3.mb-1#buttons-block-level Block level buttons
+    p.my-0 Add 
+      code .btn-block
+    p.mt-1
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} btn-lg btn-block`) Block level button
+    h4.mt-4#buttons-active-state
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#active-state") Active state
+    p.my-2 Setting 
+      code .active
+      |  displays buttons with always active (pressed) state.
+    p.mt-0
+      each c in contexts.slice(0, 2)
+        a(href="#" class=`btn btn-${c} active` role="button" aria-pressed="true")
+          = c[0].toUpperCase() + c.slice(1)
+          |  link
+        | &nbsp;
+    h4.mt-4#buttons-disabled-state
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#disabled-state") Disabled state
+    ul.struct
+      li With 
+        code button
+        ul
+          li.att Attibute 
+            code disabled
+            |  (acts on both display and action)
+          li.cls Or class 
+            code .disabled
+            |  (grayed display only)
+      li With 
+        code a
+        ul
+          li.cls Class 
+            code .disabled
+            |  (acts on both display and action)
+          li.att Accessibility attribute (recommended) 
+            code aria-disabled="true"
+    h6.mt-3 Example 1: Attribute 
+      code disabled
+      |  to 
+      code button
+      |  (disables both display and action)
+    div
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c}` disabled)
+          = c[0].toUpperCase() + c.slice(1)
+          |  button
+    h6.mt-3 Example 2: Class 
+      code .disabled
+      |  to 
+      code button
+      |  (can be still pressed)
+    div
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} disabled`)
+          = c[0].toUpperCase() + c.slice(1)
+          |  button
+    h6.mt-3 Example 3: Class 
+      code .disabled
+      |  to 
+      code a
+      |  (disables both display and action)
+    div
+      each c in contexts.slice(0, 2)
+        a(href="#" class=`btn btn-${c} disabled` role="button" aria-disabled="true")
+          = c[0].toUpperCase() + c.slice(1)
+          |  link
+        | &nbsp;
+
+    h2.mt-5#button-group
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/") Button group
+    h4.my-3#button-group-basic-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#basic-example") Basic example
+    div.btn-group(role="group" aria-label="Basic example")
+      each pos in ["Left", "Middle", "Right"]
+        button.btn.btn-secondary(type="button")= pos
+    div.my-3
+      +collapseButton("#button-group-structure") Structure
+    ul.struct.mt-3.collapse#button-group-structure
+      li Button group 
+        code div.btn-group
+        +attrsBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 Accessibility attribute 
+            code role="group"
+          li.att.collapse.a2-1 Accessibility attribute (e.g.) 
+            code aria-label="Basic example"
+          li Button item(s) 
+            code button.btn.btn-(primary|secondary|...)
+            +attrBtn(".a2-2")
+            ul
+              li.att.collapse.a2-2 Attribute 
+                code type="button"
+              li.txt Text (e.g.) 
+                code Left
+    h4.mt-4#button-group-button-toolbar
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#button-toolbar") Button toolbar
+    p.my-2 A button toolbar is used to gather button groups, input groups, form controls, etc.
+    div.my-3
+      +collapseButton("#button-toolbar-structure") Structure
+    ul.struct.mt-3.mb-0.collapse#button-toolbar-structure
+      li Button toolbar 
+        code div.btn-toolbar
+        +attrsBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 Accessibility attribute 
+            code role="toolbar"
+          li.att.collapse.a3-1 Accessibility attribute (e.g.) 
+            code aria-label="Toolbar with button groups"
+          li Button group(s) 
+            code div.btn-group
+            ul
+              li See 
+                a(href="#button-group-basic-example") Basic example
+          li Or also: Input group (⇒ 
+            a(href="components-6.html#input-group") Input group
+            |  ), etc.
+    p.mt-3.mb-2 Basic example of a button toolbar
+    div.btn-toolbar(role="toolbar" aria-label="Toolbar with button groups")
+      div.btn-group.mr-2(role="group" aria-label="First group")
+        each n in [1, 2, 3, 4]
+          button.btn.btn-secondary(type="button")= n
+      div.btn-group.mr-2(role="group" aria-label="Second group")
+        each n in [5, 6, 7]
+          button.btn.btn-secondary(type="button")= n
+      div.btn-group.mr-2(role="group" aria-label="Third group")
+        button.btn.btn-secondary(type="button") 8
+    p.mt-4.mb-0 Examples using 
+      a(href="components-6.html") input group
+      | s with alignment options
+    each opt in [null,"justify-content-between"]
+      p.my-1
+        code= `div.btn-toolbar${opt ? "."+opt : ""}`
+        - if (opt)
+          |  (⇒ 
+          a(href="utilities-3.html#flex") Flex utilities
+          |  )
+      div(class=`btn-toolbar${opt ? " "+opt : ""} mb-3` role="toolbar" aria-label="Toolbar with button groups")
+        div.btn-group.mr-2(role="group" aria-label="First group")
+          each n in [1, 2, 3, 4]
+            button.btn.btn-secondary(type="button")= n
+        div.input-group
+          - let id = `btnGroupAddon${opt ? 2 : 1}`
+          div.input-group-prepend
+            div.input-group-text(id=id) @
+          input.form-control(type="text" placeholder="Input group example" aria-label="Input group example" aria-describedby=id)
+    p.mt-4.mb-1 Example using radios: (see 
+      a(href="components-5.html#inline") Chexboxes and radios - Inline
+      |  )
+    p.my-2 Radios are wrapped by 
+      code div.form.form-inline
+      |  and justified with 
+      code .mx-auto
+    div.btn-toolbar.mb-3(role="toolbar" aria-label="Toolbar with radios")
+      div.btn-group.mr-2(role="group" aria-label="First group")
+        each n in [1, 2, 3, 4]
+          button.btn.btn-secondary(type="button")= n
+      div.form.form-inline.mx-auto
+        div.form-check.form-check-inline
+          input.form-check-input#Radio1(type="radio" name="inlineRadioOptions" value="option1" checked)
+          label.form-check-label(for="inlineRadio${n}") 1
+        each n in [2,3,4,5]
+          div.form-check.form-check-inline
+            input.form-check-input(type="radio" name="inlineRadioOptions" id=`inlineRadio${n}` value=`option${n}`)
+            label.form-check-label(for=`inlineRadio${n}`)= n
+    h4.mt-4.mb-1#button-group-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#sizing") Sizing
+    p.mt-1.mb-2 Set 
+      code .btn-group-(lg|sm)
+    each sz in ["lg", null, "sm"]
+      p.my-1
+        code= `div.btn-group${sz ? ".btn-group-"+sz : ""}`
+      div(class=`btn-group${sz ? " btn-group-"+sz : ""} mb-3` role="group" aria-label="Size example")
+        each pos in ["Left","Middle","Right"]
+          button.btn.btn-secondary(type="button")= pos
+    h4.mt-4#button-group-nesting
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#nesting") Using dropdowns (nesting)
+    p.my-0
+      a(href="components-4.html#dropdowns") Dropdowns
+      |  can be used with nesting button groups.
+    div.btn-group.mt-1(role="group" aria-label="Button group with nested dropdown")
+      each n in [1,2,3]
+        button.btn.btn-secondary(type="button")= n
+      div.btn-group(role="group")
+        button.btn.btn-secondary.dropdown-toggle#btnGroupDrop1(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu(aria-labelledby="btnGroupDrop1")
+          each n in [1, 2]
+            a.dropdown-item(href="#")= `Dropdown link ${n}`
+    div.my-3
+      +collapseButton("#using-dropdowns-structure") Structure
+    ul.struct.my-3.collapse#using-dropdowns-structure
+      li
+        code div.btn-group
+        ul
+          li Normal buttons 
+            code button.btn.btn-secondary
+          li Nested 
+            code div.btn-group
+            ul
+              li Dropdown 
+                code button.btn.btn-secondary.dropdown-toggle
+              li Item list 
+                code div.dropdown-menu
+                ul
+                  li Items 
+                    code a.dropdown-item
+    h4.mt-4.mb-1#button-group-vertical-variation
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#vertical-variation") Vertical variation
+    p.mb-2
+      code div.btn-group-vertical
+    div.btn-group-vertical(role="group" aria-label="Vertical example")
+      each n in [1, 2, 3, 4, 5]
+        button.btn.btn-secondary(type="button")= `Button ${n}`
+    p.mt-3.mb-2 Vertival example with dropdowns (see source for detail)
+    div.btn-group-vertical(role="group" aria-label="Vertical example with nesting")
+      each n in [1, 2]
+        button.btn.btn-secondary(type="button")= `Button ${n}`
+      div.btn-group
+        button.btn.btn-secondary.dropdown-toggle#vertBtnGroupDrop1(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown 1
+        div.dropdown-menu(aria-labelledby="vertBtnGroupDrop1")
+          each n in [1, 2, 3]
+            a.dropdown-item(href="#")= `Link 1-${n}`
+      each n in [3, 4]
+        button.btn.btn-secondary(type="button")= `Button ${n}`
+      each nDrop in [2, 3]
+        div.btn-group
+          button.btn.btn-secondary.dropdown-toggle(id=`vertBtnGroupDrop${nDrop}` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")= `Dropdown ${nDrop}`
+          div.dropdown-menu(aria-labelledby=`vertBtnGroupDrop${nDrop}`)
+            each n in [1, 2]
+              a.dropdown-item(href="#")= `Link ${nDrop}-${n}`
+      button.btn.btn-secondary(type="button") Button 5
+
+    +breadcrumbLevel1("Components(2): Buttons/Button group")

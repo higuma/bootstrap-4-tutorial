@@ -1,0 +1,5 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="none">
+  <style type="text/css"> text { fill:rgba(255,255,255,.75);font-weight:normal;font-family:Helvetica, monospace;font-size:20pt }</style>
+  <rect width="400" height="300" fill="#777"></rect>
+  <text text-anchor="middle" x="200" y="160">400x300</text>
+</svg>

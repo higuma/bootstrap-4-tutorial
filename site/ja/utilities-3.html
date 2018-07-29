@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: ユーティリティ(3): Flexbox / フロート / 画像置換</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">ユーティリティ(3): <a href="#flex">Flexbox</a> / <a href="#float">フロート</a> / <a href="#image-replacement">画像置換</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/utilities-3.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="flex"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/" target="_blank">Flexbox</a>
+      </h2>
+      <p class="mt-2 mb-1">Bootstrap 4からCSS3のFlexboxを全面的に利用するようになった。ここではFlexboxを利用するためのBootstrapユーティリティについて説明する。なおFlexboxの解説は <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A complete guide to Flexbox</a> がおすすめ。
+      </p>
+      <h4 class="mt-4 mb-1" id="flex-notation">記法まとめ</h4>
+      <p class="my-3">書式(クラス名)はFlexboxのCSSプロパティ/値に対応している(詳しくは <a href="https://www.w3.org/TR/css-flexbox-1/" target="_blank">Flexbox (W3C)</a> または <a href="https://developer.mozilla.org/ja/docs/Glossary/Flexbox" target="_blank">MDN - Flexbox</a> を参照)。
+      </p>
+      <p class="mt-3 mb-0"><code>display</code> プロパティの設定 (⇒ <a href="utilities-2.html#display">表示ユーティリティ</a>)</p>
+      <p class="my-0"><code>.d(-sm|-md|-lg|-xl)?-(flex|inline-flex)</code></p>
+      <p class="mt-3 mb-0"><code>flex-direction</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-(row|column)(-reverse)?</code></p>
+      <p class="mt-3 mb-0"><code>justify-content</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.justify-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around)</code></p>
+      <p class="mt-3 mb-0"><code>align-items</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.align-items(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <p class="mt-3 mb-0"><code>align-self</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.align-self(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <p class="mt-3 mb-0"><code>flex</code> プロパティの設定 (⇒ <code>flex: 1 1 auto;</code> )
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-fill</code></p>
+      <p class="mt-3 mb-0"><code>flex-(grow|shrink)</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-(grow|shrink)-(0|1)</code></p>
+      <p class="mt-3 mb-0"><code>flex-wrap</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-(nowrap|wrap|wrap-reverse)</code></p>
+      <p class="mt-3 mb-0"><code>order</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.order(-sm|-md|-lg|-xl)?-(0|1|2|3|4|5|6|7|8|9|10|11|12|first|last)</code></p>
+      <p class="mt-3 mb-0"><code>align-content</code> プロパティの設定
+      </p>
+      <p class="my-0"><code>.align-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around|stretch)</code></p>
+      <p class="mt-3 mb-0">自動マージン</p>
+      <p class="my-0"><code>.m(l|t|r|b)?-auto</code></p>
+      <div class="alert alert-info mt-3" role="alert">自動マージンは <code>margin(-left|-top|-right|-bottom)?</code> を <code>auto</code> に設定する<a href="utilities-4.html#spacing">空白ユーティリティ</a>の一部。Flexboxとの組み合わせで用いることが多いためここで説明している。</div>
+      <h4 class="mt-4 mb-0" id="flex-direction"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#direction" target="_blank">縦横の配置順序</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-(row|column)(-reverse)?</code></p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-row</code></p>
+            <div class="d-flex flex-row border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-row-reverse</code></p>
+            <div class="d-flex flex-row-reverse border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-column</code></p>
+            <div class="d-flex flex-column border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-column-reverse</code></p>
+            <div class="d-flex flex-column-reverse border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="flex-justify-content"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#justify-content" target="_blank">要素の間隔設定</a>
+      </h4>
+      <p class="my-2"><code>.justify-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around)</code></p>
+      <div class="row">
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-start</code></p>
+            <div class="d-flex justify-content-start border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-end</code></p>
+            <div class="d-flex justify-content-end border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-center</code></p>
+            <div class="d-flex justify-content-center border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-between</code></p>
+            <div class="d-flex justify-content-between border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-around</code></p>
+            <div class="d-flex justify-content-around border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-align-items"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#align-items" target="_blank">要素の配置設定</a>
+      </h4>
+      <p class="my-2"><code>.align-items(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <p class="my-2">In examples below, parent box heights are fixed to <code>5rem</code>.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-start</code></p>
+            <div class="d-flex align-items-start border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-end</code></p>
+            <div class="d-flex align-items-end border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-center</code></p>
+            <div class="d-flex align-items-center border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-baseline</code></p>
+            <div class="d-flex align-items-baseline border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-stretch</code></p>
+            <div class="d-flex align-items-stretch border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-align-self"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#align-self" target="_blank">個別要素の配置設定</a>
+      </h4>
+      <p class="my-2"><code>.align-self(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <ul></ul>
+      <p class="my-2">以下の例では親ボックスの高さを <code>5rem</code> に固定し、中央の子アイテムに設定している。</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1">中央アイテムに <code>.align-self-start</code></p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-start border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1">中央アイテムに <code>.align-self-end</code></p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-end border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1">中央アイテムに <code>.align-self-center</code></p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-center border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1">中央アイテムに <code>.align-self-baseline</code></p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-baseline border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1">中央アイテムに <code>.align-self-stretch</code></p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-stretch border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-fill"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#fill" target="_blank">フィル</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-fill</code></p>
+      <p class="my-2">子アイテムを親ボックス全体にフィルする場合は <code>.flex-fill</code> を設定する。子アイテムはそれぞれのコンテンツの幅(または高さ)に対応して親要素全体に引き延ばされる。</p>
+      <p class="mt-3 mb-1">例: 各アイテムに <code>.flex-fill</code> を設定</p>
+      <div class="d-flex">
+        <div class="flex-fill border bg-light p-1">Short</div>
+        <div class="flex-fill border bg-light p-1">Medium length text</div>
+        <div class="flex-fill border bg-light p-1">This is a slightly longer text content</div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-grow-and-shrink"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#grow-and-shrink" target="_blank">伸び縮み</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-(grow|shrink)-(0|1)</code></p>
+      <p class="my-2">CSSの <code>flex-grow</code> プロパティはデフォルトで <code>0</code> に設定されている(自動的に伸びない)。特定要素だけを親要素全体に引き延ばす場合は <code>.flex-grow-1</code> を用いることができる( <code>flex-grow: 1</code> に設定)。</p>
+      <div class="d-flex">
+        <div class="flex-grow-0 border bg-light p-1">Item (<code>flex-grow: 0</code>)</div>
+        <div class="flex-grow-1 border bg-light p-1">Item with <code>.flex-grow-1</code></div>
+        <div class="flex-grow-0 border bg-light p-1">Item (<code>flex-grow: 0</code>)</div>
+        <div class="flex-grow-0 border bg-light p-1">Item (<code>flex-grow: 0</code>)</div>
+      </div>
+      <p class="mt-3 mb-2">CSSの <code>flex-shrink</code> プロパティはデフォルトで <code>1</code> に設定されている(必要に応じ折り返して縮む)。特定要素を元のサイズ以下に縮まないようにする場合は <code>.flex-shrink-0</code> を用いることができる( <code>flex-shrink: 0</code> に設定)。</p>
+      <div class="d-flex">
+        <div class="w-100 border bg-light p-1">Item with <code>.w-100</code></div>
+        <div class="flex-shrink-0 border bg-light p-1">Item with <code>.flex-shrink-0</code> (does not shrink)</div>
+        <div class="flex-shrink-1 border bg-light p-1">Item with <code>.flex-shrink-1</code></div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-auto-margins"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#auto-margins" target="_blank">自動マージン</a>
+      </h4>
+      <p class="my-2"><code>.m(l|t|r|b)?-auto</code></p>
+      <p class="mt-3 mb-1">デフォルト</p>
+      <div class="d-flex border">
+        <div class="border bg-light p-2">Flex item 1</div>
+        <div class="border bg-light p-2">Flex item 2</div>
+        <div class="border bg-light p-2">Flex item 3</div>
+      </div>
+      <p class="mt-3 mb-1">アイテム1に <code>.mr-auto</code> を設定</p>
+      <div class="d-flex border">
+        <div class="border mr-auto bg-light p-2">Flex item 1 <code>.mr-auto</code></div>
+        <div class="border bg-light p-2">Flex item 2</div>
+        <div class="border bg-light p-2">Flex item 3</div>
+      </div>
+      <p class="mt-3 mb-1">アイテム3に<code>.ml-auto</code> を設定</p>
+      <div class="d-flex border">
+        <div class="border bg-light p-2">Flex item 1</div>
+        <div class="border bg-light p-2">Flex item 2</div>
+        <div class="border ml-auto bg-light p-2">Flex item 3 <code>.ml-auto</code></div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-with-align-items"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#with-align-items" target="_blank">自動マージン + 個別要素配置</a>
+      </h4>
+      <h5 class="mt-2 mb-1">例1</h5>
+      <ul class="my-1">
+        <li>親ボックスに<code>.flex-column.align-items-start</code> + <code>style="height:10rem"</code> を設定</li>
+        <li>アイテム1に <code>.mb-auto</code> を設定</li>
+      </ul>
+      <div class="d-flex flex-column align-items-start border" style="height:10rem;">
+        <div class="mb-auto p-2 border bg-light">Flex item 1 <code>.mb-auto</code></div>
+        <div class="p-2 border bg-light">Flex item 2</div>
+        <div class="p-2 border bg-light">Flex item 3</div>
+      </div>
+      <h5 class="mt-4 mb-1">例2</h5>
+      <ul class="my-1">
+        <li>親ボックスに <code>.flex-column.align-items-end</code> + <code>style="height:10rem"</code> を設定</li>
+        <li>アイテム３に <code>.mt-auto</code> を設定</li>
+      </ul>
+      <div class="d-flex flex-column align-items-end border" style="height: 10rem;">
+        <div class="p-2 border bg-light">Flex item 1 </div>
+        <div class="p-2 border bg-light">Flex item 2</div>
+        <div class="mt-auto p-2 border bg-light">Flex item 3 <code>.mt-auto</code></div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-wrap"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#wrap" target="_blank">ラップ</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-(nowrap|wrap|wrap-reverse)</code></p>
+      <p class="my-0">以下の例では親ボックスの幅を <code>15rem</code> に固定しライトグレーの背景を付けている。</p>
+      <p class="mt-3 mb-1"><code>.d-flex.flex-nowrap</code></p>
+      <div class="d-flex flex-nowrap bg-light" style="width: 15rem;">
+        <div class="p-2 border">Flex item 1</div>
+        <div class="p-2 border">Flex item 2</div>
+        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border">Flex item 4</div>
+        <div class="p-2 border">Flex item 5</div>
+        <div class="p-2 border">Flex item 6</div>
+        <div class="p-2 border">Flex item 7</div>
+      </div>
+      <p class="mt-3 mb-1"><code>.d-flex.flex-wrap</code></p>
+      <div class="d-flex flex-wrap bg-light" style="width: 15rem;">
+        <div class="p-2 border">Flex item 1</div>
+        <div class="p-2 border">Flex item 2</div>
+        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border">Flex item 4</div>
+        <div class="p-2 border">Flex item 5</div>
+        <div class="p-2 border">Flex item 6</div>
+        <div class="p-2 border">Flex item 7</div>
+      </div>
+      <p class="mt-3 mb-1"><code>.d-flex.flex-wrap-reverse</code></p>
+      <div class="d-flex flex-wrap-reverse bg-light" style="width: 15rem;">
+        <div class="p-2 border">Flex item 1</div>
+        <div class="p-2 border">Flex item 2</div>
+        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border">Flex item 4</div>
+        <div class="p-2 border">Flex item 5</div>
+        <div class="p-2 border">Flex item 6</div>
+        <div class="p-2 border">Flex item 7</div>
+      </div>
+      <h4 class="mt-4" id="flex-order"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#order" target="_blank">順序</a>
+      </h4>
+      <p class="my-2"><code>.order(-sm|-md|-lg|-xl)?-(0|1|2|3|4|5|6|7|8|9|10|11|12|first|last)</code></p>
+      <p class="mt-3 mb-2">例: DOM順序は(1,2,3,4,5)、<code>.order-*</code> は(4,2,5,1,3)の順</p>
+      <div class="d-flex border">
+        <div class="order-4 border p-1 bg-light">Item 1 <code>.order-4</code>
+        </div>
+        <div class="order-2 border p-1 bg-light">Item 2 <code>.order-2</code>
+        </div>
+        <div class="order-5 border p-1 bg-light">Item 3 <code>.order-5</code>
+        </div>
+        <div class="order-1 border p-1 bg-light">Item 4 <code>.order-1</code>
+        </div>
+        <div class="order-3 border p-1 bg-light">Item 5 <code>.order-3</code>
+        </div>
+      </div>
+      <div class="alert alert-info mt-4" role="alert">ここのドキュメント本文には書かれていないが <code>.order-(first|last)</code> もあり、それぞれ先頭と最終に配置される(<a href="layout-1.html#grid-ordering">グリッド - 列の順序指定</a>に説明がある)。</div>
+      <h4 class="mt-4 mb-1" id="flex-align-content"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#align-content" target="_blank">アラインメント</a>
+      </h4>
+      <p class="my-2"><code>.align-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around|stretch)</code></p>
+      <p class="my-2">例: ラップ<code>.flex-wrap</code> との組み合わせ</p><a class="btn btn-outline-info" data-toggle="collapse" href="#align-content-examples-structure" aria-control="#align-content-examples-structure" aria-expanded="false">構成</a>
+      <ul class="struct mt-2 collapse" id="align-content-examples-structure">
+        <li>親ボックス <code>div.flex-wrap</code>
+          <ul>
+            <li class="cls">クラス <code>.align-content-(start|end|center|...)</code></li>
+            <li class="att">属性 <code>style="width: 300px; height: 150px;"</code> (幅と高さを固定)</li>
+            <li>内部の子アイテム <code>div</code> (&times;8)</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="row">
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-start.flex-wrap</code></p>
+            <div class="d-flex align-content-start flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-end.flex-wrap</code></p>
+            <div class="d-flex align-content-end flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-center.flex-wrap</code></p>
+            <div class="d-flex align-content-center flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-between.flex-wrap</code></p>
+            <div class="d-flex align-content-between flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-around.flex-wrap</code></p>
+            <div class="d-flex align-content-around flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-stretch.flex-wrap</code></p>
+            <div class="d-flex align-content-stretch flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="mt-5" id="float"><a href="https://getbootstrap.com/docs/4.1/utilities/float/" target="_blank">フロート</a>
+      </h2>
+      <p class="my-2">要素フローティングの設定(左右配置して後続インライン要素をボックス内回り込み処理)</p>
+      <h4 class="my-2" id="float-classes"><a href="https://getbootstrap.com/docs/4.1/utilities/float/#classes" target="_blank">基本設定</a>
+      </h4>
+      <p class="my-1"><code>.float-(left|right|none)</code></p>
+      <div class="row">
+        <div class="col border p-1"><img class="float-left rounded m-2" src="../img/64x64.svg">
+          <p class="m-1"><code>img.float-left</code></p>
+          <p class="m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col border p-1"><img class="float-right rounded m-2" src="../img/64x64.svg">
+          <p class="m-1"><code>img.float-right</code></p>
+          <p class="m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col border p-1"><img class="float-none rounded m-2" src="../img/64x64.svg">
+          <p class="m-1"><code>img.float-none</code></p>
+          <p class="m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <h4 class="mt-4" id="float-responsive"><a target="_blank">レスポンシブ設定</a>
+      </h4>
+      <p class="my-1"><code>.float-(sm|md|lg|xl)-(left|right|none)</code></p>
+      <h5 class="mt-3 mb-2">設定例</h5>
+      <p class="mt-2 mb-0"><code>.float-sm-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-sm-left text-primary mx-2">幅≧576pxで左フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-sm-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-sm-right text-primary mx-2">幅≧576pxで右フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-md-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-md-left text-primary mx-2">幅≧768pxで左フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-md-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-md-right text-primary mx-2">幅≧768pxで右フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-lg-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-lg-left text-primary mx-2">幅≧992pxで左フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-lg-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-lg-right text-primary mx-2">幅≧992pxで右フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-xl-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-xl-left text-primary mx-2">幅≧1200pxで左フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-xl-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-xl-right text-primary mx-2">幅≧1200pxで右フロート</p>
+          <p class="mx-2">通常テキスト</p>
+        </div>
+      </div>
+      <h2 class="mt-5" id="image-replacement"><a href="https://getbootstrap.com/docs/4.1/utilities/image-replacement/" target="_blank">画像置換</a>
+      </h2>
+      <p class="mt-3 mb-1">サイトのタイトルやロゴに専用画像を用いる場合の対応法(以下例)</p>
+      <ul class="struct">
+        <li><code>h1.text.hide</code>
+          <ul>
+            <li class="att">属性 <code>background-image: url("../img/sample-logo.png");</code></li>
+            <li class="att">属性 <code>width: 224px;</code></li>
+            <li class="att">属性 <code>height: 48px;</code></li>
+            <li class="txt">テキスト <code>Sample Logo</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">設定例(テキスト <code>Sample Logo</code> は表示されないがマークアップとして認識される)</p>
+      <h1 class="text-hide" style="background-image: url(&quot;../img/sample-logo.png&quot;); width: 224px; height: 48px;">Sample Logo</h1>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">ユーティリティ(3): Flexbox/フロート/画像置換</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

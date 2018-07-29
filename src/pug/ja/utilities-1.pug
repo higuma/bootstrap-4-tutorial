@@ -1,0 +1,141 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: ユーティリティ(1): ボーダー / クリアフィックス / クローズアイコン
+
+block body
+  div.container
+    +pageHeader("utilities-1")
+      p.lead ユーティリティ(1): 
+        a(href="#borders") ボーダー
+        |  / 
+        a(href="#clearfix") クリアフィックス
+        |  / 
+        a(href="#close-icon") クローズアイコン
+
+    h2.mt-2#borders
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/") ボーダー
+    h4.mt-3#borders-border
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/#border") Border
+    - const borders= " -top -right -bottom -left".split(" ")
+    - const dirRE = `(${borders.slice(1).join("|")})?`
+    h5.mt-3.mb-1#borders-additive Additive
+    p.mt-1.mb-2
+      code= `.border${dirRE}`
+    p.my-2 方向指定は「その方向だけボーダーを付ける」という意味。
+    div.row
+      each b in borders
+        div.col-lg.col-md-4.col-sm-6.mb-3
+          code= `.border${b}`
+          div(class=`border${b} ` style="width: 8rem; height: 8rem; background: #fdfdfd;")
+    h5.mt-3.mb-1#borders-subtractive Subtractive 
+    p.mt-1.mb-2
+      code= `.border${dirRE}-0`
+    p.my-2 必ず 
+      code .border
+      |  と組で用いる。方向指定は「その方向以外にボーダーを付ける」という意味。
+    div.row
+      each b in borders
+        div.col-lg-3.col-md-4.col-sm-6.mb-3
+          code= `.border.border${b}-0`
+          div(class=`border border${b}-0 mt-1` style="width: 8rem; height: 8rem; background: #fdfdfd;")
+    h4.mt-4#borders-border-color
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/#border-color") ボーダー色
+    - const borderCol = "primary secondary success danger warning info light dark white".split(" ")
+    p.mb-1
+      code= `.border.border-(${borderCol.join("|")})`
+    p.my-2 これも必ず 
+      code .border
+      |  と組で用いる。
+    div.row
+      each c in borderCol
+        div(class=`col-lg-3 col-md-4 col-sm-6 mb-3 pb-2${c == "white" ? " bg-light" : ""}`)
+          code= `.border.border-${c}`
+          div(class=`border border-${c} mt-1${c != "light" ? " bg-light" : ""}` style="width: 8rem; height: 8rem;")
+    h4.mt-4.mb-1#borders-border-radius
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/#border-radius") 角の丸め
+    - const radius = " -top -right -bottom -left -circle -0".split(" ")
+    p.my-0
+      code= `.rounded(${radius.slice(1).join("|")})?`
+    div.row
+      each r in radius
+        div.col-md-3.col-sm-4.col-6.my-3
+          code= `img.rounded${r}`
+          br
+          img(src="../img/80x80.svg" class=`mt-1 rounded${r}`)
+
+    h2.mt-5#clearfix
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/clearfix/") クリアフィックス
+    p.mt-3.mb-1 例題としてブロック要素の内部にフローティング要素を左右に配置する場合を考える。
+    ul.struct
+      li
+        code div
+        ul
+          li: code img.float-left
+          li: code img.float-right
+          li
+            code p
+            |  (高さが左右フローティング要素より低いインライン要素)
+    p.my-1 しかし単純に作成すると次のような問題が起きる(実際に作った例)。
+    p.my-1
+      code div
+      |  のみ
+    div.p-2.border.bg-light
+      img.float-left(src="../img/80x80.svg")
+      img.float-right(src="../img/80x80.svg")
+      span.mx-2 高さが左右フローティングより低いテキスト
+    br
+    p.mt-5.mb-1 これはフローティングによる副作用で、
+      code div
+      |  内部コンテントの高さ計算にフローティング要素は含まれないため 
+      code div
+      | は全体を覆ってくれない。このような場合は 
+      code .clearfix
+      |  を用いることにより解決できる。
+    p.my-1
+      code div.clearfix
+    div.p-2.border.bg-light.clearfix
+      img.float-left(src="../img/80x80.svg")
+      img.float-right(src="../img/80x80.svg")
+      span.mx-2 高さが左右フローティングより低いテキスト
+    div.alert.alert-info.mt-3(role="alert") これは古くからある有名なテクニック(元々はブラウザのバグ回避方法)。しかしBootstrap 4はflexboxが使えるモダンブラウザが前提なので今後はflexboxを利用すべき。例を示す( 
+      code .clearfix
+      |  不使用、詳しい設定はソースを参照)。
+      div.d-flex.justify-content-between.mt-2.p-2.border.bg-light
+        img(src="../img/80x80.svg")
+        div.w-100.px-2 高さが左右フローティングより低いテキスト
+        img(src="../img/80x80.svg")
+
+    h2.mt-5#close-icon
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/close-icon/") クローズアイコン
+    p.mt-2.mb-1
+      a(href="components-8.html") モーダル
+      |  や 
+      a(href="components-1.html#alerts") アラート
+      |  の「閉じる」用ボタン(アイコン)として 
+      span.text-faded ×
+      |  ( 
+      code &amp;times;
+      |  )を用いる
+    p.mt-2.mb-1 例: 
+      code button.close
+      |  の内部では次のように表示する
+    div.row.mx-0.my-2.p-2.bg-light
+      button.close(type="button" aria-label="Close")
+        span(aria-hidden="true") &times;
+    ul.struct
+      li
+        code button.close
+        ul
+          li.att アクセシビリティ属性 
+            code aria-label="Close"
+          li
+            code span
+            ul
+              li.att アクセシビリティ属性 
+                code aria-hidden="true"
+              li.txt テキスト 
+                code= "&times;"
+
+    +breadcrumbLevel1("ユーティリティ(1): ボーダー/クリアフィックス/クローズアイコン")

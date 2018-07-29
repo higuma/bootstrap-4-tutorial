@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Content (2): Images</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Content (2): <a href="#images">Images</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/content-2.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="images"><a href="https://getbootstrap.com/docs/4.1/content/images/" target="_blank">Images</a>
+      </h2>
+      <h4 class="mt-4" id="responsive-images"><a href="https://getbootstrap.com/docs/4.1/content/images/#responsive-images" target="_blank">Responsive images</a>
+      </h4>
+      <p class="my-2">Set <code>.img-fluid</code> to <code>img</code> . It scales to the parent width if the image is wider than the parent.</p>
+      <p class="my-1"><code>img.img-fluid</code></p><img class="img-fluid" src="../img/1920x1080.svg" alt="Responsible image">
+      <h4 class="mt-4" id="image-thumbnails"><a href="https://getbootstrap.com/docs/4.1/content/images/#image-thumbnails" target="_blank">Image thumbnails</a>
+      </h4>
+      <p class="mt-2 mb-1"><code>img.rounded</code> rounds corners of an image (⇒ <a href="utilities-1.html#borders-border-radius">Border-radius</a> ).</p><img class="rounded" src="../img/120x120.svg" alt="Rounded image">
+      <p class="mt-3 mb-1"><code>img.img-thumbnail</code> shows an image with a rounded 1px border.</p><img class="img-thumbnail" src="../img/120x120.svg" alt="Thumnail image">
+      <h4 class="mt-4" id="aligning-images"><a href="https://getbootstrap.com/docs/4.1/content/images/#aligning-images" target="_blank">Aligning images</a>
+      </h4>
+      <p class="my-2">Use <code>.float-(left|right)</code> to float an image on left or right (⇒ <a href="utilities-3.html#float">Float</a>)</p>
+      <div class="row">
+        <div class="col px-0"><img class="m-3 rounded float-left" src="../img/120x120.svg"><img class="m-3 rounded float-right" src="../img/120x120.svg">
+          <p class="m-2 p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <p class="mt-3 mb-2"><code>.mx-auto</code> (⇒ <a href="utilities-4.html#spacing">Spacing</a> ) can be used to center a fixed-width block element</p><img class="rounded mx-auto d-block" src="../img/120x120.svg">
+      <p class="mt-3 mb-1">Text alignment <code>.text(left|center|right)</code> (⇒ <a href="utilities-5.html#text-alignment">Text alignment</a> ) can be also used.
+        <p class="mt-2 mb-1"><code>img</code> inside <code>div.text-left</code></p>
+        <div class="text-left bg-light mb-3"><img class="rounded" src="../img/120x120.svg"></div>
+        <p class="mt-2 mb-1"><code>img</code> inside <code>div.text-center</code></p>
+        <div class="text-center bg-light mb-3"><img class="rounded" src="../img/120x120.svg"></div>
+        <p class="mt-2 mb-1"><code>img</code> inside <code>div.text-right</code></p>
+        <div class="text-right bg-light mb-3"><img class="rounded" src="../img/120x120.svg"></div>
+      </p>
+      <h4 class="mt-4" id="picture"><a href="https://getbootstrap.com/docs/4.1/content/images/#picture" target="_blank">Using <code>picture</code></a>
+      </h4>
+      <p class="mb-2"><code>picture</code> can be used to switch images with a viewport size. The folowing example changes an image on breakpoint boundaries.</p>
+      <div class="mb-3">
+        <picture>
+          <source media="(min-width: 1200px)" srcset="../img/1140x642.svg">
+          <source media="(min-width: 992px)" srcset="../img/960x540.svg">
+          <source media="(min-width: 768px)" srcset="../img/720x405.svg"><img class="img-fluid" src="../img/540x304.svg">
+        </picture>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#picture-structure" aria-control="#picture-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-3 collapse" id="picture-structure">
+        <li><code>picture</code>
+          <ul>
+            <li><code>source</code>  <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a1-1">
+                <li class="att">Attribute <code>media="(min-width: 1200px)"</code></li>
+                <li class="att">Attribute <code>srcset="../img/1140x642.svg"</code></li>
+              </ul>
+            </li>
+            <li><code>source</code>  <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a1-2">
+                <li class="att">Attribute <code>media="(min-width: 992px)"</code></li>
+                <li class="att">Attribute <code>srcset="../img/960x540.svg"</code></li>
+              </ul>
+            </li>
+            <li><code>source</code>  <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attributes</a>
+              <ul class="collapse a1-3">
+                <li class="att">Attribute <code>media="(min-width: 768px)"</code></li>
+                <li class="att">Attribute <code>srcset="../img/720x405.svg"</code></li>
+              </ul>
+            </li>
+            <li><code>img.img-fluid</code>  <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">Attribute</a>
+              <ul class="collapse a1-4">
+                <li class="att">Attribute <code>src="../img/540x304.svg"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" role="alert"><strong>Warning: </strong><code>.img-fluid</code> must be set to <code>img</code> (not to <code>source</code> ).</div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Content(2): Images</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

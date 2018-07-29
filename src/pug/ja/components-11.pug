@@ -1,0 +1,399 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(11): ページネーション / ポップオーバー
+
+block body
+  div.container
+    +pageHeader("components-11")
+      p.lead コンポーネント(11): 
+        a(href="#pagination") ページネーション
+        |  / 
+        a(href="#popovers") ポップオーバー
+
+    h2.mt-2#pagination
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/") ページネーション
+    h4.mt-3#pagination-overview
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#overview") 基本構成
+    ul.struct.my-1
+      li アクセシビリティ用外枠 
+        code nav
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code aria-label="Pagination example"
+          li ページネーション 
+            code ul.pagination
+            ul
+              li アイテム(複数) 
+                code li.page-item
+                ul
+                  li リンク 
+                    code a
+                    +attrBtn(".a1-2")
+                    ul
+                      li.att.collapse.a1-2 属性 
+                        code href="..."
+                      li.txt テキスト 
+                        code Previous
+                        |  , 
+                        code 1
+                        |  , 
+                        code 2
+                        |  , ... , 
+                        code Next
+    nav.mt-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item
+          a.page-link(href="#") Previous
+        each n in [1,2,3]
+          li.page-item
+            a.page-link(href="#")= n
+        li.page-item
+          a.page-link(href="#") Next
+    h4.mt-4#working-with-icons
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#working-with-icons") アイコン(シンボル)の利用
+    p.my-2 例: 前後ボタンにシンボル文字を用いる場合
+    ul.struct.my-0
+      li 先頭アイテム 
+        code li.page-item
+        ul
+          li.txt テキスト 
+            code= `&laquo;`
+          li アクセシビリティ用 
+            code span
+            +attrBtn(".a2-1")
+            ul
+              li.att.collapse.a2-1 属性 
+                code area-hidden="true"
+              li.txt テキスト 
+                code 前/Previous
+      li 最終アイテム 
+        code li.page-item
+        ul
+          li.txt テキスト 
+            code= `&raquo;`
+          li アクセシビリティ用 
+            code span
+            +attrBtn(".a2-2")
+            ul
+              li.att.collapse.a2-2 属性 
+                code area-hidden="true"
+              li.txt テキスト 
+                code 次/Next
+    nav.mt-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item
+          a.page-link(href="#" aria-label="Previous")
+            span(aria-hidden="true") &laquo;
+            span.sr-only 前/Previous
+        each n in [1,2,3]
+          li.page-item
+            a.page-link(href="#")= n
+        li.page-item
+          a.page-link(href="#" aria-label="Next")
+            span(aria-hidden="true") &raquo;
+            span.sr-only 次/Next
+    p.mt-4.mb-2 アイコンを用いる場合も同様: 次は 
+      +extLink("https://github.com/iconic/open-iconic") Open Iconic
+      |  の使用例(詳しくはソース参照)
+    nav.mt-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item
+          a.page-link(href="#" aria-label="Previous")
+            img(src="../img/openiconic/svg/chevron-left.svg" width="10" height="10" style="opacity: 0.6;")
+            span.sr-only Previous
+        each n in [1,2,3]
+          li.page-item
+            a.page-link(href="#")= n
+        li.page-item
+          a.page-link(href="#" aria-label="Next")
+            img(src="../img/openiconic/svg/chevron-right.svg" width="10" height="10" style="opacity: 0.6;")
+            span.sr-only Next
+    h4.mt-4#pagination-disabled-and-active-states
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#disabled-and-active-states") アイテムの状態設定(無効化/アクティブ)
+    p.my-2 各アイテムには状況に応じて無効化/アクティブの状態を設定する。次は最も一般的な条件の例。
+    ul
+      li 現在のページのアイテムはアクティブ表示、しかしリンクは無効化する
+      li 先頭ページの場合 
+        strong Previous
+        |  (前)は表示/リンクとも無効化
+      li 最終ページの場合 
+        strong Next
+        |  (次)は表示/リンクとも無効化
+    h5.mt-3#pagination-disabled-state 無効化状態の設定
+    p.my-2
+      code li
+      |  に 
+      code .page-item
+      |  を追加すれば内側のリンク 
+      code a
+      |  は自動的に無効化される。
+    ul.struct
+      li
+        code li.page-item
+        ul
+          li.cls 無効化するアイテムに 
+            code .disabled
+            |  を追加
+          li リンク 
+            code a
+            ul
+              li.att 属性 
+                code tabindex="-1"
+                |  を設定(タブストップを受けないようにする)
+              li.txt テキスト(例) 
+                code Previous
+                |  (自動的に灰色表示)
+              li アクセシビリティ対応: 現在のページに 
+                code span.sr-only
+                |  を設定
+                ul
+                  li.txt テキスト 
+                    code (current)
+    p.my-1 例(1ページ目を表示している場合): 
+      strong Previous
+      |  と 
+      strong 1
+      |  が無効化アイテム
+    nav.my-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item.disabled
+          a.page-link(href="#" tabindex="-1") Previous
+        li.page-item.disabled
+          a.page-link(href="#" tabindex="-1") 1
+            span.sr-only (current)
+        li.page-item
+          a.page-link(href="#") 2
+        li.page-item
+          a.page-link(href="#") 3
+        li.page-item
+          a.page-link(href="#") Next
+    h5.mt-4#pagination-active-state アクティブ状態の設定
+    p.my-2
+      code li.list-item
+      |  に 
+      code .active
+      |  を設定すればアイテムはアクティブ表示になる(Primary/青の背景)。しかし内部リンクは無効化されない。さらに
+      code .disabled
+      |  と一緒に設定しても効果がない(無効化の設定が優先してアクティブ表示しない)。
+    p.my-2 そこで構造を変更し、無効化アイテムにはリンク 
+      code a
+      |  ではなく 
+      code span
+      |  を用いれば根本的に解決できる。
+    ul.struct
+      li アクティブまたは無効化設定するアイテム 
+        code li.page-item.(active|disabled)
+        ul
+          li
+            code span.page-link
+            |  ( 
+            code a.page-link
+            |  から変更)
+    p.my-1 例(1ページ目の場合): 
+      strong Previous
+      |  は無効化、
+      strong 1
+      |  はアクティブ、どちらもリンクがないのでアクションは受けない
+    nav.my-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item.disabled
+          span.page-link Previous
+        li.page-item.active
+          span.page-link 1
+            span.sr-only (current)
+        li.page-item
+          a.page-link(href="#") 2
+        li.page-item
+          a.page-link(href="#") 3
+        li.page-item
+          a.page-link(href="#") Next
+
+    h4.mt-4#pagination-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#sizing") サイズ設定
+    p.my-1 リストの親 
+      code li.pagenation
+      |  に 
+      code .pagination-(lg|sm)
+      |  を追加する。
+    each sz in ["lg", null, "sm"]
+      p.mt-2.mb-1
+        code= `.ul.pagination${sz ? `.pagination-${sz}` : ""}`
+        - if (!sz)
+          |  (デフォルト)
+      nav.mb-3(aria-label="Page navigation example")
+        ul.mt-0.mb-2(class=`pagination${sz ? ` pagination-${sz}` : ""}`)
+          li.page-item.disabled
+            a.page-link(href="#" tabindex="-1") 1
+          for n in [2,3]
+            li.page-item
+              a.page-link(href="#")= n
+    h4.mt-4#pagination-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#alignment") 配置
+    p.my-1 Flexboxユーティリティの 
+      code .justify-content-*
+      |  を用いる(⇒ 
+      a(href="utilities-3.html#flex-justify-content") .justify-content-* を用いた配置設定
+      |  )。
+    each al in ["start", "center", "end"]
+      p.mt-2.mb-1
+        code= `ul-pagination.justify-content-${al}`
+        - if (al == start)
+          |  (default)
+      nav.mb-3(aria-label="Page navigation example")
+        ul(class=`pagination justify-content-${al}`)
+          li.page-item.disabled
+            a.page-link(href="#" tabindex="-1") Previous
+          for n in [1,2,3,"Next"]
+            li.page-item
+              a.page-link(href="#")= n
+
+    h2.mt-5#popovers
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/") ポップオーバー
+    p.my-2 ポップオーバーは(iOSの同名機能と同様の)ポップアップ表示コンポーネント。実装に 
+      +extLink("https://popper.js.org/") Popper.js
+      |  を利用している。
+    h4.mt-3#popovers-init
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere") 初期化方法
+    p ポップオーバーは初期状態はOFFになっており、有効にするためにはJavaScriptを用いた処理が必要。最も簡単なコード例を示す。
+    pre.p-2.border.bg-light
+      code $('[data-toggle="popover"]').popover();
+    div.alert.alert-warning.my-3(role="alert")
+      strong 注: 
+      | コードの置き場所に注意。ポップオーバーを使っている場所(の近く)に 
+      code script
+      |  を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。
+    h4.ht-4#popovers-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example") 設定方法
+    ul.my-1
+      li 任意の要素に設定可: 次の属性を設定
+      ul
+        li
+          code data-toggle="popover"
+        li
+          code title="{タイトルテキスト}"
+        li
+          code data-content="{本文テキスト}"
+        li (注) 
+          code title
+          |  , 
+          code data-content
+          |  は片方だけでもOK(どちらも値が空の場合は表示しない)
+    p.my-2 設定例(クリックで表示、再クリックで表示終了)
+    button.btn.btn-lg.btn-danger(type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?") Click to toggle popover
+    h4.mt-4#popovers-four-directions
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#four-directions") 表示方向の設定
+    ul.my-1
+      li 次の属性を追加(デフォルトは 
+        code "right"
+        |  )
+        ul
+          li
+            code data-placement=("top"|"right"|"bottom"|"left")
+    p.mt-2.mb-1 設定例
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="popover" data-placement="top" title="Popover on top")
+          code data-placement="top"
+    div.row.m-0.py-1
+      div.col.m-0.text-right.pr-2
+        button.btn.btn-light.my-0(type="button" data-toggle="popover"  data-placement="left" title="Popover on left")
+          code data-placement="left"
+      div.col.m-0.text-left.pl-2
+        button.btn.btn-light.my-0(type="button" data-toggle="popover" data-placement="right" title="Popover on right")
+          code data-placement="right"
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="popover" data-placement="bottom" title="Tooltip on bottom")
+          code data-placement="bottom"
+    div.alert.alert-info.my-3(role="alert") 表示時は(Popper.jsを利用して)動的位置判定を行い、空間不足の場合は逆方向に表示する。上の例で全て表示したままの状態にして、上下スクロールしたりブラウザのビューポート幅を変更すれば確認できる。
+    h4.mt-4#popovers-dismiss-on-next-click
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#dismiss-on-next-click") クリックに対する動作の変更
+    p.my-2 (デフォルトは)要素のクリックで表示したポップオーバーは同じ要素の再クリックで表示終了する。これにより複数同時表示が可能だが、逆に不自然(または不便)な場合もある。そのような場合は別の要素をクリックした時に表示終了(より正確にはフォーカスで表示ON/OFF)するように動作変更できる。
+    ul.my-1
+      li 属性 
+        code data-trigger="focus"
+        |  を設定(ブラウザ側が完全対応すれば将来的にはこれだけでOK)
+      li (クロスプラットフォーム対応)要素は 
+        code a
+        |  に限定( 
+        code button
+        |  ではまだ動作保証できない)
+      li (クロスプラットフォーム対応)属性 
+        code tabindex="0"
+        |  を必ず設定
+    p.mt-3.mb-1 設定例
+    p.mt-1
+      a.btn.btn-lg.btn-danger(tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?") Dismissible popover
+    div.alert.alert-warning.mt-3(role="alert") Ver 4.1の時点ではまだブラウザ/プラットフォーム間の動作依存を回避するため上記設定が必要。
+    h4.mt-4#popovers-disabled-elements
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#disabled-elements") 無効化した要素への設定
+    p.my-2 要素に属性 
+      code disabled
+      |  が設定されている場合ポップオーバーは効かなくなる。次の例は 
+      code button
+      |  に下記の通り設定しているがポップオーバーは表示されない。
+    ul.struct
+      li
+        code button.btn.btn-primary
+        +attrBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 属性 
+            code type="button"
+          li.att.collapse.a3-1 属性 
+            code data-toggle="popover"
+            |  (設定している)
+          li.att.collapse.a3-1 属性 
+            code title="Disabled popover"
+            |  (これも設定、しかし...)
+          li.att.collapse.a3-1 属性 
+            code disabled
+            |  (これを設定するとポップオーバーも無効化される)
+          li.txt テキスト 
+            code Disabled button
+    p.my-2
+      button.btn.btn-primary(type="button" data-toggle="popover" title="Disabled tooltip" disabled) Disabled button
+    p.mt-3.mb-1 しかし 
+      code disabled
+      |  は設定するが、ポップオーバーは効くようにしたいケースもある。その場合は親要素を作ってそこにポップオーバーを設定し、その中に 
+      code disabled
+      |  を設定した要素を入れればよい。対応例は次の通り。
+    ul.struct
+      li ポップオーバー動作用親要素 
+        code span
+        +attrBtn(".a4-1")
+        ul
+          li.cls.collapse.a4-1 設定
+            code .d-inline-block
+            |  ( 
+            code button
+            |  と同じ 
+            code display
+            |  にする)
+          li.att.collapse.a4-1 属性 
+            code data-toggle="popover"
+          li.att.collapse.a4-1 属性 
+            code title="Disabled popover"
+          li 子要素 
+            code button.btn.btn-primary
+            +attrBtn(".a4-2")
+            ul
+              li.att.collapse.a4-2 属性 
+                code type="button" 
+              li.att.collapse.a4-2 属性 
+                code style="pointer-events: none;"
+                |  (ポインタイベントを受けないようにする)
+              li.att.collapse.a4-2 属性 
+                code disabled
+              li.txt テキスト 
+                code Disabled button
+    p.mt-3 設定例: ボタンは 
+      code disabled
+      |  だがポップオーバーは動作する(実際は親要素が処理している)。
+    p
+      span.d-inline-block(data-toggle="popover" title="Disabled popover")
+        button.btn.btn-primary(style="pointer-events: none;" type="button" disabled) Disabled button
+
+    +breadcrumbLevel1("コンポーネント(11): ページネーション/ポップオーバー")

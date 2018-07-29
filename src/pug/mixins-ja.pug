@@ -1,0 +1,53 @@
+mixin pageHeader(name)
+  div.row
+    div.col-auto.mr-auto
+      h1.display-4.mb-0 Bootstrap 4 tutorial
+      block
+    div.col-auto.dropdown.mt-3
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/")
+        img.mr-1(src="../img/GitHub-Mark-32px.png")
+      button.btn.btn-outline-secondary.dropdown-toggle#lang-select(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 言語
+      div.dropdown-menu.dropdown-menu-right(aria-labelledby="lang-select")
+        a.dropdown-item(href="#") 日本語 (Japanese)
+        a.dropdown-item(href=`../en/${name}.html`) 英語 (English)
+
+mixin breadcrumbLevel0
+  nav.mt-4.mb-5(aria-label="breadcrumb")
+    ol.breadcrumb
+      li.breadcrumb-item.active(aria-current="page") ホーム
+
+mixin breadcrumbLevel1(current)
+  nav.mt-4.mb-5(aria-label="breadcrumb")
+    ol.breadcrumb
+      li.breadcrumb-item
+        a(href="index.html") ホーム
+      li.breadcrumb-item.active(aria-current="page")= current
+
+mixin breadcrumbLevel2(prevUrl, prev, current)
+  nav.mt-4.mb-5(aria-label="breadcrumb")
+    ol.breadcrumb
+      li.breadcrumb-item
+        a(href="index.html") ホーム
+      li.breadcrumb-item
+        a(href=prevUrl)= prev
+      li.breadcrumb-item.active(aria-current="page")= current
+
+mixin extLink(url)
+  a(href=url target="_blank")
+    block
+
+mixin collapseButton(target)
+  a.btn.btn-outline-info(data-toggle="collapse" href=target aria-control=target aria-expanded="false")
+    block
+
+mixin attrBtn(target)
+  |  
+  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false") 属性
+
+mixin attrsBtn(target)
+  |  
+  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false") 属性
+
+mixin filesBtn(target)
+  |  
+  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false") ファイル

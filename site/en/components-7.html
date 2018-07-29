@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (7): List group</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (7): <a href="#list-group">List group</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-7.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="list-group"><a href="https://getbootstrap.com/docs/4.1/components/list-group/" target="_blank">List group</a>
+      </h2>
+      <h4 class="mt-3" id="basic-example"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#basic-example" target="_blank">Basic example</a>
+      </h4>
+      <ul class="list-group my-3" style="width: 320px;">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-structure" aria-control="#basic-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="basic-example-structure">
+        <li>List group <code>ul.list-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a1-1">Attribute (sets width) <code>style="width: 320px;"</code></li>
+            <li>Item <code>li.list-group-item</code>
+              <ul>
+                <li class="txt">Text (e.g.) <code>Cras justo odio</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info my-3" role="alert">As default, <code>ul.list-group</code> sets a width to 100% inside a parent. You can use the same techniques as setting sizes of cards (see <a href="components-3.html#sizing">Cards - Sizing</a>).</div>
+      <h4 class="mt-4" id="active-items"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#active-items" target="_blank">Active items</a>
+      </h4>
+      <p class="my-1">Add <code>.active</code> to an active item. See example below (set to the first item).
+      </p>
+      <ul class="list-group" style="width: 320px;">
+        <li class="list-group-item active">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <h4 class="mt-4" id="disabled-items"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#disabled-items" target="_blank">Disabled items</a>
+      </h4>
+      <p class="my-1">Add <code>.disabled</code> to a disabled item. See example below (set to the first item).
+      </p>
+      <ul class="list-group" style="width: 320px;">
+        <li class="list-group-item disabled">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <h4 class="mt-4" id="links-and-buttons"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#links-and-buttons" target="_blank">Links and buttons</a>
+      </h4>
+      <p class="my-2">An interactive list group can be built with a parent <code>div.list-group</code> and items <code>(a|button).list-group-item</code></p><a class="btn btn-outline-info" data-toggle="collapse" href="#links-and-buttons-structure" aria-control="#links-and-buttons-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="links-and-buttons-structure">
+        <li>List group <code>div.list-group</code>
+          <ul>
+            <li>Item <code>(a|button).list-group-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attribute</a>
+              <ul class="collapse a2-1">
+                <li class="cls">Add <code>.list-group-item-action</code> to respond to hover</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">Example for <code>a</code> : <code>a.list-group-item.list-group-item-action(.active)</code></p>
+      <ul class="list-group" style="width: 320px;"><a class="list-group-item list-group-item-action active" href="#">Cras justo odio</a><a class="list-group-item list-group-item-action" href="#">Dapibus ac facilisis in</a><a class="list-group-item list-group-item-action" href="#">Morbi leo risus</a><a class="list-group-item list-group-item-action" href="#">Porta ac consectetur ac</a><a class="list-group-item list-group-item-action" href="#">Vestibulum at eros</a>
+      </ul>
+      <p class="mt-3 mb-1">Example for <code>button</code> : <code>button.list-group-item.list-group-item-action(.active)</code></p>
+      <ul class="list-group" style="width: 320px;">
+        <button class="list-group-item list-group-item-action active" type="button">Cras justo odio</button>
+        <button class="list-group-item list-group-item-action" type="button">Dapibus ac facilisis in</button>
+        <button class="list-group-item list-group-item-action" type="button">Morbi leo risus</button>
+        <button class="list-group-item list-group-item-action" type="button">Porta ac consectetur ac</button>
+        <button class="list-group-item list-group-item-action" type="button">Vestibulum at eros</button>
+      </ul>
+      <h4 class="mt-4" id="flush"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#flush" target="_blank">Flush</a>
+      </h4>
+      <p class="my-1">Add <code>.list-group-flush</code> to remove rounded border.</p>
+      <p class="mt-2 mb-1"><code>ul.list-group.list-group-flush</code></p>
+      <ul class="list-group list-group-flush" style="width: 320px;">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <h4 class="mt-4" id="contextual-classes"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#contextual-classes" target="_blank">Contextual classes</a>
+      </h4>
+      <p class="mt-2 mb-1">Add <code>.list-group-item-(primary|secondary|success|...)</code> to items.</p>
+      <ul class="list-group">
+        <li class="list-group-item">(default) Dapibus ac facilisis in</li>
+        <li class="list-group-item list-group-item-primary"><code>.list-group-item-primary</code> This is a primary list group item
+        </li>
+        <li class="list-group-item list-group-item-secondary"><code>.list-group-item-secondary</code> This is a secondary list group item
+        </li>
+        <li class="list-group-item list-group-item-success"><code>.list-group-item-success</code> This is a success list group item
+        </li>
+        <li class="list-group-item list-group-item-danger"><code>.list-group-item-danger</code> This is a danger list group item
+        </li>
+        <li class="list-group-item list-group-item-warning"><code>.list-group-item-warning</code> This is a warning list group item
+        </li>
+        <li class="list-group-item list-group-item-info"><code>.list-group-item-info</code> This is a info list group item
+        </li>
+        <li class="list-group-item list-group-item-light"><code>.list-group-item-light</code> This is a light list group item
+        </li>
+        <li class="list-group-item list-group-item-dark"><code>.list-group-item-dark</code> This is a dark list group item
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">Example with adding <code>.list-item-group-action</code> (responds to hover)</p>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action">(default) Dapibus ac facilisis in</li>
+        <li class="list-group-item list-group-item-action list-group-item-primary"><code>.list-group-item-primary</code> This is a primary list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-secondary"><code>.list-group-item-secondary</code> This is a secondary list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-success"><code>.list-group-item-success</code> This is a success list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-danger"><code>.list-group-item-danger</code> This is a danger list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-warning"><code>.list-group-item-warning</code> This is a warning list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-info"><code>.list-group-item-info</code> This is a info list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-light"><code>.list-group-item-light</code> This is a light list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark"><code>.list-group-item-dark</code> This is a dark list group item
+        </li>
+      </ul>
+      <h4 class="mt-4" id="with-badges"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#with-badges" target="_blank">With badges</a>
+      </h4>
+      <p class="mt-2 mb-3">Example using badges</p>
+      <ul class="list-group mt-3" style="width: 320px;">
+        <li class="list-group-item d-flex justify-content-between align-items-center">Cras justo odio<span class="badge badge-primary badge-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Dapibus ac facilisis in<span class="badge badge-primary badge-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Morbi leo risus<span class="badge badge-primary badge-pill">1</span>
+        </li>
+      </ul>
+      <div class="mt-4 mb-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#badges-structure" aria-control="#badges-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="badges-structure">
+        <li><code>ul.list-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a3-1">Sets width <code>style="width: 320px;"</code></li>
+            <li>Items <code>li.list-group-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a3-2">Uses flex <code>.d-flex</code> (see <a href="utilities-3.html#flex">Flex</a>)</li>
+                <li class="cls collapse a3-2">Horizontal alignment <code>.justify-content-between</code></li>
+                <li class="cls collapse a3-2">Vertical alignment <code>.align-items-center</code></li>
+                <li class="txt">Text (e.g.) <code>Cras justo odio</code></li>
+                <li><a href="components-1.html#badges-pill-badges">Pill badge </a><code>span.badge.badge-primary.badge-pill</code>
+                  <ul>
+                    <li class="txt">Text (e.g.) <code>14</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="custom-content"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#custom-content" target="_blank">Custom content</a>
+      </h4>
+      <p class="mt-2 mb-3">Example using <a href="utilities-3.html#flex">Flex utilities</a></p>
+      <div class="list-group mt-3"><a class="list-group-item list-group-item-action flex-column align-items-start active" href="#">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">List group item heading (1)</h5><small>3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small></a><a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">List group item heading (2)</h5><small>3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small></a><a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">List group item heading (3)</h5><small>3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small></a>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#customizing-structure" aria-control="#customizing-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct my-2 collapse" id="customizing-structure">
+        <li>List group <code>div.list-group</code>
+          <ul>
+            <li>Item <code>a</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a4-1">Class <code>.active</code> (first item only)</li>
+                <li class="cls collapse a4-1">Items to top-down <code>.flex-column</code></li>
+                <li class="cls collapse a4-1">Aligned to top <code>.align-items-start</code></li>
+                <li>First row <code>div</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-2" aria-control=".a4-2" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a4-2">Uses flex <code>.d-flex</code></li>
+                    <li class="cls collapse a4-2">Force maximum width to the parent <code>.w-100</code></li>
+                    <li class="cls collapse a4-2">Arrange inner items at start and end edges <code>.justify-content-between</code></li>
+                    <li><code>h5</code> (justified to leftmost)
+                      <ul>
+                        <li class="txt">Text <code>List group item heading ...</code></li>
+                      </ul>
+                    </li>
+                    <li><code>small</code> (justified to rightmost)
+                      <ul>
+                        <li class="txt">Text <code>3 days ago</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Second row (paragraph) <code>p</code>
+                  <ul>
+                    <li class="txt">Text <code>Donec id elit non mi porta gravida at eget ...</code></li>
+                  </ul>
+                  <ul></ul>
+                </li>
+                <li>Third row (small text) <code>small</code>
+                  <ul>
+                    <li class="txt">Text <code>Donec id elit non mi porta.</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="javascript-behavior"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#javascript-behavior" target="_blank">JavaScript behavior (tabbable panes)</a>
+      </h4>
+      <p class="mt-2 mb-4">You can build tabbable panes with a list group (using bootstrap.js) as follows.</p>
+      <div class="row mt-3">
+        <div class="col-sm-4 col-md-3 col-xl-2">
+          <div class="list-group" role="tablist"><a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a><a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a><a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a><a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+          </div>
+        </div>
+        <div class="col-sm-8 col-md-9 col-xl-10">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+              <h5>Home</h5>Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.
+            </div>
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+              <h5>Profile</h5>Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.
+            </div>
+            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+              <h5>Messages</h5>Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet cupidatat cupidatat anim do ut velit mollit consequat enim tempor. Consectetur est minim nostrud nostrud consectetur irure labore voluptate irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod aliquip nulla laborum elit adipisicing pariatur cillum.
+            </div>
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+              <h5>Settings</h5>Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#js-structure" aria-control="#js-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="js-structure">
+        <li>List group <code>div.list-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a5-1">Accessibility attribute <code>role="tablist"</code></li>
+            <li>Item <code>a.list-group-item(.list-group-item-action)?</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-2" aria-control=".a5-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a5-2">
+                <li class="cls">Set <code>.active</code> to an initially-visible item</li>
+                <li class="att">Attribute <code>id="{item-id}"</code></li>
+                <li class="att">Attribute <code>data-toggle="list"</code></li>
+                <li class="att">Attribute <code>href=&quot;#{content-id}&quot;</code></li>
+                <li class="att">Accessibility attribute <code>role="tab"</code></li>
+                <li class="att">Accessibility attribute <code>aria-controls="{content-id}"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Content-side <code>div.tab-content</code>
+          <ul>
+            <li>Content item <code>div.tab-pane(.fade)</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-3" aria-control=".a5-3" aria-expanded="false">Attributes</a>
+              <ul class="collapse a5-3">
+                <li class="cls">Add<code>.fade</code> for animation (fade in/out) effect</li>
+                <li class="cls">Set <code>.show.active</code> to an initially-visible item</li>
+                <li class="att">Attribute <code>id="{content-id}"</code></li>
+                <li class="att">Accessibility attribute <code>role="tabpanel"</code></li>
+                <li class="att">Accessibility attribute <code>aria-labelledby="{item-id}"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(7): List group</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

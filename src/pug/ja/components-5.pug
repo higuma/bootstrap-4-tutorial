@@ -1,0 +1,2338 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(5): フォーム
+
+block body
+  div.container
+    +pageHeader("components-5")
+      p.lead コンポーネント(5): 
+        a(href="#forms") フォーム
+
+    h2.mt-2#forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/") フォーム
+    h4.mt-3#overview
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#overview") 概要
+    h5.my-3#basic-example 基本例
+    form.mb-4
+      div.form-group
+        label(for="exampleInputEmail1") Email address
+        input.form-control#exampleInputEmail1(type="email" aria-describedby="emailHelp" placeholder="Enter email")
+        small.form-text.text-muted#emailHelp We'll never share your email with anyone else.
+      div.form-group
+        label(for="exampleInputPassword1") Password
+        input.form-control#exampleInputPassword1(type="password" placeholder="Password")
+      div.form-check
+        input.form-check-input#exampleCheck1(type="checkbox")
+        label.form-check-label(for="exampleCheck1") Check me out
+      button.btn.btn-primary.mt-2(type="submit") Submit
+    +collapseButton("#basic-example-structure") 構造
+    ul.struct.collapse.mt-3#basic-example-structure
+      li フォーム 
+        code form
+        ul
+          li
+            a(href="#form-groups") フォームグループ 
+            |  (1) 
+            code div.form-group
+            ul
+              li ラベル 
+                code label
+                +attrBtn(".a1-1")
+                ul
+                  li.att.collapse.a1-1 属性 
+                    code for="exampleInputEmail1"
+                  li.txt テキスト 
+                    code Email address
+              li
+                a(href="#form-controls") フォームコントロール 
+                code input.form-control
+                +attrsBtn(".a1-2")
+                ul.collapse.a1-2
+                  li.att 属性 
+                    code id="exampleInputEmail1"
+                  li.att 属性 
+                    code type="email"
+                  li.att 属性 
+                    code placeholder="Enter email"
+                  li.att アクセシビリティ属性 
+                    code aria-describedby="emailHelp"
+              li
+                a(href="#help-text") ヘルプテキスト 
+                code small.form-text.text-muted
+                +attrBtn(".a1-3")
+                ul
+                  li.att.collapse.a1-3 アクセシビリティ属性 
+                    code id="emailHelp"
+                  li.txt テキスト 
+                    code We'll never share your email with anyone else.
+            a(href="#form-groups") フォームグループ 
+            |  (2) 
+            code div.form-group
+            ul
+              li ラベル 
+                code label
+                +attrBtn(".a1-4")
+                ul
+                  li.att.collapse.a1-4 属性 
+                    code for="exampleInputPassword1"
+                  li.txt テキスト 
+                    code Password
+              li
+                a(href="#form-controls") フォームコントロール 
+                code input.form-control
+                +attrsBtn(".a1-5")
+                ul.collapse.a1-5
+                  li.att 属性 
+                    code id="exampleInputPassword1"
+                  li.att 属性 
+                    code type="password"
+                  li.att 属性 
+                    code placeholder="Password"
+          li
+            a(href="#default-stacked") チェックボックス+ラベル 
+            code div.form-check
+            ul
+              li
+                a(href="#checkboxes-and-radios") チェックボックス 
+                code input.form-check-input
+                +attrsBtn(".a1-6")
+                ul.collapse.a1-6
+                  li.att 属性 
+                    code id="exampleCheck1"
+                  li.att 属性 
+                    code type="checkbox"
+              li
+                a(href="#checkboxes-and-radios") ラベル 
+                code label.form-check-label
+                +attrBtn(".a1-7")
+                ul
+                  li.att.collapse.a1-7 属性 
+                    code for="exampleCheck1"
+                  li.txt テキスト 
+                    code Check me out
+          li
+            a(href="components-2.html#buttons") ボタン 
+            code button.btn.btn-primary.mt-2
+            +attrBtn(".a1-8")
+            ul
+              li.att.collapse.a1-8 属性 
+                code type="submit"
+              li.txt テキスト 
+                code Submit
+    h4.mt-4#form-controls
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#form-controls") フォームコントロール
+    p.mt-3.mb-1 テキスト用コントロール( 
+      code input
+      | , 
+      code select
+      | , 
+      code textarea
+      |  )には 
+      code .form-control
+      |  を設定する(横幅100%で角丸ボーダー表示)。
+    h5.mt-4#form-controls-input
+      code input
+      |  +属性 
+      code type="(text|email|password|number|...)"
+      |  の場合
+    p.mt-3.mb-1 ブラウザデフォルトの 
+      code input
+      |  +属性 
+      code type="email"
+    input#input-default(type="email" placeholder="name@example.com")
+    p.mt-3.mb-1
+      code input.form-control
+      |  +属性 
+      code type="email"
+    input.form-control#input-form-control(type="password" placeholder="name@example.com")
+    h5.mt-4#form-controls-select
+      code select
+      |  の場合
+    p.mt-3.mb-1 ブラウザデフォルトの 
+      code select
+    select#select-default
+      each n in [1,2,3,4,5]
+        option= `Item ${n}`
+    p.mt-3.mb-1
+      code select.form-control
+    select.form-control#select-form-control
+      each n in [1,2,3,4,5]
+        option= `Item ${n}`
+    p.mt-3.mb-1 ブラウザデフォルトの 
+      code select
+      |  +属性 
+      code multiple
+    select#select-default-1(multiple)
+      each n in [1,2,3,4,5]
+        option= `Item ${n}`
+    p.mt-3.mb-1
+      code select.form-control
+      |  +属性 
+      code multiple
+    select.form-control#select-form-control-1(multiple)
+      each n in [1,2,3,4,5]
+        option= `Item ${n}`
+    h5.mt-4#form-controls-textarea
+      code textarea
+      |  の場合
+    p.mt-3.mb-1 ブラウザデフォルトの 
+      code textarea
+    textarea#textarea-default-1(rows="3")
+    p.mt-3.mb-1
+      code textarea.form-control
+    textarea.form-control#textarea-form-control-1(rows="3")
+    h5.mt-4#form-controls-file
+      code input
+      |  +属性 
+      code type="file"
+      |  の場合
+    p.mt-3.mb-1 ファイル選択コントロール( 
+      code input
+      |  +属性 
+      code type="file"
+      |  )には
+      code .form-control-file
+      |  を設定する。
+    p.mt-3.mb-1 ブラウザデフォルトの 
+      code input
+      |  +属性 
+      code type="file"
+    input#input-default-1(type="file")
+    p.mt-3.mb-1
+      code input.form-control-file
+      |  +属性 
+      code type="file"
+      |  (⇒ 
+      a(href="#form-control-file-note") 注1
+      | )
+    input.form-control-file#input-form-control-1(type="file")
+    div.alert.alert-warning.mt-3#form-control-file-note(role="alert")
+      strong 注1: 
+      | (2018年4月時点の最新バージョンの場合)Chrome/Firefoxは設定しても効果なし。IE11/Edgeは(意図した通りの)横幅100%で配置する。
+      a(href="#custom-forms") カスタムフォーム
+      | の
+      a(href="#file-browser") ファイルブラウザ
+      | を使えばChrome/Firefoxでも横幅100%表示が可能。ただしファイル名表示の更新にJavaScriptが必要(
+      a(href="#custom-file-code-example") コード例
+      | を参照)。
+    h4.mt-4#sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#sizing") サイズ設定
+    p.my-2
+      code .form-control
+      |  に 
+      code .form-control-(sm|lg)
+      |  を追加する。
+    each elem in ["input","select"]
+      h5.mt-3.mb-2(id=`sizing-${elem}`)
+        code= elem
+        |  の場合
+      each sz in [["sm","Small"],[null,"Default"],["lg","Large"]]
+        p.mt-2.mb-1
+          code= `${elem}.form-control${sz[0] ? `.form-control-${sz[0]}` : ""}`
+        - if (elem == "input")
+          input(class=`form-control${sz[0] ? ` form-control-${sz[0]}` : ""} mt-1 mb-2` type="text" placeholder=`${sz[1]} input`)
+        - else
+         select(class=`form-control${sz[0] ? ` form-control-${sz[0]}` : ""} mt-1 mb-2`)
+            each n in [1,2,3,4,5]
+              option= `${sz[1]} select (${n})`
+    h4.mt-4#range-inputs
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#range-inputs") レンジ入力
+    p.mt-3.mb-1 ブラウザデフォルトの 
+      code input
+      |  +属性 
+      code type="range"
+    input#defaultRange(type="range")
+    p.mt-3.mb-1
+      code input.form-control-range
+      |  +attribute 
+      code type="range"
+      |  (親要素幅にフィット)
+    input.form-control-range#formControlRange(type="range")
+    h4.mt-4#readonly
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#readonly")
+        code readonly
+        |  属性
+    p.my-2 コントロールに属性 
+      code readonly
+      |  を設定すると値を変更できなくなる(選択はできるためコピーは可能)。
+    h6.mt-2.mb-1#example-readonly 例: 
+      code input.form-control
+      |  +属性 
+      code type="text" value="Read-only value" readonly
+    div.form-group
+      input.form-control(type="text" value="Read-only value" readonly)
+    h5.mt-3#readonly-plain-text
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#readonly-plain-text") 通常テキスト表示
+    p.mt-2.mb-3 コントロールに 
+      code .form-control-plaintext
+      |  を設定すると枠を除去し通常テキストと同じように表示する。
+    h6.mb-1#example-readonly-plain-text 表示例(次行): 
+      code input.form-control-plaintext
+      |  +属性 
+      code type="text" value="Read-only value" readonly
+    form.mt-1
+      div.form-group
+        input.form-control-plaintext(type="text" value="Read-only value" readonly)
+    h5.mt-4.mb-3#readonly-plain-text-example-1 応用例1
+    form.mb-4
+      div.form-group.row
+        label.col-sm-2.col-form-label(for="staticEmail") Email
+        div.col-sm-10
+          input.form-control-plaintext#staticEmail(type="text" readonly value="email@example.com")
+      div.form-group.row
+        label.col-sm-2.col-form-label(for="inputPassword") Password
+        div.col-sm-10
+          input.form-control#inputPassword(type="password" placeholder="Password")
+    +collapseButton("#readonly-plain-text-example-1-structure") 構造
+    ul.struct.mt-2.collapse#readonly-plain-text-example-1-structure
+      li フォーム 
+        code form
+        ul
+          li レイアウトは水平フォームの例と同じ ⇒ 
+            a(href="#horizontal-form") 水平フォーム
+          li 右上(
+            strong email@example.com
+            | ) 
+            code input.form-control-plaintext
+            +attrsBtn(".a2-1")
+            ul.collapse.a2-1
+              li.att 属性 
+                code type="text"
+              li.att 属性 
+                code readonly
+              li.att 属性 
+                code value="email@example.com"
+    h5.mt-4.mb-3#readonly-plain-text-example-2 応用例2
+    form.form-inline.mb-4
+      div.form-group.my-1
+        label.sr-only(for="staticEmail2") Email
+        input.form-control-plaintext#staticEmail2(type="text" readonly value="email@example.com")
+      div.form-group.mx-sm-3.my-1
+        label.sr-only(for="inputPassword2") Password
+        input.form-control#inputPassword2(type="password" placeholder="Password")
+      button.btn.btn-primary.my-1(type="submit") Confirm identity
+    +collapseButton("#readonly-plain-text-example-2-structure") 構造
+    ul.struct.mt-2.collapse#readonly-plain-text-example-2-structure
+      li インラインフォーム 
+        code form.form-inline
+        ul
+          li 内部はインラインレイアウト ⇒ 
+            a(href="#inline-form-example") インラインフォーム - 基本例
+          li 左上(
+            strong email@example.com
+            | ) 
+            code input.form-control-plaintext
+            ul
+              li.att 属性は 
+                a(href="#readonly-plain-text-example-1") 応用例1
+                |  と同じ
+    h4.mt-4.mb-3#checkboxes-and-radios
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios") チェックボックス/ラジオ(ボタン)
+    +collapseButton("#checkboxes-and-radios-summary") まとめ
+    ul.struct.mt-2.collapse#checkboxes-and-radios-summary
+      li チェックボックス/ラジオ(ボタン)とラベルの組は 
+        code div.form-check
+        |  の内部に配置
+        +attrBtn(".a3-1")
+        ul
+          li.cls.collapse.a3-1 デフォルトは上下配置、横に並べる場合は 
+            code .form-check-inline
+            |  を追加
+          li チェックボックス/ラジオ(ボタン) 
+            code input.form-check-input
+            +attrsBtn(".a3-2")
+            ul.collapse.a3-2
+              li.att 属性 
+                code type="checkbox"
+                |  または 
+                code "radio"
+              li.att 属性 
+                code id="{コントロールID}"
+              li.att (初期状態が「選択」の場合)属性 
+                code checked
+              li.cls ラベルなしの場合 
+                code .position-static
+                |  を追加
+          li 対応するラベルは 
+            code label.form-check-label
+            +attrBtn(".a3-3")
+            ul.collapse.a3-3
+              li.att 属性 
+                code for="{コントロールID}"
+    h5.mt-4#default-stacked
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#default-stacked") 上下配置(デフォルト)
+    h6.mt-3.mb-2#default-stacked-checks チェックボックスの例
+    div.form-check
+      input.form-check-input#defaultCheck1(type="checkbox" value="" checked)
+      label.form-check-label(for="defaultCheck1") Default checkbox 1
+    div.form-check
+      input.form-check-input#defaultCheck2(type="checkbox" value="")
+      label.form-check-label(for="defaultCheck1") Default checkbox 2
+    div.form-check.mb-3
+      input.form-check-input#defaultCheck3(type="checkbox" value="" disabled)
+      label.form-check-label(for="defaultCheck2") Disabled checkbox
+    +collapseButton("#default-stacked-checkboxes-structure") 構造
+    ul.struct.mt-2.collapse#default-stacked-checkboxes-structure
+      li
+        code div.form-check
+        |  (&times;3)
+        ul
+          li チェックボックス 
+            code input.form-check-input
+            +attrsBtn(".a4-1")
+            ul.collapse.a4-1
+              li.att 属性 
+                code id="defaultCheck(1|2|3)"
+              li.att 属性 
+                code type="checkbox"
+              li.att 属性 
+                code value="..."
+              li.att 属性 
+                code checked
+                |  (先頭項目のみ)
+              li.att 属性 
+                code disabled
+                |  (最終項目のみ)
+          li ラベル 
+            code label.form-check-label
+            +attrBtn(".a4-2")
+            ul
+              li.att.collapse.a4-2 属性 
+                code for="defaultCheck(1|2|3)"
+              li.txt テキスト 
+                code Default checkbox (1|2)
+                |  または 
+                code Disabled checkbox
+                |  (自動的に灰色で表示)
+    h6.mt-3.mb-2#default-stacked-radios ラジオ(ボタン)の例
+    div.form-check
+      input.form-check-input#exampleRadios1(type="radio" name="exampleRadios" value="option1" checked)
+      label.form-check-label(for="exampleRadios1") Default radio 1
+    div.form-check
+      input.form-check-input#exampleRadios2(type="radio" name="exampleRadios" value="option2")
+      label.form-check-label(for="exampleRadios2") Default radio 2
+    div.form-check.disabled.mb-3
+      input.form-check-input#exampleRadios3(type="radio" name="exampleRadios" value="option3" disabled)
+      label.form-check-label(for="exampleRadios3") Disabled radio
+    +collapseButton("#default-stacked-radios-structure") 構造
+    ul.struct.mt-2.collapse#default-stacked-radios-structure
+      li
+        code div.form-check
+        |  (&times;3)
+        ul
+          li ラジオ(ボタン) 
+            code input.form-check-input
+            +attrsBtn(".a5-1")
+            ul.collapse.a5-1
+              li.att 属性 
+                code id="exampleRadios(1|2|3)"
+              li.att 属性 
+                code type="radio"
+              li.att 属性 
+                code name="exampleRadios"
+              li.att 属性 
+                code value="..."
+              li.att 属性 
+                code checked
+                |  (先頭項目のみ)
+              li.att 属性 
+                code disabled
+                |  (最終項目のみ)
+          li ラベル 
+            code label.form-check-label
+            +attrBtn(".a5-2")
+            ul
+              li.att.collapse.a5-2 属性 
+                code for="exampleRadios(1|2|3)"
+              li.txt テキスト 
+                code Default radio (1|2)
+                |  または 
+                code Disabled radio
+                |  (自動的に灰色で表示)
+    h5.mt-3#inline
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#inline") インライン(横並び)
+    p.my-2
+      code div.form-check
+      |  に 
+      code .form-check-inline
+      |  を追加
+    p.my-2 インライン配置のチェックボックス
+    div.form-check.form-check-inline
+      input.form-check-input#inlineCheckbox1(type="checkbox" value="option1")
+      label.form-check-label(for="inlineCheckbox1") 1
+    div.form-check.form-check-inline
+      input.form-check-input#inlineCheckbox2(type="checkbox" value="option2")
+      label.form-check-label(for="inlineCheckbox2") 2
+    div.form-check.form-check-inline
+      input.form-check-input#inlineCheckbox3(type="checkbox" value="option3" disabled)
+      label.form-check-label(for="inlineCheckbox3") 3 (disabled)
+    p.mt-3.mb-2 インライン配置のラジオボタン
+    div.form-check.form-check-inline
+      input.form-check-input#inlineRadio1(type="radio" name="inlineRadioOptions" value="option1" checked)
+      label.form-check-label(for="inlineRadio1") 1
+    div.form-check.form-check-inline
+      input.form-check-input#inlineRadio2(type="radio" name="inlineRadioOptions" value="option2")
+      label.form-check-label(for="inlineRadio2") 2
+    div.form-check.form-check-inline
+      input.form-check-input#inlineRadio3(type="radio" name="inlineRadioOptions" value="option3" disabled)
+      label.form-check-label(for="inlineRadio3") 3 (disabled)
+    div.mt-3
+      +collapseButton("#inline-structure") 構造
+    ul.struct.mt-2.collapse#inline-structure
+      li
+        code div.form-check.form-check-inline
+        |  (&times;3) 違いはここだけ
+        ul
+          li 内部にチェックボックス/ラジオボタンとラベル(上下配値の場合と同様)
+    h5.mt-3#without-labels
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#without-labels") ラベルなし
+    p.my-2 ラベルなしの場合は 
+      code input
+      |  に 
+      code .position-static
+      |  を追加
+    div.form-check
+      input.form-check-input.position-static#blankCheckbox(type="checkbox" value="option1" aria-label="Checkbox without label")
+    div.form-check
+      input.form-check-input.position-static#blankRadio1(type="radio" name="blankRadio" value="option1" aria-label="Radio button without label" checked)
+    div.form-check
+      input.form-check-input.position-static#blankRadio2(type="radio" name="blankRadio" value="option2" aria-label="Radio button without label")
+    div.form-check.mb-3
+      input.form-check-input.position-static#blankRadio3(type="radio" name="blankRadio" value="option3" aria-label="Radio button without label")
+    +collapseButton("#without-labels-structure") 構造
+    ul.struct.mt-2.collapse#without-labels-structure
+      li
+        code div.form-check
+        ul
+          li
+            code input.form-check-input.position-static
+            +attrsBtn(".a6-1")
+            ul.collapse.a6-1
+              li.att 属性 
+                code id="blankCheckbox"
+              li.att 属性 
+                code type="checkbox"
+              li.att 属性 
+                code value="..."
+              li.att アクセシビリティ属性 
+                code aria-label="Checkbox without label"
+      li
+        code div.form-check
+        |  (&times;3)
+        ul
+          li
+            code input.form-check-input.position-static
+            +attrsBtn(".a6-2")
+            ul.collapse.a6-2
+              li.att 属性 
+                code id="blankRadio(1|2|3)"
+              li.att 属性 
+                code type="radio"
+              li.att 属性 
+                code value="..."
+              li.att アクセシビリティ属性 
+                code aria-label="Radio button without label"
+              li.att 属性(先頭のみ) 
+                code checked
+    h4.mt-4#layout
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#layout") レイアウト
+    h5.mt-3#form-groups
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#form-groups") フォームグループ
+    p.my-2 コントロール要素( 
+      code input
+      |  , 
+      code select
+      |  , 
+      code textarea
+      |  , etc.)とそれに対応するラベル 
+      code label
+      |  は 
+      code div.form-group
+      |  の中に配置する。
+    h6.mt-3#form-groups-example 例: 構造表示用に 
+      code form
+      |  に灰色, 
+      code div.form-group
+      |  にオレンジのボーダー追加
+    form.border.mb-4(style="padding:1px;")
+      each ex in [["Example", ""], ["Another", "2"]]
+        div.form-group.border.border-warning(style="padding:1px;")
+          label(for=`formGroupExampleInput${ex[1]}`)= `${ex[0]} label`
+          input.form-control(type="text" id=`formGroupExampleInput${ex[1]}` placeholder=`${ex[0]} input`)
+    +collapseButton("#form-groups-example-structure") 構造
+    ul.struct.mt-2.collapse#form-groups-example-structure
+      li フォーム 
+        code form
+        ul
+          li フォームグループ(通常複数) 
+            code div.form-group
+            ul
+              li ラベル 
+                code label
+                +attrBtn(".a7-1")
+                ul
+                  li.att.collapse.a7-1 属性 
+                    code for="{コントロールID}"
+                  li.txt テキスト(例) 
+                    code Input
+              li コントロール 
+                code (input|select|textarea).form-control
+                +attrBtn(".a7-2")
+                ul
+                  li.att.collapse.a7-2 属性 
+                    code id="{コントロールID}"
+    h5.mt-3#form-grid
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#form-grid") フォームグリッド
+    p.mt-2.mb-3
+      a(href="layout-1.html#grid") グリッド
+      |  を利用してより高度でレスポンシブなフォームレイアウトを作成できる。次の例は単純に 
+      code div.col
+      | で左右2分割した場合(間が空く)。
+    form.mb-4
+      div.row
+        each str in ["First", "Last"]
+          div.col
+            input.form-control(type="text" placeholder=`${str} name`)
+    +collapseButton("#form-grid-structure") 構造
+    ul.struct.mt-2.collapse#form-grid-structure
+      li フォーム 
+        code form
+        ul
+          li 行(通常設定) 
+            code div.row
+            ul
+              li 列 
+                code div.col
+                |  (以下&times;2)
+                ul
+                  li
+                    code input.form-control
+    h5.mt-3#form-row
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#form-row") フォーム用グリッド行
+    p.my-2.mb-3 グリッドの行を 
+      code div.form-row
+      |  に変更するとフォーム用の短めの間隔に設定する。
+    form.mb-4
+      div.form-row
+        each str in ["First", "Last"]
+          div.col
+            input.form-control(type="text" placeholder=`${str} name`)
+    +collapseButton("#form-row-structure") 構造
+    ul.struct.mt-2.collapse#form-row-structure
+      li フォーム 
+        code form
+        ul
+          li 行(フォーム用設定) 
+            code div.form-row
+            ul
+              li 列 
+                code div.col
+                |  (以下 &times;2)
+                ul
+                  li
+                    code input.form-control
+    h5.mt-4#form-grid-example 応用例
+    p.mt-2.mb-4 公式ドキュメントより(構造表示のため 
+      code .form-group
+      |  にオレンジのボーダーを追加)。
+    form.mb-4
+      div.form-row
+        div.form-group.col-md-6.border.border-warning(style="padding:1px")
+          label(for="inputEmail4") Email
+          input.form-control#inputEmail4(type="email" placeholder="Email")
+        div.form-group.col-md-6.border.border-warning(style="padding.1px")
+          label(for="inputPassword4") Password
+          input.form-control#inputPassword4(type="password" placeholder="Password")
+      div.form-group.border.border-warning(style="padding:1px")
+        label(for="inputAddress") Address
+        input.form-control#inputAddress(type="text" placeholder="1234 Main St")
+      div.form-group.border.border-warning(style="padding:1px")
+        label(for="inputAddress2") Address 2
+        input.form-control#inputAddress2(type="text" placeholder="Apartment, studio, or floor")
+      div.form-row
+        div.form-group.col-md-6.border.border-warning(style="padding:1px")
+          label(for="inputCity") City
+          input.form-control#inputCity(type="text")
+        div.form-group.col-md-4.border.border-warning(style="padding:1px")
+          label(for="inputState") State
+          select.form-control#inputState
+            option(selected) Choose...
+            option ...
+        div.form-group.col-md-2.border.border-warning(style="paddingL1px")
+          label(for="inputZip") Zip
+          input.form-control#inputZip(type="text")
+      div.form-check
+        input.form-check-input#gridCheck(type="checkbox")
+        label.form-check-label(for="gridCheck") Check me out
+      button.btn.btn-primary.mt-2(type="submit") Sign in
+    +collapseButton("#form-grid-example-structure") 構造
+    ul.struct.mt-2.collapse#form-grid-example-structure
+      li フォーム 
+        code form
+        ul
+          li 1行目(Email/Password) 
+            code div.form-row
+            ul
+              li
+                code div.form-group.col-md-6
+                |  : md以上で(左側)6/12, 未満で上下配置
+                ul
+                  li
+                    code label
+                    strong  Email
+                    |  と 
+                    code input
+                    strong  Email
+              li
+                code div.form-group.col-md-6
+                |  : md以上で(右側)6/12, 未満で上下配置
+                ul
+                  li
+                    code label
+                    strong  Password
+                    |  と 
+                    code input
+                    strong  Password
+          li 2行目(Address), 3段目(Address 2)は 
+            a(href="#basic-example") 基本例
+            |  と同様
+          li 4段目(City/State/Zip) 
+            code div.form-row
+            ul
+              li
+                code div.form-group.col-md-6
+                |  : md以上で(左側)6/12, 未満で上下配置
+                ul
+                  li
+                    code label
+                    strong  City
+                    |  と 
+                    code input
+              li
+                code div.form-group.col-md-4
+                |  : md以上で(中央右)4/12, 未満で上下配置
+                ul
+                  li ラベル 
+                    code label
+                    strong  State
+                    |  と 
+                    code select
+                    strong  Choose...
+              li
+                code div.form-group.col-md-2
+                |  : md以上で(右)2/12, 未満で上下配置
+                ul
+                  li ラベル 
+                    code label
+                    strong  Zip
+                    |  と 
+                    code input
+          li 5段目(Check me out)、6段目(Sign in)は 
+            a(href="#basic-example") 基本例
+            |  と同様
+    h4.mt-4#horizontal-form
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#horizontal-form") 水平フォーム
+    p.mt-2.mb-3 ラベルとコントロールを水平配置するレイアウト。
+    +collapseButton("#horizontal-form-summary") まとめ
+    ul.struct.mt-2.mb-3.collapse#horizontal-form-summary
+      li
+        code div.form-group
+        |  に 
+        code .row
+        |  を追加 ⇒ 
+        code div.form-group.row
+      li
+        code label
+        |  に 
+        code .col-form-label
+        |  を追加 ⇒ 
+        code label.col-form-label
+      li レスポンシブ応答に 
+        code .col-{breakpoint}-{width}
+        |  を用いる
+    form.mt-3.mb-4
+      div.form-group.row
+        label.col-sm-2.col-form-label(for="inputEmail3") Email
+        div.col-sm-10
+          input.form-control#inputEmail3(type="email" placeholder="Email")
+      div.form-group.row
+        label.col-sm-2.col-form-label(for="inputPassword3") Password
+        div.col-sm-10
+          input.form-control#inputPassword3(type="password" placeholder="Password")
+      fieldset.form-group
+        div.row
+          legend.col-form-label.col-sm-2.pt-0 Radios
+          div.col-sm-10
+            div.form-check
+              input.form-check-input#gridRadios1(type="radio" name="gridRadios" value="option1" checked)
+              label.form-check-label(for="gridRadios1") First radio
+            div.form-check
+              input.form-check-input#gridRadios2(type="radio" name="gridRadios" value="option2")
+              label.form-check-label(for="gridRadios2") Second radio
+            div.form-check.disabled
+              input.form-check-input#gridRadios3(type="radio" name="gridRadios" value="option3" disabled)
+              label.form-check-label(for="gridRadios3") Third disabled radio
+      div.form-group.row
+        div.col-sm-2 Checkbox
+        div.col-sm-10
+          div.form-check
+            input.form-check-input#gridCheck1(type="checkbox")
+            label.form-check-label(for="gridCheck1") Example checkbox
+      button.btn.btn-primary(type="submit") Sign in
+    +collapseButton("#horizontal-form-structure") 構造
+    ul.struct.mt-2.collapse#horizontal-form-structure
+      li フォーム 
+        code form
+        ul
+          li 1行目( 
+            a(href="#form-controls") フォームコントロール
+            | の例) 
+            code div.form-group.row
+            ul
+              li ラベル(列) 
+                code label.col-form-label
+                +attrsBtn(".a8-1")
+                ul
+                  li.cls.collapse.a8-1 レイアウト(sm以上で2/12、未満は幅100%) 
+                    code .col-sm-2
+                  li.att.collapse.a8-1 属性 
+                    code for="inputEmail3"
+                  li.txt テキスト 
+                    code Email
+              li 列(sm以上で10/12) 
+                code div.col-sm-10
+                ul
+                  li コントロール 
+                    code= `input.form-control`
+                    |  : 属性は今までと同様(略)
+          li 2行目(Password)は1行目と同様(略)
+          li 3行目( 
+            a(href="#default-stacked-radios") ラジオボタン
+            | の例) 
+            code fieldset.form-group
+            ul
+              li 行 
+                code div.row
+                ul
+                  li タイトル(列) 
+                    code legend.col-form-label
+                    +attrsBtn(".a8-2")
+                    ul
+                      li.cls.collapse.a8-2 レイアウト(sm以上で2/12) 
+                        code .col-sm-2
+                      li.cls.collapse.a8-2 パディング調整 
+                        code .pt-0
+                      li.txt テキスト 
+                        code Radios
+                  li 列(sm以上で10/12) 
+                    code div.col-sm-10
+                    ul
+                      li 内部は 
+                        a(href="#default-stacked-radios") 上下配置 - ラジオ(ボタン)
+                        |  と同様
+          li 4行目( 
+            a(href="#default-stacked-checks") チェックボックス
+            | の例) 
+            code div.form-group.row
+            ul
+              li タイトル(sm以上で2/12の列) 
+                code div.col-sm-2
+                ul
+                  li.txt テキスト 
+                    code Checkbox
+                li 列(sm以上で10/12) 
+                  code div.col-sm-10
+                  ul
+                    li 内部は 
+                      a(href="#default-stacked-checks") 上下配置 - チェックボックス
+                      |  と同様
+          li ボタン( 
+            strong Sign in
+            |  )は 
+            a(href="#basic-example") 基本例
+            |  と同様
+    h5.mt-4#horizontal-form-label-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#horizontal-form-label-sizing") 水平フォームのラベルサイズ
+    p.my-2 左が 
+      code (label|legend).col-form-label
+      |  、右が 
+      a(href="#form-controls") フォームコントロール 
+      code .form-control
+      |  の場合
+    ul
+      li
+        code (label|legend).col-form-control
+        |  に 
+        code .col-form-label-(sm|lg)
+        |  を追加
+      li コントロール側も同サイズの 
+        code .form-control-(sm|lg)
+        |  を追加(⇒ 
+        a(href="#sizing") サイズ設定
+        |  )
+    h5.mt-4#horizontal-form-label-sizing-example 設定例
+    each sz in ["sm", null, "lg"]
+      p.my-2 左 
+        code= `label.col-form-label${sz ? `.col-form-label-${sz}` : ""}`
+        |  , 右 
+        code= `input.form-control${sz ? `.form-control-${sz}` : ""}`
+      form.mb-3
+        div.form-group.row
+          -let id = `size-demo-${sz ? sz : "default"}`
+          label(for=id class=`col-sm-2 col-form-label${sz ? ` col-form-label-${sz}` : ""}`) Email
+          div.col-sm-10
+            input(type="email" class=`form-control${sz ? ` form-control-${sz}` : ""}` id=id placeholder="Enter email")
+    h5.mt-4#column-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#column-sizing") 列の幅設定
+    p.mt-2.mb-3
+      a(href="layout-1.html#grid") グリッド
+      |  を用いた列幅の設定例
+    form.mb-4
+      div.form-row
+        div.col-7
+          input.form-control(type="text" placeholder="City")
+        div.col
+          input.form-control(type="text" placeholder="State")
+        div.col
+          input.form-control(type="text" placeholder="Zip")
+    +collapseButton("#column-sizing-structure") 構造
+    ul.struct.mt-2.collapse#column-sizing-structure
+      li フォーム 
+        code form
+        ul
+          li フォーム行 
+            code div.form-row
+            ul
+              li
+                code div.col-7
+                |  (7/12), 内部は
+                a(href="#form-controls") フォームコントロール
+                |  (以下同様)
+              li
+                code div.col
+                |  (残り5/12を2等分 ⇒ 5/24)
+              li
+                code div.col
+                |  (残り5/12を2等分 ⇒ 5/24)
+    h5.mt-4#auto-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#auto-sizing") 自動幅設定
+    p.mt-2.mb-3 列を 
+      code .col
+      |  から 
+      code .col(-sm|-md|-lg|-xl)?-auto
+      |  に変更すると幅をブラウザデフォルト値(内部コンテンツに対して可変)に設定する(⇒ 
+      a(href="layout-1.html#variable-width-content") グリッド - 幅の自動設定
+      | )。これを利用してフォーム要素を横(インライン)に並べて配置できる。
+    div.alert.alert-info(role="alert") 次の
+      a(href="#inline-forms") インラインフォーム
+      | もこれと同様の横配置レイアウト用設定。インラインフォームはレスポンシブ応答がプリセット設定されており、sm(576px)未満で横から縦に組み換わる。一方こちらはレスポンシブ応答を設定する場合は手動で個別に行う。
+    h5.mt-4.mb-3#auto-sizing-example-1 例1
+    form.mb-4
+      div.form-row.align-items-center
+        div.col-auto.my-1
+          label.sr-only(for="inlineFormInput") Name
+          input.form-control#inlineFormInput(type="text" placeholder="Jane Doe")
+        div.col-auto.my-1
+          label.sr-only(for="inlineFormInputGroup") Username
+          div.input-group
+            div.input-group-prepend
+              div.input-group-text @
+            input.form-control#inlineFormInputGroup(type="text" placeholder="Username")
+        div.col-auto.my-1
+          div.form-check
+            input.form-check-input#autoSizingCheck(type="checkbox")
+            label.form-check-label(for="autoSizingCheck") Remember me
+        div.col-auto.my-1
+          button.btn.btn-primary(type="submit") Submit
+    +collapseButton("#auto-sizing-example-1-structure") 構造
+    ul.struct.mt-2.collapse#auto-sizing-example-1-structure
+      li フォーム 
+        code form
+        ul
+          li フォーム行(中央揃え) 
+            code div.form-row.align-items-center
+            ul
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a9-1")
+                ul
+                  li.cls.collapse.a9-1 上下マージン確保 
+                    code .my-1
+                  li アクセシビリティ用ラベル(非表示) 
+                    code label.sr-only
+                    |  (⇒ 
+                    a(href="#auto-sizing-example-1-note") 注2
+                    | )
+                    +attrBtn(".a9-2")
+                    ul
+                      li.att.collapse.a9-2 属性 
+                        code for="inlineFormInput"
+                      li.txt テキスト 
+                        code Name
+                  li フォームコントロール 
+                    code input.form-control
+                    +attrsBtn(".a9-3")
+                    ul.collapse.a9-3
+                      li.att 属性 
+                        code id="inlineFormInput"
+                      li.att 属性 
+                        code type="text"
+                      li.att 属性 
+                        code placeholder="Jane Doe"
+                        |  (可視ユーザ用のラベルの役目を持つ)
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a9-4")
+                ul
+                  li.cls.collapse.a9-4 上下マージン確保 
+                    code .my-1
+                  li アクセシビリティ用ラベル(非表示) 
+                    code label.sr-only
+                    +attrBtn(".a9-5")
+                    ul
+                      li.att.collapse.a9-5 属性 
+                        code for="inlineFormInputGroup"
+                      li.txt テキスト 
+                        code Username
+                  li
+                    a(href="components-6.html#input-group") インプットグループ
+                    |  (Username) 
+                    code div.input-group
+                    ul
+                      li 内部設定は 
+                        a(href="components-6.html#basic-example-prepend") インプットグループ基本例 - 前置の場合
+                        |  を参照
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a9-6")
+                ul
+                  li.cls.collapse.a9-6 上下マージン確保 
+                    code .my-1
+                  li
+                    a(href="#checkboxes-and-radios") チェックボックス 
+                    code div.form-check
+                    ul
+                      li コントロール 
+                        code input.form-check-input
+                        +attrsBtn(".a9-7")
+                        ul.collapse.a9-7
+                          li.att 属性 
+                            code id="autoSizingCheck"
+                          li.att 属性 
+                            code type="checkbox"
+                      li ラベル 
+                        code label.form-check-label
+                        +attrBtn(".a9-8")
+                        ul
+                          li.att.collapse.a9-8 属性 
+                            code for="autoSizingCheck"
+                          li.txt テキスト 
+                            code Remember me
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a9-9")
+                ul
+                  li.cls.collapse.a9-9 上下マージン確保 
+                    code .my-1
+                  li ボタン 
+                    code button.btn.btn-primary
+                    +attrBtn(".a9-10")
+                    ul
+                      li.att.collapse.a9-10 属性 
+                        code type="submit"
+                      li.txt テキスト 
+                        code Submit
+    p.mt-3 次節の
+      a(href="#inline-form-example") インラインフォーム - 基本例
+      | とほぼ同じだが幅smブレークポイント未満(&lt;576px)の場合が異なる。インラインフォームは 
+      code auto
+      |  を解除して横幅100%の縦配置に組み替えるが、こちらは常に 
+      code auto
+      |  が有効で幅に応じて適宜要素を折り返す。
+    div.alert.alert-warning#auto-sizing-example-1-note(role="alert") 
+      strong 注2: 
+      | インライン配列ではよく本例のように 
+      code placeholder
+      |  属性を使いデフォルト値を表示してラベル代わりにする。その場合可視ユーザにラベルは不要になるが、スクリーンリーダ利用者のために 
+      code label
+      | を設定する。これは可視ユーザには不要なので
+      code .sr-only
+      |  (⇒ 
+      a(href="utilities-4.html#screenreaders") スクリーンリーダ
+      | )を設定して見えないようにする。
+    h5.mt-4.mb-3#auto-sizing-example-2 例2
+    p.mt-2.mb-3 レスポンシブ動作の設定例(公式ドキュメントの例を少し改良)。
+    form.mb-4
+      div.form-row.align-items-center
+        div.col-sm-6.col-md-4.col-lg-3.my-1
+          label.sr-only(for="inlineFormInputName") Name
+          input.form-control#inlineFormInputName(type="text" placeholder="Jane Doe")
+        div.col-sm-6.col-md-4.col-lg-3.my-1
+          label.sr-only(for="inlineFormInputGroupUsername") Username
+          div.input-group
+            div.input-group-prepend
+              div.input-group-text @
+            input.form-control#inlineFormInputGroupUsername(type="text" placeholder="Username")
+        div.col-auto.my-1
+          div.form-check
+            input.form-check-input#autoSizingCheck2(type="checkbox")
+            label.form-check-label(for="autoSizingCheck2") Remember me
+        div.col-auto.my-1
+          button.btn.btn-primary(type="submit") Submit
+    +collapseButton("#auto-sizing-example-2-structure") 構造
+    ul.struct.mt-2.collapse#auto-sizing-example-2-structure
+      li フォーム 
+        code form
+        ul
+          li フォーム行(中央揃え) 
+            code div.form-row.align-items-center
+            ul
+              li
+                code div.col-sm-6.col-md-4.col-lg-3.my-1
+                |  +内部(隠れラベルとコントロール)
+              li
+                code div.col-sm-6.col-md-4.col-lg-3.my-1
+                |  +内部(インプットグループ)
+              li
+                code div.col-auto
+                |  +内部(チェックボックス)
+              li
+                code div.col-auto
+                |  +内部(ボタン)
+    p.my-3
+      a(href="#auto-sizing-example-1") 例1
+      | と構成は同じだが、幅変更に対して入力コントロールの幅が常に一定範囲を確保するようにレスポンシブ動作を個別調整している(インラインフォームはsmブレークポイントでの切り替えしかできないので、自分で細かく設定したい場合はこの方法を用いるとよい)。
+    div.alert.alert-info(role="alert") 元の設定は 
+      code div.col-sm-3(.my-1)
+      |  だが、実際に動作確認するとsmとmdの場合に幅不足でレイアウトが乱れる。そこで各ブレークポイント毎に細かく調整してできたもの。
+    h5.mt-4.mb-3#auto-sizing-example-3 例3
+    p.my-3
+      a(href="#custom-forms") カスタムフォームコントロール
+      |  を用いた例。
+    form.mb-4
+      div.form-row.align-items-center
+        div.col-auto.my-1
+          label.mr-sm-2(for="inlineFormCustomSelect") Preference
+          select.custom-select.mr-sm-2#inlineFormCustomSelect(style="width: auto;")
+            option(selected) Choose...
+            each item in [[1,"One"],[2,"Two"],[3,"Three"]]
+              option(value=item[0])= item[1]
+        div.col-auto.my-1
+          div.custom-control.custom-checkbox.mr-sm-2
+            input.custom-control-input#customControlAutosizing(type="checkbox")
+            label.custom-control-label(for="customControlAutosizing") Remember my preference
+        div.col-auto.my-1
+          button.btn.btn-primary(type="submit") Submit
+    +collapseButton("#auto-sizing-example-3-structure") 構造
+    ul.struct.mt-2.collapse#auto-sizing-example-3-structure
+      li フォーム 
+        code form
+        ul
+          li フォーム行(中央揃え) 
+            code div.form-row.align-items-center
+            ul
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a10-1")
+                ul
+                  li.cls.collapse.a10-1 上下マージン確保 
+                    code my-1
+                  li ラベル 
+                    code label
+                    +attrsBtn(".a10-2")
+                    ul
+                      li.cls.collapse.a10-2 横マージン調整 
+                        code .mr-sm-2
+                      li.att.collapse.a10-2 属性 
+                        code for="inlineFormCustomSelect"
+                      li.txt テキスト 
+                        code Preference
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a10-3")
+                ul
+                  li.cls.collapse.a10-3 上下マージン確保 
+                    code my-1
+                  li
+                    a(href="#select-menu") カスタムselect 
+                    code select.custom-select
+                    +attrsBtn(".a10-4")
+                    ul
+                      li.cls.collapse.a10-4 横マージン調整 
+                        code .mr-sm-2
+                      li.att.collapse.a10-4 属性 
+                        code id="inlineFormCustomSelect"
+                      li.att.collapse.a10-4 カスタムスタイル 
+                        code style="width: auto;"
+                        |  (⇒ 
+                        a(href="#auto-sizing-example-3-note") 注3
+                        |  )
+                      li アイテム (&times;4) 
+                        code option ...
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a10-5")
+                ul
+                  li.cls.collapse.a10-5 上下マージン確保 
+                    code my-1
+                  li
+                    a(href="#checkboxes") カスタムチェックボックス 
+                    code div.custom-control.custom-checkbox
+                    +attrBtn(".a10-6")
+                    ul
+                      li.cls.collapse.a10-6 横マージン調整 
+                        code .mr-sm-2
+                      li コントロール 
+                        code input.custom-control-input
+                        +attrsBtn(".a10-7")
+                        ul.collapse.a10-7
+                          li.att 属性 
+                            code id="customControlAutosizing"
+                          li.att 属性 
+                            code type="checkbox"
+                      li ラベル 
+                        code label.custom-control-label
+                        +attrBtn(".a10-8")
+                        ul
+                          li.att.collapse.a10-8 属性 
+                            code for="customControlAutosizing"
+                          li.txt テキスト 
+                            code Remember my preference
+              li 列(自動幅) 
+                code div.col-auto
+                +attrBtn(".a10-9")
+                ul
+                  li.cls.collapse.a10-9 上下マージン確保 
+                    code my-1
+                  li ボタン 
+                    code button.btn.btn-primary
+                    +attrBtn(".a10-10")
+                    ul
+                      li.att.collapse.a10-10 属性 
+                        code type="submit"
+                      li.txt テキスト 
+                        code Submit
+    div.alert.alert-warning.mt-3#auto-sizing-example-3-note(role="alert")
+      strong 注3: 
+      | 公式ドキュメントの例はカスタムセレクトの幅設定を変更していないため、部分的に幅が 
+      code width: 100%;
+      |  になり横一列にならない。そこで本ページではカスタムスタイルを追加して横配置になるよう修正している。
+    h4.mt-4.mb-3#inline-forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#inline-forms") インラインフォーム
+    p.my-2
+      code (form).form-inline
+      |  は構成要素を横に並べるレイアウト設定で、内部要素の設定を次のように変更する。
+    ul.my-2
+      li 要素(コントロール等)の配置を( 
+        code display: block;
+        |  から) 
+        code display: flex;
+        |  に変更
+      li 要素の幅を( 
+        code width: 100%;
+        |  から) 
+        code width: auto;
+        |  に変更
+      li ただし画面幅が576px(sm)未満の場合は設定されない(幅100%に戻る)
+        ul
+          li その結果smブレークポイントで縦横の組み換えが発生する(576px未満で縦配置)
+    div.alert.alert-info 機能はひとつ前の
+      a(href="auto-sizing") 自動幅設定
+      | と似ているが、
+      a(href="components-10.html") ナビゲーションバー
+      | での使用を前提として作り込まれており、自動幅設定より楽にインライン配置を組める。ただしレスポンシブブレークポイントはsm固定で変更できない(細かい調整が必要な場合は自動幅設定が必要)。
+    h5.mt-3#inline-forms-tips 設定上の注意
+    ul
+      li 要素間隔は 
+        code auto
+        |  なので適宜マージン設定を行う(⇒ 
+        a(href="utilities-4.html#spacing") 空白
+        | )
+      li アクセシビリティの観点から 
+        code label
+        |  を用い、画面上不要な場合は 
+        code .sr-only
+        |  で非表示にする(⇒ 
+        a(href="#auto-sizing-example-1-note") 注2
+        | )
+    h5.mt-4.mb-3#inline-form-example 基本例
+    form.form-inline.mb-4
+      label.sr-only(for="inlineFormInputName2") Name
+      input.form-control.my-1.mr-sm-2#inlineFormInputName2(type="text" placeholder="Jane Doe")
+      label.sr-only(for="inlineFormInputGroupUsername2") Username
+      div.input-group.my-1.mr-sm-2
+        div.input-group-prepend
+          div.input-group-text @
+        input.form-control#inlineFormInputGroupUsername2(type="text" placeholder="Username")
+      div.form-check.my-1.mr-sm-2
+        input.form-check-input#inlineFormCheck(type="checkbox")
+        label.form-check-label(for="inlineFormCheck") Remember me
+      button.btn.btn-primary.my-1(type="submit") Submit
+    +collapseButton("#inline-forms-example-structure") 構造
+    ul.struct.mt-2.collapse#inline-forms-example-structure
+      li インラインフォーム 
+        code form.form-inline
+        ul
+          li アクセシビリティ用ラベル(非表示) 
+            code label.sr-only
+            +attrBtn(".a11-1")
+            ul
+              li.att.collapse.a11-1 属性 
+                code for="inlineFormInputName2"
+              li.txt テキスト 
+                code Name
+          li コントロール 
+            code input.form-control
+            +attrsBtn(".a11-2")
+            ul.collapse.a11-2
+              li.cls マージン調整 
+                code .my-1.mr-sm-2
+              li.att 属性 
+                code id="inlineFormInputName2"
+              li.att 属性 
+                code type="text"
+              li.att 属性 
+                code placeholder="Jane Doe"
+                |  (ラベル代わりに用いる)
+          li アクセシビリティ用ラベル 
+            code label.sr-only
+            +attrBtn(".a11-3")
+            ul
+              li.att.collapse.a11-3 属性 
+                code for="inlineFormInputGroupUsername2"
+              li.txt テキスト 
+                code Username
+          li
+            a(href="components-6.html#input-group") インプットグループ
+            |  (Username) 
+            code div.input-group
+            +attrBtn(".a11-4")
+            ul
+              li.cls.collapse.a11-4 マージン調整 
+                code .my-1.mr-sm-2
+              li 他の設定は 
+                a(href="components-6.html#basic-example-prepend") 基本例 - 前置の場合
+                |  を参照
+          li
+            a(href="#checkboxes-and-radios") チェックボックス 
+            code div.form-check
+            +attrBtn(".a11-5")
+            ul
+              li.cls.collapse.a11-5 マージン調整 
+                code .my-1.mr-sm-2
+              li コントロール 
+                code input.form-check-input
+                +attrsBtn(".a11-6")
+                ul.collapse.a11-6
+                  li.att 属性 
+                    code id="inlineFormCheck"
+                  li.att 属性 
+                    code type="checkbox"
+                li ラベル 
+                  code label.form-check-label
+                  +attrBtn(".a11-7")
+                  ul
+                    li.att.collapse.a11-7 属性 
+                      code for="inlineFormCheck"
+                    li.txt テキスト 
+                      code Remember me
+          li ボタン 
+            code button.btn.btn-primary
+            +attrsBtn(".a11-8")
+            ul
+              li.cls.collapse.a11-8 マージン調整 
+                code .my-1
+              li.att.collapse.a11-8 属性 
+                code type="submit"
+              li.txt テキスト 
+                code Submit
+    div.alert.alert-info.mt-3(role="alert") チェックボックスに
+      a(href="#inline") インライン設定 
+      code .form-check-inline
+      |  は不要(ラジオボタンも同様)。外側の 
+      code form.form-inline
+      |  で設定されるため省略してよい。
+    h5.mt-4.mb-3#inline-form-example-custom 応用: 
+      a(href="#custom-forms") カスタムフォーム
+      | を用いた例
+    form.form-inline.mb-4
+      label.my-1.mr-sm-2(for="inlineFormCustomSelectPref") Preference
+      div.form-control.form-control-plaintext.p-0.my-1.mr-sm-2
+        select.custom-select#inlineFormCustomSelectPref
+          option(selected) Choose...
+          each item in [[1,"One"],[2,"Two"],[3,"Three"]]
+            option(value=item[0])= item[1]
+      div.form-control.form-control-plaintext.p-0.my-1.mr-sm-2
+        div.custom-control.custom-checkbox
+          input.custom-control-input#customControlInline(type="checkbox")
+          label.custom-control-label(for="customControlInline") Remember my preference
+      button.btn.btn-primary.my-1(type="submit") Submit
+    +collapseButton(".inline-forms-example-custom-structure") 構造
+    ul.struct.mt-2.collapse.inline-forms-example-custom-structure
+      li インラインフォーム 
+        code form.form-inline
+        ul
+          li ラベル 
+            code label
+            +attrsBtn(".a12-1")
+            ul
+              li.cls.collapse.a12-1 マージン調整 
+                code .my-1.mr-sm-2
+              li.att.collapse.a12-1 属性 
+                code for="inlineFormCustomSelectPref"
+              li.txt テキスト 
+                code Preference
+          li フォームコントロール 
+            code div.form-control
+            +attrsBtn(".a12-2")
+            ul
+              li.cls.collapse.a12-2 外枠なし 
+                code .form-control-plaintext
+              li.cls.collapse.a12-2 内側パディングなし
+                code .p-0
+              li.cls.collapse.a12-2 マージン調整 
+                code .my-1.mr-sm-2
+              li
+                a(href="#select-menu") カスタムselect 
+                code select.custom-select
+                +attrBtn(".a12-3")
+                ul
+                  li.att.collapse.a12-3 属性 
+                    code id="inlineFormCustomSelectPref"
+                  li アイテム (&times;4) 
+                    code option ...
+          li フォームコントロール 
+            code div.form-control
+            +attrsBtn(".a12-4")
+            ul
+              li.cls.collapse.a12-4 外枠なし 
+                code .form-control-plaintext
+              li.cls.collapse.a12-4 内側パディングなし
+                code .p-0
+              li.cls.collapse.a12-4 マージン調整 
+                code .my-1.mr-sm-2
+              li
+                a(href="#checkboxes") カスタムチェックボックス 
+                code div.custom-control.custom-checkbox
+                ul
+                  li コントロール 
+                    code input.custom-control-input
+                    +attrsBtn(".a12-5")
+                    ul.collapse.a12-5
+                      li.att 属性 
+                        code id="customControlInline"
+                      li.att 属性 
+                        code type="checkbox"
+              li カスタムフォーム用ラベル 
+                code label.custom-control-label
+                +attrBtn(".a12-6")
+                ul
+                  li.att.collapse.a12-6 属性 
+                    code for="customControlInline"
+                  li.txt テキスト 
+                    code Remember my preference
+          li ボタン 
+            code button.btn.btn-primary
+            +attrsBtn(".a12-7")
+            ul
+              li.cls.collapse.a12-7 マージン調整 
+                code .my-1
+              li.att.collapse.a12-7 属性 
+                code type="submit"
+              li.txt テキスト 
+                code Submit
+    div.mt-3
+      +collapseButton("#inline-forms-example-custom-fixes") 修正点
+    div.mt-3.collapse#inline-forms-example-custom-fixes
+      p.my-3 元は公式ドキュメントの例だが 
+        code .form-inline
+        |  は(バージョン4.0時点ではまだ)カスタムフォームコントロールに対応していないため意図した通りの動作になっていない。そこで次のように修正を加え、xs(576px未満)で縦配置への組み換えを実現している。
+      ul
+        li カスタムフォームを(枠だけの)フォームコントロール 
+          code div.form-control
+          |  で囲う
+          ul
+            li これにより外側の 
+              code .form-inline
+              |  との組み合わせでレスポンシブ応答する
+            li ただし角丸ボーダーは不要なので 
+              code .form-control-plaintext
+              |  で消去
+            li 内側のパディングも不要なので 
+              code .p-0
+              |  で消去
+    h4.mt-4#help-text
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#help-text") ヘルプテキスト
+    p.mt-2.mb-3
+      code small.form-text(.text-muted)
+      |  を用い、アクセシビリティ用IDを付ける。
+    label(for="inputPassword5") Password
+    input.form-control#inputPassword5(type="password" aria-describedby="passwordHelpBlock")
+    small.form-text.text-muted.mb-4#passwordHelpBlock Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+    +collapseButton("#help-text-example-structure") 構造
+    ul.struct.mt-2.collapse#help-text-example-structure
+      li ラベル 
+        code label
+        +attrBtn(".a13-1")
+        ul
+          li.att.collapse.a13-1 属性 
+            code for="inputPassword5"
+          li.txt テキスト 
+            code Password
+      li コントロール 
+        code input.form-control
+        +attrsBtn(".a13-2")
+        ul.collapse.a13-2
+          li.att 属性 
+            code id="inputPassword5"
+          li.att 属性 
+            code type="password"
+          li.att アクセシビリティ属性 
+            code aria-describedby="passwordHelpBlock"
+      li ヘルプテキスト 
+        code small.form-text.text-muted
+        +attrBtn(".a13-3")
+        ul
+          li.att.collapse.a13-3 アクセシビリティ属性 
+            code id="passwordHelpBlock"
+          li.txt テキスト 
+            code Your password must be 8-20 characters long, ...
+    p.my-3 インラインレイアウトの場合は 
+      code .form-text
+      |  を付けない。
+    form.form-inline.mb-4
+      label(for="inputPassword6") Password
+      input.form-control.mx-sm-3#inputPassword6(type="password" aria-describedby="passwordHelpInline")
+      small.text-muted#passwordHelpInline Must be 8-20 characters long.
+    +collapseButton("#help-text-example-inline-structure") 構造
+    ul.struct.mt-2.collapse#help-text-example-inline-structure
+      li インラインフォーム 
+        code form.form-inline
+        ul
+          li ラベル 
+            code label
+            +attrBtn(".a14-1")
+            ul
+              li.att.collapse.a14-1 属性 
+                code for="inputPassword3"
+              li.txt テキスト 
+                code Password
+          li コントロール 
+            code input.form-control
+            +attrsBtn(".a14-2")
+            ul.collapse.a14-2
+              li.cls マージン調整 
+                code .mx-sm-3
+              li.att 属性 
+                code id="inputPassword6"
+              li.att 属性 
+                code type="password"
+              li.att アクセシビリティ属性 
+                code aria-describedby="passwordHelpInline"
+          li ヘルプテキスト 
+            code small.text-muted
+            +attrBtn(".a14-3")
+            ul
+              li.att.collapse.a14-3 アクセシビリティ属性 
+                code id="passwordHelpInline"
+              li.txt テキスト 
+                code Must be 8-20 characters long.
+    h4.mt-4#disabled-forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#disabled-forms")
+        code disabled
+        |  属性
+    p.mt-2.mb-3 コントロールに属性 
+      code disabled
+      |  を設定してdisabled状態にできる。またグループの親要素として 
+      code fieldset
+      |  を使いそこに 
+      code disabled
+      |  を設定するとグループ全体をdisabled状態にできる(⇒ 
+      a(href="#disabled-forms-note") 注4
+      | )。
+    form.mb-4
+      fieldset(disabled)
+        div.form-group
+          label(for="disabledTextInput") Disabled input
+          input.form-control#disabledTextInput(type="text" placeholder="Disabled input")
+        div.form-group
+          label(for="disabledSelect") Disabled select menu
+          select.form-control#disabledSelect
+            option Disabled select
+        div.form-check
+          input.form-check-input#disabledFieldsetCheck(type="checkbox" disabled)
+          label.form-check-label(for="disabledFieldsetCheck") Can't check this
+        button.btn.btn-primary.mt-2(type="submit") Submit
+    +collapseButton("#disabled-example-structure") 構造
+    ul.struct.mt-2.collapse#disabled-example-structure
+      li フォーム 
+        code form
+        ul
+          li
+            code fieldset
+            +attrBtn(".a15-1")
+            ul
+              li.att.collapse.a15-1 属性 
+                code disabled
+                |  (ここに設定)
+              li 子要素(略)、コントロールは全て 
+                code disabled
+                |  になる
+    div.alert.alert-warning.mt-3#disabled-forms-note(role="alert")
+      strong 注4: 
+      | 今回調査した中ではIE11の対応が不十分で、上記の例ではSubmitボタンがdisabledにならない。また公式ドキュメントによればIE10でも同様の問題が発生する。
+    h4.mt-4#validation
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#validation") バリデーション
+    p.my-2 HTMLのバリデーション機能はバージョン5.0で導入された(詳しくは
+      +extLink("https://developer.mozilla.org/ja/docs/Learn/HTML/Forms/Data_form_validation") MDN - フォームデータの検証
+      | を参照)。今ではBootstrap 4の対応ブラウザ全てで使用できる(対応状況は 
+      +extLink("https://caniuse.com/#feat=form-validation") Can I Use
+      |  を参照)。しかし動作に環境依存がありどのブラウザでも同じ振る舞いにならない。またバリデーションメッセージはスクリーンリーダに対応していない(現状では認識困難)。
+    p.my-2 そこでBootstrap 4ではブラウザ依存を低減しスクリーンリーダがメッセージを判別できる独自方式を開発している。以下(公式ドキュメントと順番を入れ替えて)まずブラウザ標準の方法を示し、次にBootstrap方式を説明する。
+    h5.mt-4#browser-defaults
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#browser-defaults") ブラウザ標準のバリデーション
+    p.mt-2.mb-3
+      code required
+      |  を利用した簡単なバリデーションの例。レイアウトの説明は省略し、バリデーションに関するポイントのみ示す。ただし送信時の応答にブラウザ依存性があり、表示されるメッセージやその表現方法も異なることに注意(本例を用いて色々なブラウザで実行すれば確認できる)。
+    form.mb-4
+      div.form-row
+        div.col-md-4.mb-3
+          label(for="validationDefault01") First name
+          input.form-control#validationDefault01(type="text" placeholder="First name" value="Mark" required)
+        div.col-md-4.mb-3
+          label(for="validationDefault02") Last name
+          input.form-control#validationDefault02(type="text" placeholder="Last name" value="Otto" required)
+        div.col-md-4.mb-3
+          label(for="validationDefaultUsername") Username
+          div.input-group
+            div.input-group-prepend
+              span.input-group-text#inputGroupPrepend2 @
+            input.form-control#validationDefaultUsername(type="text" placeholder="Username" aria-describedby="inputGroupPrepend2" required)
+      div.form-row
+        div.col-md-6.mb-3
+          label(for="validationDefault03") City
+          input.form-control#validationDefault03(type="text" placeholder="City" required)
+        div.col-md-3.mb-3
+          label(for="validationDefault04") State
+          input.form-control#validationDefault04(type="text" placeholder="State" required)
+        div.col-md-3.mb-3
+          label(for="validationDefault05") Zip
+          input.form-control#validationDefault05(type="text" placeholder="Zip" required pattern="[0-9]{5}")
+      div.form-group
+        div.form-check
+          input.form-check-input#invalidCheck2(type="checkbox" value="" required)
+          label.form-check-label(for="invalidCheck2") Agree to terms and conditions
+      button.btn.btn-primary(type="submit") Submit form
+    +collapseButton("#browser-defaults-summary") まとめ
+    ul.mt-2.collapse#browser-defaults-summary
+      li フォーム中でバリデーション対象とする 
+        code input
+        |  に属性 
+        code required
+        |  を追加
+      li Submitを押すとバリデーションを実行
+        ul
+          li 全て(正しく)入力されていれば送信
+          li 未入力部分があれば送信せずメッセージを表示する
+            ul ただしブラウザによりその方法や表示が大きく異なる
+      li (応用例)入力パターンを限定する場合は 
+        code pattern
+        |  属性を利用できる(正規表現で設定)
+        ul
+          li 例(米国の5桁郵便番号: 上記Zipに設定) 
+            code pattern="[0-9]{5}"
+    h5.mt-4.mb-3#custom-styles
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#custom-styles") Bootstrap方式
+    p.my-3 Bootstrap 4のバリデーション方式で作ったフォーム例。
+    form.needs-validation(novalidate)
+      div.form-row
+        div.col-md-4.mb-3
+          label(for="validationCustom01") First name
+          input.form-control#validationCustom01(type="text" placeholder="First name" value="Mark" required)
+          div.valid-feedback Looks good!
+          div.invalid-feedback Please input your name.
+        div.col-md-4.mb-3
+          label(for="validationCustom02") Last name
+          input.form-control#validationCustom02(type="text" placeholder="Last name" value="Otto" required)
+          div.valid-feedback Looks good!
+        div.col-md-4.mb-3
+          label(for="validationCustomUsername") Username
+          div.input-group
+            div.input-group-prepend
+              span.input-group-text#inputGroupPrepend @
+            input.form-control#validationCustomUsername(type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required)
+            div.invalid-feedback Please choose a username.
+      div.form-row
+        div.col-md-6.mb-3
+          label(for="validationCustom03") City
+          input.form-control#validationCustom03(type="text" placeholder="City" required)
+          div.invalid-feedback Please provide a valid city.
+        div.col-md-3.mb-3
+          label(for="validationCustom04") State
+          input.form-control#validationCustom04(type="text" placeholder="State" required)
+          div.invalid-feedback Please provide a valid state.
+        div.col-md-3.mb-3
+          label(for="validationCustom05") Zip
+          input.form-control#validationCustom05(type="text" placeholder="Zip" required)
+          div.invalid-feedback Please provide a valid zip.
+      div.form-group
+        div.form-check
+          input.form-check-input#invalidCheck(type="checkbox" value="" required)
+          label.form-check-label(for="invalidCheck") Agree to terms and conditions
+          div.invalid-feedback You must agree before submitting.
+      button.btn.btn-primary(type="submit") Submit form
+    p.mt-4.mb-2 HTMLはバリデーションに関するポイントのみ説明する。
+    +collapseButton("#validation-html-summary") HTMLまとめ
+    ul.struct.mt-2.collapse#validation-html-summary
+      li
+        code form
+        |  に次の2つを設定
+        ul
+          li.att 属性 
+            code novalidate
+            |  (ブラウザデフォルトのバリデーション動作を抑制)
+          li.cls CSSセレクタ ⇒ 本ページでは
+            code .needs-validation
+            |  を用いる
+      li バリデーション対象要素に次を設定
+        ul
+          li.cls クラス(フォームコントロール) 
+            code .form-control
+          li.att バリデーション設定 (例: 
+            code required
+            |  属性)
+      li バリデーションメッセージをコントロールより後の兄弟要素として設定
+        ul
+          li 成功時メッセージは 
+            code (div).valid-feedback
+          li エラー時メッセージは 
+            code (div).invalid-feedback
+    p.mt-3.mb-2 次にBootstrap 4 (CSS)のバリデーション機能についてまとめる。
+    +collapseButton("#validation-css-summary") CSSまとめ
+    ul.mt-2.collapse#validation-css-summary
+      li ルート要素(具体的には 
+        code form
+        |  )に対し 
+        code .was-validated
+        |  の有無で表示を制御
+        ul
+          li 初期状態(バリデーション実行前)は付けない
+          li 送信に対しクラスを追加するとバリデーション状態になる
+      li バリデーション対象のコントロール要素に 
+        code .form-control
+        |  を設定
+        ul
+          li 祖先に 
+            code .was-validated
+            |  +自分に 
+            code :valid
+            |  が設定されると緑ボーダー表示
+          li 祖先に 
+            code .was-validated
+            |  +自分に 
+            code :invalid
+            |  が設定されると赤ボーダー表示
+      li (オプション)コントロール要素より後の兄弟要素にメッセージを追加できる
+        ul
+          li 成功メッセージ 
+            code .valid-feedback
+            |  : 次の条件で表示される
+            ul
+              li 祖先(フォーム)に 
+                code .was-validated
+                |  が設定
+              li 手前兄弟の 
+                code .form-control
+                |  に疑似クラス 
+                code :valid
+                |  が設定
+          li 失敗メッセージ 
+            code .invalid-feedback
+            |  : 次の条件で表示される
+            ul
+              li 祖先(フォーム)に 
+                code .was-validated
+                |  が設定
+              li 手前兄弟の 
+                code .form-control
+                |  に疑似クラス 
+                code :invalid
+                |  が設定
+      li (注意) 複数コントロールが兄弟(同じ親)だとメッセージが機能しない
+        ul
+          li それぞれを
+            a(href="#form-groups") フォームグループ
+            | で囲めばよい
+          li グリッドレイアウトの場合は 
+            code div.col*
+            |  や 
+            code div.col-auto
+            |  などでもよい
+    p.mt-3.mb-2 処理にはJavaScriptが必要。
+    +collapseButton("#validation-javascript-summary") JavaScriptまとめ
+    ul.mt-2.collapse#validation-javascript-summary
+      li 対象の 
+        code form
+        |  (今回は 
+        code .needs-validation
+        |  )の 
+        code submit
+        |  イベントハンドラを設定
+      li イベントハンドラで次の順に処理
+        ul
+          li フォームのバリデーションを実行 
+            code {form}.checkValidity()
+            ul
+              li 入力値が正しいコントロールには 
+                code :valid
+                |  疑似クラスが設定される
+              li 入力値が不正なコントロールには 
+                code :invalid
+                |  疑似クラスが設定される
+          li 戻り値がfalse(失敗)の場合は送信を止める
+            ul
+              li イベントのデフォルト処理をキャンセル 
+                code event.preventDefault()
+              li イベントの(親要素への)伝搬を遮断 
+                code event.stopPropagation()
+          li フォームにクラス 
+            code .was-validated
+            |  を追加
+    div.mt-3
+      +collapseButton("#validation-javascrip-dom") コード(DOM)
+      | &nbsp;
+      +collapseButton("#validation-javascrip-jquery") コード(jQuery)
+    pre.p-2.border.bg-light.mt-3.collapse#validation-javascrip-dom
+      code
+        | // DOM版(公式ドキュメントより)
+        | (function() {
+        |   'use strict';
+        |   window.addEventListener('load', function() {
+        |     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        |     var forms = document.getElementsByClassName('needs-validation');
+        |     // Loop over them and prevent submission
+        |     var validation = Array.prototype.filter.call(forms, function(form) {
+        |       form.addEventListener('submit', function(event) {
+        |         if (form.checkValidity() === false) {
+        |           event.preventDefault();
+        |           event.stopPropagation();
+        |         }
+        |         form.classList.add('was-validated');
+        |       }, false);
+        |     });
+        |   }, false);
+        | })();
+    pre.p-2.border.bg-light.mt-3.collapse#validation-javascrip-jquery
+      code
+        | // jQuery版
+        | $('.needs-validation').on('submit', function(event) {
+        |   if (!this.checkValidity()) {
+        |     event.preventDefault();
+        |     event.stopPropagation();
+        |   }
+        |   $(this).addClass('was-validated');
+        | });
+
+    h5.mt-4#server-side
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#server-side") サーバー側バリデーション
+    p.my-2 送信してサーバ側でバリデーションを行い、サーバ側から結果を反映したフォームを送り返す場合は疑似クラスは使えない。そこで代替手段として 
+      code .is-valid 
+      |  と 
+      code .is-invalid 
+      |  を用いて上記バリデーションと同じ表示効果を得ることができる。
+    +collapseButton("#server-side-summary") まとめ
+    ul.struct.mt-2.collapse#server-side-summary
+      li
+        code form
+        |  に 
+        code .was-validated
+        |  は不要
+      li フォームコントロールに(疑似クラスの代わりに)次のクラスを設定する
+        ul
+          li.cls 正しい場合 
+            code .is-valid
+          li.cls 不正の場合 
+            code .is-invalid
+      li メッセージ設定は同じでよい
+        ul
+          li.cls 成功メッセージは 
+            code .valid-feedback
+          li.cls 失敗メッセージは 
+            code .invalid-feedback
+    p.my-3 次はその設定例。ブラウザから送信後にサーバでバリデーションを行い、First nameとLast nameは正しく後は不正という結果を送り返した状態を表したもの。
+    form.mb-4
+      div.form-row
+        div.col-md-4.mb-3
+          label(for="validationServer01") First name
+          input.form-control.is-valid#validationServer01(type="text" placeholder="First name" value="Mark" required)
+          div.valid-feedback Looks good!
+        div.col-md-4.mb-3
+          label(for="validationServer02") Last name
+          input.form-control.is-valid#validationServer02(type="text" placeholder="Last name" value="Otto" required)
+          div.valid-feedback Looks good!
+        div.col-md-4.mb-3
+          label(for="validationServerUsername") Username
+          div.input-group
+            div.input-group-prepend
+              span.input-group-text#inputGroupPrepend3 @
+            input.form-control.is-invalid#validationServerUsername(type="text" placeholder="Username" aria-describedby="inputGroupPrepend3" required)
+            div.invalid-feedback Please choose a username.
+      div.form-row
+        div.col-md-6.mb-3
+          label(for="validationServer03") City
+          input.form-control.is-invalid#validationServer03(type="text" placeholder="City" required)
+          div.invalid-feedback Please provide a valid city.
+        div.col-md-3.mb-3
+          label(for="validationServer04") State
+          input.form-control.is-invalid#validationServer04(type="text" placeholder="State" required)
+          div.invalid-feedback Please provide a valid state.
+        div.col-md-3.mb-3
+          label(for="validationServer05") Zip
+          input.form-control.is-invalid#validationServer05(type="text" placeholder="Zip" required)
+          div.invalid-feedback Please provide a valid zip.
+      div.form-group
+        div.form-check
+          input.form-check-input.is-invalid#invalidCheck3(type="checkbox" value="" required)
+          label.form-check-label(for="invalidCheck3") Agree to terms and conditions
+          div.invalid-feedback You must agree before submitting.
+      button.btn.btn-primary(type="submit") Submit form
+    +collapseButton("#server-side-html-summary") 設定
+    ul.mt-2.collapse#server-side-html-summary
+      li
+        code form
+        |  にはクラスや属性の追加なし
+      li First nameとLast nameのフォームコントロールに 
+        code .is-valid
+        |  を追加
+        ul
+          li フォームコントロールは成功時の緑色表示
+          li 後に続く兄弟要素の 
+            code .valid-feedback
+            |  は成功メッセージとして緑色表示
+      li その他のフォームコントロールに 
+        code .is-invalid
+        |  を追加
+        ul
+          li フォームコントロールは失敗時の赤色表示
+          li 後に続く兄弟要素の 
+            code .invalid-feedback
+            |  は失敗メッセージとして赤色表示
+    h5.mt-3#supported-elements
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#supported-elements") カスタムフォームコントロールの利用
+    p.mt-2.mb-3 Bootstrapバリデーションは
+      a(href="#custom-forms") カスタムフォームコントロール
+      | に対応しており、通常のフォームコントロールと同じように使うことができる。次はその設定サンプルでデモ用に最初からバリデーション状態にしてある(送信もなし)。どれも入力すると表示が赤から緑に変化する。
+    form.was-validated.mb-4
+      div.custom-control.custom-checkbox.mb-3
+        input.custom-control-input#customControlValidation1(type="checkbox" required)
+        label.custom-control-label(for="customControlValidation1") Check this custom checkbox
+        div.invalid-feedback Example invalid feedback text
+      div.custom-control.custom-radio
+        input.custom-control-input#customControlValidation2(type="radio" name="radio-stacked" required)
+        label.custom-control-label(for="customControlValidation2") Toggle this custom radio
+      div.custom-control.custom-radio.mb-3
+        input.custom-control-input#customControlValidation3(type="radio" name="radio-stacked" required)
+        label.custom-control-label(for="customControlValidation3") Or toggle this other custom radio
+        div.invalid-feedback More example invalid feedback text
+      div.form-group
+        select.custom-select(required)
+          option(value="") Open this select menu
+          each item in [[1,"One"],[2,"Two"],[3,"Three"]]
+            option(value=item[0])= item[1]
+        div.invalid-feedback Example invalid custom select feedback
+      div.custom-file
+        input.custom-file-input#validatedCustomFile(type="file" required)
+        label.custom-file-label(for="validatedCustomFile") Choose file...
+        div.invalid-feedback Example invalid custom file feedback
+    +collapseButton("#supported-elements-structure") 設定
+    ul.mt-2.collapse#supported-elements-structure
+      li フォームに 
+        code .was-validated
+        |  を設定(説明用に最初からバリデーション状態にする)
+      li 次の各カスタムコントロールすべてに 
+        code required
+        |  を追加
+        ul
+          li
+            a(href="#checkboxes") カスタムチェックボックス
+          li
+            a(href="#radios") カスタムラジオボタン
+          li
+            a(href="#select-menu") カスタムセレクト
+          li
+            a(href="#file-browser") カスタムファイルブラウザ
+      li 応答メッセージの設定方法は今までと同じ
+    h5.mt-3#tooltips
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#tooltips") ツールチップの利用
+    p.mt-2.mb-3 バリデーションの応答メッセージとして背景が半透明のツールチップをポップアップ表示できる。この方法を用いればレイアウト位置を変えずにバリデーション表示を行うことができる。
+    form.needs-validation.mb-4(novalidate)
+      div.form-row
+        div.col-md-4.mb-3
+          label(for="validationTooltip01") First name
+          input.form-control#validationTooltip01(type="text" placeholder="First name" value="Mark" required)
+          div.valid-tooltip Looks good!
+        div.col-md-4.mb-3
+          label(for="validationTooltip02") Last name
+          input.form-control#validationTooltip02(type="text" placeholder="Last name" value="Otto" required)
+          div.valid-tooltip Looks good!
+        div.col-md-4.mb-3
+          label(for="validationTooltipUsername") Username
+          div.input-group
+            div.input-group-prepend
+              span.input-group-text#validationTooltipUsernamePrepend @
+            input.form-control#validationTooltipUsername(type="text" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required)
+            div.invalid-tooltip Please choose a unique and valid username.
+      div.form-row
+        div.col-md-6.mb-3
+          label(for="validationTooltip03") City
+          input.form-control#validationTooltip03(type="text" placeholder="City" required)
+          div.invalid-tooltip Please provide a valid city.
+        div.col-md-3.mb-3
+          label(for="validationTooltip04") State
+          input.form-control#validationTooltip04(type="text" placeholder="State" required)
+          div.invalid-tooltip Please provide a valid state.
+        div.col-md-3.mb-3
+          label(for="validationTooltip05") Zip
+          input.form-control#validationTooltip05(type="text" placeholder="Zip" required)
+        div.invalid-tooltip Please provide a valid zip.
+      button.btn.btn-primary(type="submit") Submit form
+    +collapseButton("#tooltips-structure") 設定
+    ul.mt-2.collapse#tooltips-structure
+      li 構成は
+        a(href="#custom-styles") Bootstrap方式バリデーション(基本例)
+        | と同じ
+      li 次の2点のみ変更
+        ul
+          li
+            code div.valid-feedback
+            |  ⇒ 
+            code div.valid-tooltip
+            |  に変更
+          li
+            code div.invalid-feedback
+            |  ⇒ 
+            code div.invalid-tooltip
+            |  に変更
+    h4.mt-4#custom-forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#custom-forms") カスタムフォームコントロール
+    p.my-2 Bootstrap 4で導入された表示カスタマイズ、ブラウザ依存改善、アクセシビリティ向上のためのフォーム用部品。ブラウザデフォルトのコントロールを置き換えて利用できる。
+    h5.mt-4.mb-3#checkboxes
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#checkboxes") チェックボックス
+    each n in [1,2,3,4]
+      div.custom-control.custom-checkbox
+        input.custom-control-input(id=`custom-check-${n}` type="checkbox" checked=(n==1) disabled=(n==4))
+        label.custom-control-label(for=`custom-check-${n}`)= `Custom checkbox ${n}${n == 4 ? " (disabled)" : ""}`
+    script.
+      document.getElementById('custom-check-3').indeterminate = true;
+    div.mt-3
+      +collapseButton("#checkboxes-example-structure") 構造
+    ul.struct.mt-2.collapse#checkboxes-example-structure
+      li
+        code div.custom-control.custom-checkbox
+        |  (&times;4)
+        ul
+          li
+            code input.custom-control-input
+            +attrsBtn(".a16-1")
+            ul.collapse.a16-1
+              li.att 属性 
+                code id="custom-check-(1|2|3|4)"
+              li.att 属性 
+                code type="checkbox"
+              li.att 属性(先頭のみ) 
+                code checked
+              li.att 属性(最後のみ) 
+                code disabled
+          li
+            code label.custom-control-label
+            +attrBtn(".a16-2")
+            ul
+              li.att.collapse.a16-2 属性 
+                code for="custom-check-(1|2|3|4)"
+              li.txt テキスト 
+                code Custom checkbox (1|2|3|4)( disabled)?
+    p.mt-3 3番目のチェックボックスは初期状態を 
+      kbd -
+      |  にしてある。これは 
+      code :indeterminate
+      +extLink("https://developer.mozilla.org/ja/docs/Web/CSS/:indeterminate")  疑似クラス
+      | を用いたもので、次のコードで設定している(要JavaScript)。
+    pre.p-2.border.bg-light
+      code document.getElementById('custom-check-3').indeterminate = true;
+    p.mt-3.my-2 jQueryを利用する場合は次でもよい。
+    pre.p-2.border.bg-light
+      code $('#custom-check-3').prop('indeterminate', true);
+    h5.mt-4.mb-3#radios
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#radios") ラジオボタン
+    each n in [1,2,3,4]
+      div.custom-control.custom-radio
+        input.custom-control-input(id=`custom-radio-${n}` type="radio" name="custom-radios" checked=(n==1) disabled=(n==4))
+        label.custom-control-label(for=`custom-radio-${n}`)= `Custom radio ${n}${n == 4 ? " (disabled)" : ""}`
+    div.mt-3
+      +collapseButton("#radios-example-structure") 構造
+    ul.struct.mt-2.collapse#radios-example-structure
+      li
+        code div.custom-control.custom-radio
+        |  (&times;4)
+        ul
+          li
+            code input.custom-control-input
+            +attrsBtn(".a17-1")
+            ul.collapse.a17-1
+              li.att 属性 
+                code id="custom-radio-(1|2|3|4)"
+              li.att 属性 
+                code type="radio"
+              li.att 属性 
+                code name="custom-radios"
+              li.att 属性(先頭のみ) 
+                code checked
+              li.att 属性(最後のみ) 
+                code disabled
+          li
+            code label.custom-control-label
+            +attrBtn(".a17-2")
+            ul
+              li.att.collapse.a17-2 属性 
+                code for="custom-radio-(1|2|3|4)"
+              li.txt テキスト 
+                code Custom radio (1|2|3|4)(\(disabled\))?
+    h5.mt-4.mb-3#inline-1
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#inline-1") ラジオボタン(インライン)
+    each n in [1,2,3,4]
+      div.custom-control.custom-radio.custom-control-inline
+        input.custom-control-input(id=`custom-inline-radio-${n}` type="radio" name="custom-inline-radios" checked=(n==1) disabled=(n==4))
+        label.custom-control-label(for=`custom-inline-radio-${n}`)= `Inline ${n}${n == 4 ? " (disabled)" : ""}`
+    div.mt-3
+      +collapseButton("#radios-inline-example-structure") 構造
+    ul.struct.mt-2.collapse#radios-inline-example-structure
+      li
+        code div.custom-control.custom-radio.custom-control-inline
+        |  (&times;4)
+        ul
+          li 内部は 
+            a(href="#radios") デフォルト配置
+            |  と同様(略)
+    h5.mt-4.mb-2#select-menu
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#select-menu") メニュー選択
+    each sz in [["sm","Small"],[null,"Default"],["lg","Large"]]
+      p.mt-2.mb-1
+        code= `select.custom-select${sz[0] ? `.custom-select-${sz[0]}` : ""}`
+      select(class=`custom-select${sz[0] ? ` custom-select-${sz[0]}` : ""} mt-1 mb-2`)
+        each n in [1,2,3,4,5]
+          option(value=n selected=(n==1))= `${sz[1]} custom select ${n}`
+    div.mt-3
+      +collapseButton("#select-menu-example-structure") 構造
+    ul.struct.mt-2.collapse#select-menu-example-structure
+      li
+        code select.custom-select(.custom-select-sm|.custom-select-lg)?
+        ul
+          li
+            code option
+            |  (&times;5)
+            +attrsBtn(".a18-1")
+            ul
+              li.att.collapse.a18-1 属性 
+                code value="(1|2|3|4|5)"
+              li.att.collapse.a18-1 属性(先頭のみ) 
+                code selected
+              li.txt テキスト 
+                code (Small|Default|Large) custom select (1|2|3|4|5)
+    p.mt-3.mb-2 属性 
+      code multiple
+      |  を設定した場合の表示
+    select.custom-select(multiple)
+      each n in [1,2,3,4,5]
+        option(value=n selected=(n==1))= `Custom select ${n}`
+    p.mt-3.mb-2 属性 
+      code size="3"
+      |  を設定した場合の表示
+    select.custom-select(size="3")
+      each n in [1,2,3,4,5]
+        option(value=n selected=(n==1))= `Custom select ${n}`
+    h4.mt-4.mb-3#range
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#range") レンジ
+    p.my-2 デフォルトの範囲は 
+      code 0..100
+      |  、値は 
+      code 50
+      |  、ステップは 
+      code 1
+      |  に設定される。
+    label(for="customRange1") Example range
+    input.custom-range#customRange1(type="range")
+    div.mt-3
+      +collapseButton("#range-example-1-settings") 設定
+    ul.struct.mt-2.collapse#range-example-1-settings
+      li ラベル 
+        code label
+        +attrBtn(".a19-1")
+        ul
+          li.att.collapse.a19-1 属性 
+            code for="customRange1"
+          li.txt テキスト 
+            code Example range
+      li カスタムレンジ 
+        code input.custom-range
+        +attrsBtn(".a19-2")
+        ul.collapse.a19-2
+          li.att 属性 
+            code id="customRange1"
+          li.att 属性 
+            code type="range"
+    p.mt-3.mb-2 範囲は 
+      code min
+      |  と 
+      code max
+      |  、値は 
+      code value
+      |  で設定する。
+    label(for="customRange2") Example range
+    input.custom-range#customRange2(type="range" min="0" max="5" value="1")
+    div.mt-3
+      +collapseButton("#range-example-2-settings") 設定
+    ul.struct.mt-2.collapse#range-example-2-settings
+      li ラベル 
+        code label
+        +attrBtn(".a20-1")
+        ul
+          li.att.collapse.a20-1 属性 
+            code for="customRange2"
+          li.txt テキスト 
+            code Example range
+      li カスタムレンジ 
+        code input.custom-range
+        +attrsBtn(".a20-2")
+        ul.collapse.a20-2
+          li.att 属性 
+            code id="customRange2"
+          li.att 属性 
+            code type="range"
+          li.att 属性 
+            code min="0"
+          li.att 属性 
+            code max="5"
+          li.att 属性 
+            code value="1"
+    p.mt-3.mb-2 ステップは 
+      code step
+      |  で設定する。
+    label(for="customRange3") Example range
+    input.custom-range#customRange3(type="range" min="0" max="5" step="0.5" value="3.5")
+    div.mt-3
+      +collapseButton("#range-example-3-settings") 設定
+    ul.struct.mt-2.collapse#range-example-3-settings
+      li ラベル 
+        code label
+        +attrBtn(".a21-1")
+        ul
+          li.att.collapse.a21-1 属性 
+            code for="customRange3"
+          li.txt テキスト 
+            code Example range
+      li カスタムレンジ 
+        code input.custom-range
+        +attrsBtn(".a21-2")
+        ul.collapse.a21-2
+          li.att 属性 
+            code id="customRange3"
+          li.att 属性 
+            code type="range"
+          li.att 属性 
+            code min="0"
+          li.att 属性 
+            code step="0.5"
+          li.att 属性 
+            code max="5"
+          li.att 属性 
+            code value="3.5"
+    h4.mt-4.mb-3#file-browser
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#file-browser") ファイルブラウザ
+    div.custom-file
+      input.custom-file-input#custom-file(type="file" lang="en")
+      label.custom-file-label(for="custom-file") Choose file
+    div.mt-3
+      +collapseButton("#file-browser-example-structure") 構造
+    ul.struct.mt-2.collapse#file-browser-example-structure
+      li
+        code div.custom-file
+        ul
+          li
+            code input.custom-file-input
+            +attrsBtn(".a22-1")
+            ul.collapse.a22-1
+              li.att 属性 
+                code id="custom-file"
+              li.att 属性 
+                code type="file"
+              li.att 属性 
+                code lang="en"
+          li
+            code label.custom-file-label
+            +attrBtn(".a22-2")
+            ul
+              li.att.collapse.a22-2 属性 
+                code for="custom-file"
+              li.txt テキスト 
+                code Choose file
+    h5.mt-4#translating-or-customizing-the-strings
+      +extLink("https://getbootstrap.com/docs/4.1/components/forms/#translating-or-customizing-the-strings") 文字のカスタマイズ/多言語対応
+    p.my-2 カスタムファイルブラウザの表示 
+      strong Browse
+      |  は任意の文字に変更できる。最も簡単な方法としてはHTMLの 
+      code= '<head>'
+      |  ブロックの最後に次のCSSを追加すればよい(日本語対応のみの場合)。
+    pre.p-2.border.bg-light
+      code= '<style>.custom-file-label::after { content: "ファイル選択"; }</style>'
+    p.my-2
+      code input
+      |  要素の 
+      code lang
+      |  属性に応じて自動判別する場合の例を示す(bootstrap.cssと同じ方法)。
+    +collapseButton("#custom-file-css") CSSコード例
+    pre.mt-3.p-2.border.bg-light.collapse#custom-file-css
+      | /* en(英語,デフォルト)はbootstrap.cssに設定済み(略) */
+      | /* ja(日本語) */
+      | .custom-file-input:lang(ja) ~ .custom-file-label::after {
+      |   content: "ファイル選択";
+      | }
+      | /* es(スペイン語) */
+      | .custom-file-input:lang(es) ~ .custom-file-label::after {
+      |   content: "Elegir";
+      | }
+    p.mt-3.mb-2 設定例は次の通り(en/ja/es)。
+    each lang in [["en","Choose file"],["ja","選択されていません"],["es","Seleccionar Archivo"]]
+      div.custom-file.my-1
+        input.custom-file-input(lang=lang[0] type="file" id=`custom-file-${lang[0]}`)
+        label.custom-file-label(for=`custom-file-${lang[0]}`)= lang[1]
+    p.my-2 より本格的にbootstrap.cssをソースコードからカスタマイズすることも可能。詳しくは本節の公式ドキュメント本文参照(Sassの知識が必要)。
+    h5.mt-4#custom-file-code-example ファイル名の更新(要JavaScript)
+    p.mt-3.mb-2 カスタムファイルブラウザは要素のデフォルト表示を( 
+      code opacity: 0;
+      |  を用いて)消去しその上にカスタム表示を行っている。そのためファイル名表示は別要素にする必要があり、ファイルを選択してもそのままでは更新されない。更新処理用のJavaScriptコード例を示す(どちらも可、jQuery版を本ページの例に設定済み)。
+    div.mt-3
+      +collapseButton("#custome-file-code-example-dom") コード例(DOM)
+      | &nbsp;
+      +collapseButton("#custome-file-code-example-jquery") コード例(jQuery)
+    pre.p-2.border.bg-light.mt-3.collapse#custome-file-code-example-dom
+      code
+        | // DOM版
+        | (function() {
+        |   window.addEventListener('load', function() {
+        |     var input = document.getElementById('custom-file');
+        |     input.addEventListener('change', function(event) {
+        |       var label = document.querySelector('[for="custom-file"]');
+        |       label.textContent = event.target.files[0].name;
+        |     }, false);
+        |   }, false);
+        | })();
+    pre.p-2.border.bg-light.mt-3.collapse#custome-file-code-example-jquery
+      code
+        | // jQuery版
+        | $('#custom-file').on('change', function(event) {
+        |   $('[for="custom-file"]').text($(this).prop('files')[0].name);
+        | });
+
+    +breadcrumbLevel1("コンポーネント(5): フォーム")

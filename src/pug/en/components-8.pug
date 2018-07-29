@@ -1,0 +1,334 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+mixin launchButton(target, text)
+  button.btn.btn-primary(type="button" data-toggle="modal" data-target=target)= text
+
+mixin modalDemo(modalId, labelId, dlgOption)
+  - dlgOption = dlgOption ? " " + dlgOption : ""
+  +launchButton(`#${modalId}`, "Launch demo modal")
+  div.modal.fade(id=modalId tabindex="-1" role="dialog" aria-labelledby=labelId aria-hidden="true")
+    div(class=`modal-dialog${dlgOption}` role="document")
+      div.modal-content
+        div.modal-header
+          h5.modal-title(id=labelId) Modal title
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
+        div.modal-body
+          block
+        div.modal-footer
+          button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+          button.btn.btn-primary(type="button") Save changes
+
+block head
+  title Bootstrap 4 tutorial: Components (8): Modal
+
+block body
+  div.container
+    +pageHeader("components-8")
+      p.lead Components (8): 
+        a(href="#modal") Modal
+
+    h2.mt-2#modal
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/") Modal
+    h4.mt-3#modal-components
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#modal-components") Modal components
+    p.my-2 Sample: modified to always-displayed (hidden as default)
+    // div.modal(tabindex="-1" role="dialog") <= default (hidden)
+    div.bg-light.py-2.mb-3(role="dialog")
+      div.modal-dialog(role="document")
+        div.modal-content
+          div.modal-header
+            h5.modal-title Modal title
+            button.close(type="button" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
+          div.modal-body
+            p Modal body text goes here.
+          div.modal-footer
+            button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+            button.btn.btn-primary(type="button") Save changes
+    +collapseButton("#basic-example-structure") Structure
+    ul.struct.mt-2.collapse#basic-example-structure
+      li Modal 
+        code div.modal
+        +attrsBtn(".a1-1")
+        ul
+          li.cls.collapse.a1-1 Animation 
+            code .fade
+            |  (does not slides down if removed)
+          li.att.collapse.a1-1 Attribute 
+            code id="{modal-id}"
+            |  (required for invocation)
+          li.att.collapse.a1-1 Attribute 
+            code tabindex="-1"
+            |  (removes from tab stops)
+          li.att.collapse.a1-1 Accessibility attribute 
+            code role="dialog"
+          li.att.collapse.a1-1 Accessibility attribute 
+            code aria-labelledby="{label-id}"
+          li.att.collapse.a1-1 Accessibility attribute 
+            code aria-hidden="true"
+          li Modal dialog 
+            code div.modal-dialog
+            +attrBtn(".a1-2")
+            ul
+              li.att.collapse.a1-2 Accessibility attribute 
+                code role="document"
+              li Content 
+                code div.modal-content
+                ul
+                  li Header 
+                    code div.modal-header
+                    ul
+                      li Title 
+                        code h5.modal-title
+                        +attrBtn(".a1-3")
+                        ul
+                          li.att.collapse.a1-3 Accessibility attribute 
+                            code id="{label-id}"
+                          li.txt Title text 
+                            code Modal title
+                      li Close button (upper-right) 
+                        code button.close
+                        +attrsBtn(".a1-4")
+                        ul
+                          li.att.collapse.a1-4 Attribute 
+                            code type="button"
+                          li.att.collapse.a1-4 Attribute 
+                            code data-dismiss="modal"
+                          li.att.collpse.a1-4 Accessibility attribute 
+                            code aria-label="Close"
+                          li Button symbol 
+                            code span
+                            +attrBtn(".a1-5")
+                            ul
+                              li.att.collapse.a1-5 Accessibility attribute 
+                                code aria-hidden="true"
+                              li.txt Symbol text 
+                                code= `&times;`
+                  li Body 
+                    code div.modal-body
+                    ul
+                      li Content (e.g.) 
+                        code p
+                        ul
+                          li.txt Text 
+                            code Modal body text goes here.
+                  li Footer 
+                    code div.modal-footer
+                    ul
+                      li Close button 
+                        code button.btn.btn-secondary
+                        +attrsBtn(".a1-6")
+                        ul
+                          li.att.collapse.a1-6 Attribute 
+                            code type="button"
+                          li.att.collapse.a1-6 Attribute 
+                            code data-dismiss="modal"
+                          li.txt Text 
+                            code Close
+                      li Additional button (e.g.) 
+                        code button.btn.btn-primary
+                        +attrBtn(".a1-7")
+                        ul
+                          li.att.collapse.a1-7 Attribute 
+                            code type="button"
+                          li.txt Text 
+                            code Save changes
+    div.alert.alert-info.mt-3(role="alert") There are so many markups. But most of them are fixed presets (without title, body and additional button(s)). Making a template is convenient to make use of modals. This page utilizes pug 
+      code mixin
+      |  templates (see source).
+    h4.mt-4#live-demo
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#live-demo") Modal invocation
+    p.my-2 Modals can be invoked with buttons.
+    ul.struct
+      li
+        code button.btn.(btn-primary|...)
+        |  Following attibutes are required
+        ul
+          li.att
+            code type="button"
+          li.att
+            code data-toggle="modal"
+          li.att
+            code data-target="\#{modal-id}"
+          li.txt Text (e.g.) 
+            code Launch demo modal
+    p.my-2 See the example below (clicking the button show a modal).
+    +modalDemo("exampleModal", "exampleModalLabel")
+      p Woohoo, you're reading this text in a modal!
+    div.alert.alert-info.mt-3(role="alert") Example above finds the modal element by ID. However, 
+      code data-target
+      |  accepts arbitrary CSS selector. It is possible to use a selector to query mutiple elements but invokes only the first one. Modals also do not support nesting invocations.
+    h5.mt-4#behaviors Behaviors (summary)
+    ul.my-1
+      li Background is covered by a dark translucent whole-screen element (
+        strong backdrop
+        | ) (Z-index = 
+        code 1040
+        |  )
+      li Modal shows at top-center (Z-index = 
+        code 1050
+        |  )
+      ul
+        li With 
+          code .fade
+          |  , uses CSS animation on showing modal (slides down from top)
+      li While displaying modal, keyboard event are sent to modal
+      li Modal also get scrolling events (see example below)
+      li Modal closes on one of followings
+      ul
+        li Click a close button (upper-right 
+          strong &times;
+          |  symbol, or bottom-right 
+          kbd Close
+          |  button)
+        li Click on background outside modal (backdrop)
+        li
+          kbd Esc
+          |  key input
+    h4.mt-4#scrolling-long-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#scrolling-long-content") Scrolling long content
+    p.my-2 When modal height is greater than viewport size, the vertical scroll bar is shown at the right. The scroll bar scrolls the modal (not background contents). Check with the demo below.
+    - const sampleText = ["Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.", "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.", "Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla."]
+    +modalDemo("exampleModalLong", "exampleModalLongTitle")
+      each n in [1,2,3,4,5]
+        each text in sampleText
+          p= text
+    h4.mt-4#vertically-centered
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#vertically-centered") Vertically centered
+    p.my-2 Adding 
+      code .modal-dialog-centered
+      |  to 
+      code div.modal-dialog
+      |  displays a modal on vertically center.
+    +modalDemo("exampleModalCenter", "exampleModalCenterTitle", "modal-dialog-centered")
+      p= sampleText[0]
+    h4.mt-4#tooltips-and-popovers
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#tooltips-and-popovers") Tooltops and popovers
+    p.my-2 Example using a 
+      a(href="components-12.html#toolstips") Tooltip
+      |  and 
+      a(href="components-11.html#popovers") Popovers
+      |  
+    +modalDemo("exampleModalTooltipsPopovers", "exampleModalTooltipsPopoversTitle")
+      h5 Popover in a modal
+      p This 
+        a.btn.btn-secondary.popover-test(href="#" role="button" data-toggle="popover" title="Popover title" data-content="Popover body content is set in this attribute.") button
+        |  triggers a popover on click.
+      h5 Tooltips in a modal
+      p
+        a.tooltip-test(href="#" data-toggle="tooltip" title="Tooltip") This link 
+        | and 
+        a.tooltip-test(href="#" data-toggle="tooltip" title="Tooltip") That link 
+        | have tooltips on hover.
+    h4.mt-4#using-the-grid
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#using-the-grid") Using the grid
+    p.my-2 Example using 
+      a(href="layout-1.html#grid") Grid
+      |  (see source for detail).
+    +modalDemo("exampleModalGrid", "exampleModalGridTitle")
+      div.container-fluid
+        div.row.m-2
+          div.col-md-4.border.bg-light .col-md-4
+          div.col-md-4.ml-auto.border.bg-light .col-md-4.ml-auto
+        div.row.m-2
+          div.col-md-3.ml-auto.border.bg-light .col-md-3.ml-auto
+          div.col-md-2.ml-auto.border.bg-light .col-md-2.ml-auto
+        div.row.m-2
+          div.col-md-6.ml-auto.border.bg-light .col-md-6.ml-auto
+        div.row.m-2
+          div.col-sm-9.border.bg-light Level 1: .col-sm-9
+            div.row
+              div.col-8.col-sm-6.border.bg-warning Level 2: .col-8.col-sm-6
+              div.col-4.col-sm-6.border.bg-warning Level 2: .col-4.col-sm-6
+    h4.mt-4#varying-modal-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content") Varying modal content
+    p.mt-2.mb-3 Example below is a demo for displaying button(recipient)-dependent contents to the same modal using JavaScript.
+    div.my-3
+      each item in ["mdo", "fat", "getbootstrap"]
+        button.btn.btn-primary(type="button" data-toggle="modal" data-target="#examplemodal" data-whatever=`@${item}`)= `open modal for @${item}`
+    div.modal.fade#examplemodal(tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true")
+      div.modal-dialog(role="document")
+        div.modal-content
+          div.modal-header
+            h5.modal-title#examplemodallabel new message
+            button.close(type="button" data-dismiss="modal" aria-label="close")
+              span(aria-hidden="true") &times;
+          div.modal-body
+            form
+              div.form-group
+                label.col-form-label(for="recipient-name") recipient:
+                input.form-control#recipient-name(type="text")
+              div.form-group
+                label.col-form-label(for="message-text") message:
+                textarea.form-control#message-text
+          div.modal-footer
+            button.btn.btn-secondary(type="button" data-dismiss="modal") close
+            button.btn.btn-primary(type="button") send message
+    +collapseButton(".javascript-code") JavaScript code
+    pre.p-2.border.bg-light.mt-3.collapse.javascript-code
+      code
+        | $('#examplemodal').on('show.bs.modal', function(event) {
+        |   var button = $(event.relatedTarget);
+        |   var recipient = button.data('whatever');
+        |   var modal = $(this);
+        |   modal.find('.modal-title').text('New message to ' + recipient);
+        |   modal.find('.modal-body input').val(recipient);
+        | });
+    ul.mt-2.collapse.javascript-code
+      li Preliminarily set recipients' data in invocation buttons: e.g. 
+        code data-whatever="@mdo"
+      li Set event handler for 
+        code show.bs.modal
+        |  : see 
+        +extLink("https://getbootstrap.com/docs/4.1/components/modal/#events") Events
+        |  for the difference of following two events
+        ul
+          li
+            code show.bs.modal
+            |  (used here) On modal triggered (not yet displayed)
+          li
+            code shown.bs.modal
+            |  On modal displayed
+      li In event handler
+        ul
+          li Get the invocation button 
+            code event.relatedTarget
+          li Read attribute 
+            code data-whatever
+            |  to variable 
+            code recipient
+          li Set 
+            code recipient
+            |  to the modal title and the element 
+            code input
+    h4.mt-4#optional-sizes
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#optional-sizes") Optional sizes
+    p.my-2 Use 
+      code div.modal-dialog.modal-(lg|sm)
+    - const modalSize = ["lg", "md", "sm"]
+    - const sizeText = {lg:"Large", md:"Medium", sm:"Small"}
+    each sz in modalSize
+      +launchButton(`.bd-example-modal-${sz}`, `${sizeText[sz]} modal`)
+    each sz in modalSize
+      div(class=`modal fade bd-example-modal-${sz}` tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true")
+        div(class=`modal-dialog modal-${sz}`)
+          div.modal-content
+            div.modal-header
+              h5.modal-title= `${sizeText[sz]} modal`
+              button.close(type="button" data-dismiss="modal" aria-label="close")
+                span(aria-hidden="true") &times;
+            div.modal-body ...
+            div.modal-footer
+              button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+              button.btn.btn-primary(type="button") Save changes
+    div.alert.alert-info.my-3(role="alert")
+      strong Note: 
+      |  Above example sets 
+      code .modal-md
+      |  to the midium modal but it does not has any display effect (just displays as default size). It is used for a selector of 
+      code data-target
+      |  attribute.
+
+    +breadcrumbLevel1("Components(8): Modal")

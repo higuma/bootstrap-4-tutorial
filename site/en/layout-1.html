@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Layout (1): Overview / Grid System</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Layout (1): <a href="#overview">Overview</a> / <a href="#grid">Grid System</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/layout-1.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="overview"><a href="https://getbootstrap.com/docs/4.1/layout/overview/" target="_blank">Overview</a>
+      </h2>
+      <h4 class="mt-3 mb-1" id="overview-containers"><a href="https://getbootstrap.com/docs/4.1/layout/overview/#containers" target="_blank">Containers</a>
+      </h4>
+      <p class="mb-2"></p>In Bootstrap, a container <code>.container</code> or a fluid container <code>.container-fluid</code> is used for a basic layout element.
+    </div>
+    <div class="container mt-3 mb-4 p-2 border bg-light"><code>div.container</code> ⇒ Responsive: width is set to one of the fixed steps (breakpoints), center-aligned</div>
+    <div class="container-fluid my-4 p-2 border bg-light"><code>div.container-fluid</code> ⇒ Fits to the parent (100%)</div>
+    <div class="container">
+      <h4 class="mt-4" id="overview-responsive-breakpoints"><a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints" target="_blank">Responsive breakpoints</a>
+      </h4>
+      <p class="my-2">A width of a container <code>.container</code> is set within the breakpoints as below (see <a href="https://getbootstrap.com/docs/4.1/layout/grid/#grid-options" target="_blank">Grid options</a> table for details)
+      </p>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Viewport width</th>
+            <th scope="col">Width of <code>.container</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">(xs)</th>
+            <td>&lt;576px</td>
+            <td>Browser default (auto)</td>
+          </tr>
+          <tr>
+            <th scope="row">sm</th>
+            <td>≧576px</td>
+            <td>540px</td>
+          </tr>
+          <tr>
+            <th scope="row">md</th>
+            <td>≧768px</td>
+            <td>720px</td>
+          </tr>
+          <tr>
+            <th scope="row">lg</th>
+            <td>≧992px</td>
+            <td>960px</td>
+          </tr>
+          <tr>
+            <th scope="row">xl</th>
+            <td>≧1200px</td>
+            <td>1140px</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-3 mb-2">Bootstrap uses class names with breakpoint <code>(sm|md|lg|xl)</code> for responsive settings (like <code>.col-md</code> ).</p>
+      <ul>
+        <li>No breakpoint (e.g. <code>.col</code> ): Sets as default (least prior)</li>
+        <li>With breakpoint (e.g. <code>.col-md</code> ): Sets for a specific breakpoint or greater (prior to default)</li>
+        <li>Wider breakpoint is prior</li>
+      </ul>
+      <div class="alert alert-info" role="alert">There is no <code>-xs</code> class-fix (same as setting as default). Using breakpoint priorities, you can switch layouts, or show/hide some contents with specific viewport range.</div>
+      <h4 class="mt-4" id="overview-z-index"><a href="https://getbootstrap.com/docs/4.1/layout/overview/#z-index" target="_blank">Z-index</a>
+      </h4>
+      <p>Some Bootstrap components reserve z-indexes (&ge;<code>1000</code>) for specific purposes. <code>1,2,3</code> are also used for visual customization for element states (hover, active, and focus) (set to internally-created sibling elements for presentation).</p>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Z-index</th>
+            <th scope="col">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1,2,3</th>
+            <td>Internally used for element states (hover, active, focus)</td>
+          </tr>
+          <tr>
+            <th scope="row">1000</th>
+            <td><a href="components-4.html#dropdowns">Dropdown</a></td>
+          </tr>
+          <tr>
+            <th scope="row">1020</th>
+            <td><a href="navbar-sticky-top.html">Sticky top</a> (Navbar)</td>
+          </tr>
+          <tr>
+            <th scope="row">1030</th>
+            <td><a href="navbar-fixed-top.html">Fixed top</a> / <a href="navbar-fixed-bottom.html">Fixed bottom</a> (Navbar)</td>
+          </tr>
+          <tr>
+            <th scope="row">1040</th>
+            <td><a href="components-8.html#live-demo">Backdrop (Modal background)</a></td>
+          </tr>
+          <tr>
+            <th scope="row">1050</th>
+            <td><a href="components-8.html">Modal</a></td>
+          </tr>
+          <tr>
+            <th scope="row">1060</th>
+            <td><a href="components-11.html#popovers">Popover</a></td>
+          </tr>
+          <tr>
+            <th scope="row">1070</th>
+            <td><a href="components-12.html#tooltips">Tooltip</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="mt-5" id="grid"><a href="https://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">Grid system</a>
+      </h2>
+      <h4 class="mt-4" id="grid-overview"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#how-it-works" target="_blank">Basic usage</a>
+      </h4>
+      <p class="my-2">The grid system has the following three layer structure.</p>
+      <ul class="struct">
+        <li> <a href="#overview-containers">Container (top level) </a><code>div.container</code> (or <code>div.container-fluid</code> )
+          <ul>
+            <li>Row <code>div.row</code> (Flexbox available inside with <code>display: flex</code> )
+              <ul>
+                <li>Column <code>div.col({-breakpoint}{-width})</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info">The next topic (<a href="#grid-gutters">Gutters</a>) contains advansed issues (you can skip forward to <a href="#grid-equal-width">Equal-width</a>). Understanding gutters is important when you set custom margins or paddings to rows or columns. It is also important if you need <a href="#grid-nesting">nested grids</a>.</div>
+      <h4 class="mt-2" id="grid-gutters">Gutters</h4>
+      <p class="my-2">On layouts with <code>div.container</code> , paddings called gutters are set to left and right sides (<code>15px</code> each). Actual widths for inner elements are set to <code>30px</code> smaller than <a href="#overview-responsive-breakpoints">breakpoint</a> widths of <code>div.container</code>s. Gutters are used for horizontal (inner) paddings for multi-row layouts.</p>
+      <p class="my-2">This page also uses containers and has gutters on both sides. The example bellow shows how gutters are set within the layout. The container has the gray border. The inner elements have the light gray background. The areas on left and right without background color are gutters.</p>
+    </div>
+    <div class="container border">
+      <div class="bg-light">
+        <ul class="mb-0">
+          <li>Outside: A container <code>div.container</code> (with gray border)
+            <ul>
+              <li>Sets gutters: <code>padding-(left|right): 15px</code></li>
+            </ul>
+          </li>
+          <li>Inside (here): Inner elements (with light gray background)</li>
+          <li>Left and right sides: Gutters (no background color)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="alert alert-info mt-3" role="alert"><strong>Advanced (Sass required):</strong> Gutter width is set by the Sass variable <code>$grid-gutter-width</code>. You can change it by customizing Bootstrap styles from Sass. See <a href="getting-started.html#css-customizing">Customizing from Sass source</a> for detail.</div>
+      <p class="mt-3 mb-2">On Bootstrap grid system, inside containers are rows <code>div.row</code> (children) and columns <code>div.col</code> (grandchildren). But gutters are specially treated differently in each level. The example below shows gutter treatments for all levels. Each level is bordered with a different color. But three borders are overlapped because their sizes are the same as the result.</p>
+    </div>
+    <div class="container border">
+      <div class="row border border-danger">
+        <div class="col border border-primary">
+          <div class="bg-light">
+            <ul class="mb-0">
+              <li>Parent: Container <code>div.container</code> (with gray border)
+                <ul>
+                  <li>Sets gutters: <code>padding-(left|right): 15px</code></li>
+                </ul>
+              </li>
+              <li>Child: Row <code>div.row</code> (with red border)
+                <ul>
+                  <li>Cancels gutters: <code>margin-(left|right) : -15px</code></li>
+                  <li>No paddings: <code>padding-(left|right): 0</code></li>
+                </ul>
+              </li>
+              <li>Grandchild: Column <code>div.col</code> (with blue border)
+                <ul>
+                  <li>No margins: <code>margin-(left|right): 0</code></li>
+                  <li>Sets gutters: <code>padding-(left|right): 15px</code></li>
+                </ul>
+              </li>
+              <li>Inner elements (here) (with gray background)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="alert alert-warning mt-3"><strong>Caution: </strong>You should take care for changing horizontal margins or paddings from grid system defaults. Especially, changing margins of rows, or changing paddings of columns can corrupt layouts easily.</div>
+      <h4 class="mt-4" id="grid-equal-width"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#equal-width" target="_blank">Equal-width</a>
+      </h4>
+      <p class="my-2">Setting multiple columns <code>div.col</code> inside a row <code>div.row</code> arranges columns horizontally with the same width. A maximum number of columns in a row is determined by a browser from widths of a row and colomns. See examples below (up to 20 columns).</p>
+      <div class="alert alert-info" role="alert">Examples set gray <a href="utilities-1.html#borders-border">borders</a> (<code>.border</code>) to columns <code>div.col*</code> to indicate boundaries. Areas of inner contents also set <a href="utilities-2.html#colors-background-color">background colors</a> (<code>.bg-light</code>) to indicate gutters.</div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/1</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/2</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/2</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/3</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/3</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/3</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/4</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/4</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/4</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/4</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/5</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/5</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/5</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/5</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/5</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/6</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/6</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/6</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/6</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/6</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/6</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/7</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/7</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/7</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/7</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/7</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/7</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/7</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/8</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/8</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/9</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/9</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/10</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/10</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/11</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/11</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/12</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/12</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/13</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/13</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/14</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/14</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/15</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">15/15</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">15/16</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">16/16</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">15/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">16/17</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">17/17</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">15/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">16/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">17/18</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">18/18</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">15/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">16/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">17/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">18/19</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">19/19</div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col border">
+          <div class="bg-light">1/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">2/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">3/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">4/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">5/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">6/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">7/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">8/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">9/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">10/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">11/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">12/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">13/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">14/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">15/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">16/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">17/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">18/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">19/20</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">20/20</div>
+        </div>
+      </div>
+      <p class="mt-3 mb-2">The following structure is used (containers <code>div.container</code> are omitted from here).</p>
+      <ul class="struct mt-2">
+        <li>Row <code>div.row</code>
+          <ul>
+            <li>Column <code>div.col</code> (&times; number of columns: 1..16)
+              <ul>
+                <li class="txt">Text <code>{index}/{number of columns}</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="grid-equal-width-multi-row"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#equal-width-multi-row" target="_blank">Equal-width multi-row</a>
+      </h4>
+      <p class="my-2"> For equal-width layouts using <code>div.col</code>, use an empty <code>div.w-100</code> to insert a break to a new line.</p>
+      <div class="row">
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code><span class="float-right">⇒ <code>.w-100</code></span></div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code><span class="float-right">⇒ <code>.w-100</code></span></div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.row</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-equal-width-multi-row-structure" aria-control="#grid-equal-width-multi-row-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-equal-width-multi-row-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col</code> (&times;2)</li>
+            <li><code>div.w-100</code> (breaks to a new line)</li>
+            <li><code>div.col</code> (&times;3)</li>
+            <li><code>div.w-100</code> (breaks to a new line)</li>
+            <li><code>div.col</code> (&times;4)</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="grid-column-width"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#setting-one-column-width" target="_blank">Setting one column width</a>
+      </h4>
+      <p class="my-2">Width of a grid column can be set from 1/12 (approx. 8.3%) to 12/12 (100%).</p>
+      <p class="my-2"><code>div.col-(1|2|3|4|5|6|7|8|9|10|11|12)</code></p>
+      <div class="row">
+        <div class="col-1 border">
+          <div class="bg-light"><code>.col-1</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 border">
+          <div class="bg-light"><code>.col-3</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 border">
+          <div class="bg-light"><code>.col-4</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5 border">
+          <div class="bg-light"><code>.col-5</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 border">
+          <div class="bg-light"><code>.col-6</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7 border">
+          <div class="bg-light"><code>.col-7</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 border">
+          <div class="bg-light"><code>.col-8</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9 border">
+          <div class="bg-light"><code>.col-9</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10 border">
+          <div class="bg-light"><code>.col-10</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-11 border">
+          <div class="bg-light"><code>.col-11</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 border">
+          <div class="bg-light"><code>.col-12</code></div>
+        </div>
+      </div>
+      <h5 class="mt-4" id="grid-mixing-fixed-and-equal">Mixing fixed-width and equal-width</h5>
+      <div class="row">
+        <div class="col border">
+          <div class="bg-light"><code>.col</code> 1/6(equal)</div>
+        </div>
+        <div class="col-6 border">
+          <div class="bg-light"><code>.col-6</code> 6/12(set)</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.col</code> 1/6(equal)</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.col</code> 1/6(equal)</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col border">
+          <div class="bg-light"><code>.col</code> 7/36(equal)</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.col</code> 7/36(equal)</div>
+        </div>
+        <div class="col-5 border">
+          <div class="bg-light"><code>.col-5</code> 5/12(set)</div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.col</code> 7/36(equal)</div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-mixing-fixed-and-equal-structure" aria-control="#grid-mixing-fixed-and-equal-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-mixing-fixed-and-equal-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col</code></li>
+            <li><code>div.col-6</code></li>
+            <li><code>div.col</code> (&times;2)</li>
+          </ul>
+        </li>
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col</code> (&times;2)</li>
+            <li><code>div.col-5</code></li>
+            <li><code>div.col</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="variable-width-content"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content" target="_blank">Variable width content</a>
+      </h4>
+      <p class="my-2"><code>.col-auto</code> sets an element width to browser default (by CSS <code>width: auto;</code> ). A width of a element is automatically calculated by a browser from its inner content.</p>
+      <div class="row">
+        <div class="col-auto border">
+          <div class="bg-light"><code>.col-auto</code> 123
+          </div>
+        </div>
+        <div class="col-auto border">
+          <div class="bg-light"><code>.col-auto</code> 1234567890
+          </div>
+        </div>
+        <div class="col-auto border">
+          <div class="bg-light"><code>.col-auto</code> 12345678901234567890
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-info mt-3" role="alert">An example of the official document is a complex combination with responsive and flexbox (explained later ⇒ <a href="#grid-margin-auto">Variable width content with flex</a> )。</div>
+      <h4 class="mt-4" id="grid-column-wrapping"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#column-wrapping" target="_blank">Column wrapping</a>
+      </h4>
+      <p class="my-2">Setting 12 or more columns in total automatically breaks to a next line.</p>
+      <div class="row border">
+        <div class="col-9 border">
+          <div class="bg-light"><code>.col-9</code></div>
+        </div>
+        <div class="col-4 border">
+          <div class="bg-light"><code>.col-4</code></div>
+        </div>
+        <div class="col-7 border">
+          <div class="bg-light"><code>.col-7</code></div>
+        </div>
+        <div class="col-3 border">
+          <div class="bg-light"><code>.col-3</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-column-wrapping-structure" aria-control="#grid-column-wrapping-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-column-wrapping-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col-9</code></li>
+            <li><code>div.col-4</code> breaks by being greater than 12</li>
+            <li><code>div.col-7</code></li>
+            <li><code>div.col-3</code> breaks by being greater than 12</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="grid-column-breaks"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#column-breaks" target="_blank">Column breaks</a>
+      </h4>
+      <p class="my-2">On setting each width to columns, <code>div.w-100</code> also can be used to insert a break to a new line.</p>
+      <div class="row border">
+        <div class="col-3 border">
+          <div class="bg-light"><code>.col-3</code></div>
+        </div>
+        <div class="col-5 border">
+          <div class="bg-light"><code>.col-5</code><span class="float-right">⇒ <code>.w-100</code></span></div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-4 border">
+          <div class="bg-light"><code>.col-4</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-column-breaks-structure" aria-control="#grid-column-breaks-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-column-breaks-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col-3</code></li>
+            <li><code>div.col-5</code></li>
+            <li><code>div.w-100</code> (inserts a break)</li>
+            <li><code>div.col-4</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="responsive-classes"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#responsive-classes" target="_blank">Responsive classes</a>
+      </h4>
+      <p class="my-2"><code>.col-(sm|md|lg|xl)(-1|-2|-3|...|-12|-auto)?</code></p>
+      <h5 class="mt-3" id="responsive-classes-example-1">Example 1: Equal-widths</h5>
+      <p class="mt-2 mb-0"><code>.col</code> (always two columns)</p>
+      <div class="row">
+        <div class="col border">
+          <div class="bg-light"><code>.col</code></div>
+        </div>
+        <div class="col border">
+          <div class="bg-light"><code>.col</code></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.col-sm</code> (two columns on width≧576px, two rows on width&lt;576px)
+      </p>
+      <div class="row">
+        <div class="col-sm border">
+          <div class="bg-light"><code>.col-sm</code></div>
+        </div>
+        <div class="col-sm border">
+          <div class="bg-light"><code>.col-sm</code></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.col-md</code> (two columns on width≧768px, two rows on width&lt;768px)
+      </p>
+      <div class="row">
+        <div class="col-md border">
+          <div class="bg-light"><code>.col-md</code></div>
+        </div>
+        <div class="col-md border">
+          <div class="bg-light"><code>.col-md</code></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.col-lg</code> (two columns on width≧992px, two rows on width&lt;992px)
+      </p>
+      <div class="row">
+        <div class="col-lg border">
+          <div class="bg-light"><code>.col-lg</code></div>
+        </div>
+        <div class="col-lg border">
+          <div class="bg-light"><code>.col-lg</code></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.col-xl</code> (two columns on width≧1200px, two rows on width&lt;1200px)
+      </p>
+      <div class="row">
+        <div class="col-xl border">
+          <div class="bg-light"><code>.col-xl</code></div>
+        </div>
+        <div class="col-xl border">
+          <div class="bg-light"><code>.col-xl</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#responsive-classes-example-1-structure" aria-control="#responsive-classes-example-1-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="responsive-classes-example-1-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col(-sm|-md|-lg|-xl)?</code> (&times;2)</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="responsive-classes-example-2">Example 2: Setting columns widths</h5>
+      <div class="row mt-3">
+        <div class="col-3 border">
+          <div class="bg-light"><code>col-3</code></div>
+        </div>
+        <div class="col-6 border">
+          <div class="bg-light"><code>col-6</code></div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-3 border">
+          <div class="bg-light"><code>col-sm-3</code></div>
+        </div>
+        <div class="col-sm-6 border">
+          <div class="bg-light"><code>col-sm-6</code></div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-3 border">
+          <div class="bg-light"><code>col-md-3</code></div>
+        </div>
+        <div class="col-md-6 border">
+          <div class="bg-light"><code>col-md-6</code></div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-3 border">
+          <div class="bg-light"><code>col-lg-3</code></div>
+        </div>
+        <div class="col-lg-6 border">
+          <div class="bg-light"><code>col-lg-6</code></div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-xl-3 border">
+          <div class="bg-light"><code>col-xl-3</code></div>
+        </div>
+        <div class="col-xl-6 border">
+          <div class="bg-light"><code>col-xl-6</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#responsive-classes-example-2-structure" aria-control="#responsive-classes-example-2-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="responsive-classes-example-2-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col(-sm|-md|-lg|-xl)?-3</code></li>
+            <li><code>div.col(-sm|-md|-lg|-xl)?-6</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="responsive-classes-example-3">Example 3: Variable width contents</h5>
+      <div class="row mt-3">
+        <div class="col-auto border">
+          <div class="bg-light"><code>col-auto</code> 12345
+          </div>
+        </div>
+        <div class="col-auto border">
+          <div class="bg-light"><code>col-auto</code> 12345678901234567890
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-auto border">
+          <div class="bg-light"><code>col-sm-auto</code> 12345
+          </div>
+        </div>
+        <div class="col-sm-auto border">
+          <div class="bg-light"><code>col-sm-auto</code> 12345678901234567890
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-auto border">
+          <div class="bg-light"><code>col-md-auto</code> 12345
+          </div>
+        </div>
+        <div class="col-md-auto border">
+          <div class="bg-light"><code>col-md-auto</code> 12345678901234567890
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-auto border">
+          <div class="bg-light"><code>col-lg-auto</code> 12345
+          </div>
+        </div>
+        <div class="col-lg-auto border">
+          <div class="bg-light"><code>col-lg-auto</code> 12345678901234567890
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-xl-auto border">
+          <div class="bg-light"><code>col-xl-auto</code> 12345
+          </div>
+        </div>
+        <div class="col-xl-auto border">
+          <div class="bg-light"><code>col-xl-auto</code> 12345678901234567890
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#responsive-classes-example-3-structure" aria-control="#responsive-classes-example-3-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="responsive-classes-example-3-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col(-sm|-md|-lg|-xl)?-auto</code> (&times;2)
+              <ul>
+                <li class="txt">Text (two different lengths)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="stacked-to-horizontal"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#stacked-to-horizontal" target="_blank">Switching layouts</a>
+      </h4>
+      <p class="my-2">The next example demonstrates switching between stacked (as mobile) and horizontal (as PC) layouts on the md breakpoint (768px) as follows.</p>
+      <div class="row">
+        <div class="col-5">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>Mobile</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-7">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>PC</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-8 border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+              <div class="col-4 border">
+                <div class="bg-light text-center">1-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2-2</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2-3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="my-3">Live example below (change the browser window width to switch).</p>
+      <div class="row">
+        <div class="col-md-8 border">
+          <div class="bg-light">1-1 <code>.col-md-8</code></div>
+        </div>
+        <div class="col-md-4 border">
+          <div class="bg-light">1-2 <code>.col-md-4</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md border">
+          <div class="bg-light">2-1 <code>.col-md</code>
+          </div>
+        </div>
+        <div class="col-md border">
+          <div class="bg-light">2-2 <code>.col-md</code>
+          </div>
+        </div>
+        <div class="col-md border">
+          <div class="bg-light">2-3 <code>.col-md</code>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-stacked-to-horizontal-structure" aria-control="#grid-stacked-to-horizontal-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-stacked-to-horizontal-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col-md-8</code></li>
+            <li><code>div.col-md-4</code></li>
+          </ul>
+        </li>
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col-md</code> (&times;3)</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="mix-and-match"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#mix-and-match" target="_blank">Mix and match</a>
+      </h4>
+      <p class="my-2">Another example of layout switching on the md breakpoint.</p>
+      <div class="row">
+        <div class="col-5">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>Mobile</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 border">
+                <div class="bg-light text-center">1-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 border">
+                <div class="bg-light text-center">2-3</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">3-1</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">3-2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-7">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>PC</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-8 border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+              <div class="col-4 border">
+                <div class="bg-light text-center">1-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2-2</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2-3</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">3-1</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">3-2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="my-3">Live example below</p>
+      <div class="row">
+        <div class="col-12 col-md-8 border">
+          <div class="bg-light">1-1 <code>.col-12.col-md-8</code></div>
+        </div>
+        <div class="col-6 col-md-4 border">
+          <div class="bg-light">1-2 <code>.col-6.col-md-4</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-md-4 border">
+          <div class="bg-light">2-1 <code>.col-6.col-md-4</code></div>
+        </div>
+        <div class="col-6 col-md-4 border">
+          <div class="bg-light">2-2 <code>.col-6.col-md-4</code></div>
+        </div>
+        <div class="col-6 col-md-4 border">
+          <div class="bg-light">2-3 <code>.col-6.col-md-4</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 border">
+          <div class="bg-light">3-1 <code>.col-6</code></div>
+        </div>
+        <div class="col-6 border">
+          <div class="bg-light">3-2 <code>.col-6</code></div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="grid-margin-auto"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content" target="_blank">Variable width contents with flex</a>
+      </h4>
+      <p class="my-2">A complex example using auto-width, flexbox, and responsive behaviors (from the official document).</p>
+      <ul>
+        <li>Adds <code>.justify-content-md-center</code> (⇒ <a href="utilities-3.html#flex">Flex</a>) to rows <code>div.row</code> (aligns inner elements center on &ge;md)</li>
+        <li>Adds <code>.col-md-auto</code> to the central row of each column (sets browser default width on &ge;md)</li>
+        <li>Adds <code>.col</code> to the lower-left column (equal or available maximum width)</li>
+        <li>Adds <code>.col.col-lg-2</code> to all other columns (equal width as default, 2/12 on &ge;md)</li>
+      </ul>
+      <p class="my-3">Live example below (central rows <code>.col-md-auto</code> are shown with orange background)</p>
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-2 border">
+          <div class="bg-light">1-1 <code class="small">.col.col-lg-2</code></div>
+        </div>
+        <div class="col-md-auto border">
+          <div class="bg-warning">1-2 <code class="small">.col-md-auto</code></div>
+        </div>
+        <div class="col col-lg-2 border">
+          <div class="bg-light">1-3 <code class="small">.col.col-lg-2</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col border">
+          <div class="bg-light">2-1 <code class="small">.col</code></div>
+        </div>
+        <div class="col-md-auto border">
+          <div class="bg-warning">2-2 <code class="small">.col-md-auto</code></div>
+        </div>
+        <div class="col col-lg-2 border">
+          <div class="bg-light">2-3 <code class="small">.col.col-lg-2</code></div>
+        </div>
+      </div>
+      <p class="my-3">Responsive behaviors (three cases)</p>
+      <div class="row">
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>sm(&lt;768px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-warning text-center">1-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-warning text-center">2-2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+            </div>
+            <div class="row mt-3 mb-1">
+              <div class="col text-center"><strong>lg(&ge;992px)</strong></div>
+            </div>
+            <div class="row justify-content-md-center">
+              <div class="col-2 border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+              <div class="col-auto border">
+                <div class="bg-warning text-center">1-2</div>
+              </div>
+              <div class="col-2 border">
+                <div class="bg-light text-center">1-3</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+              <div class="col-auto border">
+                <div class="bg-warning text-center">2-2</div>
+              </div>
+              <div class="col-2 border">
+                <div class="bg-light text-center">2-3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>md(768px&le;width&lt;992px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1-1</div>
+              </div>
+              <div class="col-auto border">
+                <div class="bg-warning text-center">1-2</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">1-3</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2-1</div>
+              </div>
+              <div class="col-auto border">
+                <div class="bg-warning text-center">2-2</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2-3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="grid-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#alignment" target="_blank">Alignment</a>
+      </h4>
+      <p>Use <a href="utilities-3.html#flex">Flex utilities</a>.</p>
+      <h5 class="mt-3 mb-0" id="grid-vertical-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#vertical-alignment" target="_blank">Vertical alignment</a>
+      </h5>
+      <p class="my-2">In examples below, red border is added and height is fixed to <code>5rem</code> for each row.</p>
+      <p class="mt-2 mb-0"><code>.row.align-items-start</code></p>
+      <div class="row border border-danger align-items-start" style="height: 5rem;">
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (1/3)
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (2/3)
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (3/3)
+          </div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.row.align-items-center</code></p>
+      <div class="row border border-danger align-items-center" style="height: 5rem;">
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (1/3)
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (2/3)
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (3/3)
+          </div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.row.align-items-end</code></p>
+      <div class="row border border-danger align-items-end" style="height: 5rem;">
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (1/3)
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (2/3)
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light p-1"><code>.col</code> (3/3)
+          </div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.col.align-self-(start|center|end)</code></p>
+      <div class="row border border-danger" style="height: 5rem;">
+        <div class="col align-self-start border">
+          <div class="bg-light p-1"><code>-start</code></div>
+        </div>
+        <div class="col align-self-center border">
+          <div class="bg-light p-1"><code>-center</code></div>
+        </div>
+        <div class="col align-self-end border">
+          <div class="bg-light p-1"><code>-end</code></div>
+        </div>
+      </div>
+      <h5 class="mt-3 mb-0" id="grid-horizontal-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#horizontal-alignment" target="_blank">Horizontal alignment</a>
+      </h5>
+      <p class="mt-2 mb-0"><code>.row.justify-content-start</code></p>
+      <div class="row justify-content-start border border-danger">
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (1/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (2/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (3/3)</small></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.row.justify-content-center</code></p>
+      <div class="row justify-content-center border border-danger">
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (1/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (2/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (3/3)</small></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.row.justify-content-end</code></p>
+      <div class="row justify-content-end border border-danger">
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (1/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (2/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (3/3)</small></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.row.justify-content-around</code></p>
+      <div class="row justify-content-around border border-danger">
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (1/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (2/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (3/3)</small></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.row.justify-content-between</code></p>
+      <div class="row justify-content-between border border-danger">
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (1/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (2/3)</small></div>
+        </div>
+        <div class="col-2 border">
+          <div class="bg-light"><code>.col-2</code><small> (3/3)</small></div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="griid-no-gutters"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#no-gutters" target="_blank">No gutters</a>
+      </h4>
+      <p class="my-2">Adding <code>.no-gutters</code> to <code>div.row</code> removes <a href="#grid-gutters">gutters</a> from a row.</p>
+      <p class="mt-2 mb-0"><code>div.row</code></p>
+      <div class="row"> 
+        <div class="col-9 border">
+          <div class="bg-light"><code>.col-9</code></div>
+        </div>
+        <div class="col-3 border">
+          <div class="bg-light"><code>.col-3</code></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>div.row.no-gutters</code></p>
+      <div class="row no-gutters"> 
+        <div class="col-9 border">
+          <div class="bg-light"><code>.col-9</code></div>
+        </div>
+        <div class="col-3 border">
+          <div class="bg-light"><code>.col-3</code></div>
+        </div>
+      </div>
+      <p class="mt-3 mb-2">Actual internal behavior is more complex (not just removes gutters: Also see <a href="#grid-gutters">Gutters</a> for details).</p>
+      <ul>
+        <li><code>div.row.no-gutters</code>
+          <ul>
+            <li>Removes horizontal (negative) margins (<code>-15px</code> to <code>0</code>) ⇒ <code>margin-(left|right): 0</code>
+              <ul>
+                <li>Applied parent (container) paddings (results to 30px smaller width)</li>
+              </ul>
+            </li>
+            <li>Also removes child-columns' gutters (using the child combinator <code>&gt;</code>)
+              <ul>
+                <li>(pseudo code) <code>.no-gutters &gt; .col* { padding-(left|right): 0 }</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">The next example is based on the official document.</p>
+      <p class="mt-2 mb-0"><code>div.row</code></p>
+      <div class="row"> 
+        <div class="col-12 col-sm-6 col-md-8 border">
+          <div class="bg-light"><code>.col-12.col-sm-6.col-md-8</code></div>
+        </div>
+        <div class="col-6 col-md-4 border">
+          <div class="bg-light"><code>.col-6.col-md-4</code></div>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>div.row.no-gutters</code></p>
+      <div class="row no-gutters"> 
+        <div class="col-12 col-sm-6 col-md-8 border">
+          <div class="bg-light"><code>.col-12.col-sm-6.col-md-8</code></div>
+        </div>
+        <div class="col-6 col-md-4 border">
+          <div class="bg-light"><code>.col-6.col-md-4</code></div>
+        </div>
+      </div>
+      <p class="mt-4 mb-3">It is also an example of responsive behaviors (three cases).</p>
+      <div class="row">
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>xs(&lt;576px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-12 border">
+                <div class="bg-light text-center">12</div>
+              </div>
+              <div class="col-6 border">
+                <div class="bg-light text-center">6</div>
+              </div>
+            </div>
+            <div class="row no-gutters mt-3">
+              <div class="col-12 border">
+                <div class="bg-light text-center">12</div>
+              </div>
+              <div class="col-6 border">
+                <div class="bg-light text-center">6</div>
+              </div>
+            </div>
+            <div class="row mt-3 mb-1">
+              <div class="col text-center"><strong>md or greater (&ge;768px)</strong></div>
+            </div>
+            <div class="row row">
+              <div class="col-8 border">
+                <div class="bg-light text-center">8</div>
+              </div>
+              <div class="col-4 border">
+                <div class="bg-light text-center">4</div>
+              </div>
+            </div>
+            <div class="row row no-gutters mt-3">
+              <div class="col-8 border">
+                <div class="bg-light text-center">8</div>
+              </div>
+              <div class="col-4 border">
+                <div class="bg-light text-center">4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>sm(576px&le;width&lt;768px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-6 border">
+                <div class="bg-light text-center">6</div>
+              </div>
+              <div class="col-6 border">
+                <div class="bg-light text-center">6</div>
+              </div>
+            </div>
+            <div class="row no-gutters mt-3">
+              <div class="col-6 border">
+                <div class="bg-light text-center">6</div>
+              </div>
+              <div class="col-6 border">
+                <div class="bg-light text-center">6</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="grid-ordering"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#order-classes" target="_blank">Order classes</a>
+      </h4>
+      <p class="my-2">You can change columns' order with adding <code>.order-(1|2|3|...|12)</code> (⇒ <a href="utilities-3.html#flex">Flex utilities</a> ).</p>
+      <div class="row">
+        <div class="col border order-#{n}">
+          <div class="bg-light"><code>.order-12</code>
+          </div>
+        </div>
+        <div class="col border order-#{n}">
+          <div class="bg-light"><code>.order-1</code>
+          </div>
+        </div>
+        <div class="col border">
+          <div class="bg-light">(none)
+          </div>
+        </div>
+        <div class="col border order-#{n}">
+          <div class="bg-light"><code>.order-7</code>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-ordering-1-structure" aria-control="#grid-ordering-1-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-ordering-1-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col.order-12</code></li>
+            <li><code>div.col.order-1</code></li>
+            <li><code>div.col</code></li>
+            <li><code>div.col.order-7</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">Use <code>.order-first</code> to set at first, <code>.order-last</code> to set at last.</p>
+      <div class="row">
+        <div class="col border">
+          <div class="bg-light">(none)
+          </div>
+        </div>
+        <div class="col border order-last">
+          <div class="bg-light"><code>.order-last</code>
+          </div>
+        </div>
+        <div class="col border order-first">
+          <div class="bg-light"><code>.order-first</code>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-ordering-2-structure" aria-control="#grid-ordering-2-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-ordering-2-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col</code></li>
+            <li><code>div.col.order-last</code></li>
+            <li><code>div.col.order-first</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="grid-offsetting-columns"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#offsetting-columns" target="_blank">Offsetting columns</a>
+      </h4>
+      <h5 class="mt-3" id="grid-offset-classes"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#offset-classes" target="_blank">Offset classes</a>
+      </h5>
+      <p class="mt-2 mb-3"><code>.offset-(1|2|3|...)</code> sets offset spacing on the left as the same width as <code>.col-(1|2|3...)</code></p>
+      <div class="row border my-3">
+        <div class="col-4 border">
+          <div class="bg-light"><code>.col-4</code></div>
+        </div>
+        <div class="offset-4 col-4 border">
+          <div class="bg-light"><code>.offset-4.col-4</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-offset-1-structure" aria-control="#grid-offset-1-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-offset-1-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col-4</code></li>
+            <li><code>div.offset-4.col-4</code></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="row border my-3">
+        <div class="offset-3 col-3 border">
+          <div class="bg-light"><code>.offset-3.col-3</code></div>
+        </div>
+        <div class="offset-3 col-3 border">
+          <div class="bg-light"><code>.offset-3.col-3</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-offset-2-structure" aria-control="#grid-offset-2-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-offset-2-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.offset-3.col-3</code></li>
+            <li><code>div.offset-3.col-3</code></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="row border my-3">
+        <div class="offset-3 col-6 border">
+          <div class="bg-light"><code>.offset-3.col-6</code></div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-offset-3-structure" aria-control="#grid-offset-3-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-offset-3-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.offset-3.col-6</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Responsive offset: <code>.offset-(xl|lg|md|sm)-(1|2|3|...)</code></p>
+      <p class="mt-2 mb-3">An example below is based on the official document (difficult).</p>
+      <div class="row">
+        <div class="col-sm-5 col-md-6 border">
+          <div class="bg-light"><strong>1L</strong><br><code>.col-sm-5</code><br><code>.col-md-6</code></div>
+        </div>
+        <div class="offset-sm-2 col-sm-5 offset-md-0 col-md-6 border">
+          <div class="bg-light"><strong>1R</strong><br><code>.offset-sm-2.col-sm-5</code><br><code>.offset-md-0.col-md-6</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-6 border">
+          <div class="bg-light"><strong>2L</strong><br><code>.col-sm-6</code><br><code>.col-md-5</code><br><code>.col-lg-6</code></div>
+        </div>
+        <div class="col-sm-6 offset-md-2 col-md-5 offset-lg-0 col-lg-6 border">
+          <div class="bg-light"><strong>2R</strong><br><code>.col-sm-6</code><br><code>.offset-md-2.col-md-5</code><br><code>.offset-lg-0.col-lg-6</code></div>
+        </div>
+      </div>
+      <p class="mt-4 mb-2">Overall conditions</p>
+      <table class="table table-sm table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="text-center" scope="col"></th>
+            <th class="text-center" scope="col">xs</th>
+            <th class="text-center" scope="col">sm</th>
+            <th class="text-center" scope="col">md</th>
+            <th class="text-center" scope="col">lg,xl</th>
+            <th class="text-center" scope="col"></th>
+            <th class="text-center" scope="col">xs</th>
+            <th class="text-center" scope="col">sm</th>
+            <th class="text-center" scope="col">md</th>
+            <th class="text-center" scope="col">lg,xl</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="table-light text-center" scope="row">1st row, left<br>(1L)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">5/12</td>
+            <td class="text-center" colspan="2">6/12</td>
+            <th class="table-light text-center" scope="row">1st row, right<br>(1R)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">Offset 2<br> and 5/12</td>
+            <td class="text-center" colspan="2">Offset 0 <sup><a href="#offset-responsive-example-note">[Note]</a></sup><br>and 6/12</td>
+          </tr>
+          <tr>
+            <th class="table-light text-center" scope="row">2nd row, left<br>(2L)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">6/12</td>
+            <td class="text-center">5/12</td>
+            <td class="text-center">6/12</td>
+            <th class="table-light text-center" scope="row">2nd row, right<br>(2R)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">6/12</td>
+            <td class="text-center">Offset 2<br>and 5/12</td>
+            <td class="text-center">Offset 0 <sup><a href="#offset-responsive-example-note">[Note]</a></sup><br>and 6/12</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert alert-info" id="offset-responsive-example-note" role="alert"><strong>Note: </strong>Setting responsive offsets to zero (looks like useless) is required. They are needed to cancel offsets by lower breakpoints.</div>
+      <p class="my-2">Resposive behaviors (four cases)</p>
+      <div class="row">
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>xs(&lt;576px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1L</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2L</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2R</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>sm(576px&le;width&lt;768px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-5 border">
+                <div class="bg-light text-center">1L</div>
+              </div>
+              <div class="col-5 offset-2 border">
+                <div class="bg-light text-center">1R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2L</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2R</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>md(768px&le;width&lt;992px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1L</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">1R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 border">
+                <div class="bg-light text-center">2L</div>
+              </div>
+              <div class="col-5 offset-2 border">
+                <div class="bg-light text-center">2R</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>lg,xl(&ge;992px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">1L</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">1R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center">2L</div>
+              </div>
+              <div class="col border">
+                <div class="bg-light text-center">2R</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h5 class="mt-4" id="margin-utilities"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#margin-utilities" target="_blank">Margin utilities</a>
+      </h5>
+      <p class="mt-2 mb-3">An example below (from the official document) shows how to use <a href="utilities-4.html#spacing">spacing utilities</a> for responsive grid layouts (advanced).</p>
+      <div class="row">
+        <div class="col-md-4 border">
+          <div class="bg-light py-1"><strong>1L </strong><code>.col-md-4</code></div>
+        </div>
+        <div class="col-md-4 ml-auto border">
+          <div class="bg-light py-1"><strong>1R </strong><code>.col-md-4.ml-auto</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 ml-md-auto border">
+          <div class="bg-light py-1"><strong>2L </strong><code>.col-md-3.ml-md-auto</code></div>
+        </div>
+        <div class="col-md-3 ml-md-auto border">
+          <div class="bg-light py-1"><strong>2R </strong><code>.col-md-3.ml-md-auto</code></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-auto mr-auto border">
+          <div class="bg-light py-1"><strong>3L </strong><code>.col-auto.mr-auto</code></div>
+        </div>
+        <div class="col-auto border">
+          <div class="bg-light py-1"><strong>3R </strong><code>.col-auto</code></div>
+        </div>
+      </div>
+      <p class="mt-4 mb-2">Overall conditions</p>
+      <table class="table table-sm table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="text-center" scope="col"></th>
+            <th class="text-center" scope="col">&lt; md</th>
+            <th class="text-center" scope="col">≧ md</th>
+            <th class="text-center" scope="col"></th>
+            <th class="text-center" scope="col">&lt; md</th>
+            <th class="text-center" scope="col">≧ md</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="table-light text-center" scope="row">1st row, left<br>(1L)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">4/12</td>
+            <th class="table-light text-center" scope="row">1st row, right<br>(1R)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">4/12<br>Left margin <code>auto</code></td>
+          </tr>
+          <tr>
+            <th class="table-light text-center" scope="row">2nd row, right<br>(2L)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">3/12<br>Left margin <code>auto</code></td>
+            <th class="table-light text-center" scope="row">2nd row, right<br>(2R)</th>
+            <td class="text-center">None<br>(12/12)</td>
+            <td class="text-center">3/12<br>Left margin <code>auto</code></td>
+          </tr>
+          <tr>
+            <th class="table-light text-center" scope="row">3rd low, left<br>(3L)</th>
+            <td class="text-center" colspan="2">Width <code>auto</code><br>Right margin <code>auto</code></td>
+            <th class="table-light text-center" scope="row">3rd row, right<br>(3R)</th>
+            <td class="text-center" colspan="2">Width <code>auto</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-2">Responsive behaviors</p>
+      <div class="row">
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>xs, sm (&lt;768px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center px-2">1L</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center px-2">1R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center px-2">2L</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border">
+                <div class="bg-light text-center px-2">2R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-auto mr-auto border">
+                <div class="bg-light text-center px-2">3L</div>
+              </div>
+              <div class="col-auto border">
+                <div class="bg-light text-center px-2">3R</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container">
+            <div class="row mb-1">
+              <div class="col text-center"><strong>md, lg, xl (&ge;768px)</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-4 border">
+                <div class="bg-light text-center px-2">1L</div>
+              </div>
+              <div class="col-4 ml-auto border">
+                <div class="bg-light text-center px-2">1R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3 ml-auto border">
+                <div class="bg-light text-center px-2">2L</div>
+              </div>
+              <div class="col-3 ml-auto border">
+                <div class="bg-light text-center px-2">2R</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-auto mr-auto border">
+                <div class="bg-light text-center px-2">3L</div>
+              </div>
+              <div class="col-auto border">
+                <div class="bg-light text-center px-2">3R</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="grid-nesting"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#nesting" target="_blank">Nesting</a>
+      </h4>
+      <p class="mt-2 mb-3">You can nest grid row/column structures with inserting <code>div.row(-*)</code>'s to <code>div.col(-*)</code>'s (in any level but practically once). It is typically required to make eight (any number that does not divide 12) column layouts with mutiple span(s). See the example below.</p>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-3">
+              <div class="bg-light text-center">1</div>
+            </div>
+            <div class="col-3">
+              <div class="bg-light text-center">2</div>
+            </div>
+            <div class="col-3">
+              <div class="bg-light text-center">3</div>
+            </div>
+            <div class="col-3">
+              <div class="bg-light text-center">4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 offset-6">
+          <div class="row">
+            <div class="col-3">
+              <div class="bg-light text-center">5</div>
+            </div>
+            <div class="col-3">
+              <div class="bg-light text-center">6</div>
+            </div>
+            <div class="col-3">
+              <div class="bg-light text-center">7</div>
+            </div>
+            <div class="col-3">
+              <div class="bg-light text-center">8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#grid-nesting-structure" aria-control="#grid-nesting-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct collapse" id="grid-nesting-structure">
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div col-6</code> (Top-left half)
+              <ul>
+                <li><code>div.row</code> (nests and re-divides inner)
+                  <ul>
+                    <li><code>div.col-3</code> (&times;4)
+                      <ul>
+                        <li><code>div.bg-light</code>
+                          <ul>
+                            <li class="txt">Text <code>(1|2|3|4)</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><code>div.row</code>
+          <ul>
+            <li><code>div.col-6.offset-6</code> (Bottom-right half)
+              <ul>
+                <li><code>div.row</code> (nests and re-divides inner)
+                  <ul>
+                    <li><code>div.col-3</code> (&times;4)
+                      <ul>
+                        <li><code>div.bg-light</code>
+                          <ul>
+                            <li class="txt">Text <code>(5|6|7|8)</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">The example below shows structural details of the above.</p>
+      <div class="row py-1 border" style="background:rgba(0,255,0,0.1)">
+        <div class="col-6 py-1" style="background:rgba(255,0,0,0.1)">
+          <div class="row">
+            <div class="col-3 border">
+              <div class="bg-light text-center">1</div>
+            </div>
+            <div class="col-3 border">
+              <div class="bg-light text-center">2</div>
+            </div>
+            <div class="col-3 border">
+              <div class="bg-light text-center">3</div>
+            </div>
+            <div class="col-3 border">
+              <div class="bg-light text-center">4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row py-1 border" style="background:rgba(0,255,0,0.1)">
+        <div class="col-6 offset-6 py-1" style="background:rgba(255,0,0,0.1)">
+          <div class="row">
+            <div class="col-3 border">
+              <div class="bg-light text-center">5</div>
+            </div>
+            <div class="col-3 border">
+              <div class="bg-light text-center">6</div>
+            </div>
+            <div class="col-3 border">
+              <div class="bg-light text-center">7</div>
+            </div>
+            <div class="col-3 border">
+              <div class="bg-light text-center">8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="my-2">
+        <li>Added borders</li>
+        <li>Light green background to outer <code>div.row</code></li>
+        <li>Pink background to inner <code>div.row</code></li>
+        <li>Addded slight vertical paddings to show nesting levels</li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">Grid nesting tends to be complex and you can avoid it for most cases. For example, if you (just) want 8-column grids, using <a href="#grid-equal-width">equal-width</a> class is more suitable.</div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Layout(1): Overview/Grid system</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

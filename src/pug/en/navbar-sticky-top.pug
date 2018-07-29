@@ -1,0 +1,44 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components (10): Navbar: Placement/Sticky top
+
+block body
+  div.container
+    +pageHeader("navbar-sticky-top")
+      p.lead Components (10): Navbar: Placement/Sticky top
+
+    h2.mt-3#navbar
+      a(href="components-10.html") Navbar
+    h5.mt-4#navbar-placement-sticky-top
+      a(href="components-10.html#placement") Placement
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#placement") Sticky top
+    p The bar below is the live example of a sticky-top navbar 
+      code nav.navbar.sticky-top
+      | .
+    ul
+      li Scrolls up with the page (body) upto the top of the page
+      li Stays at the top to further scroll-ups
+    p.text-danger.my-2 ↓↓↓↓↓ This bar ↓↓↓↓↓
+  nav.navbar.sticky-top.navbar-dark.bg-info
+    a.navbar-brand(href="#") Sticky top
+  div.container
+    p.text-danger.my-2 ↑↑↑↑↑ This bar ↑↑↑↑↑
+    div.alert.alert-danger.mt-3(role="alert")
+      strong Caution: 
+      |  It uses CSS 
+      code position: sticky
+      |  . But it is not supported in every browser (IE10 and IE11 do not support) (check for 
+      +extLink("https://caniuse.com/#feat=css-sticky") caniuse - CSS position:sticky
+      |  ).
+    p (Dummy contents for scrolling below)
+    each n in [1,2,3]
+      h5(id=`pict-${n}`)= `Picture ${n}`
+      img.img-fluid.mb-4(src=`../img/1920x1080.svg`)
+    each n in [1,2,3]
+      h5(id=`slide-${n}`)= `Slide ${n}`
+      img.img-fluid.mb-4(src=`../img/slide-${n}.svg`)
+
+    +breadcrumbLevel2("components-10.html", "Components(10): Navbar", "Placement/Stiky top")

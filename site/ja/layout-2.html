@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: レイアウト(2): メディアオブジェクト / レイアウトユーティリティ</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">レイアウト(2): <a href="#media-object">メディアオブジェクト</a> / <a href="#utilities-for-layout">レイアウトユーティリティ</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/layout-2.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="media-object"><a href="https://getbootstrap.com/docs/4.1/layout/media-object/" target="_blank">メディアオブジェクト</a>
+      </h2>
+      <h4 class="mt-4" id="media-example"><a href="https://getbootstrap.com/docs/4.1/layout/media-object/#example" target="_blank">基本構成</a>
+      </h4>
+      <div class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <ul class="struct mt-3">
+        <li>外枠 <code>div.media</code>
+          <ul>
+            <li>サムネール画像 <code>img</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+              <ul class="collapse a1-1">
+                <li class="cls">クラス <code>.mr-3</code> (右側の本文との間に1remの間隔を確保 ⇒ <a href="utilities-4.html#spacing">空白ユーティリティ</a>)</li>
+                <li class="att">属性 <code>href="..."</code></li>
+                <li class="att">属性 <code>alt="..."</code></li>
+              </ul>
+            </li>
+            <li>ヘッダ + 本文 <code>div.media-body</code>
+              <ul>
+                <li>ヘッダ <code>h5</code>
+                  <ul>
+                    <li class="txt">テキスト <code>Media heading</code></li>
+                  </ul>
+                </li>
+                <li class="txt">本文 <code>Lorem ipsum ...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="media-nesting"><a href="https://getbootstrap.com/docs/4.1/layout/media-object/#nesting" target="_blank">ネスト</a>
+      </h4>
+      <p class="my-2"><code>div.media-body</code> の子として <code>div.media</code> をネストして配置できる。</p>
+      <p class="mt-2 mb-1">2重ネストの例</p>
+      <div class="media mt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+            <div class="media-body">
+              <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 mb-1">3重ネスト(以下何重でもOK)</p>
+      <div class="media mt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+            <div class="media-body">
+              <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+                <div class="media-body">
+                  <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/media-object/#alignment" target="_blank">アラインメント</a>
+      </h4>
+      <p class="my-2"><a href="utilities-3.html#flex">Flexboxユーティリティ</a>の <code>.align-self(start|center|end)</code> を用いる。次は <code>img</code> の配置例(枠に確認用のボーダーを追加)。</p>
+      <p class="mt-2 mb-1"><code>img.align-self-start</code></p>
+      <div class="media mb-3 border"><img class="align-self-start mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Top-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <p class="mt-2 mb-1"><code>img.align-self-center</code></p>
+      <div class="media mb-3 border"><img class="align-self-center mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Center-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <p class="mt-2 mb-1"><code>img.align-self-end</code></p>
+      <div class="media mb-3 border"><img class="align-self-end mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Bottom-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-order"><a href="https://getbootstrap.com/docs/4.1/layout/media-object/#order" target="_blank">コンテンツの順序</a>
+      </h4>
+      <p class="my-2">(1) 要素の順序を変更して <code>img</code> を最後にすると右配置になる</p>
+      <div class="media mt-2">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div><img class="ml-3 order-last" src="../img/48x48.svg" alt="48x48 placeholder image">
+      </div>
+      <p class="mt-4 mb-2">(2) <a href="utilities-3.html#flex">Flexboxユーティリティ</a>の <code>.order-*</code> を使い順序を入れ替えても同じことができる</p>
+      <div class="media mt-2"><img class="ml-3 order-last" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-list"><a href="https://getbootstrap.com/docs/4.1/layout/media-object/#media-list" target="_blank">リスト要素を用いる場合</a>
+      </h4>
+      <p class="my-2"><code>ul</code> ( <code>ol</code> でも同じ)を用いた例</p>
+      <ul class="list-unstyled">
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (1)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (2)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (3)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+      </ul>
+      <ul class="struct mt-3">
+        <li><code>ul.list-unstyled</code>
+          <ul>
+            <li class="cls"><code>.list-unstyled</code> で先頭シンボルを非表示(⇒ <a href="content-1.html#typo-list-unstyled">リストのデフォルト書式解除</a>)</li>
+            <li>アイテム(個数分) <code>li.media.my-3</code>
+              <ul>
+                <li class="cls"><code>.my-3</code> は上下マージン調整(⇒ <a href="utilities-4.html#spacing">空白ユーティリティ</a>)</li>
+                <li>以下<a href="#media-example">基本構成</a>の内部と同様</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="utilities"><a href="https://getbootstrap.com/docs/4.1/layout/utilities-for-layout/" target="_blank">レイアウトユーティリティ</a>
+      </h2>
+      <p class="mb-2">レイアウト用のBootstrapユーティリティについて(簡単な紹介のみ)</p>
+      <ul class="mb-3">
+        <li>要素の表示/非表示の設定 ⇒ <a href="utilities-2.html#display">表示</a></li>
+        <li>flexboxを用いたレイアウト ⇒ <a href="utilities-3.html#flex">Flexbox</a></li>
+        <li>マージンとパディングの設定 ⇒ <a href="utilities-4.html#spacing">空白</a></li>
+        <li>(配置を変えずに)表示だけ消す場合 ⇒ <a href="utilities-5.html#visibility">可視性</a></li>
+      </ul>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">レイアウト(2): メディアオブジェクト/レイアウトユーティリティ</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

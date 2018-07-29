@@ -1,0 +1,351 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: ユーティリティ(3): Flexbox / フロート / 画像置換
+
+block body
+  div.container
+    +pageHeader("utilities-3")
+      p.lead ユーティリティ(3): 
+        a(href="#flex") Flexbox
+        |  / 
+        a(href="#float") フロート
+        |  / 
+        a(href="#image-replacement") 画像置換
+
+    h2.mt-2#flex
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/") Flexbox
+    - const RES = "(-sm|-md|-lg|-xl)?"
+    - const justify = "start end center between around".split(" ")
+    - const align = "start end center baseline stretch".split(" ")
+    - const alignContent = "start end center between around stretch".split(" ")
+    - const wrap = "nowrap wrap wrap-reverse".split(" ")
+    - const dirRE = `.flex${RES}-(row|column)(-reverse)?`
+    - const justifyRE = `.justify-content${RES}-(${justify.join("|")})`
+    - const alignItemsRE = `.align-items${RES}-(${align.join("|")})`
+    - const alignSelfRE = `.align-self${RES}-(${align.join("|")})`
+    - const fillRE = `.flex${RES}-fill`
+    - const growShrinkRE = `.flex${RES}-(grow|shrink)-(0|1)`
+    - const wrapRE = `.flex${RES}-(${wrap.join("|")})`
+    - const orderRE = `.order${RES}-(0|1|2|3|4|5|6|7|8|9|10|11|12|first|last)`
+    - const alignContentRE = `.align-content${RES}-(${alignContent.join("|")})`
+    - const autoMarginRE = ".m(l|t|r|b)?-auto"
+    p.mt-2.mb-1 Bootstrap 4からCSS3のFlexboxを全面的に利用するようになった。ここではFlexboxを利用するためのBootstrapユーティリティについて説明する。なおFlexboxの解説は 
+      +extLink("https://css-tricks.com/snippets/css/a-guide-to-flexbox/") A complete guide to Flexbox
+      |  がおすすめ。
+    h4.mt-4.mb-1#flex-notation 記法まとめ
+    p.my-3 書式(クラス名)はFlexboxのCSSプロパティ/値に対応している(詳しくは 
+      +extLink("https://www.w3.org/TR/css-flexbox-1/") Flexbox (W3C)
+      |  または 
+      +extLink("https://developer.mozilla.org/ja/docs/Glossary/Flexbox") MDN - Flexbox
+      |  を参照)。
+    p.mt-3.mb-0
+      code display
+      |  プロパティの設定 (⇒ 
+      a(href="utilities-2.html#display") 表示ユーティリティ
+      | )
+    p.my-0
+      code= `.d${RES}-(flex|inline-flex)`
+    each opt in [["flex-direction",dirRE], ["justify-content",justifyRE], ["align-items",alignItemsRE], ["align-self",alignSelfRE], ["flex",fillRE], ["flex-(grow|shrink)",growShrinkRE],["flex-wrap",wrapRE],["order",orderRE],["align-content",alignContentRE]]
+      p.mt-3.mb-0
+        code= opt[0]
+        |  プロパティの設定
+        - if (opt[0] == "flex")
+          |  (⇒ 
+          code flex: 1 1 auto;
+          |  )
+      p.my-0
+        code= opt[1]
+    p.mt-3.mb-0 自動マージン
+    p.my-0
+      code= autoMarginRE
+    div.alert.alert-info.mt-3(role="alert") 自動マージンは 
+      code margin(-left|-top|-right|-bottom)?
+      |  を 
+      code auto
+      |  に設定する
+      a(href="utilities-4.html#spacing") 空白ユーティリティ
+      | の一部。Flexboxとの組み合わせで用いることが多いためここで説明している。
+    h4.mt-4.mb-0#flex-direction
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#direction") 縦横の配置順序
+    p.my-2
+      code= dirRE
+    div.row
+      each dir in ["row","column"]
+        each rev in ["", "-reverse"]
+          div.col-lg-6
+            div
+              p.mt-3.mb-1
+                code= `div.d-flex.flex-${dir}${rev}`
+              div(class=`d-flex flex-${dir}${rev} border`)
+                each n in [1,2,3]
+                  div.border.bg-light.p-1= `Flex item ${n}`
+    h4.mt-4#flex-justify-content
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#justify-content") 要素の間隔設定
+    p.my-2
+      code= justifyRE
+    div.row
+      each opt in justify
+        dvi.col-lg-6
+          div
+            p.mt-3.mb-1
+              code= `.d-flex.justify-content-${opt}`
+            div(class=`d-flex justify-content-${opt} border`)
+              each n in [1,2,3]
+                div.border.bg-light.p-1= `Flex item ${n}`
+    h4.mt-4.mb-1#flex-align-items
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-items") 要素の配置設定
+    p.my-2
+      code= alignItemsRE
+    p.my-2 In examples below, parent box heights are fixed to 
+      code 5rem
+      | .
+    div.row
+      each opt in align
+        div.col-lg-6
+          div
+            p.mt-3.mb-1
+              code= `.d-flex.align-items-${opt}`
+            div(class=`d-flex align-items-${opt} border` style="height: 5rem;")
+              each n in [1,2,3]
+                div.border.bg-light.p-1= `Flex item ${n}`
+    h4.mt-4.mb-1#flex-align-self
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-self") 個別要素の配置設定
+    p.my-2
+      code= alignSelfRE
+    ul
+    p.my-2 以下の例では親ボックスの高さを 
+      code 5rem
+      |  に固定し、中央の子アイテムに設定している。
+    div.row
+      each opt in align
+        div.col-lg-6
+          div
+            p.mt-3.mb-1 中央アイテムに 
+              code= `.align-self-${opt}`
+            div.d-flex.border(style="height: 5rem;")
+              div.border.bg-light.p-1 Flex item
+              div(class=`align-self-${opt} border bg-light p-1`) Aligned flex item
+              div.border.bg-light.p-1 Flex item
+    h4.mt-4.mb-1#flex-fill
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#fill") フィル
+    p.my-2
+      code= fillRE
+    p.my-2 子アイテムを親ボックス全体にフィルする場合は 
+      code .flex-fill
+      |  を設定する。子アイテムはそれぞれのコンテンツの幅(または高さ)に対応して親要素全体に引き延ばされる。
+    p.mt-3.mb-1 例: 各アイテムに 
+      code .flex-fill
+      |  を設定
+    div.d-flex
+      each text in ["Short", "Medium length text", "This is a slightly longer text content"]
+        div.flex-fill.border.bg-light.p-1= text
+    h4.mt-4.mb-1#flex-grow-and-shrink
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#grow-and-shrink") 伸び縮み
+    p.my-2
+      code= growShrinkRE
+    p.my-2 CSSの 
+      code flex-grow
+      |  プロパティはデフォルトで 
+      code 0
+      |  に設定されている(自動的に伸びない)。特定要素だけを親要素全体に引き延ばす場合は 
+      code .flex-grow-1
+      |  を用いることができる( 
+      code flex-grow: 1
+      |  に設定)。
+    div.d-flex
+      div.flex-grow-0.border.bg-light.p-1 Item (
+        code flex-grow: 0
+        | )
+      div.flex-grow-1.border.bg-light.p-1 Item with 
+        code .flex-grow-1
+      div.flex-grow-0.border.bg-light.p-1 Item (
+        code flex-grow: 0
+        | )
+      div.flex-grow-0.border.bg-light.p-1 Item (
+        code flex-grow: 0
+        | )
+    p.mt-3.mb-2 CSSの 
+      code flex-shrink
+      |  プロパティはデフォルトで 
+      code 1
+      |  に設定されている(必要に応じ折り返して縮む)。特定要素を元のサイズ以下に縮まないようにする場合は 
+      code .flex-shrink-0
+      |  を用いることができる( 
+      code flex-shrink: 0
+      |  に設定)。
+    div.d-flex
+      div.w-100.border.bg-light.p-1 Item with 
+        code .w-100
+      div.flex-shrink-0.border.bg-light.p-1 Item with 
+        code .flex-shrink-0
+        |  (does not shrink)
+      div.flex-shrink-1.border.bg-light.p-1 Item with 
+        code .flex-shrink-1
+    h4.mt-4.mb-1#flex-auto-margins
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#auto-margins") 自動マージン
+    p.my-2
+      code= autoMarginRE
+    p.mt-3.mb-1 デフォルト
+    div.d-flex.border
+      div.border.bg-light.p-2 Flex item 1
+      div.border.bg-light.p-2 Flex item 2
+      div.border.bg-light.p-2 Flex item 3
+    p.mt-3.mb-1 アイテム1に 
+      code .mr-auto
+      |  を設定
+    div.d-flex.border
+      div.border.mr-auto.bg-light.p-2 Flex item 1 
+        code .mr-auto
+      div.border.bg-light.p-2 Flex item 2
+      div.border.bg-light.p-2 Flex item 3
+    p.mt-3.mb-1 アイテム3に
+      code .ml-auto
+      |  を設定
+    div.d-flex.border
+      div.border.bg-light.p-2 Flex item 1
+      div.border.bg-light.p-2 Flex item 2
+      div.border.ml-auto.bg-light.p-2 Flex item 3 
+        code .ml-auto
+    h4.mt-4.mb-1#flex-with-align-items
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#with-align-items") 自動マージン + 個別要素配置
+    h5.mt-2.mb-1 例1
+    ul.my-1
+      li 親ボックスに
+        code .flex-column.align-items-start
+        |  + 
+        code style="height:10rem"
+        |  を設定
+      li アイテム1に 
+        code .mb-auto
+        |  を設定
+    div.d-flex.flex-column.align-items-start.border(style="height:10rem;")
+      div.mb-auto.p-2.border.bg-light Flex item 1 
+        code .mb-auto
+      div.p-2.border.bg-light Flex item 2
+      div.p-2.border.bg-light Flex item 3
+    h5.mt-4.mb-1 例2
+    ul.my-1
+      li 親ボックスに 
+        code .flex-column.align-items-end
+        |  + 
+        code style="height:10rem"
+        |  を設定
+      li アイテム３に 
+        code .mt-auto
+        |  を設定
+    div.d-flex.flex-column.align-items-end.border(style="height: 10rem;")
+      div.p-2.border.bg-light Flex item 1 
+      div.p-2.border.bg-light Flex item 2
+      div.mt-auto.p-2.border.bg-light Flex item 3 
+        code .mt-auto
+    h4.mt-4.mb-1#flex-wrap
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#wrap") ラップ
+    p.my-2
+      code= wrapRE
+    p.my-0 以下の例では親ボックスの幅を 
+      code 15rem
+      |  に固定しライトグレーの背景を付けている。
+    each w in wrap
+      p.mt-3.mb-1
+        code= `.d-flex.flex-${w}`
+      div(class=`d-flex flex-${w} bg-light` style="width: 15rem;")
+        each n in [1,2,3,4,5,6,7]
+          div.p-2.border= `Flex item ${n}`
+    h4.mt-4#flex-order
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#order") 順序
+    p.my-2
+      code= orderRE
+    p.mt-3.mb-2 例: DOM順序は(1,2,3,4,5)、
+      code .order-*
+      |  は(4,2,5,1,3)の順
+    div.d-flex.border
+      each n in [[1,4],[2,2],[3,5],[4,1],[5,3]]
+        div(class=`order-${n[1]} border p-1 bg-light`)
+          = `Item ${n[0]} `
+          code= `.order-${n[1]}`
+    div.alert.alert-info.mt-4(role="alert") ここのドキュメント本文には書かれていないが 
+      code .order-(first|last)
+      |  もあり、それぞれ先頭と最終に配置される(
+      a(href="layout-1.html#grid-ordering") グリッド - 列の順序指定
+      | に説明がある)。
+    h4.mt-4.mb-1#flex-align-content
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-content") アラインメント
+    p.my-2
+      code= alignContentRE
+    p.my-2 例: ラップ
+      code .flex-wrap
+      |  との組み合わせ
+    +collapseButton("#align-content-examples-structure") 構成
+    ul.struct.mt-2.collapse#align-content-examples-structure
+      li 親ボックス 
+        code div.flex-wrap
+        ul
+          li.cls クラス 
+            code .align-content-(start|end|center|...)
+          li.att 属性 
+            code style="width: 300px; height: 150px;"
+            |  (幅と高さを固定)
+          li 内部の子アイテム 
+            code div
+            |  (&times;8)
+    div.row
+      each align in ["start","end","center","between","around","stretch"]
+        div.col.col-md-6.col-lg-4
+          div
+            p.mt-3.mb-1
+              code= `.align-content-${align}.flex-wrap`
+            div(class=`d-flex align-content-${align} flex-wrap border` style="width: 300px; height: 150px;")
+              - for (let n = 1; n <= 8; n++)
+                div.p-1.border.bg-light= `Flex item ${n}`
+
+
+
+    h2.mt-5#float
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/") フロート
+    p.my-2 要素フローティングの設定(左右配置して後続インライン要素をボックス内回り込み処理)
+    h4.my-2#float-classes
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/#classes") 基本設定
+    p.my-1
+      code .float-(left|right|none)
+    div.row
+      each f in ["left","right","none"]
+        div.col.border.p-1
+          img(src="../img/64x64.svg" class=`float-${f} rounded m-2`)
+          p.m-1: code= `img.float-${f}`
+          p.m-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    h4.mt-4#float-responsive
+      +extLink(href="https://getbootstrap.com/docs/4.1/utilities/float/#responsive") レスポンシブ設定
+    p.my-1
+      code .float-(sm|md|lg|xl)-(left|right|none)
+    h5.mt-3.mb-2 設定例
+    each w in [["sm",576],["md",768],["lg",992],["xl",1200]]
+      each f in [["left","左"],["right","右"]]
+        p.mt-2.mb-0: code= `.float-${w[0]}-${f[0]}`
+        div.row.border
+          div.col
+            p(class=`float-${w[0]}-${f[0]} text-primary mx-2`)= `幅≧${w[1]}pxで${f[1]}フロート`
+            p.mx-2 通常テキスト
+
+    h2.mt-5#image-replacement
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/image-replacement/") 画像置換
+    p.mt-3.mb-1 サイトのタイトルやロゴに専用画像を用いる場合の対応法(以下例)
+    ul.struct
+      li
+        code h1.text.hide
+        ul
+          li.att 属性 
+            code background-image: url("../img/sample-logo.png");
+          li.att 属性 
+            code width: 224px;
+          li.att 属性 
+            code height: 48px;
+          li.txt テキスト 
+            code Sample Logo
+    p.mt-3.mb-1 設定例(テキスト 
+      code Sample Logo
+      |  は表示されないがマークアップとして認識される)
+    h1.text-hide(style=`background-image: url("../img/sample-logo.png"); width: 224px; height: 48px;`) Sample Logo
+
+    +breadcrumbLevel1("ユーティリティ(3): Flexbox/フロート/画像置換")

@@ -1,0 +1,545 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+mixin img286x180top
+  img.card-img-top(src="../img/286x180.svg" alt="Card image cap")
+
+mixin quoteFooter
+  footer.blockquote-footer Someone famous in
+    cite(title="Source Title") Source Title
+
+mixin lastUpdated
+  small.text-muted Last updated 3 mins ago
+
+mixin textLastUpdated
+  p.card-text
+    +lastUpdated
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(3): カード
+
+block body
+  - const contexts = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+  - const sampleText = "Some quick example text to build on the card title and make up the bulk of the card's content."
+  - const sampleText2 = "With supporting text below as a natural lead-in to additional content."
+  - const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+  div.container
+    +pageHeader("components-3")
+      p.lead コンポーネント(3): 
+        a(href="#cards") カード
+
+    h2.mt-2#cards
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/") カード
+    h4.mt-3#example
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#example") 基本例
+    div.card.my-3(style="width: 18rem;")
+      +img286x180top
+      div.card-body
+        h5.card-title Card title
+        p.card-text= sampleText
+        a.btn.btn-primary(href="#") Go somewhere
+    +collapseButton("#basic-example-structure") 構造
+    ul.struct.mt-2.collapse#basic-example-structure
+      li 親 
+        code div.card
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 属性(幅固定) 
+            code style="width: 18rem;"
+          li トップ画像 
+            code img.card-img-top
+            +attrsBtn(".a1-2")
+            ul.collapse.a1-2
+              li.att 属性 
+                code src="..."
+              li.att 属性 
+                code alt="..."
+          li ボディ 
+            code div.card-body
+            ul
+              li タイトル 
+                code h5.card-title
+                ul
+                  li.txt テキスト 
+                    code Card title
+              li 本文 
+                code p.card-text
+                ul: li.txt テキスト 
+                  code Some quick example text ...
+              li ボタン 
+                code a.btn.btn-(primary|secondary|...)
+                +attrBtn(".a1-3")
+                ul
+                  li.att.collapse.a1-3 属性 
+                    code href="..."
+                  li.txt テキスト 
+                    code Go somewhere
+    h4.mt-4#content-types
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#content-types") 構成要素
+    p.my-2 以下の書式設定はカード用だが、他の目的にも使用できる。
+    h5.mt-2#body
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#body") ボディ
+    p.my-2 ボディ(本文)は全体を 
+      code div.card-body
+      |  で囲む。
+    div.card.mb-3
+      div.card-body This is some text within a card body.
+    +collapseButton("#example-body-structure") 構造
+    ul.struct.mt-2.collapse#example-body-structure
+      li
+        code div.card
+        ul
+          li
+            code div.card-body
+            ul
+              li.txt テキスト 
+                code This is some text within a card body.
+    h5.mt-4#titles-text-and-links
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#titles-text-and-links") タイトル、テキスト、リンク
+    p.my-2 カード用の書式設定: まとめて示す。
+    div.card.my-3(style="width: 18rem;")
+      div.card-body
+        h5.card-title Card title
+        h6.card-subtitle.mb-2.text-muted Card subtitle
+        p.card-text= sampleText
+        a.card-link(href="#") Card link
+        a.card-link(href="#") Another link
+    +collapseButton("#example-typos-structure") 構造
+    ul.struct.mt-2.collapse#example-typos-structure
+      li タイトル 
+        code (h1|h2|h3...).card-title
+        |  (上例は 
+        code h5.card-title
+        |  )
+      li サブタイトル 
+        code (h1|h2|h3...).card-subtitle
+        |  (上例は 
+        code h6.card-subtitle
+        |  )
+      li リンク 
+        code (a).card-link
+      li テキスト 
+        code (p).card-text
+    h5.mt-4#images
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#images") 画像
+    p.my-2
+      code img.card-img-top
+      | でカード上部に配置する。
+    div.card.mt-2.mb-3(style="width: 18rem;")
+      +img286x180top
+      div.card-body
+        p.card-text= sampleText
+    +collapseButton("#example-images-structure") 構造
+    ul.struct.mt-2.collapse#example-images-structure
+      li
+        code div.card
+        ul
+          li
+            code img.card-img-top
+          li
+            code div.card-body
+    p.mt-3.mb-1 この場合は 
+      code div.card-body
+      |  の中ではなく兄弟要素として用いることに注意。より詳しくは
+      a(href="#images-1") 画像の設定
+      | を参照。
+
+    h4.mt-4#list-groups
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#list-groups") リストグループ
+    h5.mt-3#flush-list 基本構造(フラッシュリスト)
+    div.card.my-3(style="width: 18rem;")
+      ul.list-group.list-group-flush
+        each text in ["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"]
+          li.list-group-item= text
+    +collapseButton("#example-flush-list-structure") 構造
+    ul.struct.mt-2.collapse#example-flush-list-structure
+      li リスト 
+        code ul.list-group.list-group-flush
+        ul
+          li アイテム 
+            code li.list-group-item
+    h5.mt-4#list-header ヘッダの設定
+    div.card.my-3(style="width: 18rem;")
+      div.card-header Featured
+      ul.list-group.list-group-flush
+        each text in ["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"]
+          li.list-group-item= text
+    +collapseButton("#example-list-header-structure") 構造
+    ul.struct.mt-2.collapse#example-list-header-structure
+      li 親 
+        code div.card
+        ul
+          li ヘッダ(次の例の 
+            strong Featured
+            |  ) 
+            code div.card-header
+            |  (次のリストに上下密着して配置)
+          li リスト+子アイテム(以下同じ)
+    h4.mt-4#kitchen-sink
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#kitchen-sink") アイテムの積み重ね
+    p.my-2 組み合わせ例
+    div.card.mt-2.mb-3(style="width: 18rem;")
+      +img286x180top
+      div.card-body
+        h5.card-title Card title
+        p.card-text= sampleText
+      ul.list-group.list-group-flush
+        each text in ["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"]
+          li.list-group-item= text
+      div.card-body
+        a.card-link(href="#") Card link
+        a.card-link(href="#") Another link
+    +collapseButton("#example-kitchen-sink-structure") 構造
+    ul.struct.mt-2.collapse#example-kitchen-sink-structure
+      li 親 
+        code div.card
+        ul
+          li トップ画像 
+            code img.card-img-top
+          li カードボディ 
+            code div.card-body
+            |  : 内部に次の4つを積み重ね
+            ul
+              li タイトル 
+                code h5.card-title
+              li テキスト 
+                code p.card-text
+              li リスト 
+                code ul.list-group.list-group-flush
+              li リンク 
+                code a.card-link
+                |  (&times;2, 横並びに配置)
+                +attrBtn(".a2-1")
+                ul
+                  li.att.collapse.a2-1 属性 
+                    code href="..."
+                  li.txt テキスト(例) 
+                    code Card link
+              li リンク 
+                code a.card-link
+    h4.mt-4#header-and-footer
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#header-and-footer") ヘッダ、フッタ
+    p.mb-2 基本構造( 
+      code .card-body
+      |  の中ではなく、最初または最後の兄弟として設定)
+    +collapseButton("#example-header-and-footer-structure") 構造
+    ul.struct.mt-2.collapse#example-header-and-footer-structure
+      li 親 
+        code div.card
+        ul
+          li ヘッダ(最初の子) 
+            code div.card-header
+          li ボディ ( 
+            code div.card-body
+            |  , etc.)
+          li フッタ(最後の子) 
+            code div.card-footer
+    p.mt-3.mb-1 ヘッダのみの基本例( 
+      strong Featured
+      |  の部分)
+    div.card
+      div.card-header Featured
+      div.card-body
+        h5.card-title Special title treatment
+        p.card-text= sampleText2
+        a.btn.btn-primary(href="#") Go somewhere
+    p.mt-3.mb-1 ヘッダテキストを 
+      code h5.card-header
+      |  で太く表示
+    div.card
+      h5.card-header Featured
+      div.card-body
+        h5.card-title Special title treatment
+        p.card-text= sampleText2
+        a.btn.btn-primary(href="#") Go somewhere
+    p.mt-3.mb-1 ボディに 
+      code blockquote
+      |  による引用文を用いた例
+    div.card
+      div.card-header Quote
+      div.card-body
+        blockquote.blockquote.mb-0
+          p= lorem
+          +quoteFooter
+    p.mt-3.mb-1 ヘッダ/フッタ両方設定、さらに 
+      code .text-center
+      |  でセンタリング
+    div.card.text-center
+      div.card-header Featured
+      div.card-body
+        h5.card-title Special title treatment
+        p.card-text= sampleText2
+        a.btn.btn-primary(href="#") Go somewhere
+      div.card-footer.text-muted 2 days ago
+    h4.mt-4#sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#sizing") 幅の設定
+    p
+      code div.card
+      |  はデフォルトでは幅いっぱい(親に対し100%)に割り当てる。幅の設定(調整)には様々な方法がある。
+    h5.mt-3#using-grid-markup
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#using-grid-markup") グリッドによる設定
+    p.my-2 レスポンシブ設定の例: mdブレークポイント(768px)で1行2列と2行1列を切り替え
+    div.row
+      each n in [1,2]
+        div.col-md-6.pb-3
+          div.card
+            div.card-body
+              h5.card-title= `Special title treatment (${n})`
+              p.card-text= sampleText2
+              a.btn.btn-primary(href="#") Go somewhere
+    +collapseButton("#example-using-grid-structure") 構造
+    ul.struct.mt-2.collapse#example-using-grid-structure
+      li
+        code div.row
+        ul
+          each n in [0,1]
+            li
+              code div.col-md-6
+              ul
+                li
+                  code div.card
+                  ul
+                    li (上と同じ)
+    h5.mt-3#using-utilities
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#using-utilities") サイズユーティリティによる設定
+    p.my-2
+      code .w-(25|50|75|100)
+      |  を用いた幅設定 (⇒ 
+      a(href="utilities-4.html#sizing") サイズユーティリティ
+      |  )
+    each width in [75, 50]
+      p.mt-2.mb-0
+        code= `div.card.w-${width}`
+      div(class=`card w-${width}`)
+        div.card-body
+          h5.card-title Card title
+          p.card-text= sampleText2
+          a.btn.btn-primary(href="#") Button
+    h5.mt-3#using-custom-css
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#using-custom-css") スタイル属性 
+        code= `style="..."`
+        |  による幅設定
+    each width in [16, 24]
+      p.mt-2.mb-0
+        code div.card
+        |  + 
+        code= `style="width: ${width}rem;"`
+      div.card(style=`width: ${width}rem;`)
+        div.card-body
+          h5.card-title Card title
+          p.card-text= sampleText2
+          a.btn.btn-primary(href="#") Button
+    h4.mt-4#text-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#text-alignment") テキストの配置
+    p.mt-2.mb-0 テキストユーティリティ 
+      code .text-(left|center|right)
+      |  を用いた配置(⇒ 
+      a(href="utilities-5.html#text-alignment") テキスト - アラインメント
+      |  )
+    div.row
+      each align in [".text-left", ".text-center", ".text-right"]
+        div.col
+          p.mt-2.mb-0
+            code= `div.card${align}`
+            - if (align == ".text-left")
+              |  (デフォルト)
+          div(class=`card${align.replace(/\./, " ")}` style="width: 18rem;")
+            div.card-body
+              h5.card-title Special title treatment
+              p.card-text= sampleText2
+              a.btn.btn-primary(href="#") Go somewhere
+    h4.mt-4#navigation
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#navigation") ナビゲーション
+    p.my-2
+      a(href="components-9.html") ナビゲーション
+      |  コンポーネントとの組み合わせ例
+    each navType in ["tabs", "pills"]
+      p.mt-2.mb-0
+        code= `ul.nav.nav-${navType}.card-header-tabs`
+      div.card.text-center
+        div.card-header
+          ul(class=`nav nav-${navType} card-header-tabs`)
+            li.nav-item
+              a.nav-link.active(href="#") Active
+            li.nav-item
+              a.nav-link(href="#") Link
+            li.nav-item
+              a.nav-link.disabled(href="#") Disabled
+        div.card-body
+          h5.card-title Special title treatment
+          p.card-text= sampleText
+          a.btn.btn-primary(href="#") Go somewhere
+    h4.mt-4#images-1
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#images-1") 画像の設定
+    p.my-2 ヘッダやフッタに画像を用いる場合は 
+      code img.card-img-(top|bottom)
+      |  を設定する。
+    p.mt-2.mb-1
+      code img.card-img-bottom
+    div.card
+      img.card-img-top(src="../img/1000x100.svg" alt="Card image cap")
+      div.card-body
+        h5.card-title Card title
+        p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        +textLastUpdated
+    p.mt-3.mb-1
+      code img.card-img-bottom
+    div.card
+      div.card-body
+        h5.card-title Card title
+        p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        +textLastUpdated
+      img.card-img-bottom(src="../img/1000x100.svg" alt="Card image cap")
+    h4.mt-4#image-overlays
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#image-overlays") 画像内への文字重ね合わせ
+    p.my-2 画像内へテキストをオーバーレイ表示するには 
+      code div.card-img-overlay
+      |  を用いる。
+    div.card.bg-dark.text-white.mt-1
+      img.card-img(src="../img/1000x400.svg" alt="Card image cap")
+      div.card-img-overlay
+        h5.card-title Card title
+        p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        p.card-text Last updated 3 mins ago
+    h4.mt-4#background-and-color
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#background-and-color") 配色の設定
+    p.mb-0
+      a(href="utilities-2.html#colors") 色ユーティリティ
+      |  を用いる。
+    div.row
+      each c in contexts
+        - let textCol = (c === "light") ? "" : ".text-white"
+        div.col-md-6.col-xl-4
+          p.mt-2.mb-0
+            code= `div.card${textCol}.bg-${c}`
+          div(class=`card${textCol.replace(/\./, " ")} bg-${c}` style="max-width: 18rem;")
+            div.card-header Header
+            div.card-body
+              h5.card-title= `${c[0].toUpperCase()}${c.slice(1)} card title`
+              p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+    h4.mt-4#border
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#border") ボーダーの設定
+    p.mb-0
+      a(href="utilities-1.html#borders") ボーダーユーティリティ
+      |  を用いる(⇒ 
+      a(href="utilities-1.html#borders-border-color") ボーダー色
+      |  )。
+    div.row
+      each c in contexts
+        div.col-md-6.col-xl-4
+          p.mt-2.mb-0
+            code= `div.card.border-${c}`
+          div(class=`card border-${c}` style="max-width: 18rem;")
+            div.card-header Header
+            div(class=`card-body${(c === "light") ? "" : ` text-${c}`}`)
+              h5.card-title= `${c[0].toUpperCase()}${c.slice(1)} card title`
+              p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+    h4.mt-4#mixins-utilities
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#mixins-utilities") 設定の組み合わせ
+    p.mt-2.mb-3 ヘッダ/フッタなどの各構成要素には親要素と別のテキスト/背景/ボーダー設定が可能。さらに 
+      code .bg-transparent
+      |  で背景なしにすることも可能。設定例を次に示す。
+    +collapseButton("#example-mixins-utilities-structure") 構造
+    ul.struct.mt-2.collapse#example-mixins-utilities-structure
+      li
+        code div.card.border-success
+        |  外枠はsuccess配色
+        ul
+          li
+            code div.card-header
+            |  にバリエーション設定(デフォルト+全context+transparent)
+          li
+            code p.card-body.text-success
+            ul
+              li 内部テキストはsuccess配色
+          li
+            code div.card-footer
+            |  にバリエーション設定(デフォルト+全context+transparent)
+    - const backgrounds = contexts.slice()
+    - backgrounds.unshift("default")
+    - backgrounds.push("transparent")
+    div.row.mt-3
+      each c in backgrounds
+        div.col-md-6.col-xl-4
+          p.mt-2.mb-0
+            - if (c == "default")
+              | (デフォルト背景)
+            - else
+              code= `.bg-${c}`
+          - let cText = ["default","light","transparent"].indexOf(c) == -1 ? " text-white" : ""
+          div.card.border-success(style="max-width: 18rem;")
+            div(class=`card-header bg-${c}${cText} border-success`)
+              = `${c[0].toUpperCase()}${c.slice(1)} header`
+            div.card-body.text-success
+              h5.card-title Success card title
+              p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+            div(class=`card-footer bg-${c}${cText} border-success`)
+              = `${c[0].toUpperCase()}${c.slice(1)} footer`
+    h4.mt-4#card-layout
+      +extLink("https://getbootstrap.com/docs/4.1/components/card/#card-layout") レイアウト
+    ul.my-2
+      li 親を追加 
+        code div.card-(group|deck|columns)
+        ul
+          li 子(複数) 
+            code div.card
+    - const layoutTexts = ["This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", "This card has supporting text below as a natural lead-in to additional content.", "This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action."]
+    each layout in ["group", "deck"]
+      p.my-1
+        code= `div.card-${layout}`
+      div(class=`card-${layout} mb-3`)
+        each text in layoutTexts
+          div.card
+            +img286x180top
+            div.card-body
+              h5.card-title Card title
+              p.card-text= text
+            div.card-footer
+              +lastUpdated
+    p.mt-3.mb-1
+      code div.card-columns
+      |  (応用) 3段組みレイアウト
+    div.card-columns
+      div.card
+        img.card-img-top(src="../img/320x320.svg" alt="Card image cap")
+        div.card-body
+          h5.card-title (1) Card title that wraps to a new line
+          p.card-text= layoutTexts[0]
+      div.card.p-3
+        blockquote.blockquote.mb-0.card-body
+          p= `(2) ${lorem}`
+          footer.blockquote-footer
+            small.text-muted Someone famous in 
+              cite(title="Source Title") Source Title
+      div.card
+        +img286x180top
+        div.card-body
+          h5.card-title (3) Card title
+          p.card-text= layoutTexts[1]
+          +textLastUpdated
+      div.card.bg-primary.text-white.text-center.p-3
+        blockquote.blockquote.mb-0
+          p= `(4) ${lorem}`
+          footer.blockquote-footer
+            small.text-white Someone famous in 
+              cite(title="Source Title") Source Title
+      div.card.text-center
+        div.card-body
+          h5.card-title (5) Card title
+          p.card-text= layoutTexts[1]
+          +textLastUpdated
+      div.card
+        img.card-img-top(src="../img/400x300.svg" alt="Card image cap")
+      div.card.p-3.text-right
+        blockquote.blockquote.mb-0.card-body
+          p= `(6) ${lorem}`
+          footer.blockquote-footer
+            small.text-muted Someone famous in 
+              cite(title="Source Title") Source Title
+      div.card
+        div.card-body
+          h5.card-title (7) Card title
+          p= layoutTexts[2]
+          +textLastUpdated
+
+    +breadcrumbLevel1("コンポーネント(3): カード")

@@ -1,0 +1,339 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Content (1): Reboot / Typography / Code
+
+block body
+  - const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  div.container
+    +pageHeader("content-1")
+      p.lead Content (1): 
+        a(href="#reboot") Reboot
+        |  / 
+        a(href="#typography") Typography
+        |  / 
+        a(href="#code") Code
+
+    h2.mt-2#reboot
+      +extLink("https://getbootstrap.com/docs/4.1/content/reboot/") Reboot
+    p About Reboot (reset CSS introduced by Bootstrap 4).
+
+    h2.mt-5#typography
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/") Typography
+    h4.mt-3.mt-1#typo-headings
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#headings") Headings
+    p.my-1 Sample headings for 
+      code h1
+      |  , 
+      code h2
+      |  , 
+      code h3
+      |  , 
+      code h4
+      |  , 
+      code h5
+      |  , and 
+      code h6
+      |  .
+    h1 h1. Sample サンプル
+    h2 h2. Sample サンプル
+    h3 h3. Sample サンプル
+    h4 h4. Sample サンプル
+    h5 h5. Sample サンプル
+    h6 h6. Sample サンプル
+    p.mt-4.mb-2 Use 
+      code .h(1|2|3|4|5|6)
+      |  for elements other than heading. Below are examples used with 
+      code span
+      | .
+    p.my-0
+      code span.h(1|2|3|4|5|6)
+    - for (let i = 1; i <= 6; i++)
+      span(class=`h${i}`)
+        = ` span.h${i} `
+    h4.mt-4.mb-1#typo-customizing-headings
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#customizing-headings") Customizing headings
+    p.my-2 Example using 
+      code .text-muted
+      |  for a secondary heading (see 
+      a(href="utilities-2.html#colors-color") Text color
+      | )
+    h3 Fancy display heading 
+      small.text-muted With faded secondary text
+    h4.mt-4.mb-1#typo-display-headings
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#display-headings") Display headings
+    p.mt-1.mb-0 Add 
+      code .display-(1|2|3|4)
+      |  to a heading to stand out (examples used in 
+      code h1
+      |  below).
+      each n in [1,2,3,4]
+        h1(class=`display-${n}`)= `h1.display-${n}`
+    p.mt-4.mb-2
+      code .display-(1|2|3|4)
+      |  can be set arbitrary text elements (an example for 
+      code span
+      |  below).
+    p.my-1
+      span.display-4 span.display-4
+    h4.mt-4.mb-1#typo-lead
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#lead") Lead
+    p.mt-1 Add 
+      code .lead
+      |  to stand out a paragraph.
+    p (Without 
+      code .lead
+      = `) ${lorem}`
+    p.lead (Using 
+      code .lead
+      = `) ${lorem}`
+    h4.mt-4.mb-2#typo-inline-text-elements
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#inline-text-elements") Inline text elements
+    p.my-2
+      code mark
+      |  example ⇒ You can use the mark tag to 
+      mark highlight
+      |  text.
+    p.my-2
+      code del
+      |  example ⇒ 
+      del This line of text is meant to be treated as deleted text.
+    p.my-2
+      code s
+      |  example ⇒ 
+      s This line of text is meant to be treated as no longer accurate.
+    p.my-2
+      code ins
+      |  example ⇒ 
+      ins This line of text is meant to be treated as an addition to the document.
+    p.my-2
+      code u
+      |  example ⇒ 
+      u This line of text will render as underlined
+    p.my-2
+      code small
+      |  example ⇒ 
+      small This line of text is meant to be treated as fine print.
+    p.my-2
+      code strong
+      |  example ⇒ 
+      strong This line rendered as bold text.
+    p.my-2
+      code em
+      |  example ⇒ 
+      em This line rendered as italicized text.
+    h4.mt-4.mb-2#typo-abbreviations
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#abbreviations") Abbreviations
+    p.my-2
+      code abbr
+      |  is used for abbreviations and acronyms. It shows text with a dotted underline and popups a tooltip on hover.
+    ul.struct
+      li
+        code abbr
+        ul
+          li.att Attribute 
+            code title="{full expression}"
+            |  (popups a tooltip on hover)
+          li.cls (Optional) 
+            code .initialism
+            |  displays slightly smaller (for acronyms)
+    p.my-0
+      code attr
+      |  examples
+    P.ml-3.my-1
+      abbr(title="attribute") attr
+    p.ml-3.my-1
+      abbr(title="HyperText Markup Language") HTML
+    p.mt-2.mb-1
+      code attr.initialism
+      |  example (a bit smaller)
+    p.ml-3.my-1
+      abbr.initialism(title="HyperText Markup Language") HTML
+    h4.mt-4.mb-1#typo-blockquotes
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#blockquotes") Blockquotes
+    p.mt-1.mb-3
+      code blockquote
+      |  is used for quoting blocks of content from another source (an example below).
+    blockquote.blockquote
+      p.mb-1= lorem
+      footer.blockquote-footer Someone famous in
+        cite(title="Source Title") Source Title
+    +collapseButton("#blockquote-structure") Structure
+    ul.struct.mt-3.collapse#blockquote-structure
+      li Block quotation 
+        code blockquote.blockquote
+        ul
+          li Paragraph 
+            code p.mb-1
+            ul
+              li.txt Text 
+                code Lorem ipsum ...
+          li Footer 
+            code footer.blockquote-footer
+            ul
+              li.txt Text 
+                code Someone famous in
+                ul
+                  li Citation 
+                    code cite 
+                    |  
+                    +attrBtn(".a1-1")
+                    ul
+                      li.att.collapse.a1-1 Attribute 
+                        code title="Source Title"
+                      li.txt Text 
+                        code Source Title
+    h4.mt-4.mb-1#typo-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#alignment") Alignment
+    p.mt-1 Use 
+      code .text-(left|center|right)
+      |  (see 
+      a(href="utilities-5.html#text-alignment") Text alignment
+      |  )
+    p Center/Right aligned variations of above example (Left aligned as default)
+    each al in ["center", "right"]
+      p.my-0
+        code= `.text-${al}`
+      blockquote(class=`blockquote text-${al}`)
+        p.mb-1= lorem
+        footer.blockquote-footer Someone famous in
+          cite(title="Source Title") Source Title
+    h4.mt-4.mb-1#typo-list
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#lists") Lists (ul, ol)
+    h5.mt-3.mb-1#typo-list-unstyled
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#unstyled") Unstyled
+    p.my-2
+      code (ul|ol).list-unstyled
+      |  removes default CSS 
+      code list-style
+      |  (displays the same as plain text). However, it does not apply to nested (descendant) list items. In the example below, fourth and fifth items are nested items.
+    ul.list-unstyled.mt-3
+      li Lorem ipsum dolor sit amet
+      li Consectetur adipiscing elit
+      li Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      ul
+        li Ut enim ad minim veniam,
+        li Quis nostrud exercitation ullamco
+      li Laboris nisi ut aliquip ex ea commodo consequat.
+      li Duis aute irure dolor in
+    h5.mt-3.mb-1#typo-list-inline
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#inline") Inline
+    p.mb-2 Use 
+      code (ul|ol).list-inline
+      |  to arrange items inline (horizontally)
+    ul.list-inline.my-3
+      each line in ["Lorem ipsum", "Phasellus iaculis", "Nulla volutpat"]
+        li.list-inline-item= line
+    h4.mt-4#typo-description-list-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#description-list-alignment") Description list alignment
+    p.mt-2.mb-3 Elements for the description list (
+      code dl
+      |  , 
+      code dt
+      |  , and 
+      code dd
+      | ) can be arranged responsively using 
+      a(href="layout-1.html#grid") grid
+      | . The following example show how to use grid for building a responsive description list (changed breakpoint from sm to md from the official example).
+    ul.struct.mb-4
+      li Description list 
+        code dl.row
+        ul
+          li Description term 
+            code dt.col-md-3
+            |  (placed on left 3/12 on &ge;md)
+            ul
+              li.cls Add 
+                code .text-truncate
+                |  to truncate text
+          li Description details 
+            code dd.col-md-9
+            |  (placed on right 9/12 on &ge;md)
+            li (Optional) nested description list 
+              code dl.row
+              |  (inside is the same way as above)
+    dl.row
+      dt.col-md-3 Description lists
+      dd.col-md-9 A description list is perfect for defining terms.
+      dt.col-md-3 Euismod
+      dd.col-md-9
+        p Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+        p Donec id elit non mi porta gravida at eget metus.</p>
+      dt.col-md-3 Malesuada porta
+      dd.col-md-9 Etiam porta sem malesuada magna mollis euismod.
+      dt.col-md-3.text-truncate
+        code .text-truncate
+        |  is applied here
+      dd.col-md-9 Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+      dt.col-md-3 Nesting
+      dd.col-md-9
+        dl.row
+          dt.col-md-4 Nested definition list
+          dd.col-md-8 Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.
+
+    h2.mt-4#code
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/") Code
+    h4.mt-4.mb-1#code-inline-code
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#inline-code") Inline code
+    p.mb-2 Use 
+      code code
+    p.ml-4.mt-2 Example ⇒ 
+      code Math.sqrt(a*a + b*b)
+    h4.mt-4.mb-1#code-code-blocks
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#code-blocks") Code blocks
+    p.my-2 Use 
+      code code
+      |  within 
+      code pre
+      pre.p-2.border.bg-light
+        code
+          | function determinant(a, b, c, d) {
+          |   return a*d - b*c;
+          | }
+    ul
+      li
+        code pre.p-2.border.bg-light
+        ul
+          li
+            code code
+            ul
+              li
+                code function determinant(...
+    div.alert.alert-warning(role="alert") Markup characters (like 
+      code= "<"
+      |  and 
+      code= ">"
+      |  ) must be translated to character entity references (
+      code= "&lt;"
+      |  , 
+      code= "&gt;"
+      |  , ...) respectively.
+    h4.mt-4.mb-1#code-variables
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#variables") Variables
+    p Use 
+      code var
+      |  (displays italicized)
+    p.ml-4.mt-2 Example ⇒ 
+      var D
+      |  =
+      var b
+      sup 2
+      |  - 4
+      var a
+      var c
+
+    h4.mt-4.mb-1#code-user-input
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#user-input") User input
+    p.mb-2 Use 
+      code kbd
+    p.ml-4.mt-2 Example ⇒ 
+      kbd npm install --save-dev bootstrap
+    h4.mt-4.mb-1#code-sample-output
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#sample-output") Sample output
+    p.mb-2 Use 
+      code samp
+    p.ml-4.mt-2 Example ⇒ 
+      samp webpack: Compiled successfully.
+
+    +breadcrumbLevel1("Content(1): Reboot/Typography/Code")

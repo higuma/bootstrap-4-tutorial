@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Extend / Migration / About</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead"><a href="#extend">Extend</a> / <a href="#migration">Migration</a> / <a href="#about">About</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/extend+migration+about.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="extend">
+        <extLink https://getbootstrap.com/docs/4.1/extend/approach/>Extend</extLink>
+      </h2>
+      <h4 class="mt-3" id="approach"><a href="https://getbootstrap.com/docs/4.1/extend/approach/" target="_blank">Approach</a>
+      </h4>
+      <p class="mt-2 mb-1">About the guiding principles of Bootstrap 4 (summary).</p>
+      <ul>
+        <li><a href="https://getbootstrap.com/docs/4.1/extend/approach/#responsive" target="_blank">Responsive and mobile-first</a>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/extend/approach/#classes" target="_blank">Built with a base class and extended via modifier classes</a>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/extend/approach/#z-index-scales" target="_blank">States should obey a common z-index scale</a>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/extend/approach/#html-and-css-over-js" target="_blank">Prefer a HTML and CSS implementation over JavaScript</a>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/extend/approach/#utilities" target="_blank">Use utilities over custom styles</a>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/extend/approach/#flexible-html" target="_blank">Avoid enforcing strict HTML requirements (children selectors)</a>
+        </li>
+      </ul>
+      <h4 class="mt-3" id="icons"><a href="https://getbootstrap.com/docs/4.1/extend/icons/" target="_blank">Icons</a>
+      </h4>
+      <p>Bootstrap 3's <a href="http://getbootstrap.com/docs/3.3/components/#glyphicons" target="_blank">Glyphicons</a> is now dropped. Bootstrap 4 recommends using external icon libraries.
+      </p>
+      <h6>Recommended libraries (tested and used by Bootstrap team)</h6>
+      <ul>
+        <li><a href="https://fontawesome.com/" target="_blank">Font Awesome</a>
+        </li>
+        <li><a href="https://useiconic.com/" target="_blank">Iconic</a> ( <a href="https://github.com/iconic/open-iconic" target="_blank">Open Iconic</a> is used inside <a href="components-5.html#custom-forms">Custom forms</a> )
+        </li>
+        <li><a href="https://octicons.github.com/" target="_blank">Octicons</a>
+        </li>
+      </ul>
+      <p>See <a href="https://getbootstrap.com/docs/4.1/extend/icons/#more-options" target="_blank">More options</a> for further libraries.
+      </p>
+      <h2 class="mt-4" id="migration"><a href="https://getbootstrap.com/docs/4.1/migration/" target="_blank">Migration</a>
+      </h2>
+      <p class="my-2">Changes from previous versions.</p>
+      <p class="my-1">Changes from v4.0 Beta to stable v4.0</p>
+      <ul>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#stable-changes" target="_blank">Stable changes</a> : Changes from v4.0 Beta 3 to stable v4.0
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#beta-3-changes" target="_blank">Beta 3 changes</a> : Changes from v4.0 Beta 2 to Beta 3
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#beta-2-changes" target="_blank">Beta 2 changes</a> : Changes from v4.0 Beta 1 to Beta 2
+        </li>
+      </ul>
+      <p class="mt-2 mb-1">Changes from version 3 to version 4 (summary)</p>
+      <ul>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#browser-support" target="_blank">Browser support</a>
+          <ul>
+            <li>IE10+/iOS7+ (dropped IE8,9,iOS6)</li>
+            <li>Android v5,0 Lollipop and WebView</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#global-changes" target="_blank">Global changes</a>
+          <ul>
+            <li>Flexbox is enabled by default</li>
+            <li>Changed from Less to Sass for source CSS files</li>
+            <li>Changed primary CSS unit from <code>em</code> to <code>rem</code></li>
+            <li>Global font size increased from <code>14px</code> to <code>16px</code> , etc.</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#grid-system" target="_blank">Grid system</a>
+          <ul>
+            <li>Moved to flexbox-based</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#components" target="_blank">Components</a>
+          <ul>
+            <li>Dropped panels, thumnails, wells, Glyphicons, Affix, and pager</li>
+            <li>Refactored nearly all components</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-2 mb-1">Changes by component (summary / top items only, see source links for further details)</p>
+      <ul>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#reboot" target="_blank">Reboot</a>
+          <ul>
+            <li>Changed reset CSS <a href="https://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a> to <a href="https://getbootstrap.com/docs/4.1/content/reboot/" target="_blank">Reboot</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#typography" target="_blank">Typography</a>
+          <ul>
+            <li>Dropped <code>.page-header</code> (use utilities instead), </li>
+            <li>Dropped <code>.dl-horizontal</code> (use <code>.row</code> )</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#images" target="_blank">Images</a>
+          <ul>
+            <li>Renamed <code>.img-responsive</code> to <code>.img-fluid</code></li>
+            <li>Renamed <code>.img-rounded</code> to <code>.rounded</code></li>
+            <li>Renamed <code>.img-circle</code> to <code>.rounded-circle</code></li>
+          </ul>
+        </li>
+        <li id="tables"><a href="https://getbootstrap.com/docs/4.1/migration/#tables" target="_blank">Tables</a>
+          <ul>
+            <li>Removed nearly all child combinators ( <code>&gt;</code> ) to simplify customizations especially for nested tables</li>
+            <li>Responsive tables do not require wrapping parents</li>
+            <li>Renamed <code>.table-condensed</code> to <code>.table-sm </code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#forms-1" target="_blank">Forms</a>
+          <ul>
+            <li>Renamed <code>.control-label</code> to <code>.col-form-label</code></li>
+            <li>Renamed <code>.input-(lg|sm)</code> to <code>.form-control-(lg|sm)</code></li>
+            <li>Dropped <code>.form-group-*</code> (use <code>.form-control-*</code> )</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#buttons" target="_blank">Buttons</a>
+          <ul>
+            <li>Renamed <code>.btn-default</code> to <code>.btn-secondary</code></li>
+            <li>Dropped <code>.btn-xs</code></li>
+            <li>Dropped the stateful button feature of <code>button.js</code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#button-group" target="_blank">Button group</a>
+          <ul>
+            <li>Rewrote with flexbox</li>
+            <li>Removed <code>.btn-group-justified</code></li>
+            <li>Dropped <code>.btn-group-xs</code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#dropdowns" target="_blank">Dropdowns</a>
+          <ul>
+            <li>Redesigned and simplified</li>
+            <li>Now dropdowns can be built with <code>div</code> and <code>ul</code> elements</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#grid-system-1" target="_blank">Grid system</a>
+          <ul>
+            <li>Added <code>576px</code> breakpoint as <code>sm</code> (now <code>xs</code>, <code>sm</code>, <code>mb</code>, <code>lg</code>, and <code>xl</code>)</li>
+            <li>Changed <code>.col-{breakpoint}-{modifier}-{size}</code> to <code>.{modifier}-{breakpoint}-{size}</code></li>
+            <li>Dropped push and pull modifier classes (use flexbox instead)</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#list-groups" target="_blank">List groups</a>
+          <ul>
+            <li>Rewrote with flexbox</li>
+            <li>Replaced <code>a.list-group-item</code> with <code>.list-group-item-action</code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#modal" target="_blank">Modal</a>
+          <ul>
+            <li>Rewrote with flexbox</li>
+            <li>Removed <code>remote</code> option</li>
+            <li>Removed <code>loaded.bs.modal</code> event</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#navs" target="_blank">Navs</a>
+          <ul>
+            <li>Rewrote with flexbox</li>
+            <li>Removed nearly all child combinators ( <code>&gt;</code> ) for simpler styling</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#navbar" target="_blank">Navbar</a>
+          <ul>
+            <li>Entirely redesigned with flexbox</li>
+            <li>Responsible behaviors are now applied to <code>.navbar</code> by <code>.navbar-expand-{breakpoint}</code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#pagination" target="_blank">Pagination</a>
+          <ul>
+            <li>Rewrote with flexbox</li>
+            <li><code>.page-(item|link)</code> are now required on the descendants of <code>.pagination</code> elements</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#breadcrumbs" target="_blank">Breadcrumbs</a>
+          <ul>
+            <li><code>.breadcrumb-item</code> is now required on breadcrumb items</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#labels-and-badges" target="_blank">Labels and badges</a>
+          <ul>
+            <li>Dropped ver 3's badge</li>
+            <li>Renamed ver 3's label to ver 4's badge</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#panels-thumbnails-and-wells" target="_blank">Panels, thumbnails, and wells</a>
+          <ul>
+            <li>Dropped all components (use new <a href="components-3.html">Card component</a> instead)</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#progress" target="_blank">Progress</a>
+          <ul>
+            <li>Replaced<code>.progress-bar-*</code> with <code>.bg-*</code></li>
+            <li>Replaced <code>.active</code> for animated progress bars with <code>.progress-bar-animated</code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#carousel" target="_blank">Carousel</a>
+          <ul>
+            <li>Rewritten to to simplify design and styling</li>
+            <li>CSS has been un-nested and renamed (now needs <code>.carousel-</code> prefix)</li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#tables-1" target="_blank">Tables</a> ⇒ <a href="#tables">(See above)</a>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#utilities" target="_blank">Utilities</a>
+          <ul>
+            <li>Made display utilities responsive <code>.d-(sm|md|lg|xl)-(none|inline|...)</code></li>
+            <li>Made text alignment responsive <code>.text-(sm|md|lg|xl)-(left|center|right)</code></li>
+          </ul>
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#vendor-prefix-mixins" target="_blank">Vendor prefix mixins</a>
+          <ul>
+            <li>Removed (changed to <a href="https://github.com/postcss/autoprefixer" target="_blank">Autoprefixer</a> )
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-2 mb-1">Others</p>
+      <ul>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#documentation" target="_blank">Documentation</a> : Changes about document creation using Jekyll
+        </li>
+        <li><a href="https://getbootstrap.com/docs/4.1/migration/#responsive-utilities" target="_blank">Responsive utilities</a> : Changes about responsive implementations
+        </li>
+      </ul>
+      <h2 class="mt-4" id="about"><a href="https://getbootstrap.com/docs/4.1/about/overview/" target="_blank">About</a>
+      </h2>
+      <h4 class="mt-3" id="overview"><a href="https://getbootstrap.com/docs/4.1/about/overview/" target="_blank">Overview</a>
+      </h4>
+      <p class="mt-2">About Bootstrap development team, history, etc.</p>
+      <h4 class="mt-3" id="brand"><a href="https://getbootstrap.com/docs/4.1/about/brand/" target="_blank">Brand</a>
+      </h4>
+      <p class="my-2">Documentation and examples for Bootstrap’s logo and brand usage guidelines.</p>
+      <h4 class="mt-3" id="licence"><a href="https://getbootstrap.com/docs/4.1/about/license/" target="_blank">Licence</a>
+      </h4>
+      <p class="mt-2">FAQ's about Bootstrap’s open source license.</p>
+      <h4 class="mt-3" id="translations"><a href="https://getbootstrap.com/docs/4.1/about/translations/" target="_blank">Translations</a>
+      </h4>
+      <p class="mt-2">Links to translations of Bootstrap doocumentation.</p>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Extend/Migration/About</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

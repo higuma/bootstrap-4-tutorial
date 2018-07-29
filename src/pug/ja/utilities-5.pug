@@ -1,0 +1,170 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+mixin visibilityExample(classToHide)
+  - classToHide = classToHide ? " " + classToHide : ""
+  div.container
+    div.row
+      div.col.border.bg-light .col
+    div.row
+      div.col.border.bg-light .col
+      div(class=`col px-3 border bg-secondary${classToHide}`)
+        span.text-light .col (消去する)
+      div.col.border.bg-light .col
+    div.row
+      div.col.border.bg-light .col
+
+block head
+  title Bootstrap 4 tutorial: ユーティリティ(5): テキスト / 上下アライン / 可視性
+
+block body
+  div.container
+    +pageHeader("utilities-5")
+      p.lead ユーティリティ(5): 
+        a(href="#text") テキスト
+        |  / 
+        a(href="#vertical-align") 上下アライン
+        |  / 
+        a(href="#visibility") 可視性
+
+    h2.mt-2#text
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/") テキスト
+    - const sampleText = "The quick brown fox jumps over the lazy dog."
+    h4.mt-3#text-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-alignment") アラインメント
+    h6.mt-4.mb-0 均等割り付け 
+      code .text-justify
+    each justify in [false, true]
+      p.mt-3.mb-0
+        code .text-justify
+        = justify ? " あり" : " なし" 
+      p(class=`${justify ? "text-justify " : ""}my-1`) Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
+    h6.mt-4.mb-0 左/中央/右寄せ 
+      code .text(-sm|-md|-lg|-xl)?-(left|center|right)
+    each al in ["left", "center", "right"]
+      p.mt-3.mb-0
+        code= `.text-${al}`
+      p(class=`text-${al} mt-0 mb-3 border`)
+        = `${al[0].toUpperCase()}${al.slice(1)} aligned on all viewport sizes.`
+    - const szPx = { sm:576, md:768, lg:992, xl:1200 }
+    each al in ["center", "right"]
+      each sz in ["sm", "md", "lg", "xl"]
+        p.mt-3.mb-0
+          code= `.text-${sz}-${al}`
+        p(class=`text-${sz}-${al} mt-0 mb-3 border`)
+          = `${al[0].toUpperCase()}${al.slice(1)} aligned on viewport width ≧ ${szPx[sz]}px`
+    h4.mt-4#text-wrapping-and-overflow
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-wrapping-and-overflow") ラッピングとオーバーフロー
+    p.my-2 (1) ラッピング (ボックス幅は 
+      code 15rem
+      |  に固定)
+    each wrap in [false, true]
+      p.mb-1
+        code .text-nowrap
+        = wrap ? " あり" : " なし"
+      div(class=`${wrap ? "text-nowrap": ""} p-2 border bg-lightm mb-3` style="width: 15rem;")= sampleText
+    p.my-2 (2) ブロック要素に対する切り詰め (ボックス幅は 
+      code 15rem
+      |  に固定)
+    each truncate in [false, true]
+      p.mb-1
+        code .text-truncate
+        = wrap ? " あり" : " なし"
+      div(class=`border p-2 mb-3${truncate ? " text-truncate" : ""}` style="width: 15rem;")= sampleText
+    p.my-2 (2) インラインブロック要素に対する切り詰め (ボックス幅は 
+      code style="max-width: 15rem;"
+      |  に制限)
+    each truncate in [false, true]
+      p.mb-1
+        code .text-truncate
+        = wrap ? " あり" : " なし"
+      div.mb-3
+        span(class=`d-inline-block border p-2${truncate ? " text-truncate" : ""}` style="max-width: 15rem;")= sampleText
+    h4.mt-4#text-transform
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-transform") 大文字/小文字変換
+    each trans in [null, "lowercase", "uppercase", "capitalize"]
+      p.mt-3.mb-0
+        - if (trans)
+          code= `.text-${trans}`
+        - else
+          | (デフォルト表示)
+      p(class=`${trans ? `text-${trans}` : ""} mt-1 mb-2`)= sampleText
+    h4.mt-4#text-font
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#font-weight-and-italics") 文字の太さと斜体
+    each font in ["weight-normal", "weight-bold", "weight-light", "italic"]
+      p.mt-3.mb-0
+        code= `.font-${font}`
+        - if (font == "weight-normal")
+          |  (デフォルト)
+      p(class=`font-${font} mt-0 mb-2`)= sampleText
+    h4.mt-4#text-monospace
+      +extLink(href="https://getbootstrap.com/docs/4.1/utilities/text/#monospace") 等幅フォント
+    p.mt-2.mb-0
+      code .text-monospace
+    p.text-monospace This is in monospace.
+
+    h2.mt-5#vertical-align
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/vertical-align/") 上下アライン
+    p.my-2 CSSの 
+      code vertical-align
+      |  プロパティを設定するユーティリティクラス (詳しくは
+      a(href="https://developer.mozilla.org/ja/docs/Web/CSS/vertical-align") CSSリファレンス
+      | 参照)。
+    p.my-2
+      code .align-(baseline|top|middle|bottom|text-top|text-bottom)
+      - const vertAlign = ["baseline", "top", "middle", "bottom", "text-top", "text-bottom"]
+    h5.mt-4#vertical-align-examples 例
+    p.mt-1.mb-2 インライン要素 
+      code span
+      |  に設定した 
+      code .align-*
+    p.my-1.bg-secondary
+      each align in vertAlign
+        span(class=`m-1 bg-warning align-${align} px-1`)= align
+    p.mt-4.mb-2 テーブルセル 
+      code td
+      |  に設定した 
+      code .align-*
+      |  (テーブル高さは 
+      code 8rem
+      |  固定)
+    table.table-bordered.bg-light(style="height: 8rem;")
+      tbody
+        tr
+          each align in vertAlign
+            td(class=`align-${align} p-1`)= align
+
+    h2.mt-5#visibility
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/visibility/") 可視性
+    p.mt-2.mb-1 CSSの 
+      code visibility
+      |  プロパティを設定するユーティリティクラス(詳しくは
+      +extLink("https://developer.mozilla.org/ja/docs/Web/CSS/visibility") CSSリファレンス
+      | 参照)。
+    ul
+      li
+        code .visible
+        |  ⇒ 
+        code visibility: visible
+        |  に設定
+      li
+        code .invisible
+        |  ⇒ 
+        code visibility: hidden
+        |  に設定
+    h4.mt-4#visibility 応用例
+    p.mt-2.mb-1 次のグリッドレイアウトを考える。
+    +visibilityExample
+    p.mt-3.mb-1 Bootstrapには2種類の消去用ユーティリティがあり、この場合は結果が異なる。
+    p.mt-2.mb-1
+      code .d-none
+      |  (
+      a(href="utilities-2.html#display") 表示ユーティリティ
+      | 参照) ⇒ 要素はレイアウトから取り除かれ組み換えが発生する
+    +visibilityExample("d-none")
+    p.mt-3.mb-1
+      code .invisible
+      |  ⇒ 要素は非表示になるだけで組み換えは発生しない
+    +visibilityExample("invisible")
+
+    +breadcrumbLevel1("ユーティリティ(5): テキスト/上下アライン/可視性")

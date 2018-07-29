@@ -1,0 +1,525 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+mixin ulItemsLinks
+  li.nav-item
+    a.nav-link.active(href="#") Active
+  each n in [1,2]
+    li.nav-item
+      a.nav-link(href="#") Link
+  li.nav-item
+    a.nav-link.disabled(href="#") Disabled
+
+mixin navLinks(cls)
+  - cls = cls ? cls + " " : ""
+  a(class=`${cls}nav-link active` href="#") Active
+  each n in [1,2]
+    a(class=`${cls}nav-link` href="#") Link
+  a(class=`${cls}nav-link disabled` href="#") Disabled
+
+mixin ulItemsLinksLong(border)
+  - border = border ? " border" : ""
+  li.nav-item
+    a(class=`nav-link active${border}` href="#") Active
+  each text in ["Longer nav link", "Link"]
+    li.nav-item
+      a(class=`nav-link${border}` href="#")= text
+  li.nav-item
+    a(class=`nav-link disabled${border}` href="#") Disabled
+
+mixin navItemsLinksLong(border)
+  - border = border ? " border" : ""
+  a(class=`nav-item nav-link active${border}` href="#") Active
+  each text in ["Longer nav link", "Link"]
+    a(class=`nav-item nav-link${border}` href="#")= text
+  a(class=`nav-item nav-link disabled${border}` href="#") Disabled
+
+block head
+  title Bootstrap 4 tutorial: Components (9): Navs
+
+block body
+  div.container
+    +pageHeader("components-9")
+      p.lead Components (9): 
+        a(href="#navs") Navs
+
+    h2.mt-2#navs
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/") Navs
+    h4.mt-3#base-nav
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#base-nav") Base nav
+    h6.my-2
+      code ul
+      | -based nav
+    +collapseButton("#ul-based-structure") Structure
+    ul.struct.mt-2.collapse#ul-based-structure
+      li
+        code ul.nav
+        ul
+          li Item 
+            code li.nav-item
+            ul
+              li Link 
+                code a.nav-link
+                +attrsBtn(".a1-1")
+                ul.collapse.a1-1
+                  li.att Attribute 
+                    code href="..."
+                  li.cls Add 
+                    code .active
+                    |  for an active item
+                  li.cls Add 
+                    code .disabled
+                    |  for disabled items
+    p.mt-3.mb-1 Example (added border to indicate boundary)
+    ul.nav.border
+      +ulItemsLinks
+    h6.mt-4.mb-2
+      code nav
+      | -based nav (can be built with one level fewer hierarchy)
+    +collapseButton("#nav-based-structure") Structure
+    ul.struct.mt-2.collapse#nav-based-structure
+      li
+        code nav.nav
+        ul
+          li Item+Link 
+            code a.nav-link
+            +attrsBtn(".a2-1")
+            ul.collapse.a2-1
+              li.att Attribute 
+                code href="..."
+              li.cls Add 
+                code .active
+                |  for an active item
+              li.cls Add 
+                code .disabled
+                |  for disabled items
+    nav.nav.border.mt-3
+      +navLinks
+    h4.mt-4#available-styles
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#available-styles") Available styles
+    p Use 
+      a(href="utilities.html#flex") Flex utilities
+    h5.mt-3.mb-1#horizontal-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#horizontal-alignment") Horizontal alignment
+    p.mt-1 Use 
+      code .justify-content-(start|center|end)
+    each al in ["start","center","end"]
+      p.mt-3.mb-1
+        code= `.justify-content-${al}`
+        - if (al == "start")
+          |  (default)
+      ul(class=`nav justify-content-${al} border`)
+        +ulItemsLinks
+    h5.mt-3.mb-1#vertical
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#vertical") Vertical
+    p.mt-1 Add 
+      code .flex-column
+    p.my-1 Used in 
+      code ul
+      |  ⇒ 
+      code ul.nav.flex-column
+    ul.nav.flex-column.border
+      +ulItemsLinks
+    p.mt-3.mb-1 Used in 
+      code nav
+      |  ⇒ 
+      code nav.nav.flex-column
+    nav.flex-column.border
+      +navLinks
+    h4.mt-4.mb-0#tabs
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#tabs") Tabs
+    p.mt-1 Add 
+      code .nav-tabs
+      |  to 
+      code ul
+      | -based navs.
+    p.mt-3.mb-1 Example: 
+      code ul.nav.nav-tabs
+    ul.nav.nav-tabs
+      +ulItemsLinks
+    p.mt-4.mb-1 Also available for 
+      code nav
+      | -based nav. But 
+      code nav.nav.nav-tabs
+      |  draws a false line under an active item (see below).
+    nav.nav.nav-tabs
+      +navLinks
+    p.mt-3.mb-1 To fix the problem, add 
+      code .nav-item
+      |  to link items ⇒ 
+      code a.nav-item.nav-link(.active)?
+    nav.nav.nav-tabs
+      +navLinks("nav-item")
+    h4.mt-4.mb-0#pills
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#pills") Pills
+    p.mt-0.mb-1 Set 
+      code .nav-pills
+    p.mt-2.mb-1 Used in 
+      code ul
+      |  ⇒ 
+      code ul.nav.nav-pills
+    ul.nav.nav-pills
+      +ulItemsLinks
+    p.mt-3.mb-1 Used in 
+      code nav.nav
+      |  ⇒ 
+      code nav.nav.nav-pills
+    nav.nav.nav-pills
+      +navLinks
+    h4.mt-4#fill-and-justify
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#fill-and-justify") Fill and justify
+    p.my-1 Default pills (for comparison): added borders to show element boundaries
+    ul.nav.nav-pills.border
+      +ulItemsLinksLong(true)
+    p.mt-3.mb-1 Auto-width fill: Add 
+      code .nav-fill
+      |  to 
+      code ul
+      |  ⇒ 
+      code ul.nav.nav-pills.nav-fill
+    ul.nav.nav-pills.nav-fill.border
+      +ulItemsLinksLong(true)
+    p.mt-3.mb-1 For 
+      code nav.nav.nav-pills.nav-fill
+      |  , add 
+      code .nav-item
+      |  to link items ⇒ 
+      code a.nav-item.nav-link
+    nav.nav.nav-pills.nav-fill.border
+      +navItemsLinksLong(true)
+    p.mt-3.mb-1 Equal-width fill: 
+      code .nav-justified
+      |  ⇒ 
+      code ul.nav.nav-pills.nav-justified
+    ul.nav.nav-pills.nav-justified.border
+      +ulItemsLinksLong(true)
+    p.mt-3.mb-1 For 
+      code nav.nav.nav-pills.nav-fill
+      |  , use 
+      code a.nav-item.nav-link
+    nav.nav.nav-pills.nav-justified.border
+      +navItemsLinksLong(true)
+    p.mt-3.mb-1 Same way as tabs: default (for comparison)
+    ul.nav.nav-tabs
+      +ulItemsLinksLong(false)
+    p.mt-3.mb-1 Auto-width fill for 
+      code ul
+      |  ⇒ 
+      code ul.nav.nav-tabs.nav-fill
+    ul.nav.nav-tabs.nav-fill
+      +ulItemsLinksLong(false)
+    p.mt-3.mb-1 Auto-width fill for 
+      code nav
+      |  ⇒ 
+      code nav.nav.nav-tabs.nav-fill
+    nav.nav.nav-tabs.nav-fill
+      +navItemsLinksLong(false)
+    p.mt-3.mb-1 Eual-width fill for 
+      code ul
+      |  ⇒ 
+      code ul.nav.nav-tabs.nav-justified
+    ul.nav.nav-tabs.nav-justified
+      +ulItemsLinksLong(false)
+    p.mt-3.mb-1 Eual-width fill for 
+      code nav
+      |  ⇒ 
+      code nav.nav.nav-tabs.nav-justified
+    nav.nav.nav-tabs.nav-justified
+      +navItemsLinksLong(false)
+    h4.mt-4#working-with-flex-utilities
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#working-with-flex-utilities") Working with flex utilities
+    p.my-2 Responsive example using 
+      a(href="utilities-3.html#flex") Flex utilities
+    nav.nav.nav-pills.flex-column.flex-md-row.border.mt-3
+      +navLinks("flex-md-fill text-md-center")
+    div.my-3
+      +collapseButton("#flex-example-structure") Structure
+    ul.struct.mt-2.collapse#flex-example-structure
+      li
+        code nav.nav.nav-pills
+        +attrsBtn(".a3-1")
+        ul
+          li.cls.collapse.a3-1 Vertical (stacked) as default 
+            code .flex-column
+          li.cls.collapse.a3-1 Horizontal (inline) on md (width&ge;768px) 
+            code .flex-md-row
+          li Items 
+            code a.nav-link
+            +attrsBtn(".a3-2")
+            ul.collapse.a3-2
+              li.cls Fills horizontally to the parent on md (width&ge;768px) 
+                code .flex-md-fill
+              li.cls Aligns center on md (width&ge;768px) 
+                code .text-md-center
+    h4.mt-4#regarding-accessibility
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#regarding-accessibility") Regarding accessibility
+    p.mt-2 Navigations ought to have a role 
+      code navigation
+      | . However it cannot be set to 
+      code ul
+      |  elements (see 
+      +extLink("https://www.w3.org/TR/html52/grouping-content.html#the-ul-element") W3C - the ul element
+      |  : 
+      code navigation
+      |  is not allowed to be a role value of 
+      code ul
+      | ).
+    p.my-2 You can use parent wrapper elements for 
+      code ul
+      | -based navigations. For this purpose, 
+      code nav
+      |  (see 
+      +extLink("https://www.w3.org/TR/html52/sections.html#the-nav-element") W3C - the nav element
+      | ) is a proper element.
+    li Parent wrapper 
+      code nav
+      |  (or 
+      code div
+      | , etc.) + Role attribute 
+      code role="navigation"
+      ul
+        li Navigation 
+          code ul.nav
+    p.my-2 For the 
+      code nav
+      | -based nav, you can set the roll directly.
+    ul.mt-1.mb-2
+      li Navigation 
+        code nav.nav
+        |  +Role attribute 
+        code role="navigation"
+    div.alert.alert-warning(role="alert")
+      strong Caution: 
+      | The role always must be 
+      code navigation
+      | . Even with 
+      code .nav-tabs
+      | , it must not be 
+      code tab
+      | , 
+      code tablist
+      | , or 
+      code tabpanel
+      | .
+    div.alert.alert-info(role="alert") It is also recommended to use 
+      code span.sr-only
+      |  (⇒ 
+      a(href="utilities-4.html#screenreaders") Screenreaders
+      | ) with text e.g. 
+      code (current)
+      |  within an active element for screen reader users. See the actual example in 
+      a(href="components-10.html#nav") Navbar
+      | .
+    h4.mt-4#using-dropdowns
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#using-dropdowns") Using dropdowns
+    p.mt-2.mb-3
+      a(href="components-4.html#dropdowns") Dropdown
+      | s can be used as navigation items.
+    +collapseButton("#using-dropdowns-structure") Structure
+    ul.struct.mt-2.collapse#using-dropdowns-structure
+      li Dropdown item 
+        code li.nav-item.dropdown
+        ul
+          li Link with dropdown 
+            code a.nav-link.dropdown-toggle
+            +attrsBtn(".a4-1")
+            ul
+              li.att.collapse.a4-1 Attribute 
+                code href="..."
+              li.att.collapse.a4-1 Attribute 
+                code data-toggle="dropdown"
+              li.att.collapse.a4-1 Accessibility attribute 
+                code role="button"
+              li.att.collapse.a4-1 Accessibility attribute 
+                code aria-haspopup="true"
+              li.att.collapse.a4-1 Accessibility attribute 
+                code aria-expanded="false"
+              li.txt Text (e.g.) 
+                code Dropdown
+          li Item list 
+            code div.dropdown-menu
+            ul
+              li Items ⇒ see 
+                a(href="components-4.html#dropdowns-examples") Dropdowns - Examples
+    each option in ["tabs", "pills"]
+      p.mt-3.mb-1 Example used in 
+        code= `ul.nav.nav-${option}`
+      ul(class=`nav nav-${option}`)
+        li.nav-item
+          a.nav-link.active(href="#") Active
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false") Dropdown
+          div.dropdown-menu
+            a.dropdown-item(href="#") Action
+            a.dropdown-item(href="#") Another action
+            a.dropdown-item(href="#") Something else here
+            div.dropdown-divider
+            a.dropdown-item(href="#") Separated link
+        li.nav-item
+          a.nav-link(href="#") Link
+        li.nav-item
+          a.nav-link.disabled(href="#") Disabled
+    each option in ["tabs", "pills"]
+      p.mt-3.mb-1 Example used in 
+        code= `nav.nav.nav-${option}`
+      nav(class=`nav nav-${option}`)
+        a.nav-item.nav-link.active(href="#") Active
+        a.nav-item.nav-link.dropdown-toggle(data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu
+          a.dropdown-item(href="#") Action
+          a.dropdown-item(href="#") Another action
+          a.dropdown-item(href="#") Something else here
+          div.dropdown-divider
+          a.dropdown-item(href="#") Separated link
+        a.nav-link(href="#") Link
+        a.nav-link.disabled(href="#") Disabled
+    h4.mt-4#javascript-behavior
+      +extLink("https://getbootstrap.com/docs/4.1/components/navs/#javascript-behavior") JavaScript behavior (tabbable panes)
+    - const sampleText = ["Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.", "Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.", "Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr."]
+    p.my-2 You can build tabbable panes with a list group (using bootstrap.js) by setting as follows.
+    p.mt-2.mb-3 For 
+      code ul
+      | -based nav
+    +collapseButton("#javascript-ul") Structure
+    ul.struct.mt-2.collapse#javascript-ul
+      li Tablist 
+        code ul.nav.nav-(tabs|pills)
+        +attrBtn(".a5-1")
+        ul
+          li.att.collapse.a5-1 Accessibility attribute 
+            code role="tablist"
+            |  (Caution: not 
+            code "navigation"
+            |  )
+          li Tab item 
+            code li.nav-item
+            ul
+              li Link 
+                code a.nav-link
+                +attrsBtn(".a5-2")
+                ul
+                  li.cls.collapse.a5-2 Add 
+                    code .active
+                    |  to an initlly-visible item
+                  li.att.collapse.a5-2 Attribute 
+                    code id="{tab-id}"
+                  li.att.collapse.a5-2 Attribute 
+                    code data-toggle="tab"
+                    |  or 
+                    code "pill"
+                    |  (no difference)
+                  li.att.collapse.a5-2 Attribute 
+                    code= `href="#{content-id}"`
+                  li.att.collapse.a5-2 Accessibility attribute 
+                    code role="tab"
+                  li.att.collapse.a5-2 Accessibility attribute 
+                    code aria-controls="{content-id}"
+                  li.att.collapse.a5-2 Accessibility attribute 
+                    code aria-selected="true"
+                    |  (on active) or 
+                    code "false"
+                  li.txt Text (e.g.) 
+                    code Home
+      li Tab content 
+        code div.tabcontent
+        ul
+          li Content item 
+            code div.tab-pane
+            +attrsBtn(".a5-3")
+            ul.collapse.a5-3
+              li.cls Add 
+                code .fade
+                |  for fade in/out animation effect
+              li.cls Add 
+                code .show.active
+                |  to an initially-visible item
+              li.att Attribute 
+                code id="{content-id}"
+              li.att Accessibility attribute 
+                code role="tabpanel"
+              li.att Accessibility attribute 
+                code aria-labelledby="{tab-id}"
+    each opt in ["tab", "pill"]
+      p.mt-4.mb-2
+        code= `ul.nav.nav-${opt}s`
+      ul(class=`nav nav-${opt}s mb-2` role="tablist")
+        li.nav-item
+          a.nav-link.active(id=`home-ul-${opt}-tab` data-toggle=opt href=`#home-ul-${opt}` role="tab" aria-controls=`home-ul-${opt}` aria-selected="true") Home
+        each item in ["profile", "contact"]
+          li.nav-item
+            a.nav-link(id=`${item}-ul-${opt}-tab` data-toggle=opt href=`#${item}-ul-${opt}` role="tab" aria-controls=`${item}-ul-${opt}` aria-selected="false")
+              = `${item[0].toUpperCase()}${item.slice(1)}`
+      div.tab-content
+        div.tab-pane.fade.show.active(id=`home-ul-${opt}` role="tabpanel" aria-labelledby=`home-ul-${opt}-tab`)
+          h6.my-1= `Home-ul-${opt}s`
+          p= sampleText[0]
+        each item in [["profile",sampleText[1]],["contact",sampleText[2]]]
+          div.tab-pane.fade(id=`${item[0]}-ul-${opt}` role="tabpanel" aria-labelledby=`${item[0]}-ul-${opt}-tab`)
+            h6= `${item[0][0].toUpperCase()}${item[0].slice(1)}-ul-${opt}s`
+            p= item[1]
+    p.mt-4.mb-3 For 
+      code nav
+      | -based nav (see the top-level structure difference below)
+    +collapseButton("#javascript-nav") Structure
+    ul.struct.mt-2.collapse#javascript-nav
+      li Parent wrapper (for accessibility) 
+        code nav
+        ul
+          li Actual nav root 
+            code div.nav.nav-(tabs|pills)
+            +attrBtn(".a6-1")
+            ul
+              li.att.collapse.a6-1 Accessibility attribute 
+                code role="tablist"
+              li Tab item/link 
+                code a.nav-item.nav-link(.active)?
+                ul
+                  li Attributes and text (same as 
+                    code ul
+                    | -based)
+      li Tab content 
+        code div.tabcontent
+        |  (same as 
+        code ul
+        | -based)
+    each opt in ["tab", "pill"]
+      p.mt-4.mb-2
+        code nav
+        |  &gt; 
+        code= `div.nav.nav-${opt}s`
+      nav
+        div(class=`nav nav-${opt}s mb-2` role="tablist")
+          a.nav-item.nav-link.active(id=`home-nav-${opt}-tab` data-toggle="tab" href=`#home-nav-${opt}` role="tab" aria-controls=`home-nav-${opt}` aria-selected="true") Home
+          each item in ["profile", "contact"]
+            a.nav-item.nav-link(id=`${item}-nav-${opt}-tab` data-toggle="tab" href=`#${item}-nav-${opt}` role="tab" aria-controls=`${item}-nav-${opt}` aria-selected="false")
+              = `${item[0].toUpperCase()}${item.slice(1)}`
+      div.tab-content
+        div.tab-pane.fade.show.active(id=`home-nav-${opt}` role="tabpanel" aria-labelledby=`home-nav-${opt}-tab`)
+          h6.my-1= `Home-nav-${opt}s`
+          p= sampleText[0]
+        each item in [["profile",sampleText[1]],["contact",sampleText[2]]]
+          div.tab-pane.fade(id=`${item[0]}-nav-${opt}` role="tabpanel" aria-labelledby=`${item[0]}-nav-${opt}-tab`)
+            h6= `${item[0][0].toUpperCase()}${item[0].slice(1)}-nav-${opt}s`
+            p= item[1]
+    p.mt-4.mb-3 The last example below is a layout variation with Flexbox (vertical pills on left, content on right, see source for details).
+    div.d-flex
+      div.nav.flex-column.nav-pills#v-pills-tab(role="tablist" aria-orientation="vertical")
+        a.nav-link.active#v-pills-home-tab(data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true") Home
+        a.nav-link#v-pills-profile-tab(data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false") Profile
+        a.nav-link#v-pills-messages-tab(data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false") Messages
+        a.nav-link#v-pills-settings-tab(data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false") Settings
+      div.tab-content.ml-3.mt-2#v-pills-tabContent
+        div.tab-pane.fade.show.active#v-pills-home(role="tabpanel" aria-labelledby="v-pills-home-tab")
+          h6 Home
+          p Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat.
+        div.tab-pane.fade#v-pills-profile(role="tabpanel" aria-labelledby="v-pills-profile-tab")
+          h6 Profile
+          p Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit qui esse anim eiusmod do sint minim consectetur qui.
+        div.tab-pane.fade#v-pills-messages(role="tabpanel" aria-labelledby="v-pills-messages-tab")
+          h6 Messages
+          p Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.
+        div.tab-pane.fade#v-pills-settings(role="tabpanel" aria-labelledby="v-pills-settings-tab")
+          h6 Settings
+          p Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.
+
+    +breadcrumbLevel1(" Components(9): Navs")

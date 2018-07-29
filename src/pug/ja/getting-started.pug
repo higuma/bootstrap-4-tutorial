@@ -1,0 +1,634 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: Getting started
+
+block body
+  div.container
+    +pageHeader("getting-started")
+      p.lead Getting started
+
+    h2.mt-4#intro
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/") スタートアップ
+    p.my-2 まずBootstrapの最も簡単な利用方法として
+      +extLink("https://ja.wikipedia.org/wiki/コンテンツデリバリネットワーク") CDN
+      | を利用する方法を説明する(本チュートリアルもこの方法で作られている）。
+    ul
+      li HTMLのタグ設定だけで利用可能
+      li ツールの設定やダウンロードなどは不要
+    p.my-2 最低限必要なHTML設定を構造で示す。⇒ 
+      +collapseButton("#intro-structure") 構造
+    ul.struct.collapse#intro-structure
+      li
+        a(href="#intro-doctype") DOCTYPE宣言 
+        code= "<!DOCTYPE html>"
+      li
+        code html
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 属性(
+            a(href="#intro-lang") 言語コード設定
+            | ) 
+            code lang="{言語コード}"
+          li
+            code head
+            ul
+              li
+                a(href="#intro-encoding") 文字エンコーディング 
+                code meta
+                +attrBtn(".a1-2")
+                ul.collapse.a1-2
+                  li.att 属性 
+                    code charset="utf-8"
+              li
+                a(href="#intro-viewport") ビューポート設定 
+                code meta
+                +attrsBtn(".a1-3")
+                ul.collapse.a1-3
+                  li.att 属性 
+                    code name="viewport"
+                  li.att 属性 
+                    code content="width=device-width, initial-scale=1, shrink-to-fit=no"
+              li
+                a(href="#intro-bootstrap-css") Bootstrap CSS読み込み 
+                code link
+                +attrsBtn(".a1-4")
+                ul.collapse.a1-4
+                  li.att 属性 
+                    code rel="stylesheet"
+                  li.att 属性 
+                    code href="{Bootstrap CSS CDNのURL}"
+                  li.att 属性 
+                    code integrity="sha384-{SHA-384文字列}"
+                  li.att 属性 
+                    code crossorigin="anonymous"
+              li タイトル設定 
+                code title
+                ul
+                  li.txt テキスト 
+                    code {ページタイトル}
+              li (オプション) 
+                code style
+                |  など(必要に応じて追加)
+          li
+            code body
+            ul
+              li HTMLコンテント(各自記述)
+              each lib in [[1,"jQuery"], [2,"Popper.js"], [3,"Bootstrap JavaScript"]]
+                - let cls = `a1-5-${lib[0]}`
+                li
+                  a(href="#intro-javascript") JavaScript読み込み
+                  = ` (${lib[1]}) `
+                  code script
+                  +attrsBtn(`.${cls}`)
+                  ul(class=`collapse ${cls}`)
+                    li.att 属性 
+                      code=`src="{${lib[1]} CDNのURL}"`
+                    li.att 属性 
+                      code integrity="sha384-{SHA-384文字列}"
+                    li.att 属性 
+                      code crossorigin="anonymous"
+    h4.mt-4#intro-doctype DOCTYPE宣言
+    p.my-2 HTMLの先頭は必ず 
+      code= "<!DOCTYPE html>"
+      |  と書く。これは後方互換(HTML4以前との判別)用の記述で、HTML5以降の(新しい)HTML文書であることを示すのに用いられる。⇒ 
+      +collapseButton("#intro-doctype-reference") リファレンス
+      |  
+      +collapseButton("#intro-doctype-note") 補足
+    ul.collapse#intro-doctype-reference
+      li
+        +extLink("https://developer.mozilla.org/ja/docs/Glossary/Doctype") MDN - DOCTYPE
+      li
+        +extLink("https://www.w3.org/TR/html52/syntax.html#the-doctype") W3C - HTML5.2 - DOCTYPE
+        |  (
+        +extLink("https://momdo.github.io/html/syntax.html#the-doctype") WHATWG和訳
+        | )
+      li 歴史的な経緯に興味のある人は
+        +extLink("https://ja.wikipedia.org/wiki/文書型宣言") Wikipedia - 文書型宣言
+        | を参照
+    div.alert.alert-info.collapse#intro-doctype-note(role="alert")
+      code DOCTYPE
+      |  を大文字にするのHTMLの元だった昔のマークアップ言語(
+      +extLink("https://ja.wikipedia.org/wiki/Standard_Generalized_Markup_Language") SGML
+      | 等)の名残り。今のルールでは大文字小文字は区別しないため公式ドキュメントの 
+      code= `<!doctype html>`
+      |  も正しいが、かなり珍しい。
+    h4.mt-4#intro-lang 言語コード設定
+    p.my-2 ルート要素の 
+      code html
+      |  には属性 
+      code lang="{言語コード}"
+      |  で文書中に主に用いる言語を設定する(
+      +extLink("https://ja.wikipedia.org/wiki/ISO_639-1") ISO 639-1
+      |   のアルファベット2文字: 日本語は 
+      code lang="ja"
+      | )。⇒ 
+      +collapseButton("#intro-lang-reference") リファレンス
+      ul.mt-3.collapse#intro-lang-reference
+        li
+          +extLink("https://developer.mozilla.org/ja/docs/Web/HTML/Element/html") MDNリファレンス - html
+          |  (⇒ 
+          +extLink("https://developer.mozilla.org/ja/docs/Web/HTML/Global_attributes/lang") グローバル属性 
+            code lang
+          | )
+        li
+          +extLink("https://www.w3.org/TR/html52/dom.html#the-lang-and-xmllang-attributes") W3C - HTML5.2 - The lang and xml:lang attributes
+          |  (
+          +extLink("https://momdo.github.io/html/dom.html#the-lang-and-xml:lang-attributes") WHATWG和訳
+          | )
+        li
+          +extLink("https://tools.ietf.org/html/bcp47") BCP 47 - Tags for Identifying Languages
+          |  (現在の言語コードの完全仕様)
+        li
+          +extLink("https://ja.wikipedia.org/wiki/IETF言語タグ") Wikipedia - IETF言語タグ
+          |  (BCP 47の分かりやすい解説)
+        li
+          +extLink("https://ja.wikipedia.org/wiki/ISO_639-1コード一覧") Wikipedia - ISO 639-1コード一覧
+          |  (通常はこの一覧のアルファベット2文字を用いる)
+    h4.mt-4#intro-encoding 文字エンコーディング
+    p.my-2
+      code head
+      |  ブロックの始め(ファイル先頭から1024バイト以内)にHTMLファイルの文字エンコーディングを記述するが、今は必ず
+      +extLink("https://ja.wikipedia.org/wiki/UTF-8") UTF-8
+      | を用いること。大文字小文字の区別はない(
+      code "utf-8"
+      | , 
+      code "UTF-8"
+      | , 
+      code "Utf-8"
+      |  等すべてOK)。⇒ 
+      +collapseButton("#intro-encoding-refference") リファレンス
+      ul.mt-3.collapse#intro-encoding-refference
+        li
+          +extLink("https://developer.mozilla.org/ja/docs/Web/HTML/Element/meta#Attributes") MDNリファレンス - meta
+          |  (
+          code charset
+          |  の解説を参照)
+        li
+          +extLink("https://www.w3.org/TR/html52/document-metadata.html#specifying-the-documents-character-encoding") W3C - HTML5.2 - Specifying the document's character encoding
+          |  (
+          +extLink("https://momdo.github.io/html/semantics.html#charset") WHATWG和訳
+          | )
+        li
+          +extLink("https://www.w3.org/International/questions/qa-html-encoding-declarations.ja") W3C - HTMLで文字エンコーディングを指定する
+          |  (解説、なぜUTF-8にすべきかについても詳しい)
+    h4.mt-4#intro-viewport ビューポート設定
+    p.my-2 ページの初期サイズ(幅と拡大率)を設定する。モバイル機器用ページにBootstrapを用いる場合は必ずこの設定が必要(分からなければコピペでもOK)。⇒ 
+      +collapseButton("#intro-viewport-reference") リファレンス
+      |  
+      +collapseButton("#intro-viewport-note") 補足
+      |  
+      +collapseButton("#intro-viewport-ios9") iOS 9の注意
+    ul.collapse#intro-viewport-reference
+      li
+        +extLink("https://developer.mozilla.org/ja/docs/Web/HTML/Element/meta#Attributes") MDNリファレンス - meta
+        |  (最後の方に 
+        code viewport
+        |  の解説がある)
+      li
+        +extLink("https://www.w3.org/TR/css-device-adapt-1/#viewport-meta") W3C Working draft - CSS Device Adaptation Module Level 1 - Viewport &lt;meta&gt; element
+        |  (
+        +extLink("https://momdo.github.io/css-device-adapt-1/#viewport-meta") 和訳
+        | )
+    div.alert.alert-info.collapse#intro-viewport-note(role="alert")
+      p
+        strong 補足(2018年5月現在): 
+        | 元はiPhone独自の設定だったが、その後Android等も採用し事実上の業界標準になった。元のiPhone専用書式は 
+        code meta
+        |  に記述する形式のみだったが、その後CSSの一部として正式に仕様化を進めることになった経緯がある。
+      p そのため現在のWorking draft(暫定仕様)はCSS扱いだが、実際にはまだ多くのブラウザは 
+        code meta
+        |  側の実装しか行っていない(CSSへの対応状況は 
+        +extLink("https://caniuse.com/#search=%40viewport") caniuse - @viewport
+        |  や 
+        +extLink("https://developer.mozilla.org/ja/docs/Web/CSS/Reference/@viewport") MDN - @viewport
+        |  を参照)。
+      p.mb-0 また暫定仕様では元のiPhone仕様との整合性確保のため、
+        code content
+        |  属性の値とCSS(
+        code @viewport
+        | )の間の変換規則(
+        +extLink("https://www.w3.org/TR/css-device-adapt-1/#parsing-algorithm") 英文
+        | /
+        +extLink("https://momdo.github.io/css-device-adapt-1/#parsing-algorithm") 日本語
+        | )がある。特に文の区切りにCSSの 
+        code ;
+        |  ではなく 
+        code ,
+        |  を用いる点に注意。
+    div.alert.alert-warning.collapse#intro-viewport-ios9(role="alert")
+      strong iOS 9に関する注意: 
+      code shrink-to-fit=no
+      |  はiPhone iOS 9(Safari 9)専用の設定。このバージョンのSafariはこれがないとページを自動縮小して全体表示する機能が優先され 
+      code initial-scale=1
+      |  が無効になる(勝手に縮小する)。9で追加されたが10で廃止されたため上記リファレンス仕様に書かれていない。
+      +extLink("https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_0.html") What's New in Safari - 9.0
+      |  を参照。なお他のブラウザは単に無視する(付けておいても無害)。
+    h4.mt-4#intro-cdn CDN読み込み
+    p CDNを利用する場合は外部読み込みタグ(CSSは 
+      code link
+      | , JavaScriptは 
+      code script
+      | )に属性 
+      code integrity="sha384-{SHA-384文字列}"
+      |  と 
+      code crossorigin="anonymous"
+      |  を追加する。⇒ 
+      +collapseButton("#intro-cdn-reference") リファレンス
+      |  
+      +collapseButton("#intro-cdn-note") 補足
+    ul.collapse#intro-cdn-reference
+      li
+        code integrity
+        |  について
+        ul
+          li
+            +extLink("https://developer.mozilla.org/ja/docs/Web/Security/Subresource_Integrity") MDN - Subresource Integrity
+          li
+            +extLink("https://w3c.github.io/webappsec-subresource-integrity/") W3C - Subresource Integrity
+            |  (
+            +extLink("https://triple-underscore.github.io/webappsec-subresource-integrity-ja.html") 和訳
+            | )
+      li
+        code crossorigin
+        |  について
+        ul
+          li
+            +extLink("https://developer.mozilla.org/ja/docs/Web/HTML/CORS_settings_attributes") MDN - CORS設定属性
+          li
+            +extLink("https://html.spec.whatwg.org/multipage/urls-and-fetching.html#cors-settings-attributes") WHATWG - CORS settings attributes
+            |  (
+            +extLink("https://momdo.github.io/html/urls-and-fetching.html#cors-settings-attributes") 和訳
+            | )
+    div.alert.alert-info.collapse#intro-cdn-note(role="alert")
+      strong 補足: 
+      | SHA-384は
+      +extLink("https://ja.wikipedia.org/wiki/暗号学的ハッシュ関数") 暗号学的ハッシュ関数
+      |  
+      +extLink("https://ja.wikipedia.org/wiki/SHA-2") SHA-2
+      | のひとつで、現在(2018年)のところ十分な強度を持つと見なされている。これを用いてあらかじめハッシュ値(の
+      +extLink("https://ja.wikipedia.org/wiki/Base64") Base64
+      |エンコード文字列)を求めておきホスト先と照合を行う(付けないとホスト先からの応答が遅くなることがある)。通常は公式サイトのテンプレートをそのままコピペすればよい。また自分で計算する場合は
+      +extLink("https://developer.mozilla.org/ja/docs/Web/Security/Subresource_Integrity/#Tools_for_generating_SRI_hashes") MDNリファレンス
+      | に例文付きの解説があるので参考にするとよい。
+    h5.mt-4#intro-bootstrap-css Bootstrap CSS読み込み
+    p 通常は公式ドキュメントの 
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") Starter template
+      |  の設定をそのまま使えばよい。⇒ 
+      +collapseButton("#intro-bootstrap-css-note") 補足
+    div.alert.alert-info.collapse#intro-bootstrap-css-note(role="alert")
+      strong 補足: 
+      | BootstrapのCDNホスト先は今までに数回変わっている(大昔はNetDNA、その後はMaxCDN、現在はStackPath)。そのためサイト運営中も定期的に確認すべき。現在のCDNホストは
+      +extLink("https://www.bootstrapcdn.com/") BootstrapCDN
+      | を参照。旧バージョンもここから利用できる(→ 
+      +extLink("https://www.bootstrapcdn.com/legacy/bootstrap/") Bootstrap Legacy
+      | )。
+    h5.mt-4#intro-javascript JavaScript読み込み
+    p Bootstrapは一部の動的機能をJavaScriptで実装している。これは
+      +extLink("http://jquery.com/") jQuery
+      | プラグインとして実装されたことから伝統的に「(Bootstrap) JavaScriptプラグイン」と呼ばれておりjQueryに依存している。また現バージョン(V4以降)は
+      +extLink("https://popper.js.org/") Popper.js
+      | にも依存している。そのためこの2つを事前に読み込む必要がある。
+    p 通常は次の順番で読み込むが、jQueryとPopper.jsの間に依存性はないので1と2は逆でもよい。CDN用の全設定は 
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") Starter template
+      |  を参照(内容が分からなくてもこの通り記述すれば使える)。
+    ol
+      li jQuery - 1.9.1以上、Slim build (AJAX, Effectsなし版)で十分
+      li Popper.js
+      li Bootstrap JavaScript
+    div.alert.alert-info(role="alert") 開発の初期段階はCDNを利用し、ある程度理解した後でカスタマイズを検討するのがお勧め。ここから下は大部分がカスタマイズを行う人向けの内容なので、最初は飛ばして
+      a(href="#accessibility") アクセシビリティ
+      | だけ確認して先に進むとよい。
+
+    h2.mt-4#download
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/") Bootstrapの利用法
+    p.my-2 Bootstrapの様々な入手/利用方法(概要のみ)。
+    ul
+      li ビルド済みファイルのみ必要な場合 ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
+      li SassやJavaScriptなどのソースファイルが必要な場合 ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#source-files") Source files
+        ul
+          li マスターはGitHub( 
+            +extLink("https://github.com/twbs/bootstrap/") https://github.com/twbs/bootstrap/
+            |  からZIPダウンロード)
+      li CDNを利用する場合 ⇒
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#bootstrapcdn") BootstrapCDN
+        |  (詳しくは 
+        a(href="#intro") スタートアップ
+        | を参照)
+      li ビルド済みファイルのみ必要な場合 ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
+      li 管理ツールを用いる場合 ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#package-managers") Package managers
+        ul
+          li JavaScript(node.js) ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#npm") npm
+            |  (Bootstrap自身はnpm環境でビルドされている)
+          li Ruby ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#rubygems") RubyGems
+          li PHP ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") Composer
+          li .NET ⇒ 
+            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") NuGet
+    div.alert.alert-info(role="alert") Bootstrapの全データは
+      +extLink("https://github.com/") GitHub
+      | の
+      +extLink("https://github.com/twbs/bootstrap") bootstrapレポジトリ
+      | で管理している。リリースの全バージョン履歴は
+      +extLink("https://github.com/twbs/bootstrap/releases") Releases
+      | ページで確認でき、ここから全ソースをダウンロードできる。
+
+    h2.mt-4#contents
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/") ファイルコンテンツ
+    p.my-2 Bootstrapのファイル内容について。
+    h4.ht-4#contents-precompiled
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#precompiled-bootstrap") 配布版(コンパイル済み)Bootstrap
+    p.my-2 (
+      code .map
+      |  ファイルは除外)
+    ul
+      li
+        code bootstrap/
+        +filesBtn(".pre")
+        ul.collapse.pre
+          li
+            code css/
+            +filesBtn(".pre-css")
+            ul.collapse.pre-css
+              li
+                code bootstrap(.min).css
+                |  - フルバージョン
+              li
+                code bootstrap-grid-(.min).css
+                |  - 
+                a(href="layout-1.html#grid") グリッド
+                | と
+                a(href="utilities-3.html#flex") Flexboxユーティリティ
+                | のみ
+              li
+                code bootstrap-reboot-(.min).css
+                |  - 
+                a(href="content-1.html#reboot") Reboot (リセットCSS)
+                | のみ
+          li
+            code js/
+            +filesBtn(".pre-js")
+            ul.collapse.pre-js
+              li
+                code bootstrap.bundle(.min).js
+                |  - Popper.jsとBootstrap JSの合体版(事前にjQuery読み込みが必要)
+              li
+                code bootstrap(.min).js
+                |  - Bootstrap JSのみ(事前にjQueryとPopper.jsの読み込みが必要)
+    h4.mt-4#contents-source-code
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#bootstrap-source-code") Bootstrapソースコード
+    p.my-2 (主要部分のディレクトリ構造のみ)
+    ul
+      li
+        code bootstrap-4.X.X/
+        +filesBtn(".src")
+        ul.collapse.src
+          li
+            code assets/
+            |  - ドキュメント用ファイル(CSS, JavaScript, 画像)
+          li
+            code build/
+            |  - ビルド用スクリプトコードと設定ファイル
+          li
+            code dist/
+            |  - コンパイル済みファイル(
+            a(href="#contents-precompiled") 配布版(コンパイル済み)Bootstrap
+            | と同じ)
+          li
+            code docs/
+            |  - ドキュメント用ソースファイル(Markdown)
+          li
+            code js/
+            |  JavaScriptファイル
+            +filesBtn(".src-js")
+            ul.collapse.src-js
+              li
+                code dist/
+                |  - モジュールファイルを単体コンパイルしたもの(個別読み込み用)
+              li
+                code src/
+                |  - モジュールファイル(ES2015形式)
+              li
+                code tests/
+                |  - テスト用ファイル
+          li
+            code nuget/
+            |  - NuGet (.NET用パッケージマネージャ)用ファイル
+          li
+            code scss/
+            |  Sass(.scss)ソースファイル
+          li
+            code package.json
+
+    h2.mt-4#browsers-devices
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/browsers-devices/") 対応ブラウザ
+    p.my-2 Bootstrap 4は現行の主要ブラウザに対応しており、対応ブラウザの条件を
+      code package.json
+      |  (⇒ 
+      a(href="#contents-source-code") Bootstrapソースコード
+      | )に 
+      +extLink("https://github.com/browserslist/browserslist") browserslist
+      |  形式で記述している(書式は 
+      +extLink("https://github.com/browserslist/browserslist#best-practices") Best Practices
+      |  と 
+      +extLink("https://github.com/browserslist/browserslist#full-list") Full List
+      |  を参照)。 ⇒ 
+      +collapseButton("#browserslist") 表示
+    pre.mt-3.p-2.border.bg-light.collapse#browserslist
+      code
+        = `"browserslist": [\n`
+        = `  "last 1 major version",\n`
+        = `  ">= 1%",\n`
+        = `  "Chrome >= 45",\n`
+        = `  "Firefox >= 38",\n`
+        = `  "Edge >= 12",\n`
+        = `  "Explorer >= 10",\n`
+        = `  "iOS >= 9",\n`
+        = `  "Safari >= 9",\n`
+        = `  "Android >= 4.4",\n`
+        = `  "Opera >= 30"\n`
+        = `],`
+    p.my-2 この情報は 
+      +extLink("https://github.com/postcss/autoprefixer") Autoprefixer
+      |  を用いてCSSにベンダープリフィクスを付加する処理に用いられる。なおAutoprefixerはBootstrap CSSをカスタマイズする際の必須ツール(V3.2以降で導入)。詳しくは
+      a(href="#css-customizing") CSSのカスタマイズ
+      | を参照。
+
+    h2.mt-4#javascript
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/javascript/") JavaScript
+    p.my-2 (TODO)
+
+    h2.mt-4#css
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/theming/") CSSのカスタマイズ
+    p.my-2 バージョン4以上のBootstrap CSSのソースファイルは 
+      +extLink("https://sass-lang.com/") Sass
+      |  (⇒ 
+      +extLink("https://ja.wikipedia.org/wiki/Sass") Wikipedia
+      | )で記述されており、現在のBootstrapは拡張用Sassソースを自分で書き、Bootstrap Sassソースコードをインポートしてカスタマイズする方法を推奨している。ただし当然ながらSassの習得が必須で、さらに開発ツールの知識も必要なため初心者にはややハードルが高い。
+    h4.mt-3#css-overriding CSSのオーバーライド
+    p.my-2 バージョン3.1.1まではソース(当時はSassではなく
+      +extLink("http://lesscss.org/") Less
+      | )のコンパイルは行わず、コンパイル済み(配布版)CSSの後にカスタマイズ用CSSを追加して設定をオーバーライドする方法を推奨していた。この方がより簡単で追加ツールも必要ない。
+    p.my-2 本チュートリアルはSassを知らなくても理解できるようにこの昔の方法を採用して部分的にCSSをオーバーライドしており、具体的には次の2箇所に用いている。
+    ul
+      li
+        a(href="components-1.html#breadcrumb-changing-the-separator") パンくずリスト - セパレータの変更
+      li
+        a(href="components-5.html#translating-or-customizing-the-strings") フォーム - 文字のカスタマイズ/多言語対応
+        |  (
+        button.btn.btn-outline-info CSSコード例
+        |  ボタンで表示)
+    p.my-2 基本的にはBootstrap CSSの後にそれを上書きするように設定すればよい(考え方としても分かりやすい)。ただしCSSセレクタの優先順位に注意(Bootstrapソースを検索してそれと同じCSSセレクタを使うのが確実)。
+    h4.mt-3#css-customizing Sassソースからのカスタマイズ
+    p.my-2 現在の推奨方法はSassソースからの拡張で、ややレベルは高いがカスタマイズの自由度ははるかに高い。
+    ul
+      li 拡張用Sassファイルを作成
+        ul
+          li カスタマイズ用変数を定義して値を設定
+          li Bootstrap Sassコードをインポート
+          li (オプション) 必要に応じて追加スタイルを記述
+      li
+        strong (必須) 
+        |  SassファイルをCSSへコンパイル
+      li
+        strong (必須) 
+        |  Autoprefixerでベンダープリフィクスを設定(追加)
+      li (オプション) CSS圧縮ツールで最適化
+    p.mt-2 しかし公式ドキュメントには(事前準備としての)SassとAutoprefixerのツール説明がほとんどない(Sass経験者用のコード解説しか書かれていない)。そこで初心者からでもカスタマイズを習得できるように専用チュートリアルを作成した。
+    p.mt-2 ⇒ 
+      +extLink("https://higuma.github.io/bootstrap-4-css-customization/ja/")
+        strong カスタマイズ法のチュートリアルに進む(別サイト)
+    div.alert.alert-info 別サイトにした理由は単なる解説ではなく読者が実際に操作できるようにするため。npmパッケージ形式になっており、ツールのインストールやカスタマイズ(ビルド)作業すべてを実際にnpmコマンドで行う事ができる。
+
+    h2.mt-4#build
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/build-tools/") Bootstrapのビルド
+    div.alert.alert-info(role="alert") 配布版を利用する場合は読む必要なし。しかしスタイルのカスタマイズには(Autoprefixerが必須なので)npmの知識が必要になる。スタイルをカスタマイズしたいが方法が分からない人は一回これを実際にやってみるとよい勉強になる。
+    p.my-2 BootstrapのソースファイルはGitHubにあり 
+      +extLink("https://github.com/twbs/bootstrap/releases") Releases
+      |  ページで全バージョンのソースを入手できる。ここではGitHubから入手したソース(バージョン4.0.0以上)からビルドやテストを行う方法を説明する。
+    p.my-2 まず実行環境として次の2つが必要(インストール方法が分からない人は各自検索すること)。
+      ul
+        li 
+          +extLink("https://nodejs.org/") node.js
+          |  (メインのビルドツールとして
+          +extLink("https://www.npmjs.com/") npm
+          | を用いる)
+        li 
+          +extLink("https://www.ruby-lang.org/ja/") Ruby
+          |  (ドキュメント生成用 - 
+          +extLink("https://jekyllrb.com/") jekyll
+          | を用いるために必要)
+    div.alert.alert-warning(role="alert") またドキュメントには書かれていないが、一部のバージョンでテストツールがJavaに対する依存性を持つ。もしテスト実行時に「Javaが利用できない」というメッセージが出る場合はJava環境(JRE)をインストールすること。
+    h4.mt-4#build-install ツールのインストール
+    p.my-2 GitHubのソースからビルドする事前準備として開発ツールをインストールする。⇒ 
+      +collapseButton("#build-install-list") 手順
+    ul.collapse#build-install-list
+      li まずGitHubソースを展開
+      li ディレクトリ内に移動(
+        code package.json
+        |  と 
+        code Gemfile
+        |  のある場所)
+      li node.js用ツールをインストール ⇒ 
+        kbd npm run install
+      li Ruby用ツールをインストール(ドキュメント生成に必要) ⇒ 
+        kbd (sudo) bundle install
+        ul
+          li Unix系環境では必要に応じ先頭に 
+            kbd sudo
+            |  が必要
+          li
+            code bundle
+            |  コマンド(
+            +extLink("https://bundler.io/") Bundler
+            | )が入っていない場合は要インストール ⇒ 
+            kbd (sudo) gem install bundler
+    h4.mt-4#build-commands ビルドコマンド
+    p.my-2 Bootstrap 4はビルド用ツールとしてnpmを用いる。コマンド一覧は 
+      kbd npm run
+      |  で表示できるが、それより 
+      code package.json
+      |  の 
+      code "scripts":
+      |  の部分を直接読んだ方が仕組みがよく分かる。主なコマンドだけ示す。⇒ 
+      +collapseButton("#build-commands-list") コマンド
+    ul.collapse#build-commands-list
+      li
+        kbd npm run dist
+        |  - CSSとJavaScriptのビルドを実行し
+        code ./dist
+        |  ディレクトリに出力
+      li
+        kbd npm test
+        |  - ビルド実行後にテストも実行
+      li
+        kbd npm run docs
+        |  - ドキュメント用のCSSとJavaScriptを生成しlintを実行
+      li
+        kbd npm run docs-serve
+        |  - ドキュメントサイトのローカルサーバ起動 ⇒ 
+        +extLink("http://localhost:9001/")
+          code http://localhost:9001/
+
+    h2.mt-4#webpack
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/webpack/") Webpack
+    p.my-2 (2018年5月現在) 
+      +extLink("https://webpack.js.org/") Webpack
+      |  はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(2018年2月にWebpack 4がリリースされたが、BootstrapドキュメントはまだWebpack 3の内容)。
+    p.my-2 そこで最新バージョン(具体的にはWebpack 4とBootstrap 4の組み合わせ)で動作するサンプルプロジェクトを作成した。詳しくは次のGitHub repoを参照(実際に動くものでなければ意味がない)。
+    ul
+      li
+        +extLink("https://github.com/higuma/webpack-bootstrap-starter") webpack-bootstrap-starter (GitHub)
+    div.alert.alert-info(role="alert") (日本向け) Webpackは進化が非常に早く、このようなサンプルもすぐ時代遅れになるので各自検索すること。例えば次を参照(定期的にメインテナンスしているので最新内容を保持している可能性が高い)。
+      ul.mb-0
+        li
+          +extLink("https://ics.media/entry/17749") ICS Media: 最新版で学ぶwebpack 4入門 – Bootstrapをバンドルする方法
+    div.alert.alert-info(role="alert") 本チュートリアルもWebpackでビルドしているが、ほぼpugからHTMLを生成するためにしか使っていない。また難解にならないよう意図的にCSSやJavaScriptのカスタマイズも行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。
+
+    h2.mt-4#accessibility
+      +extLink("https://getbootstrap.com/docs/4.1/getting-started/accessibility/") アクセシビリティ
+    p.my-2 Webアクセシビリティの標準仕様はW3Cにより 
+      +extLink("https://www.w3.org/WAI/") WAI
+      | -
+      +extLink("https://www.w3.org/WAI/intro/aria") ARIA
+      |  としてまとめられている。⇒ 
+      +collapseButton("#accessibility-reference") リファレンス
+    ul.collapse#accessibility-reference
+      li
+        +extLink("https://www.w3.org/TR/wai-aria-1.1/") WAI-ARIA 1.1仕様書
+        |  (
+        +extLink("https://momdo.github.io/wai-aria-1.1/") 和訳
+        | )
+      li
+        +extLink("https://developer.mozilla.org/ja/docs/Learn/Accessibility/WAI-ARIA_basics") MDN: WAI-ARIAの基本
+    p.my-2 具体的には次の2種類のアクセシビリティ属性が用いられる。
+    ul
+      li ロール属性(例) 
+        code role="navigation"
+      li ARIA属性(例) 
+        code aria-expanded="false"
+    p.my-2 本チュートリアルでは各コンポーネントの構造説明の際に用いるアクセシビリティ属性を具体的に示す。
+    p.my-2 ⇒ 
+      a(href="components-8.html#modal-components") 説明例(モーダル)
+      |  (
+      button.btn.btn-outline-info.btn-sm 構造
+      |  で表示、さらに
+      button.btn.btn-outline-info.btn-sm.px-1.py-0 属性
+      |  でアクセシビリティ属性を展開)
+    
+    p.my-2 またBootstrapはアクセシビリティ用ユーティリティとして 
+      code .sr-only
+      |  と 
+      code .sr-only-focusable
+      |  を用意している(⇒ 
+      a(href="utilities-4.html#screenreaders") スクリーンリーダ
+      | )。これらについても利用しているコンポーネントの構造説明の際に示す。
+
+    +breadcrumbLevel1("Getting started")

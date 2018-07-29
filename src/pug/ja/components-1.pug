@@ -1,0 +1,252 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: Components (1): アラート / バッジ / パンくずリスト
+
+block body
+  - const contexts = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+  - const contextRe = `(${contexts.join("|")})`
+
+  div.container
+    +pageHeader("components-1")
+      p.lead.mb-0 コンポーネント(1): 
+        a(href="#alerts") アラート
+        |  / 
+        a(href="#badges") バッジ
+        |  / 
+        a(href="#breadcrumb") パンくずリスト
+
+    h2.mt-4#alerts
+      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/") アラート
+    h4.mt-4#alerts-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#examples") 基本例
+    div.my-3
+      +collapseButton("#alerts-example-structure") 構造
+    ul.struct.mt-3.collapse#alerts-example-structure
+      li 外枠 
+        code= `div.alert.alert-${contextRe}`
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code role="alert"
+          li ヘッダ 
+            code h(1|2|3|...).alert-heading
+          li リンク 
+            code a.alert-link
+          li その他任意の要素を使用可
+    each c in contexts
+      p.mt-1.mb-0
+        code= `div.alert.alert-${c}`
+      div(class=`alert alert-${c}` role="alert")
+        | Alertサンプル(
+        = c
+        |  ) - 
+        a.alert-link(href="#") linkサンプル
+    h4.mt-4#alerts-additional-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#additional-content") 内部レイアウト例(+表示サンプル)
+    div.alert.alert-success(role="alert")
+      h4.alert-heading Alert内ヘッダ 
+        code h4.alert-heading
+      h5.alert-heading Alert内ヘッダ 
+        code h5.alert-heading
+      h6.alert-heading Alert内ヘッダ 
+        code h6.alert-heading
+      p 内部には任意のHTML要素を使用可能(この本文は 
+        code p
+        |  )
+      hr
+      p.mb-0
+        | 最後の要素は必要に応じ下マージンを調整(この文章は 
+        code p
+        |  のため
+        code .mb-0
+        |  を設定)
+    div.alert.alert-info(role="alert")
+      strong 補足: 
+      | アラート内の最終要素は必要に応じて下マージンを調整する(⇒ 
+      a(href="utilities-4.html#spacing") 空白
+      |  )。Bootstrapの 
+      code p
+      |  のデフォルト設定は 
+      code 1rem
+      |  (
+      code .mb-3
+      |  と同じ)なので、そのままでは下の余白が増えて不自然になる。そこで 
+      code .mb-0
+      |  で下マージンを除去すればアラート自身のパディングに設定され上下のバランスが取れる。
+    h4.mt-4.mb-3#alerts-dismissing
+      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#dismissing") 消去機能付きアラート
+    div.alert.alert-info(role="alert")
+      strong 設定例: 
+      |  右端の 
+      strong &times;
+      |  をクリックすると消去
+      button.close(type="button" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+    div.my-3
+      +collapseButton("#alerts-dismissing-structure") 構造
+    ul.struct.mt-3.collapse#alerts-dismissing-structure
+      li
+        code div.alert.alert-(primary|secondary|...)
+        ul
+          li 内部テキスト(略)
+          li クローズボタン 
+            code button.close
+            +attrsBtn(".a2-1")
+            ul
+              li.att.collapse.a2-1 属性 
+                code type="button"
+              li.att.collapse.a2-1 属性 
+                code data-dismiss="alert"
+              li.att.collapse.a2-1 アクセシビリティ属性 
+                code aria-label="Close"
+              li スクリーンリーダ用 
+                code span
+                +attrBtn(".a2-2")
+                ul
+                  li.att.collapse.a2-2 アクセシビリティ属性 
+                    code aria-hidden="true"
+                  li.txt テキスト 
+                    code= `&times;`
+
+    h2.mt-5#badges
+      +extLink("https://getbootstrap.com/docs/4.1/components/badge/") バッジ
+    h4.mt-4#badges-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#example") 例
+    h5.my-2#badges-example-headings タイトルに付けるバッジの例 ( 
+      span.badge.badge-secondary New
+      |  がバッジ)
+    h1 h1 タイトル 
+      span.badge.badge-secondary New
+    h2 h2 タイトル 
+      span.badge.badge-secondary New
+    h3 h3 タイトル 
+      span.badge.badge-secondary New
+    h4 h4 タイトル 
+      span.badge.badge-secondary New
+    h5 h5 タイトル 
+      span.badge.badge-secondary New
+    h6 h6 タイトル 
+      span.badge.badge-secondary New
+    h5.mt-4.mb-3#badges-example-button ボタン内の使用例 ( 
+      span.badge.badge-light.border 5
+      |  がバッジ)
+    button.btn.btn-primary(type="button") 通知
+      span.badge.badge-light.ml-2 5
+      span.sr-only 未読数
+    div.my-3
+      +collapseButton("#badges-example-structure") 構造
+    ul.struct.my-3.collapse#badges-example-structure
+      li
+        code button.btn.btn-primary
+      ul
+        li.txt テキスト 
+          code 通知
+        li バッジ 
+          code span.badge.badge-light
+          +attrBtn(".a3-1")
+          ul
+            li.clas.collapse.a3-1 左マージン 
+              code ml-2
+            li.txt テキスト 
+              code 5
+        li スクリーンリーダ用 
+          code span.sr-only
+          ul
+            li.txt テキスト 
+              code 未読数
+    h4.mt-4#badges-contextual-variations
+      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#contextual-variations") バッジ一覧
+    p.my-0
+      code= `span.badge.badge-${contextRe}`
+    p.my-0
+      each c in contexts
+        span(class=`badge badge-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+        | &nbsp;
+    h4.mt-4#badges-pill-badges
+      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#pill-badges") ピルバッジ
+    p.my-0
+      code= `span.badge.badge-pill.badge-${contextRe}`
+    p.my-0
+      each c in contexts
+        span(class=`badge badge-pill badge-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+        | &nbsp;
+    h4.mt-4#badges-links
+      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#links") バッジを使ったリンク( 
+        code a
+        |  要素)
+    p.my-0
+      code= `a.badge.badge-${contextRe}`
+    p.my-0
+      each c in contexts
+        a(href="#" class=`badge badge-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+        | &nbsp;
+
+    h2.mt-5#breadcrumb
+      +extLink("https://getbootstrap.com/docs/4.1/components/breadcrumb/") パンくずリスト
+    p.mt-2.mb-3 パンくずリスト(ブレッドクラム)は主にサイト階層の表現に用いる。
+    +collapseButton("#breadcrumb-structure") 構造
+    ul.struct.collapse.mt-3#breadcrumb-structure
+      li アクセシビリティ用親要素 
+        code nav
+        +attrBtn(".a4-1")
+      ul
+        li.att.collapse.a4-1 アクセシビリティ属性 
+          code aria-label="breadcrumb"
+        li
+          code ol.breadcrumb
+        ul
+          li リンク付きアイテム 
+            code li.breadcrumb-item
+            ul
+              li リンク 
+                code a
+                +attrBtn(".a4-2")
+                ul
+                  li.att.collapse.a4-2 属性 
+                    code href="..."
+                  li.txt テキスト(例) 
+                    code Home
+          li 現在位置(最後、リンクなし) 
+            code li.breadcrumb-item.active
+            +attrBtn(".a4-3")
+            ul
+              li.att.collapse.a4-3 アクセシビリティ属性 
+                code aria-current="page"
+              li.txt テキスト(例) 
+                code Data
+    p.my-3 設定例
+    nav(aria-label="breadcrumb")
+      ol.breadcrumb
+        li.breadcrumb-item.active(aria-current="page") Home
+    nav(aria-label="breadcrumb")
+      ol.breadcrumb
+        li.breadcrumb-item
+          a(href="#") Home
+        li.breadcrumb-item.active(aria-current="page") Library
+    nav(aria-label="breadcrumb")
+      ol.breadcrumb
+        li.breadcrumb-item
+          a(href="#") Home
+        li.breadcrumb-item
+          a(href="#") Library
+        li.breadcrumb-item.active(aria-current="page") Data
+    h4.mt-4#breadcrumb-changing-the-separator
+      +extLink("https://getbootstrap.com/docs/4.1/components/breadcrumb/#changing-the-separator") セパレータの変更
+    p.my-2 セパレータ文字はデフォルトで 
+      code "/"
+      |  に設定されているが、
+      code= head
+      |  ブロックの最後に次のCSSを追加すれば変更できる(本ページに設定している実例)。
+    pre.my-3.p-2.border.bg-light
+      code= 'breadcrumb-item + .breadcrumb-item::before { content: "\\00bb" }'
+    p.my-2 より本格的にbootstrap.cssをソースコードからカスタマイズすることも可能。詳しくは
+      a(href="getting-started.html#css") CSSのカスタマイズ
+      | を参照(Sassの知識が必要)。
+    p.mt-4 (最後に実例) この下にあるのが本ページのパンくずリスト。
+
+    +breadcrumbLevel1("コンポーネント(1): アラート/バッジ/パンくずリスト")

@@ -1,0 +1,56 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンテント(4): 図
+
+block body
+  div.container
+    +pageHeader("content-4")
+      p.lead コンテント(4): 
+        a(href="#figures") 図
+
+    h2.mt-2#figures
+      +extLink("https://getbootstrap.com/docs/4.1/content/figures/") 図
+    h4.mt-3#basic 見出し付き画像
+    p.my-1
+      code figure
+      |  要素を用い、内部に 
+      code figcaption
+      |  で見出しを記述する
+    p.mt-3.mb-1 基本設定: 見出しが下の場合
+    ul.struct
+      li
+        code figure.figure
+        ul
+          li: code img.figure-img.img-fluid
+          li: code figcaption.figure-caption
+    figure.figure
+      img.figure-img.img-fluid(src="../img/480x270.svg")
+      figcaption.figure-caption 画像の見出し
+    p.mt-3.mb-1 見出しが上の場合: 要素順序を交換
+    ul.struct
+      li
+        code figure.figure
+        ul
+          li: code figcaption.figure-caption.mb-2
+          li: code img.figure-img.img-fluid
+    figure.figure
+      figcaption.figure-caption.mb-2 画像の見出し
+      img.figure-img.img-fluid(src="../img/480x270.svg")
+    h4.mt-4#placement 見出しの配置
+    p.mt-2.mb-3
+      code figcaption
+      |  に
+      code .text-(left|center|right)
+      |  を設定(⇒ 
+      a(href="utilities-5.html#text-alignment") アラインメント
+      |  )
+    each al in ["left", "center", "right"]
+      p.mb-1
+        code= `figcaption.figure-caption.text-${al}`
+      figure.figure
+        img.figure-img.img-fluid(src="../img/480x270.svg")
+        figcaption(class=`figure-caption text-${al}`) 画像の見出し
+
+    +breadcrumbLevel1("コンテント(4): 図")

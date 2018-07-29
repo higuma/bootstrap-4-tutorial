@@ -1,0 +1,32 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components (10): Navbar: Placement/Fixed top
+
+block body
+  nav.navbar.fixed-top.navbar-dark.bg-info
+    a.navbar-brand(href="#") Fixed top
+  div.container
+    div(style="margin-top: 3.5rem;")
+      +pageHeader("navbar-fixed-top")
+        p.lead Components (10): Navbar: Placement/Fixed top
+
+    h2.mt-3#navbar
+      a(href="components-10.html") Navbar
+    h5.mt-4#navbar-placement-fixed-top
+      a(href="components-10.html#placement") Placement
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#placement") Fixed top
+    p The bar at the top of this page is a live example of 
+      code nav.navbar.fixed-top
+      |  . It is always fixed at the top regardless of vertical scrolling.
+    p (Dummy contents for scrolling below)
+    each n in [1,2,3]
+      h5(id=`pict-${n}`)= `Picture ${n}`
+      img.img-fluid.mb-4(src=`../img/1920x1080.svg`)
+    each n in [1,2,3]
+      h5(id=`slide-${n}`)= `Slide ${n}`
+      img.img-fluid.mb-4(src=`../img/slide-${n}.svg`)
+
+    +breadcrumbLevel2("components-10.html", "Components(10): Navbar", "Placement/Fixed top")

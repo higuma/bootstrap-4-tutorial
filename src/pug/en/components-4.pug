@@ -1,0 +1,947 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+mixin actionItems
+  for item in ["Action", "Another action", "Something else here"]
+    a.dropdown-item(href="#")= item
+
+mixin buttonActionItems
+  for item in ["Action", "Another action", "Something else here"]
+    button.dropdown-item(href="#")= item
+
+mixin actionItemsWithLink
+  +actionItems
+  div.dropdown-divider
+  a.dropdown-item(href="#") Separated link
+
+block head
+  title Bootstrap 4 tutorial: Components (4): Carousel / Collapse / Dropdowns
+
+block body
+  div.container
+    +pageHeader("components-4")
+      p.lead Component (4): 
+        a(href="#carousel") Carousel
+        |  / 
+        a(href="#collapse") Collapse
+        |  / 
+        a(href="#dropdowns") Dropdowns
+
+    h2.mt-2#carousel
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/") Carousel
+    h4.mt-3#carousel-basic
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#slides-only") Basic (auto-slide only)
+    div.carousel.slide.mb-3(data-ride="carousel")
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+    +collapseButton("#carousel-basic-structure") Structure
+    ul.struct.my-2.collapse#carousel-basic-structure
+      li Carousel (outer) 
+        code div.carousel.slide
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Attribute (auto-slide) 
+            code data-ride="carousel"
+            |  (remove to slide by controls only)
+          li Carousel (inner) 
+            code div.carousel-inner
+            ul
+              li Items 
+                code div.carousel-item
+                |  (&times;3)
+                ul
+                  li.cls Add 
+                    code .active
+                    |  to the initially-visible item
+                  li Image 
+                    code img.d-block.w-100
+                    +attrBtn(".a1-2")
+                    ul
+                      li.att.collapse.a1-2 Attribute 
+                        code src="..."
+    h4.mt-4#carousel-with-controls
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-controls") With controls
+    div.carousel.slide.mb-3#carouselExampleControls(data-ride="carousel")
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleControls" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-with-controls-structure") Structure
+    ul.struct.my-2.collapse#carousel-with-controls-structure
+      li Carousel (outer) 
+        code div.carousel.slide
+        +attrBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 ID (required) 
+            code id="{carousel-id}"
+          li Carousel (inner) 
+            code div.carousel-inner
+            |  - same as 
+            a(href="#carousel-basic") Basic (auto-slide only)
+          each dir in [["prev","Previous"],["next","Next"]]
+            li= `"${dir[1]}" control `
+              code= `a.carousel-control-${dir[0]}`
+              +attrsBtn(`.a2-2-${dir[0]}`)
+              ul
+                li(class=`att collapse a2-2-${dir[0]}`) Attribute 
+                  code= `href="#{carousel-id}"`
+                li(class=`att collapse a2-2-${dir[0]}`) Attribute 
+                  code= `data-slide="${dir[0]}"`
+                li Icon 
+                  code= `span.carousel-control-${dir[0]}-icon`
+                  +attrBtn(`.a2-3-${dir[0]}`)
+                  ul(class=`collapse a2-3-${dir[0]}`)
+                    li.att Accessibility attribute 
+                      code aria-hidden="true"
+                li For screen reader 
+                  code span.sr-only
+                  ul
+                    li.txt Text 
+                      code= dir[1]
+    h4.mt-4#carousel-with-indicators
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-indicators") With indicators
+    div.carousel.slide.mb-3#carouselExampleIndicators(data-ride="carousel")
+      ol.carousel-indicators
+        each index in [0,1,2]
+          li(class=`${index==0 ? "active" : ""}` data-target="#carouselExampleIndicators" data-slide-to=index)
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleIndicators" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-with-indicators-structure") Structure
+    ul.struct.my-2.collapse#carousel-with-indicators-structure
+      li Carousel (outer) 
+        code div.carousel.slide
+        +attrBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 ID 
+            code id="{carousel-id}"
+          li Indicators 
+            code ol.carousel-indicators
+            ul
+              li Indicator item 
+                code li
+                |  (&times;3)
+                +attrsBtn(".a3-2")
+                ul.collapse.a3-2
+                  li.att Attribute 
+                    code= `data-target="#{carousel-id}"`
+                  li.att Attribute 
+                    code data-slide-to="{index}"
+                    |  (index = 0,1,2)
+                  li.cls Add 
+                    code .active
+                    |  to an initially-visible item
+          li Carousel (inner) and Previous/Next controls - same as 
+            a(href="#carousel-with-controls") With controls
+    h4.mt-4#carousel-with-captions
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-captions") With captions
+    div.carousel.slide.mb-3#carouselExampleCaptions(data-ride="carousel")
+      ol.carousel-indicators
+        each index in [0,1,2]
+          li(class=`${index==0 ? "active" : ""}` data-target="#carouselExampleCaptions" data-slide-to=index)
+      div.carousel-inner
+        each item in [[1,"First","Nulla vitae elit libero, a pharetra augue mollis interdum."],[2,"Second","Lorem ipsum dolor sit amet, consectetur adipiscing elit."],[3,"Third","Praesent commodo cursus magna, vel scelerisque nisl consectetur."]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+            div.carousel-caption.d-none.d-md-block
+              h5= `${item[1]} slide label`
+              p= item[2]
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleCaptions" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-with-captions-structure") Structure
+    ul.struct.my-2.collapse#carousel-with-captions-structure
+      li Carousel (outer) (same as above)
+        ul
+          li Indicators (same as above)
+          li Carousel (inner) 
+            code div.carousel-inner
+            ul
+              li Item 
+                code div-carousel-item(.active)?
+                ul
+                  li
+                    code img.d-block.w-100
+                  li (Add from here) - 
+                    code div.carousel-caption.d-none.d-md-block
+                    ul
+                      li Label 
+                        code h5
+                        ul
+                          li.txt Text (e.g.) 
+                            code First slide label
+                      li Caption 
+                        code p
+                        ul
+                          li.txt Text (e.g.) 
+                            code Nulla vitae ...
+          li Previous/Next controls (same as above)
+    h4.mt-4#carousel-crossfade
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#crossfade") Crossfade
+    div.carousel.slide.carousel-fade.mb-3#carouselExampleFade(data-ride="carousel")
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleFade" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-crossfade-structure") Structure
+    ul.struct.my-2.collapse#carousel-crossfade-structure
+      li Base structure is same as 
+        a(href="#carousel-with-controls") With controls
+        |  example
+      li Adds 
+        code .carousel-fade
+        |  to Carousel (outer) 
+        code div.carousel.slide
+
+    h2.mt-5#collapse
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/") Collapse
+    - const sampleText = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."
+    p.my-2 You can toggle collapse (hidden) and expanded (shown) states of a target element with a button.
+    h4.mt-3.mb-2#collapse-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#example") Example
+    p.mt-3.mb-1 Live examples below (
+      code a
+      |  on left, 
+      code button
+      |  on right, both switch the same target 
+      code div.collapse#ex-collapse
+      | ).
+    p.mt-2.mb-3
+      a.btn.btn-primary.mr-1(data-toggle="collapse" href="#ex-collapse" role="button" aria-expanded="false" aria-controls="ex-collapse")
+        code a.btn.btn-primary
+      button.btn.btn-primary(type="button" data-toggle="collapse" data-target="#ex-collapse" aria-expanded="false" aria-controls="ex-collapse")
+        code.text-white button.btn.btn-primary
+      div.collapse.my-2#ex-collapse
+        div.card.card-body
+          code div.collaps#ex-collapse
+          = sampleText
+    +collapseButton("#collapse-example-structure") Structure
+    ul.struct.my-2.collapse#collapse-example-structure
+      li Button: one of 
+        code button
+        |  or 
+        code a
+        ul
+          li With 
+            code a
+            |  ⇒ 
+            code a.btn.btn-(primary|secondary|...)
+            +attrsBtn(".a4-1")
+            ul.collapse.a4-1
+              li.att Attribute 
+                code data-toggle="collapse"
+              li.att Attribute 
+                code= `href="#{target-id}"`
+                |  (or an arbitrary CSS selector)
+              li.att Accessibility attribute 
+                code role="button"
+          li With 
+            code button
+            |  ⇒ 
+            code button.btn.btn-(primary|secondary|...)
+            +attrsBtn(".a4-2")
+            ul.collapse.a4-2
+              li.att Attribute 
+                code type="button"
+              li.att Attribute 
+                code data-toggle="collapse"
+              li.att Attribute 
+                code= `data-target="#{target-id}"`
+                |  (or an arbitrary CSS selector)
+          li Common accessibility attributes
+            +attrsBtn(".a4-3")
+            ul.collapse.a4-3
+              li.att
+                code aria-expanded="false"
+                |  (or 
+                code "true"
+                |  for initially-shown)
+              li.att
+                code aria-controls="{target-id}"
+      li Target (can be any element)
+        +attrsBtn(".a4-4")
+        ul.collapse.a4-4
+          li.cls Set class 
+            code .collapse
+            |  (hidden as default)
+          li.cls Add 
+            code .show
+            |  to set initially-shown
+          li.att Set a target selector
+            ul
+              li.att (e.g.) 
+                code id="{target-id}"
+              li.att Or any CSS selector you need
+    div.alert.alert-info.mt-3
+      button.btn.btn-outline-secondary Structure
+      |  and 
+      button.btn.btn-outline-secondary.btn-sm.px-1.py-0 Attributes
+      |  buttons above are also made with the collapse function.
+    h4.mt-4#collapse-multiple-targets
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#multiple-targets") Multiple targets
+    p.mt-2.mb-3 Multiple targets can be specified by a class.
+    +collapseButton("#collapse-multiple-targets-structure") Structure
+    ul.struct.my-2.collapse#collapse-multiple-targets-structure
+      li With 
+        code a
+        ul
+          li.att
+            code href=".{target-class}"
+      li With 
+        code button
+        ul
+          li.att
+            code data-target=".{target-class}"
+      li.cls Set 
+        code class="{target-class}"
+        |  to targets
+    p.mt-3.mb-1 Example 1: With 
+      code a
+      | 's, used ID's for each (1) and (2), class for (1)+(2)
+    p.my-1
+      each n in [1,2]
+        a.btn.btn-primary.mr-1(data-toggle="collapse" href=`#ex-multi-a-${n}` role="button" aria-expanded="false" aria-controls=`ex-multi-a-${n}`)
+          = `Toggle (${n})`
+      a.btn.btn-primary(href=".multi-collapse-a" data-toggle="collapse" aria-expanded="false" aria-controls="ex-multi-a-1 ex-multi-a-2") Toggle (1)+(2)
+    div.row
+      each n in [1,2]
+        div.col
+          div.collapse.multi-collapse-a(id=`ex-multi-a-${n}`)
+            div.card.card-body= `(${n}) ${sampleText}`
+    p.mt-3.mb-1 Example 2: With 
+      code button
+      | 's
+    p.my-1
+      each n in [1,2]
+        button.btn.btn-primary.mr-1(type="button" data-toggle="collapse" data-target=`#ex-multi-b-${n}` aria-expanded="false" aria-controls=`ex-multi-b-${n}`)
+          = `Toggle (${n})`
+      button.btn.btn-primary(type="button" data-target=".multi-collapse-b" data-toggle="collapse" aria-expanded="false" aria-controls="ex-multi-b-1 ex-multi-b-2") Toggle (1)+(2)
+    div.row
+      each n in [1,2]
+        div.col
+          div.collapse.multi-collapse-b(id=`ex-multi-b-${n}`)
+            div.card.card-body= `(${n}) ${sampleText}`
+    h4.mt-4#collapse-accordion-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#accordion-example") Accordion example
+    p.my-1 Extended example using 
+      a(href="components-3.html") card
+      | s.
+    div.my-3#accordion-demo
+      each n in [1,2,3]
+        div.card
+          div.card-header
+            h5.mb-0
+              button.btn.btn-link(data-toggle="collapse" data-target=`#collapse-${n}` aria-expanded=`${n==1}` aria-controls=`collapse-${n}`)
+                = `Collapsible Group Item #${n}`
+          div(id=`collapse-${n}` class=`collapse${n==1 ? " show" : ""}` aria-labelledby=`heading-${n}` data-parent="#accordion-demo")
+            div.card-body
+              = `(${n}) Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.`
+    +collapseButton("#collapse-accordion-example-structure") Structure
+    ul.struct.my-2.collapse#collapse-accordion-example-structure
+      li Parent 
+        code div
+        +attrBtn(".a5-1")
+        ul
+          li.att.collapse.a5-1 Attribute 
+            code id="{parent-id}"
+          li 
+            a(href="components-3.html") Card 
+            code div.card
+            |  (&times;3)
+            ul
+              li Header 
+                code div.card-header
+                +attrBtn(".a5-2")
+                ul
+                  li.att.collapse.a5-2 Accessibility attribute 
+                    code id="{header-id}"
+                  li Heading 
+                    code h5
+                    ul
+                      li Button 
+                        code button.btn.btn-link
+                        +attrsBtn(".a5-3")
+                        ul
+                          li.att.collapse.a5-3 Attribute 
+                            code data-toggle="collapse"
+                          li.att.collapse.a5-3 Attribute 
+                            code= `data-target="#{target-id}"`
+                          li.att.collapse.a5-3 Accessibility attribute 
+                            code aria-expanded="false"
+                            |  (or 
+                            code "true"
+                            |  for initially-shown)
+                          li.att.collapse.a5-3 Accessibility attribute 
+                            code aria-controls="{target-id}"
+                          li.txt Title text
+              li Collapsed content 
+                code div.collapse
+                +attrsBtn(".a5-4")
+                ul
+                  li.cls.collapse.a5-4 Add 
+                    code .show
+                    |  for initially-shown item
+                  li.att.collapse.a5-4 Attribute 
+                    code id="{target-id}"
+                  li.att.collapse.a5-4 Attribute 
+                    code= `data-parent="#{parent-id}"`
+                  li.att.collapse.a5-4 Accessibility attribute 
+                    code aria-labelledby="{header-id}"
+                  li.txt Content text 
+
+    h2.mt-5#dropdowns
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/") Dropdowns
+    - const contexts = ["primary", "secondary", "success", "info", "warning", "danger"]
+    - const contextRe = `(${contexts.join("|")})`
+    h4.mt-3.mb-1#dropdowns-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#examples") Examples
+    h5.mt-3.mb-1#dropdowns-example-button With 
+      code button
+    div.dropdown.mt-2.mb-3
+      button.btn.btn-secondary.dropdown-toggle#dropdownMenuButton(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown button
+      div.dropdown-menu(aria-labelledby="dropdownMenuButton")
+        +actionItemsWithLink
+    +collapseButton("#dropdowns-example-button-structure") Structure
+    ul.struct.my-2.collapse#dropdowns-example-button-structure
+      li Parent 
+        code div.dropdown
+        |  (any element with 
+        code position: relative;
+        | )
+        ul
+          li Button 
+            code= `button.btn.btn-${contextRe}`
+            +attrsBtn(".a6-1")
+            ul
+              li.att.collapse.a6-1 Attribute 
+                code type="button"
+              li.att.collapse.a6-1 Attribute 
+                code data-toggle="dropdown"
+              li.att.collapse.a6-1 (Accessibility) attribute 
+                code id="{dropdown-id}"
+              li.att.collapse.a6-1 Accessibility attribute 
+                code aria-haspopup="true"
+              li.att.collapse.a6-1 Accessibility attribute 
+                code aria-expanded="false"
+              li.txt Text (e.g.) 
+                code Dropdown button
+          li Dropdown menu 
+            code div.dropdown-menu
+            +attrBtn(".a6-2")
+            ul
+              li.att.collapse.a6-2 Accessibility attribute 
+                code aria-labelledby="{dropdown-id}"
+              li Menu item 
+                code a.dropdown-item
+                +attrBtn(".a6-3")
+                ul.collapse.a6-3
+                  li.att Attribute 
+                    code href="..."
+              li Divider 
+                code div.dropdown-divider
+                |  ⇒ 
+                a(href="#dropdowns-dividers") Dividers
+    h5.mt-4#dropdowns-example-a With 
+      code a
+    div.dropdown.mt-2.mb-3
+      a.btn.btn-secondary.dropdown-toggle#dropdownMenuLink(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown button
+      div.dropdown-menu(aria-labelledby="dropdownMenuLink")
+        +actionItemsWithLink
+    +collapseButton("#dropdowns-example-a-structure") Structure
+    div.my-2.collapse#dropdowns-example-a-structure
+      p.mt-3.mb-2 Same as above except a trigger element.
+      ul.struct.my-0
+        li Parent (same as above)
+          ul
+            li Button 
+              code= `a.btn.btn-${contextRe}.dropdown-toggle`
+              +attrsBtn(".a7-1")
+              ul
+                li.att.collapse.a7-1 Attribute 
+                  code href="..."
+                li.att.collapse.a7-1 Attribute 
+                  code data-toggle="dropdown"
+                li.att.collapse.a7-1 Additional accessibility attribute 
+                  code role="button"
+                li.att.collapse.a7-1 Other attribute (
+                  code id
+                  |  , 
+                  code aria-haspopup
+                  |  , and 
+                  code aria-expanded
+                  |  ) are the same
+                li.txt Text (same)
+            li Dropdown menu (same)
+    h5.mt-4.mb-0#dropdowns-colors Contextual examples
+    p.my-0
+      code= `.btn-${contextRe}`
+    p.my-1
+      each c in contexts
+        div.btn-group
+          button(type="button" id=`dropdown-${c}` class=`btn btn-${c} dropdown-toggle` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")= `${c[0].toUpperCase()}${c.slice(1)}`
+          div.dropdown-menu(aria-labelledby=`dropdown-${c}`)
+            +actionItems
+    +collapseButton("#dropdowns-colors-structure") Structure
+    ul.struct.my-2.collapse#dropdowns-colors-structure
+      li Parent (arranges inline) 
+        code div.btn-group
+        ul
+          li Inside (same as above)
+    h4.mt-4#dropdowns-split-button
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#split-button") Split button
+    p.my-2
+      each c in contexts
+        div.btn-group
+          button(type="button" class=`btn btn-${c}`)= `${c[0].toUpperCase()}${c.slice(1)}`
+          button(type="button" id=`dropdown-split-${c}` class=`btn btn-${c} dropdown-toggle dropdown-toggle-split` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            span.sr-only Toggle Dropdown
+          div.dropdown-menu(aria-labelledby=`dropdown-split-${c}`)
+            +actionItemsWithLink
+    +collapseButton("#dropdowns-split-button-dropdowns-structure") Structure
+    ul.struct.my-2.collapse#dropdowns-split-button-dropdowns-structure
+      li Parent 
+        code div.btn-group
+        strong  (Caution:
+          |  Do not use 
+          code .dropdown
+          |  for split buttons)
+        ul
+          li Left: (normal button) 
+            code= `button.btn.btn-${contextRe}`
+            ul
+              li.txt Button text (e.g.) 
+                code Primary
+          li Right: (dropdown tab) add 
+            code .dropdown-toggle-split
+            ul
+              li.txt (No button text here)
+              li For screen reader 
+                code span.sr-only
+                ul
+                  li.txt Text (e.g.) 
+                    code Toggle Dropdown
+          li Dropdown menu (same)
+    h4.mt-4.mb-0#dropdowns-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#sizing") Sizing
+    p.my-2 Add 
+      code .btn-(lg|sm)
+    each sz in [["lg","Large"], [null, "Medium"], ["sm", "Small"]]
+      p.my-1
+        code= `${sz[0] ? `(a|button).btn.btn-secondary.btn-${sz[0]}` : "(Default)"}`
+      div.mb-3
+        div.btn-group
+          button(id=`dropdown-size-${sz[0] ? sz[0] : "default"}` class=`btn btn-secondary${sz[0] ? ` btn-${sz[0]}` : ""} dropdown-toggle` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            = `${sz[1]} button`
+          div.dropdown-menu(aria-labelledby=`dropdown-size-${sz[0] ? sz[0] : "default"}`)
+            +actionItemsWithLink
+        div.btn-group
+          button(class=`btn btn-secondary${sz[0] ? ` btn-${sz[0]}` : ""}` type="button")
+            = `${sz[1]} split button`
+          button(type="button" id=`dropdown-split-size-${sz[0] ? sz[0] : "default"}` class=`btn btn-secondary${sz[0] ? ` btn-${sz[0]}` : ""} dropdown-toggle dropdown-toggle-split` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            span.sr-only Toggle Dropdown
+          div.dropdown-menu(aria-labelledby=`dropdown-split-size-${sz[0] ? sz[0] : "default"}`)
+            +actionItemsWithLink
+    h4.mt-4.mb-0#dropdowns-directions
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#directions") Directions (
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropup") Up
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropright") Right
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropleft") Left
+      | )
+    p.mt-2.mb-0 Add 
+      code .(dropup|dropright|dropleft)
+      |  to a parent 
+      code div.btn-group
+    div.d-flex
+      div.mx-auto
+        each dir in ["up", "right", "left"]
+          p.mt-3.mb-1
+            code= `div.btn-group.drop${dir}`
+          div(class=`btn-group drop${dir}`)
+            button.btn.btn-secondary.dropdown-toggle(id=`drop${dir}` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")= `Drop${dir}`
+            div.dropdown-menu(aria-labelledby=`drop${dir}`)
+              +actionItemsWithLink
+          - if (dir != "left")
+            div(class=`btn-group drop${dir}`)
+              button.btn.btn-secondary(type="button")= `Split drop${dir}`
+              button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split(id=`split-drop${dir}` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              div.dropdown-menu(aria-labelledby=`split-drop${dir}`)
+                +actionItemsWithLink
+          - else
+            div.btn-group
+              div.btn-group.dropleft(role="group")
+                button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split(id="split-dropleft" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  span.sr-only Toggle Dropleft
+                div.dropdown-menu(aria-labelledby="split-dropleft")
+                  +actionItemsWithLink
+              button.btn.btn-secondary(type="button") Split dropleft
+    p.mt-3.mb-2 Structures are basically the same. But the split dropleft has a slightly different structure.
+    +collapseButton("#dropdowns-split-dropleft-structure") Split dropleft structure
+    ul.struct.my-2.collapse#dropdowns-split-dropleft-structure
+      li (Required) grand-parent 
+        code div.btn-group
+        ul
+          li (Intermediate) parent 
+            code div.btn-group.dropleft
+            +attrBtn(".a8-1")
+            ul
+              li.att.collapse.a8-1 Accessibility attribute 
+                code role="group"
+              li Tab for 1st 
+                code button.btn.dropdown-toggle.dropdown-toggle-split ...
+              li Button for 2nd 
+                code button.btn ...
+    h4.mt-4#dropdowns-menu-items
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-items") Menu items
+    p.mb-2
+      code button.dropdown-item
+      |  elements can be used for items (does not jump on click by default).
+    h6.mt-3.mb-2#dropdowns-menu-items-example Example: with 
+      code button.dropdown-item
+      |  (does not link on click)
+    p.my-2
+      div.dropdown
+        button.btn.btn-secondary.dropdown-toggle#dropdownMenu2(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu(aria-labelledby="dropdownMenu2")
+          +buttonActionItems
+          div.dropdown-divider
+          button.dropdown-item(type="button") Separated item
+    +collapseButton("#dropdowns-menu-items-structure") Structure
+    ul.struct.my-2.collapse#dropdowns-menu-items-structure
+      li Dropdown menu 
+        code div.dropdown-menu
+        +attrBtn(".a9-1")
+        ul
+          li.att.collapse.a9-1 Accessibility attribute 
+            code aria-labelledby=...
+          li Item 
+            code button.dropdown-item
+            + attrBtn(".a9-2")
+            ul
+              li.att.collapse.a9-2 Attribute 
+                code type="button"
+    p.mt-3.mb-2 You can use 
+      code (span).dropdown-item-text
+      |  to create static (not selectable) text items. You can also add any text formatting with tags and CSS to items. See the example below.
+    div.dropdown
+      button.btn.btn-secondary.dropdown-toggle#ex-item-text(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Text example
+      div.dropdown-menu(area-labelledby="ex-item-text")
+        span.dropdown-item-text Static item (you cannot select it)
+        span.dropdown-item-text.text-muted Static with 
+          code .dropdown-item-text
+          |  (using 
+          code .text-muted
+          |  and 
+          code code
+          |  )
+        a.dropdown-item(href="#") Active item with various tags: 
+          strong strong
+          |  , 
+          em italic
+          |  , 
+          sub sub
+          |  , 
+          sup sup
+        a.dropdown-item(href="#") Active with
+          each c in contexts
+            span(class=`text-${c}`)= ` ${c}`
+    h4.mt-4#dropdowns-active-disabled
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#active") Active
+      | /
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#disabled") disabled
+      |  items
+    p.mt-3.mb-2 Add 
+      code .active
+      |  to a item to display as active state (white text on primary/blue background).
+    div.dropdown
+      button.btn.btn-secondary.dropdown-toggle#ex-active(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+      div.dropdown-menu(area-labelledby="ex-active")
+        a.dropdown-item(href="#") Regular link
+        a.dropdown-item.active(href="#") Active link
+        a.dropdown-item(href="#") Another link
+    p.mt-3.mb-2 Add 
+      code .disabled
+      |  to an item to display as disabled (grayed text).
+    div.dropdown
+      button.btn.btn-secondary.dropdown-toggle#ex-disabled(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+      div.dropdown-menu(area-labelledby="ex-disabled")
+        a.dropdown-item(href="#") Regular link
+        a.dropdown-item.disabled(href="#") Disabled link
+        a.dropdown-item(href="#") Another link
+    p.mt-3 However, both classes have no behavior effect. An item with 
+      code .active
+      |  does not change when a user select another item. Also, an item with 
+      code .disabled
+      |  can be selected. Furthermore, it links to the target if its element is 
+      code a
+      |  (not disabled). You can check these behaviors with above examples.
+    h5.mt-4#javascript-behaviors (Advanced) JavaScript behaviors
+    p.my-2 JavaScript is required for appropriate behaviors. See the example below.
+    div.mb-3
+      div.dropdown.d-inline
+        button.btn.btn-secondary.dropdown-toggle#button-active-disabled-example(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Interactive demo
+        div.dropdown-menu#active-disabled-example(area-labelledby="button-active-disabled-example")
+          each n in [1,2,3,4,5]
+            a(href="#" class=`dropdown-item${n == 1 ? " active" : ""}${n == 5 ? " disabled" : ""}`)= `Item ${n}${n == 5 ? " (disabled)" : ""}`
+      span.ml-3
+        strong
+          span.text-danger#active-indicator Item 1
+        |  is currently active.
+    +collapseButton("#dom-structure") Structure (summary)
+    | &nbsp;
+    +collapseButton(".dropdowns-javascript-code") JavaScript code
+    ul.mt-2.collapse#dom-structure
+      li A dropdown button is same as above
+      li Sets ID to an item list 
+        code id="active-disabled-example"
+      li Sets 
+        code .active
+        |  to 
+        strong Item 1
+      li Sets 
+        code .disabled
+        |  to 
+        strong Item 5 (disabled)
+      li Outside a dropdown, adds 
+        code span#active-indicator
+        |  for displaying a currently active item
+    pre.p-2.mt-3.border.bg-light.collapse.dropdowns-javascript-code
+      code
+        | // Dropdown: Active/disabled states demo
+        | $('#active-disabled-example').delegate('a', 'click', function(event) {
+        |   var item = $(this);
+        |   event.preventDefault();                   // prevent default link behaviors
+        |   if (item.hasClass('disabled')) return;    // implement disabled behaviors
+        |   // update the active item
+        |   $('#active-disabled-example a').removeClass('active');
+        |   item.addClass('active');
+        |   $('#active-indicator').text(item.text());
+        | });
+    ul.mt-2.collapse.dropdowns-javascript-code
+      li Sets 
+        code click
+        |  event handler to a parent (item list)
+        ul
+          li Delegates events to descendent items 
+            code a
+            |  (more efficient than children receive directly)
+      li In an event handler
+        ul
+          li
+            code event.preventDefault()
+            |  prevents an item's defaut behavior.
+            ul
+              li Required if an item is 
+                code a
+                |  (or it jumps to the target[href] on click)
+              li Not required if an item is 
+                code button
+          li Implements a disabled behavior
+            ul
+              li Checks if an clicked item sets 
+                code .disabled
+                |  and just returns (does nothig) if sets
+          li Implements an active behavior
+            ul
+              li Removes 
+                code .active
+                |  from all items first
+              li Adds 
+                code .active
+                |  to a clicked item
+          li Updates an active item indicator
+    h4.mt-4#dropdowns-menu-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-alignment") Menu alignment
+    p.my-2 A dropdown menu aligns left to a parent (same as a trigger button) as default. Adding 
+      code .dropdown-menu-right
+      |  to an item list, it alignes right at a parent (trigger button)'s right side.
+    div.btn-group(style="margin-left: 16rem;")
+      button.btn.btn-secondary.dropdown-toggle#right-aligned(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Right-aligned
+      div.dropdown-menu.dropdown-menu-right(aria-labelledby="right-aligned")
+        +actionItems
+        div.dropdown-divider
+        a.dropdown-item(href="#") Separated item with longer text
+    h4.mt-4#dropdowns-headers
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#headers") Headers
+    p.mt-3.mb-2 Use 
+      code h6.dropdown-header
+      |  for menu headers (static i.e. not selectable). The example below sets a header as the first item 
+      strong Dropdown header
+      | .
+    p.my-0
+      div.btn-group
+        button.btn.btn-secondary.dropdown-toggle#menu-header(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu(aria-labelledby="menu-header")
+          h6.dropdown-header(href="#") Dropdown header
+          +actionItems
+    h4.mt-4#dropdowns-dividers
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dividers") Dividers
+    p.my-2 Use 
+      code div.dropdown-divider
+      |  to separate item groups.
+    h4.mt-4#dropdowns-text
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#text") Text
+    p.my-2 You can also use dropdowns for showing popup text contents.
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#ex-text(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Text example
+      div.dropdown-menu.p-3.text-faded(style="width: 180px;" area-labelledby="ex-text")
+        p Some example text that's free-flowing within the dropdown menu.
+        p.mb-0 And this is more example text.
+    +collapseButton("#dropdown-text-example") Structure
+    ul.struct.mt-2.collapse#dropdown-text-example
+      li Parent 
+        code div.dropdown
+        ul
+          li Button 
+            code button.btn.btn-secondary.dropdown-toggle
+          li Dropdown menu 
+            code div.dropdown-menu
+            +attrsBtn(".a10-1")
+            ul
+              li.cls.collapse.a10-1 Padding 
+                code .p-3
+              li.cls.collapse.a10-1 Text color 
+                code .text-faded
+              li.att.collapse.a10-1 Sets width 
+                code style="width: 180px;"
+              li Text paragraphs 
+                code p
+                +attrBtn(".a10-2")
+                ul.collapse.a10-2
+                  li.cls The last paragraph needs margin adjustment 
+                    code .mb-0
+    h4.mt-4#dropdowns-forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#forms") Forms
+    p.my-2 A 
+      a(href="components-5.html") form
+      |  can be used as a dropdown item.
+    h6.mt-3#dropdowns-form-example Example
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#dropdown-form-example(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Sign in/Sign up
+      div.dropdown-menu(aria-labelledby="dropdown-form-example")
+        form.px-4.py-3
+          div.form-group
+            label(for="exampleDropdownFormEmail1") Email address
+            input.form-control#exampleDropdownFormEmail1(type="email" placeholder="email@example.com")
+          div.form-group
+            label(for="exampleDropdownFormPassword1") Password
+            input.form-control#exampleDropdownFormPassword1(type="password" placeholder="Password")
+          div.form-check.mb-2
+            input.form-check-input#dropdownCheck(type="checkbox")
+            label.form-check-label(for="dropdownCheck") Remember me
+          button.btn.btn-primary(type="submit") Sign in
+        div.dropdown-divider
+        a.dropdown-item(href="#") New around here? Sign up
+        a.dropdown-item(href="#") Forgot password?
+    +collapseButton("#dropdowns-form-example-structure") Structure
+    ul.struct.mt-2.collapse#dropdowns-form-example-structure
+      li Parent 
+        code div.dropdown
+        ul
+          li Button 
+            code button.btn.btn-secondary.dropdown-toggle
+          li Dropdown menu 
+            code div.dropdown-menu
+            ul
+              li Form item 
+                code form
+                +attrBtn(".a11-1")
+                ul
+                  li.cls.collapse.a11-1 Padding adjustument 
+                    code .px-4.py-3
+                  li Inside is basically the same say as 
+                    a(href="components-5.html#basic-example") Forms - Basic example
+              li 
+                a(href="#dropdowns-dividers") Divider 
+                code div.dropdown-divider
+              li Text item (
+                strong New around here? Sign up
+                | )
+              li Text item (
+                strong Forget password?
+                | )
+    h4.mt-4#dropdowns-dropdown-options
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropdown-options") Dropdown options
+    p.my-2 You can specify menu position offset with 
+      code data-offset="{x-offset-px},{y-offset-px}"
+      | .
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#ex-data-offset(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="100,20")
+        code.text-light data-offset
+      div.dropdown-menu.text-(area-labelledby="ex-data-offset")
+        +actionItems
+    +collapseButton("#dropdown-offset-setting") Setting
+    ul.struct.mt-2.collapse#dropdown-offset-setting
+      li Parent 
+        code div.dropdown
+        ul
+          li Button 
+            code button.btn.btn-secondary.dropdown-toggle
+            ul
+              li.att Adds attribute 
+                code data-offset="100,20"
+    p.mt-3.mb-2 You can change menu position reference to the parent with 
+      code data-reference="parent"
+      | . It is useful for a split button to show menu from its parent frame.
+    div.btn-group
+      button.btn.btn-secondary(type="button")
+        code.text-light data-reference
+      button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split#ex-data-reference(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent")
+        span.sr-only Toggle Dropdown
+      div.dropdown-menu(aria-labelledby="ex-data-reference")
+        +actionItems
+    div.mt-3
+      +collapseButton("#dropdown-reference-setting") Setting
+    ul.struct.mt-2.collapse#dropdown-reference-setting
+      li Parent 
+        code div.btn-group
+        ul
+          li Left 
+            code button.btn.btn-secondary.dropdown-toggle
+          li Right 
+            code button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split
+            ul
+              li.att Adds attribute 
+                code data-reference="parent"
+    p.mt-3.mb-2 Finally, you can fix (always dropdown) the menu direction with 
+      code data-display="static"
+      | . It disables (Popper's) dynamic positioning.
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#ex-data-display(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static")
+        code.text-light data-display
+      div.dropdown-menu.text-(area-labelledby="ex-data-display")
+        +actionItems
+        +actionItems
+        +actionItems
+    +collapseButton("#dropdown-display-setting") Setting
+    ul.struct.mt-2.collapse#dropdown-display-setting
+      li Parent 
+        code div.dropdown
+        ul
+          li Button 
+            code button.btn.btn-secondary.dropdown-toggle
+            ul
+              li.att Adds attribute 
+                code data-display="static"
+          li Dropdown menu (with longer items)
+            ul
+              li Always drops down even if it overflows below the viewport
+
+    +breadcrumbLevel1("Components(4): Carousel/Collapse/Dropdowns")

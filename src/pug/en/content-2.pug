@@ -1,0 +1,127 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Content (2): Images
+
+block body
+  div.container
+    +pageHeader("content-2")
+      p.lead Content (2): 
+        a(href="#images") Images
+
+    h2.mt-2#images
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/") Images
+    h4.mt-4#responsive-images
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#responsive-images") Responsive images
+    p.my-2 Set 
+      code .img-fluid
+      |  to 
+      code img
+      |  . It scales to the parent width if the image is wider than the parent.
+    p.my-1
+      code img.img-fluid
+    img.img-fluid(src="../img/1920x1080.svg" alt="Responsible image")
+    h4.mt-4#image-thumbnails
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#image-thumbnails") Image thumbnails
+    p.mt-2.mb-1
+      code img.rounded
+      |  rounds corners of an image (⇒ 
+      a(href="utilities-1.html#borders-border-radius") Border-radius
+      |  ).
+    img.rounded(src="../img/120x120.svg" alt="Rounded image")
+    p.mt-3.mb-1
+      code img.img-thumbnail
+      |  shows an image with a rounded 1px border.
+    img.img-thumbnail(src="../img/120x120.svg" alt="Thumnail image")
+    h4.mt-4#aligning-images
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#aligning-images") Aligning images
+    p.my-2 Use 
+      code .float-(left|right)
+      |  to float an image on left or right (⇒ 
+      a(href="utilities-3.html#float") Float
+      | )
+    div.row
+      div.col.px-0
+        img.m-3.rounded.float-left(src="../img/120x120.svg")
+        img.m-3.rounded.float-right(src="../img/120x120.svg")
+        p.m-2.p-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    p.mt-3.mb-2
+      code .mx-auto
+      |  (⇒ 
+      a(href="utilities-4.html#spacing") Spacing
+      |  ) can be used to center a fixed-width block element
+    img.rounded.mx-auto.d-block(src="../img/120x120.svg")
+    p.mt-3.mb-1 Text alignment 
+      code .text(left|center|right)
+      |  (⇒ 
+      a(href="utilities-5.html#text-alignment") Text alignment
+      |  ) can be also used.
+      each al in ["left", "center", "right"]
+        p.mt-2.mb-1
+          code img
+          |  inside 
+          code= `div.text-${al}`
+        div(class=`text-${al} bg-light mb-3`)
+          img.rounded(src="../img/120x120.svg")
+    h4.mt-4#picture
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#picture") Using 
+        code picture
+    p.mb-2
+      code picture
+      |  can be used to switch images with a viewport size. The folowing example changes an image on breakpoint boundaries.
+    div.mb-3
+      picture
+        source(media="(min-width: 1200px)" srcset="../img/1140x642.svg")
+        source(media="(min-width: 992px)" srcset="../img/960x540.svg")
+        source(media="(min-width: 768px)" srcset="../img/720x405.svg")
+        img.img-fluid(src="../img/540x304.svg")
+    +collapseButton("#picture-structure") Structure
+    ul.struct.mt-3.collapse#picture-structure
+      li
+        code picture
+        ul
+          li
+            code source
+            |  
+            +attrsBtn(".a1-1")
+            ul.collapse.a1-1
+              li.att Attribute 
+                code media="(min-width: 1200px)"
+              li.att Attribute 
+                code srcset="../img/1140x642.svg"
+          li
+            code source
+            |  
+            +attrsBtn(".a1-2")
+            ul.collapse.a1-2
+              li.att Attribute 
+                code media="(min-width: 992px)"
+              li.att Attribute 
+                code srcset="../img/960x540.svg"
+          li
+            code source
+            |  
+            +attrsBtn(".a1-3")
+            ul.collapse.a1-3
+              li.att Attribute 
+                code media="(min-width: 768px)"
+              li.att Attribute 
+                code srcset="../img/720x405.svg"
+          li
+            code img.img-fluid
+            |  
+            +attrBtn(".a1-4")
+            ul.collapse.a1-4
+              li.att Attribute 
+                code src="../img/540x304.svg"
+    div.alert.alert-warning.mt-3(role="alert")
+      strong Warning: 
+      code .img-fluid
+      |  must be set to 
+      code img
+      |  (not to 
+      code source
+      |  ).
+
+    +breadcrumbLevel1("Content(2): Images")

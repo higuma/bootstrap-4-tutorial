@@ -1,0 +1,286 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+mixin tableHeader(cls)
+  - const headers = ["#","First","Last","Handle"]
+  thead(class=cls)
+    tr
+      each item in headers
+        th(scope="col")= item
+
+mixin tableBody
+  - const members = [[1,"Mark","Otto","@mdo"],[2,"Jacob","Thornton","@fat"],[3,"Larry","the Bird","@twitter"]]
+  tbody
+    each member in members
+      tr
+        th(scope="row")= member[0]
+          each item in member.slice(1)
+            td= item
+
+mixin tableAll(tblCls, hdrCls)
+  table(class=tblCls)
+    +tableHeader(hdrCls)
+    +tableBody
+
+block head
+  title Bootstrap 4 tutorial: コンテント(3): 表
+
+block body
+  div.container
+    +pageHeader("content-3")
+      p.lead コンテント(3): 
+        a(href="#tables") 表
+
+    h2.mt-2#tables
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/") 表
+    h4.mt-4#examples
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#examples") 基本構成
+    div.my-3
+      +collapseButton("#table-structure") 構造
+    ul.struct.mt-3.collapse#table-structure
+      li
+        code table.table
+        ul
+          li.cls 白黒反転は 
+            code .table-dark
+            |  を追加
+          li ヘッダ部 
+            code thead
+            ul
+              li ヘッダ行 
+                code tr
+                ul
+                  li ヘッダセル 
+                    code th
+                    +attrBtn(".a1-1")
+                    ul.collapse.a1-1
+                      li.att 属性 
+                        code scope="col"
+                        |  (行のヘッダセルに設定、なくてもよいがある方が丁寧)
+          li ボディ部 
+            code tbody
+            ul
+              li 行 
+                code tr
+                ul
+                  li ヘッダセルの場合(通常左端) 
+                    code th
+                    +attrBtn(".a1-2")
+                    ul
+                      li.att.collapse.a1-2 属性 
+                        code scope="row"
+                        |  (列のヘッダセルに設定、なくてもよいがある方が丁寧)
+                  li 通常セルの場合 
+                    code td
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table${tblStyle}`
+      +tableAll(`table${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#table-head-options
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#table-head-options") ヘッダ部の設定
+    p
+      code thead
+      |  に 
+      code .thead-(dark|light)
+      |  を設定 ( 
+      code .table-(dark|light)
+      |  でもよい)
+    each hdrStyle in ["thead-dark", "thead-light"]
+      p.mb-1
+        code= `.${hdrStyle}`
+      +tableAll("table", hdrStyle)
+    h4.mt-4#striped-rows
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#striped-rows") 一行おきストライプ表示
+    p
+      code table
+      |  に 
+      code .table-striped
+      |  を設定
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table.table-striped${tblStyle}`
+      +tableAll(`table table-striped${tblStyle.replace(/\./, " ")}`)
+    each opt in ["bordered", "borderless"]
+      h4.mt-4(id=`${opt}-table`)
+        +extLink(`https://getbootstrap.com/docs/4.1/content/tables/#${opt}-table`)= `罫線${opt=="bordered" ? "" : "なし"}`
+      p.mb-1
+        code table
+        |  に 
+        code= `.table-${opt}`
+        |  を設定
+      each tblStyle in ["", ".table-dark"]
+        p.mb-1
+          code= `table.table.table-${opt}${tblStyle}`
+        +tableAll(`table table-${opt}${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#hoverable-rows
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#hoverable-rows") 行のホバー表示
+    p
+      code table
+      |  に 
+      code .table-hover
+      |  を設定
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table.table-hover${tblStyle}`
+      +tableAll(`table table-hover${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#small-table
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#small-table") 縮小表示
+    p
+      code table
+      |  に 
+      code .table-sm
+      |  を設定すると上下幅を詰める
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table.table-sm${tblStyle}`
+      +tableAll(`table table-sm${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#contextual-classes
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#contextual-classes") コンテキスト配色設定
+    p.my-1
+      code .table-(primary|secondary|success|danger|warning|info|light|dark|active)
+    p.my-1 表要素の各レベル ( 
+      code table
+      |  , 
+      code thead
+      |  , 
+      code tbody
+      |  , 
+      code tr
+      |  , 
+      code th
+      |  , 
+      code td
+      |  ) 全てに適用可
+    p.my-2 通常の
+      a(href="utilities-2.html#colors") コンテキスト配色設定
+      | との違いは次の通り
+    ul
+      li
+        code -muted
+        |  と 
+        code -white
+        |  なし (
+        code .table-muted
+        |  や 
+        code .table-muted
+        |  は存在しない)
+      li 表専用に 
+        code -active
+        |  がある (
+        code .table-active
+        |  )
+
+    p.mt-2.mb-1
+      code tr
+      |  への設定例
+    table.table
+      thead
+        tr
+          each th in ["Class","Heading","Heading"]
+            th= th
+      tbody
+        th(scope="col") (default)
+        td Cell
+        td Cell
+        each context in ["primary","secondary","success","danger","warning","info","light","dark","active"]
+          tr(class=`table-${context}`)
+            th(scope="col")
+              code= `.table-${context}`
+            td Cell
+            td Cell
+    p.mt-4
+      code .table-{context}
+      |  は文字と背景の両方に作用することに注意(上の例で 
+      code .table-dark
+      |  だけセルの文字色が反転していることに注目)。また通常の背景設定 
+      code .bg-{context}
+      | より色が薄くなる。背景色を直接設定してもよいが、その場合は文字色も適宜手動設定する必要がある・
+    p.mt-3.mb-1 背景色を 
+      code .bg-{context}
+      |  , 文字色を 
+      code .text-(dark|white)
+      |  で直接設定した例
+    table.table.table-bordered
+      thead
+        tr
+          each th in ["Class","Heading","Heading"]
+            th= th
+          each col in [["primary","white"],["secondary","white"],["success","white"],["danger","white"],["warning","white"],["info","white"],["light","dark"],["dark","white"],["white","dark"]]
+            tr(class=`bg-${col[0]} text-${col[1]}`)
+              th(scope="col")
+                - if (["light","white"].indexOf(col[0]) != -1)
+                  code= `.bg-${col[0]}.text-${col[1]}`
+                - else
+                  code.text-white= `.bg-${col[0]}.text-${col[1]}`
+              td Cell
+              td Cell
+    h4.mt-4#captions
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#captions") 見出し
+    p.mt-2.mb-1
+      code caption
+      |  要素を用いる
+    ul.struct
+      li
+        code table.table
+        ul
+          li
+            code caption
+            ul
+              li.cls 配置は 
+                code .text-(left|center|right)
+                |  で設定可(⇒ 
+                a(href="utilities-5.html#text-alignment") アラインメント
+                |  )
+          li
+            code thead
+            |  以下は同じ
+    p.my-2 設定例: 中央下の 
+      strong List of users
+      |  が見出し、
+      code caption.text-center
+      |  で中央に配置
+    table.table
+      caption.text-center List of users
+      +tableHeader
+      +tableBody
+    h4.mt-4#responsive-tables
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#responsive-tables") レスポンシブ設定
+    p.mt-3.mb-1
+      code table.table
+      |  に 
+      code .table-responsive
+      |  を追加 ⇒ 
+      code table.table.table-responsive
+    p.mt-2.mb-3 ⇒ 画面幅が表の幅未満の場合に横スクロールバーを表示
+    table.table.table-responsive
+      thead
+        tr
+          th #
+          - for (let c = 1; c <= 10; c++)
+            th Heading
+      tbody
+        - for (let r = 1; r <= 3; r++)
+          tr
+            th(scope="row")= r
+            - for (let c = 1; c <= 10; c++)
+              td Cell
+    p.mt-3.mb-1 幅別のレスポンシブ対応には 
+      code .table-responsive-(sm|md|lg|xl)
+      |  を用いる
+    each width in ["sm","md","lg","xl"]
+      p.mt-2.mb-1
+        code= `table.table.table-responsive-${width}`
+      table(class=`table table-responsive-${width}`)
+        thead
+          tr
+            th #
+            - for (let c = 1; c <= 12; c++)
+              th Heading
+        tbody
+          - for (let r = 1; r <= 1; r++)
+            tr
+              th(scope="row")= r
+              - for (let c = 1; c <= 12; c++)
+                td Cell
+
+    +breadcrumbLevel1("コンテント(3): 表")

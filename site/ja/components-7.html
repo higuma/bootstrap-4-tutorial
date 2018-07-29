@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンポーネント(7): リストグループ</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンポーネント(7): <a href="#list-group">リストグループ</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-7.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="list-group"><a href="https://getbootstrap.com/docs/4.1/components/list-group/" target="_blank">リストグループ</a>
+      </h2>
+      <h4 class="mt-3" id="basic-example"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#basic-example" target="_blank">基本構成</a>
+      </h4>
+      <ul class="list-group my-3" style="width: 320px;">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-structure" aria-control="#basic-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="basic-example-structure">
+        <li>親要素 <code>ul.list-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a1-1">属性(幅設定) <code>style="width: 320px;"</code></li>
+            <li>アイテム(個数分) <code>li.list-group-item</code>
+              <ul>
+                <li class="txt">テキスト(例) <code>Cras justo odio</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info my-3" role="alert"><code>ul.list-group</code> はデフォルトで親要素に対して幅100%に配置する。幅を設定する場合は<a href="components-3.html">カード</a>と同じ方法を用いればよい。詳しくは<a href="components-3.html#sizing">カード - 幅の設定</a>を参照。</div>
+      <h4 class="mt-4" id="active-items"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#active-items" target="_blank">アクティブアイテム</a>
+      </h4>
+      <p class="my-1">アイテムに <code>.active</code> を追加 (次は先頭アイテムへの設定例)</p>
+      <ul class="list-group" style="width: 320px;">
+        <li class="list-group-item active">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <h4 class="mt-4" id="disabled-items"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#disabled-items" target="_blank">無効化アイテム</a>
+      </h4>
+      <p class="my-1">アイテムに <code>.disabled</code> を追加 (次は先頭アイテムへの設定例)</p>
+      <ul class="list-group" style="width: 320px;">
+        <li class="list-group-item disabled">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <h4 class="mt-4" id="links-and-buttons"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#links-and-buttons" target="_blank">リンク <code>a</code> とボタン <code>button</code></a>
+      </h4>
+      <p class="my-2">(リスト要素 <code>ul</code> , <code>li</code>でなく)親に <code>div.list-group</code> 、アイテムに <code>(a|button).list-group-item</code> を用いてインタラクティブなリストグループを作成できる。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#links-and-buttons-structure" aria-control="#links-and-buttons-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="links-and-buttons-structure">
+        <li>親要素 <code>div.list-group</code>
+          <ul>
+            <li>アイテム<code>(a|button).list-group-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
+              <ul class="collapse a2-1">
+                <li class="cls"><code>.list-group-item-action</code> を追加するとホバーに応答</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1"><code>a</code> の例 <code>a.list-group-item.list-group-item-action(.active)</code></p>
+      <ul class="list-group" style="width: 320px;"><a class="list-group-item list-group-item-action active" href="#">Cras justo odio</a><a class="list-group-item list-group-item-action" href="#">Dapibus ac facilisis in</a><a class="list-group-item list-group-item-action" href="#">Morbi leo risus</a><a class="list-group-item list-group-item-action" href="#">Porta ac consectetur ac</a><a class="list-group-item list-group-item-action" href="#">Vestibulum at eros</a>
+      </ul>
+      <p class="mt-3 mb-1"><code>button</code> の例 <code>button.list-group-item.list-group-item-action(.active)</code></p>
+      <ul class="list-group" style="width: 320px;">
+        <button class="list-group-item list-group-item-action active" type="button">Cras justo odio</button>
+        <button class="list-group-item list-group-item-action" type="button">Dapibus ac facilisis in</button>
+        <button class="list-group-item list-group-item-action" type="button">Morbi leo risus</button>
+        <button class="list-group-item list-group-item-action" type="button">Porta ac consectetur ac</button>
+        <button class="list-group-item list-group-item-action" type="button">Vestibulum at eros</button>
+      </ul>
+      <h4 class="mt-4" id="flush"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#flush" target="_blank">フラッシュ表示</a>
+      </h4>
+      <p class="my-1">左右ボーダーなしで表示</p>
+      <p class="mt-2 mb-1"><code>ul.list-group.list-group-flush</code></p>
+      <ul class="list-group list-group-flush" style="width: 320px;">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <h4 class="mt-4" id="contextual-classes"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#contextual-classes" target="_blank">コンテキスト別の配色</a>
+      </h4>
+      <p class="mt-2 mb-1">アイテムに <code>.list-group-item-(primary|secondary|success|...)</code> を設定 </p>
+      <ul class="list-group">
+        <li class="list-group-item">(default) Dapibus ac facilisis in</li>
+        <li class="list-group-item list-group-item-primary"><code>.list-group-item-primary</code> This is a primary list group item
+        </li>
+        <li class="list-group-item list-group-item-secondary"><code>.list-group-item-secondary</code> This is a secondary list group item
+        </li>
+        <li class="list-group-item list-group-item-success"><code>.list-group-item-success</code> This is a success list group item
+        </li>
+        <li class="list-group-item list-group-item-danger"><code>.list-group-item-danger</code> This is a danger list group item
+        </li>
+        <li class="list-group-item list-group-item-warning"><code>.list-group-item-warning</code> This is a warning list group item
+        </li>
+        <li class="list-group-item list-group-item-info"><code>.list-group-item-info</code> This is a info list group item
+        </li>
+        <li class="list-group-item list-group-item-light"><code>.list-group-item-light</code> This is a light list group item
+        </li>
+        <li class="list-group-item list-group-item-dark"><code>.list-group-item-dark</code> This is a dark list group item
+        </li>
+      </ul>
+      <p class="mt-3 mb-1"><code>.list-item-group-action</code> を追加した場合(ホバーに応答)</p>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action">(default) Dapibus ac facilisis in</li>
+        <li class="list-group-item list-group-item-action list-group-item-primary"><code>.list-group-item-primary</code> This is a primary list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-secondary"><code>.list-group-item-secondary</code> This is a secondary list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-success"><code>.list-group-item-success</code> This is a success list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-danger"><code>.list-group-item-danger</code> This is a danger list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-warning"><code>.list-group-item-warning</code> This is a warning list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-info"><code>.list-group-item-info</code> This is a info list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-light"><code>.list-group-item-light</code> This is a light list group item
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark"><code>.list-group-item-dark</code> This is a dark list group item
+        </li>
+      </ul>
+      <h4 class="mt-4" id="with-badges"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#with-badges" target="_blank">バッジとの組み合わせ</a>
+      </h4>
+      <p class="mt-2 mb-3"><a href="components-1.html#badges">バッジ</a> を用いた例。配置設定にはFlexboxユーティリティを利用する。</p>
+      <ul class="struct mt-2 collapse" id="badges-structure1">
+        <li><a href="components-1.html#badges-pill-badges">ピルバッジ </a><code>span.badge.badge-primary.badge-pill</code>
+          <ul>
+            <li class="cls">配置に <a href="utilities-3.html#flex">Flexboxユーティリティ</a> を用いる(以下は例)</li>
+            <li class="cls">ディスプレイモードをFlexに設定 <code>.d-flex</code></li>
+            <li class="cls">水平方向は要素を幅いっぱいに離して配置 <code>.justify-content-between</code></li>
+            <li class="cls">垂直方向は親要素の中央に揃えて配置 <code>.align-items-center</code></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="list-group mt-3" style="width: 320px;">
+        <li class="list-group-item d-flex justify-content-between align-items-center">Cras justo odio<span class="badge badge-primary badge-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Dapibus ac facilisis in<span class="badge badge-primary badge-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Morbi leo risus<span class="badge badge-primary badge-pill">1</span>
+        </li>
+      </ul>
+      <div class="mt-4 mb-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#badges-structure" aria-control="#badges-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="badges-structure">
+        <li><code>ul.list-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a3-1">幅設定 <code>style="width: 320px;"</code></li>
+            <li>アイテム <code>li.list-group-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a3-2">Flexboxを利用 <code>.d-flex</code> (⇒ <a href="utilities-3.html#flex">Flexboxユーティリティ</a>)</li>
+                <li class="cls collapse a3-2">横アラインメント <code>.justify-content-between</code></li>
+                <li class="cls collapse a3-2">縦アラインメント <code>.align-items-center</code></li>
+                <li class="txt">テキスト(例) <code>Cras justo odio</code></li>
+                <li><a href="components-1.html#badges-pill-badges">ピルバッジ </a><code>span.badge.badge-primary.badge-pill</code>
+                  <ul>
+                    <li class="txt">テキスト(例) <code>14</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="custom-content"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#custom-content" target="_blank">表示のカスタマイズ</a>
+      </h4>
+      <p class="mt-2 mb-3">Flexboxユーティリティを応用した表示カスタマイズ例。</p>
+      <div class="list-group mt-3"><a class="list-group-item list-group-item-action flex-column align-items-start active" href="#">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">List group item heading (1)</h5><small>3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small></a><a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">List group item heading (2)</h5><small>3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small></a><a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">List group item heading (3)</h5><small>3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small></a>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#customizing-structure" aria-control="#customizing-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct my-2 collapse" id="customizing-structure">
+        <li>リストグループ <code>div.list-group</code>
+          <ul>
+            <li>アイテム <code>a</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a4-1">アクティブ表示(先頭アイテムのみ) <code>.active</code></li>
+                <li class="cls collapse a4-1">縦に配置 <code>.flex-column</code></li>
+                <li class="cls collapse a4-1">上端揃え <code>.align-items-start</code></li>
+                <li>アイテム上端 <code>div</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-2" aria-control=".a4-2" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a4-2">Flexboxを利用 <code>.d-flex</code></li>
+                    <li class="cls collapse a4-2">幅100%に強制 <code>.w-100</code></li>
+                    <li class="cls collapse a4-2">子アイテムを左右いっぱいに離して配置 <code>.justify-content-between</code></li>
+                    <li><code>h5</code> (左端に配置)
+                      <ul>
+                        <li class="txt">テキスト <code>List group item heading ...</code></li>
+                      </ul>
+                    </li>
+                    <li><code>small</code> (右端に配置)
+                      <ul>
+                        <li class="txt">テキスト <code>3 days ago</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>アイテム中段 <code>p</code>
+                  <ul>
+                    <li class="txt">テキスト <code>Donec id elit non mi porta gravida at eget ...</code></li>
+                  </ul>
+                  <ul></ul>
+                </li>
+                <li>アイテム下端 <code>small</code>
+                  <ul>
+                    <li class="txt">テキスト <code>Donec id elit non mi porta.</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="javascript-behavior"><a href="https://getbootstrap.com/docs/4.1/components/list-group/#javascript-behavior" target="_blank">アイテム選択によるコンテント切り替え</a>
+      </h4>
+      <p class="mt-2 mb-3">bootstrap.jsのタブプラグインを利用して、アイテム選択でコンテントを切り替え表示できる。</p>
+      <div class="row mt-4">
+        <div class="col-sm-4 col-md-3 col-xl-2">
+          <div class="list-group" role="tablist"><a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a><a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a><a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a><a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+          </div>
+        </div>
+        <div class="col-sm-8 col-md-9 col-xl-10">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+              <h5>Home</h5>Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.
+            </div>
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+              <h5>Profile</h5>Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.
+            </div>
+            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+              <h5>Messages</h5>Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet cupidatat cupidatat anim do ut velit mollit consequat enim tempor. Consectetur est minim nostrud nostrud consectetur irure labore voluptate irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod aliquip nulla laborum elit adipisicing pariatur cillum.
+            </div>
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+              <h5>Settings</h5>Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#js-structure" aria-control="#js-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="js-structure">
+        <li>リストグループ <code>div.list-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a5-1">アクセシビリティ属性 <code>role="tablist"</code></li>
+            <li>アイテム <code>a.list-group-item(.list-group-item-action)?</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-2" aria-control=".a5-2" aria-expanded="false">属性</a>
+              <ul class="collapse a5-2">
+                <li class="cls">初期状態で表示するアイテムに <code>.active</code> を追加</li>
+                <li class="att">属性 <code>id="アイテムID"</code></li>
+                <li class="att">属性 <code>data-toggle="list"</code></li>
+                <li class="att">属性 <code>href="#コンテントID"</code></li>
+                <li class="att">アクセシビリティ属性 <code>role="tab"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-controls="コンテントID"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>タブコンテント <code>div.tab-content</code>
+          <ul>
+            <li>コンテントアイテム <code>div.tab-pane(.fade)</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-3" aria-control=".a5-3" aria-expanded="false">属性</a>
+              <ul class="collapse a5-3">
+                <li class="cls">アニメーション効果(フェードイン/アウト)を使う場合 <code>.fade</code> を追加</li>
+                <li class="cls">初期状態で表示するアイテムに <code>.show.active</code> を追加</li>
+                <li class="att">属性 <code>id="コンテントID"</code></li>
+                <li class="att">アクセシビリティ属性 <code>role="tabpanel"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-labelledby="アイテムID"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(7): リストグループ</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

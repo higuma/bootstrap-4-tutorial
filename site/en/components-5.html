@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (5): Forms</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (5): <a href="#forms">Forms</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-5.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/" target="_blank">Forms</a>
+      </h2>
+      <h4 class="mt-3" id="overview"><a href="https://getbootstrap.com/docs/4.1/components/forms/#overview" target="_blank">Overview</a>
+      </h4>
+      <h5 class="my-3" id="basic-example">Basic example</h5>
+      <form class="mb-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email"><small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="exampleCheck1" type="checkbox">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-structure" aria-control="#basic-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="basic-example-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li><a href="#form-groups">Form group </a> (1) <code>div.form-group</code>
+              <ul>
+                <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a1-1">Attribute <code>for="exampleInputEmail1"</code></li>
+                    <li class="txt">Text <code>Email address</code></li>
+                  </ul>
+                </li>
+                <li><a href="#form-controls">Form control </a><code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a1-2"> 
+                    <li class="att">Attribute <code>id="exampleInputEmail1"</code></li>
+                    <li class="att">Attribute <code>type="email"</code></li>
+                    <li class="att">Attribute <code>placeholder="Enter email"</code></li>
+                    <li class="att">Accessibility attribute <code>aria-describedby="emailHelp"</code></li>
+                  </ul>
+                </li>
+                <li><a href="#help-text">Help text </a><code>small.form-text.text-muted</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a1-3">Accessibility attribute <code>id="emailHelp"</code></li>
+                    <li class="txt">Text <code>We'll never share your email with anyone else.</code></li>
+                  </ul>
+                </li>
+              </ul><a href="#form-groups">Form group </a> (2) <code>div.form-group</code>
+              <ul>
+                <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a1-4">Attribute <code>for="exampleInputPassword1"</code></li>
+                    <li class="txt">Text <code>Password</code></li>
+                  </ul>
+                </li>
+                <li><a href="#form-controls">Form control </a><code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-5" aria-control=".a1-5" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a1-5">
+                    <li class="att">Aiiribute <code>id="exampleInputPassword1"</code></li>
+                    <li class="att">Aiiribute <code>type="password"</code></li>
+                    <li class="att">Aiiribute <code>placeholder="Password"</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#default-stacked">Checkbox + label </a><code>div.form-check</code>
+              <ul>
+                <li><a href="#checkboxes-and-radios">Checkbox </a><code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-6" aria-control=".a1-6" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a1-6">
+                    <li class="att">Attribute <code>id="exampleCheck1"</code></li>
+                    <li class="att">Attribute <code>type="checkbox"</code></li>
+                  </ul>
+                </li>
+                <li><a href="#checkboxes-and-radios">Label </a><code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-7" aria-control=".a1-7" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a1-7">Attribute <code>for="exampleCheck1"</code></li>
+                    <li class="txt">Text <code>Check me out</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="components-2.html#buttons">Button </a><code>button.btn.btn-primary.mt-2</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-8" aria-control=".a1-8" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a1-8">Attribute <code>type="submit"</code></li>
+                <li class="txt">Text <code>Submit</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="form-controls"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-controls" target="_blank">Form controls</a>
+      </h4>
+      <p class="mt-3 mb-1">Set <code>.form-control</code> to input controls ( <code>input</code>, <code>select</code>, <code>textarea</code> ) ⇒ 
+         displays with a rounded border by 100% width
+      </p>
+      <h5 class="mt-4" id="form-controls-input">With <code>input</code> +attribute <code>type="(text|email|password|number|...)"</code></h5>
+      <p class="mt-3 mb-1">Browser default <code>input</code> +attribute <code>type="email"</code></p>
+      <input id="input-default" type="email" placeholder="name@example.com">
+      <p class="mt-3 mb-1"><code>input.form-control</code> +attribute <code>type="email"</code></p>
+      <input class="form-control" id="input-form-control" type="password" placeholder="name@example.com">
+      <h5 class="mt-4" id="form-controls-select">With <code>select</code></h5>
+      <p class="mt-3 mb-1">Browser default <code>select</code></p>
+      <select id="select-default">
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <p class="mt-3 mb-1"><code>select.form-control</code></p>
+      <select class="form-control" id="select-form-control">
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <p class="mt-3 mb-1">Browser default <code>select</code> +attribute <code>multiple</code></p>
+      <select id="select-default-1" multiple>
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <p class="mt-3 mb-1"><code>select.form-control</code> +attribute <code>multiple</code></p>
+      <select class="form-control" multiple>
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <h5 class="mt-4" id="form-controls-textarea">With <code>textarea</code></h5>
+      <p class="mt-3 mb-1">Browser default <code>textarea</code></p>
+      <textarea id="textarea-default-1" rows="3"></textarea>
+      <p class="mt-3 mb-1"><code>textarea.form-control</code></p>
+      <textarea class="form-control" id="textarea-form-control-1" rows="3"></textarea>
+      <h5 class="mt-4" id="form-controls-file">With <code>input</code> +attribute <code>type="file"</code></h5>
+      <p class="mt-3 mb-1">Set <code>.form-control-file</code> to file input controls (<code>input</code> +attribute <code>type="file"</code> )</p>
+      <p class="mt-3 mb-1">Browser default <code>input</code> +attribute <code>type="file"</code></p>
+      <input id="input-default-1" type="file">
+      <p class="mt-3 mb-1"><code>input.form-control-file</code> +attribute <code>type="file"</code> (⇒ <a href="#form-control-file-note">Note 1</a>)</p>
+      <input class="form-control-file" id="input-form-control-1" type="file">
+      <div class="alert alert-info mt-3" id="form-control-file-note" role="alert"><strong>Note 1: </strong>(On Apr. 2018) It does not work on Chrome/Firefox (both display the same as browser default) while IE11/Edge display with 100% width. For cross-browser consistency, you can use a <a href="#file-browser">file browser</a> of <a href="#custom-forms">custom forms </a> (JavaScript required: see <a href="#file-browser-code-example">JavaScript code example</a> ).</div>
+      <h4 class="mt-4" id="sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#sizing" target="_blank">Sizing</a>
+      </h4>
+      <p class="my-2">Add <code>.form-control-(sm|lg)</code> to <code>.form-control</code></p>
+      <h5 class="mt-3 mb-2" id="sizing-input">With <code>input</code></h5>
+      <p class="mt-2 mb-1"><code>input.form-control.form-control-sm</code></p>
+      <input class="form-control form-control-sm mt-1 mb-2" type="text" placeholder="Small input">
+      <p class="mt-2 mb-1"><code>input.form-control</code></p>
+      <input class="form-control mt-1 mb-2" type="text" placeholder="Default input">
+      <p class="mt-2 mb-1"><code>input.form-control.form-control-lg</code></p>
+      <input class="form-control form-control-lg mt-1 mb-2" type="text" placeholder="Large input">
+      <h5 class="mt-3 mb-2" id="sizing-select">With <code>select</code></h5>
+      <p class="mt-2 mb-1"><code>select.form-control.form-control-sm</code></p>
+      <select class="form-control form-control-sm mt-1 mb-2">
+        <option>Small select (1)</option>
+        <option>Small select (2)</option>
+        <option>Small select (3)</option>
+        <option>Small select (4)</option>
+        <option>Small select (5)</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.form-control</code></p>
+      <select class="form-control mt-1 mb-2">
+        <option>Default select (1)</option>
+        <option>Default select (2)</option>
+        <option>Default select (3)</option>
+        <option>Default select (4)</option>
+        <option>Default select (5)</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.form-control.form-control-lg</code></p>
+      <select class="form-control form-control-lg mt-1 mb-2">
+        <option>Large select (1)</option>
+        <option>Large select (2)</option>
+        <option>Large select (3)</option>
+        <option>Large select (4)</option>
+        <option>Large select (5)</option>
+      </select>
+      <h4 class="mt-4" id="range-inputs"><a href="https://getbootstrap.com/docs/4.1/components/forms/#range-inputs" target="_blank">Range inputs</a>
+      </h4>
+      <p class="mt-3 mb-1">Browser default <code>input</code> +attribute <code>type="range"</code></p>
+      <input id="defaultRange" type="range">
+      <p class="mt-3 mb-1"><code>input.form-control-range</code> +attribute <code>type="range"</code> (fits to the parent width)</p>
+      <input class="form-control-range" id="formControlRange" type="range">
+      <h4 class="mt-4" id="readonly"><a href="https://getbootstrap.com/docs/4.1/components/forms/#readonly" target="_blank">Readonly</a>
+      </h4>
+      <p class="my-2">Set <code>readonly</code> attribute to prevent the modification of the input value (it is still available for copy and paste).</p>
+      <h6 class="mt-2 mb-1" id="example-readonly">Example: <code>input.form-control</code> +attribute <code>type="text" value="Read-only value" readonly</code></h6>
+      <div class="form-group">
+        <input class="form-control" type="text" value="Read-only value" readonly>
+      </div>
+      <h5 class="mt-3" id="readonly-plain-text"><a href="https://getbootstrap.com/docs/4.1/components/forms/#readonly-plain-text" target="_blank">(Readonly) plain text</a>
+      </h5>
+      <p class="mt-2 mb-3">With setting <code>.form-control-plaintext</code> to a form control, it hides borders and shows like a plain text but margins/paddings are preserved.</p>
+      <h6 class="mb-1" id="example-readonly-plain-text">Example (below): <code>input.form-control-plaintext</code> +attribute <code>type="text" value="Read-only value" readonly</code></h6>
+      <form class="mt-1">
+        <div class="form-group">
+          <input class="form-control-plaintext" type="text" value="Read-only value" readonly>
+        </div>
+      </form>
+      <h5 class="mt-4 mb-3" id="readonly-plain-text-example-1">Example 1</h5>
+      <form class="mb-4">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="staticEmail">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control-plaintext" id="staticEmail" type="text" readonly value="email@example.com">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputPassword">Password</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputPassword" type="password" placeholder="Password">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#readonly-plain-text-example-1-structure" aria-control="#readonly-plain-text-example-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="readonly-plain-text-example-1-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Same as <a href="#horizontal-form">Horizontal form</a> example except top-right</li>
+            <li>Top-right (<strong>email@example.com</strong>) <code>input.form-control-plaintext</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a2-1">
+                <li class="att">Attribute <code>type="text"</code></li>
+                <li class="att">Attribute <code>readonly</code></li>
+                <li class="att">Attribute <code>value="email@example.com"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="readonly-plain-text-example-2">Example 2</h5>
+      <form class="form-inline mb-4">
+        <div class="form-group my-1">
+          <label class="sr-only" for="staticEmail2">Email</label>
+          <input class="form-control-plaintext" id="staticEmail2" type="text" readonly value="email@example.com">
+        </div>
+        <div class="form-group mx-sm-3 my-1">
+          <label class="sr-only" for="inputPassword2">Password</label>
+          <input class="form-control" id="inputPassword2" type="password" placeholder="Password">
+        </div>
+        <button class="btn btn-primary my-1" type="submit">Confirm identity</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#readonly-plain-text-example-2-structure" aria-control="#readonly-plain-text-example-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="readonly-plain-text-example-2-structure">
+        <li>Inline form <code>form.form-inline</code> ⇒ see <a href="#inline-forms-example">Inline form - Example</a>
+          <ul>
+            <li>On left: <strong>email@example.com </strong><code>input.form-control-plaintext</code>
+              <ul>
+                <li class="att">Same attributes as <a href="#readonly-plain-text-example-1">Example 1</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="checkboxes-and-radios"><a href="https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a>
+      </h4><a class="btn btn-outline-info" data-toggle="collapse" href="#checkboxes-and-radios-summary" aria-control="#checkboxes-and-radios-summary" aria-expanded="false">Summary</a>
+      <ul class="struct mt-2 collapse" id="checkboxes-and-radios-summary">
+        <li>Form control (checkbox/radio) <code>div.form-check</code> : Stacked (top to bottom) as default <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="cls collapse a3-1">Add <code>.form-check-inline</code> to arrange inline (left to right)</li>
+            <li>Checkbox / radio button <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a3-2">
+                <li class="att">Attribute <code>type="checkbox"</code> or <code>"radio"</code></li>
+                <li class="att">Attribute <code>id="{control-id}"</code></li>
+                <li class="att">(for checked items) Attribute <code>checked</code></li>
+                <li class="cls">Add <code>.position-static</code> with no label</li>
+              </ul>
+            </li>
+            <li>Associated label <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-3" aria-control=".a3-3" aria-expanded="false">Attribute</a>
+              <ul class="collapse a3-3">
+                <li class="att">Attribute <code>for="{control-id}"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="default-stacked"><a href="https://getbootstrap.com/docs/4.1/components/forms/#default-stacked" target="_blank">Default (stacked)</a>
+      </h5>
+      <h6 class="mt-3 mb-2" id="default-stacked-checkboxes">Checkboxes example</h6>
+      <div class="form-check">
+        <input class="form-check-input" id="defaultCheck1" type="checkbox" value="" checked>
+        <label class="form-check-label" for="defaultCheck1">Default checkbox 1</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" id="defaultCheck2" type="checkbox" value="">
+        <label class="form-check-label" for="defaultCheck2">Default checkbox 2</label>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" id="defaultCheck3" type="checkbox" value="" disabled>
+        <label class="form-check-label" for="defaultCheck3">Disabled checkbox</label>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#default-stacked-checkboxes-structure" aria-control="#default-stacked-checkboxes-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="default-stacked-checkboxes-structure">
+        <li><code>div.form-check</code> (&times;3)
+          <ul>
+            <li>Checkbox <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a4-1">
+                <li class="att">Attribute <code>id="defaultCheck(1|2|3)"</code></li>
+                <li class="att">Attribute <code>type="checkbox"</code></li>
+                <li class="att">Attribute <code>value="..."</code></li>
+                <li class="att">Attribute <code>checked</code> (first item only)</li>
+                <li class="att">Attribute <code>disabled</code> (last item only)</li>
+              </ul>
+            </li>
+            <li>Label <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-2" aria-control=".a4-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a4-2">Attribute <code>for="defaultCheck(1|2|3)"</code></li>
+                <li class="txt">Text <code>Default checkbox (1|2)</code> or <code>Disabled checkbox</code> (grayed automatically)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="default-stacked-radios">Radios example</h6>
+      <div class="form-check">
+        <input class="form-check-input" id="exampleRadios1" type="radio" name="exampleRadios" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">Default radio</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" id="exampleRadios2" type="radio" name="exampleRadios" value="option2">
+        <label class="form-check-label" for="exampleRadios2">Second default radio</label>
+      </div>
+      <div class="form-check disabled mb-3">
+        <input class="form-check-input" id="exampleRadios3" type="radio" name="exampleRadios" value="option3" disabled>
+        <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#default-stacked-radios-structure" aria-control="#default-stacked-radios-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="default-stacked-radios-structure">
+        <li><code>div.form-check</code> (&times;3)
+          <ul>
+            <li>Radio button <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a5-1">
+                <li class="att">Attribute <code>id="exampleRadios(1|2|3)"</code></li>
+                <li class="att">Attribute <code>type="radio"</code></li>
+                <li class="att">Attribute <code>name="exampleRadios"</code></li>
+                <li class="att">Attribute <code>value="..."</code></li>
+                <li class="att">Attribute <code>checked</code> (first item only)</li>
+                <li class="att">Attribute <code>disabled</code> (last item only)</li>
+              </ul>
+            </li>
+            <li>Label <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-2" aria-control=".a5-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a5-2">Attribute <code>for="exampleRadios(1|2|3)"</code></li>
+                <li class="txt">Text <code>Default radio (1|2)</code> or <code>Disabled radio</code> (grayed automatically)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="inline"><a href="https://getbootstrap.com/docs/4.1/components/forms/#inline" target="_blank">Inline </a>
+      </h5>
+      <p class="my-2">Add <code>.form-check-inline</code> to <code>div.form-check</code></p>
+      <p class="my-2">Inline checkboxes</p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox1" type="checkbox" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox2" type="checkbox" value="option2">
+        <label class="form-check-label" for="inlineCheckbox2">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox3" type="checkbox" value="option3" disabled>
+        <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+      </div>
+      <p class="mt-3 mb-2">Inline radios</p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio1" type="radio" name="inlineRadioOptions" value="option1" checked>
+        <label class="form-check-label" for="inlineRadio1">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio2" type="radio" name="inlineRadioOptions" value="option2">
+        <label class="form-check-label" for="inlineRadio2">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio3" type="radio" name="inlineRadioOptions" value="option3" disabled>
+        <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-structure" aria-control="#inline-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="inline-structure">
+        <li><code>div.form-check.form-check-inline</code>
+          <ul>
+            <li>Rest of all are the same as <a href="#default-stacked">Default (stacked)</a> examples</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="without-labels"><a href="https://getbootstrap.com/docs/4.1/components/forms/#without-labels" target="_blank">Without labels</a>
+      </h5>
+      <p class="my-2">Add <code>.position-static</code> to <code>input</code></p>
+      <div class="form-check">
+        <input class="form-check-input position-static" id="blankCheckbox" type="checkbox" value="option1" aria-label="Checkbox without label">
+      </div>
+      <div class="form-check">
+        <input class="form-check-input position-static" id="blankRadio1" type="radio" name="blankRadio" value="option1" aria-label="Radio button without label" checked>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input position-static" id="blankRadio2" type="radio" name="blankRadio" value="option2" aria-label="Radio button without label">
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input position-static" id="blankRadio3" type="radio" name="blankRadio" value="option3" aria-label="Radio button without label">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#without-labels-structure" aria-control="#without-labels-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="without-labels-structure">
+        <li><code>div.form-check</code>
+          <ul>
+            <li><code>input.form-check-input.position-static</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a6-1">
+                <li class="att">Attrribute <code>id="blankCheckbox"</code></li>
+                <li class="att">Attrribute <code>type="checkbox"</code></li>
+                <li class="att">Attrribute <code>value="..."</code></li>
+                <li class="att">Accessibility attrribute <code>aria-label="Checkbox without label"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><code>div.form-check</code> (&times;3)
+          <ul>
+            <li><code>input.form-check-input.position-static</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a6-2">
+                <li class="att">Attrribute <code>id="blankRadio(1|2|3)"</code></li>
+                <li class="att">Attrribute <code>type="radio"</code></li>
+                <li class="att">Attrribute <code>value="..."</code></li>
+                <li class="att">Accessibility attrribute <code>aria-label="Radio button without label"</code></li>
+                <li class="att">Attrribute (first radio only) <code>checked</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="layout"><a href="https://getbootstrap.com/docs/4.1/components/forms/#layout" target="_blank">Layout</a>
+      </h4>
+      <h5 class="mt-3" id="form-groups"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-groups" target="_blank">Form groups</a>
+      </h5>
+      <p class="my-2">A control element ( <code>input</code> , <code>select</code> , <code>textarea</code> , etc.) and its associated label <code>label</code> are set inside <code>div.form-group</code></p>
+      <h6 class="mt-3" id="form-groups-example">Example: gray border to <code>form</code> , orange border to <code>div.form-group</code> to indicate structure</h6>
+      <form class="border mb-4" style="padding:1px;">
+        <div class="form-group border border-warning" style="padding:1px;">
+          <label for="formGroupExampleInput">Example label</label>
+          <input class="form-control" type="text" id="formGroupExampleInput" placeholder="Example input">
+        </div>
+        <div class="form-group border border-warning" style="padding:1px;">
+          <label for="formGroupExampleInput2">Another label</label>
+          <input class="form-control" type="text" id="formGroupExampleInput2" placeholder="Another input">
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-groups-example-structure" aria-control="#form-groups-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="form-groups-example-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Form group(s) <code>div.form-group</code>
+              <ul>
+                <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-1" aria-control=".a7-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a7-1">Attribute <code>for="{control-id}"</code></li>
+                    <li class="txt">Text (e.g.) <code>Input</code></li>
+                  </ul>
+                </li>
+                <li>control <code>(input|select|textarea).form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-2" aria-control=".a7-2" aria-expanded="false">Attribute</a>
+                  <ul class="collapse a7-2">
+                    <li class="att">Attribute <code>id="{control-id}"</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="form-grid"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-grid" target="_blank">Form grid</a>
+      </h5>
+      <p class="mt-2 mb-3">More complex and responsive forms can be built using <a href="layout-1.html#grid">Grid</a> . The first example below divides a row <code>div.row </code> with two columns <code>div.col</code>. But it sets slightly wider paddings (gutters) on center.</p>
+      <form class="mb-4">
+        <div class="row">
+          <div class="col">
+            <input class="form-control" type="text" placeholder="First name">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="Last name">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-grid-structure" aria-control="#form-grid-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="form-grid-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Row (normal) <code>div.row</code>
+              <ul>
+                <li>Column <code>div.col</code> (&times;2)
+                  <ul>
+                    <li>First/Last name <code>input.form-control</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="form-row"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-row" target="_blank">Form row</a>
+      </h5>
+      <p class="my-2 mb-3">Changing from<code>.row</code> to <code>.form-row</code> adjusts paddings (tighter and compact) for form layouts.</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col">
+            <input class="form-control" type="text" placeholder="First name">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="Last name">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-row-structure" aria-control="#form-row-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="form-row-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Row (customized for forms) <code>div.form-row</code>
+              <ul>
+                <li>Column <code>div.col</code> (&times;2)
+                  <ul>
+                    <li>First/Last name (same as above)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="form-grid-example">Example</h5>
+      <p class="mt-2 mb-4">From the official document (orange border to <code>.form-group</code> to indicate structure)</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="form-group col-md-6 border border-warning" style="padding:1px">
+            <label for="inputEmail4">Email</label>
+            <input class="form-control" id="inputEmail4" type="email" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6 border border-warning" style="padding.1px">
+            <label for="inputPassword4">Password</label>
+            <input class="form-control" id="inputPassword4" type="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group border border-warning" style="padding:1px">
+          <label for="inputAddress">Address</label>
+          <input class="form-control" id="inputAddress" type="text" placeholder="1234 Main St">
+        </div>
+        <div class="form-group border border-warning" style="padding:1px">
+          <label for="inputAddress2">Address 2</label>
+          <input class="form-control" id="inputAddress2" type="text" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 border border-warning" style="padding:1px">
+            <label for="inputCity">City</label>
+            <input class="form-control" id="inputCity" type="text">
+          </div>
+          <div class="form-group col-md-4 border border-warning" style="padding:1px">
+            <label for="inputState">State</label>
+            <select class="form-control" id="inputState">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2 border border-warning" style="paddingL1px">
+            <label for="inputZip">Zip</label>
+            <input class="form-control" id="inputZip" type="text">
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="gridCheck" type="checkbox">
+          <label class="form-check-label" for="gridCheck">Check me out</label>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">Sign in</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-grid-example-structure" aria-control="#form-grid-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="form-grid-example-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>First row (Email/Password) <code>div.form-row</code>
+              <ul>
+                <li><code>div.form-group.col-md-6</code> : 6/12 (left) on &ge;md, stacked on &lt;md
+                  <ul>
+                    <li><code>label</code><strong> Email</strong> and <code>input</code><strong> Email</strong></li>
+                  </ul>
+                </li>
+                <li><code>div.form-group.col-md-6</code> : 6/12 (right) on &ge;md, stacked on &le;md
+                  <ul>
+                    <li><code>label</code><strong> Password</strong> and <code>input</code><strong> Password</strong></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Second (Address) and third (Address 2) rows are the same as <a href="#basic-example">Basic example</a></li>
+            <li>Fourth row (City/State/Zip) <code>div.form-row</code>
+              <ul>
+                <li><code>div.form-group.col-md-6</code> : 6/12 (left) on &ge;md, stack on &lt;md
+                  <ul>
+                    <li><code>label</code><strong> City</strong> and <code>input</code></li>
+                  </ul>
+                </li>
+                <li><code>div.form-group.col-md-4</code> : 4/12 (center) on &ge;md, stacked on &lt;md
+                  <ul>
+                    <li><code>label</code><strong> State</strong> and <code>select</code><strong> Choose...</strong></li>
+                  </ul>
+                </li>
+                <li><code>div.form-group.col-md-2</code> : 2/12 (right) on &ge;md, stacked on &lt;md
+                  <ul>
+                    <li><code>label</code><strong> Zip</strong> and <code>input</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Fifth (Check me out) and sixth (Sign in) rows are the same as <a href="#basic-example">Basic example</a></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="horizontal-form"><a href="https://getbootstrap.com/docs/4.1/components/forms/#horizontal-form" target="_blank">Horizontal form</a>
+      </h4><a class="btn btn-outline-info" data-toggle="collapse" href="#horizontal-form-summary" aria-control="#horizontal-form-summary" aria-expanded="false">Summary</a>
+      <ul class="mt-2 mb-3 collapse" id="horizontal-form-summary">
+        <li>Add <code>.row</code> to <code>div.form-group</code> ⇒ <code>div.form-group.row</code></li>
+        <li>Add <code>.col-form-label</code> to <code>label</code> ⇒ <code>label.col-form-label</code></li>
+        <li>Use <code>.col-{breakpoint}-{width}</code> for responsive layout</li>
+      </ul>
+      <form class="mt-3 mb-4">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputEmail3" type="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputPassword3">Password</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputPassword3" type="password" placeholder="Password">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" id="gridRadios1" type="radio" name="gridRadios" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">First radio</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="gridRadios2" type="radio" name="gridRadios" value="option2">
+                <label class="form-check-label" for="gridRadios2">Second radio</label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" id="gridRadios3" type="radio" name="gridRadios" value="option3" disabled>
+                <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-2">Checkbox</div>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" id="gridCheck1" type="checkbox">
+              <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#horizontal-form-structure" aria-control="#horizontal-form-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="horizontal-form-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>First row (example for <a href="#form-controls">Form controls</a>) <code>div.form-group.row</code>
+              <ul>
+                <li>Label (column) <code>label.col-form-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-1" aria-control=".a8-1" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a8-1">Layout (2/12 on &ge;sm, 100% on &lt;sm) <code>.col-sm-2</code></li>
+                    <li class="att collapse a8-1">Attribute <code>for="inputEmail3"</code></li>
+                    <li class="txt">Text <code>Email</code></li>
+                  </ul>
+                </li>
+                <li>Column (10/12 on &ge;sm) <code>div.col-sm-10</code>
+                  <ul>
+                    <li>Control <code>input.form-control</code> (same attributes as former examples)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Second row (Password) - same way as the first row</li>
+            <li>Third row (example for <a href="#default-stacked-radios">Radios</a>) <code>fieldset.form-group</code>
+              <ul>
+                <li>Row <code>div.row</code>
+                  <ul>
+                    <li>Title (column) <code>legend.col-form-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-2" aria-control=".a8-2" aria-expanded="false">Attributes</a>
+                      <ul>
+                        <li class="cls collapse a8-2">Layout (2/12 on &ge;sm) <code>.col-sm-2</code></li>
+                        <li class="cls collapse a8-2">Padding adjustment <code>.pt-0</code></li>
+                        <li class="txt">Text <code>Radios</code></li>
+                      </ul>
+                    </li>
+                    <li>Row (10/12 on &ge;sm) <code>div.col-sm-10</code>
+                      <ul>
+                        <li>Inside - same way as <a href="#default-stacked-radios">Radios example</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Fourth row (example for <a href="#default-stacked-checks">Checkboxes</a>) <code>div.form-group.row</code>
+              <ul>
+                <li>Title (2/12 column on &ge;sm) <code>div.col-sm-2</code>
+                  <ul>
+                    <li class="txt">Text <code>Checkbox</code></li>
+                  </ul>
+                  <li>Column (10/12 on &ge;sm) <code>div.col-sm-10</code>
+                    <ul>
+                      <li>Inside - same way as <a href="#default-stacked-checks">Checkboxes example</a></li>
+                    </ul>
+                  </li>
+                </li>
+              </ul>
+            </li>
+            <li>Button ( <strong>Sign in</strong> ) - same way as <a href="#basic-example">Basic example</a></li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="horizontal-form-label-sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#horizontal-form-label-sizing" target="_blank">Horizontal form label sizing</a>
+      </h5>
+      <p class="my-2">On horizontal forms, a form control and its corresponding label should have the same sizing.</p>
+      <ul>
+        <li>Left (label): Add <code>.col-form-label-(sm|lg)</code> to <code>(label|legend).col-form-control</code></li>
+        <li>Right (form control): Add <code>.form-control-(sm|lg)</code> (see <a href="#sizing">Sizing</a>)</li>
+      </ul>
+      <h5 class="mt-4" id="horizontal-form-label-sizing-example">Examples</h5>
+      <p class="my-2">Left: <code>label.col-form-label.col-form-label-sm</code>, Right: <code>input.form-control.form-control-sm</code></p>
+      <form class="mb-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm" for="size-demo-sm">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control form-control-sm" type="email" id="size-demo-sm" placeholder="Enter email">
+          </div>
+        </div>
+      </form>
+      <p class="my-2">Left: <code>label.col-form-label</code>, Right: <code>input.form-control</code></p>
+      <form class="mb-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="size-demo-default">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="email" id="size-demo-default" placeholder="Enter email">
+          </div>
+        </div>
+      </form>
+      <p class="my-2">Left: <code>label.col-form-label.col-form-label-lg</code>, Right: <code>input.form-control.form-control-lg</code></p>
+      <form class="mb-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-lg" for="size-demo-lg">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control form-control-lg" type="email" id="size-demo-lg" placeholder="Enter email">
+          </div>
+        </div>
+      </form>
+      <h5 class="mt-4" id="column-sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#column-sizing" target="_blank">Column sizing</a>
+      </h5>
+      <p class="mt-2 mb-3">Example using <a href="layout-1.html#grid">Grid</a> to set column widths.</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col-7">
+            <input class="form-control" type="text" placeholder="City">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="State">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="Zip">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#column-sizing-structure" aria-control="#column-sizing-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="column-sizing-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Form row <code>div.form-row</code>
+              <ul>
+                <li>Column (7/12) <code>div.col-7</code> - <a href="#form-controls">Form control</a> (City) inside</li>
+                <li>Column (5/12 / 2 ⇒ 5/24) <code>div.col</code> - <a href="#form-controls">Form control</a> (State) inside</li>
+                <li>Column (5/12 / 2 ⇒ 5/24) <code>div.col</code> - <a href="#form-controls">Form control</a> (Zip) inside</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="auto-sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#auto-sizing" target="_blank">Auto-sizing</a>
+      </h5>
+      <p class="mt-2 mb-3">Changing the columns' class from <code>.col</code> to <code>.col(-sm|-md|-lg|-xl)?-auto</code> sets widths to browser defaults (⇒ <a href="layout-1.html#variable-width-content">Grid - Variable width content</a>). It can be used for inline layouts.</p>
+      <div class="alert alert-info" role="alert">The next section <a href="#inline-forms">Inline forms</a> is also available for inline layouts. Inline forms has a responsive preset on sm breakpoint (switches between inline and stacked). On the other hand, auto-sizing has no responsive preset (can be set manually).</div>
+      <h5 class="mt-4 mb-3" id="auto-sizing-example-1">Example 1</h5>
+      <form class="mb-4">
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label class="sr-only" for="inlineFormInput">Name</label>
+            <input class="form-control" id="inlineFormInput" type="text" placeholder="Jane Doe">
+          </div>
+          <div class="col-auto my-1">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input class="form-control" id="inlineFormInputGroup" type="text" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <div class="form-check">
+              <input class="form-check-input" id="autoSizingCheck" type="checkbox">
+              <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#auto-sizing-example-1-structure" aria-control="#auto-sizing-example-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="auto-sizing-example-1-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Form row (center-aligned) <code>div.form-row.align-items-center</code>
+              <ul>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-1" aria-control=".a9-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a9-1">Vertical margin <code>.my-1</code></li>
+                    <li>Label for accessibility (invisible) <code>label.sr-only</code> (⇒ <a href="#auto-sizing-example-1-note">Note 2</a>) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-2" aria-control=".a9-2" aria-expanded="false">Attribute</a>
+                      <ul>
+                        <li class="att collapse a9-2">Attribute <code>for="inlineFormInput"</code></li>
+                        <li class="txt">Text <code>Name</code></li>
+                      </ul>
+                    </li>
+                    <li>Form control <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-3" aria-control=".a9-3" aria-expanded="false">Attributes</a>
+                      <ul class="collapse a9-3">
+                        <li class="att">Attribute <code>id="inlineFormInput"</code></li>
+                        <li class="att">Attribute <code>type="text"</code></li>
+                        <li class="att">Attribute <code>placeholder="Jane Doe"</code> (behaves as an actual label for visible users)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-4" aria-control=".a9-4" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a9-4">Vertical margin <code>.my-1</code></li>
+                    <li>Label for accessibility (invisible) <code>label.sr-only</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-5" aria-control=".a9-5" aria-expanded="false">Attribute</a>
+                      <ul>
+                        <li class="att collapse a9-5">Attribute <code>for="inlineFormInputGroup"</code></li>
+                        <li class="txt">Text <code>Username</code></li>
+                      </ul>
+                    </li>
+                    <li><a href="components-6.html#input-group">Input group</a> (Username) <code>div.input-group</code>
+                      <ul>
+                        <li>See <a href="components-6.html#basic-example-prepend">Input group example - Prepending</a> for inside</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-6" aria-control=".a9-6" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a9-6">Vertical margin <code>.my-1</code></li>
+                    <li><a href="#checkboxes-and-radios">Checkbox </a><code>div.form-check</code>
+                      <ul>
+                        <li>Control <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-7" aria-control=".a9-7" aria-expanded="false">Attributes</a>
+                          <ul class="collapse a9-7">
+                            <li class="att">Attribute <code>id="autoSizingCheck"</code></li>
+                            <li class="att">Attribute <code>type="checkbox"</code></li>
+                          </ul>
+                        </li>
+                        <li>Label <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-8" aria-control=".a9-8" aria-expanded="false">Attribute</a>
+                          <ul>
+                            <li class="att collapse a9-8">Attribute <code>for="autoSizingCheck"</code></li>
+                            <li class="txt">Text <code>Remember me</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-9" aria-control=".a9-9" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a9-9">Vertical margin <code>.my-1</code></li>
+                    <li>Button <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-10" aria-control=".a9-10" aria-expanded="false">Attribute</a>
+                      <ul>
+                        <li class="att collapse a9-10">Attribute <code>type="submit"</code></li>
+                        <li class="txt">Text <code>Submit</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3">This example is nearly the same as the next <a href="#inline-forms-example">Inline form - Basic example</a>. The defference is a behavior below sm breakpoint (&lt;576px). An inline form cancels <code>auto</code> and switchs to the vertically stacked layout. The example above always fold elements to the next row with <code>auto</code>.</p>
+      <div class="alert alert-warning" id="auto-sizing-example-1-note" role="alert"> <strong>Note 2: </strong>On inline layouts, the <code>placeholder</code> attribute is often used for the role of label with displaying a default value (no label is needed for visible users in this case). But <code>label</code> should be needed for screenreader users. Utilize <code>.sr-only</code> (⇒ <a href="utilities-4.html#screenreaders">Screenreaders</a>) for visible uses.</div>
+      <h5 class="mt-4 mb-3" id="auto-sizing-example-2">Example 2</h5>
+      <p class="mt-2 mb-3">An example for responsive behaviors (modified from the official document example).</p>
+      <form class="mb-4">
+        <div class="form-row align-items-center">
+          <div class="col-sm-6 col-md-4 col-lg-3 my-1">
+            <label class="sr-only" for="inlineFormInputName">Name</label>
+            <input class="form-control" id="inlineFormInputName" type="text" placeholder="Jane Doe">
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 my-1">
+            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input class="form-control" id="inlineFormInputGroupUsername" type="text" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <div class="form-check">
+              <input class="form-check-input" id="autoSizingCheck2" type="checkbox">
+              <label class="form-check-label" for="autoSizingCheck2">Remember me</label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#auto-sizing-example-2-structure" aria-control="#auto-sizing-example-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="auto-sizing-example-2-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Form row (center-aligned) <code>div.form-row.align-items-center</code>
+              <ul>
+                <li><code>div.col-sm-6.col-md-4.col-lg-3.my-1</code> +Inside (hidden label + form control)</li>
+                <li><code>div.col-sm-6.col-md-4.col-lg-3.my-1</code> +Inside (input group)</li>
+                <li><code>div.col-auto</code> +Inside (checkbox)</li>
+                <li><code>div.col-auto</code> +Inside (button)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-3">It looks same as <a href="#auto-sizing-example-1">example 1</a> on width&ge;lg (992px). But responsive widths are adjusted for that the form control and the input group has enough widths on sm and md breakpoints.</p>
+      <div class="alert alert-info" role="alert">Original setting (from the official document) is <code>div.col-sm-3(.my-1)</code>. But widths (of a form control and a input group) are insufficient on sm and md. Above example adjusts responsive behaviors on all widths.</div>
+      <h5 class="mt-4 mb-3" id="auto-sizing-example-3">Example 3</h5>
+      <p class="my-3">Inline variation with <a href="#custom-forms">custom form controls</a> (modified from the official document example).</p>
+      <form class="mb-4">
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="width: auto;">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col-auto my-1">
+            <div class="custom-control custom-checkbox mr-sm-2">
+              <input class="custom-control-input" id="customControlAutosizing" type="checkbox">
+              <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#auto-sizing-example-3-structure" aria-control="#auto-sizing-example-3-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="auto-sizing-example-3-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li>Form row (center-aligned) <code>div.form-row.align-items-center</code>
+              <ul>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-1" aria-control=".a10-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a10-1">Vertical margin <code>.my-1</code></li>
+                    <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-2" aria-control=".a10-2" aria-expanded="false">Attributes</a>
+                      <ul>
+                        <li class="cls collapse a10-2">Horizontal margin <code>.mr-sm-2</code></li>
+                        <li class="att collapse a10-2">Attribute <code>for="inlineFormCustomSelect"</code></li>
+                        <li class="txt">Text <code>Preference</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-3" aria-control=".a10-3" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a10-3">Vertical margin <code>.my-1</code></li>
+                    <li><a href="#select-menu">Custom select </a><code>select.custom-select</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-4" aria-control=".a10-4" aria-expanded="false">Attributes</a>
+                      <ul>
+                        <li class="cls collapse a10-4">Horizontal margin <code>.mr-sm-2</code></li>
+                        <li class="att collapse a10-4">Attribute <code>id="inlineFormCustomSelect"</code></li>
+                        <li class="att collapse a10-4">Custom style <code>style="width: auto;"</code> (⇒ <a href="#auto-sizing-example-3-note">Note 3</a> )</li>
+                        <li>Items (&times;4) <code>option ...</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-5" aria-control=".a10-5" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a10-5">Vertical margin <code>.my-1</code></li>
+                    <li><a href="#checkboxes">Custom checkbox </a><code>div.custom-control.custom-checkbox</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-6" aria-control=".a10-6" aria-expanded="false">Attribute</a>
+                      <ul>
+                        <li class="cls collapse a10-6">Horizontal margin <code>.mr-sm-2</code></li>
+                        <li>Control <code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-7" aria-control=".a10-7" aria-expanded="false">Attributes</a>
+                          <ul class="collapse a10-7">
+                            <li class="att">Attribute <code>id="customControlAutosizing"</code></li>
+                            <li class="att">Attribute <code>type="checkbox"</code></li>
+                          </ul>
+                        </li>
+                        <li>Label <code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-8" aria-control=".a10-8" aria-expanded="false">Attribute</a>
+                          <ul>
+                            <li class="att collapse a10-8">Attribute <code>for="customControlAutosizing"</code></li>
+                            <li class="txt">Text <code>Remember my preference</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Column (auto-sizing) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-9" aria-control=".a10-9" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="cls collapse a10-9">Vertical margin <code>.my-1</code></li>
+                    <li>Button <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-10" aria-control=".a10-10" aria-expanded="false">Attribute</a>
+                      <ul>
+                        <li class="att collapse a10-10">Attribute <code>type="submit"</code></li>
+                        <li class="txt">Text <code>Submit</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" id="auto-sizing-example-3-note" role="alert"><strong>Note 3: </strong>The original example does not set width of a custom <code>select</code> (<code>width: 100%;</code> by default). As the result, a custom <code>select</code> does not arrange inline. This example uses a custom style to fix this problem.</div>
+      <h4 class="mt-4 mb-3" id="inline-forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/#inline-forms" target="_blank">Inline forms</a>
+      </h4>
+      <p class="my-2"><code>(form).form-inline</code> can be used for inline (horizontal) layouts. It sets layout settings as follows.</p>
+      <ul class="my-2">
+        <li>Changes inner control elements from <code>display:block</code> to <code>display:flex</code></li>
+        <li>Changes inner components widths from <code>width:100%</code> to <code>width:auto</code></li>
+        <li>Above settings are canceled if the viewport width&lt;576px
+          <ul>
+            <li>Switches layouts on the sm breakpoint (inline on &ge;576px, vertically stacked on &lt;576px)</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info">It is similar to <a href="auto-sizing">auto-sizing</a>. But it is customized for using in <a href="components-10.html">navigation bar</a>s and can be built with simpler structure. It is responsive as default with sm breakpoint (fixed, you have to use auto-sizing if you need different behaviors).</div>
+      <h5 class="mt-3" id="inline-forms-tips">Tips</h5>
+      <ul>
+        <li>Margins among elements are set to <code>auto</code>. Use <a href="utilities-4.html#spacing">Spacing utilities</a> to adjust them.</li>
+        <li>Use <code>label</code> for accessibility. Add <code>.sr-only</code> if it is not needed for visible uses (⇒ <a href="#auto-sizing-example-1-note">Note 2</a>).</li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="inline-forms-example">Basic example</h5>
+      <form class="form-inline mb-4">
+        <label class="sr-only" for="inlineFormInputName2">Name</label>
+        <input class="form-control my-1 mr-sm-2" id="inlineFormInputName2" type="text" placeholder="Jane Doe">
+        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+        <div class="input-group my-1 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input class="form-control" id="inlineFormInputGroupUsername2" type="text" placeholder="Username">
+        </div>
+        <div class="form-check my-1 mr-sm-2">
+          <input class="form-check-input" id="inlineFormCheck" type="checkbox">
+          <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+        </div>
+        <button class="btn btn-primary my-1" type="submit">Submit</button>
+      </form>
+      <ul class="mt-3"></ul><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-forms-example-structure" aria-control="#inline-forms-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="inline-forms-example-structure">
+        <li>Inline form <code>form.form-inline</code>
+          <ul>
+            <li>Label for accessibility (invisible) <code>label.sr-only</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-1" aria-control=".a11-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a11-1">Attribute <code>for="inlineFormInputName2"</code></li>
+                <li class="txt">Text <code>Name</code></li>
+              </ul>
+            </li>
+            <li>Control <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-2" aria-control=".a11-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a11-2">
+                <li class="cls">Margin adjustment <code>.my-1.mr-sm-2</code></li>
+                <li class="att">Attribute <code>id="inlineFormInputName2"</code></li>
+                <li class="att">Attribute <code>type="text"</code></li>
+                <li class="att">Attribute <code>placeholder="Jane Doe"</code> (actual label for visible users)</li>
+              </ul>
+            </li>
+            <li>Label for accessibility (invisible) <code>label.sr-only</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-3" aria-control=".a11-3" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a11-3">Attribute <code>for="inlineFormInputGroupUsername2"</code></li>
+                <li class="txt">Text <code>Username</code></li>
+              </ul>
+            </li>
+            <li><a href="components-6.html#input-group">Input group</a> (Username) <code>div.input-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-4" aria-control=".a11-4" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="cls collapse a11-4">Margin adjustment <code>.my-1.mr-sm-2</code></li>
+                <li>See <a href="components-6.html#basic-example-prepend">Input group - Prepending</a> for inside</li>
+              </ul>
+            </li>
+            <li><a href="#checkboxes-and-radios">Checkbox </a><code>div.form-check</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-5" aria-control=".a11-5" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="cls collapse a11-5">Margin adjustment <code>.my-1.mr-sm-2</code></li>
+                <li>Control <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-6" aria-control=".a11-6" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a11-6">
+                    <li class="att">Attribute <code>id="inlineFormCheck"</code></li>
+                    <li class="att">Attribute <code>type="checkbox"</code></li>
+                  </ul>
+                </li>
+                <li>Label <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-7" aria-control=".a11-7" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a11-7">Attribute <code>for="inlineFormCheck"</code></li>
+                    <li class="txt">Text <code>Remember me</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Button <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-8" aria-control=".a11-8" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a11-8">Margin adjustment <code>.my-1</code></li>
+                <li class="att collapse a11-8">Attribute <code>type="submit"</code></li>
+                <li class="txt">Text <code>Submit</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">You do not have to add <code>.form-check-inline</code> to a checkbox (or a radio) block <code>div.form-check</code>. Outer <code>form.form-inline</code> sets everything for inline checkboxes and radios.</div>
+      <h5 class="mt-4 mb-3" id="inline-forms-example-custom">Example using <a href="#custom-forms">custom forms</a></h5>
+      <form class="form-inline mb-4">
+        <label class="my-1 mr-sm-2" for="inlineFormCustomSelectPref">Preference</label>
+        <div class="form-control form-control-plaintext p-0 my-1 mr-sm-2">
+          <select class="custom-select" id="inlineFormCustomSelectPref">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="form-control form-control-plaintext p-0 my-1 mr-sm-2">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" id="customControlInline" type="checkbox">
+            <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+          </div>
+        </div>
+        <button class="btn btn-primary my-1" type="submit">Submit</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-forms-example-custom-structure" aria-control="#inline-forms-example-custom-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="inline-forms-example-custom-structure">
+        <li>Inline form <code>form.form-inline</code>
+          <ul>
+            <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-1" aria-control=".a12-1" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a12-1">Margins <code>.my-1.mr-sm-2</code></li>
+                <li class="att collapse a12-1">Attribute <code>for="inlineFormCustomSelectPref"</code></li>
+                <li class="txt">Text <code>Preference</code></li>
+              </ul>
+            </li>
+            <li>Form control <code>div.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-2" aria-control=".a12-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a12-2">No rounded border <code>.form-control-plaintext</code></li>
+                <li class="cls collapse a12-2">No paddings <code>.p-0</code></li>
+                <li class="cls collapse a12-2">Margins <code>.my-1.mr-sm-2</code></li>
+                <li><a href="#select-menu">Custom select </a><code>select.custom-select</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-3" aria-control=".a12-3" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a12-3">Attribute <code>id="inlineFormCustomSelectPref"</code></li>
+                    <li>Items (&times;4) <code>option ...</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Form control <code>div.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-4" aria-control=".a12-4" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a12-4">No rounded border <code>.form-control-plaintext</code></li>
+                <li class="cls collapse a12-4">No paddings <code>.p-0</code></li>
+                <li class="cls collapse a12-4">Margins <code>.my-1.mr-sm-2</code></li>
+                <li><a href="#checkboxes">Custom checkbox </a><code>div.custom-control.custom-checkbox</code>
+                  <ul>
+                    <li>Control <code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-5" aria-control=".a12-5" aria-expanded="false">Attributes</a>
+                      <ul class="collapse a12-5">
+                        <li class="att">Attribute <code>id="customControlInline"</code></li>
+                        <li class="att">Attribute <code>type="checkbox"</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Label for custom form controls <code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-6" aria-control=".a12-6" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a12-6">Attribute <code>for="customControlInline"</code></li>
+                    <li class="txt">Text <code>Remember my preference</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Button <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-7" aria-control=".a12-7" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="cls collapse a12-7">Margins <code>.my-1</code></li>
+                <li class="att collapse a12-7">Attribute <code>type="submit"</code></li>
+                <li class="txt">Text <code>Submit</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-forms-example-custom-fixes" aria-control="#inline-forms-example-custom-fixes" aria-expanded="false">About fixes</a>
+      </div>
+      <div class="mt-3 collapse" id="inline-forms-example-custom-fixes">
+        <p class="my-3">It is based on the offcial document's example. But it (version 4.0 example) does not behaves properly because <code>.form-inline</code> does not support custom controls. Abobe example fix this problem as follows and behaves property between the sm breakpoint.</p>
+        <ul>
+          <li>Wraps each custom control with a form control <code>div.form-control</code>
+            <ul>
+              <li>⇒ Behaves responsively with outer <code>.form-inline</code></li>
+              <li>Erases unneeded rounded border <code>.form-control-plaintext</code></li>
+              <li>Removes unneeded paddings <code>.p-0</code></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <h4 class="mt-4" id="help-text"><a href="https://getbootstrap.com/docs/4.1/components/forms/#help-text" target="_blank">Help text</a>
+      </h4>
+      <p class="mt-2 mb-3">Use <code>small.form-text(.text-muted)</code> for stacked or horizontal layouts. Considering accessibility, a help text should have ID to be referenced by <code>aria-describedby</code> attribute. </p>
+      <label for="inputPassword5">Password</label>
+      <input class="form-control" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock"><small class="form-text text-muted mb-4" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small><a class="btn btn-outline-info" data-toggle="collapse" href="#help-text-example-structure" aria-control="#help-text-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="help-text-example-structure">
+        <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a13-1" aria-control=".a13-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a13-1">Attribute <code>for="inputPassword5"</code></li>
+            <li class="txt">Text <code>Password</code></li>
+          </ul>
+        </li>
+        <li>Control <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a13-2" aria-control=".a13-2" aria-expanded="false">Attributes</a>
+          <ul class="collapse a13-2">
+            <li class="att">Attribute <code>id="inputPassword5"</code></li>
+            <li class="att">Attribute <code>type="password"</code></li>
+            <li class="att">Accessibility attribute <code>aria-describedby="passwordHelpBlock"</code></li>
+          </ul>
+        </li>
+        <li>Help text <code>small.form-text.text-muted</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a13-3" aria-control=".a13-3" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a13-3">Accessibility attribute <code>id="passwordHelpBlock"</code></li>
+            <li class="txt">Text <code>Your password must be 8-20 characters long, ...</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-3">Remove <code>.form-text</code> for inline layouts.</p>
+      <form class="form-inline mb-4">
+        <label for="inputPassword6">Password</label>
+        <input class="form-control mx-sm-3" id="inputPassword6" type="password" aria-describedby="passwordHelpInline"><small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#help-text-example-inline-structure" aria-control="#help-text-example-inline-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="help-text-example-inline-structure">
+        <li>Inline form <code>form.form-inline</code>
+          <ul>
+            <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a14-1" aria-control=".a14-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a14-1">Attribute <code>for="inputPassword3"</code></li>
+                <li class="txt">Text <code>Password</code></li>
+              </ul>
+            </li>
+            <li>Control <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a14-2" aria-control=".a14-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a14-2">
+                <li class="cls">Margin adjustment <code>.mx-sm-3</code></li>
+                <li class="att">Attribute <code>id="inputPassword6"</code></li>
+                <li class="att">Attribute <code>type="password"</code></li>
+                <li class="att">Accessibility attribute <code>aria-describedby="passwordHelpInline"</code></li>
+              </ul>
+            </li>
+            <li>Help text <code>small.text-muted</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a14-3" aria-control=".a14-3" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a14-3">Accessibility attribute <code>id="passwordHelpInline"</code></li>
+                <li class="txt">Text <code>Must be 8-20 characters long.</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="disabled-forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/#disabled-forms" target="_blank">Disabled forms</a>
+      </h4>
+      <p class="mt-2 mb-3">You can set the attribute <code>disabled</code> to disable a control element. You can also wrap control elements with a <code>fieldset</code> and set <code>disabled</code> to disable all controls inside (⇒ <a href="#disabled-forms-note">Note 4</a>).</p>
+      <form class="mb-4">
+        <fieldset disabled>
+          <div class="form-group">
+            <label for="disabledTextInput">Disabled input</label>
+            <input class="form-control" id="disabledTextInput" type="text" placeholder="Disabled input">
+          </div>
+          <div class="form-group">
+            <label for="disabledSelect">Disabled select menu</label>
+            <select class="form-control" id="disabledSelect">
+              <option>Disabled select</option>
+            </select>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" id="disabledFieldsetCheck" type="checkbox" disabled>
+            <label class="form-check-label" for="disabledFieldsetCheck">Can't check this</label>
+          </div>
+          <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </fieldset>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#disabled-example-structure" aria-control="#disabled-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="disabled-example-structure">
+        <li>Form <code>form</code>
+          <ul>
+            <li><code>fieldset </code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a15-1" aria-control=".a15-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a15-1">Attribute <code>disabled</code></li>
+                <li>Child elements here - all controls are set to <code>disabled</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" id="disabled-forms-note" role="alert"><strong>Note 4: </strong>(Apr. 2018) As checked with Chrome, Firefox, IE11, and Edge, IE11 does not support completely (does not disable Submit button). According to the official document, similar problem also occurs on IE10.</div>
+      <h4 class="mt-4" id="validation"><a href="https://getbootstrap.com/docs/4.1/components/forms/#validation" target="_blank">Validation</a>
+      </h4>
+      <p class="my-2">HTML validation was introduced in HTML version 5.0 (see <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Data_form_validation" target="_blank">MDN - Form data validation</a>). Now it is supported for all modern browsers (see <a href="https://caniuse.com/#feat=form-validation" target="_blank">Can I Use</a>). But browsers' default behaviors are inconsistent and also their validation messages are difficult to recognize for assistive technologies (e.g. screen readers).
+      </p>
+      <p class="my-2">Bootstrap has made thier custom validation styles since version 4.0. It is made for improvement of consistency among browsers and message accessibility for assistive technologies.</p>
+      <h5 class="mt-4" id="browser-defaults"><a href="https://getbootstrap.com/docs/4.1/components/forms/#browser-defaults" target="_blank">Browser defaults</a>
+      </h5>
+      <p class="mt-2 mb-3">The example below shows browser default validation behaviors. Note that each behavior heavily varies among browsers (check this example for yourself with various browsers).</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">First name</label>
+            <input class="form-control" id="validationDefault01" type="text" placeholder="First name" value="Mark" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Last name</label>
+            <input class="form-control" id="validationDefault02" type="text" placeholder="Last name" value="Otto" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefaultUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend2">@</span></div>
+              <input class="form-control" id="validationDefaultUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">City</label>
+            <input class="form-control" id="validationDefault03" type="text" placeholder="City" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault04">State</label>
+            <input class="form-control" id="validationDefault04" type="text" placeholder="State" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Zip</label>
+            <input class="form-control" id="validationDefault05" type="text" placeholder="Zip" required pattern="[0-9]{5}">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" id="invalidCheck2" type="checkbox" value="" required>
+            <label class="form-check-label" for="invalidCheck2">Agree to terms and conditions</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#browser-defaults-summary" aria-control="#browser-defaults-summary" aria-expanded="false">Summary</a>
+      <ul class="mt-2 collapse" id="browser-defaults-summary">
+        <li>Adds <code>required</code> to all <code>input</code>s to validate (enables browser's validation)</li>
+        <li>Pressing <strong>Submit form</strong> executes validation
+          <ul>
+            <li>Submits if all inputs have (valid) values</li>
+            <li>Stops submission if at least one value is empty (i.e. invalid)
+              <ul>
+                <li>Notice: Some (old) browsers may always submit.</li>
+              </ul>
+            </li>
+            <li>Other behaviors (especially visual effects) depend on browsers</li>
+          </ul>
+        </li>
+        <li>(Optional) You can set input patterns (regular expression) width <code>pattern</code>
+          <ul>
+            <li>e.g. US zip code (set to above example) <code>pattern="[0-9]{5}"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="custom-styles"><a href="https://getbootstrap.com/docs/4.1/components/forms/#custom-styles" target="_blank">Bootstrap 4 styles</a>
+      </h5>
+      <p class="mt-2 mb-3">The example below demonstrates Bootstrap 4 style validation.</p>
+      <form class="mb-4 needs-validation" novalidate>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom01">First name</label>
+            <input class="form-control" id="validationCustom01" type="text" placeholder="First name" value="Mark" required>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please input your name.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Last name</label>
+            <input class="form-control" id="validationCustom02" type="text" placeholder="Last name" value="Otto" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustomUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">@</span></div>
+              <input class="form-control" id="validationCustomUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom03">City</label>
+            <input class="form-control" id="validationCustom03" type="text" placeholder="City" required>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom04">State</label>
+            <input class="form-control" id="validationCustom04" type="text" placeholder="State" required>
+            <div class="invalid-feedback">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom05">Zip</label>
+            <input class="form-control" id="validationCustom05" type="text" placeholder="Zip" required>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" id="invalidCheck" type="checkbox" value="" required>
+            <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+      <p class="mt-3 mb-2">HTML markups.</p><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-html-summary" aria-control="#validation-html-summary" aria-expanded="false">HTML summary</a>
+      <ul class="struct mt-2 collapse" id="validation-html-summary">
+        <li>Sets to <code>form</code> as below
+          <ul>
+            <li class="att">Attribute <code>novalidate</code> (disables browser default validation)</li>
+            <li class="att">Any CSS selector ⇒ <code>.needs-validation</code> used in this page</li>
+          </ul>
+        </li>
+        <li>Sets as below to the elements to validate
+          <ul>
+            <li class="cls">Class (form control) <code>.form-control</code></li>
+            <li class="att">Attribute for validation: e.g. <code>required</code></li>
+          </ul>
+        </li>
+        <li>Adds each validation feedback message to a following sibling
+          <ul>
+            <li class="cls">On valid <code>(div).valid-feedback</code></li>
+            <li class="cls">On invalid <code>(div).invalid-feedback</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Uses Bootstrap 4 CSS validation.</p><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-css-summary" aria-control="#validation-css-summary" aria-expanded="false">CSS summary</a>
+      <ul class="mt-2 collapse" id="validation-css-summary">
+        <li>Triggers with setting <code>.was-validated</code> to an ancestor (typically a <code>form</code>)
+          <ul>
+            <li>Does not set on the initial state</li>
+            <li>(Typically) sets on submission</li>
+          </ul>
+        </li>
+        <li>Sets <code>.form-control</code> to control elements to validate
+          <ul>
+            <li>Shows green border on <code>.was-validated</code> to an ancestor and <code>:valid</code> to itself</li>
+            <li>Shows red border on <code>.was-validated</code> to an ancestor and <code>:invalid</code> to itself</li>
+          </ul>
+        </li>
+        <li>(Optional) Sets (a) feedback message(s) as latter sibling of each control element
+          <ul>
+            <li>Valid message <code>.valid-feedback</code> : displays on
+              <ul>
+                <li>Set <code>.was-validated</code> to an ancestor</li>
+                <li>Set <code>:valid</code> to a former <code>.form-control</code></li>
+              </ul>
+            </li>
+            <li>Invalid message <code>.invalid-feedback</code> : displays on
+              <ul>
+                <li>Set <code>.was-validated</code> to an ancestor</li>
+                <li>Set <code>:invalid</code> to a former <code>.form-control</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Needs JavaScript.</p><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-javascript-summary" aria-control="#validation-javascript-summary" aria-expanded="false">JavaScript summary</a>
+      <ul class="mt-2 collapse" id="validation-javascript-summary">
+        <li>Sets <code>submit</code> event handler to the corresponding <code>form</code> (e.g. <code>.needs-validation</code> )</li>
+        <li>In event handler:
+          <ul>
+            <li>executes validation <code>{form}.checkValidity()</code>
+              <ul>
+                <li>Sets <code>:valid</code> pseudo-class to valid controls</li>
+                <li>Sets <code>:invalid</code> pseudo-class to invalid controls</li>
+              </ul>
+            </li>
+            <li>Intercepts submission if validation returns false
+              <ul>
+                <li><code>event.preventDefault()</code></li>
+                <li><code>event.stopPropagation()</code></li>
+              </ul>
+            </li>
+            <li>Sets <code>.was-validated</code> to the form</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-javascrip-dom" aria-control="#validation-javascrip-dom" aria-expanded="false">DOM example</a>&nbsp;<a class="btn btn-outline-info" data-toggle="collapse" href="#validation-javascrip-jquery" aria-control="#validation-javascrip-jquery" aria-expanded="false">jQuery example</a>
+      </div>
+      <pre class="p-2 border bg-light mt-3 collapse" id="validation-javascrip-dom"><code>// DOM version (from official document)
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();</code></pre>
+      <pre class="p-2 border bg-light mt-3 collapse" id="validation-javascrip-jquery"><code>// jQuery version
+$('.needs-validation').on('submit', function(event) {
+  if (!this.checkValidity()) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  $(this).addClass('was-validated');
+});</code></pre>
+      <h5 class="mt-4" id="server-side"><a href="https://getbootstrap.com/docs/4.1/components/forms/#server-side" target="_blank">Server-side validation</a>
+      </h5>
+      <p class="my-2">Bootstrap also supports for server-side validation behaviors. But pseudo-class <code>:valid</code> or <code>:invalid</code> cannot be set from server-side. Bootstrap CSS provides <code>.is-valid </code> and <code>.is-invalid </code> for alternatives of corresponding pseudo-classes.</p><a class="btn btn-outline-info" data-toggle="collapse" href="#server-side-summary" aria-control="#server-side-summary" aria-expanded="false">Summary</a>
+      <ul class="struct mt-2 collapse" id="server-side-summary">
+        <li><code>form</code> (<code>.was-validated</code> is not needed)
+          <ul>
+            <li>Sets one of them (alternative of pseudo-class) to each form control
+              <ul>
+                <li class="cls">Valid <code>.is-valid</code></li>
+                <li class="cls">Invalid <code>.is-invalid</code></li>
+              </ul>
+            </li>
+            <li>Feedback messages are same say as above
+              <ul>
+                <li class="cls">On valid <code>.valid-feedback</code></li>
+                <li class="cls">On invalid <code>.invalid-feedback</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-3">The example below is showing <strong>First name</strong> and <strong>Last name</strong> are valid but all others are invalid.</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationServer01">First name</label>
+            <input class="form-control is-valid" id="validationServer01" type="text" placeholder="First name" value="Mark" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Last name</label>
+            <input class="form-control is-valid" id="validationServer02" type="text" placeholder="Last name" value="Otto" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServerUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend3">@</span></div>
+              <input class="form-control is-invalid" id="validationServerUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+              <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationServer03">City</label>
+            <input class="form-control is-invalid" id="validationServer03" type="text" placeholder="City" required>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationServer04">State</label>
+            <input class="form-control is-invalid" id="validationServer04" type="text" placeholder="State" required>
+            <div class="invalid-feedback">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationServer05">Zip</label>
+            <input class="form-control is-invalid" id="validationServer05" type="text" placeholder="Zip" required>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input is-invalid" id="invalidCheck3" type="checkbox" value="" required>
+            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#server-side-html-summary" aria-control="#server-side-html-summary" aria-expanded="false">Summary</a>
+      <ul class="struct mt-2 collapse" id="server-side-html-summary">
+        <li><code>form</code> (no class or attribute added)</li>
+        <li>Adds <code>.is-valid</code> to first two form controls (First name, Last name)
+          <ul>
+            <li>Controls and feedback messages display green</li>
+          </ul>
+        </li>
+        <li>Adds <code>.is-invalid</code> to all other controls
+          <ul>
+            <li>Controls and feedback messages display red</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="supported-elements"><a href="https://getbootstrap.com/docs/4.1/components/forms/#supported-elements" target="_blank">Using custom form controls</a>
+      </h5>
+      <p class="mt-2 mb-3">Bootstrap 4 validation supports <a href="#custom-forms">custom form controls</a>. The example below demonstrates validation behaviors of supported custom form controls. </p>
+      <form class="was-validated mb-4">
+        <div class="custom-control custom-checkbox mb-3">
+          <input class="custom-control-input" id="customControlValidation1" type="checkbox" required>
+          <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
+          <div class="invalid-feedback">Example invalid feedback text</div>
+        </div>
+        <div class="custom-control custom-radio">
+          <input class="custom-control-input" id="customControlValidation2" type="radio" name="radio-stacked" required>
+          <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+        </div>
+        <div class="custom-control custom-radio mb-3">
+          <input class="custom-control-input" id="customControlValidation3" type="radio" name="radio-stacked" required>
+          <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+          <div class="invalid-feedback">More example invalid feedback text</div>
+        </div>
+        <div class="form-group">
+          <select class="custom-select" required>
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="invalid-feedback">Example invalid custom select feedback</div>
+        </div>
+        <div class="custom-file">
+          <input class="custom-file-input" id="validatedCustomFile" type="file" required>
+          <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+          <div class="invalid-feedback">Example invalid custom file feedback</div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#supported-elements-structure" aria-control="#supported-elements-structure" aria-expanded="false">Settings</a>
+      <ul class="struct mt-2 collapse" id="supported-elements-structure">
+        <li>Sets <code>.was-validated</code> to <code>form</code> (demonstrates validating behaviors)</li>
+        <li>Sets <code>required</code> to custom controls as below
+          <ul>
+            <li><a href="#checkboxes">Custom checkbox</a></li>
+            <li><a href="#radios">Custom radios</a></li>
+            <li><a href="#select-menu">Custom select menu</a></li>
+            <li><a href="#file-browser">Custom file browser</a></li>
+          </ul>
+        </li>
+        <li>Validation messages are same way as above</li>
+      </ul>
+      <h5 class="mt-3" id="tooltips"><a href="https://getbootstrap.com/docs/4.1/components/forms/#tooltips" target="_blank">Tooltips</a>
+      </h5>
+      <p class="mt-2 mb-3">Changing from <code>.(valid|invalid)-feedback</code> to <code>.(valid|invalid)-tooltip</code> displays a validation feedback message as a tooltip popup with translucent background.</p>
+      <form class="needs-validation mb-4" novalidate>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltip01">First name</label>
+            <input class="form-control" id="validationTooltip01" type="text" placeholder="First name" value="Mark" required>
+            <div class="valid-tooltip">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltip02">Last name</label>
+            <input class="form-control" id="validationTooltip02" type="text" placeholder="Last name" value="Otto" required>
+            <div class="valid-tooltip">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltipUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="validationTooltipUsernamePrepend">@</span></div>
+              <input class="form-control" id="validationTooltipUsername" type="text" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+              <div class="invalid-tooltip">Please choose a unique and valid username.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationTooltip03">City</label>
+            <input class="form-control" id="validationTooltip03" type="text" placeholder="City" required>
+            <div class="invalid-tooltip">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationTooltip04">State</label>
+            <input class="form-control" id="validationTooltip04" type="text" placeholder="State" required>
+            <div class="invalid-tooltip">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationTooltip05">Zip</label>
+            <input class="form-control" id="validationTooltip05" type="text" placeholder="Zip" required>
+          </div>
+          <div class="invalid-tooltip">Please provide a valid zip.</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#tooltips-structure" aria-control="#tooltips-structure" aria-expanded="false">Settings</a>
+      <ul class="mt-2 collapse" id="tooltips-structure">
+        <li>Structure is the same as <a href="#custom-styles">Bootstrap 4 style validation (example)</a></li>
+        <li>Changes classes as follows
+          <ul>
+            <li><code>div.valid-feedback</code> ⇒ <code>div.valid-tooltip</code></li>
+            <li> <code>div.invalid-feedback</code> ⇒ <code>div.invalid-tooltip</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="custom-forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/#custom-forms" target="_blank">Custom form controls</a>
+      </h4>
+      <p class="my-2">Bootstrap 4 custom form controls can be used for further display customization and cross browser consistency.</p>
+      <h5 class="mt-4 mb-3" id="checkboxes"><a href="https://getbootstrap.com/docs/4.1/components/forms/#checkboxes" target="_blank">Checkboxes</a>
+      </h5>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-1" type="checkbox" checked>
+        <label class="custom-control-label" for="custom-check-1">Custom checkbox 1</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-2" type="checkbox">
+        <label class="custom-control-label" for="custom-check-2">Custom checkbox 2</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-3" type="checkbox">
+        <label class="custom-control-label" for="custom-check-3">Custom checkbox 3</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-4" type="checkbox" disabled>
+        <label class="custom-control-label" for="custom-check-4">Custom checkbox 4 (disabled)</label>
+      </div>
+      <script>document.getElementById('custom-check-3').indeterminate = true;</script>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#checkboxes-example-structure" aria-control="#checkboxes-example-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="checkboxes-example-structure">
+        <li><code>div.custom-control.custom-checkbox</code> (&times;4)
+          <ul>
+            <li><code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a16-1" aria-control=".a16-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a16-1">
+                <li class="att">Attribute <code>id="custom-check-(1|2|3|4)"</code></li>
+                <li class="att">Attribute <code>type="checkbox"</code></li>
+                <li class="att">Attribute (first item only) <code>checked</code></li>
+                <li class="att">Attribute (last item only) <code>disabled</code></li>
+              </ul>
+            </li>
+            <li><code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a16-2" aria-control=".a16-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a16-2">Attribute <code>for="custom-check-(1|2|3|4)"</code></li>
+                <li class="txt">Text <code>Custom checkbox (1|2|3|4) (disabled)?</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3">Initial state of the third checkbox is set to <kbd>-</kbd> . It is an example of <code>:indeterminate</code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate" target="_blank"> pseudo-class</a> and set by the following code (JavaScript required).
+      </p>
+      <pre class="p-2 border bg-light"><code>document.getElementById('custom-check-3').indeterminate = true;</code></pre>
+      <p class="mt-3 my-2">Or using jQuery:</p>
+      <pre class="p-2 border bg-light"><code>$('#custom-check-3').prop('indeterminate', true);</code></pre>
+      <h5 class="mt-4 mb-3" id="radios"><a href="https://getbootstrap.com/docs/4.1/components/forms/#radios" target="_blank">Radios</a>
+      </h5>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-1" type="radio" name="custom-radios" checked>
+        <label class="custom-control-label" for="custom-radio-1">Custom radio 1</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-2" type="radio" name="custom-radios">
+        <label class="custom-control-label" for="custom-radio-2">Custom radio 2</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-3" type="radio" name="custom-radios">
+        <label class="custom-control-label" for="custom-radio-3">Custom radio 3</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-4" type="radio" name="custom-radios" disabled>
+        <label class="custom-control-label" for="custom-radio-4">Custom radio 4 (disabled)</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#radios-example-structure" aria-control="#radios-example-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="radios-example-structure">
+        <li><code>div.custom-control.custom-radio</code> (&times;4)
+          <ul>
+            <li><code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a17-1" aria-control=".a17-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a17-1">
+                <li class="att">Attribute <code>id="custom-radio-(1|2|3|4)"</code></li>
+                <li class="att">Attribute <code>type="radio"</code></li>
+                <li class="att">Attribute <code>name="custom-radios"</code></li>
+                <li class="att">Attribute (first item only) <code>checked</code></li>
+                <li class="att">Attribute (last item only) <code>disabled</code></li>
+              </ul>
+            </li>
+            <li><code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a17-2" aria-control=".a17-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a17-2">Attribute <code>for="custom-radio-(1|2|3|4)"</code></li>
+                <li class="txt">Text <code>Custom radio (1|2|3|4) (disabled)?</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="inline-1"><a href="https://getbootstrap.com/docs/4.1/components/forms/#inline-1" target="_blank">Radios (inline)</a>
+      </h5>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-1" type="radio" name="custom-inline-radios" checked>
+        <label class="custom-control-label" for="custom-inline-radio-1">Inline 1</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-2" type="radio" name="custom-inline-radios">
+        <label class="custom-control-label" for="custom-inline-radio-2">Inline 2</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-3" type="radio" name="custom-inline-radios">
+        <label class="custom-control-label" for="custom-inline-radio-3">Inline 3</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-4" type="radio" name="custom-inline-radios" disabled>
+        <label class="custom-control-label" for="custom-inline-radio-4">Inline 4 (disabled)</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#radios-inline-example-structure" aria-control="#radios-inline-example-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="radios-inline-example-structure">
+        <li><code>div.custom-control.custom-radio.custom-control-inline</code> (&times;4)
+          <ul>
+            <li>Inside is the same as <a href="#inline">Inline radios</a> above</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-2" id="select-menu"><a href="https://getbootstrap.com/docs/4.1/components/forms/#select-menu" target="_blank">Select menu</a>
+      </h5>
+      <p class="mt-2 mb-1"><code>select.custom-select.custom-select-sm</code></p>
+      <select class="custom-select custom-select-sm mt-1 mb-2">
+        <option value="1" selected>Small custom select 1</option>
+        <option value="2">Small custom select 2</option>
+        <option value="3">Small custom select 3</option>
+        <option value="4">Small custom select 4</option>
+        <option value="5">Small custom select 5</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.custom-select</code></p>
+      <select class="custom-select mt-1 mb-2">
+        <option value="1" selected>Default custom select 1</option>
+        <option value="2">Default custom select 2</option>
+        <option value="3">Default custom select 3</option>
+        <option value="4">Default custom select 4</option>
+        <option value="5">Default custom select 5</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.custom-select.custom-select-lg</code></p>
+      <select class="custom-select custom-select-lg mt-1 mb-2">
+        <option value="1" selected>Large custom select 1</option>
+        <option value="2">Large custom select 2</option>
+        <option value="3">Large custom select 3</option>
+        <option value="4">Large custom select 4</option>
+        <option value="5">Large custom select 5</option>
+      </select>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#select-menu-example-structure" aria-control="#select-menu-example-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="select-menu-example-structure">
+        <li><code>select.custom-select(.custom-select-sm|.custom-select-lg)?</code>
+          <ul>
+            <li><code>option</code> (&times;5) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a18-1" aria-control=".a18-1" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="att collapse a18-1">Attribute <code>value="(1|2|3|4|5)"</code></li>
+                <li class="att collapse a18-1">Attribute (first item only) <code>selected</code></li>
+                <li class="txt">Text <code>(Small|Default|Large) custom select (1|2|3|4|5)</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">On setting attribute <code>multiple</code></p>
+      <select class="custom-select" multiple>
+        <option value="1" selected>Custom select 1</option>
+        <option value="2">Custom select 2</option>
+        <option value="3">Custom select 3</option>
+        <option value="4">Custom select 4</option>
+        <option value="5">Custom select 5</option>
+      </select>
+      <p class="mt-3 mb-2">On setting attribute <code>size="3"</code></p>
+      <select class="custom-select" size="3">
+        <option value="1" selected>Custom select 1</option>
+        <option value="2">Custom select 2</option>
+        <option value="3">Custom select 3</option>
+        <option value="4">Custom select 4</option>
+        <option value="5">Custom select 5</option>
+      </select>
+      <h4 class="mt-4 mb-3" id="range"><a href="https://getbootstrap.com/docs/4.1/components/forms/#range" target="_blank">Range</a>
+      </h4>
+      <p class="my-2">As default, range is set to <code>0..100</code> , value is set to <code>50</code> , step is set to <code>1</code>.</p>
+      <label for="customRange1">Example range</label>
+      <input class="custom-range" id="customRange1" type="range">
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#range-example-1-settings" aria-control="#range-example-1-settings" aria-expanded="false">Settings</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="range-example-1-settings">
+        <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a19-1" aria-control=".a19-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a19-1">Attribute <code>for="customRange1"</code></li>
+            <li class="txt">Text <code>Example range</code></li>
+          </ul>
+        </li>
+        <li>Custom range <code>input.custom-range</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a19-2" aria-control=".a19-2" aria-expanded="false">Attributes</a>
+          <ul class="collapse a19-2">
+            <li class="att">Attribute <code>id="customRange1"</code></li>
+            <li class="att">Attribute <code>type="range"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Set range with <code>min</code> and <code>max</code>, value with <code>value</code>.</p>
+      <label for="customRange2">Example range</label>
+      <input class="custom-range" id="customRange2" type="range" min="0" max="5" value="1">
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#range-example-2-settings" aria-control="#range-example-2-settings" aria-expanded="false">Settings</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="range-example-2-settings">
+        <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a20-1" aria-control=".a20-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a20-1">Attribute <code>for="customRange2"</code></li>
+            <li class="txt">Text <code>Example range</code></li>
+          </ul>
+        </li>
+        <li>Custom range <code>input.custom-range</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a20-2" aria-control=".a20-2" aria-expanded="false">Attributes</a>
+          <ul class="collapse a20-2">
+            <li class="att">Attribute <code>id="customRange2"</code></li>
+            <li class="att">Attribute <code>type="range"</code></li>
+            <li class="att">Attribute <code>min="0"</code></li>
+            <li class="att">Attribute <code>max="5"</code></li>
+            <li class="att">Attribute <code>value="1"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Set step with <code>step</code>.</p>
+      <label for="customRange3">Example range</label>
+      <input class="custom-range" id="customRange3" type="range" min="0" max="5" step="0.5" value="3.5">
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#range-example-3-settings" aria-control="#range-example-3-settings" aria-expanded="false">Settings</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="range-example-3-settings">
+        <li>Label <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a21-1" aria-control=".a21-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a21-1">Attribute <code>for="customRange3"</code></li>
+            <li class="txt">Text <code>Example range</code></li>
+          </ul>
+        </li>
+        <li>Custom range <code>input.custom-range</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a21-2" aria-control=".a21-2" aria-expanded="false">Attributes</a>
+          <ul class="collapse a21-2">
+            <li class="att">Attribute <code>id="customRange3"</code></li>
+            <li class="att">Attribute <code>type="range"</code></li>
+            <li class="att">Attribute <code>min="0"</code></li>
+            <li class="att">Attribute <code>step="0.5"</code></li>
+            <li class="att">Attribute <code>max="5"</code></li>
+            <li class="att">Attribute <code>value="3.5"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="file-browser"><a href="https://getbootstrap.com/docs/4.1/components/forms/#file-browser" target="_blank">File browser</a>
+      </h4>
+      <div class="custom-file">
+        <input class="custom-file-input" id="custom-file" type="file" lang="en">
+        <label class="custom-file-label" for="custom-file">Choose file</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#file-browser-example-structure" aria-control="#file-browser-example-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="file-browser-example-structure">
+        <li><code>div.custom-file</code>
+          <ul>
+            <li><code>input.custom-file-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a22-1" aria-control=".a22-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a22-1">
+                <li class="att">Attribute <code>id="custom-file"</code></li>
+                <li class="att">Attribute <code>type="file"</code></li>
+                <li class="att">Attribute <code>lang="en"</code></li>
+              </ul>
+            </li>
+            <li><code>label.custom-file-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a22-2" aria-control=".a22-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a22-2">Attribute <code>for="custom-file"</code></li>
+                <li class="txt">Text <code>Choose file</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="translating-or-customizing-the-strings"><a href="https://getbootstrap.com/docs/4.1/components/forms/#translating-or-customizing-the-strings" target="_blank">Translating or customizing the strings</a>
+      </h5>
+      <p class="my-2">You can change the file browser's default text (<strong>Browse</strong> on the right) to the arbitrary string. If you just want to change to another string, you can append a short CSS as below at the end of <code>&lt;head&gt;</code> block.</p>
+      <pre class="p-2 border bg-light"><code>&lt;style&gt;.custom-file-label::after { content: &quot;Choose file&quot;; }&lt;/style&gt;</code></pre>
+      <p class="my-2">You can also preset multi language settings and choose it by <code>lang</code> attribute of the <code>input</code> element (same way as bootstrap.css).</p><a class="btn btn-outline-info" data-toggle="collapse" href="#custom-file-css" aria-control="#custom-file-css" aria-expanded="false">CSS example</a>
+      <pre class="mt-3 p-2 border bg-light collapse" id="custom-file-css">/* en(English) is set as default to bootstrap.css */
+/* ja(Japanese) */
+.custom-file-input:lang(ja) ~ .custom-file-label::after {
+  content: "ファイル選択";
+}
+/* es(Spanish) */
+.custom-file-input:lang(es) ~ .custom-file-label::after {
+  content: "Elegir";
+}</pre>
+      <p class="mt-3 mb-2">Live examples (en/ja/es)</p>
+      <div class="custom-file my-1">
+        <input class="custom-file-input" lang="en" type="file" id="custom-file-en">
+        <label class="custom-file-label" for="custom-file-en">Choose file</label>
+      </div>
+      <div class="custom-file my-1">
+        <input class="custom-file-input" lang="ja" type="file" id="custom-file-ja">
+        <label class="custom-file-label" for="custom-file-ja">選択されていません</label>
+      </div>
+      <div class="custom-file my-1">
+        <input class="custom-file-input" lang="es" type="file" id="custom-file-es">
+        <label class="custom-file-label" for="custom-file-es">Seleccionar Archivo</label>
+      </div>
+      <p class="my-2">You can also customize bootstrap.css from source files (see the official document of this section for datail, Sass required).</p>
+      <h5 class="mt-4" id="custom-file-code-example">Updating the filename (with JavaScript)</h5>
+      <p class="mt-3">A file browser hides the default <code>input</code> (by setting <code>opaticy: 0;</code> ) and display the filename with another <code>label</code> (Choose file...). It is not automatically updated when the user selects a file. JavaScript is needed to update file displays. See the code examples below (code based on jQuey is used in this page).</p>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#custome-file-code-example-dom" aria-control="#custome-file-code-example-dom" aria-expanded="false">DOM example</a>&nbsp;<a class="btn btn-outline-info" data-toggle="collapse" href="#custome-file-code-example-jquery" aria-control="#custome-file-code-example-jquery" aria-expanded="false">jQuery example</a>
+      </div>
+      <pre class="p-2 border bg-light mt-3 collapse" id="custome-file-code-example-dom"><code>// DOM example
+(function() {
+  window.addEventListener('load', function() {
+    var input = document.getElementById('custom-file');
+    input.addEventListener('change', function(event) {
+      var label = document.querySelector('[for="custom-file"]');
+      label.textContent = event.target.files[0].name;
+    }, false);
+  }, false);
+})();</code></pre>
+      <pre class="p-2 border bg-light mt-3 collapse" id="custome-file-code-example-jquery"><code>// jQuery example
+$('#custom-file').on('change', function(event) {
+  $('[for="custom-file"]').text($(this).prop('files')[0].name);
+});</code></pre>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(5): Forms</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

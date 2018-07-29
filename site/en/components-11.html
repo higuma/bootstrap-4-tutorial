@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (11): Pagination / Popovers</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (11): <a href="#pagination">Pagination</a> / <a href="#popovers">Popovers</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-11.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="pagination"><a href="https://getbootstrap.com/docs/4.1/components/pagination/" target="_blank">Pagination</a>
+      </h2>
+      <h4 class="mt-3" id="pagination-overview"><a href="https://getbootstrap.com/docs/4.1/components/pagination/#overview" target="_blank">Overview</a>
+      </h4>
+      <ul class="struct my-1">
+        <li>Wrapping parent (for accessibility) <code>nav</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a1-1">Accessibility attribute <code>aria-label="Pagination example"</code></li>
+            <li>Pagination <code>ul.pagination</code>
+              <ul>
+                <li>Item(s) <code>li.page-item</code>
+                  <ul>
+                    <li>Link <code>a</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attribute</a>
+                      <ul>
+                        <li class="att collapse a1-2">Attribute <code>href="..."</code></li>
+                        <li class="txt">Text <code>Previous</code> , <code>1</code> , <code>2</code> , ... , <code>Next</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="working-with-icons"><a href="https://getbootstrap.com/docs/4.1/components/pagination/#working-with-icons" target="_blank">Working with icons</a>
+      </h4>
+      <p class="my-2">Example: using Unicode symbol characters</p>
+      <ul class="struct my-0">
+        <li>First item <code>li.page-item</code>
+          <ul>
+            <li class="txt">Text <code>&amp;laquo;</code></li>
+            <li>For accessibility <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a2-1">Attribute <code>area-hidden="true"</code></li>
+                <li class="txt">Text <code>Previous</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Last item <code>li.page-item</code>
+          <ul>
+            <li class="txt">Text <code>&amp;raquo;</code></li>
+            <li>For accessibility <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-2" aria-control=".a2-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a2-2">Attribute <code>area-hidden="true"</code></li>
+                <li class="txt">Text <code>Next</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+        </ul>
+      </nav>
+      <p class="mt-4 mb-2">Using icons is the same way: example using <a href="https://github.com/iconic/open-iconic" target="_blank">Open Iconic</a> (see source for detail)
+      </p>
+      <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><img src="../img/openiconic/svg/chevron-left.svg" width="10" height="10" style="opacity: 0.6;"><span class="sr-only">Previous</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><img src="../img/openiconic/svg/chevron-right.svg" width="10" height="10" style="opacity: 0.6;"><span class="sr-only">Next</span></a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="pagination-disabled-and-active-states"><a href="https://getbootstrap.com/docs/4.1/components/pagination/#disabled-and-active-states" target="_blank">Disabled and active states</a>
+      </h4>
+      <p class="my-2">Pagination items should be disabled or activated with various situations. The most common conditions are as follows.</p>
+      <ul>
+        <li>The current page item is displayed as active, but its link is disabled.</li>
+        <li>On showing the first page, <strong>Previous</strong> item is disabled for display(grayed) and link</li>
+        <li>On showing the last page, <strong>Next</strong> item is disabled for display(grayed) and link</li>
+      </ul>
+      <h5 class="mt-3" id="pagination-disabled-state">Setting disabled states</h5>
+      <p class="my-2">Add <code>.page-item</code> to <code>li</code> . Its descendant link <code>a</code> is disabled automatically.</p>
+      <ul class="struct">
+        <li><code>li.page-item</code>
+          <ul>
+            <li class="cls">Set class <code>.disabled</code> to disabled items</li>
+            <li>Link <code>a</code>
+              <ul>
+                <li class="att">Set attribute <code>tabindex="-1"</code> to disabled links (to remove from tabstops)</li>
+                <li class="txt">Text (e.g. <code>Previous</code> ) (displays grayed automatically)</li>
+                <li>For accessiblity, use <code>span.sr-only</code> to the current item
+                  <ul>
+                    <li class="txt">Text <code>(current)</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-1">Example: on showing page 1 (<strong>Previous</strong> and <strong>1</strong> are disabled)</p>
+      <nav class="my-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1<span class="sr-only">(current)</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h5 class="mt-4" id="pagination-active-state">Setting an active state</h5>
+      <p class="my-2">Setting <code>.active</code> to <code>li.list-item</code> displays an item as active state (displayed as primary context). But it does not disable an inner link. Furthermore, it cannot be used with <code>.disabled</code> (<code>li.page-item.active.disabled</code> does not work).</p>
+      <p class="my-2">This problem can be resolved by changing inner elements from <code>a</code> to <code>span</code> for all disabled items.</p>
+      <ul>
+        <li>Active or disabled items <code>li.page-item.(active|disabled)</code>
+          <ul>
+            <li><code>span.page-link</code> (from <code>a.page-link</code> )</li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="my-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item disabled"><span class="page-link">Previous</span></li>
+          <li class="page-item active"><span class="page-link">1<span class="sr-only">(current)</span></span></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="pagination-sizing"><a href="https://getbootstrap.com/docs/4.1/components/pagination/#sizing" target="_blank">Sizing</a>
+      </h4>
+      <p class="my-1">Add <code>.pagination-(lg|sm)</code> to <code>ul.pagenation</code></p>
+      <p class="mt-2 mb-1"><code>.ul.pagination.pagination-lg</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="mt-0 mb-2 pagination pagination-lg">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>.ul.pagination</code> (default)
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="mt-0 mb-2 pagination">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>.ul.pagination.pagination-sm</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="mt-0 mb-2 pagination pagination-sm">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="pagination-alignment"><a href="https://getbootstrap.com/docs/4.1/components/pagination/#alignment" target="_blank">Alignment</a>
+      </h4>
+      <p class="my-1">Use <code>.justify-content-*</code> (see <a href="utilities-3.html#flex-justify-content">Flex utilities - Arrangement with .justify-content-*</a> )</p>
+      <p class="mt-2 mb-1"><code>ul-pagination.justify-content-start</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-start">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>ul-pagination.justify-content-center</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>ul-pagination.justify-content-end</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h2 class="mt-5" id="popovers"><a href="https://getbootstrap.com/docs/4.1/components/popovers/" target="_blank">Popovers</a>
+      </h2>
+      <p class="my-2">Popover is a popup component like those found in iOS. It utilizes <a href="https://popper.js.org/" target="_blank">Popper.js</a> for implementation.
+      </p>
+      <h4 class="mt-3" id="popovers-init"><a href="https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere" target="_blank">Initialization</a>
+      </h4>
+      <p>Popovers are inactivated as defaut. JavaScript is required to activate them. Below is a simple code to activate all popovers.</p>
+      <pre class="p-2 border bg-light"><code>$('[data-toggle="popover"]').popover();</code></pre>
+      <div class="alert alert-warning my-3" role="alert"><strong>Caution: </strong> jQuery, Popper.js, and bootstrap.js are required. Use this script after those libraries.</div>
+      <h4 class="ht-4" id="popovers-example"><a href="https://getbootstrap.com/docs/4.1/components/popovers/#example" target="_blank">How to use it</a>
+      </h4>
+      <ul class="my-1">
+        <li>Available for any elements with setting following attributes</li>
+        <ul>
+          <li><code>data-toggle="popover"</code></li>
+          <li><code>title="{title-text}"</code></li>
+          <li><code>data-content="{content-text}"</code></li>
+          <li>One of <code>title</code> or <code>data-content</code> is required. It does not show if both values are empty.</li>
+        </ul>
+      </ul>
+      <p class="my-2">Example (Click to show, click again to hide)</p>
+      <button class="btn btn-lg btn-danger" type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+      <h4 class="mt-4" id="popovers-four-directions"><a href="https://getbootstrap.com/docs/4.1/components/popovers/#four-directions" target="_blank">Directions</a>
+      </h4>
+      <ul class="my-1">
+        <li>Add an following attribute ( <code>"right"</code> as default)
+          <ul>
+            <li><code>data-placement=("top"|"right"|"bottom"|"left")</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">Example</p>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-center">
+          <button class="btn btn-light mt-0" type="button" data-toggle="popover" data-placement="top" title="Popover on top"><code>data-placement="top"</code></button>
+        </div>
+      </div>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-right pr-2">
+          <button class="btn btn-light my-0" type="button" data-toggle="popover" data-placement="left" title="Popover on left"><code>data-placement="left"</code></button>
+        </div>
+        <div class="col m-0 text-left pl-2">
+          <button class="btn btn-light my-0" type="button" data-toggle="popover" data-placement="right" title="Popover on right"><code>data-placement="right"</code></button>
+        </div>
+      </div>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-center">
+          <button class="btn btn-light mt-0" type="button" data-toggle="popover" data-placement="bottom" title="Tooltip on bottom"><code>data-placement="bottom"</code></button>
+        </div>
+      </div>
+      <div class="alert alert-info my-3" role="alert">Popovers always watch viewport size and elements' posistions, and switch to the opposite sides when space is not enough. It can be demonstrated with the above example by scrolling (top/bottom) or changing viewport width (left/right).</div>
+      <h4 class="mt-4" id="popovers-dismiss-on-next-click"><a href="https://getbootstrap.com/docs/4.1/components/popovers/#dismiss-on-next-click" target="_blank">Dismiss on next click   </a>
+      </h4>
+      <p class="my-2">As default, a popover shows on click and hides on the next click on the same element. This specification enables showing multiple popovers at the same time (can be demonstrated by the Directions example above).</p>
+      <p class="my-2">However, it is possible to dismiss a popover by clicking another element (more precisely, showing/hiding by focus events) with the following settings.</p>
+      <ul class="my-y">
+        <li>Always use <code>a</code> for the target element (some browsers may not work with <code>button</code> )</li>
+        <li>Set attribute <code>data-trigger="focus"</code></li>
+        <li>Set attribute <code>tabindex="0"</code></li>
+      </ul>
+      <p class="mt-3 mb-1">Example</p><a class="btn btn-lg btn-danger mt-1 mb-3" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+      <h4 class="mt-4" id="popovers-disabled-elements"><a href="https://getbootstrap.com/docs/4.1/components/popovers/#disabled-elements" target="_blank">Using popovers for disabled elements</a>
+      </h4>
+      <p class="my-2">If the attribute <code>disabled</code> is set to the element, it also disables a popover (example below).</p>
+      <ul class="struct mb-2">
+        <li><code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="att collapse a3-1">Attribute <code>type="button"</code></li>
+            <li class="att collapse a3-1">Attribute <code>data-toggle="popover"</code></li>
+            <li class="att collapse a3-1">Attribute <code>title="Disabled popover"</code></li>
+            <li class="att collapse a3-1">Attribute <code>disabled</code> (also disables a popover)</li>
+            <li class="txt">Text <code>Disabled button</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">Example (does not popover on click)</p>
+      <p class="my-2">
+        <button class="btn btn-primary" type="button" data-toggle="popover" title="Disabled tooltip" disabled>Disabled button</button>
+      </p>
+      <p class="mt-3 mb-1">To enable a popover for a disabled element, add a wrapping parent and set popover to it.</p>
+      <ul class="struct mb-2">
+        <li>Wrapping parent <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="cls collapse a4-1">Utility class <code>.d-inline-block</code> (set to the same <code>display</code> setting as <code>button</code> )</li>
+            <li class="att collapse a4-1">Attribute <code>data-toggle="popover"</code></li>
+            <li class="att collapse a4-1">Attribute <code>title="Disabled popover"</code></li>
+            <li>Target element <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-2" aria-control=".a4-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="att collapse a4-2">Attribute <code>type="button" </code></li>
+                <li class="att collapse a4-2">Attribute <code>style="pointer-events: none;"</code> (to prevent receiving pointer events)</li>
+                <li class="att collapse a4-2">Attribute <code>disabled</code></li>
+                <li class="txt">Text <code>Disabled button</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">Example (the button is disabled but popovers on click by the parent)</p>
+      <p class="mt-2"><span class="d-inline-block" data-toggle="popover" title="Disabled popover">
+          <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button></span></p>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(11): Pagination/Popovers</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

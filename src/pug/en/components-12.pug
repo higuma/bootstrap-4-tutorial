@@ -1,0 +1,320 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components (12): Progress / Scrollspy / Tooltips
+
+block body
+  - const contextTypes = ["primary", "secondary", "success", "info", "warning", "danger"]
+  div.container
+    +pageHeader("components-12")
+      p.lead Components (12): 
+        a(href="#progress") Progress
+        |  / 
+        a(href="#scrollspy") Scrollspy
+        |  / 
+        a(href="#tooltips") Tooltips
+
+    h2.mt-2#progress
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/") Progress
+    p.mt-2 The progress component is a Bootstrap alternative of 
+      code progress
+      |  elements. It has extra features as multiple indicator bars, animated stripes and so on.
+    h4.mt-3#progress-how-it-works
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#how-it-works") Basic structure
+    ul.struct.my-1
+      li Progress bar (base) 
+        code div.progress
+        ul
+          li Indicator bar(s) 
+            code div.progress-bar
+            |  (stacked from left to right) 
+            +attrsBtn(".a1-1")
+            ul.collapse.a1-1
+              li.att Width (required) (e.g.) 
+                code style="width: 50%"
+              li.att Accessibility attribute 
+                code role="progressbar" 
+              li.att Accessibility attribute 
+                code aria-valuenow="50"
+              li.att Accessibility attribute 
+                code aria-valuemin="0"
+              li.att Accessibility attribute 
+                code aria-valuemax="100"
+    h4.mt-4#progress-width Width
+    p.mt-2.mb-0 (1) Set 
+      code style="width: {width}%”
+    each w in [0,25,50,75,100]
+      p.mt-1.mb-0
+        code= `style="width: ${w}%;"`
+      div.progress
+        div.progress-bar(role="progressbar" style=`width: ${w}%;` aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    p.mt-3.mb-1 (2) Set 
+      code .w-(25|75|100)
+      |  (see 
+      a(href="utilities-4.html#sizing") Sizing
+      |  , 25% steps)
+    each w in [25,50,75,100]
+      p.mt-1.mb-0
+        code= `.w-${w}`
+      div.progress
+        div(class=`progress-bar w-${w}` role="progressbar" aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-labels
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#labels") Labels
+    p.my-2 Set inner text of 
+      code div.progress-bar
+    div.progress
+      div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
+    h4.mt-4#progress-height
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#height") Height
+    p.my-2 Set style (e.g. 
+      code style="height: 10px;"
+      |  ) to 
+      code div.progress
+    each h in [5,10,15,20]
+      p.mt-1.mb-0
+        code= `style="height: ${h}px;"`
+      div.progress(style=`height: ${h}px;`)
+        div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-backgrounds
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#backgrounds") Indicator colors
+    p.my-2 Add 
+      code .bg-{context}
+      |  to 
+      code div.progress-bar
+      |  (see 
+      a(href="utilities-2.html#colors-background-color") Colors - Background
+      |  ).
+    each col in ["success","info","warning","danger"]
+      p.mt-1.mb-0
+        code= `.bg-${col}`
+      div.progress
+        div(class=`progress-bar bg-${col}` role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-multiple-bars
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#multiple-bars") Multiple indicators
+    p.my-2 Use mutiple 
+      code div.progress-bar
+      | 's you need (stacked from left to right).
+    div.progress
+      each bar in [["primary",10], ["success",40], ["warning",20], ["danger",10]]
+        div(class=`progress-bar bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-striped
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#striped") Striped bars
+    p.my-2 Add 
+      code .progress-bar-striped
+      |  to bars.
+    each bar in [["primary",20], ["success",40], ["info",60], ["warning",80], ["danger",100]]
+      div.progress.my-2
+        div(class=`progress-bar progress-bar-striped bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-animated-stripes
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#animated-stripes") Animationg stripes
+    p.my-2 Add 
+      code .progress-bar-animated
+      |  .
+    p.mt-2.mb-1 Example: 
+      code div.progress-bar.progress-bar-striped.progress-bar-animated
+    div.progress
+      div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;")
+    h2.mt-5#scrollspy
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/") Scrollspy
+    p.my-2 Scrollspy is a functional component which synchronizes the active item display of the indicator (
+      a(href="components-9.html") navigation
+      |  or 
+      a(href="components-7.html") list group
+      |  ) components and the horizontal scroll position of the content.
+    h4.mt-3#scrollspy-how-it-works
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#how-it-works") How it works
+    p.my-2 Scrollspy watches the scrolling content and update the position indicator (navigation or list group) with JavaScript. Requirements are as follows.
+    ul
+      li The indicator component must be 
+        a(href="components-9.html") Nav
+        |  or 
+        a(href="components-7.html") List group
+      li The root element of scrolling content requires:
+        ul
+          li
+            code position: relative;
+          li
+            code overflow-y: scroll;
+          li Have a 
+            code height
+            |  set
+      li If the root is 
+        code body
+        |  , it satisfies above all requirements
+    h4#scrollspy-how-to-use-it How to use it
+    ul
+      li Use 
+        code body
+        |  as the scrolling root, or set attributes to satisfy above requirements
+      li Set the following attributes to the scrolling root element
+        ul
+          li
+            code data-spy="scroll"
+          li
+            code= `data-target="#{indicator-id}"`
+          li (Optional) 
+            code data-offset="{pixels}"
+            |  (scroll calculation offset, default=
+            code "10"
+            |  )
+      li Inside the scrolling root, set 
+        code id="{target-id}"
+        |  to each scrolling target elements
+      li The indicator component must be one of followings
+        ul
+          li
+            a(href="components-9.html") Navigation
+          li
+            a(href="components-7.html") List group
+      li Set 
+        code id="{indicator-id}"
+      li Set anchors 
+            code a
+            |  with 
+            code= `href="#{target-id}"`
+            |  into the correcponding indicator items
+    h4.mt-3#scrollspy-example-in-navbar
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-in-navbar") Example in navbar
+    p ⇒ 
+      a(href="scrollspy-1.html") Demo page
+    h4.mt-4#scrollspy-example-with-nested-nav
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-nested-nav") Example with nested nav
+    p ⇒ 
+      a(href="scrollspy-2.html") Demo page
+    h4.mt-4#scrollspy-example-with-list-group
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-list-group") Example with list-group
+    p ⇒ 
+      a(href="scrollspy-3.html") Demo page
+
+    h2.mt-5#tooltips
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/") Tooltips
+    p.mt-2.mb-1 Bootstrap tooltip is customization of tooltip display by 
+      code title
+      |  attribute. It utilizes 
+      +extLink("https://popper.js.org/") Popper.js
+      |  for implementation.
+    ul.my-1
+      li Browser default tooltip ⇒ Hover 
+        span.text-danger(title="Browser default tooltip") here
+      li Bootstrap tooltip ⇒ Hover 
+        span.text-danger(title="Bootstrap tooltip" data-toggle="tooltip") here
+    div.alert.alert-info.mt-2(role="alert") Elements which accept key focus (as  
+      code a
+      |  , 
+      code button
+      |  , etc.) also show tooltips on setting focus by 
+      kbd Tab
+      |  keys.
+    h4.mt-4#tooltips-example-enable-tooltips-everywhere
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere") Initialization
+    p Bootstrap tooltips are inactivated as defaut. JavaScript is required to activate. Below is a simple code to activate all tooltips.
+    pre.p-2.border.bg-light
+      code $('[data-toggle="tooltip"]').tooltip();
+    div.alert.alert-warning.my-3(role="alert")
+      strong Caution: 
+      |  jQuery, Popper.js, and bootstrap.js are required. Use this script after those libraries.
+    h4.mt-4#tooltips-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#examples") How to use it
+    ul.my-1
+      li Available for any elements with setting following attributes
+      ul
+        li
+          code data-toggle="tooltip"
+        li
+          code title="{tooltip-text}"
+    p.mt-2 Example ⇒ Hover 
+      span.text-danger(data-toggle="tooltip" title="Tooltip example") here
+    h5.mt-4#tooltip-directions Directions
+    p.my-1 Set attribute 
+      code data-placement=("top"|"right"|"bottom"|"left")
+      |  ( 
+      code "top"
+      |  as default)
+    p.mt-2.mb-1 Example
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="tooltip" data-placement="top" title="Tooltip on top")
+          code data-placement="top"
+    div.row.m-0.py-1
+      div.col.m-0.text-right.pr-2
+        button.btn.btn-light.my-0(type="button" data-toggle="tooltip" data-placement="left" title="Tooltip on left")
+          code data-placement="left"
+      div.col.m-0.text-left.pl-2
+        button.btn.btn-light.my-0(type="button" data-toggle="tooltip" data-placement="right" title="Tooltip on right")
+          code data-placement="right"
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom")
+          code data-placement="bottom"
+    div.alert.alert-info.my-3(role="alert") Tooltips always watch viewport size and elements' posistions, and switch to the opposite sides when space is not enough. It can be demonstrated with the above example by scrolling (top/bottom) or changing viewport width (left/right).
+    h4.mt-4#tooltips-using-html Using HTML
+    ul.my-1
+      li Add attribute 
+        code data-html="true"
+      li Set text with HTML
+      ul
+        li e.g. 
+          code= `title="TNT(C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>)"`
+    p Example ⇒ Hover 
+      span.text-danger(data-toggle="tooltip" data-html="true" title="TNT(C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>)") here
+    h4.mt-4#tooltips-disabled-elements
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#disabled-elements") Using tooltips for disabled elements
+    p.my-2 If the attribute 
+      code disabled
+      |  is set to the element, it also disables a tooltip (example below).
+    ul.struct.mb-2
+      li
+        code button.btn.btn-primary
+        +attrsBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 Attribute 
+            code type="button"
+          li.att.collapse.a2-1 Attribute 
+            code data-toggle="tooltip"
+          li.att.collapse.a2-1 Attribute 
+            code title="Disabled tooltip"
+          li.att.collapse.a2-1 Attribute 
+            code disabled
+            |  (also disables a tooltip)
+          li.txt Text 
+            code Disabled button
+    p.my-2 Example (does not show tooltip on hover)
+    p.my-2
+      button.btn.btn-primary(type="button" data-toggle="tooltip" title="Disabled tooltip" disabled) Disabled button
+    p.mt-3.mb-1 To enable a tooltip for a disabled element, add a wrapping parent and set tooltip to it.
+    ul.struct.mb-2
+      li Wrapping parent 
+        code span
+        +attrsBtn(".a3-1")
+        ul
+          li.cls.collapse.a3-1 Utility class 
+            code .d-inline-block
+            |  (set to the same 
+            code display
+            |  setting as 
+            code button
+            |  )
+          li.att.collapse.a3-1 Attribute 
+            code data-toggle="tooltip"
+          li.att.collapse.a3-1 Attribute 
+            code title="Disabled tooltip"
+          li Target element 
+            code button.btn.btn-primary
+            +attrsBtn(".a3-2")
+            ul
+              li.att.collapse.a3-2 Attribute 
+                code type="button" 
+              li.att.collapse.a3-2 Attribute 
+                code style="pointer-events: none;"
+                |  (to prevent receiving pointer events)
+              li.att.collapse.a3-2 Attribute 
+                code disabled
+              li.txt Text 
+                code Disabled button
+    p.my-2 Example (the button is disabled but show a tooltip on hover by the parent)
+    p.mt-2
+      span.d-inline-block(data-toggle="tooltip" title="Disabled tooltip")
+        button.btn.btn-primary(style="pointer-events: none;" type="button" disabled) Disabled button
+
+    +breadcrumbLevel1("Components(12): Progress/Scrollspy/Tooltips")

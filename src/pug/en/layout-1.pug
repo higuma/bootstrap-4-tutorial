@@ -1,0 +1,1309 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Layout (1): Overview / Grid System
+
+block body
+  div.container
+    +pageHeader("layout-1")
+      p.lead Layout (1): 
+        a(href="#overview") Overview
+        |  / 
+        a(href="#grid") Grid System
+
+    h2.mt-2#overview
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/") Overview
+    h4.mt-3.mb-1#overview-containers
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#containers") Containers
+    p.mb-2
+    | In Bootstrap, a container 
+    code .container
+    |  or a fluid container 
+    code .container-fluid
+    |  is used for a basic layout element.
+  div.container.mt-3.mb-4.p-2.border.bg-light
+    code div.container
+    |  ⇒ Responsive: width is set to one of the fixed steps (breakpoints), center-aligned
+  div.container-fluid.my-4.p-2.border.bg-light
+    code div.container-fluid
+    |  ⇒ Fits to the parent (100%)
+  div.container
+    h4.mt-4#overview-responsive-breakpoints
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints") Responsive breakpoints
+    p.my-2 A width of a container 
+      code .container
+      |  is set within the breakpoints as below (see 
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#grid-options") Grid options
+      |  table for details)
+    table.table.table-bordered
+      thead.thead-light
+        tr
+          th(scope="col") Name
+          th(scope="col") Viewport width
+          th(scope="col") Width of 
+            code .container
+      tbody
+        each item in [["(xs)","<576px","Browser default (auto)"],["sm","≧576px","540px"],["md","≧768px","720px"],["lg","≧992px","960px"],["xl","≧1200px","1140px"]]
+          tr
+            th(scope="row")= item[0]
+            td= item[1]
+            td= item[2]
+    p.mt-3.mb-2 Bootstrap uses class names with breakpoint 
+      code (sm|md|lg|xl)
+      |  for responsive settings (like 
+      code .col-md
+      |  ).
+    ul
+      li No breakpoint (e.g. 
+        code .col
+        |  ): Sets as default (least prior)
+      li With breakpoint (e.g. 
+        code .col-md
+        |  ): Sets for a specific breakpoint or greater (prior to default)
+      li Wider breakpoint is prior
+    div.alert.alert-info(role="alert") There is no 
+      code -xs
+      |  class-fix (same as setting as default). Using breakpoint priorities, you can switch layouts, or show/hide some contents with specific viewport range.
+    h4.mt-4#overview-z-index
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#z-index") Z-index
+    p Some Bootstrap components reserve z-indexes (&ge;
+      code 1000
+      | ) for specific purposes. 
+      code 1,2,3
+      |  are also used for visual customization for element states (hover, active, and focus) (set to internally-created sibling elements for presentation).
+    table.table.table-bordered
+      thead.thead-light
+        tr
+          th(scope="col") Z-index
+          th(scope="col") Usage
+      tbody
+        tr
+          th(scope="row") 1,2,3
+          td Internally used for element states (hover, active, focus)
+        tr
+          th(scope="row") 1000
+          td
+            a(href="components-4.html#dropdowns") Dropdown
+        tr
+          th(scope="row") 1020
+          td
+            a(href="navbar-sticky-top.html") Sticky top
+            |  (Navbar)
+        tr
+          th(scope="row") 1030
+          td
+            a(href="navbar-fixed-top.html") Fixed top
+            |  / 
+            a(href="navbar-fixed-bottom.html") Fixed bottom
+            |  (Navbar)
+        tr
+          th(scope="row") 1040
+          td
+            a(href="components-8.html#live-demo") Backdrop (Modal background)
+        tr
+          th(scope="row") 1050
+          td
+            a(href="components-8.html") Modal
+        tr
+          th(scope="row") 1060
+          td
+            a(href="components-11.html#popovers") Popover
+        tr
+          th(scope="row") 1070
+          td
+            a(href="components-12.html#tooltips") Tooltip
+
+    h2.mt-5#grid
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/") Grid system
+    h4.mt-4#grid-overview
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#how-it-works") Basic usage
+    p.my-2 The grid system has the following three layer structure.
+    ul.struct
+      li 
+        a(href="#overview-containers") Container (top level) 
+        code div.container
+        |  (or 
+        code div.container-fluid
+        |  )
+        ul
+          li Row 
+            code div.row
+            |  (Flexbox available inside with 
+            code display: flex
+            |  )
+            ul
+              li Column 
+                code div.col({-breakpoint}{-width})
+    div.alert.alert-info The next topic (
+      a(href="#grid-gutters") Gutters
+      | ) contains advansed issues (you can skip forward to 
+      a(href="#grid-equal-width") Equal-width
+      | ). Understanding gutters is important when you set custom margins or paddings to rows or columns. It is also important if you need 
+      a(href="#grid-nesting") nested grids
+      | .
+    h4.mt-2#grid-gutters Gutters
+    p.my-2 On layouts with 
+      code div.container
+      |  , paddings called gutters are set to left and right sides (
+      code 15px
+      |  each). Actual widths for inner elements are set to 
+      code 30px
+      |  smaller than 
+      a(href="#overview-responsive-breakpoints") breakpoint
+      |  widths of 
+      code div.container
+      | s. Gutters are used for horizontal (inner) paddings for multi-row layouts.
+    p.my-2 This page also uses containers and has gutters on both sides. The example bellow shows how gutters are set within the layout. The container has the gray border. The inner elements have the light gray background. The areas on left and right without background color are gutters.
+  div.container.border
+    div.bg-light
+      ul.mb-0
+        li Outside: A container 
+          code div.container
+          |  (with gray border)
+          ul
+            li Sets gutters: 
+              code padding-(left|right): 15px
+        li Inside (here): Inner elements (with light gray background)
+        li Left and right sides: Gutters (no background color)
+  div.container
+    div.alert.alert-info.mt-3(role="alert")
+      strong Advanced (Sass required):
+      |  Gutter width is set by the Sass variable 
+      code $grid-gutter-width
+      | . You can change it by customizing Bootstrap styles from Sass. See 
+      a(href="getting-started.html#css-customizing") Customizing from Sass source
+      |  for detail.
+
+    p.mt-3.mb-2 On Bootstrap grid system, inside containers are rows 
+      code div.row
+      |  (children) and columns 
+      code div.col
+      |  (grandchildren). But gutters are specially treated differently in each level. The example below shows gutter treatments for all levels. Each level is bordered with a different color. But three borders are overlapped because their sizes are the same as the result.
+  div.container.border
+    div.row.border.border-danger
+      div.col.border.border-primary
+        div.bg-light
+          ul.mb-0
+            li Parent: Container 
+              code div.container
+              |  (with gray border)
+              ul
+                li Sets gutters: 
+                  code padding-(left|right): 15px
+            li Child: Row 
+              code div.row
+              |  (with red border)
+              ul
+                li Cancels gutters: 
+                  code margin-(left|right) : -15px
+                li No paddings: 
+                  code padding-(left|right): 0
+            li Grandchild: Column 
+              code div.col
+              |  (with blue border)
+              ul
+                li No margins: 
+                  code margin-(left|right): 0
+                li Sets gutters: 
+                  code padding-(left|right): 15px
+            li Inner elements (here) (with gray background)
+  div.container
+    div.alert.alert-warning.mt-3
+      strong Caution: 
+      | You should take care for changing horizontal margins or paddings from grid system defaults. Especially, changing margins of rows, or changing paddings of columns can corrupt layouts easily.
+    h4.mt-4#grid-equal-width
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#equal-width") Equal-width
+    p.my-2 Setting multiple columns 
+      code div.col
+      |  inside a row 
+      code div.row
+      |  arranges columns horizontally with the same width. A maximum number of columns in a row is determined by a browser from widths of a row and colomns. See examples below (up to 20 columns).
+    div.alert.alert-info(role="alert") Examples set gray 
+      a(href="utilities-1.html#borders-border") borders
+      |  (
+      code .border
+      | ) to columns 
+      code div.col*
+      |  to indicate boundaries. Areas of inner contents also set 
+      a(href="utilities-2.html#colors-background-color") background colors
+      |  (
+      code .bg-light
+      | ) to indicate gutters.
+    - for (let n = 1; n <= 20; n++)
+      div.row.my-2
+        - for (let i = 0; i < n; i++)
+          div.col.border
+            div.bg-light= `${i+1}/${n}`
+    p.mt-3.mb-2 The following structure is used (containers 
+      code div.container
+      |  are omitted from here).
+    ul.struct.mt-2
+      li Row 
+        code div.row
+        ul
+          li Column 
+            code div.col
+            |  (&times; number of columns: 1..16)
+            ul
+              li.txt Text 
+                code {index}/{number of columns}
+    h4.mt-4#grid-equal-width-multi-row
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#equal-width-multi-row") Equal-width multi-row
+    p.my-2  For equal-width layouts using 
+      code div.col
+      | , use an empty 
+      code div.w-100
+      |  to insert a break to a new line.
+    div.row
+      div.col.border
+        div.bg-light
+          code .row
+      div.col.border
+        div.bg-light
+          code .row
+          span.float-right ⇒ 
+            code .w-100
+      div.w-100
+      each i in [0,1]
+        div.col.border
+          div.bg-light
+            code .row
+      div.col.border
+        div.bg-light
+          code .row
+          span.float-right ⇒ 
+            code .w-100
+      div.w-100
+      each i in [0,1,2,3]
+        div.col.border
+          div.bg-light
+            code .row
+    div.my-3
+      +collapseButton("#grid-equal-width-multi-row-structure") Structure
+    ul.struct.collapse#grid-equal-width-multi-row-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col
+            |  (&times;2)
+          li
+            code div.w-100
+            |  (breaks to a new line)
+          li
+            code div.col
+            |  (&times;3)
+          li
+            code div.w-100
+            |  (breaks to a new line)
+          li
+            code div.col
+            |  (&times;4)
+    h4.mt-4#grid-column-width
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#setting-one-column-width") Setting one column width
+    p.my-2 Width of a grid column can be set from 1/12 (approx. 8.3%) to 12/12 (100%).
+    p.my-2
+      code div.col-(1|2|3|4|5|6|7|8|9|10|11|12)
+    - for (let c = 1; c <= 12; c++)
+      div.row
+        div(class=`col-${c} border`)
+          div.bg-light
+            code= `.col-${c}`
+    h5.mt-4#grid-mixing-fixed-and-equal Mixing fixed-width and equal-width
+    div.row
+      div.col.border
+        div.bg-light
+          code .col
+          |  1/6(equal)
+      div.col-6.border
+        div.bg-light
+          code .col-6
+          |  6/12(set)
+      each n in [0,1]
+        div.col.border
+          div.bg-light
+            code .col
+            |  1/6(equal)
+    div.row
+      each n in [0,1]
+        div.col.border
+          div.bg-light
+            code .col
+            |  7/36(equal)
+      div.col-5.border
+        div.bg-light
+          code .col-5
+          |  5/12(set)
+      div.col.border
+        div.bg-light
+          code .col
+          |  7/36(equal)
+    div.my-3
+      +collapseButton("#grid-mixing-fixed-and-equal-structure") Structure
+    ul.struct.collapse#grid-mixing-fixed-and-equal-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col
+          li
+            code div.col-6
+          li
+            code div.col
+            |  (&times;2)
+      li
+        code div.row
+        ul
+          li
+            code div.col
+            |  (&times;2)
+          li
+            code div.col-5
+          li
+            code div.col
+    h4.mt-4#variable-width-content
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") Variable width content
+    p.my-2
+      code .col-auto
+      |  sets an element width to browser default (by CSS 
+      code width: auto;
+      |  ). A width of a element is automatically calculated by a browser from its inner content.
+    div.row
+      each text in ["123", "1234567890", "12345678901234567890"]
+        div.col-auto.border
+          div.bg-light
+            code .col-auto
+            = ` ${text}`
+    div.alert.alert-info.mt-3(role="alert") An example of the official document is a complex combination with responsive and flexbox (explained later ⇒ 
+      a(href="#grid-margin-auto") Variable width content with flex
+      |  )。
+    h4.mt-4#grid-column-wrapping
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-wrapping") Column wrapping
+    p.my-2 Setting 12 or more columns in total automatically breaks to a next line.
+    div.row.border
+      each c in [9, 4, 7, 3]
+        div(class=`col-${c} border`)
+          div.bg-light
+            code= `.col-${c}`
+    div.my-3
+      +collapseButton("#grid-column-wrapping-structure") Structure
+    ul.struct.collapse#grid-column-wrapping-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-9
+          li
+            code div.col-4
+            |  breaks by being greater than 12
+          li
+            code div.col-7
+          li
+            code div.col-3
+            |  breaks by being greater than 12
+    h4.mt-4#grid-column-breaks
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-breaks") Column breaks
+    p.my-2 On setting each width to columns, 
+      code div.w-100
+      |  also can be used to insert a break to a new line.
+    div.row.border
+      div.col-3.border
+        div.bg-light
+          code .col-3
+      div.col-5.border
+        div.bg-light
+          code .col-5
+          span.float-right ⇒ 
+            code .w-100
+      div.w-100
+      div.col-4.border
+        div.bg-light
+          code= `.col-4`
+    div.my-3
+      +collapseButton("#grid-column-breaks-structure") Structure
+    ul.struct.collapse#grid-column-breaks-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-3
+          li
+            code div.col-5
+          li
+            code div.w-100
+            |  (inserts a break)
+          li
+            code div.col-4
+    h4.mt-4#responsive-classes
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#responsive-classes") Responsive classes
+    p.my-2
+      code .col-(sm|md|lg|xl)(-1|-2|-3|...|-12|-auto)?
+    h5.mt-3#responsive-classes-example-1 Example 1: Equal-widths
+    p.mt-2.mb-0
+      code .col
+      |  (always two columns)
+    div.row
+      each n in [1,2]
+        div.col.border
+          div.bg-light
+            code .col
+    for sz in [["sm",576], ["md",768], ["lg",992], ["xl",1200]]
+      p.mt-2.mb-0
+        code= `.col-${sz[0]}`
+        = ` (two columns on width≧${sz[1]}px, two rows on width<${sz[1]}px)`
+      div.row
+        for i in [0,1]
+          div(class=`col-${sz[0]} border`)
+            div.bg-light
+              code= `.col-${sz[0]}`
+    div.my-3
+      +collapseButton("#responsive-classes-example-1-structure") Structure
+    ul.struct.collapse#responsive-classes-example-1-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col(-sm|-md|-lg|-xl)?
+            |  (&times;2)
+    h5.mt-3#responsive-classes-example-2 Example 2: Setting columns widths
+    each bp in [null,"sm","md","lg","xl"]
+      div.row.mt-3
+        each w in [3,6]
+          - let cls = bp ? `col-${bp}-${w}` : `col-${w}`
+          div(class=`${cls} border`)
+            div.bg-light
+              code= cls
+    div.my-3
+      +collapseButton("#responsive-classes-example-2-structure") Structure
+    ul.struct.collapse#responsive-classes-example-2-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col(-sm|-md|-lg|-xl)?-3
+          li
+            code div.col(-sm|-md|-lg|-xl)?-6
+    h5.mt-3#responsive-classes-example-3 Example 3: Variable width contents
+    each bp in [null,"sm","md","lg","xl"]
+      div.row.mt-3
+        - let cls = bp ? `col-${bp}-auto` : "col-auto"
+        each text in ["12345", "12345678901234567890"]
+          div(class=`${cls} border`)
+            div.bg-light
+              code= cls
+              = ` ${text}`
+    div.my-3
+      +collapseButton("#responsive-classes-example-3-structure") Structure
+    ul.struct.collapse#responsive-classes-example-3-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col(-sm|-md|-lg|-xl)?-auto
+            |  (&times;2)
+            ul
+              li.txt Text (two different lengths)
+    h4.mt-4#stacked-to-horizontal
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#stacked-to-horizontal") Switching layouts
+    p.my-2 The next example demonstrates switching between stacked (as mobile) and horizontal (as PC) layouts on the md breakpoint (768px) as follows.
+    div.row
+      div.col-5
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong Mobile
+          each n in ["1-1","1-2","2-1","2-2","2-3"]
+            div.row
+              div.col.border
+                div.bg-light.text-center= n
+      div.col-7
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong PC
+          div.row
+            div.col-8.border
+              div.bg-light.text-center 1-1
+            div.col-4.border
+              div.bg-light.text-center 1-2
+          div.row
+            each n in [1,2,3]
+              div.col.border
+                div.bg-light.text-center= `2-${n}`
+    p.my-3 Live example below (change the browser window width to switch).
+    div.row
+      div.col-md-8.border
+        div.bg-light 1-1 
+          code .col-md-8
+      div.col-md-4.border
+        div.bg-light 1-2 
+          code .col-md-4
+    div.row
+      each n in [1,2,3]
+        div.col-md.border
+          div.bg-light
+            = `2-${n} `
+            code .col-md
+    div.my-3
+      +collapseButton("#grid-stacked-to-horizontal-structure") Structure
+    ul.struct.collapse#grid-stacked-to-horizontal-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-md-8
+          li
+            code div.col-md-4
+      li
+        code div.row
+        ul
+          li
+            code div.col-md
+            |  (&times;3)
+    h4.mt-4#mix-and-match
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#mix-and-match") Mix and match
+    p.my-2 Another example of layout switching on the md breakpoint.
+    div.row
+      div.col-5
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong Mobile
+          div.row
+            div.col.border
+              div.bg-light.text-center 1-1
+          div.row
+            div.col-6.border
+              div.bg-light.text-center 1-2
+          div.row
+            each n in [1,2]
+              div.col.border
+                div.bg-light.text-center= `2-${n}`
+          div.row
+            div.col-6.border
+              div.bg-light.text-center 2-3
+          div.row
+            each n in [1,2]
+              div.col.border
+                div.bg-light.text-center= `3-${n}`
+      div.col-7
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong PC
+          div.row
+            div.col-8.border
+              div.bg-light.text-center 1-1
+            div.col-4.border
+              div.bg-light.text-center 1-2
+          div.row
+            each n in [1,2,3]
+              div.col.border
+                div.bg-light.text-center= `2-${n}`
+          div.row
+            each n in [1,2]
+              div.col.border
+                div.bg-light.text-center= `3-${n}`
+    p.my-3 Live example below
+    div.row
+      div.col-12.col-md-8.border
+        div.bg-light 1-1 
+          code .col-12.col-md-8
+      div.col-6.col-md-4.border
+        div.bg-light 1-2 
+          code .col-6.col-md-4
+    div.row
+      each n in [1,2,3]
+        div.col-6.col-md-4.border
+          div.bg-light= `2-${n} `
+            code .col-6.col-md-4
+    div.row
+      each n in [1,2]
+        div.col-6.border
+          div.bg-light= `3-${n} `
+            code .col-6
+    h4.mt-4#grid-margin-auto
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") Variable width contents with flex
+    p.my-2 A complex example using auto-width, flexbox, and responsive behaviors (from the official document).
+    ul
+      li Adds 
+        code .justify-content-md-center
+        |  (⇒ 
+        a(href="utilities-3.html#flex") Flex
+        | ) to rows 
+        code div.row
+        |  (aligns inner elements center on &ge;md)
+      li Adds 
+        code .col-md-auto
+        |  to the central row of each column (sets browser default width on &ge;md)
+      li Adds 
+        code .col
+        |  to the lower-left column (equal or available maximum width)
+      li Adds 
+        code .col.col-lg-2
+        |  to all other columns (equal width as default, 2/12 on &ge;md)
+    p.my-3 Live example below (central rows 
+      code .col-md-auto
+      |  are shown with orange background)
+    div.row.justify-content-md-center
+      div.col.col-lg-2.border
+        div.bg-light 1-1 
+          code.small .col.col-lg-2
+      div.col-md-auto.border
+        div.bg-warning 1-2 
+          code.small .col-md-auto
+      div.col.col-lg-2.border
+        div.bg-light 1-3 
+          code.small .col.col-lg-2
+    div.row
+      div.col.border
+        div.bg-light 2-1 
+          code.small .col
+      div.col-md-auto.border
+        div.bg-warning 2-2 
+          code.small .col-md-auto
+      div.col.col-lg-2.border
+        div.bg-light 2-3 
+          code.small .col.col-lg-2
+    p.my-3 Responsive behaviors (three cases)
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong sm(&lt;768px)
+          each r in [1,2]
+            div.row
+              div.col.border
+                div.bg-light.text-center= `${r}-1`
+            div.row
+              div.col.border
+                div.bg-warning.text-center= `${r}-2`
+            div.row
+              div.col.border
+                div.bg-light.text-center= `${r}-1`
+          div.row.mt-3.mb-1
+            div.col.text-center
+              strong lg(&ge;992px)
+          div.row.justify-content-md-center
+            div.col-2.border
+              div.bg-light.text-center 1-1
+            div.col-auto.border
+              div.bg-warning.text-center 1-2
+            div.col-2.border
+              div.bg-light.text-center 1-3
+          div.row
+            div.col.border
+              div.bg-light.text-center 2-1
+            div.col-auto.border
+              div.bg-warning.text-center 2-2
+            div.col-2.border
+              div.bg-light.text-center 2-3
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong md(768px&le;width&lt;992px)
+          each r in [1,2]
+            div.row
+              div.col.border
+                div.bg-light.text-center= `${r}-1`
+              div.col-auto.border
+                div.bg-warning.text-center= `${r}-2`
+              div.col.border
+                div.bg-light.text-center= `${r}-3`
+    h4.mt-4#grid-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#alignment") Alignment
+    p Use 
+      a(href="utilities-3.html#flex") Flex utilities
+      | .
+    h5.mt-3.mb-0#grid-vertical-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#vertical-alignment") Vertical alignment
+    p.my-2 In examples below, red border is added and height is fixed to 
+      code 5rem
+      |  for each row.
+    - const align = ["start", "center", "end"]
+    each al in align
+      p.mt-2.mb-0
+        code= `.row.align-items-${al}`
+      div(class=`row border border-danger align-items-${al}` style="height: 5rem;")
+        each n in [1,2,3]
+          div.col.border
+            div.bg-light.p-1
+              code .col
+              = ` (${n}/3)`
+    p.mt-2.mb-0
+      code .col.align-self-(start|center|end)
+    div.row.border.border-danger(style="height: 5rem;")
+      each al in align
+        div(class=`col align-self-${al} border`)
+          div.bg-light.p-1
+            code= `-${al}`
+    h5.mt-3.mb-0#grid-horizontal-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#horizontal-alignment") Horizontal alignment
+    each al in align.concat("around", "between")
+      p.mt-2.mb-0
+        code= `.row.justify-content-${al}`
+      div(class=`row justify-content-${al} border border-danger`)
+        - for (let i = 1; i <= 3; i++)
+          div.col-2.border
+            div.bg-light
+              code= `.col-2`
+              small= ` (${i}/3)`
+    h4.mt-4#griid-no-gutters
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#no-gutters") No gutters
+    p.my-2 Adding 
+      code .no-gutters
+      |  to 
+      code div.row
+      |  removes 
+      a(href="#grid-gutters") gutters
+      |  from a row.
+    each cls in ["", ".no-gutters"]
+      p.mt-2.mb-0
+        code= `div.row${cls}`
+      div(class=`row${cls.replace(/\./, " ")}`) 
+        each n in [9,3]
+          div(class=`col-${n} border`)
+            div.bg-light
+              code= `.col-${n}`
+    p.mt-3.mb-2 Actual internal behavior is more complex (not just removes gutters: Also see 
+      a(href="#grid-gutters") Gutters
+      |  for details).
+    ul
+      li
+        code div.row.no-gutters
+        ul
+          li Removes horizontal (negative) margins (
+            code -15px
+            |  to 
+            code 0
+            | ) ⇒ 
+            code margin-(left|right): 0
+            ul
+              li Applied parent (container) paddings (results to 30px smaller width)
+          li Also removes child-columns' gutters (using the child combinator 
+            code &gt;
+            | )
+            ul
+              li (pseudo code) 
+                code .no-gutters &gt; .col* { padding-(left|right): 0 }
+    p.mt-3.mb-2 The next example is based on the official document.
+    each cls in ["", ".no-gutters"]
+      p.mt-2.mb-0
+        code= `div.row${cls}`
+      div(class=`row${cls.replace(/\./, " ")}`) 
+        div.col-12.col-sm-6.col-md-8.border
+          div.bg-light
+            code .col-12.col-sm-6.col-md-8
+        div.col-6.col-md-4.border
+          div.bg-light
+            code .col-6.col-md-4
+    p.mt-4.mb-3 It is also an example of responsive behaviors (three cases).
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong xs(&lt;576px)
+          each cls in ["row", "row no-gutters mt-3"]
+            div(class=cls)
+              div.col-12.border
+                div.bg-light.text-center 12
+              div.col-6.border
+                div.bg-light.text-center 6
+          div.row.mt-3.mb-1
+            div.col.text-center
+              strong md or greater (&ge;768px)
+          each cls in ["row", "row no-gutters mt-3"]
+            div.row(class=cls)
+              div.col-8.border
+                div.bg-light.text-center 8
+              div.col-4.border
+                div.bg-light.text-center 4
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong sm(576px&le;width&lt;768px)
+          each cls in ["row", "row no-gutters mt-3"]
+            div(class=cls)
+              each n in [1,2]
+                div.col-6.border
+                  div.bg-light.text-center 6
+    h4.mt-4#grid-ordering
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#order-classes") Order classes
+    p.my-2 You can change columns' order with adding 
+      code .order-(1|2|3|...|12)
+      |  (⇒ 
+      a(href="utilities-3.html#flex") Flex utilities
+      |  ).
+    div.row
+      each n in [12,1,null,7]
+        div(class=`col border${n ? ` order-#{n}` : ""}`)
+          div.bg-light
+            - if (n)
+              code= `.order-${n}`
+            - else
+              | (none)
+    div.my-3
+      +collapseButton("#grid-ordering-1-structure") Structure
+    ul.struct.collapse#grid-ordering-1-structure
+      li
+        code div.row
+        ul
+          each n in [12,1,null,7]
+            li
+              code= `div.col${n ? `.order-${n}` : ""}`
+    p.my-2 Use 
+      code .order-first
+      |  to set at first, 
+      code .order-last
+      |  to set at last.
+    div.row
+      each n in [null, "last", "first"]
+        div(class=`col border${n ? ` order-${n}` : ""}`)
+          div.bg-light
+            - if (n)
+              code= `.order-${n}`
+            - else
+              | (none)
+    div.my-3
+      +collapseButton("#grid-ordering-2-structure") Structure
+    ul.struct.collapse#grid-ordering-2-structure
+      li
+        code div.row
+        ul
+          each n in [null, "last", "first"]
+            li
+              code= `div.col${n ? `.order-${n}` : ""}`
+    h4.mt-4#grid-offsetting-columns
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offsetting-columns") Offsetting columns
+    h5.mt-3#grid-offset-classes
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offset-classes") Offset classes
+    p.mt-2.mb-3
+      code .offset-(1|2|3|...)
+      |  sets offset spacing on the left as the same width as 
+      code .col-(1|2|3...)
+    div.row.border.my-3
+      div.col-4.border
+        div.bg-light
+          code .col-4
+      div.offset-4.col-4.border
+        div.bg-light
+          code .offset-4.col-4
+    div.my-3
+      +collapseButton("#grid-offset-1-structure") Structure
+    ul.struct.collapse#grid-offset-1-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-4
+          li
+            code div.offset-4.col-4
+    div.row.border.my-3
+      each n in [1,2]
+        div.offset-3.col-3.border
+          div.bg-light
+            code .offset-3.col-3
+    div.my-3
+      +collapseButton("#grid-offset-2-structure") Structure
+    ul.struct.collapse#grid-offset-2-structure
+      li
+        code div.row
+        ul
+          each n in [1,2]
+            li
+              code div.offset-3.col-3
+    div.row.border.my-3
+      div.offset-3.col-6.border
+        div.bg-light
+          code .offset-3.col-6
+    div.my-3
+      +collapseButton("#grid-offset-3-structure") Structure
+    ul.struct.collapse#grid-offset-3-structure
+      li
+        code div.row
+        ul
+          li
+            code div.offset-3.col-6
+    p.mt-3.mb-2 Responsive offset: 
+      code .offset-(xl|lg|md|sm)-(1|2|3|...)
+    p.mt-2.mb-3 An example below is based on the official document (difficult).
+    div.row
+      div.col-sm-5.col-md-6.border
+        div.bg-light
+          strong 1L
+          br
+          code .col-sm-5
+          br
+          code .col-md-6
+      div.offset-sm-2.col-sm-5.offset-md-0.col-md-6.border
+        div.bg-light
+          strong 1R
+          br
+          code .offset-sm-2.col-sm-5
+          br
+          code .offset-md-0.col-md-6
+    div.row
+      div.col-sm-6.col-md-5.col-lg-6.border
+        div.bg-light
+          strong 2L
+          br
+          code .col-sm-6
+          br
+          code .col-md-5
+          br
+          code .col-lg-6
+      div.col-sm-6.offset-md-2.col-md-5.offset-lg-0.col-lg-6.border
+        div.bg-light
+          strong 2R
+          br
+          code .col-sm-6
+          br
+          code .offset-md-2.col-md-5
+          br
+          code .offset-lg-0.col-lg-6
+    p.mt-4.mb-2 Overall conditions
+    table.table.table-sm.table-bordered
+      thead.thead-light
+        tr
+          each n in [1,2]
+            each item in ["","xs","sm","md","lg,xl"]
+              th.text-center(scope="col")= item
+      tbody
+        tr
+          th.table-light.text-center(scope="row") 1st row, left
+            br
+            | (1L)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 5/12
+          td.text-center(colspan="2") 6/12
+          th.table-light.text-center(scope="row") 1st row, right
+            br
+            | (1R)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center Offset 2
+            br
+            |  and 5/12
+          td.text-center(colspan="2") Offset 0 
+            sup
+              a(href="#offset-responsive-example-note") [Note]
+            br
+            | and 6/12
+        tr
+          th.table-light.text-center(scope="row") 2nd row, left
+            br
+            | (2L)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 6/12
+          td.text-center 5/12
+          td.text-center 6/12
+          th.table-light.text-center(scope="row") 2nd row, right
+            br
+            | (2R)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 6/12
+          td.text-center Offset 2
+            br
+            | and 5/12
+          td.text-center Offset 0 
+            sup
+              a(href="#offset-responsive-example-note") [Note]
+            br
+            | and 6/12
+    div.alert.alert-info#offset-responsive-example-note(role="alert")
+      strong Note: 
+      | Setting responsive offsets to zero (looks like useless) is required. They are needed to cancel offsets by lower breakpoints.
+    p.my-2 Resposive behaviors (four cases)
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong xs(&lt;576px)
+          each item in ["1L","1R","2L","2R"]
+            div.row
+              div.col.border
+                div.bg-light.text-center= item
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong sm(576px&le;width&lt;768px)
+          div.row
+            div.col-5.border
+              div.bg-light.text-center 1L
+            div.col-5.offset-2.border
+              div.bg-light.text-center 1R
+          div.row
+            div.col.border
+              div.bg-light.text-center 2L
+            div.col.border
+              div.bg-light.text-center 2R
+    div.row.mt-3
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong md(768px&le;width&lt;992px)
+          div.row
+            div.col.border
+              div.bg-light.text-center 1L
+            div.col.border
+              div.bg-light.text-center 1R
+          div.row
+            div.col-5.border
+              div.bg-light.text-center 2L
+            div.col-5.offset-2.border
+              div.bg-light.text-center 2R
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong lg,xl(&ge;992px)
+          div.row
+            div.col.border
+              div.bg-light.text-center 1L
+            div.col.border
+              div.bg-light.text-center 1R
+          div.row
+            div.col.border
+              div.bg-light.text-center 2L
+            div.col.border
+              div.bg-light.text-center 2R
+    h5.mt-4#margin-utilities
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#margin-utilities") Margin utilities
+    p.mt-2.mb-3 An example below (from the official document) shows how to use 
+      a(href="utilities-4.html#spacing") spacing utilities
+      |  for responsive grid layouts (advanced).
+    div.row
+      div.col-md-4.border
+        div.bg-light.py-1
+          strong 1L 
+          code .col-md-4
+      div.col-md-4.ml-auto.border
+        div.bg-light.py-1
+          strong 1R 
+          code .col-md-4.ml-auto
+    div.row
+      div.col-md-3.ml-md-auto.border
+        div.bg-light.py-1
+          strong 2L 
+          code .col-md-3.ml-md-auto
+      div.col-md-3.ml-md-auto.border
+        div.bg-light.py-1
+          strong 2R 
+          code .col-md-3.ml-md-auto
+    div.row
+      div.col-auto.mr-auto.border
+        div.bg-light.py-1
+          strong 3L 
+          code .col-auto.mr-auto
+      div.col-auto.border
+        div.bg-light.py-1
+          strong 3R 
+          code .col-auto
+    p.mt-4.mb-2 Overall conditions
+    table.table.table-sm.table-bordered
+      thead.thead-light
+        tr
+          each n in [1,2]
+            each item in ["","< md","≧ md"]
+              th.text-center(scope="col")= item
+      tbody
+        tr
+          th.table-light.text-center(scope="row") 1st row, left
+            br
+            | (1L)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 4/12
+          th.table-light.text-center(scope="row") 1st row, right
+            br
+            | (1R)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 4/12
+            br
+            | Left margin 
+            code auto
+        tr
+          th.table-light.text-center(scope="row") 2nd row, right
+            br
+            | (2L)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 3/12
+            br
+            | Left margin 
+            code auto
+          th.table-light.text-center(scope="row") 2nd row, right
+            br
+            | (2R)
+          td.text-center None
+            br
+            | (12/12)
+          td.text-center 3/12
+            br
+            | Left margin 
+            code auto
+        tr
+          th.table-light.text-center(scope="row") 3rd low, left
+            br
+            | (3L)
+          td.text-center(colspan="2") Width 
+            code auto
+            br
+            | Right margin 
+            code auto
+          th.table-light.text-center(scope="row") 3rd row, right
+            br
+            | (3R)
+          td.text-center(colspan="2") Width 
+            code auto
+    p.my-2 Responsive behaviors
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong xs, sm (&lt;768px)
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 1L
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 1R
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 2L
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 2R
+          div.row
+            div.col-auto.mr-auto.border
+              div.bg-light.text-center.px-2 3L
+            div.col-auto.border
+              div.bg-light.text-center.px-2 3R
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong md, lg, xl (&ge;768px)
+          div.row
+            div.col-4.border
+              div.bg-light.text-center.px-2 1L
+            div.col-4.ml-auto.border
+              div.bg-light.text-center.px-2 1R
+          div.row
+            div.col-3.ml-auto.border
+              div.bg-light.text-center.px-2 2L
+            div.col-3.ml-auto.border
+              div.bg-light.text-center.px-2 2R
+          div.row
+            div.col-auto.mr-auto.border
+              div.bg-light.text-center.px-2 3L
+            div.col-auto.border
+              div.bg-light.text-center.px-2 3R
+
+    h4.mt-4#grid-nesting
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#nesting") Nesting
+    p.mt-2.mb-3 You can nest grid row/column structures with inserting 
+      code div.row(-*)
+      | 's to 
+      code div.col(-*)
+      | 's (in any level but practically once). It is typically required to make eight (any number that does not divide 12) column layouts with mutiple span(s). See the example below.
+    div.row
+      div.col-6
+        div.row
+          each n in [1,2,3,4]
+            div.col-3
+              div.bg-light.text-center= n
+    div.row
+      div.col-6.offset-6
+        div.row
+          each n in [5,6,7,8]
+            div.col-3
+              div.bg-light.text-center= n
+    div.my-3
+      +collapseButton("#grid-nesting-structure") Structure
+    ul.struct.collapse#grid-nesting-structure
+      li
+        code div.row
+        ul
+          li
+            code div col-6
+            |  (Top-left half)
+            ul
+              li
+                code div.row
+                |  (nests and re-divides inner)
+                ul
+                  li
+                    code div.col-3
+                    |  (&times;4)
+                    ul
+                      li
+                        code div.bg-light
+                        ul
+                          li.txt Text 
+                            code (1|2|3|4)
+      li
+        code div.row
+        ul
+          li
+            code div.col-6.offset-6
+            |  (Bottom-right half)
+            ul
+              li
+                code div.row
+                |  (nests and re-divides inner)
+                ul
+                  li
+                    code div.col-3
+                    |  (&times;4)
+                    ul
+                      li
+                        code div.bg-light
+                        ul
+                          li.txt Text 
+                            code (5|6|7|8)
+    p.mt-3.mb-2 The example below shows structural details of the above.
+    div.row.py-1.border(style="background:rgba(0,255,0,0.1)")
+      div.col-6.py-1(style="background:rgba(255,0,0,0.1)")
+        div.row
+          each n in [1,2,3,4]
+            div.col-3.border
+              div.bg-light.text-center= n
+    div.row.py-1.border(style="background:rgba(0,255,0,0.1)")
+      div.col-6.offset-6.py-1(style="background:rgba(255,0,0,0.1)")
+        div.row
+          each n in [5,6,7,8]
+            div.col-3.border
+              div.bg-light.text-center= n
+    ul.my-2
+      li Added borders
+      li Light green background to outer 
+        code div.row
+      li Pink background to inner 
+        code div.row
+      li Addded slight vertical paddings to show nesting levels
+    div.alert.alert-info.mt-3(role="alert") Grid nesting tends to be complex and you can avoid it for most cases. For example, if you (just) want 8-column grids, using 
+      a(href="#grid-equal-width") equal-width
+      |  class is more suitable.
+
+    +breadcrumbLevel1("Layout(1): Overview/Grid system")

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンポーネント(12): プログレスバー / スクロールスパイ / ツールチップ</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンポーネント(12): <a href="#progress">プログレスバー</a> / <a href="#scrollspy">スクロールスパイ</a> / <a href="#tooltips">ツールチップ</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-12.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="progress"><a href="https://getbootstrap.com/docs/4.1/components/progress/" target="_blank">プログレスバー</a>
+      </h2>
+      <p class="mt-2"><code>progress</code> 要素の代替を目的としたコンポーネントで、バーの積み重ねやアニメーション付きストライプバーなど <code>progress</code> にはない追加機能を持つ。</p>
+      <h4 class="mt-3" id="progress-how-it-works"><a href="https://getbootstrap.com/docs/4.1/components/progress/#how-it-works" target="_blank">基本設定</a>
+      </h4>
+      <ul class="struct my-1">
+        <li>ベース部 <code>div.progress</code>
+          <ul>
+            <li>カラーバー <code>div.progress-bar</code> (複数積み重ね可) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+              <ul class="collapse a1-1">
+                <li class="att">幅(必須) (例) <code>style="width: 50%"</code></li>
+                <li class="att">アクセシビリティ属性 <code>role="progressbar" </code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-valuenow="50"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-valuemin="0"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-valuemax="100"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="progress-width">幅の設定</h4>
+      <p class="mt-2 mb-0">(1) カスタムスタイル <code>style="width: {width}%”</code></p>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 0%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 25%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 50%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 75%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 100%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-3 mb-1">(2) 幅設定ユーティリティ <code>.w-(25|75|100)</code> (⇒ <a href="utilities-4.html#sizing">サイズユーティリティ</a> 、25%ステップ)</p>
+      <p class="mt-1 mb-0"><code>.w-25</code></p>
+      <div class="progress">
+        <div class="progress-bar w-25" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.w-50</code></p>
+      <div class="progress">
+        <div class="progress-bar w-50" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.w-75</code></p>
+      <div class="progress">
+        <div class="progress-bar w-75" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.w-100</code></p>
+      <div class="progress">
+        <div class="progress-bar w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-labels"><a href="https://getbootstrap.com/docs/4.1/components/progress/#labels" target="_blank">ラベル文字の追加</a>
+      </h4>
+      <p class="my-2">バー <code>div.progress-bar</code> の内部テキストを記述する。</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div>
+      <h4 class="mt-4" id="progress-height"><a href="https://getbootstrap.com/docs/4.1/components/progress/#height" target="_blank">高さの設定</a>
+      </h4>
+      <p class="my-2">ベースの <code>div.progress</code> に設定する。</p>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 5px;&quot;</code></p>
+      <div class="progress" style="height: 5px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 10px;&quot;</code></p>
+      <div class="progress" style="height: 10px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 15px;&quot;</code></p>
+      <div class="progress" style="height: 15px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 20px;&quot;</code></p>
+      <div class="progress" style="height: 20px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-backgrounds"><a href="https://getbootstrap.com/docs/4.1/components/progress/#backgrounds" target="_blank">バーの色</a>
+      </h4>
+      <p class="my-2"><code>div.progress-bar</code> に背景色 <code>.bg-{context}</code> を追加(⇒ <a href="utilities-2.html#colors-background-color">色 - 背景色</a> )</p>
+      <p class="mt-1 mb-0"><code>.bg-success</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.bg-info</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.bg-warning</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.bg-danger</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-multiple-bars"><a href="https://getbootstrap.com/docs/4.1/components/progress/#multiple-bars" target="_blank">バーの積み重ね </a>
+      </h4>
+      <p class="my-2"><code>div.progress-bar</code> を複数用いれば左から右に積み重なる。</p>
+      <div class="progress">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-striped"><a href="https://getbootstrap.com/docs/4.1/components/progress/#striped" target="_blank">ストライプ表示</a>
+      </h4>
+      <p class="my-2">バーに <code>.progress-bar-striped</code> を追加する。</p>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-animated-stripes"><a href="https://getbootstrap.com/docs/4.1/components/progress/#animated-stripes" target="_blank">ストライプのアニメーション</a>
+      </h4>
+      <p class="mt-3 mb-2">さらに <code>.progress-bar-animated</code> を追加する。</p>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+      </div>
+      <h2 class="mt-5" id="scrollspy"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/" target="_blank">スクロールスパイ</a>
+      </h2>
+      <p class="my-2">インジケータコンポーネント( <a href="components-9.html">ナビゲーション</a> または <a href="components-7.html">リストグループ</a> )のアクティブアイテム表示と縦スクロールするコンテンツのスクロールを同期させる機能。</p>
+      <h4 class="mt-3" id="scrollspy-how-it-works"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#how-it-works" target="_blank">仕組み</a>
+      </h4>
+      <p class="my-2">スクロールスパイはJavaScriptを用いてスクロールするコンテンツの現在位置を監視し、インジケータ(ナビゲーションまたはリストグループ)のアクティブ表示を更新する。機能上の必要条件は次の通り。</p>
+      <ul>
+        <li>インジケータコンポーネントとして<a href="components-9.html">ナビゲーション</a>または<a href="components-7.html">リストグループ</a>を用いる</li>
+        <li>スクロールするコンテンツの基点要素には次の3条件が必要
+          <ul>
+            <li><code>position: relative;</code></li>
+            <li><code>overflow-y: scroll;</code></li>
+            <li><code>height</code> が何らかの形で設定されていること</li>
+          </ul>
+        </li>
+        <li>基点要素として <code>body</code> を用いる場合は上記条件は自動的に満たしている(設定不要)</li>
+      </ul>
+      <h4 id="scrollspy-how-to-use-it">使用法</h4>
+      <ul>
+        <li>スクロール検出の基点要素として <code>body</code> を用いるか、または上記必要条件の属性を設定する</li>
+        <li>基点要素に次の属性を設定する
+          <ul>
+            <li><code>data-spy="scroll"</code></li>
+            <li><code>data-target=&quot;#{indicator-id}&quot;</code></li>
+            <li>(オプション) <code>data-offset="{pixels}"</code> (スクロール位置計算オフセット、デフォルトは <code>"10"</code> )</li>
+          </ul>
+        </li>
+        <li>スクロールコンテンツ内のターゲット要素に適宜 <code>id</code> を設定する</li>
+        <li>インジケータコンポーネントとして次のどちらかを用いる
+          <ul>
+            <li><a href="components-9.html">ナビゲーション</a></li>
+            <li><a href="components-7.html">リストグループ</a></li>
+          </ul>
+        </li>
+        <li>インジケータコンポーネントに <code>id="{indicator-id}"</code> を設定する</li>
+        <li>アイテムの内部にリンク <code>a</code> と属性 <code>href=&quot;#{target-id}&quot;</code> を設定する</li>
+      </ul>
+      <h4 class="mt-3" id="scrollspy-example-in-navbar"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#example-in-navbar" target="_blank">ナビゲーションバーへの設定</a>
+      </h4>
+      <p>⇒ <a href="scrollspy-1.html">デモページ</a></p>
+      <h4 class="mt-4" id="scrollspy-example-with-nested-nav"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-nested-nav" target="_blank">階層ナビゲーションへの設定</a>
+      </h4>
+      <p>⇒ <a href="scrollspy-2.html">デモページ</a></p>
+      <h4 class="mt-4" id="scrollspy-example-with-list-group"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-list-group" target="_blank">リストグループへの設定</a>
+      </h4>
+      <p>⇒ <a href="scrollspy-3.html">デモページ</a></p>
+      <h2 class="mt-5" id="tooltips"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/" target="_blank">ツールチップ</a>
+      </h2>
+      <p class="mt-2 mb-1">HTML要素の <code>title</code> 属性を用いたツールチップ(ポップアップ)表示機能をカスタマイズしたもの。実装に <a href="https://popper.js.org/" target="_blank">Popper.js</a> を利用している。
+      </p>
+      <ul class="my-1">
+        <li>ブラウザデフォルトのツールチップ ⇒ <span class="text-danger" title="デフォルトのツールチップ">この部分</span> をホバーすると表示</li>
+        <li>Bootstrapのツールチップ ⇒ <span class="text-danger" title="Bootstrapのツールチップ" data-toggle="tooltip">この部分</span> をホバーすると表示</li>
+      </ul>
+      <div class="alert alert-info" role="alert"><code>a</code> や <code>button</code> などタブストップを受ける要素は <kbd>Tab</kbd> キーでフォーカスした場合もポップアップ表示する。</div>
+      <h4 class="mt-4" id="tooltips-example-enable-tooltips-everywhere"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/#example-enable-tooltips-everywhere" target="_blank">初期化方法</a>
+      </h4>
+      <p>Bootstrapのツールチップは初期状態では無効になっており、有効にするためにはJavaScriptコードが必要。最も簡単な方法を次に示す。</p>
+      <pre class="p-2 border bg-light"><code>$('[data-toggle="tooltip"]').tooltip();</code></pre>
+      <div class="alert alert-warning" role="alert"><strong>注: </strong>コードの置き場所に注意。ツールチップを使っている場所(の近く)に <code>script</code> を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。</div>
+      <h4 class="mt-4" id="tooltips-examples"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/#examples" target="_blank">設定方法</a>
+      </h4>
+      <ul class="my-1">
+        <li>任意の要素に設定可: 次の属性を設定</li>
+        <ul>
+          <li><code>data-toggle="tooltip"</code></li>
+          <li><code>title="{表示テキスト}"</code></li>
+        </ul>
+      </ul>
+      <p class="mt-2">設定例 ⇒ <span class="text-danger" data-toggle="tooltip" title="ツールチップ表示">この部分</span> に設定(ホバーすると表示)</p>
+      <h5 class="mt-4">表示方向の設定</h5>
+      <ul class="my-1">
+        <li>次の属性を追加(デフォルトは <code>"top"</code> )
+          <ul>
+            <li><code>data-placement=("top"|"right"|"bottom"|"left")</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-2 mb-1">設定例</p>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-center">
+          <button class="btn btn-light mt-0" type="button" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><code>data-placement="top"</code></button>
+        </div>
+      </div>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-right pr-2">
+          <button class="btn btn-light my-0" type="button" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><code>data-placement="left"</code></button>
+        </div>
+        <div class="col m-0 text-left pl-2">
+          <button class="btn btn-light my-0" type="button" data-toggle="tooltip" data-placement="right" title="Tooltip on right"><code>data-placement="right"</code></button>
+        </div>
+      </div>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-center">
+          <button class="btn btn-light mt-0" type="button" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><code>data-placement="bottom"</code></button>
+        </div>
+      </div>
+      <div class="alert alert-info my-2" role="alert">表示時は(Popper.jsを利用して)動的位置判定を行い、空間不足の場合は逆方向にポップアップする。特に左右に設定している場合、ブラウザの幅を狭めると逆方向に表示する(上の例で実際に確認できる)。</div>
+      <h4 class="mt-4" id="using-html">HTMLを用いたテキスト設定</h4>
+      <ul class="my-1">
+        <li>次の属性を追加
+          <ul>
+            <li><code>data-html="true"</code></li>
+          </ul>
+        </li>
+        <li>HTMLでテキストを記述(例)
+          <ul>
+            <li><code>title=&quot;TNT(C&lt;sub&gt;6&lt;/sub&gt;H&lt;sub&gt;2&lt;/sub&gt;(NO&lt;sub&gt;2&lt;/sub&gt;)&lt;sub&gt;3&lt;/sub&gt;CH&lt;sub&gt;3&lt;/sub&gt;)&quot;</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p>設定例 ⇒ <span class="text-danger" data-toggle="tooltip" data-html="true" title="TNT(C&lt;sub&gt;6&lt;/sub&gt;H&lt;sub&gt;2&lt;/sub&gt;(NO&lt;sub&gt;2&lt;/sub&gt;)&lt;sub&gt;3&lt;/sub&gt;CH&lt;sub&gt;3&lt;/sub&gt;)">この部分</span> をホバーすると表示</p>
+      <h4 class="mt-4" id="disabled-elements"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/#disabled-elements" target="_blank">無効化した要素への設定</a>
+      </h4>
+      <p class="my-2">要素に属性 <code>disabled</code> を設定した場合ツールチップは表示されなくなる。次の例は <code>button</code> に下記の通り設定しているが、ツールチップはポップアップしない。</p>
+      <ul class="struct">
+        <li><code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a2-1">属性 <code>type="button"</code></li>
+            <li class="att collapse a2-1">属性 <code>data-toggle="tooltip"</code> (設定している)</li>
+            <li class="att collapse a2-1">属性 <code>title="Disabled tooltip"</code> (これも設定、しかし...)</li>
+            <li class="att collapse a2-1">属性 <code>disabled</code> (これを設定するとツールチップも無効化される)</li>
+            <li class="txt">テキスト <code>Disabled button</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">設定例(ツールチップは表示されない)</p>
+      <p class="my-2">
+        <button class="btn btn-primary" type="button" data-toggle="tooltip" title="Disabled tooltip" disabled>Disabled button</button>
+      </p>
+      <p class="mt-3 mb-1">しかし <code>disabled</code> は設定するがツールチップは表示したケースもある。その場合は親要素を作ってそこにツールチップを設定し、その中に <code>disabled</code> を設定した要素を入れればよい。対応例は次の通り。</p>
+      <ul class="struct">
+        <li>ツールチップ用親要素 <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="cls collapse a3-1">設定<code>.d-inline-block</code> ( <code>button</code> と同じ <code>display</code> にする)</li>
+            <li class="att collapse a3-1">属性 <code>tabindex="0"</code> ( <kbd>Tab</kbd> キーはここで受ける)</li>
+            <li class="att collapse a3-1">属性 <code>data-toggle="tooltip"</code></li>
+            <li class="att collapse a3-1">属性 <code>title="Disabled tooltip"</code></li>
+            <li>子要素 <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a3-2">属性 <code>type="button" </code></li>
+                <li class="att collapse a3-2">属性 <code>style="pointer-events: none;"</code> (イベントターゲットから完全に外す)</li>
+                <li class="att collapse a3-2">属性 <code>disabled</code></li>
+                <li class="txt">テキスト <code>Disabled button</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3">設定例: <code>button</code> は <code>disabled</code> だがツールチップは動作する(実際は親要素が処理している)</p>
+      <p><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+          <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button></span></p>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(12): プログレスバー/スクロールスパイ/ツールチップ</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

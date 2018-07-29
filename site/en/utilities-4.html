@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Utilities (4): Position / Screenreaders / Shadows / Sizing / Spacing</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Utilities (4): <a href="#position">Position</a> / <a href="#screenreaders">Screenreaders</a> / <a href="#shadows">Shadows</a> / <a href="#sizing">Sizing</a> / <a href="#spacing">Spacing</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/utilities-4.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="position"><a href="https://getbootstrap.com/docs/4.1/utilities/position/" target="_blank">Position</a>
+      </h2>
+      <h4 class="mt-4" id="position-common-values"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#common-values" target="_blank">Classes</a>
+      </h4>
+      <p class="mb-2">Utility classes for setting CSS <code>position</code> property (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank">CSS reference</a>  for detail). There is no responsive class.
+      </p>
+      <p class="my-1"><code>.position-(static|relative|absolute|fixed|sticky)</code></p>
+      <h4 class="mt-4" id="position-fixed-sticky"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top" target="_blank">Fixed top</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom" target="_blank">Fixed bottom</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top" target="_blank">Sticky top</a>
+      </h4>
+      <p class="mb-2">Options for fixing an element on top or bottom, and displaying on topmost with setting <a href="layout-1.html#overview-z-index">Z-index</a> . These are typically used for <a href="components-10.html">navigation bars</a> . See navbar demos bellow for detail.</p>
+      <ul>
+        <li><a href="navbar-fixed-top.html">Navbar demo using <code>.fixed-top</code></a></li>
+        <li><a href="navbar-fixed-bottom.html">Navbar demo using <code>.fixed-bottom</code></a></li>
+        <li><a href="navbar-sticky-top.html">Navbar demo using <code>.sticky-top</code></a></li>
+      </ul>
+      <h2 class="mt-5" id="screenreaders"><a href="https://getbootstrap.com/docs/4.1/utilities/screenreaders/" target="_blank">Screenreaders</a>
+      </h2>
+      <h4 class="mt-3" id="screenreaders-summary">Summary</h4>
+      <ul>
+        <li>Set <code>.sr-only</code> to a element for screen reader users
+          <ul>
+            <li>Screen reader users can read it as screen-reader only information</li>
+            <li>It is hidden for visual users</li>
+          </ul>
+        </li>
+        <li>Set <code>.sr-only-focusable</code> for screen reader users who use keyboards</li>
+      </ul>
+      <h4 class="mt-3" id="screenreaders-example">Example</h4>
+      <p class="my-2">An example using <code>.sr-only-focusable</code> .</p>
+      <ul class="struct">
+        <li><code>a.sr-only.sr-only-focusable</code>
+          <ul>
+            <li class="att">Atrtribute <code>href="#"</code></li>
+            <li class="txt">Text <code>Skip to main content</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">Working example: <strong>set inside the bracket next ⇒ ( </strong><a class="sr-only sr-only-focusable" href="#">Skip to main content</a><strong> )</strong>.</p>
+      <ul>
+        <li>Screen reader users can read information and also get keybored focus.</li>
+        <li>Visible users neither see it nor get keyboard focus.
+          <ul>
+            <li>Only tabstop is available. It displays by focusing with <kbd>Tab</kbd> keys.</li>
+          </ul>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="shadows"><a href="https://getbootstrap.com/docs/4.1/utilities/shadows/" target="_blank">Shadows</a>
+      </h2>
+      <p class="mt-3"><code>.shadow(-none|-sm|-lg)?</code></p>
+      <h4 class="mt-4" id="shadows-examples">Examples</h4>
+      <p class="mt-3 mb-2"><code>div.shadow-none</code></p>
+      <div class="shadow-none p-3 mb-4 bg-light rounded">No shadow</div>
+      <p class="mt-3 mb-2"><code>div.shadow-sm</code></p>
+      <div class="shadow-sm p-3 mb-4 bg-white rounded">Small shadow</div>
+      <p class="mt-3 mb-2"><code>div.shadow</code></p>
+      <div class="shadow p-3 mb-4 bg-white rounded">Regular shadow</div>
+      <p class="mt-3 mb-2"><code>div.shadow-lg</code></p>
+      <div class="shadow-lg p-3 mb-4 bg-white rounded">Larger shadow</div>
+      <h2 class="mt-5" id="sizing"><a href="https://getbootstrap.com/docs/4.1/utilities/sizing/" target="_blank">Sizing</a>
+      </h2>
+      <p class="mt-2 mb-1">Utility classes for setting width and height.</p>
+      <ul class="my-0">
+        <li>Width (25% step + auto) <code>.w-(25|50|75|100|auto)</code></li>
+        <li>Height (25% step + auto) <code>.h-(25|50|75|100|auto)</code></li>
+        <li>Max-width to 100% <code>.mw-100</code></li>
+        <li>Max-height to 100% <code>.mh-100</code></li>
+      </ul>
+      <p class="mt-3 mb-1">Width example</p>
+      <div class="w-25 p-1 bg-light text-center border"><code>.w-25</code></div>
+      <div class="w-50 p-1 bg-light text-center border"><code>.w-50</code></div>
+      <div class="w-75 p-1 bg-light text-center border"><code>.w-75</code></div>
+      <div class="w-100 p-1 bg-light text-center border"><code>.w-100</code></div>
+      <div class="w-auto p-1 bg-light text-center border"><code>.w-auto</code></div>
+      <p class="mt-3 mb-1">Height example (in the parent with <code>height:100px;</code>)</p>
+      <div class="border" style="height: 100px;">
+        <div class="h-25 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-25</code></div>
+        <div class="h-50 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-50</code></div>
+        <div class="h-75 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-75</code></div>
+        <div class="h-100 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-100</code></div>
+        <div class="h-auto d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-auto</code></div>
+      </div>
+      <p class="mt-3 mb-1">Max-width example: <code>img.mw-100</code> (fits to the parent width)</p><img class="mw-100" src="../img/2000x200.svg">
+      <p class="mt-3 mb-1">Max-height example: <code>img.mh-100</code> in the parent with <code>height:200px;</code> (fits to the parent height)</p>
+      <div class="border" style="height:200px;"><img class="mh-100" src="../img/320x320.svg"></div>
+      <h2 class="mt-5" id="spacing"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/" target="_blank">Spacing</a>
+      </h2>
+      <p class="my-2">Utility for setting margins and paddings.</p>
+      <h4 class="mt-3" id="spacing-notation"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#notation" target="_blank">Notation</a>
+      </h4>
+      <p class="mt-2 mb-1"><code>.(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)</code></p>
+      <ul>
+        <li><code>(m|p)</code> margin/padding
+          <ul>
+            <li><code>m</code> sets margin
+            </li>
+            <li><code>p</code> sets padding
+            </li>
+          </ul>
+        </li>
+        <li><code>(t|b|l|r|x|y)</code> direction
+          <ul>
+            <li><code>t</code> sets top margin/padding
+            </li>
+            <li><code>b</code> sets bottom margin/padding
+            </li>
+            <li><code>l</code> sets left margin/padding
+            </li>
+            <li><code>r</code> sets right margin/padding
+            </li>
+            <li><code>x</code> sets left+right margin/padding
+            </li>
+            <li><code>y</code> sets top+bottom margin/padding
+            </li>
+            <li>(none) sets all four directions</li>
+          </ul>
+        </li>
+        <li><code>(0|1|2|3|4|5|auto)</code> width
+          <ul>
+            <li><code>0</code> sets to zero</li>
+            <li><code>1</code> sets to <code>1/4rem</code></li>
+            <li><code>2</code> sets to <code>1/2rem</code></li>
+            <li><code>3</code> sets to <code>1rem</code></li>
+            <li><code>4</code> sets to <code>1.5rem</code></li>
+            <li><code>5</code> sets to <code>3rem</code></li>
+            <li><code>auto</code> (margin only) uses browser default</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert"><strong>Advanced (Sass required):</strong> Width options can be changed by customizing Bootstrap (see <a href="getting-started.html#css-customizing">Customizing from Sass source code</a> for datail). Width is scaled by the Sass variable <code>$spacer</code> and its (default) value is <code>1rem</code> (in source <code>_variables.scss</code> ).  Size options <code>0,1,2...</code> are also specified by the map variable <code>$spacers</code> .</div>
+      <h4 class="mt-4" id="spacing-example">Example</h4>
+      <p class="mt-2 mb-1">Setting paddings to table cell <code>td</code> (<code>pb-(0|1|2|3|4|5)</code> (Bottom only) is omitted by no effect)</p>
+      <p class="my-1"><code>.p-(0|1|2|3|4|5)</code> (All)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="p-0">
+              <div class="m-0 border bg-light"><code>.p-0</code></div>
+            </td>
+            <td class="p-1">
+              <div class="m-0 border bg-light"><code>.p-1</code></div>
+            </td>
+            <td class="p-2">
+              <div class="m-0 border bg-light"><code>.p-2</code></div>
+            </td>
+            <td class="p-3">
+              <div class="m-0 border bg-light"><code>.p-3</code></div>
+            </td>
+            <td class="p-4">
+              <div class="m-0 border bg-light"><code>.p-4</code></div>
+            </td>
+            <td class="p-5">
+              <div class="m-0 border bg-light"><code>.p-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.px-(0|1|2|3|4|5)</code> (Left+Right)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="px-0">
+              <div class="m-0 border bg-light"><code>.px-0</code></div>
+            </td>
+            <td class="px-1">
+              <div class="m-0 border bg-light"><code>.px-1</code></div>
+            </td>
+            <td class="px-2">
+              <div class="m-0 border bg-light"><code>.px-2</code></div>
+            </td>
+            <td class="px-3">
+              <div class="m-0 border bg-light"><code>.px-3</code></div>
+            </td>
+            <td class="px-4">
+              <div class="m-0 border bg-light"><code>.px-4</code></div>
+            </td>
+            <td class="px-5">
+              <div class="m-0 border bg-light"><code>.px-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.py-(0|1|2|3|4|5)</code> (Top+Bottom)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="py-0">
+              <div class="m-0 border bg-light"><code>.py-0</code></div>
+            </td>
+            <td class="py-1">
+              <div class="m-0 border bg-light"><code>.py-1</code></div>
+            </td>
+            <td class="py-2">
+              <div class="m-0 border bg-light"><code>.py-2</code></div>
+            </td>
+            <td class="py-3">
+              <div class="m-0 border bg-light"><code>.py-3</code></div>
+            </td>
+            <td class="py-4">
+              <div class="m-0 border bg-light"><code>.py-4</code></div>
+            </td>
+            <td class="py-5">
+              <div class="m-0 border bg-light"><code>.py-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.pt-(0|1|2|3|4|5)</code> (Top)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="pt-0">
+              <div class="m-0 border bg-light"><code>.pt-0</code></div>
+            </td>
+            <td class="pt-1">
+              <div class="m-0 border bg-light"><code>.pt-1</code></div>
+            </td>
+            <td class="pt-2">
+              <div class="m-0 border bg-light"><code>.pt-2</code></div>
+            </td>
+            <td class="pt-3">
+              <div class="m-0 border bg-light"><code>.pt-3</code></div>
+            </td>
+            <td class="pt-4">
+              <div class="m-0 border bg-light"><code>.pt-4</code></div>
+            </td>
+            <td class="pt-5">
+              <div class="m-0 border bg-light"><code>.pt-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.pl-(0|1|2|3|4|5)</code> (Left)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="pl-0">
+              <div class="m-0 border bg-light"><code>.pl-0</code></div>
+            </td>
+            <td class="pl-1">
+              <div class="m-0 border bg-light"><code>.pl-1</code></div>
+            </td>
+            <td class="pl-2">
+              <div class="m-0 border bg-light"><code>.pl-2</code></div>
+            </td>
+            <td class="pl-3">
+              <div class="m-0 border bg-light"><code>.pl-3</code></div>
+            </td>
+            <td class="pl-4">
+              <div class="m-0 border bg-light"><code>.pl-4</code></div>
+            </td>
+            <td class="pl-5">
+              <div class="m-0 border bg-light"><code>.pl-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.pr-(0|1|2|3|4|5)</code> (Right)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="pr-0">
+              <div class="m-0 border bg-light"><code>.pr-0</code></div>
+            </td>
+            <td class="pr-1">
+              <div class="m-0 border bg-light"><code>.pr-1</code></div>
+            </td>
+            <td class="pr-2">
+              <div class="m-0 border bg-light"><code>.pr-2</code></div>
+            </td>
+            <td class="pr-3">
+              <div class="m-0 border bg-light"><code>.pr-3</code></div>
+            </td>
+            <td class="pr-4">
+              <div class="m-0 border bg-light"><code>.pr-4</code></div>
+            </td>
+            <td class="pr-5">
+              <div class="m-0 border bg-light"><code>.pr-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="horizontal-centering"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering" target="_blank">Horizontal centering</a>
+      </h4>
+      <p>Use <code>.mx-auto</code> for horizontal centering of a fixed width element.</p>
+      <div class="mx-auto border p-2 bg-light" style="width: 20rem;"><code>div.mx-auto</code> + <code>style="width: 20rem;"</code></div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Utilities(4): Position/Screenreaders/Shadows/Sizing/Spacing</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

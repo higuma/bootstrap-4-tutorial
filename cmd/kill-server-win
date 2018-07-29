@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# Kill webpack-dev-server (for Windows + Git Bash)
+#
+# Previous versions did not terminate with Ctrl-C.
+# But it has been fixed for Webpack 4 (you do not have to use it any more).
+# See: https://github.com/webpack/webpack-dev-server/issues/860
+taskkill //pid `netstat -aon | grep 3000 | grep -P '(?<=LISTENING).*' -o | grep -P '\\d*' -o` //f

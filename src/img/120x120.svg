@@ -1,0 +1,5 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" preserveAspectRatio="none">
+  <style type="text/css"> text { fill:rgba(255,255,255,.75);font-weight:normal;font-family:Helvetica, monospace;font-size:12pt }</style>
+  <rect width="120" height="120" fill="#777"></rect>
+  <text text-anchor="middle" x="60" y="66">120x120</text>
+</svg>

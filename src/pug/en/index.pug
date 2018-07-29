@@ -1,0 +1,252 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial
+
+block body
+  div.container
+    +pageHeader("index")
+    h2.mt-4#toc Table of contents
+    ul
+      li
+        a(href="#about") About this tutorial
+      li.mb-2
+        a(href="#notation") Notation
+      li
+        a(href="getting-started.html") Getting started
+      li Layout
+        ol
+          li
+            a(href="layout-1.html") Overview
+            |  / 
+            a(href="layout-1.html#grid") Grid system
+          li
+            a(href="layout-2.html") Media object
+            |  / 
+            a(href="layout-2.html#utilities") Utilities for layout
+      li Content
+        ol
+          li
+            a(href="content-1.html") Reboot
+            |  / 
+            a(href="content-1.html#typography") Typography
+            |  / 
+            a(href="content-1.html#code") Code
+          li: a(href="content-2.html") Images
+          li: a(href="content-3.html") Tables
+          li: a(href="content-4.html") Figures
+      li Components
+        ol
+          li
+            a(href="components-1.html") Alerts
+            |  / 
+            a(href="components-1.html#badges") Badges
+            |  / 
+            a(href="components-1.html#breadcrumb") Breadcrumb 
+          li
+            a(href="components-2.html") Buttons
+            |  / 
+            a(href="components-2.html#button-group") Button group
+          li: a(href="components-3.html") Cards
+          li
+            a(href="components-4.html") Carousel
+            |  / 
+            a(href="components-4.html#collapse") Collapse
+            |  / 
+            a(href="components-4.html#dropdowns") Dropdowns
+          li: a(href="components-5.html") Forms
+          li
+            a(href="components-6.html") Input group
+            |  / 
+            a(href="components-6.html#jumbotron") Jumbotron
+          li: a(href="components-7.html") List group
+          li: a(href="components-8.html") Modal
+          li: a(href="components-9.html") Navs
+          li: a(href="components-10.html") Navbar
+          li
+            a(href="components-11.html") Pagination
+            |  / 
+            a(href="components-11.html#popovers") Popovers
+          li
+            a(href="components-12.html") Progress
+            |  / 
+            a(href="components-12.html#scrollspy") Scrollspy
+            |  / 
+            a(href="components-12.html#tooltips") Tooltips
+      li Utilities
+        ol
+          li
+            a(href="utilities-1.html") Borders
+            |  / 
+            a(href="utilities-1.html#clearfix") Clearfix
+            |  / 
+            a(href="utilities-1.html#close-icon") Close icon
+          li
+            a(href="utilities-2.html") Colors
+            |  / 
+            a(href="utilities-2.html#display") Display
+            |  / 
+            a(href="utilities-2.html#embed") Embed
+          li
+            a(href="utilities-3.html") Flex
+            |  / 
+            a(href="utilities-3.html#float") Float
+            |  / 
+            a(href="utilities-3.html#image-replacement") Image replacement
+          li
+            a(href="utilities-4.html") Position
+            |  / 
+            a(href="utilities-4.html#screenreaders") Screenreaders
+            |  / 
+            a(href="utilities-4.html#shadows") Shadows
+            |  / 
+            a(href="utilities-4.html#sizing") Sizing
+            |  / 
+            a(href="utilities-4.html#spacing") Spacing
+          li
+            a(href="utilities-5.html") Text
+            |  / 
+            a(href="utilities-5.html#vertical-align") Vertical align
+            |  / 
+            a(href="utilities-5.html#visibility") Visibility
+      li
+        a(href="extend+migration+about.html") Extend
+        |  / 
+        a(href="extend+migration+about.html#migration") Migration
+        |  / 
+        a(href="extend+migration+about.html#about") About
+
+    h2.mt-5#about About this tutorial
+    p.my-2 This is a self-study tutorial for Bootstrap version 4. It is written mostly the same order as official Bootstrap 4.1 document. But you can read in any order you like.
+    p.my-2 The tutorial is written in 
+      +extLink("https://pugjs.org/") pug
+      |  and built with 
+      +extLink("https://webpack.js.org/") webpack
+      |  under 
+      +extLink("https://nodejs.org/") node.js
+      | /
+      +extLink("https://docs.npmjs.com/") npm
+      |  environment. You can get full 
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial") source code
+      |  from 
+      +extLink("https://github.com/") GitHub
+      | . The site is hosted by 
+      +extLink("https://pages.github.com/") GitHub Pages
+      | .
+    h2.mt-5#notation Notation
+    p.mt-2.mb-3 This tutorial uses a special notation for representing HTML structures. For example, consider a 
+      a(href="components-2.html#button-group-button-toolbar") button toolbar
+      |  as below.
+    div.btn-toolbar(role="toolbar" aria-label="Button toolbar")
+      div.btn-group(role="group" aria-label="Group 1")
+        each text in ["1","2","3"]
+          button.btn.btn-secondary(role="button")= text
+      div.btn-group.ml-2(role="group" aria-label="Group 2")
+        each text in ["A","B"]
+          button.btn.btn-secondary(role="button")= text
+    pre.mt-3.p-2.border.bg-light
+      code
+        = `<div class="btn-toolbar" role="toolbar" aria-label="Button toolbar">\n`
+        = `  <div class="btn-group" role="group" aria-label="Group 1">\n`
+        = `    <button class="btn btn-secondary" role="button">1</button>\n`
+        = `    <button class="btn btn-secondary" role="button">2</button>\n`
+        = `    <button class="btn btn-secondary" role="button">3</button>\n`
+        = `  </div>\n`
+        = `  <div class="btn-group ml-2" role="group" aria-label="Group 2">\n`
+        = `    <button class="btn btn-secondary" role="button">A</button>\n`
+        = `    <button class="btn btn-secondary" role="button">B</button>\n`
+        = `  </div>\n`
+        = `</div>`
+    p.my-2 The tutorial describes it with annotated nested list as follows.
+    ul
+      li Pressing 
+        button.btn.btn-outline-info Structure
+        |  button shows whole structure with nested list
+        ul
+          li Pressing 
+            button.btn.btn-sm.btn-outline-info.my-1.px-1.py-0 Attributes
+            |  button shows attributes for each element
+    +collapseButton("#example-structure") Structure
+    |  ⇐ Click!
+    ul.struct.collapse.my-3#example-structure
+      li Button toolbar
+        code div.btn-toolbar
+        +attrsBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Accessibility attribute 
+            code role="toolbar"
+          li.att.collapse.a1-1 Accessibility attribute 
+            code aria-label="Button toolbar"
+          li (First) button group 
+            code div.btn-group
+            +attrsBtn(".a1-2")
+            ul
+              li.att.collapse.a1-2 Accessibility attribute 
+                code role="group"
+              li.att.collapse.a1-2 Accessibility attribute 
+                code aria-label="Group 1"
+              li Button 
+                code button.btn
+                |  (&times;3)
+                +attrsBtn(".a1-3")
+                ul
+                  li.cls.collapse.a1-3 Button color 
+                    code .btn-secondary
+                  li.att.collapse.a1-3 Accessibility attribute 
+                    code role="button"
+                  li.txt Text 
+                    code 1
+                    | , 
+                    code 2
+                    | , 
+                    code 3
+          li (Second) button group 
+            code div.btn-group
+            +attrsBtn(".a1-4")
+            ul
+              li.cls.collapse.a1-4 Left margin 
+                code .ml-2
+              li.att.collapse.a1-4 Accessibility attribute 
+                code role="group"
+              li.att.collapse.a1-4 Accessibility attribute 
+                code aria-label="Group 2"
+              li Button 
+                code button.btn
+                |  (&times;2)
+                +attrsBtn(".a1-5")
+                ul
+                  li.cls.collapse.a1-5 Button color 
+                    code .btn-secondary
+                  li.att.collapse.a1-5 Accessibility attribute 
+                    code role="button"
+                  li.txt Text 
+                    code A
+                    | , 
+                    code B
+    p.my-2 Notation rules are as follows.
+    ul.struct
+      li Element: black prefix marker (
+        code disc
+        | ), element name with 
+        code code
+        |  (red monospace text)
+      li Element with class(es): CSS dot notation: g. 
+        code div.modal.fade
+      li Attributes, (additional) classes, and child elements are described with nested lists
+        ul
+          li.cls Additional class(es): white prefix marker (
+            code circle
+            | ), CSS dot notation: 
+            code .{class1}.{class2}
+          li.att Attribute: white prefix marker (
+            code circle
+            | ), HTML attribute notation: 
+            code {attribute}="{value}"
+          li.txt Text: no prifix marker (
+            code none
+            | ), e.g. 
+            code Text content
+          li Descendant elements use same notation as parents, also use nesting to describe hierarchy
+
+    +breadcrumbLevel0

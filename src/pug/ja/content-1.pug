@@ -1,0 +1,345 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンテント(1): Reboot / タイポグラフィ / コード
+
+block body
+  - const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  div.container
+    +pageHeader("content-1")
+      p.lead コンテント(1): 
+        a(href="#reboot") Reboot
+        |  / 
+        a(href="#typography") タイポグラフィ
+        |  / 
+        a(href="#code") コード
+
+    h2.mt-2#reboot
+      +extLink("https://getbootstrap.com/docs/4.1/content/reboot/") Reboot
+    p Reboot(Bootstrap 4の新しいリセットCSS)の解説。
+
+    h2.mt-5#typography
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/") タイポグラフィ
+    h4.mt-3.mt-1#typo-headings
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#headings") 見出し
+    p.my-1
+      code h1
+      |  , 
+      code h2
+      |  , 
+      code h3
+      |  , 
+      code h4
+      |  , 
+      code h5
+      |  , 
+      code h6
+      |  の各要素は次のように表示される。
+    h1 h1. Sample サンプル
+    h2 h2. Sample サンプル
+    h3 h3. Sample サンプル
+    h4 h4. Sample サンプル
+    h5 h5. Sample サンプル
+    h6 h6. Sample サンプル
+    p.mt-4.mb-2 同じ表示を他の要素に適用する場合は 
+      code .h(1|2|3|4|5|6)
+      |  を用いる。次は 
+      code span
+      |  に使った場合の例。
+    p.my-0
+      code span.h(1|2|3|4|5|6)
+    - for (let i = 1; i <= 6; i++)
+      span(class=`h${i}`)
+        = ` span.h${i} `
+    h4.mt-4.mb-1#typo-customizing-headings
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#customizing-headings") 見出しのカスタマイズ
+    p.my-2
+      code .text-muted
+      |  (⇒ 
+      a(href="utilities-2.html#colors-color") 文字色
+      | )を用いた例
+    h3 Fancy display heading 
+      small.text-muted With faded secondary text
+    h4.mt-4.mb-1#typo-display-headings
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#display-headings") ディスプレイ用見出し
+    p.mt-1.mb-0
+      code .display-(1|2|3|4)
+      |  トップレベルのタイトル表示等に用いる(以下は 
+      code h1
+      |  の設定例)
+      each n in [1,2,3,4]
+        h1(class=`display-${n}`)= `h1.display-${n}`
+    p.mt-4.mb-2
+      code .display-(1|2|3|4)
+      |  も任意要素に設定可。次は 
+      code span
+      |  への設定例.
+    p.my-1
+      span.display-4 span.display-4
+    h4.mt-4.mb-1#typo-lead
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#lead") リード
+    p.mt-1
+      code .lead
+      |  を用いると通常よりも目立ちやすい表示に設定する。
+    p
+      code .lead
+      = ` なしの場合: ${lorem}`
+    p.lead
+      code .lead
+      = ` ありの場合: ${lorem}`
+    h4.mt-4.mb-2#typo-inline-text-elements
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#inline-text-elements") インラインテキスト用の要素
+    p.my-2
+      code mark
+      |  の例 ⇒ You can use the mark tag to 
+      mark highlight
+      |  text.
+    p.my-2
+      code del
+      |  の例 ⇒ 
+      del This line of text is meant to be treated as deleted text.
+    p.my-2
+      code s
+      |  の例 ⇒ 
+      s This line of text is meant to be treated as no longer accurate.
+    p.my-2
+      code ins
+      |  の例 ⇒ 
+      ins This line of text is meant to be treated as an addition to the document.
+    p.my-2
+      code u
+      |  の例 ⇒ 
+      u This line of text will render as underlined
+    p.my-2
+      code small
+      |  の例 ⇒ 
+      small This line of text is meant to be treated as fine print.
+    p.my-2
+      code strong
+      |  の例 ⇒ 
+      strong This line rendered as bold text.
+    p.my-2
+      code em
+      |  の例 ⇒ 
+      em This line rendered as italicized text.
+    h4.mt-4.mb-2#typo-abbreviations
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#abbreviations") 略語の表現
+    p.my-2
+      code abbr
+      |  は略語に対して用いる要素で、点線の下線付きで表示される。
+    ul.struct
+      li
+        code abbr
+        ul
+          li.att 属性 
+            code title="{説明文}"
+            |  で完全表現を記述(ホバーするとポップアップ表示)
+          li.cls クラス 
+            code .initialism
+            |  を用いると若干小さめに表示(イニシャル略語用)
+    p.my-0
+      code attr
+      |  の例
+    P.ml-3.my-1
+      abbr(title="attribute") attr
+    p.ml-3.my-1
+      abbr(title="HyperText Markup Language") HTML
+    p.mt-2.mb-1
+      code attr.initialism
+      |  の例(若干小さくなる)
+    p.ml-3.my-1
+      abbr.initialism(title="HyperText Markup Language") HTML
+    h4.mt-4.mb-1#typo-blockquotes
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#blockquotes") 引用
+    p.mt-1.mb-3
+      code blockquote
+      |  は引用に対して用いる要素。例を示す。
+    blockquote.blockquote
+      p.mb-1= lorem
+      footer.blockquote-footer Someone famous in
+        cite(title="Source Title") Source Title
+    +collapseButton("#blockquote-structure") 構造
+    ul.struct.my-3.collapse#blockquote-structure
+      li 引用 
+        code blockquote.blockquote
+        ul
+          li 文面 
+            code p.mb-1
+            ul
+              li.txt テキスト 
+                code Lorem ipsum ...
+          li 引用ソース 
+            code footer.blockquote-footer
+            ul
+              li.txt テキスト 
+                code Someone famous in
+                ul
+                  li 引用名 
+                    code cite 
+                    +attrBtn(".a1-1")
+                    ul
+                      li.att.collapse.a1-1 属性 
+                        code title="Source Title"
+                      li.txt テキスト 
+                        code Source Title
+    h4.mt-4.mb-1#typo-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#alignment") アラインメント
+    p.mt-1
+      code .text-(left|center|right)
+      |  を用いる(⇒ 
+      a(href="utilities-5.html#text") Textユーティリティ
+      |  )
+    p 上と同じ構造の例: 中央、右揃え(デフォルトは左揃え)
+    each al in ["center", "right"]
+      p.my-0
+        code= `.text-${al}`
+      blockquote(class=`blockquote text-${al}`)
+        p.mb-1= lorem
+        footer.blockquote-footer Someone famous in
+          cite(title="Source Title") Source Title
+    h4.mt-4.mb-1#typo-lists
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#lists") リスト(ul, ol)
+    h5.mt-3.mb-1#typo-list-unstyled
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#unstyled") デフォルト書式の解除
+    p.my-2 ブラウザ既定の 
+      code list-style
+      |  のCSS設定を 
+      code .list-unstyled
+      |  で解除して通常テキストと同じように表示できる(左インデント、先頭シンボルともなし)。ただし設定レベルのみ有効でネストの内側に適用されない。次の例では外側の 
+      code ul
+      |  にのみ 
+      code .list-unstyled
+      |  を設定しており、ネストしたリストの要素(4,5行目)はリストのデフォルト書式で表示される。
+    ul.list-unstyled.mt-3
+      li Lorem ipsum dolor sit amet
+      li Consectetur adipiscing elit
+      li Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      ul
+        li Ut enim ad minim veniam,
+        li Quis nostrud exercitation ullamco
+      li Laboris nisi ut aliquip ex ea commodo consequat.
+      li Duis aute irure dolor in
+    h5.mt-3.mb-1#typo-list-inline
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#inline") インライン表示
+    p.mb-2
+      code .list-inline
+      |  を用いて横一列に表示できる。
+    ul.list-inline.my-3
+      each line in ["Lorem ipsum", "Phasellus iaculis", "Nulla volutpat"]
+        li.list-inline-item= line
+    h4.mt-4.mb-1#typo-description-list-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#description-list-alignment") 説明リストのレイアウト
+    p.mt-2.mb-3 説明リスト用の要素( 
+      code dl
+      |  , 
+      code dt
+      |  , 
+      code dd
+      |  )は 
+      a(href="layout-1.html#grid") grid
+      |  を使ってレスポンシブにレイアウトできる。次の例は公式ドキュメントの例を少しだけ変えたもの(ブレークポイントをsmからmdに変更)。
+    ul.struct.mb-4
+      li 説明リスト 
+        code dl.row
+        ul
+          li 説明する用語 
+            code dt.col-md-3
+            |  (&ge;mdで左3/12に配置)
+            ul
+              li.cls テキストを切り詰める場合は 
+                code .text-truncate
+                |  を追加
+          li 詳細説明 
+            code dd.col-md-9
+            |  (&ge;mdで右9/12に配置)
+            li (オプション) ネストした説明リスト 
+              code dl.row
+              |  (内部は上記と同様)
+    dl.row
+      dt.col-md-3 説明リスト
+      dd.col-md-9 説明リストは用語の詳細説明に用いる
+      dt.col-md-3 Euismod
+      dd.col-md-9
+        p Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+        p Donec id elit non mi porta gravida at eget metus.</p>
+      dt.col-md-3 Malesuada porta
+      dd.col-md-9 Etiam porta sem malesuada magna mollis euismod.
+      dt.col-md-3.text-truncate
+        code .text-truncate
+        |  を用いた用語項目
+      dd.col-md-9 Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+      dt.col-md-3 ネスト
+      dd.col-md-9
+        dl.row
+          dt.col-md-4 ネストした説明リスト
+          dd.col-md-8 Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.
+
+    h2.mt-4#code
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/") コード
+    h4.mt-4.mb-1#code-inline-code
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#inline-code") インラインコード
+    p.mb-2
+      code code
+      |  を用いる
+    p.ml-4.mt-2 例 ⇒ 
+      code Math.sqrt(a*a + b*b)
+    h4.mt-4.mb-1#code-code-blocks
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#code-blocks") コードブロック
+    p.my-2
+      code pre
+      |  の内部で 
+      code code
+      |  を用いる
+      pre.p-2.border.bg-light
+        code
+          | function determinant(a, b, c, d) {
+          |   return a*d - b*c;
+          | }
+    ul
+      li
+        code pre.p-2.border.bg-light
+        ul
+          li
+            code code
+            ul
+              li
+                code function determinant(...
+    div.alert.alert-warning(role="alert") マークアップ文字( 
+      code= "<"
+      |  , 
+      code= ">"
+      |  など)は適宜文字実体参照( 
+      code= "&lt;"
+      |  , 
+      code= "&gt;"
+      |  , ... )に変換する必要がある。
+    h4.mt-4.mb-1#code-variables
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#variables") 変数
+    p
+      code var
+      |  を用いる(斜体で表示)
+    p.ml-4.mt-2 例 ⇒ 
+      var D
+      |  =
+      var b
+      sup 2
+      |  - 4
+      var a
+      var c
+    h4.mt-4.mb-1#code-user-input
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#user-input") ユーザ入力
+    p.mb-2
+      code kbd
+      |  を用いる
+    p.ml-4.mt-2 例 ⇒ 
+      kbd npm install --save-dev bootstrap
+    h4.mt-4.mb-1#code-sample-output
+      +extLink("https://getbootstrap.com/docs/4.1/content/code/#sample-output") サンプル出力
+    p.mb-2
+      code samp
+      |  を用いる
+    p.ml-4.mt-2 例 ⇒ 
+      samp webpack: Compiled successfully.
+
+    +breadcrumbLevel1("コンテント(1): Reboot/タイポグラフィ/コード")

@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンポーネント(5): フォーム</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンポーネント(5): <a href="#forms">フォーム</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-5.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/" target="_blank">フォーム</a>
+      </h2>
+      <h4 class="mt-3" id="overview"><a href="https://getbootstrap.com/docs/4.1/components/forms/#overview" target="_blank">概要</a>
+      </h4>
+      <h5 class="my-3" id="basic-example">基本例</h5>
+      <form class="mb-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email"><small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="exampleCheck1" type="checkbox">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-structure" aria-control="#basic-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct collapse mt-3" id="basic-example-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li><a href="#form-groups">フォームグループ </a> (1) <code>div.form-group</code>
+              <ul>
+                <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a1-1">属性 <code>for="exampleInputEmail1"</code></li>
+                    <li class="txt">テキスト <code>Email address</code></li>
+                  </ul>
+                </li>
+                <li><a href="#form-controls">フォームコントロール </a><code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a>
+                  <ul class="collapse a1-2">
+                    <li class="att">属性 <code>id="exampleInputEmail1"</code></li>
+                    <li class="att">属性 <code>type="email"</code></li>
+                    <li class="att">属性 <code>placeholder="Enter email"</code></li>
+                    <li class="att">アクセシビリティ属性 <code>aria-describedby="emailHelp"</code></li>
+                  </ul>
+                </li>
+                <li><a href="#help-text">ヘルプテキスト </a><code>small.form-text.text-muted</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a1-3">アクセシビリティ属性 <code>id="emailHelp"</code></li>
+                    <li class="txt">テキスト <code>We'll never share your email with anyone else.</code></li>
+                  </ul>
+                </li>
+              </ul><a href="#form-groups">フォームグループ </a> (2) <code>div.form-group</code>
+              <ul>
+                <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a1-4">属性 <code>for="exampleInputPassword1"</code></li>
+                    <li class="txt">テキスト <code>Password</code></li>
+                  </ul>
+                </li>
+                <li><a href="#form-controls">フォームコントロール </a><code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-5" aria-control=".a1-5" aria-expanded="false">属性</a>
+                  <ul class="collapse a1-5">
+                    <li class="att">属性 <code>id="exampleInputPassword1"</code></li>
+                    <li class="att">属性 <code>type="password"</code></li>
+                    <li class="att">属性 <code>placeholder="Password"</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#default-stacked">チェックボックス+ラベル </a><code>div.form-check</code>
+              <ul>
+                <li><a href="#checkboxes-and-radios">チェックボックス </a><code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-6" aria-control=".a1-6" aria-expanded="false">属性</a>
+                  <ul class="collapse a1-6">
+                    <li class="att">属性 <code>id="exampleCheck1"</code></li>
+                    <li class="att">属性 <code>type="checkbox"</code></li>
+                  </ul>
+                </li>
+                <li><a href="#checkboxes-and-radios">ラベル </a><code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-7" aria-control=".a1-7" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a1-7">属性 <code>for="exampleCheck1"</code></li>
+                    <li class="txt">テキスト <code>Check me out</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="components-2.html#buttons">ボタン </a><code>button.btn.btn-primary.mt-2</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-8" aria-control=".a1-8" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a1-8">属性 <code>type="submit"</code></li>
+                <li class="txt">テキスト <code>Submit</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="form-controls"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-controls" target="_blank">フォームコントロール</a>
+      </h4>
+      <p class="mt-3 mb-1">テキスト用コントロール( <code>input</code>, <code>select</code>, <code>textarea</code> )には <code>.form-control</code> を設定する(横幅100%で角丸ボーダー表示)。</p>
+      <h5 class="mt-4" id="form-controls-input"><code>input</code> +属性 <code>type="(text|email|password|number|...)"</code> の場合</h5>
+      <p class="mt-3 mb-1">ブラウザデフォルトの <code>input</code> +属性 <code>type="email"</code></p>
+      <input id="input-default" type="email" placeholder="name@example.com">
+      <p class="mt-3 mb-1"><code>input.form-control</code> +属性 <code>type="email"</code></p>
+      <input class="form-control" id="input-form-control" type="password" placeholder="name@example.com">
+      <h5 class="mt-4" id="form-controls-select"><code>select</code> の場合</h5>
+      <p class="mt-3 mb-1">ブラウザデフォルトの <code>select</code></p>
+      <select id="select-default">
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <p class="mt-3 mb-1"><code>select.form-control</code></p>
+      <select class="form-control" id="select-form-control">
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <p class="mt-3 mb-1">ブラウザデフォルトの <code>select</code> +属性 <code>multiple</code></p>
+      <select id="select-default-1" multiple>
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <p class="mt-3 mb-1"><code>select.form-control</code> +属性 <code>multiple</code></p>
+      <select class="form-control" id="select-form-control-1" multiple>
+        <option>Item 1</option>
+        <option>Item 2</option>
+        <option>Item 3</option>
+        <option>Item 4</option>
+        <option>Item 5</option>
+      </select>
+      <h5 class="mt-4" id="form-controls-textarea"><code>textarea</code> の場合</h5>
+      <p class="mt-3 mb-1">ブラウザデフォルトの <code>textarea</code></p>
+      <textarea id="textarea-default-1" rows="3"></textarea>
+      <p class="mt-3 mb-1"><code>textarea.form-control</code></p>
+      <textarea class="form-control" id="textarea-form-control-1" rows="3"></textarea>
+      <h5 class="mt-4" id="form-controls-file"><code>input</code> +属性 <code>type="file"</code> の場合</h5>
+      <p class="mt-3 mb-1">ファイル選択コントロール( <code>input</code> +属性 <code>type="file"</code> )には<code>.form-control-file</code> を設定する。</p>
+      <p class="mt-3 mb-1">ブラウザデフォルトの <code>input</code> +属性 <code>type="file"</code></p>
+      <input id="input-default-1" type="file">
+      <p class="mt-3 mb-1"><code>input.form-control-file</code> +属性 <code>type="file"</code> (⇒ <a href="#form-control-file-note">注1</a>)</p>
+      <input class="form-control-file" id="input-form-control-1" type="file">
+      <div class="alert alert-warning mt-3" id="form-control-file-note" role="alert"><strong>注1: </strong>(2018年4月時点の最新バージョンの場合)Chrome/Firefoxは設定しても効果なし。IE11/Edgeは(意図した通りの)横幅100%で配置する。<a href="#custom-forms">カスタムフォーム</a>の<a href="#file-browser">ファイルブラウザ</a>を使えばChrome/Firefoxでも横幅100%表示が可能。ただしファイル名表示の更新にJavaScriptが必要(<a href="#custom-file-code-example">コード例</a>を参照)。</div>
+      <h4 class="mt-4" id="sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#sizing" target="_blank">サイズ設定</a>
+      </h4>
+      <p class="my-2"><code>.form-control</code> に <code>.form-control-(sm|lg)</code> を追加する。</p>
+      <h5 class="mt-3 mb-2" id="sizing-input"><code>input</code> の場合</h5>
+      <p class="mt-2 mb-1"><code>input.form-control.form-control-sm</code></p>
+      <input class="form-control form-control-sm mt-1 mb-2" type="text" placeholder="Small input">
+      <p class="mt-2 mb-1"><code>input.form-control</code></p>
+      <input class="form-control mt-1 mb-2" type="text" placeholder="Default input">
+      <p class="mt-2 mb-1"><code>input.form-control.form-control-lg</code></p>
+      <input class="form-control form-control-lg mt-1 mb-2" type="text" placeholder="Large input">
+      <h5 class="mt-3 mb-2" id="sizing-select"><code>select</code> の場合</h5>
+      <p class="mt-2 mb-1"><code>select.form-control.form-control-sm</code></p>
+      <select class="form-control form-control-sm mt-1 mb-2">
+        <option>Small select (1)</option>
+        <option>Small select (2)</option>
+        <option>Small select (3)</option>
+        <option>Small select (4)</option>
+        <option>Small select (5)</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.form-control</code></p>
+      <select class="form-control mt-1 mb-2">
+        <option>Default select (1)</option>
+        <option>Default select (2)</option>
+        <option>Default select (3)</option>
+        <option>Default select (4)</option>
+        <option>Default select (5)</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.form-control.form-control-lg</code></p>
+      <select class="form-control form-control-lg mt-1 mb-2">
+        <option>Large select (1)</option>
+        <option>Large select (2)</option>
+        <option>Large select (3)</option>
+        <option>Large select (4)</option>
+        <option>Large select (5)</option>
+      </select>
+      <h4 class="mt-4" id="range-inputs"><a href="https://getbootstrap.com/docs/4.1/components/forms/#range-inputs" target="_blank">レンジ入力</a>
+      </h4>
+      <p class="mt-3 mb-1">ブラウザデフォルトの <code>input</code> +属性 <code>type="range"</code></p>
+      <input id="defaultRange" type="range">
+      <p class="mt-3 mb-1"><code>input.form-control-range</code> +attribute <code>type="range"</code> (親要素幅にフィット)</p>
+      <input class="form-control-range" id="formControlRange" type="range">
+      <h4 class="mt-4" id="readonly"><a href="https://getbootstrap.com/docs/4.1/components/forms/#readonly" target="_blank"><code>readonly</code> 属性</a>
+      </h4>
+      <p class="my-2">コントロールに属性 <code>readonly</code> を設定すると値を変更できなくなる(選択はできるためコピーは可能)。</p>
+      <h6 class="mt-2 mb-1" id="example-readonly">例: <code>input.form-control</code> +属性 <code>type="text" value="Read-only value" readonly</code></h6>
+      <div class="form-group">
+        <input class="form-control" type="text" value="Read-only value" readonly>
+      </div>
+      <h5 class="mt-3" id="readonly-plain-text"><a href="https://getbootstrap.com/docs/4.1/components/forms/#readonly-plain-text" target="_blank">通常テキスト表示</a>
+      </h5>
+      <p class="mt-2 mb-3">コントロールに <code>.form-control-plaintext</code> を設定すると枠を除去し通常テキストと同じように表示する。</p>
+      <h6 class="mb-1" id="example-readonly-plain-text">表示例(次行): <code>input.form-control-plaintext</code> +属性 <code>type="text" value="Read-only value" readonly</code></h6>
+      <form class="mt-1">
+        <div class="form-group">
+          <input class="form-control-plaintext" type="text" value="Read-only value" readonly>
+        </div>
+      </form>
+      <h5 class="mt-4 mb-3" id="readonly-plain-text-example-1">応用例1</h5>
+      <form class="mb-4">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="staticEmail">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control-plaintext" id="staticEmail" type="text" readonly value="email@example.com">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputPassword">Password</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputPassword" type="password" placeholder="Password">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#readonly-plain-text-example-1-structure" aria-control="#readonly-plain-text-example-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="readonly-plain-text-example-1-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>レイアウトは水平フォームの例と同じ ⇒ <a href="#horizontal-form">水平フォーム</a></li>
+            <li>右上(<strong>email@example.com</strong>) <code>input.form-control-plaintext</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
+              <ul class="collapse a2-1">
+                <li class="att">属性 <code>type="text"</code></li>
+                <li class="att">属性 <code>readonly</code></li>
+                <li class="att">属性 <code>value="email@example.com"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="readonly-plain-text-example-2">応用例2</h5>
+      <form class="form-inline mb-4">
+        <div class="form-group my-1">
+          <label class="sr-only" for="staticEmail2">Email</label>
+          <input class="form-control-plaintext" id="staticEmail2" type="text" readonly value="email@example.com">
+        </div>
+        <div class="form-group mx-sm-3 my-1">
+          <label class="sr-only" for="inputPassword2">Password</label>
+          <input class="form-control" id="inputPassword2" type="password" placeholder="Password">
+        </div>
+        <button class="btn btn-primary my-1" type="submit">Confirm identity</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#readonly-plain-text-example-2-structure" aria-control="#readonly-plain-text-example-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="readonly-plain-text-example-2-structure">
+        <li>インラインフォーム <code>form.form-inline</code>
+          <ul>
+            <li>内部はインラインレイアウト ⇒ <a href="#inline-form-example">インラインフォーム - 基本例</a></li>
+            <li>左上(<strong>email@example.com</strong>) <code>input.form-control-plaintext</code>
+              <ul>
+                <li class="att">属性は <a href="#readonly-plain-text-example-1">応用例1</a> と同じ</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="checkboxes-and-radios"><a href="https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios" target="_blank">チェックボックス/ラジオ(ボタン)</a>
+      </h4><a class="btn btn-outline-info" data-toggle="collapse" href="#checkboxes-and-radios-summary" aria-control="#checkboxes-and-radios-summary" aria-expanded="false">まとめ</a>
+      <ul class="struct mt-2 collapse" id="checkboxes-and-radios-summary">
+        <li>チェックボックス/ラジオ(ボタン)とラベルの組は <code>div.form-check</code> の内部に配置 <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="cls collapse a3-1">デフォルトは上下配置、横に並べる場合は <code>.form-check-inline</code> を追加</li>
+            <li>チェックボックス/ラジオ(ボタン) <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">属性</a>
+              <ul class="collapse a3-2">
+                <li class="att">属性 <code>type="checkbox"</code> または <code>"radio"</code></li>
+                <li class="att">属性 <code>id="{コントロールID}"</code></li>
+                <li class="att">(初期状態が「選択」の場合)属性 <code>checked</code></li>
+                <li class="cls">ラベルなしの場合 <code>.position-static</code> を追加</li>
+              </ul>
+            </li>
+            <li>対応するラベルは <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-3" aria-control=".a3-3" aria-expanded="false">属性</a>
+              <ul class="collapse a3-3">
+                <li class="att">属性 <code>for="{コントロールID}"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="default-stacked"><a href="https://getbootstrap.com/docs/4.1/components/forms/#default-stacked" target="_blank">上下配置(デフォルト)</a>
+      </h5>
+      <h6 class="mt-3 mb-2" id="default-stacked-checks">チェックボックスの例</h6>
+      <div class="form-check">
+        <input class="form-check-input" id="defaultCheck1" type="checkbox" value="" checked>
+        <label class="form-check-label" for="defaultCheck1">Default checkbox 1</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" id="defaultCheck2" type="checkbox" value="">
+        <label class="form-check-label" for="defaultCheck1">Default checkbox 2</label>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" id="defaultCheck3" type="checkbox" value="" disabled>
+        <label class="form-check-label" for="defaultCheck2">Disabled checkbox</label>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#default-stacked-checkboxes-structure" aria-control="#default-stacked-checkboxes-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="default-stacked-checkboxes-structure">
+        <li><code>div.form-check</code> (&times;3)
+          <ul>
+            <li>チェックボックス <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">属性</a>
+              <ul class="collapse a4-1">
+                <li class="att">属性 <code>id="defaultCheck(1|2|3)"</code></li>
+                <li class="att">属性 <code>type="checkbox"</code></li>
+                <li class="att">属性 <code>value="..."</code></li>
+                <li class="att">属性 <code>checked</code> (先頭項目のみ)</li>
+                <li class="att">属性 <code>disabled</code> (最終項目のみ)</li>
+              </ul>
+            </li>
+            <li>ラベル <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-2" aria-control=".a4-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a4-2">属性 <code>for="defaultCheck(1|2|3)"</code></li>
+                <li class="txt">テキスト <code>Default checkbox (1|2)</code> または <code>Disabled checkbox</code> (自動的に灰色で表示)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3 mb-2" id="default-stacked-radios">ラジオ(ボタン)の例</h6>
+      <div class="form-check">
+        <input class="form-check-input" id="exampleRadios1" type="radio" name="exampleRadios" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">Default radio 1</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" id="exampleRadios2" type="radio" name="exampleRadios" value="option2">
+        <label class="form-check-label" for="exampleRadios2">Default radio 2</label>
+      </div>
+      <div class="form-check disabled mb-3">
+        <input class="form-check-input" id="exampleRadios3" type="radio" name="exampleRadios" value="option3" disabled>
+        <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#default-stacked-radios-structure" aria-control="#default-stacked-radios-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="default-stacked-radios-structure">
+        <li><code>div.form-check</code> (&times;3)
+          <ul>
+            <li>ラジオ(ボタン) <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">属性</a>
+              <ul class="collapse a5-1">
+                <li class="att">属性 <code>id="exampleRadios(1|2|3)"</code></li>
+                <li class="att">属性 <code>type="radio"</code></li>
+                <li class="att">属性 <code>name="exampleRadios"</code></li>
+                <li class="att">属性 <code>value="..."</code></li>
+                <li class="att">属性 <code>checked</code> (先頭項目のみ)</li>
+                <li class="att">属性 <code>disabled</code> (最終項目のみ)</li>
+              </ul>
+            </li>
+            <li>ラベル <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-2" aria-control=".a5-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a5-2">属性 <code>for="exampleRadios(1|2|3)"</code></li>
+                <li class="txt">テキスト <code>Default radio (1|2)</code> または <code>Disabled radio</code> (自動的に灰色で表示)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="inline"><a href="https://getbootstrap.com/docs/4.1/components/forms/#inline" target="_blank">インライン(横並び)</a>
+      </h5>
+      <p class="my-2"><code>div.form-check</code> に <code>.form-check-inline</code> を追加</p>
+      <p class="my-2">インライン配置のチェックボックス</p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox1" type="checkbox" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox2" type="checkbox" value="option2">
+        <label class="form-check-label" for="inlineCheckbox2">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox3" type="checkbox" value="option3" disabled>
+        <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+      </div>
+      <p class="mt-3 mb-2">インライン配置のラジオボタン</p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio1" type="radio" name="inlineRadioOptions" value="option1" checked>
+        <label class="form-check-label" for="inlineRadio1">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio2" type="radio" name="inlineRadioOptions" value="option2">
+        <label class="form-check-label" for="inlineRadio2">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio3" type="radio" name="inlineRadioOptions" value="option3" disabled>
+        <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-structure" aria-control="#inline-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="inline-structure">
+        <li><code>div.form-check.form-check-inline</code> (&times;3) 違いはここだけ
+          <ul>
+            <li>内部にチェックボックス/ラジオボタンとラベル(上下配値の場合と同様)</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="without-labels"><a href="https://getbootstrap.com/docs/4.1/components/forms/#without-labels" target="_blank">ラベルなし</a>
+      </h5>
+      <p class="my-2">ラベルなしの場合は <code>input</code> に <code>.position-static</code> を追加</p>
+      <div class="form-check">
+        <input class="form-check-input position-static" id="blankCheckbox" type="checkbox" value="option1" aria-label="Checkbox without label">
+      </div>
+      <div class="form-check">
+        <input class="form-check-input position-static" id="blankRadio1" type="radio" name="blankRadio" value="option1" aria-label="Radio button without label" checked>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input position-static" id="blankRadio2" type="radio" name="blankRadio" value="option2" aria-label="Radio button without label">
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input position-static" id="blankRadio3" type="radio" name="blankRadio" value="option3" aria-label="Radio button without label">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#without-labels-structure" aria-control="#without-labels-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="without-labels-structure">
+        <li><code>div.form-check</code>
+          <ul>
+            <li><code>input.form-check-input.position-static</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">属性</a>
+              <ul class="collapse a6-1">
+                <li class="att">属性 <code>id="blankCheckbox"</code></li>
+                <li class="att">属性 <code>type="checkbox"</code></li>
+                <li class="att">属性 <code>value="..."</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-label="Checkbox without label"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><code>div.form-check</code> (&times;3)
+          <ul>
+            <li><code>input.form-check-input.position-static</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">属性</a>
+              <ul class="collapse a6-2">
+                <li class="att">属性 <code>id="blankRadio(1|2|3)"</code></li>
+                <li class="att">属性 <code>type="radio"</code></li>
+                <li class="att">属性 <code>value="..."</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-label="Radio button without label"</code></li>
+                <li class="att">属性(先頭のみ) <code>checked</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="layout"><a href="https://getbootstrap.com/docs/4.1/components/forms/#layout" target="_blank">レイアウト</a>
+      </h4>
+      <h5 class="mt-3" id="form-groups"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-groups" target="_blank">フォームグループ</a>
+      </h5>
+      <p class="my-2">コントロール要素( <code>input</code> , <code>select</code> , <code>textarea</code> , etc.)とそれに対応するラベル <code>label</code> は <code>div.form-group</code> の中に配置する。</p>
+      <h6 class="mt-3" id="form-groups-example">例: 構造表示用に <code>form</code> に灰色, <code>div.form-group</code> にオレンジのボーダー追加</h6>
+      <form class="border mb-4" style="padding:1px;">
+        <div class="form-group border border-warning" style="padding:1px;">
+          <label for="formGroupExampleInput">Example label</label>
+          <input class="form-control" type="text" id="formGroupExampleInput" placeholder="Example input">
+        </div>
+        <div class="form-group border border-warning" style="padding:1px;">
+          <label for="formGroupExampleInput2">Another label</label>
+          <input class="form-control" type="text" id="formGroupExampleInput2" placeholder="Another input">
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-groups-example-structure" aria-control="#form-groups-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="form-groups-example-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>フォームグループ(通常複数) <code>div.form-group</code>
+              <ul>
+                <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-1" aria-control=".a7-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a7-1">属性 <code>for="{コントロールID}"</code></li>
+                    <li class="txt">テキスト(例) <code>Input</code></li>
+                  </ul>
+                </li>
+                <li>コントロール <code>(input|select|textarea).form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-2" aria-control=".a7-2" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a7-2">属性 <code>id="{コントロールID}"</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="form-grid"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-grid" target="_blank">フォームグリッド</a>
+      </h5>
+      <p class="mt-2 mb-3"><a href="layout-1.html#grid">グリッド</a> を利用してより高度でレスポンシブなフォームレイアウトを作成できる。次の例は単純に <code>div.col</code>で左右2分割した場合(間が空く)。</p>
+      <form class="mb-4">
+        <div class="row">
+          <div class="col">
+            <input class="form-control" type="text" placeholder="First name">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="Last name">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-grid-structure" aria-control="#form-grid-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="form-grid-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>行(通常設定) <code>div.row</code>
+              <ul>
+                <li>列 <code>div.col</code> (以下&times;2)
+                  <ul>
+                    <li><code>input.form-control</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="form-row"><a href="https://getbootstrap.com/docs/4.1/components/forms/#form-row" target="_blank">フォーム用グリッド行</a>
+      </h5>
+      <p class="my-2 mb-3">グリッドの行を <code>div.form-row</code> に変更するとフォーム用の短めの間隔に設定する。</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col">
+            <input class="form-control" type="text" placeholder="First name">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="Last name">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-row-structure" aria-control="#form-row-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="form-row-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>行(フォーム用設定) <code>div.form-row</code>
+              <ul>
+                <li>列 <code>div.col</code> (以下 &times;2)
+                  <ul>
+                    <li><code>input.form-control</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="form-grid-example">応用例</h5>
+      <p class="mt-2 mb-4">公式ドキュメントより(構造表示のため <code>.form-group</code> にオレンジのボーダーを追加)。</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="form-group col-md-6 border border-warning" style="padding:1px">
+            <label for="inputEmail4">Email</label>
+            <input class="form-control" id="inputEmail4" type="email" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6 border border-warning" style="padding.1px">
+            <label for="inputPassword4">Password</label>
+            <input class="form-control" id="inputPassword4" type="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group border border-warning" style="padding:1px">
+          <label for="inputAddress">Address</label>
+          <input class="form-control" id="inputAddress" type="text" placeholder="1234 Main St">
+        </div>
+        <div class="form-group border border-warning" style="padding:1px">
+          <label for="inputAddress2">Address 2</label>
+          <input class="form-control" id="inputAddress2" type="text" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 border border-warning" style="padding:1px">
+            <label for="inputCity">City</label>
+            <input class="form-control" id="inputCity" type="text">
+          </div>
+          <div class="form-group col-md-4 border border-warning" style="padding:1px">
+            <label for="inputState">State</label>
+            <select class="form-control" id="inputState">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2 border border-warning" style="paddingL1px">
+            <label for="inputZip">Zip</label>
+            <input class="form-control" id="inputZip" type="text">
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="gridCheck" type="checkbox">
+          <label class="form-check-label" for="gridCheck">Check me out</label>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">Sign in</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#form-grid-example-structure" aria-control="#form-grid-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="form-grid-example-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>1行目(Email/Password) <code>div.form-row</code>
+              <ul>
+                <li><code>div.form-group.col-md-6</code> : md以上で(左側)6/12, 未満で上下配置
+                  <ul>
+                    <li><code>label</code><strong> Email</strong> と <code>input</code><strong> Email</strong></li>
+                  </ul>
+                </li>
+                <li><code>div.form-group.col-md-6</code> : md以上で(右側)6/12, 未満で上下配置
+                  <ul>
+                    <li><code>label</code><strong> Password</strong> と <code>input</code><strong> Password</strong></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>2行目(Address), 3段目(Address 2)は <a href="#basic-example">基本例</a> と同様</li>
+            <li>4段目(City/State/Zip) <code>div.form-row</code>
+              <ul>
+                <li><code>div.form-group.col-md-6</code> : md以上で(左側)6/12, 未満で上下配置
+                  <ul>
+                    <li><code>label</code><strong> City</strong> と <code>input</code></li>
+                  </ul>
+                </li>
+                <li><code>div.form-group.col-md-4</code> : md以上で(中央右)4/12, 未満で上下配置
+                  <ul>
+                    <li>ラベル <code>label</code><strong> State</strong> と <code>select</code><strong> Choose...</strong></li>
+                  </ul>
+                </li>
+                <li><code>div.form-group.col-md-2</code> : md以上で(右)2/12, 未満で上下配置
+                  <ul>
+                    <li>ラベル <code>label</code><strong> Zip</strong> と <code>input</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>5段目(Check me out)、6段目(Sign in)は <a href="#basic-example">基本例</a> と同様</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="horizontal-form"><a href="https://getbootstrap.com/docs/4.1/components/forms/#horizontal-form" target="_blank">水平フォーム</a>
+      </h4>
+      <p class="mt-2 mb-3">ラベルとコントロールを水平配置するレイアウト。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#horizontal-form-summary" aria-control="#horizontal-form-summary" aria-expanded="false">まとめ</a>
+      <ul class="struct mt-2 mb-3 collapse" id="horizontal-form-summary">
+        <li><code>div.form-group</code> に <code>.row</code> を追加 ⇒ <code>div.form-group.row</code></li>
+        <li><code>label</code> に <code>.col-form-label</code> を追加 ⇒ <code>label.col-form-label</code></li>
+        <li>レスポンシブ応答に <code>.col-{breakpoint}-{width}</code> を用いる</li>
+      </ul>
+      <form class="mt-3 mb-4">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputEmail3" type="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputPassword3">Password</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputPassword3" type="password" placeholder="Password">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" id="gridRadios1" type="radio" name="gridRadios" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">First radio</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="gridRadios2" type="radio" name="gridRadios" value="option2">
+                <label class="form-check-label" for="gridRadios2">Second radio</label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" id="gridRadios3" type="radio" name="gridRadios" value="option3" disabled>
+                <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-2">Checkbox</div>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" id="gridCheck1" type="checkbox">
+              <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#horizontal-form-structure" aria-control="#horizontal-form-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="horizontal-form-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>1行目( <a href="#form-controls">フォームコントロール</a>の例) <code>div.form-group.row</code>
+              <ul>
+                <li>ラベル(列) <code>label.col-form-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-1" aria-control=".a8-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a8-1">レイアウト(sm以上で2/12、未満は幅100%) <code>.col-sm-2</code></li>
+                    <li class="att collapse a8-1">属性 <code>for="inputEmail3"</code></li>
+                    <li class="txt">テキスト <code>Email</code></li>
+                  </ul>
+                </li>
+                <li>列(sm以上で10/12) <code>div.col-sm-10</code>
+                  <ul>
+                    <li>コントロール <code>input.form-control</code> : 属性は今までと同様(略)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>2行目(Password)は1行目と同様(略)</li>
+            <li>3行目( <a href="#default-stacked-radios">ラジオボタン</a>の例) <code>fieldset.form-group</code>
+              <ul>
+                <li>行 <code>div.row</code>
+                  <ul>
+                    <li>タイトル(列) <code>legend.col-form-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-2" aria-control=".a8-2" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="cls collapse a8-2">レイアウト(sm以上で2/12) <code>.col-sm-2</code></li>
+                        <li class="cls collapse a8-2">パディング調整 <code>.pt-0</code></li>
+                        <li class="txt">テキスト <code>Radios</code></li>
+                      </ul>
+                    </li>
+                    <li>列(sm以上で10/12) <code>div.col-sm-10</code>
+                      <ul>
+                        <li>内部は <a href="#default-stacked-radios">上下配置 - ラジオ(ボタン)</a> と同様</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>4行目( <a href="#default-stacked-checks">チェックボックス</a>の例) <code>div.form-group.row</code>
+              <ul>
+                <li>タイトル(sm以上で2/12の列) <code>div.col-sm-2</code>
+                  <ul>
+                    <li class="txt">テキスト <code>Checkbox</code></li>
+                  </ul>
+                  <li>列(sm以上で10/12) <code>div.col-sm-10</code>
+                    <ul>
+                      <li>内部は <a href="#default-stacked-checks">上下配置 - チェックボックス</a> と同様</li>
+                    </ul>
+                  </li>
+                </li>
+              </ul>
+            </li>
+            <li>ボタン( <strong>Sign in</strong> )は <a href="#basic-example">基本例</a> と同様</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="horizontal-form-label-sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#horizontal-form-label-sizing" target="_blank">水平フォームのラベルサイズ</a>
+      </h5>
+      <p class="my-2">左が <code>(label|legend).col-form-label</code> 、右が <a href="#form-controls">フォームコントロール </a><code>.form-control</code> の場合</p>
+      <ul>
+        <li><code>(label|legend).col-form-control</code> に <code>.col-form-label-(sm|lg)</code> を追加</li>
+        <li>コントロール側も同サイズの <code>.form-control-(sm|lg)</code> を追加(⇒ <a href="#sizing">サイズ設定</a> )</li>
+      </ul>
+      <h5 class="mt-4" id="horizontal-form-label-sizing-example">設定例</h5>
+      <p class="my-2">左 <code>label.col-form-label.col-form-label-sm</code> , 右 <code>input.form-control.form-control-sm</code></p>
+      <form class="mb-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm" for="size-demo-sm">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control form-control-sm" type="email" id="size-demo-sm" placeholder="Enter email">
+          </div>
+        </div>
+      </form>
+      <p class="my-2">左 <code>label.col-form-label</code> , 右 <code>input.form-control</code></p>
+      <form class="mb-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="size-demo-default">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="email" id="size-demo-default" placeholder="Enter email">
+          </div>
+        </div>
+      </form>
+      <p class="my-2">左 <code>label.col-form-label.col-form-label-lg</code> , 右 <code>input.form-control.form-control-lg</code></p>
+      <form class="mb-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-lg" for="size-demo-lg">Email</label>
+          <div class="col-sm-10">
+            <input class="form-control form-control-lg" type="email" id="size-demo-lg" placeholder="Enter email">
+          </div>
+        </div>
+      </form>
+      <h5 class="mt-4" id="column-sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#column-sizing" target="_blank">列の幅設定</a>
+      </h5>
+      <p class="mt-2 mb-3"><a href="layout-1.html#grid">グリッド</a> を用いた列幅の設定例</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col-7">
+            <input class="form-control" type="text" placeholder="City">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="State">
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" placeholder="Zip">
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#column-sizing-structure" aria-control="#column-sizing-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="column-sizing-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>フォーム行 <code>div.form-row</code>
+              <ul>
+                <li><code>div.col-7</code> (7/12), 内部は<a href="#form-controls">フォームコントロール</a> (以下同様)</li>
+                <li><code>div.col</code> (残り5/12を2等分 ⇒ 5/24)</li>
+                <li><code>div.col</code> (残り5/12を2等分 ⇒ 5/24)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="auto-sizing"><a href="https://getbootstrap.com/docs/4.1/components/forms/#auto-sizing" target="_blank">自動幅設定</a>
+      </h5>
+      <p class="mt-2 mb-3">列を <code>.col</code> から <code>.col(-sm|-md|-lg|-xl)?-auto</code> に変更すると幅をブラウザデフォルト値(内部コンテンツに対して可変)に設定する(⇒ <a href="layout-1.html#variable-width-content">グリッド - 幅の自動設定</a>)。これを利用してフォーム要素を横(インライン)に並べて配置できる。</p>
+      <div class="alert alert-info" role="alert">次の<a href="#inline-forms">インラインフォーム</a>もこれと同様の横配置レイアウト用設定。インラインフォームはレスポンシブ応答がプリセット設定されており、sm(576px)未満で横から縦に組み換わる。一方こちらはレスポンシブ応答を設定する場合は手動で個別に行う。</div>
+      <h5 class="mt-4 mb-3" id="auto-sizing-example-1">例1</h5>
+      <form class="mb-4">
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label class="sr-only" for="inlineFormInput">Name</label>
+            <input class="form-control" id="inlineFormInput" type="text" placeholder="Jane Doe">
+          </div>
+          <div class="col-auto my-1">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input class="form-control" id="inlineFormInputGroup" type="text" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <div class="form-check">
+              <input class="form-check-input" id="autoSizingCheck" type="checkbox">
+              <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#auto-sizing-example-1-structure" aria-control="#auto-sizing-example-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="auto-sizing-example-1-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>フォーム行(中央揃え) <code>div.form-row.align-items-center</code>
+              <ul>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-1" aria-control=".a9-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a9-1">上下マージン確保 <code>.my-1</code></li>
+                    <li>アクセシビリティ用ラベル(非表示) <code>label.sr-only</code> (⇒ <a href="#auto-sizing-example-1-note">注2</a>) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-2" aria-control=".a9-2" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a9-2">属性 <code>for="inlineFormInput"</code></li>
+                        <li class="txt">テキスト <code>Name</code></li>
+                      </ul>
+                    </li>
+                    <li>フォームコントロール <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-3" aria-control=".a9-3" aria-expanded="false">属性</a>
+                      <ul class="collapse a9-3">
+                        <li class="att">属性 <code>id="inlineFormInput"</code></li>
+                        <li class="att">属性 <code>type="text"</code></li>
+                        <li class="att">属性 <code>placeholder="Jane Doe"</code> (可視ユーザ用のラベルの役目を持つ)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-4" aria-control=".a9-4" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a9-4">上下マージン確保 <code>.my-1</code></li>
+                    <li>アクセシビリティ用ラベル(非表示) <code>label.sr-only</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-5" aria-control=".a9-5" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a9-5">属性 <code>for="inlineFormInputGroup"</code></li>
+                        <li class="txt">テキスト <code>Username</code></li>
+                      </ul>
+                    </li>
+                    <li><a href="components-6.html#input-group">インプットグループ</a> (Username) <code>div.input-group</code>
+                      <ul>
+                        <li>内部設定は <a href="components-6.html#basic-example-prepend">インプットグループ基本例 - 前置の場合</a> を参照</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-6" aria-control=".a9-6" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a9-6">上下マージン確保 <code>.my-1</code></li>
+                    <li><a href="#checkboxes-and-radios">チェックボックス </a><code>div.form-check</code>
+                      <ul>
+                        <li>コントロール <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-7" aria-control=".a9-7" aria-expanded="false">属性</a>
+                          <ul class="collapse a9-7">
+                            <li class="att">属性 <code>id="autoSizingCheck"</code></li>
+                            <li class="att">属性 <code>type="checkbox"</code></li>
+                          </ul>
+                        </li>
+                        <li>ラベル <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-8" aria-control=".a9-8" aria-expanded="false">属性</a>
+                          <ul>
+                            <li class="att collapse a9-8">属性 <code>for="autoSizingCheck"</code></li>
+                            <li class="txt">テキスト <code>Remember me</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-9" aria-control=".a9-9" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a9-9">上下マージン確保 <code>.my-1</code></li>
+                    <li>ボタン <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-10" aria-control=".a9-10" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a9-10">属性 <code>type="submit"</code></li>
+                        <li class="txt">テキスト <code>Submit</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3">次節の<a href="#inline-form-example">インラインフォーム - 基本例</a>とほぼ同じだが幅smブレークポイント未満(&lt;576px)の場合が異なる。インラインフォームは <code>auto</code> を解除して横幅100%の縦配置に組み替えるが、こちらは常に <code>auto</code> が有効で幅に応じて適宜要素を折り返す。</p>
+      <div class="alert alert-warning" id="auto-sizing-example-1-note" role="alert"> <strong>注2: </strong>インライン配列ではよく本例のように <code>placeholder</code> 属性を使いデフォルト値を表示してラベル代わりにする。その場合可視ユーザにラベルは不要になるが、スクリーンリーダ利用者のために <code>label</code>を設定する。これは可視ユーザには不要なので<code>.sr-only</code> (⇒ <a href="utilities-4.html#screenreaders">スクリーンリーダ</a>)を設定して見えないようにする。</div>
+      <h5 class="mt-4 mb-3" id="auto-sizing-example-2">例2</h5>
+      <p class="mt-2 mb-3">レスポンシブ動作の設定例(公式ドキュメントの例を少し改良)。</p>
+      <form class="mb-4">
+        <div class="form-row align-items-center">
+          <div class="col-sm-6 col-md-4 col-lg-3 my-1">
+            <label class="sr-only" for="inlineFormInputName">Name</label>
+            <input class="form-control" id="inlineFormInputName" type="text" placeholder="Jane Doe">
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 my-1">
+            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input class="form-control" id="inlineFormInputGroupUsername" type="text" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <div class="form-check">
+              <input class="form-check-input" id="autoSizingCheck2" type="checkbox">
+              <label class="form-check-label" for="autoSizingCheck2">Remember me</label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#auto-sizing-example-2-structure" aria-control="#auto-sizing-example-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="auto-sizing-example-2-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>フォーム行(中央揃え) <code>div.form-row.align-items-center</code>
+              <ul>
+                <li><code>div.col-sm-6.col-md-4.col-lg-3.my-1</code> +内部(隠れラベルとコントロール)</li>
+                <li><code>div.col-sm-6.col-md-4.col-lg-3.my-1</code> +内部(インプットグループ)</li>
+                <li><code>div.col-auto</code> +内部(チェックボックス)</li>
+                <li><code>div.col-auto</code> +内部(ボタン)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-3"><a href="#auto-sizing-example-1">例1</a>と構成は同じだが、幅変更に対して入力コントロールの幅が常に一定範囲を確保するようにレスポンシブ動作を個別調整している(インラインフォームはsmブレークポイントでの切り替えしかできないので、自分で細かく設定したい場合はこの方法を用いるとよい)。</p>
+      <div class="alert alert-info" role="alert">元の設定は <code>div.col-sm-3(.my-1)</code> だが、実際に動作確認するとsmとmdの場合に幅不足でレイアウトが乱れる。そこで各ブレークポイント毎に細かく調整してできたもの。</div>
+      <h5 class="mt-4 mb-3" id="auto-sizing-example-3">例3</h5>
+      <p class="my-3"><a href="#custom-forms">カスタムフォームコントロール</a> を用いた例。</p>
+      <form class="mb-4">
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="width: auto;">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col-auto my-1">
+            <div class="custom-control custom-checkbox mr-sm-2">
+              <input class="custom-control-input" id="customControlAutosizing" type="checkbox">
+              <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#auto-sizing-example-3-structure" aria-control="#auto-sizing-example-3-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="auto-sizing-example-3-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li>フォーム行(中央揃え) <code>div.form-row.align-items-center</code>
+              <ul>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-1" aria-control=".a10-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a10-1">上下マージン確保 <code>my-1</code></li>
+                    <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-2" aria-control=".a10-2" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="cls collapse a10-2">横マージン調整 <code>.mr-sm-2</code></li>
+                        <li class="att collapse a10-2">属性 <code>for="inlineFormCustomSelect"</code></li>
+                        <li class="txt">テキスト <code>Preference</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-3" aria-control=".a10-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a10-3">上下マージン確保 <code>my-1</code></li>
+                    <li><a href="#select-menu">カスタムselect </a><code>select.custom-select</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-4" aria-control=".a10-4" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="cls collapse a10-4">横マージン調整 <code>.mr-sm-2</code></li>
+                        <li class="att collapse a10-4">属性 <code>id="inlineFormCustomSelect"</code></li>
+                        <li class="att collapse a10-4">カスタムスタイル <code>style="width: auto;"</code> (⇒ <a href="#auto-sizing-example-3-note">注3</a> )</li>
+                        <li>アイテム (&times;4) <code>option ...</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-5" aria-control=".a10-5" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a10-5">上下マージン確保 <code>my-1</code></li>
+                    <li><a href="#checkboxes">カスタムチェックボックス </a><code>div.custom-control.custom-checkbox</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-6" aria-control=".a10-6" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="cls collapse a10-6">横マージン調整 <code>.mr-sm-2</code></li>
+                        <li>コントロール <code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-7" aria-control=".a10-7" aria-expanded="false">属性</a>
+                          <ul class="collapse a10-7">
+                            <li class="att">属性 <code>id="customControlAutosizing"</code></li>
+                            <li class="att">属性 <code>type="checkbox"</code></li>
+                          </ul>
+                        </li>
+                        <li>ラベル <code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-8" aria-control=".a10-8" aria-expanded="false">属性</a>
+                          <ul>
+                            <li class="att collapse a10-8">属性 <code>for="customControlAutosizing"</code></li>
+                            <li class="txt">テキスト <code>Remember my preference</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>列(自動幅) <code>div.col-auto</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-9" aria-control=".a10-9" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a10-9">上下マージン確保 <code>my-1</code></li>
+                    <li>ボタン <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a10-10" aria-control=".a10-10" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a10-10">属性 <code>type="submit"</code></li>
+                        <li class="txt">テキスト <code>Submit</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" id="auto-sizing-example-3-note" role="alert"><strong>注3: </strong>公式ドキュメントの例はカスタムセレクトの幅設定を変更していないため、部分的に幅が <code>width: 100%;</code> になり横一列にならない。そこで本ページではカスタムスタイルを追加して横配置になるよう修正している。</div>
+      <h4 class="mt-4 mb-3" id="inline-forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/#inline-forms" target="_blank">インラインフォーム</a>
+      </h4>
+      <p class="my-2"><code>(form).form-inline</code> は構成要素を横に並べるレイアウト設定で、内部要素の設定を次のように変更する。</p>
+      <ul class="my-2">
+        <li>要素(コントロール等)の配置を( <code>display: block;</code> から) <code>display: flex;</code> に変更</li>
+        <li>要素の幅を( <code>width: 100%;</code> から) <code>width: auto;</code> に変更</li>
+        <li>ただし画面幅が576px(sm)未満の場合は設定されない(幅100%に戻る)
+          <ul>
+            <li>その結果smブレークポイントで縦横の組み換えが発生する(576px未満で縦配置)</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info">機能はひとつ前の<a href="auto-sizing">自動幅設定</a>と似ているが、<a href="components-10.html">ナビゲーションバー</a>での使用を前提として作り込まれており、自動幅設定より楽にインライン配置を組める。ただしレスポンシブブレークポイントはsm固定で変更できない(細かい調整が必要な場合は自動幅設定が必要)。</div>
+      <h5 class="mt-3" id="inline-forms-tips">設定上の注意</h5>
+      <ul>
+        <li>要素間隔は <code>auto</code> なので適宜マージン設定を行う(⇒ <a href="utilities-4.html#spacing">空白</a>)</li>
+        <li>アクセシビリティの観点から <code>label</code> を用い、画面上不要な場合は <code>.sr-only</code> で非表示にする(⇒ <a href="#auto-sizing-example-1-note">注2</a>)</li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="inline-form-example">基本例</h5>
+      <form class="form-inline mb-4">
+        <label class="sr-only" for="inlineFormInputName2">Name</label>
+        <input class="form-control my-1 mr-sm-2" id="inlineFormInputName2" type="text" placeholder="Jane Doe">
+        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+        <div class="input-group my-1 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input class="form-control" id="inlineFormInputGroupUsername2" type="text" placeholder="Username">
+        </div>
+        <div class="form-check my-1 mr-sm-2">
+          <input class="form-check-input" id="inlineFormCheck" type="checkbox">
+          <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+        </div>
+        <button class="btn btn-primary my-1" type="submit">Submit</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-forms-example-structure" aria-control="#inline-forms-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="inline-forms-example-structure">
+        <li>インラインフォーム <code>form.form-inline</code>
+          <ul>
+            <li>アクセシビリティ用ラベル(非表示) <code>label.sr-only</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-1" aria-control=".a11-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a11-1">属性 <code>for="inlineFormInputName2"</code></li>
+                <li class="txt">テキスト <code>Name</code></li>
+              </ul>
+            </li>
+            <li>コントロール <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-2" aria-control=".a11-2" aria-expanded="false">属性</a>
+              <ul class="collapse a11-2">
+                <li class="cls">マージン調整 <code>.my-1.mr-sm-2</code></li>
+                <li class="att">属性 <code>id="inlineFormInputName2"</code></li>
+                <li class="att">属性 <code>type="text"</code></li>
+                <li class="att">属性 <code>placeholder="Jane Doe"</code> (ラベル代わりに用いる)</li>
+              </ul>
+            </li>
+            <li>アクセシビリティ用ラベル <code>label.sr-only</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-3" aria-control=".a11-3" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a11-3">属性 <code>for="inlineFormInputGroupUsername2"</code></li>
+                <li class="txt">テキスト <code>Username</code></li>
+              </ul>
+            </li>
+            <li><a href="components-6.html#input-group">インプットグループ</a> (Username) <code>div.input-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-4" aria-control=".a11-4" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a11-4">マージン調整 <code>.my-1.mr-sm-2</code></li>
+                <li>他の設定は <a href="components-6.html#basic-example-prepend">基本例 - 前置の場合</a> を参照</li>
+              </ul>
+            </li>
+            <li><a href="#checkboxes-and-radios">チェックボックス </a><code>div.form-check</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-5" aria-control=".a11-5" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a11-5">マージン調整 <code>.my-1.mr-sm-2</code></li>
+                <li>コントロール <code>input.form-check-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-6" aria-control=".a11-6" aria-expanded="false">属性</a>
+                  <ul class="collapse a11-6">
+                    <li class="att">属性 <code>id="inlineFormCheck"</code></li>
+                    <li class="att">属性 <code>type="checkbox"</code></li>
+                  </ul>
+                  <li>ラベル <code>label.form-check-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-7" aria-control=".a11-7" aria-expanded="false">属性</a>
+                    <ul>
+                      <li class="att collapse a11-7">属性 <code>for="inlineFormCheck"</code></li>
+                      <li class="txt">テキスト <code>Remember me</code></li>
+                    </ul>
+                  </li>
+                </li>
+              </ul>
+            </li>
+            <li>ボタン <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a11-8" aria-control=".a11-8" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a11-8">マージン調整 <code>.my-1</code></li>
+                <li class="att collapse a11-8">属性 <code>type="submit"</code></li>
+                <li class="txt">テキスト <code>Submit</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">チェックボックスに<a href="#inline">インライン設定 </a><code>.form-check-inline</code> は不要(ラジオボタンも同様)。外側の <code>form.form-inline</code> で設定されるため省略してよい。</div>
+      <h5 class="mt-4 mb-3" id="inline-form-example-custom">応用: <a href="#custom-forms">カスタムフォーム</a>を用いた例</h5>
+      <form class="form-inline mb-4">
+        <label class="my-1 mr-sm-2" for="inlineFormCustomSelectPref">Preference</label>
+        <div class="form-control form-control-plaintext p-0 my-1 mr-sm-2">
+          <select class="custom-select" id="inlineFormCustomSelectPref">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="form-control form-control-plaintext p-0 my-1 mr-sm-2">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" id="customControlInline" type="checkbox">
+            <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+          </div>
+        </div>
+        <button class="btn btn-primary my-1" type="submit">Submit</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href=".inline-forms-example-custom-structure" aria-control=".inline-forms-example-custom-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse inline-forms-example-custom-structure">
+        <li>インラインフォーム <code>form.form-inline</code>
+          <ul>
+            <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-1" aria-control=".a12-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a12-1">マージン調整 <code>.my-1.mr-sm-2</code></li>
+                <li class="att collapse a12-1">属性 <code>for="inlineFormCustomSelectPref"</code></li>
+                <li class="txt">テキスト <code>Preference</code></li>
+              </ul>
+            </li>
+            <li>フォームコントロール <code>div.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-2" aria-control=".a12-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a12-2">外枠なし <code>.form-control-plaintext</code></li>
+                <li class="cls collapse a12-2">内側パディングなし<code>.p-0</code></li>
+                <li class="cls collapse a12-2">マージン調整 <code>.my-1.mr-sm-2</code></li>
+                <li><a href="#select-menu">カスタムselect </a><code>select.custom-select</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-3" aria-control=".a12-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a12-3">属性 <code>id="inlineFormCustomSelectPref"</code></li>
+                    <li>アイテム (&times;4) <code>option ...</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>フォームコントロール <code>div.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-4" aria-control=".a12-4" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a12-4">外枠なし <code>.form-control-plaintext</code></li>
+                <li class="cls collapse a12-4">内側パディングなし<code>.p-0</code></li>
+                <li class="cls collapse a12-4">マージン調整 <code>.my-1.mr-sm-2</code></li>
+                <li><a href="#checkboxes">カスタムチェックボックス </a><code>div.custom-control.custom-checkbox</code>
+                  <ul>
+                    <li>コントロール <code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-5" aria-control=".a12-5" aria-expanded="false">属性</a>
+                      <ul class="collapse a12-5">
+                        <li class="att">属性 <code>id="customControlInline"</code></li>
+                        <li class="att">属性 <code>type="checkbox"</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>カスタムフォーム用ラベル <code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-6" aria-control=".a12-6" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a12-6">属性 <code>for="customControlInline"</code></li>
+                    <li class="txt">テキスト <code>Remember my preference</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>ボタン <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a12-7" aria-control=".a12-7" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a12-7">マージン調整 <code>.my-1</code></li>
+                <li class="att collapse a12-7">属性 <code>type="submit"</code></li>
+                <li class="txt">テキスト <code>Submit</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#inline-forms-example-custom-fixes" aria-control="#inline-forms-example-custom-fixes" aria-expanded="false">修正点</a>
+      </div>
+      <div class="mt-3 collapse" id="inline-forms-example-custom-fixes">
+        <p class="my-3">元は公式ドキュメントの例だが <code>.form-inline</code> は(バージョン4.0時点ではまだ)カスタムフォームコントロールに対応していないため意図した通りの動作になっていない。そこで次のように修正を加え、xs(576px未満)で縦配置への組み換えを実現している。</p>
+        <ul>
+          <li>カスタムフォームを(枠だけの)フォームコントロール <code>div.form-control</code> で囲う
+            <ul>
+              <li>これにより外側の <code>.form-inline</code> との組み合わせでレスポンシブ応答する</li>
+              <li>ただし角丸ボーダーは不要なので <code>.form-control-plaintext</code> で消去</li>
+              <li>内側のパディングも不要なので <code>.p-0</code> で消去</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <h4 class="mt-4" id="help-text"><a href="https://getbootstrap.com/docs/4.1/components/forms/#help-text" target="_blank">ヘルプテキスト</a>
+      </h4>
+      <p class="mt-2 mb-3"><code>small.form-text(.text-muted)</code> を用い、アクセシビリティ用IDを付ける。</p>
+      <label for="inputPassword5">Password</label>
+      <input class="form-control" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock"><small class="form-text text-muted mb-4" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small><a class="btn btn-outline-info" data-toggle="collapse" href="#help-text-example-structure" aria-control="#help-text-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="help-text-example-structure">
+        <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a13-1" aria-control=".a13-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a13-1">属性 <code>for="inputPassword5"</code></li>
+            <li class="txt">テキスト <code>Password</code></li>
+          </ul>
+        </li>
+        <li>コントロール <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a13-2" aria-control=".a13-2" aria-expanded="false">属性</a>
+          <ul class="collapse a13-2">
+            <li class="att">属性 <code>id="inputPassword5"</code></li>
+            <li class="att">属性 <code>type="password"</code></li>
+            <li class="att">アクセシビリティ属性 <code>aria-describedby="passwordHelpBlock"</code></li>
+          </ul>
+        </li>
+        <li>ヘルプテキスト <code>small.form-text.text-muted</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a13-3" aria-control=".a13-3" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a13-3">アクセシビリティ属性 <code>id="passwordHelpBlock"</code></li>
+            <li class="txt">テキスト <code>Your password must be 8-20 characters long, ...</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-3">インラインレイアウトの場合は <code>.form-text</code> を付けない。</p>
+      <form class="form-inline mb-4">
+        <label for="inputPassword6">Password</label>
+        <input class="form-control mx-sm-3" id="inputPassword6" type="password" aria-describedby="passwordHelpInline"><small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#help-text-example-inline-structure" aria-control="#help-text-example-inline-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="help-text-example-inline-structure">
+        <li>インラインフォーム <code>form.form-inline</code>
+          <ul>
+            <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a14-1" aria-control=".a14-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a14-1">属性 <code>for="inputPassword3"</code></li>
+                <li class="txt">テキスト <code>Password</code></li>
+              </ul>
+            </li>
+            <li>コントロール <code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a14-2" aria-control=".a14-2" aria-expanded="false">属性</a>
+              <ul class="collapse a14-2">
+                <li class="cls">マージン調整 <code>.mx-sm-3</code></li>
+                <li class="att">属性 <code>id="inputPassword6"</code></li>
+                <li class="att">属性 <code>type="password"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-describedby="passwordHelpInline"</code></li>
+              </ul>
+            </li>
+            <li>ヘルプテキスト <code>small.text-muted</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a14-3" aria-control=".a14-3" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a14-3">アクセシビリティ属性 <code>id="passwordHelpInline"</code></li>
+                <li class="txt">テキスト <code>Must be 8-20 characters long.</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="disabled-forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/#disabled-forms" target="_blank"><code>disabled</code> 属性</a>
+      </h4>
+      <p class="mt-2 mb-3">コントロールに属性 <code>disabled</code> を設定してdisabled状態にできる。またグループの親要素として <code>fieldset</code> を使いそこに <code>disabled</code> を設定するとグループ全体をdisabled状態にできる(⇒ <a href="#disabled-forms-note">注4</a>)。</p>
+      <form class="mb-4">
+        <fieldset disabled>
+          <div class="form-group">
+            <label for="disabledTextInput">Disabled input</label>
+            <input class="form-control" id="disabledTextInput" type="text" placeholder="Disabled input">
+          </div>
+          <div class="form-group">
+            <label for="disabledSelect">Disabled select menu</label>
+            <select class="form-control" id="disabledSelect">
+              <option>Disabled select</option>
+            </select>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" id="disabledFieldsetCheck" type="checkbox" disabled>
+            <label class="form-check-label" for="disabledFieldsetCheck">Can't check this</label>
+          </div>
+          <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </fieldset>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#disabled-example-structure" aria-control="#disabled-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="disabled-example-structure">
+        <li>フォーム <code>form</code>
+          <ul>
+            <li><code>fieldset</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a15-1" aria-control=".a15-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a15-1">属性 <code>disabled</code> (ここに設定)</li>
+                <li>子要素(略)、コントロールは全て <code>disabled</code> になる</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" id="disabled-forms-note" role="alert"><strong>注4: </strong>今回調査した中ではIE11の対応が不十分で、上記の例ではSubmitボタンがdisabledにならない。また公式ドキュメントによればIE10でも同様の問題が発生する。</div>
+      <h4 class="mt-4" id="validation"><a href="https://getbootstrap.com/docs/4.1/components/forms/#validation" target="_blank">バリデーション</a>
+      </h4>
+      <p class="my-2">HTMLのバリデーション機能はバージョン5.0で導入された(詳しくは<a href="https://developer.mozilla.org/ja/docs/Learn/HTML/Forms/Data_form_validation" target="_blank">MDN - フォームデータの検証</a>を参照)。今ではBootstrap 4の対応ブラウザ全てで使用できる(対応状況は <a href="https://caniuse.com/#feat=form-validation" target="_blank">Can I Use</a> を参照)。しかし動作に環境依存がありどのブラウザでも同じ振る舞いにならない。またバリデーションメッセージはスクリーンリーダに対応していない(現状では認識困難)。
+      </p>
+      <p class="my-2">そこでBootstrap 4ではブラウザ依存を低減しスクリーンリーダがメッセージを判別できる独自方式を開発している。以下(公式ドキュメントと順番を入れ替えて)まずブラウザ標準の方法を示し、次にBootstrap方式を説明する。</p>
+      <h5 class="mt-4" id="browser-defaults"><a href="https://getbootstrap.com/docs/4.1/components/forms/#browser-defaults" target="_blank">ブラウザ標準のバリデーション</a>
+      </h5>
+      <p class="mt-2 mb-3"><code>required</code> を利用した簡単なバリデーションの例。レイアウトの説明は省略し、バリデーションに関するポイントのみ示す。ただし送信時の応答にブラウザ依存性があり、表示されるメッセージやその表現方法も異なることに注意(本例を用いて色々なブラウザで実行すれば確認できる)。</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">First name</label>
+            <input class="form-control" id="validationDefault01" type="text" placeholder="First name" value="Mark" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Last name</label>
+            <input class="form-control" id="validationDefault02" type="text" placeholder="Last name" value="Otto" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefaultUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend2">@</span></div>
+              <input class="form-control" id="validationDefaultUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">City</label>
+            <input class="form-control" id="validationDefault03" type="text" placeholder="City" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault04">State</label>
+            <input class="form-control" id="validationDefault04" type="text" placeholder="State" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Zip</label>
+            <input class="form-control" id="validationDefault05" type="text" placeholder="Zip" required pattern="[0-9]{5}">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" id="invalidCheck2" type="checkbox" value="" required>
+            <label class="form-check-label" for="invalidCheck2">Agree to terms and conditions</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#browser-defaults-summary" aria-control="#browser-defaults-summary" aria-expanded="false">まとめ</a>
+      <ul class="mt-2 collapse" id="browser-defaults-summary">
+        <li>フォーム中でバリデーション対象とする <code>input</code> に属性 <code>required</code> を追加</li>
+        <li>Submitを押すとバリデーションを実行
+          <ul>
+            <li>全て(正しく)入力されていれば送信</li>
+            <li>未入力部分があれば送信せずメッセージを表示する
+              <ul>ただしブラウザによりその方法や表示が大きく異なる</ul>
+            </li>
+          </ul>
+        </li>
+        <li>(応用例)入力パターンを限定する場合は <code>pattern</code> 属性を利用できる(正規表現で設定)
+          <ul>
+            <li>例(米国の5桁郵便番号: 上記Zipに設定) <code>pattern="[0-9]{5}"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="custom-styles"><a href="https://getbootstrap.com/docs/4.1/components/forms/#custom-styles" target="_blank">Bootstrap方式</a>
+      </h5>
+      <p class="my-3">Bootstrap 4のバリデーション方式で作ったフォーム例。</p>
+      <form class="needs-validation" novalidate>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom01">First name</label>
+            <input class="form-control" id="validationCustom01" type="text" placeholder="First name" value="Mark" required>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please input your name.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Last name</label>
+            <input class="form-control" id="validationCustom02" type="text" placeholder="Last name" value="Otto" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustomUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">@</span></div>
+              <input class="form-control" id="validationCustomUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom03">City</label>
+            <input class="form-control" id="validationCustom03" type="text" placeholder="City" required>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom04">State</label>
+            <input class="form-control" id="validationCustom04" type="text" placeholder="State" required>
+            <div class="invalid-feedback">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom05">Zip</label>
+            <input class="form-control" id="validationCustom05" type="text" placeholder="Zip" required>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" id="invalidCheck" type="checkbox" value="" required>
+            <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+      <p class="mt-4 mb-2">HTMLはバリデーションに関するポイントのみ説明する。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-html-summary" aria-control="#validation-html-summary" aria-expanded="false">HTMLまとめ</a>
+      <ul class="struct mt-2 collapse" id="validation-html-summary">
+        <li><code>form</code> に次の2つを設定
+          <ul>
+            <li class="att">属性 <code>novalidate</code> (ブラウザデフォルトのバリデーション動作を抑制)</li>
+            <li class="cls">CSSセレクタ ⇒ 本ページでは<code>.needs-validation</code> を用いる</li>
+          </ul>
+        </li>
+        <li>バリデーション対象要素に次を設定
+          <ul>
+            <li class="cls">クラス(フォームコントロール) <code>.form-control</code></li>
+            <li class="att">バリデーション設定 (例: <code>required</code> 属性)</li>
+          </ul>
+        </li>
+        <li>バリデーションメッセージをコントロールより後の兄弟要素として設定
+          <ul>
+            <li>成功時メッセージは <code>(div).valid-feedback</code></li>
+            <li>エラー時メッセージは <code>(div).invalid-feedback</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">次にBootstrap 4 (CSS)のバリデーション機能についてまとめる。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-css-summary" aria-control="#validation-css-summary" aria-expanded="false">CSSまとめ</a>
+      <ul class="mt-2 collapse" id="validation-css-summary">
+        <li>ルート要素(具体的には <code>form</code> )に対し <code>.was-validated</code> の有無で表示を制御
+          <ul>
+            <li>初期状態(バリデーション実行前)は付けない</li>
+            <li>送信に対しクラスを追加するとバリデーション状態になる</li>
+          </ul>
+        </li>
+        <li>バリデーション対象のコントロール要素に <code>.form-control</code> を設定
+          <ul>
+            <li>祖先に <code>.was-validated</code> +自分に <code>:valid</code> が設定されると緑ボーダー表示</li>
+            <li>祖先に <code>.was-validated</code> +自分に <code>:invalid</code> が設定されると赤ボーダー表示</li>
+          </ul>
+        </li>
+        <li>(オプション)コントロール要素より後の兄弟要素にメッセージを追加できる
+          <ul>
+            <li>成功メッセージ <code>.valid-feedback</code> : 次の条件で表示される
+              <ul>
+                <li>祖先(フォーム)に <code>.was-validated</code> が設定</li>
+                <li>手前兄弟の <code>.form-control</code> に疑似クラス <code>:valid</code> が設定</li>
+              </ul>
+            </li>
+            <li>失敗メッセージ <code>.invalid-feedback</code> : 次の条件で表示される
+              <ul>
+                <li>祖先(フォーム)に <code>.was-validated</code> が設定</li>
+                <li>手前兄弟の <code>.form-control</code> に疑似クラス <code>:invalid</code> が設定</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>(注意) 複数コントロールが兄弟(同じ親)だとメッセージが機能しない
+          <ul>
+            <li>それぞれを<a href="#form-groups">フォームグループ</a>で囲めばよい</li>
+            <li>グリッドレイアウトの場合は <code>div.col*</code> や <code>div.col-auto</code> などでもよい</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">処理にはJavaScriptが必要。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-javascript-summary" aria-control="#validation-javascript-summary" aria-expanded="false">JavaScriptまとめ</a>
+      <ul class="mt-2 collapse" id="validation-javascript-summary">
+        <li>対象の <code>form</code> (今回は <code>.needs-validation</code> )の <code>submit</code> イベントハンドラを設定</li>
+        <li>イベントハンドラで次の順に処理
+          <ul>
+            <li>フォームのバリデーションを実行 <code>{form}.checkValidity()</code>
+              <ul>
+                <li>入力値が正しいコントロールには <code>:valid</code> 疑似クラスが設定される</li>
+                <li>入力値が不正なコントロールには <code>:invalid</code> 疑似クラスが設定される</li>
+              </ul>
+            </li>
+            <li>戻り値がfalse(失敗)の場合は送信を止める
+              <ul>
+                <li>イベントのデフォルト処理をキャンセル <code>event.preventDefault()</code></li>
+                <li>イベントの(親要素への)伝搬を遮断 <code>event.stopPropagation()</code></li>
+              </ul>
+            </li>
+            <li>フォームにクラス <code>.was-validated</code> を追加</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#validation-javascrip-dom" aria-control="#validation-javascrip-dom" aria-expanded="false">コード(DOM)</a>&nbsp;<a class="btn btn-outline-info" data-toggle="collapse" href="#validation-javascrip-jquery" aria-control="#validation-javascrip-jquery" aria-expanded="false">コード(jQuery)</a>
+      </div>
+      <pre class="p-2 border bg-light mt-3 collapse" id="validation-javascrip-dom"><code>// DOM版(公式ドキュメントより)
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();</code></pre>
+      <pre class="p-2 border bg-light mt-3 collapse" id="validation-javascrip-jquery"><code>// jQuery版
+$('.needs-validation').on('submit', function(event) {
+  if (!this.checkValidity()) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  $(this).addClass('was-validated');
+});</code></pre>
+      <h5 class="mt-4" id="server-side"><a href="https://getbootstrap.com/docs/4.1/components/forms/#server-side" target="_blank">サーバー側バリデーション</a>
+      </h5>
+      <p class="my-2">送信してサーバ側でバリデーションを行い、サーバ側から結果を反映したフォームを送り返す場合は疑似クラスは使えない。そこで代替手段として <code>.is-valid </code> と <code>.is-invalid </code> を用いて上記バリデーションと同じ表示効果を得ることができる。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#server-side-summary" aria-control="#server-side-summary" aria-expanded="false">まとめ</a>
+      <ul class="struct mt-2 collapse" id="server-side-summary">
+        <li><code>form</code> に <code>.was-validated</code> は不要</li>
+        <li>フォームコントロールに(疑似クラスの代わりに)次のクラスを設定する
+          <ul>
+            <li class="cls">正しい場合 <code>.is-valid</code></li>
+            <li class="cls">不正の場合 <code>.is-invalid</code></li>
+          </ul>
+        </li>
+        <li>メッセージ設定は同じでよい
+          <ul>
+            <li class="cls">成功メッセージは <code>.valid-feedback</code></li>
+            <li class="cls">失敗メッセージは <code>.invalid-feedback</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-3">次はその設定例。ブラウザから送信後にサーバでバリデーションを行い、First nameとLast nameは正しく後は不正という結果を送り返した状態を表したもの。</p>
+      <form class="mb-4">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationServer01">First name</label>
+            <input class="form-control is-valid" id="validationServer01" type="text" placeholder="First name" value="Mark" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Last name</label>
+            <input class="form-control is-valid" id="validationServer02" type="text" placeholder="Last name" value="Otto" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServerUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend3">@</span></div>
+              <input class="form-control is-invalid" id="validationServerUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+              <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationServer03">City</label>
+            <input class="form-control is-invalid" id="validationServer03" type="text" placeholder="City" required>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationServer04">State</label>
+            <input class="form-control is-invalid" id="validationServer04" type="text" placeholder="State" required>
+            <div class="invalid-feedback">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationServer05">Zip</label>
+            <input class="form-control is-invalid" id="validationServer05" type="text" placeholder="Zip" required>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input is-invalid" id="invalidCheck3" type="checkbox" value="" required>
+            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#server-side-html-summary" aria-control="#server-side-html-summary" aria-expanded="false">設定</a>
+      <ul class="mt-2 collapse" id="server-side-html-summary">
+        <li><code>form</code> にはクラスや属性の追加なし</li>
+        <li>First nameとLast nameのフォームコントロールに <code>.is-valid</code> を追加
+          <ul>
+            <li>フォームコントロールは成功時の緑色表示</li>
+            <li>後に続く兄弟要素の <code>.valid-feedback</code> は成功メッセージとして緑色表示</li>
+          </ul>
+        </li>
+        <li>その他のフォームコントロールに <code>.is-invalid</code> を追加
+          <ul>
+            <li>フォームコントロールは失敗時の赤色表示</li>
+            <li>後に続く兄弟要素の <code>.invalid-feedback</code> は失敗メッセージとして赤色表示</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="supported-elements"><a href="https://getbootstrap.com/docs/4.1/components/forms/#supported-elements" target="_blank">カスタムフォームコントロールの利用</a>
+      </h5>
+      <p class="mt-2 mb-3">Bootstrapバリデーションは<a href="#custom-forms">カスタムフォームコントロール</a>に対応しており、通常のフォームコントロールと同じように使うことができる。次はその設定サンプルでデモ用に最初からバリデーション状態にしてある(送信もなし)。どれも入力すると表示が赤から緑に変化する。</p>
+      <form class="was-validated mb-4">
+        <div class="custom-control custom-checkbox mb-3">
+          <input class="custom-control-input" id="customControlValidation1" type="checkbox" required>
+          <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
+          <div class="invalid-feedback">Example invalid feedback text</div>
+        </div>
+        <div class="custom-control custom-radio">
+          <input class="custom-control-input" id="customControlValidation2" type="radio" name="radio-stacked" required>
+          <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+        </div>
+        <div class="custom-control custom-radio mb-3">
+          <input class="custom-control-input" id="customControlValidation3" type="radio" name="radio-stacked" required>
+          <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+          <div class="invalid-feedback">More example invalid feedback text</div>
+        </div>
+        <div class="form-group">
+          <select class="custom-select" required>
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="invalid-feedback">Example invalid custom select feedback</div>
+        </div>
+        <div class="custom-file">
+          <input class="custom-file-input" id="validatedCustomFile" type="file" required>
+          <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+          <div class="invalid-feedback">Example invalid custom file feedback</div>
+        </div>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#supported-elements-structure" aria-control="#supported-elements-structure" aria-expanded="false">設定</a>
+      <ul class="mt-2 collapse" id="supported-elements-structure">
+        <li>フォームに <code>.was-validated</code> を設定(説明用に最初からバリデーション状態にする)</li>
+        <li>次の各カスタムコントロールすべてに <code>required</code> を追加
+          <ul>
+            <li><a href="#checkboxes">カスタムチェックボックス</a></li>
+            <li><a href="#radios">カスタムラジオボタン</a></li>
+            <li><a href="#select-menu">カスタムセレクト</a></li>
+            <li><a href="#file-browser">カスタムファイルブラウザ</a></li>
+          </ul>
+        </li>
+        <li>応答メッセージの設定方法は今までと同じ</li>
+      </ul>
+      <h5 class="mt-3" id="tooltips"><a href="https://getbootstrap.com/docs/4.1/components/forms/#tooltips" target="_blank">ツールチップの利用</a>
+      </h5>
+      <p class="mt-2 mb-3">バリデーションの応答メッセージとして背景が半透明のツールチップをポップアップ表示できる。この方法を用いればレイアウト位置を変えずにバリデーション表示を行うことができる。</p>
+      <form class="needs-validation mb-4" novalidate>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltip01">First name</label>
+            <input class="form-control" id="validationTooltip01" type="text" placeholder="First name" value="Mark" required>
+            <div class="valid-tooltip">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltip02">Last name</label>
+            <input class="form-control" id="validationTooltip02" type="text" placeholder="Last name" value="Otto" required>
+            <div class="valid-tooltip">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltipUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" id="validationTooltipUsernamePrepend">@</span></div>
+              <input class="form-control" id="validationTooltipUsername" type="text" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+              <div class="invalid-tooltip">Please choose a unique and valid username.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationTooltip03">City</label>
+            <input class="form-control" id="validationTooltip03" type="text" placeholder="City" required>
+            <div class="invalid-tooltip">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationTooltip04">State</label>
+            <input class="form-control" id="validationTooltip04" type="text" placeholder="State" required>
+            <div class="invalid-tooltip">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationTooltip05">Zip</label>
+            <input class="form-control" id="validationTooltip05" type="text" placeholder="Zip" required>
+          </div>
+          <div class="invalid-tooltip">Please provide a valid zip.</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form><a class="btn btn-outline-info" data-toggle="collapse" href="#tooltips-structure" aria-control="#tooltips-structure" aria-expanded="false">設定</a>
+      <ul class="mt-2 collapse" id="tooltips-structure">
+        <li>構成は<a href="#custom-styles">Bootstrap方式バリデーション(基本例)</a>と同じ</li>
+        <li>次の2点のみ変更
+          <ul>
+            <li><code>div.valid-feedback</code> ⇒ <code>div.valid-tooltip</code> に変更</li>
+            <li><code>div.invalid-feedback</code> ⇒ <code>div.invalid-tooltip</code> に変更</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="custom-forms"><a href="https://getbootstrap.com/docs/4.1/components/forms/#custom-forms" target="_blank">カスタムフォームコントロール</a>
+      </h4>
+      <p class="my-2">Bootstrap 4で導入された表示カスタマイズ、ブラウザ依存改善、アクセシビリティ向上のためのフォーム用部品。ブラウザデフォルトのコントロールを置き換えて利用できる。</p>
+      <h5 class="mt-4 mb-3" id="checkboxes"><a href="https://getbootstrap.com/docs/4.1/components/forms/#checkboxes" target="_blank">チェックボックス</a>
+      </h5>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-1" type="checkbox" checked>
+        <label class="custom-control-label" for="custom-check-1">Custom checkbox 1</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-2" type="checkbox">
+        <label class="custom-control-label" for="custom-check-2">Custom checkbox 2</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-3" type="checkbox">
+        <label class="custom-control-label" for="custom-check-3">Custom checkbox 3</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" id="custom-check-4" type="checkbox" disabled>
+        <label class="custom-control-label" for="custom-check-4">Custom checkbox 4 (disabled)</label>
+      </div>
+      <script>document.getElementById('custom-check-3').indeterminate = true;</script>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#checkboxes-example-structure" aria-control="#checkboxes-example-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="checkboxes-example-structure">
+        <li><code>div.custom-control.custom-checkbox</code> (&times;4)
+          <ul>
+            <li><code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a16-1" aria-control=".a16-1" aria-expanded="false">属性</a>
+              <ul class="collapse a16-1">
+                <li class="att">属性 <code>id="custom-check-(1|2|3|4)"</code></li>
+                <li class="att">属性 <code>type="checkbox"</code></li>
+                <li class="att">属性(先頭のみ) <code>checked</code></li>
+                <li class="att">属性(最後のみ) <code>disabled</code></li>
+              </ul>
+            </li>
+            <li><code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a16-2" aria-control=".a16-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a16-2">属性 <code>for="custom-check-(1|2|3|4)"</code></li>
+                <li class="txt">テキスト <code>Custom checkbox (1|2|3|4)( disabled)?</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3">3番目のチェックボックスは初期状態を <kbd>-</kbd> にしてある。これは <code>:indeterminate</code><a href="https://developer.mozilla.org/ja/docs/Web/CSS/:indeterminate" target="_blank"> 疑似クラス</a>を用いたもので、次のコードで設定している(要JavaScript)。
+      </p>
+      <pre class="p-2 border bg-light"><code>document.getElementById('custom-check-3').indeterminate = true;</code></pre>
+      <p class="mt-3 my-2">jQueryを利用する場合は次でもよい。</p>
+      <pre class="p-2 border bg-light"><code>$('#custom-check-3').prop('indeterminate', true);</code></pre>
+      <h5 class="mt-4 mb-3" id="radios"><a href="https://getbootstrap.com/docs/4.1/components/forms/#radios" target="_blank">ラジオボタン</a>
+      </h5>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-1" type="radio" name="custom-radios" checked>
+        <label class="custom-control-label" for="custom-radio-1">Custom radio 1</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-2" type="radio" name="custom-radios">
+        <label class="custom-control-label" for="custom-radio-2">Custom radio 2</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-3" type="radio" name="custom-radios">
+        <label class="custom-control-label" for="custom-radio-3">Custom radio 3</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="custom-radio-4" type="radio" name="custom-radios" disabled>
+        <label class="custom-control-label" for="custom-radio-4">Custom radio 4 (disabled)</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#radios-example-structure" aria-control="#radios-example-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="radios-example-structure">
+        <li><code>div.custom-control.custom-radio</code> (&times;4)
+          <ul>
+            <li><code>input.custom-control-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a17-1" aria-control=".a17-1" aria-expanded="false">属性</a>
+              <ul class="collapse a17-1">
+                <li class="att">属性 <code>id="custom-radio-(1|2|3|4)"</code></li>
+                <li class="att">属性 <code>type="radio"</code></li>
+                <li class="att">属性 <code>name="custom-radios"</code></li>
+                <li class="att">属性(先頭のみ) <code>checked</code></li>
+                <li class="att">属性(最後のみ) <code>disabled</code></li>
+              </ul>
+            </li>
+            <li><code>label.custom-control-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a17-2" aria-control=".a17-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a17-2">属性 <code>for="custom-radio-(1|2|3|4)"</code></li>
+                <li class="txt">テキスト <code>Custom radio (1|2|3|4)(\(disabled\))?</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="inline-1"><a href="https://getbootstrap.com/docs/4.1/components/forms/#inline-1" target="_blank">ラジオボタン(インライン)</a>
+      </h5>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-1" type="radio" name="custom-inline-radios" checked>
+        <label class="custom-control-label" for="custom-inline-radio-1">Inline 1</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-2" type="radio" name="custom-inline-radios">
+        <label class="custom-control-label" for="custom-inline-radio-2">Inline 2</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-3" type="radio" name="custom-inline-radios">
+        <label class="custom-control-label" for="custom-inline-radio-3">Inline 3</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input class="custom-control-input" id="custom-inline-radio-4" type="radio" name="custom-inline-radios" disabled>
+        <label class="custom-control-label" for="custom-inline-radio-4">Inline 4 (disabled)</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#radios-inline-example-structure" aria-control="#radios-inline-example-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="radios-inline-example-structure">
+        <li><code>div.custom-control.custom-radio.custom-control-inline</code> (&times;4)
+          <ul>
+            <li>内部は <a href="#radios">デフォルト配置</a> と同様(略)</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-2" id="select-menu"><a href="https://getbootstrap.com/docs/4.1/components/forms/#select-menu" target="_blank">メニュー選択</a>
+      </h5>
+      <p class="mt-2 mb-1"><code>select.custom-select.custom-select-sm</code></p>
+      <select class="custom-select custom-select-sm mt-1 mb-2">
+        <option value="1" selected>Small custom select 1</option>
+        <option value="2">Small custom select 2</option>
+        <option value="3">Small custom select 3</option>
+        <option value="4">Small custom select 4</option>
+        <option value="5">Small custom select 5</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.custom-select</code></p>
+      <select class="custom-select mt-1 mb-2">
+        <option value="1" selected>Default custom select 1</option>
+        <option value="2">Default custom select 2</option>
+        <option value="3">Default custom select 3</option>
+        <option value="4">Default custom select 4</option>
+        <option value="5">Default custom select 5</option>
+      </select>
+      <p class="mt-2 mb-1"><code>select.custom-select.custom-select-lg</code></p>
+      <select class="custom-select custom-select-lg mt-1 mb-2">
+        <option value="1" selected>Large custom select 1</option>
+        <option value="2">Large custom select 2</option>
+        <option value="3">Large custom select 3</option>
+        <option value="4">Large custom select 4</option>
+        <option value="5">Large custom select 5</option>
+      </select>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#select-menu-example-structure" aria-control="#select-menu-example-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="select-menu-example-structure">
+        <li><code>select.custom-select(.custom-select-sm|.custom-select-lg)?</code>
+          <ul>
+            <li><code>option</code> (&times;5) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a18-1" aria-control=".a18-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a18-1">属性 <code>value="(1|2|3|4|5)"</code></li>
+                <li class="att collapse a18-1">属性(先頭のみ) <code>selected</code></li>
+                <li class="txt">テキスト <code>(Small|Default|Large) custom select (1|2|3|4|5)</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">属性 <code>multiple</code> を設定した場合の表示</p>
+      <select class="custom-select" multiple>
+        <option value="1" selected>Custom select 1</option>
+        <option value="2">Custom select 2</option>
+        <option value="3">Custom select 3</option>
+        <option value="4">Custom select 4</option>
+        <option value="5">Custom select 5</option>
+      </select>
+      <p class="mt-3 mb-2">属性 <code>size="3"</code> を設定した場合の表示</p>
+      <select class="custom-select" size="3">
+        <option value="1" selected>Custom select 1</option>
+        <option value="2">Custom select 2</option>
+        <option value="3">Custom select 3</option>
+        <option value="4">Custom select 4</option>
+        <option value="5">Custom select 5</option>
+      </select>
+      <h4 class="mt-4 mb-3" id="range"><a href="https://getbootstrap.com/docs/4.1/components/forms/#range" target="_blank">レンジ</a>
+      </h4>
+      <p class="my-2">デフォルトの範囲は <code>0..100</code> 、値は <code>50</code> 、ステップは <code>1</code> に設定される。</p>
+      <label for="customRange1">Example range</label>
+      <input class="custom-range" id="customRange1" type="range">
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#range-example-1-settings" aria-control="#range-example-1-settings" aria-expanded="false">設定</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="range-example-1-settings">
+        <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a19-1" aria-control=".a19-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a19-1">属性 <code>for="customRange1"</code></li>
+            <li class="txt">テキスト <code>Example range</code></li>
+          </ul>
+        </li>
+        <li>カスタムレンジ <code>input.custom-range</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a19-2" aria-control=".a19-2" aria-expanded="false">属性</a>
+          <ul class="collapse a19-2">
+            <li class="att">属性 <code>id="customRange1"</code></li>
+            <li class="att">属性 <code>type="range"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">範囲は <code>min</code> と <code>max</code> 、値は <code>value</code> で設定する。</p>
+      <label for="customRange2">Example range</label>
+      <input class="custom-range" id="customRange2" type="range" min="0" max="5" value="1">
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#range-example-2-settings" aria-control="#range-example-2-settings" aria-expanded="false">設定</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="range-example-2-settings">
+        <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a20-1" aria-control=".a20-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a20-1">属性 <code>for="customRange2"</code></li>
+            <li class="txt">テキスト <code>Example range</code></li>
+          </ul>
+        </li>
+        <li>カスタムレンジ <code>input.custom-range</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a20-2" aria-control=".a20-2" aria-expanded="false">属性</a>
+          <ul class="collapse a20-2">
+            <li class="att">属性 <code>id="customRange2"</code></li>
+            <li class="att">属性 <code>type="range"</code></li>
+            <li class="att">属性 <code>min="0"</code></li>
+            <li class="att">属性 <code>max="5"</code></li>
+            <li class="att">属性 <code>value="1"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">ステップは <code>step</code> で設定する。</p>
+      <label for="customRange3">Example range</label>
+      <input class="custom-range" id="customRange3" type="range" min="0" max="5" step="0.5" value="3.5">
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#range-example-3-settings" aria-control="#range-example-3-settings" aria-expanded="false">設定</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="range-example-3-settings">
+        <li>ラベル <code>label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a21-1" aria-control=".a21-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a21-1">属性 <code>for="customRange3"</code></li>
+            <li class="txt">テキスト <code>Example range</code></li>
+          </ul>
+        </li>
+        <li>カスタムレンジ <code>input.custom-range</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a21-2" aria-control=".a21-2" aria-expanded="false">属性</a>
+          <ul class="collapse a21-2">
+            <li class="att">属性 <code>id="customRange3"</code></li>
+            <li class="att">属性 <code>type="range"</code></li>
+            <li class="att">属性 <code>min="0"</code></li>
+            <li class="att">属性 <code>step="0.5"</code></li>
+            <li class="att">属性 <code>max="5"</code></li>
+            <li class="att">属性 <code>value="3.5"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="file-browser"><a href="https://getbootstrap.com/docs/4.1/components/forms/#file-browser" target="_blank">ファイルブラウザ</a>
+      </h4>
+      <div class="custom-file">
+        <input class="custom-file-input" id="custom-file" type="file" lang="en">
+        <label class="custom-file-label" for="custom-file">Choose file</label>
+      </div>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#file-browser-example-structure" aria-control="#file-browser-example-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="file-browser-example-structure">
+        <li><code>div.custom-file</code>
+          <ul>
+            <li><code>input.custom-file-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a22-1" aria-control=".a22-1" aria-expanded="false">属性</a>
+              <ul class="collapse a22-1">
+                <li class="att">属性 <code>id="custom-file"</code></li>
+                <li class="att">属性 <code>type="file"</code></li>
+                <li class="att">属性 <code>lang="en"</code></li>
+              </ul>
+            </li>
+            <li><code>label.custom-file-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a22-2" aria-control=".a22-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a22-2">属性 <code>for="custom-file"</code></li>
+                <li class="txt">テキスト <code>Choose file</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="translating-or-customizing-the-strings"><a href="https://getbootstrap.com/docs/4.1/components/forms/#translating-or-customizing-the-strings" target="_blank">文字のカスタマイズ/多言語対応</a>
+      </h5>
+      <p class="my-2">カスタムファイルブラウザの表示 <strong>Browse</strong> は任意の文字に変更できる。最も簡単な方法としてはHTMLの <code>&lt;head&gt;</code> ブロックの最後に次のCSSを追加すればよい(日本語対応のみの場合)。</p>
+      <pre class="p-2 border bg-light"><code>&lt;style&gt;.custom-file-label::after { content: &quot;ファイル選択&quot;; }&lt;/style&gt;</code></pre>
+      <p class="my-2"><code>input</code> 要素の <code>lang</code> 属性に応じて自動判別する場合の例を示す(bootstrap.cssと同じ方法)。</p><a class="btn btn-outline-info" data-toggle="collapse" href="#custom-file-css" aria-control="#custom-file-css" aria-expanded="false">CSSコード例</a>
+      <pre class="mt-3 p-2 border bg-light collapse" id="custom-file-css">/* en(英語,デフォルト)はbootstrap.cssに設定済み(略) */
+/* ja(日本語) */
+.custom-file-input:lang(ja) ~ .custom-file-label::after {
+  content: "ファイル選択";
+}
+/* es(スペイン語) */
+.custom-file-input:lang(es) ~ .custom-file-label::after {
+  content: "Elegir";
+}</pre>
+      <p class="mt-3 mb-2">設定例は次の通り(en/ja/es)。</p>
+      <div class="custom-file my-1">
+        <input class="custom-file-input" lang="en" type="file" id="custom-file-en">
+        <label class="custom-file-label" for="custom-file-en">Choose file</label>
+      </div>
+      <div class="custom-file my-1">
+        <input class="custom-file-input" lang="ja" type="file" id="custom-file-ja">
+        <label class="custom-file-label" for="custom-file-ja">選択されていません</label>
+      </div>
+      <div class="custom-file my-1">
+        <input class="custom-file-input" lang="es" type="file" id="custom-file-es">
+        <label class="custom-file-label" for="custom-file-es">Seleccionar Archivo</label>
+      </div>
+      <p class="my-2">より本格的にbootstrap.cssをソースコードからカスタマイズすることも可能。詳しくは本節の公式ドキュメント本文参照(Sassの知識が必要)。</p>
+      <h5 class="mt-4" id="custom-file-code-example">ファイル名の更新(要JavaScript)</h5>
+      <p class="mt-3 mb-2">カスタムファイルブラウザは要素のデフォルト表示を( <code>opacity: 0;</code> を用いて)消去しその上にカスタム表示を行っている。そのためファイル名表示は別要素にする必要があり、ファイルを選択してもそのままでは更新されない。更新処理用のJavaScriptコード例を示す(どちらも可、jQuery版を本ページの例に設定済み)。</p>
+      <div class="mt-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#custome-file-code-example-dom" aria-control="#custome-file-code-example-dom" aria-expanded="false">コード例(DOM)</a>&nbsp;<a class="btn btn-outline-info" data-toggle="collapse" href="#custome-file-code-example-jquery" aria-control="#custome-file-code-example-jquery" aria-expanded="false">コード例(jQuery)</a>
+      </div>
+      <pre class="p-2 border bg-light mt-3 collapse" id="custome-file-code-example-dom"><code>// DOM版
+(function() {
+  window.addEventListener('load', function() {
+    var input = document.getElementById('custom-file');
+    input.addEventListener('change', function(event) {
+      var label = document.querySelector('[for="custom-file"]');
+      label.textContent = event.target.files[0].name;
+    }, false);
+  }, false);
+})();</code></pre>
+      <pre class="p-2 border bg-light mt-3 collapse" id="custome-file-code-example-jquery"><code>// jQuery版
+$('#custom-file').on('change', function(event) {
+  $('[for="custom-file"]').text($(this).prop('files')[0].name);
+});</code></pre>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(5): フォーム</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

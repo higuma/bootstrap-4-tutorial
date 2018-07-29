@@ -1,0 +1,100 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(12): スクロールスパイ: リストグループへの設定
+block body
+  div.container
+    div.row
+      div.col-4.col-lg-3.mt-4
+        nav.navbar.navbar-light.bg-light.mb-2
+          span.navbar-brand Scrollspy Demo (3)
+        div.list-group#scrollspy-demo
+          a.list-group-item.list-group-item-action(href=`#about`) About this demo
+          each n in [1,2,3]
+            a.list-group-item.list-group-item-action(href=`#pict-${n}`)= `Picture ${n}`
+          each n in [1,2,3]
+            a.list-group-item.list-group-item-action(href=`#slide-${n}`)= `Slide ${n}`
+      div.col-8.col-lg-9.mt-4(data-spy="scroll" data-target="#scrollspy-demo" data-offset="10" style="height: 32rem; overflow-y: scroll;")
+        +pageHeader("scrollspy-3")
+          p.lead スクロールスパイ: リストグループへの設定
+
+        h2.mt-2#about デモの構成
+        p.my-2
+          a(href="components-12.html#scrollspy-example-with-list-group") スクロールスパイのデモ 
+          |  : 
+          a(href="components-7.html") リストグループ
+          | を用いた例。
+        ul.struct
+          li コンテナ 
+            code div.container
+            |  : 
+            a(href="layout-1.html#grid") グリッド
+            | を用い左右にレイアウト
+            ul
+              li 左 
+                code div.col-4.col-lg-3
+                |  : ナビゲーションバー + リストグループ
+                ul
+                  li ナビゲーションバー 
+                    code nav.navbar.navbar-light.bg-light.mb-2
+                    ul
+                      li
+                        code span.navbar-brand
+                        ul
+                          li.txt テキスト 
+                            code Scrollspy Demo (3)
+                  li リストグループ 
+                    code div.list-group
+                    +attrBtn(".a1-1")
+                    ul
+                      li.att.collapse.a1-1 属性 
+                        code id="scrollspy-demo"
+                      li アイテム 
+                        code a.list-group-item
+                        +attrBtn(".a1-2")
+                        ul.collapse.a1-2
+                          li.att 属性 
+                            code= `href="#{位置ID}"`
+              li 右 
+                code div.col-8.col-lg-9
+                |  : スクロールするコンテンツ(この場所)
+                +attrsBtn(".a1-3")
+                ul
+                  li.att.collapse.a1-3 属性 
+                    code data-spy="scroll"
+                  li.att.collapse.a1-3 属性 
+                    code data-target="#scrollspy-demo"
+                  li.att.collapse.a1-3 属性 
+                    code data-offset="10"
+                    |  (⇒ 
+                    a(href="#note") 注
+                    | )
+                  li.att.collapse.a1-3 スタイル 
+                    code style="height: 32rem; overflow-y: scroll;"
+                  li 位置検出する要素
+                    +attrBtn(".a1-4")
+                    ul.collapse.a1-4
+                      li ID 
+                        code="{位置ID}"
+                        |  を設定
+        div.alert.alert-info#note(role="alert")
+          strong 注: 
+          | 設定 
+          code data-offset="10"
+          |  はスクロール位置計算の微調整(px)。厳密には 
+          code "0"
+          |  となるべきだが、実際にはPillをクリックしてスクロールした時のそのPillがアクティブにならないことがある。そこで
+          code "10"
+          |  程度のオフセット値を設定すると自然な動作になる。
+        p 以下はスクロール用ダミーコンテンツ。ヘッダにはそれぞれ 
+          code id="{位置ID}"
+          |  が設定されており、スクロールスパイがスクロール検出と表示の連動を行う。
+        each n in [1,2,3]
+          h2(id=`pict-${n}`)= `Picture ${n}`
+          img.img-fluid.mb-4(src=`../img/1920x1080.svg`)
+        each n in [1,2,3]
+          h2(id=`slide-${n}`)= `Slide ${n}`
+          img.img-fluid.mb-4(src=`../img/slide-${n}.svg`)
+
+    +breadcrumbLevel2("components-12.html#scrollspy-example-with-list-group", "コンポーネント(12): スクロールスパイ", "リストグループへの設定")

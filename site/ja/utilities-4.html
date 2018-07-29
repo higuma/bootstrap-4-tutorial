@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: ユーティリティ(4): 配置 / スクリーンリーダ / シャドウ / サイズ / 空白</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">ユーティリティ(4): <a href="#position">配置</a> / <a href="#screenreaders">スクリーンリーダ</a> / <a href="#shadows">シャドウ</a> / <a href="#sizing">サイズ</a> / <a href="#spacing">空白</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/utilities-4.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="position"><a href="https://getbootstrap.com/docs/4.1/utilities/position/" target="_blank">配置</a>
+      </h2>
+      <h4 class="mt-4" id="position-common-values"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#common-values" target="_blank">設定</a>
+      </h4>
+      <p class="my-1"><code>.position-(static|relative|absolute|fixed|sticky)</code></p>
+      <p class="my-2">CSSの <code>position</code> プロパティを設定するユーティリティクラス。クラス名はCSSの <code>position</code> プロパティ値と直接対応しているため説明略(<a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank">CSSリファレンス</a>参照)
+      </p>
+      <h4 class="mt-4" id="position-fixed-sticky"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top" target="_blank">上端固定</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom" target="_blank">下端固定</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top" target="_blank">上端張り付き</a>
+      </h4>
+      <p class="mb-2">要素を画面の上下端に固定し、さらに <a href="layout-1.html#overview-z-index">Z-index</a> を操作して重なっている他要素より上に表示する機能。<a href="components-10.html">ナビゲーションバー</a>でこれらを利用したデモを作成している(詳細は各デモを参照)。</p>
+      <ul>
+        <li>上端固定 <code>.fixed-top</code> ⇒ <a href="navbar-fixed-top.html">ナビゲーションバーのデモ</a></li>
+        <li>下端固定 <code>.fixed-bottom</code> ⇒ <a href="navbar-fixed-bottom.html">ナビゲーションバーのデモ</a></li>
+        <li>上端張り付き <code>.sticky-top</code> ⇒ <a href="navbar-sticky-top.html">ナビゲーションバーのデモ</a></li>
+      </ul>
+      <h2 class="mt-5" id="screenreaders"><a href="https://getbootstrap.com/docs/4.1/utilities/screenreaders/" target="_blank">スクリーンリーダ</a>
+      </h2>
+      <h5 class="mt-3" id="screenreaders-summary">スクリーンリーダ対応(まとめ)</h5>
+      <ul>
+        <li>スクリーンリーダ利用者のみに提供する要素に <code>.sr-only</code> を設定する
+          <ul>
+            <li>スクリーンリーダ利用者専用情報として開示される</li>
+            <li>非利用者には表示されない</li>
+          </ul>
+        </li>
+        <li>キーボードを利用するユーザ向けに <code>.sr-only-focusable</code> を適宜設定する</li>
+      </ul>
+      <h5 class="mt-3" id="screenreaders-example">例</h5>
+      <p class="my-2"> <code>.sr-only</code> は多数のコンポーネントに用いられているため略。ここでは <code>.sr-only-focusable</code> の例を示す。</p>
+      <ul class="struct">
+        <li><code>a.sr-only.sr-only-focusable</code>
+          <ul>
+            <li class="att">属性 <code>href="#"</code></li>
+            <li class="txt">テキスト <code>Skip to main content</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">実例: <strong>この先のかっこの中に設定 ⇒ ( </strong><a class="sr-only sr-only-focusable" href="#">Skip to main content</a><strong> )</strong>。動作は次の通り。</p>
+      <ul>
+        <li>スクリーンリーダ利用者は情報を読み取れ、キーボードフォーカスも受ける</li>
+        <li>視覚利用者には見えず、マウスではフォーカスを受けない
+          <ul>
+            <li>ただしタブストップは有効で、<kbd>Tab</kbd> キーでフォーカスすると表示する</li>
+          </ul>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="shadows"><a href="https://getbootstrap.com/docs/4.1/utilities/shadows/" target="_blank">シャドウ</a>
+      </h2>
+      <p class="mt-3"><code>.shadow(-none|-sm|-lg)?</code></p>
+      <h4 class="mt-4" id="shadows-examples">表示例</h4>
+      <p class="mt-3 mb-2"><code>div.shadow-none</code></p>
+      <div class="shadow-none p-3 mb-4 bg-light rounded">No shadow</div>
+      <p class="mt-3 mb-2"><code>div.shadow-sm</code></p>
+      <div class="shadow-sm p-3 mb-4 bg-white rounded">Small shadow</div>
+      <p class="mt-3 mb-2"><code>div.shadow</code></p>
+      <div class="shadow p-3 mb-4 bg-white rounded">Regular shadow</div>
+      <p class="mt-3 mb-2"><code>div.shadow-lg</code></p>
+      <div class="shadow-lg p-3 mb-4 bg-white rounded">Larger shadow</div>
+      <h2 class="mt-5" id="sizing"><a href="https://getbootstrap.com/docs/4.1/utilities/sizing/" target="_blank">サイズ</a>
+      </h2>
+      <p class="mt-2 mb-1">幅と高さを設定するユーティリティクラス。</p>
+      <ul class="my-0">
+        <li>幅 (25%ステップ + auto) <code>.w-(25|50|75|100|auto)</code></li>
+        <li>高さ (25%ステップ + auto) <code>.h-(25|50|75|100|auto)</code></li>
+        <li>最大幅を100%に設定(親要素にフィット) <code>.mw-100</code></li>
+        <li>最大高さを100%に設定(親要素にフィット) <code>.mh-100</code></li>
+      </ul>
+      <p class="mt-2 mb-0">幅の設定</p>
+      <div class="w-25 p-1 bg-light text-center border"><code>.w-25</code></div>
+      <div class="w-50 p-1 bg-light text-center border"><code>.w-50</code></div>
+      <div class="w-75 p-1 bg-light text-center border"><code>.w-75</code></div>
+      <div class="w-100 p-1 bg-light text-center border"><code>.w-100</code></div>
+      <div class="w-auto p-1 bg-light text-center border"><code>.w-auto</code></div>
+      <p class="mt-2 mb-0">高さの設定</p>
+      <div class="border" style="height: 100px;">
+        <div class="h-25 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-25</code></div>
+        <div class="h-50 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-50</code></div>
+        <div class="h-75 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-75</code></div>
+        <div class="h-100 d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-100</code></div>
+        <div class="h-auto d-inline-block border bg-light text-center" style="width: 8rem;"><code>.h-auto</code></div>
+      </div>
+      <p class="mt-3 mb-1">最大幅設定の例: <code>img.mw-100</code> (親の幅にフィット)</p><img class="mw-100" src="../img/2000x200.svg">
+      <p class="mt-3 mb-1">最大高さ設定の例: 親要素 <code>height:200px;</code> の中に <code>img.mh-100</code> (親の高さにフィット)</p>
+      <div class="border" style="height:200px;"><img class="mh-100" src="../img/320x320.svg"></div>
+      <h2 class="mt-5" id="spacing"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/" target="_blank">空白</a>
+      </h2>
+      <p class="my-2">マージン(要素のボックス境界と外部要素の間隔)とパディング(ボックス境界と内部要素の間隔)の設定に用いる</p>
+      <h4 class="mt-3" id="spacing-notation"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#notation" target="_blank">記法</a>
+      </h4>
+      <p class="mt-2 mb-1"><code>.(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)</code></p>
+      <ul>
+        <li><code>(m|p)</code> マージン/パディングの種別
+          <ul>
+            <li><code>m</code> マージンを設定
+            </li>
+            <li><code>p</code> パディングを設定
+            </li>
+          </ul>
+        </li>
+        <li><code>(t|b|l|r|x|y)</code> 上下左右の指定
+          <ul>
+            <li><code>t</code> 上のマージン/パディングを設定
+            </li>
+            <li><code>b</code> 下のマージン/パディングを設定
+            </li>
+            <li><code>l</code> 左のマージン/パディングを設定
+            </li>
+            <li><code>r</code> 右のマージン/パディングを設定
+            </li>
+            <li><code>x</code> 左右のマージン/パディングを設定
+            </li>
+            <li><code>y</code> 上下のマージン/パディングを設定
+            </li>
+            <li>(なし) 上下左右すべてのマージン/パディングを設定</li>
+          </ul>
+        </li>
+        <li><code>(0|1|2|3|4|5|auto)</code> 間隔の設定
+          <ul>
+            <li><code>0</code> 間隔を0に設定</li>
+            <li><code>1</code> 間隔を <code>1/4rem</code> に設定</li>
+            <li><code>2</code> 間隔を <code>1/2rem</code> に設定</li>
+            <li><code>3</code> 間隔を <code>1rem</code> に設定</li>
+            <li><code>4</code> 間隔を <code>1.5rem</code> に設定</li>
+            <li><code>5</code> 間隔を <code>3rem</code> に設定</li>
+            <li><code>auto</code> (マージンのみ)ブラウザデフォルト値に設定</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert"><strong>上級向け(要Sass): </strong>空白文字幅はBootstrapのカスタマイズにより変更可能(⇒ <a href="getting-started.html#css-customizing">Sassソースからのカスタマイズ</a>)。幅のスケールはSass変数 <code>$spacer</code> で定義されている(デフォルト値は <code>1rem</code> )。また幅設定の <code>0,1,2...</code> もSass変数 <code>$spacers</code> で設定されており、どちらも自由にカスタマイズできる。</div>
+      <h4 class="mt-4" id="spacing-example">例</h4>
+      <p class="mt-2 mb-1">表のセル <code>td</code> へのパディング設定: この場合は <code>pb-(0|1|2|3|4|5)</code> (下のみ)は効果がないため除外</p>
+      <p class="my-1"><code>.p-(0|1|2|3|4|5)</code> (上下左右)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="p-0">
+              <div class="m-0 border bg-light"><code>.p-0</code></div>
+            </td>
+            <td class="p-1">
+              <div class="m-0 border bg-light"><code>.p-1</code></div>
+            </td>
+            <td class="p-2">
+              <div class="m-0 border bg-light"><code>.p-2</code></div>
+            </td>
+            <td class="p-3">
+              <div class="m-0 border bg-light"><code>.p-3</code></div>
+            </td>
+            <td class="p-4">
+              <div class="m-0 border bg-light"><code>.p-4</code></div>
+            </td>
+            <td class="p-5">
+              <div class="m-0 border bg-light"><code>.p-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.px-(0|1|2|3|4|5)</code> (左右のみ)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="px-0">
+              <div class="m-0 border bg-light"><code>.px-0</code></div>
+            </td>
+            <td class="px-1">
+              <div class="m-0 border bg-light"><code>.px-1</code></div>
+            </td>
+            <td class="px-2">
+              <div class="m-0 border bg-light"><code>.px-2</code></div>
+            </td>
+            <td class="px-3">
+              <div class="m-0 border bg-light"><code>.px-3</code></div>
+            </td>
+            <td class="px-4">
+              <div class="m-0 border bg-light"><code>.px-4</code></div>
+            </td>
+            <td class="px-5">
+              <div class="m-0 border bg-light"><code>.px-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.py-(0|1|2|3|4|5)</code> (上下のみ)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="py-0">
+              <div class="m-0 border bg-light"><code>.py-0</code></div>
+            </td>
+            <td class="py-1">
+              <div class="m-0 border bg-light"><code>.py-1</code></div>
+            </td>
+            <td class="py-2">
+              <div class="m-0 border bg-light"><code>.py-2</code></div>
+            </td>
+            <td class="py-3">
+              <div class="m-0 border bg-light"><code>.py-3</code></div>
+            </td>
+            <td class="py-4">
+              <div class="m-0 border bg-light"><code>.py-4</code></div>
+            </td>
+            <td class="py-5">
+              <div class="m-0 border bg-light"><code>.py-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.pt-(0|1|2|3|4|5)</code> (上のみ)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="pt-0">
+              <div class="m-0 border bg-light"><code>.pt-0</code></div>
+            </td>
+            <td class="pt-1">
+              <div class="m-0 border bg-light"><code>.pt-1</code></div>
+            </td>
+            <td class="pt-2">
+              <div class="m-0 border bg-light"><code>.pt-2</code></div>
+            </td>
+            <td class="pt-3">
+              <div class="m-0 border bg-light"><code>.pt-3</code></div>
+            </td>
+            <td class="pt-4">
+              <div class="m-0 border bg-light"><code>.pt-4</code></div>
+            </td>
+            <td class="pt-5">
+              <div class="m-0 border bg-light"><code>.pt-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.pl-(0|1|2|3|4|5)</code> (左のみ)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="pl-0">
+              <div class="m-0 border bg-light"><code>.pl-0</code></div>
+            </td>
+            <td class="pl-1">
+              <div class="m-0 border bg-light"><code>.pl-1</code></div>
+            </td>
+            <td class="pl-2">
+              <div class="m-0 border bg-light"><code>.pl-2</code></div>
+            </td>
+            <td class="pl-3">
+              <div class="m-0 border bg-light"><code>.pl-3</code></div>
+            </td>
+            <td class="pl-4">
+              <div class="m-0 border bg-light"><code>.pl-4</code></div>
+            </td>
+            <td class="pl-5">
+              <div class="m-0 border bg-light"><code>.pl-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="my-1"><code>.pr-(0|1|2|3|4|5)</code> (右のみ)
+      </p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="p-0">
+            <td class="pr-0">
+              <div class="m-0 border bg-light"><code>.pr-0</code></div>
+            </td>
+            <td class="pr-1">
+              <div class="m-0 border bg-light"><code>.pr-1</code></div>
+            </td>
+            <td class="pr-2">
+              <div class="m-0 border bg-light"><code>.pr-2</code></div>
+            </td>
+            <td class="pr-3">
+              <div class="m-0 border bg-light"><code>.pr-3</code></div>
+            </td>
+            <td class="pr-4">
+              <div class="m-0 border bg-light"><code>.pr-4</code></div>
+            </td>
+            <td class="pr-5">
+              <div class="m-0 border bg-light"><code>.pr-5</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mt-4" id="horizontal-centering"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering" target="_blank">要素の横センタリング</a>
+      </h4>
+      <p>幅を指定したブロック要素の横センタリングに <code>.mx-auto</code> を用いることができる。</p>
+      <div class="mx-auto border p-2 bg-light" style="width: 20rem;"><code>div.mx-auto</code> + <code>style="width: 20rem;"</code></div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">ユーティリティ(4): 配置/スクリーンリーダ/シャドウ/サイズ/空白</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

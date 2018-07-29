@@ -1,0 +1,381 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components (11): Pagination / Popovers
+
+block body
+  div.container
+    +pageHeader("components-11")
+      p.lead Components (11): 
+        a(href="#pagination") Pagination
+        |  / 
+        a(href="#popovers") Popovers
+
+    h2.mt-2#pagination
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/") Pagination
+    h4.mt-3#pagination-overview
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#overview") Overview
+    ul.struct.my-1
+      li Wrapping parent (for accessibility) 
+        code nav
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Accessibility attribute 
+            code aria-label="Pagination example"
+          li Pagination 
+            code ul.pagination
+            ul
+              li Item(s) 
+                code li.page-item
+                ul
+                  li Link 
+                    code a
+                    +attrBtn(".a1-2")
+                    ul
+                      li.att.collapse.a1-2 Attribute 
+                        code href="..."
+                      li.txt Text 
+                        code Previous
+                        |  , 
+                        code 1
+                        |  , 
+                        code 2
+                        |  , ... , 
+                        code Next
+    nav.mt-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item
+          a.page-link(href="#") Previous
+        each n in [1,2,3]
+          li.page-item
+            a.page-link(href="#")= n
+        li.page-item
+          a.page-link(href="#") Next
+    h4.mt-4#working-with-icons
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#working-with-icons") Working with icons
+    p.my-2 Example: using Unicode symbol characters
+    ul.struct.my-0
+      li First item 
+        code li.page-item
+        ul
+          li.txt Text 
+            code= `&laquo;`
+          li For accessibility 
+            code span
+            +attrBtn(".a2-1")
+            ul
+              li.att.collapse.a2-1 Attribute 
+                code area-hidden="true"
+              li.txt Text 
+                code Previous
+      li Last item 
+        code li.page-item
+        ul
+          li.txt Text 
+            code= `&raquo;`
+          li For accessibility 
+            code span
+            +attrBtn(".a2-2")
+            ul
+              li.att.collapse.a2-2 Attribute 
+                code area-hidden="true"
+              li.txt Text 
+                code Next
+    nav.mt-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item
+          a.page-link(href="#" aria-label="Previous")
+            span(aria-hidden="true") &laquo;
+            span.sr-only Previous
+        each n in [1,2,3]
+          li.page-item
+            a.page-link(href="#")= n
+        li.page-item
+          a.page-link(href="#" aria-label="Next")
+            span(aria-hidden="true") &raquo;
+            span.sr-only Next
+    p.mt-4.mb-2 Using icons is the same way: example using 
+      +extLink("https://github.com/iconic/open-iconic") Open Iconic
+      |  (see source for detail)
+    nav.mt-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item
+          a.page-link(href="#" aria-label="Previous")
+            img(src="../img/openiconic/svg/chevron-left.svg" width="10" height="10" style="opacity: 0.6;")
+            span.sr-only Previous
+        each n in [1,2,3]
+          li.page-item
+            a.page-link(href="#")= n
+        li.page-item
+          a.page-link(href="#" aria-label="Next")
+            img(src="../img/openiconic/svg/chevron-right.svg" width="10" height="10" style="opacity: 0.6;")
+            span.sr-only Next
+    h4.mt-4#pagination-disabled-and-active-states
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#disabled-and-active-states") Disabled and active states
+    p.my-2 Pagination items should be disabled or activated with various situations. The most common conditions are as follows.
+    ul
+      li The current page item is displayed as active, but its link is disabled.
+      li On showing the first page, 
+        strong Previous
+        |  item is disabled for display(grayed) and link
+      li On showing the last page, 
+        strong Next
+        |  item is disabled for display(grayed) and link
+    h5.mt-3#pagination-disabled-state Setting disabled states
+    p.my-2 Add 
+      code .page-item
+      |  to 
+      code li
+      |  . Its descendant link 
+      code a
+      |  is disabled automatically.
+    ul.struct
+      li
+        code li.page-item
+        ul
+          li.cls Set class 
+            code .disabled
+            |  to disabled items
+          li Link 
+            code a
+            ul
+              li.att Set attribute 
+                code tabindex="-1"
+                |  to disabled links (to remove from tabstops)
+              li.txt Text (e.g. 
+                code Previous
+                |  ) (displays grayed automatically)
+              li For accessiblity, use 
+                code span.sr-only
+                |  to the current item
+                ul
+                  li.txt Text 
+                    code (current)
+    p.my-1 Example: on showing page 1 (
+      strong Previous
+      |  and 
+      strong 1
+      |  are disabled)
+    nav.my-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item.disabled
+          a.page-link(href="#" tabindex="-1") Previous
+        li.page-item.disabled
+          a.page-link(href="#" tabindex="-1") 1
+            span.sr-only (current)
+        li.page-item
+          a.page-link(href="#") 2
+        li.page-item
+          a.page-link(href="#") 3
+        li.page-item
+          a.page-link(href="#") Next
+    h5.mt-4#pagination-active-state Setting an active state
+    p.my-2 Setting 
+      code .active
+      |  to 
+      code li.list-item
+      |  displays an item as active state (displayed as primary context). But it does not disable an inner link. Furthermore, it cannot be used with 
+      code .disabled
+      |  (
+      code li.page-item.active.disabled
+      |  does not work).
+    p.my-2 This problem can be resolved by changing inner elements from 
+      code a
+      |  to 
+      code span
+      |  for all disabled items.
+      
+    ul
+      li Active or disabled items 
+        code li.page-item.(active|disabled)
+        ul
+          li
+            code span.page-link
+            |  (from 
+            code a.page-link
+            |  )
+    nav.my-2(aria-label="Page navigation example")
+      ul.pagination
+        li.page-item.disabled
+          span.page-link Previous
+        li.page-item.active
+          span.page-link 1
+            span.sr-only (current)
+        li.page-item
+          a.page-link(href="#") 2
+        li.page-item
+          a.page-link(href="#") 3
+        li.page-item
+          a.page-link(href="#") Next
+    h4.mt-4#pagination-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#sizing") Sizing
+    p.my-1 Add 
+      code .pagination-(lg|sm)
+      |  to 
+      code ul.pagenation
+    each sz in ["lg", null, "sm"]
+      p.mt-2.mb-1
+        code= `.ul.pagination${sz ? `.pagination-${sz}` : ""}`
+        - if (!sz)
+          |  (default)
+      nav.mb-3(aria-label="Page navigation example")
+        ul.mt-0.mb-2(class=`pagination${sz ? ` pagination-${sz}` : ""}`)
+          li.page-item.disabled
+            a.page-link(href="#" tabindex="-1") 1
+          for n in [2,3]
+            li.page-item
+              a.page-link(href="#")= n
+    h4.mt-4#pagination-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#alignment") Alignment
+    p.my-1 Use 
+      code .justify-content-*
+      |  (see 
+      a(href="utilities-3.html#flex-justify-content") Flex utilities - Arrangement with .justify-content-*
+      |  )
+    each al in ["start", "center", "end"]
+      p.mt-2.mb-1
+        code= `ul-pagination.justify-content-${al}`
+        - if (al == start)
+          |  (default)
+      nav.mb-3(aria-label="Page navigation example")
+        ul(class=`pagination justify-content-${al}`)
+          li.page-item.disabled
+            a.page-link(href="#" tabindex="-1") Previous
+          for n in [1,2,3,"Next"]
+            li.page-item
+              a.page-link(href="#")= n
+
+    h2.mt-5#popovers
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/") Popovers
+    p.my-2 Popover is a popup component like those found in iOS. It utilizes 
+      +extLink("https://popper.js.org/") Popper.js
+      |  for implementation.
+    h4.mt-3#popovers-init
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere") Initialization
+    p Popovers are inactivated as defaut. JavaScript is required to activate them. Below is a simple code to activate all popovers.
+    pre.p-2.border.bg-light
+      code $('[data-toggle="popover"]').popover();
+    div.alert.alert-warning.my-3(role="alert")
+      strong Caution: 
+      |  jQuery, Popper.js, and bootstrap.js are required. Use this script after those libraries.
+    h4.ht-4#popovers-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example") How to use it
+    ul.my-1
+      li Available for any elements with setting following attributes
+      ul
+        li
+          code data-toggle="popover"
+        li
+          code title="{title-text}"
+        li
+          code data-content="{content-text}"
+        li One of 
+          code title
+          |  or 
+          code data-content
+          |  is required. It does not show if both values are empty.
+    p.my-2 Example (Click to show, click again to hide)
+    button.btn.btn-lg.btn-danger(type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?") Click to toggle popover
+    h4.mt-4#popovers-four-directions
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#four-directions") Directions
+    ul.my-1
+      li Add an following attribute ( 
+        code "right"
+        |  as default)
+        ul
+          li
+            code data-placement=("top"|"right"|"bottom"|"left")
+    p.mt-3.mb-1 Example
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="popover" data-placement="top" title="Popover on top")
+          code data-placement="top"
+    div.row.m-0.py-1
+      div.col.m-0.text-right.pr-2
+        button.btn.btn-light.my-0(type="button" data-toggle="popover"  data-placement="left" title="Popover on left")
+          code data-placement="left"
+      div.col.m-0.text-left.pl-2
+        button.btn.btn-light.my-0(type="button" data-toggle="popover" data-placement="right" title="Popover on right")
+          code data-placement="right"
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="popover" data-placement="bottom" title="Tooltip on bottom")
+          code data-placement="bottom"
+    div.alert.alert-info.my-3(role="alert") Popovers always watch viewport size and elements' posistions, and switch to the opposite sides when space is not enough. It can be demonstrated with the above example by scrolling (top/bottom) or changing viewport width (left/right).
+    h4.mt-4#popovers-dismiss-on-next-click
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#dismiss-on-next-click") Dismiss on next click   
+    p.my-2 As default, a popover shows on click and hides on the next click on the same element. This specification enables showing multiple popovers at the same time (can be demonstrated by the Directions example above).
+    p.my-2 However, it is possible to dismiss a popover by clicking another element (more precisely, showing/hiding by focus events) with the following settings.
+    ul.my-y
+      li Always use 
+        code a
+        |  for the target element (some browsers may not work with 
+        code button
+        |  )
+      li Set attribute 
+        code data-trigger="focus"
+      li Set attribute 
+        code tabindex="0"
+    p.mt-3.mb-1 Example
+    a.btn.btn-lg.btn-danger.mt-1.mb-3(tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?") Dismissible popover
+    h4.mt-4#popovers-disabled-elements
+      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#disabled-elements") Using popovers for disabled elements
+    p.my-2 If the attribute 
+      code disabled
+      |  is set to the element, it also disables a popover (example below).
+    ul.struct.mb-2
+      li
+        code button.btn.btn-primary
+        +attrsBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 Attribute 
+            code type="button"
+          li.att.collapse.a3-1 Attribute 
+            code data-toggle="popover"
+          li.att.collapse.a3-1 Attribute 
+            code title="Disabled popover"
+          li.att.collapse.a3-1 Attribute 
+            code disabled
+            |  (also disables a popover)
+          li.txt Text 
+            code Disabled button
+    p.my-2 Example (does not popover on click)
+    p.my-2
+      button.btn.btn-primary(type="button" data-toggle="popover" title="Disabled tooltip" disabled) Disabled button
+    p.mt-3.mb-1 To enable a popover for a disabled element, add a wrapping parent and set popover to it.
+    ul.struct.mb-2
+      li Wrapping parent 
+        code span
+        +attrsBtn(".a4-1")
+        ul
+          li.cls.collapse.a4-1 Utility class 
+            code .d-inline-block
+            |  (set to the same 
+            code display
+            |  setting as 
+            code button
+            |  )
+          li.att.collapse.a4-1 Attribute 
+            code data-toggle="popover"
+          li.att.collapse.a4-1 Attribute 
+            code title="Disabled popover"
+          li Target element 
+            code button.btn.btn-primary
+            +attrsBtn(".a4-2")
+            ul
+              li.att.collapse.a4-2 Attribute 
+                code type="button" 
+              li.att.collapse.a4-2 Attribute 
+                code style="pointer-events: none;"
+                |  (to prevent receiving pointer events)
+              li.att.collapse.a4-2 Attribute 
+                code disabled
+              li.txt Text 
+                code Disabled button
+    p.my-2 Example (the button is disabled but popovers on click by the parent)
+    p.mt-2
+      span.d-inline-block(data-toggle="popover" title="Disabled popover")
+        button.btn.btn-primary(style="pointer-events: none;" type="button" disabled) Disabled button
+
+    +breadcrumbLevel1("Components(11): Pagination/Popovers")

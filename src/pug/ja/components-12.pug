@@ -1,0 +1,349 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(12): プログレスバー / スクロールスパイ / ツールチップ
+
+block body
+  - const contextTypes = ["primary", "secondary", "success", "info", "warning", "danger"]
+  div.container
+    +pageHeader("components-12")
+      p.lead コンポーネント(12): 
+        a(href="#progress") プログレスバー
+        |  / 
+        a(href="#scrollspy") スクロールスパイ
+        |  / 
+        a(href="#tooltips") ツールチップ
+
+    h2.mt-2#progress
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/") プログレスバー
+    p.mt-2
+      code progress
+      |  要素の代替を目的としたコンポーネントで、バーの積み重ねやアニメーション付きストライプバーなど 
+      code progress
+      |  にはない追加機能を持つ。
+    h4.mt-3#progress-how-it-works
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#how-it-works") 基本設定
+    ul.struct.my-1
+      li ベース部 
+        code div.progress
+        ul
+          li カラーバー 
+            code div.progress-bar
+            |  (複数積み重ね可)
+            +attrsBtn(".a1-1")
+            ul.collapse.a1-1
+              li.att 幅(必須) (例) 
+                code style="width: 50%"
+              li.att アクセシビリティ属性 
+                code role="progressbar" 
+              li.att アクセシビリティ属性 
+                code aria-valuenow="50"
+              li.att アクセシビリティ属性 
+                code aria-valuemin="0"
+              li.att アクセシビリティ属性 
+                code aria-valuemax="100"
+    h4.mt-4#progress-width 幅の設定
+    p.mt-2.mb-0 (1) カスタムスタイル 
+      code style="width: {width}%”
+    each w in [0,25,50,75,100]
+      p.mt-1.mb-0
+        code= `style="width: ${w}%;"`
+      div.progress
+        div.progress-bar(role="progressbar" style=`width: ${w}%;` aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    p.mt-3.mb-1 (2) 幅設定ユーティリティ 
+      code .w-(25|75|100)
+      |  (⇒ 
+      a(href="utilities-4.html#sizing") サイズユーティリティ
+      |  、25%ステップ)
+    each w in [25,50,75,100]
+      p.mt-1.mb-0
+        code= `.w-${w}`
+      div.progress
+        div(class=`progress-bar w-${w}` role="progressbar" aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-labels
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#labels") ラベル文字の追加
+    p.my-2 バー 
+      code div.progress-bar
+      |  の内部テキストを記述する。
+    div.progress
+      div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
+    h4.mt-4#progress-height
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#height") 高さの設定
+    p.my-2 ベースの 
+      code div.progress
+      |  に設定する。
+    each h in [5,10,15,20]
+      p.mt-1.mb-0
+        code= `style="height: ${h}px;"`
+      div.progress(style=`height: ${h}px;`)
+        div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-backgrounds
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#backgrounds") バーの色
+    p.my-2
+      code div.progress-bar
+      |  に背景色 
+      code .bg-{context}
+      |  を追加(⇒ 
+      a(href="utilities-2.html#colors-background-color") 色 - 背景色
+      |  )
+    each col in ["success","info","warning","danger"]
+      p.mt-1.mb-0
+        code= `.bg-${col}`
+      div.progress
+        div(class=`progress-bar bg-${col}` role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-multiple-bars
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#multiple-bars") バーの積み重ね 
+    p.my-2
+      code div.progress-bar
+      |  を複数用いれば左から右に積み重なる。
+    div.progress
+      each bar in [["primary",10], ["success",40], ["warning",20], ["danger",10]]
+        div(class=`progress-bar bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-striped
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#striped") ストライプ表示
+    p.my-2 バーに 
+      code .progress-bar-striped
+      |  を追加する。
+    each bar in [["primary",20], ["success",40], ["info",60], ["warning",80], ["danger",100]]
+      div.progress.my-2
+        div(class=`progress-bar progress-bar-striped bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-animated-stripes
+      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#animated-stripes") ストライプのアニメーション
+    p.mt-3.mb-2 さらに 
+      code .progress-bar-animated
+      |  を追加する。
+    div.progress
+      div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;")
+
+    h2.mt-5#scrollspy
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/") スクロールスパイ
+    p.my-2 インジケータコンポーネント( 
+      a(href="components-9.html") ナビゲーション
+      |  または 
+      a(href="components-7.html") リストグループ
+      |  )のアクティブアイテム表示と縦スクロールするコンテンツのスクロールを同期させる機能。
+    h4.mt-3#scrollspy-how-it-works
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#how-it-works") 仕組み
+    p.my-2 スクロールスパイはJavaScriptを用いてスクロールするコンテンツの現在位置を監視し、インジケータ(ナビゲーションまたはリストグループ)のアクティブ表示を更新する。機能上の必要条件は次の通り。
+    ul
+      li インジケータコンポーネントとして
+        a(href="components-9.html") ナビゲーション
+        | または
+        a(href="components-7.html") リストグループ
+        | を用いる
+      li スクロールするコンテンツの基点要素には次の3条件が必要
+        ul
+          li
+            code position: relative;
+          li
+            code overflow-y: scroll;
+          li
+            code height
+            |  が何らかの形で設定されていること
+      li 基点要素として 
+        code body
+        |  を用いる場合は上記条件は自動的に満たしている(設定不要)
+    h4#scrollspy-how-to-use-it 使用法
+    ul
+      li スクロール検出の基点要素として 
+        code body
+        |  を用いるか、または上記必要条件の属性を設定する
+      li 基点要素に次の属性を設定する
+        ul
+          li
+            code data-spy="scroll"
+          li
+            code= `data-target="#{indicator-id}"`
+          li (オプション) 
+            code data-offset="{pixels}"
+            |  (スクロール位置計算オフセット、デフォルトは 
+            code "10"
+            |  )
+      li スクロールコンテンツ内のターゲット要素に適宜 
+        code id
+        |  を設定する
+      li インジケータコンポーネントとして次のどちらかを用いる
+        ul
+          li
+            a(href="components-9.html") ナビゲーション
+          li
+            a(href="components-7.html") リストグループ
+      li インジケータコンポーネントに 
+        code id="{indicator-id}"
+        |  を設定する
+      li アイテムの内部にリンク 
+            code a
+            |  と属性 
+            code= `href="#{target-id}"`
+            |  を設定する
+    h4.mt-3#scrollspy-example-in-navbar
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-in-navbar") ナビゲーションバーへの設定
+    p ⇒ 
+      a(href="scrollspy-1.html") デモページ
+    h4.mt-4#scrollspy-example-with-nested-nav
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-nested-nav") 階層ナビゲーションへの設定
+    p ⇒ 
+      a(href="scrollspy-2.html") デモページ
+    h4.mt-4#scrollspy-example-with-list-group
+      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-list-group") リストグループへの設定
+    p ⇒ 
+      a(href="scrollspy-3.html") デモページ
+
+    h2.mt-5#tooltips
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/") ツールチップ
+    p.mt-2.mb-1 HTML要素の 
+      code title
+      |  属性を用いたツールチップ(ポップアップ)表示機能をカスタマイズしたもの。実装に 
+      +extLink("https://popper.js.org/") Popper.js
+      |  を利用している。
+    ul.my-1
+      li ブラウザデフォルトのツールチップ ⇒ 
+        span.text-danger(title="デフォルトのツールチップ") この部分
+        |  をホバーすると表示
+      li Bootstrapのツールチップ ⇒ 
+        span.text-danger(title="Bootstrapのツールチップ" data-toggle="tooltip") この部分
+        |  をホバーすると表示
+    div.alert.alert-info(role="alert")
+      code a
+      |  や 
+      code button
+      |  などタブストップを受ける要素は 
+      kbd Tab
+      |  キーでフォーカスした場合もポップアップ表示する。
+    h4.mt-4#tooltips-example-enable-tooltips-everywhere
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#example-enable-tooltips-everywhere") 初期化方法
+    p Bootstrapのツールチップは初期状態では無効になっており、有効にするためにはJavaScriptコードが必要。最も簡単な方法を次に示す。
+    pre.p-2.border.bg-light
+      code $('[data-toggle="tooltip"]').tooltip();
+    div.alert.alert-warning(role="alert")
+      strong 注: 
+      | コードの置き場所に注意。ツールチップを使っている場所(の近く)に 
+      code script
+      |  を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。
+    h4.mt-4#tooltips-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#examples") 設定方法
+    ul.my-1
+      li 任意の要素に設定可: 次の属性を設定
+      ul
+        li
+          code data-toggle="tooltip"
+        li
+          code title="{表示テキスト}"
+    p.mt-2 設定例 ⇒ 
+      span.text-danger(data-toggle="tooltip" title="ツールチップ表示") この部分
+      |  に設定(ホバーすると表示)
+    h5.mt-4 表示方向の設定
+    ul.my-1
+      li 次の属性を追加(デフォルトは 
+        code "top"
+        |  )
+        ul
+          li
+            code data-placement=("top"|"right"|"bottom"|"left")
+    p.mt-2.mb-1 設定例
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="tooltip" data-placement="top" title="Tooltip on top")
+          code data-placement="top"
+    div.row.m-0.py-1
+      div.col.m-0.text-right.pr-2
+        button.btn.btn-light.my-0(type="button" data-toggle="tooltip" data-placement="left" title="Tooltip on left")
+          code data-placement="left"
+      div.col.m-0.text-left.pl-2
+        button.btn.btn-light.my-0(type="button" data-toggle="tooltip" data-placement="right" title="Tooltip on right")
+          code data-placement="right"
+    div.row.m-0.py-1
+      div.col.m-0.text-center
+        button.btn.btn-light.mt-0(type="button" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom")
+          code data-placement="bottom"
+    div.alert.alert-info.my-2(role="alert") 表示時は(Popper.jsを利用して)動的位置判定を行い、空間不足の場合は逆方向にポップアップする。特に左右に設定している場合、ブラウザの幅を狭めると逆方向に表示する(上の例で実際に確認できる)。
+    h4.mt-4#using-html HTMLを用いたテキスト設定
+    ul.my-1
+      li 次の属性を追加
+        ul: li
+          code data-html="true"
+      li HTMLでテキストを記述(例)
+        ul: li
+          code= `title="TNT(C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>)"`
+    p 設定例 ⇒ 
+      span.text-danger(data-toggle="tooltip" data-html="true" title="TNT(C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>)") この部分
+      |  をホバーすると表示
+    h4.mt-4#disabled-elements
+      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#disabled-elements") 無効化した要素への設定
+    p.my-2 要素に属性 
+      code disabled
+      |  を設定した場合ツールチップは表示されなくなる。次の例は 
+      code button
+      |  に下記の通り設定しているが、ツールチップはポップアップしない。
+    ul.struct
+      li
+        code button.btn.btn-primary
+        +attrsBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 属性 
+            code type="button"
+          li.att.collapse.a2-1 属性 
+            code data-toggle="tooltip"
+            |  (設定している)
+          li.att.collapse.a2-1 属性 
+            code title="Disabled tooltip"
+            |  (これも設定、しかし...)
+          li.att.collapse.a2-1 属性 
+            code disabled
+            |  (これを設定するとツールチップも無効化される)
+          li.txt テキスト 
+            code Disabled button
+    p.my-2 設定例(ツールチップは表示されない)
+    p.my-2
+      button.btn.btn-primary(type="button" data-toggle="tooltip" title="Disabled tooltip" disabled) Disabled button
+    p.mt-3.mb-1 しかし 
+      code disabled
+      |  は設定するがツールチップは表示したケースもある。その場合は親要素を作ってそこにツールチップを設定し、その中に 
+      code disabled
+      |  を設定した要素を入れればよい。対応例は次の通り。
+    ul.struct
+      li ツールチップ用親要素 
+        code span
+        +attrsBtn(".a3-1")
+        ul
+          li.cls.collapse.a3-1 設定
+            code .d-inline-block
+            |  ( 
+            code button
+            |  と同じ 
+            code display
+            |  にする)
+          li.att.collapse.a3-1 属性 
+            code tabindex="0"
+            |  ( 
+            kbd Tab
+            |  キーはここで受ける)
+          li.att.collapse.a3-1 属性 
+            code data-toggle="tooltip"
+          li.att.collapse.a3-1 属性 
+            code title="Disabled tooltip"
+          li 子要素 
+            code button.btn.btn-primary
+            +attrsBtn(".a3-2")
+            ul
+              li.att.collapse.a3-2 属性 
+                code type="button" 
+              li.att.collapse.a3-2 属性 
+                code style="pointer-events: none;"
+                |  (イベントターゲットから完全に外す)
+              li.att.collapse.a3-2 属性 
+                code disabled
+              li.txt テキスト 
+                code Disabled button
+    p.mt-3 設定例: 
+      code button
+      |  は 
+      code disabled
+      |  だがツールチップは動作する(実際は親要素が処理している)
+    p
+      span.d-inline-block(tabindex="0" data-toggle="tooltip" title="Disabled tooltip")
+        button.btn.btn-primary(style="pointer-events: none;" type="button" disabled)
+          | Disabled button
+
+    +breadcrumbLevel1("コンポーネント(12): プログレスバー/スクロールスパイ/ツールチップ")

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Utilities (1): Borders / Clearfix / Close icon</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Utilities (1): <a href="#borders">Borders</a> / <a href="#clearfix">Clearfix</a> / <a href="#close-icon">Close icon</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/utilities-1.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="borders"><a href="https://getbootstrap.com/docs/4.1/utilities/borders/" target="_blank">Borders</a>
+      </h2>
+      <h4 class="mt-3" id="borders-border"><a href="https://getbootstrap.com/docs/4.1/utilities/borders/#border" target="_blank">Border</a>
+      </h4>
+      <h5 class="mt-3 mb-1" id="borders-additive">Additive</h5>
+      <p class="mt-1 mb-2"><code>.border(-top|-right|-bottom|-left)?</code></p>
+      <p class="my-2">Specifying a direction draws a border only on the specified side.</p>
+      <div class="row">
+        <div class="col-lg col-md-4 col-sm-6 mb-3"><code>.border</code>
+          <div class="border " style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg col-md-4 col-sm-6 mb-3"><code>.border-top</code>
+          <div class="border-top " style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg col-md-4 col-sm-6 mb-3"><code>.border-right</code>
+          <div class="border-right " style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg col-md-4 col-sm-6 mb-3"><code>.border-bottom</code>
+          <div class="border-bottom " style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg col-md-4 col-sm-6 mb-3"><code>.border-left</code>
+          <div class="border-left " style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+      </div>
+      <h5 class="mt-3 mb-1" id="borders-subtractive">Subtractive </h5>
+      <p class="mt-1 mb-2"><code>.border(-top|-right|-bottom|-left)?-0</code></p>
+      <p class="my-2">Must be used with <code>.border</code> . Specifying a direction draws borders without the specified side.</p>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3"><code>.border.border-0</code>
+          <div class="border border-0 mt-1" style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3"><code>.border.border-top-0</code>
+          <div class="border border-top-0 mt-1" style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3"><code>.border.border-right-0</code>
+          <div class="border border-right-0 mt-1" style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3"><code>.border.border-bottom-0</code>
+          <div class="border border-bottom-0 mt-1" style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3"><code>.border.border-left-0</code>
+          <div class="border border-left-0 mt-1" style="width: 8rem; height: 8rem; background: #fdfdfd;"></div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="borders-border-color"><a href="https://getbootstrap.com/docs/4.1/utilities/borders/#border-color" target="_blank">Border color</a>
+      </h4>
+      <p class="mb-1"><code>.border.border-(primary|secondary|success|danger|warning|info|light|dark|white)</code></p>
+      <p class="my-2">Must be used with <code>.border</code> .</p>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-primary</code>
+          <div class="border border-primary mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-secondary</code>
+          <div class="border border-secondary mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-success</code>
+          <div class="border border-success mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-danger</code>
+          <div class="border border-danger mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-warning</code>
+          <div class="border border-warning mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-info</code>
+          <div class="border border-info mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-light</code>
+          <div class="border border-light mt-1" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2"><code>.border.border-dark</code>
+          <div class="border border-dark mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 pb-2 bg-light"><code>.border.border-white</code>
+          <div class="border border-white mt-1 bg-light" style="width: 8rem; height: 8rem;"></div>
+        </div>
+      </div>
+      <h4 class="mt-4 mb-1" id="borders-border-radius"><a href="https://getbootstrap.com/docs/4.1/utilities/borders/#border-radius" target="_blank">Border-radius</a>
+      </h4>
+      <p class="my-0"><code>.rounded(-top|-right|-bottom|-left|-circle|-0)?</code></p>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded</code><br><img class="mt-1 rounded" src="../img/80x80.svg"></div>
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded-top</code><br><img class="mt-1 rounded-top" src="../img/80x80.svg"></div>
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded-right</code><br><img class="mt-1 rounded-right" src="../img/80x80.svg"></div>
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded-bottom</code><br><img class="mt-1 rounded-bottom" src="../img/80x80.svg"></div>
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded-left</code><br><img class="mt-1 rounded-left" src="../img/80x80.svg"></div>
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded-circle</code><br><img class="mt-1 rounded-circle" src="../img/80x80.svg"></div>
+        <div class="col-md-3 col-sm-4 col-6 my-3"><code>img.rounded-0</code><br><img class="mt-1 rounded-0" src="../img/80x80.svg"></div>
+      </div>
+      <h2 class="mt-5" id="clearfix"><a href="https://getbootstrap.com/docs/4.1/utilities/clearfix/" target="_blank">Clearfix</a>
+      </h2>
+      <p class="mt-3 mb-1">For example, consider two floating elements on each sides inside of a block element.</p>
+      <ul class="struct">
+        <li><code>div</code>
+          <ul>
+            <li><code>img.float-left</code></li>
+            <li><code>img.float-right</code></li>
+            <li><code>p</code> (content height is lower than floatings on both sides)</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-1">However, it causes a ploblem as follows.</p>
+      <p class="mt-3 mb-1"><code>div</code> only</p>
+      <div class="p-2 border bg-light"><img class="float-left" src="../img/80x80.svg"><img class="float-right" src="../img/80x80.svg"><span class="mx-2">Text content (height is lower than floatings on both sides).</span></div><br>
+      <p class="mt-5 mb-1">It is a famous side-effect of CSS <code>float: (left|right)</code> . When a browser calcutates inner height of <code>div</code> , floating items are not considered. As a result, <code>div</code> does not wrap floatings. In this case, using <code>.clearfix</code> resolve this problem.</p>
+      <p class="mt-3 my-1"><code>div.clearfix</code></p>
+      <div class="p-2 border bg-light clearfix"><img class="float-left" src="../img/80x80.svg"><img class="float-right" src="../img/80x80.svg"><span class="mx-2">Text content (height is lower than floatings on both sides).</span></div>
+      <div class="alert alert-info mt-3" role="alert">Clearfix is a historically famous technique (originally a browser-bug polyfill). But flexbox is a better way for modern browsers. See the example below (no clearfix used).
+        <div class="d-flex justify-content-between mt-2 p-2 border bg-light"><img src="../img/80x80.svg">
+          <div class="w-100 px-2">Text content (height is lower than floatings on both sides).</div><img src="../img/80x80.svg">
+        </div>
+      </div>
+      <h2 class="mt-5" id="close-icon"><a href="https://getbootstrap.com/docs/4.1/utilities/close-icon/" target="_blank">Close icon</a>
+      </h2>
+      <p class="mt-2 mb-1"><span class="text-faded">×</span> ( <code>&amp;times;</code> ) is used for <a href="components-8.html">Modal</a> and <a href="components-1.html#alerts">Alert </a><strong>Close</strong> icons.</p>
+      <p class="mt-2 mb-1">Example: displays as follows inside <code>button.close</code> .</p>
+      <div class="row mx-0 my-2 p-2 bg-light">
+        <button class="close" type="button" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <ul class="struct mt-3">
+        <li><code>button.close</code>
+          <ul>
+            <li class="att">Accessibility attribute <code>aria-label="Close"</code></li>
+            <li><code>span</code>
+              <ul>
+                <li class="att">Accessibility attribute <code>aria-hidden="true"</code></li>
+                <li class="txt">Text <code>&amp;times;</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Utilities(1): Borders/Clearfix/Close icon</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

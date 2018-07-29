@@ -1,0 +1,953 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+mixin actionItems
+  for item in ["Action", "Another action", "Something else here"]
+    a.dropdown-item(href="#")= item
+
+mixin buttonActionItems
+  for item in ["Action", "Another action", "Something else here"]
+    button.dropdown-item(href="#")= item
+
+mixin actionItemsWithLink
+  +actionItems
+  div.dropdown-divider
+  a.dropdown-item(href="#") Separated link
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(4): カルーセル / 折り畳み / ドロップダウン
+
+block body
+  div.container
+    +pageHeader("components-4")
+      p.lead コンポーネント(4): 
+        a(href="#carousel") カルーセル
+        |  / 
+        a(href="#collapse") 折り畳み
+        |  / 
+        a(href="#dropdowns") ドロップダウン
+
+    h2.mt-2#carousel
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/") カルーセル
+    h4.mt-3#carousel-basic
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#slides-only") 基本構成(自動スライドのみ)
+    div.carousel.slide.mb-3(data-ride="carousel")
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+    +collapseButton("#carousel-basic-structure") 構造
+    ul.struct.my-2.collapse#carousel-basic-structure
+      li カルーセル(外側) 
+        code div.carousel.slide
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 属性 
+            code data-ride="carousel"
+            |  で自動スライド(除去するとコントロール移動のみ)
+          li カルーセル(内側) 
+            code div.carousel-inner
+            ul
+              li アイテムは表示順に 
+                code div.carousel-item
+                ul
+                  li.cls 初期表示アイテムに 
+                    code .active
+                    |  を設定
+                  li スライド画像 
+                    code img.d-block.w-100
+                    +attrBtn(".a2-1")
+                    ul.collapse.a2-1
+                      li.att 属性 
+                        code src="..."
+    h4.mt-4#carousel-with-controls
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-controls") 前後コントロールの追加
+    div.carousel.slide.mb-3#carouselExampleControls(data-ride="carousel")
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleControls" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-with-controls-structure") 構造
+    ul.struct.my-2.collapse#carousel-with-controls-structure
+      li カルーセル(外側) 
+        code div.carousel.slide
+        +attrBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 属性 
+            code id="{カルーセルID}"
+            |  を設定
+          li カルーセル(内側) 
+            code div.carousel-inner
+            |  は 
+            a(href="#carousel-basic") 基本構成
+            |  と同じ
+          each dir in [["prev","Previous","前"],["next","Next","後"]]
+            li= `${dir[2]}移動ボタン `
+              code= `a.carousel-control-${dir[0]}`
+              +attrsBtn(`.a2-2-${dir[0]}`)
+              ul
+                li(class=`att collapse a2-2-${dir[0]}`) 属性 
+                  code= `href="#{carousel-id}"`
+                li(class=`att collapse a2-2-${dir[0]}`) 属性 
+                  code= `data-slide="${dir[0]}"`
+                li アイコン 
+                  code= `span.carousel-control-${dir[0]}-icon`
+                  +attrBtn(`.a2-3-${dir[0]}`)
+                  ul(class=`collapse a2-3-${dir[0]}`)
+                    li.att アクセシビリティ属性 
+                      code aria-hidden="true"
+                li アクセシビリティ要素 
+                  code span.sr-only
+                  ul
+                    li.txt テキスト 
+                      code= dir[1]
+    h4.mt-4#carousel-with-indicators
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-indicators") インジケータ(兼コントロール)の追加
+    div.carousel.slide.mb-3#carouselExampleIndicators(data-ride="carousel")
+      ol.carousel-indicators
+        each index in [0,1,2]
+          li(class=`${index==0 ? "active" : ""}` data-target="#carouselExampleIndicators" data-slide-to=index)
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleIndicators" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-with-indicators-structure") 構造
+    ul.struct.my-2.collapse#carousel-with-indicators-structure
+      li カルーセル(外側) 
+        code div.carousel.slide
+        +attrBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 属性 
+            code id="{カルーセルID}"
+          li インジケータ 
+            code ol.carousel-indicators
+            ul
+              li インジケータアイテム 
+                code li
+                +attrsBtn(".a3-2")
+                ul.collapse.a3-2
+                  li.att 属性 
+                    code= `data-target="#{カルーセルID}"`
+                  li.att 属性 
+                    code data-slide-to="{index}"
+                    |  (index = 0,1,2, ...)
+                  li.cls 初期表示アイテムに 
+                    code .active
+                    |  を追加
+          li カルーセル(内側) 
+            code div.carousel-inner
+            |  は 
+            a(href="#carousel-with-controls") 前後コントロールの追加
+            |  と同じ
+    h4.mt-4#carousel-with-captions
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-captions") 見出しの追加
+    div.carousel.slide.mb-3#carouselExampleCaptions(data-ride="carousel")
+      ol.carousel-indicators
+        each index in [0,1,2]
+          li(class=`${index==0 ? "active" : ""}` data-target="#carouselExampleCaptions" data-slide-to=index)
+      div.carousel-inner
+        each item in [[1,"First","Nulla vitae elit libero, a pharetra augue mollis interdum."],[2,"Second","Lorem ipsum dolor sit amet, consectetur adipiscing elit."],[3,"Third","Praesent commodo cursus magna, vel scelerisque nisl consectetur."]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+            div.carousel-caption.d-none.d-md-block
+              h5= `${item[1]} slide label`
+              p= item[2]
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleCaptions" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-with-captions-structure") 構造
+    ul.struct.my-2.collapse#carousel-with-captions-structure
+      li カルーセル(外側) (前と同じ)
+        ul
+          li インジケータ (前と同じ)
+          li カルーセル(内側) 
+            code div.carousel-inner
+            ul
+              li アイテム 
+                code div-carousel-item(.active)?
+                ul
+                  li
+                    code img.d-block.w-100
+                    |  (ここまで同じ)
+                  li ここから先を追加 
+                    code div.carousel-caption.d-none.d-md-block
+                    ul
+                      li ラベル 
+                        code h5
+                        ul
+                          li.txt テキスト(例) 
+                            code First slide label
+                      li 見出し 
+                        code p
+                        ul
+                          li.txt テキスト(例) 
+                            code Nulla vitae ...
+          li 前後コントロール(以下同じ)
+    h4.mt-4#carousel-crossfade
+      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#crossfade") クロスフェード
+    div.carousel.slide.carousel-fade.mb-3#carouselExampleFade(data-ride="carousel")
+      div.carousel-inner
+        each item in [[1,"First"],[2,"Second"],[3,"Third"]]
+          div(class=`carousel-item${item[0]==1 ? " active" : ""}`)
+            img.d-block.w-100(src=`../img/slide-${item[0]}.svg` alt=`${item[1]} slide`)
+      each dir in [["prev","Previous"],["next","Next"]]
+        a(class=`carousel-control-${dir[0]}` href="#carouselExampleFade" role="button" data-slide=dir[0])
+          span(class=`carousel-control-${dir[0]}-icon` aria-hidden="true")
+          span.sr-only= dir[1]
+    +collapseButton("#carousel-crossfade-structure") 構造
+    ul.struct.my-2.collapse#carousel-crossfade-structure
+      li 基本構成は 
+        a(href="#carousel-with-controls") 前後コントロールの追加
+        |  の例と同じ
+      li カルーセル(外側) 
+        code div.carousel.slide
+        |  に 
+        code .carousel-fade
+        |  を追加
+    h2.mt-5#collapse
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/") 折り畳み
+    p.my-2 ボタンを用いてセレクタで指定した(隠れ)ターゲット要素の表示をON/OFFする。
+    - const sampleText = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."
+    h4.mt-3.mb-2#collapse-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#example") 基本例
+    p.mt-3.mb-1 設定例: 左は 
+      code a
+      |  , 右は 
+      code button
+      |  , どちらもその下の 
+      code div.collapse#ex-collapse
+      |  をON/OFF
+    p.mt-2.mb-3
+      a.btn.btn-primary.mr-1(data-toggle="collapse" href="#ex-collapse" role="button" aria-expanded="false" aria-controls="ex-collapse")
+        code a.btn.btn-primary
+      button.btn.btn-primary(type="button" data-toggle="collapse" data-target="#ex-collapse" aria-expanded="false" aria-controls="ex-collapse")
+        code.text-white button.btn.btn-primary
+      div.collapse.my-2#ex-collapse
+        div.card.card-body
+          code div.collaps#ex-collapse
+          = sampleText
+    +collapseButton("#collapse-example-structure") 構造
+    ul.struct.my-2.collapse#collapse-example-structure
+      li 操作ボタンは次のどちらかを用いる
+        ul
+          li
+            code a
+            |  の場合: 
+            code a.btn.btn-(primary|secondary|...)
+            +attrsBtn(".a4-1")
+            ul.collapse.a4-1
+              li.att 属性 
+                code data-toggle="collapse"
+              li.att 属性 
+                code= `href="#{ターゲットID}"`
+                |  (ID以外のCSSセレクタも可)
+              li.att アクセシビリティ属性 
+                code role="button"
+          li
+            code button
+            |  の場合: 
+            code button.btn.btn-(primary|secondary|...)
+            +attrsBtn(".a4-2")
+            ul.collapse.a4-2
+              li.att 属性 
+                code type="button"
+              li.att 属性 
+                code data-toggle="collapse"
+              li.att 属性 
+                code= `data-target="#{ターゲットID}"`
+                |  (ID以外のCSSセレクタも可)
+          li 共通のアクセシビリティ属性
+            +attrsBtn(".a4-3")
+            ul.collapse.a4-3
+              li.att
+                code aria-expanded="false"
+                |  (初期状態で表示する場合 
+                code "true"
+                |  )
+              li.att
+                code aria-controls="{ターゲットID}"
+      li ターゲット(任意要素可)
+        +attrsBtn(".a4-4")
+        ul.collapse.a4-4
+          li.cls クラス
+            code .collapse
+            |  を設定(デフォルト状態は非表示)
+          li.cls 初期状態で表示する場合 
+            code .show
+            |  を追加
+          li.att ターゲットセレクタを設定
+            ul
+              li.att (例) 
+                code id="{ターゲットID}"
+              li.att クラスなど任意のCSSセレクタ設定も可
+    div.alert.alert-info.mt-3 上の
+      button.btn.btn-outline-info 構造
+      |  ボタンや 
+      button.btn.btn-sm.btn-outline-info.px-1.py-0 属性
+      |  ボタンも折り畳み機能を利用して作られている。
+    h4.mt-4#collapse-multiple-targets
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#multiple-targets") 複数ターゲットの連動ON/OFF
+    p.mt-2.mb-3 ターゲットセレクタに(IDではなく)クラスを用いることにより複数ターゲットを同時にON/OFFすることができる。
+    +collapseButton("#collapse-multiple-targets-structure") 構造
+    ul.struct.my-2.collapse#collapse-multiple-targets-structure
+      li 操作ボタンの属性を変更(複数なのでクラスを用いる)
+      ul
+        li.att 
+          code a
+          |  の場合 
+          code href=".{ターゲットクラス}"
+        li.att 
+          code button
+          |  の場合 
+          code data-target=".{ターゲットクラス}"
+      li 連動ON/OFFするコンテンツに 
+        code class="{ターゲットクラス}"
+        |  を設定
+    p.mt-3.mb-1 例1: 
+      code a
+      |  を用いた場合(1,2単独はID、両方はクラスでターゲットを設定、詳細はソース参照)
+    p.my-1
+      each n in [1,2]
+        a.btn.btn-primary.mr-1(data-toggle="collapse" href=`#ex-multi-a-${n}` role="button" aria-expanded="false" aria-controls=`ex-multi-a-${n}`)
+          = `Toggle (${n})`
+      a.btn.btn-primary(href=".multi-collapse-a" data-toggle="collapse" aria-expanded="false" aria-controls="ex-multi-a-1 ex-multi-a-2") Toggle (1)+(2)
+    div.row
+      each n in [1,2]
+        div.col
+          div.collapse.multi-collapse-a(id=`ex-multi-a-${n}`)
+            div.card.card-body= `(${n}) ${sampleText}`
+    p.mt-3.mb-1 例2: 
+      code button
+      |  を用いた場合
+    p.my-1
+      each n in [1,2]
+        button.btn.btn-primary.mr-1(type="button" data-toggle="collapse" data-target=`#ex-multi-b-${n}` aria-expanded="false" aria-controls=`ex-multi-b-${n}`)
+          = `Toggle (${n})`
+      button.btn.btn-primary(type="button" data-target=".multi-collapse-b" data-toggle="collapse" aria-expanded="false" aria-controls="ex-multi-b-1 ex-multi-b-2") Toggle (1)+(2)
+    div.row
+      each n in [1,2]
+        div.col
+          div.collapse.multi-collapse-b(id=`ex-multi-b-${n}`)
+            div.card.card-body= `(${n}) ${sampleText}`
+    h4.mt-4#collapse-accordion-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#accordion-example") アコーディオン
+    p.my-1 表示に
+      a(href="components-3.html") カード
+      | を用い、3つのテキストを交互に出し入れする組み合わせ応用例。
+    div.my-3#accordion-demo
+      each n in [1,2,3]
+        div.card
+          div.card-header
+            h5.mb-0
+              button.btn.btn-link(data-toggle="collapse" data-target=`#collapse-${n}` aria-expanded=`${n==1}` aria-controls=`collapse-${n}`)
+                = `Collapsible Group Item #${n}`
+          div(id=`collapse-${n}` class=`collapse${n==1 ? " show" : ""}` aria-labelledby=`heading-${n}` data-parent="#accordion-demo")
+            div.card-body
+              = `(${n}) Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.`
+    +collapseButton("#collapse-accordion-example-structure") 構造
+    ul.struct.my-2.collapse#collapse-accordion-example-structure
+      li 親 
+        code div
+        +attrBtn(".a5-1")
+        ul
+          li.att.collapse.a5-1 属性 
+            code id="{親ID}"
+          li
+            code div.card
+            |  (ここから先が出し入れするアイテム: 個数分)
+            ul
+              li タイトル(常に表示) 
+                code div.card-header
+                +attrBtn(".a5-2")
+                ul
+                  li.att.collapse.a5-2 アクセシビリティ属性 
+                    code id="{見出しID}"
+                  li ヘッダ 
+                    code h5
+                    ul
+                      li 操作ボタン 
+                        code button.btn.btn-link
+                        +attrsBtn(".a5-3")
+                        ul
+                          li.att.collapse.a5-3 属性 
+                            code data-toggle="collapse"
+                          li.att.collapse.a5-3 属性 
+                            code= `data-target="#{子ターゲットID}"`
+                          li.att.collapse.a5-3 アクセシビリティ属性 
+                            code aria-expanded="false"
+                            |  or 
+                            code "true"
+                            |  (初期状態「開」の場合)
+                          li.att.collapse.a5-3 アクセシビリティ属性 
+                            code aria-controls="{子ターゲットID}"
+                          li.txt タイトルテキスト
+              li
+                code div.collapse
+                |  (アコーディオン操作でON/OFF)
+                +attrsBtn(".a5-4")
+                ul
+                  li.cls.collapse.a5-4 初期状態「開」のアイテムに 
+                    code .show
+                    |  を追加
+                  li.att.collapse.a5-4 属性 
+                    code id="{子ターゲット子ID}"
+                  li.att.collapse.a5-4 属性 
+                    code= `data-parent="#{親ID}"`
+                  li.att.collapse.a5-4 アクセシビリティ属性 
+                    code aria-labelledby="{見出しID}"
+                  li.txt 本文テキスト
+
+    h2.mt-5#dropdowns
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/") ドロップダウン
+    - const contexts = ["primary", "secondary", "success", "info", "warning", "danger"]
+    - const contextRe = `(${contexts.join("|")})`
+    h4.mt-3.mb-1#dropdowns-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#examples") 基本例
+    h5.mt-3.mb-1#dropdowns-example-button ボタンに 
+      code button
+      |  を用いる場合
+    div.dropdown.mt-2.mb-3
+      button.btn.btn-secondary.dropdown-toggle#dropdownMenuButton(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown button
+      div.dropdown-menu(aria-labelledby="dropdownMenuButton")
+        +actionItemsWithLink
+    +collapseButton("#dropdowns-example-button-structure") 構造
+    ul.struct.my-2.collapse#dropdowns-example-button-structure
+      li 親 
+        code div.dropdown
+        |  (
+        code position: relative;
+        |  であれば他の要素も可)
+        ul
+          li ボタン 
+            code= `button.btn.btn-${contextRe}`
+            +attrsBtn(".a6-1")
+            ul
+              li.att.collapse.a6-1 属性 
+                code type="button"
+              li.att.collapse.a6-1 属性 
+                code data-toggle="dropdown"
+              li.att.collapse.a6-1 (アクセシビリティ用)属性 
+                code id="{dropdown-id}"
+              li.att.collapse.a6-1 アクセシビリティ属性 
+                code aria-haspopup="true"
+              li.att.collapse.a6-1 アクセシビリティ属性 
+                code aria-expanded="false"
+              li.txt テキスト(例) 
+                code Dropdown button
+          li ドロップダウンメニュー 
+            code div.dropdown-menu
+            +attrBtn(".a6-2")
+            ul
+              li.att.collapse.a6-2 アクセシビリティ属性 
+                code aria-labelledby="{dropdown-id}"
+              li メニューアイテム 
+                code a.dropdown-item
+                +attrBtn(".a6-3")
+                ul.collapse.a6-3
+                  li.att 属性 
+                    code href="..."
+              li 上下区切り 
+                code div.dropdown-divider
+                |  ⇒ 
+                a(href="#dropdowns-dividers") ディバイダ
+    h5.mt-4#dropdowns-example-a ボタンに 
+      code a
+      |  を用いる場合
+    div.dropdown.mt-2.mb-3
+      a.btn.btn-secondary.dropdown-toggle#dropdownMenuLink(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown button
+      div.dropdown-menu(aria-labelledby="dropdownMenuLink")
+        +actionItemsWithLink
+    +collapseButton("#dropdowns-example-a-structure") 構造
+    div.my-2.collapse#dropdowns-example-a-structure
+      p.mt-3.mb-2 ボタン用要素以外は同じ(異なる点のみ示す)。
+      ul.struct.my-0
+        li 親(同上)
+          ul
+            li ボタン 
+              code= `a.btn.btn-${contextRe}.dropdown-toggle`
+              +attrsBtn(".a7-1")
+              ul
+                li.att.collapse.a7-1 属性 
+                  code href="..."
+                li.att.collapse.a7-1 属性 
+                  code data-toggle="dropdown"
+                li.att.collapse.a7-1 アクセシビリティ属性(追加) 
+                  code role="button"
+                li.att.collapse.a7-1 他の属性(
+                  code id
+                  |  , 
+                  code aria-haspopup
+                  |  , 
+                  code aria-expanded
+                  |  ) は同じ
+                li.txt テキスト(同じ)
+            li ドロップダウンメニュー(同じ)
+    h5.mt-4.mb-0#dropdowns-colors 色サンプル
+    p.my-0
+      code= `.btn-${contextRe}`
+    p.my-1
+      each c in contexts
+        div.btn-group
+          button(type="button" id=`dropdown-${c}` class=`btn btn-${c} dropdown-toggle` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")= `${c[0].toUpperCase()}${c.slice(1)}`
+          div.dropdown-menu(aria-labelledby=`dropdown-${c}`)
+            +actionItems
+    +collapseButton("#dropdowns-colors-structure") 構造
+    ul.struct.my-2.collapse#dropdowns-colors-structure
+      li 親(横並び配置用) 
+        code div.btn-group
+        ul
+          li 内部(同上)
+    h4.mt-4#dropdowns-split-button
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#split-button") スプリットボタン
+    p.mt-2.mb-1 左側は通常のボタン、右端にドロップダウン用タブ(実際は2つの 
+      code button
+      |  要素)
+    p.my-2
+      each c in contexts
+        div.btn-group
+          button(type="button" class=`btn btn-${c}`)= `${c[0].toUpperCase()}${c.slice(1)}`
+          button(type="button" id=`dropdown-split-${c}` class=`btn btn-${c} dropdown-toggle dropdown-toggle-split` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            span.sr-only Toggle Dropdown
+          div.dropdown-menu(aria-labelledby=`dropdown-split-${c}`)
+            +actionItemsWithLink
+    +collapseButton("#dropdowns-split-button-dropdowns-structure") 構造
+    ul.struct.my-2.collapse#dropdowns-split-button-dropdowns-structure
+      li 親(必須) 
+        code div.btn-group
+        |  (
+        strong 注:
+        |  スプリットボタンに 
+        code .dropdown
+        |  を使うと間が空くため不適)
+        ul
+          li 左(通常ボタン) 
+            code button.btn.btn-(primary|secondary|...)
+            ul
+              li.txt ボタンテキスト(例) 
+                code Primary
+          li 右側ボタン 
+            code button.btn.btn-(primary|secondary|...)
+            |  に次を設定
+            ul
+              li.cls クラス 
+                code .dropdown-toggle-split
+              li ボタンテキストはなし
+              li スクリーンリーダ用(非表示) 
+                code span.sr-only
+                ul
+                  li.txt テキスト(例) 
+                    code Toggle Dropdown
+          li ドロップダウンメニュー(同じ)
+    h4.mt-4.mb-0#dropdowns-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#sizing") サイズ設定
+    p.my-2
+      code .btn-(lg|sm)
+      |  を追加する。
+    each sz in [["lg","Large"], [null, "Medium"], ["sm", "Small"]]
+      p.my-1
+        code= `${sz[0] ? `(a|button).btn.btn-secondary.btn-${sz[0]}` : "(Default)"}`
+      div.mb-3
+        div.btn-group
+          button(id=`dropdown-size-${sz[0] ? sz[0] : "default"}` class=`btn btn-secondary${sz[0] ? ` btn-${sz[0]}` : ""} dropdown-toggle` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            = `${sz[1]} button`
+          div.dropdown-menu(aria-labelledby=`dropdown-size-${sz[0] ? sz[0] : "default"}`)
+            +actionItemsWithLink
+        div.btn-group
+          button(class=`btn btn-secondary${sz[0] ? ` btn-${sz[0]}` : ""}` type="button")
+            = `${sz[1]} split button`
+          button(type="button" id=`dropdown-split-size-${sz[0] ? sz[0] : "default"}` class=`btn btn-secondary${sz[0] ? ` btn-${sz[0]}` : ""} dropdown-toggle dropdown-toggle-split` data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            span.sr-only Toggle Dropdown
+          div.dropdown-menu(aria-labelledby=`dropdown-split-size-${sz[0] ? sz[0] : "default"}`)
+            +actionItemsWithLink
+    h4.mt-4.mb-0#dropdowns-drop-up-right-left
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#directions") ドロップ方向 (
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropup") 上
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropright") 右
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropleft") 左
+      | )
+    p.mt-2.mb-0 親として 
+      code div.btn-group
+      |  を用い、さらに 
+      code .(dropup|dropright|dropleft)
+      |  を追加する。
+    div.d-flex
+      div.mx-auto
+        each dir in ["up", "right", "left"]
+          p.mt-3.mb-1
+            code= `div.btn-group.drop${dir}`
+          div(class=`btn-group drop${dir}`)
+            button.btn.btn-secondary.dropdown-toggle(id=`drop${dir}` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")= `Drop${dir}`
+            div.dropdown-menu(aria-labelledby=`drop${dir}`)
+              +actionItemsWithLink
+          - if (dir != "left")
+            div(class=`btn-group drop${dir}`)
+              button.btn.btn-secondary(type="button")= `Split drop${dir}`
+              button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split(id=`split-drop${dir}` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              div.dropdown-menu(aria-labelledby=`split-drop${dir}`)
+                +actionItemsWithLink
+          - else
+            div.btn-group
+              div.btn-group.dropleft(role="group")
+                button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split(id="split-dropleft" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  span.sr-only Toggle Dropleft
+                div.dropdown-menu(aria-labelledby="split-dropleft")
+                  +actionItemsWithLink
+              button.btn.btn-secondary(type="button") Split dropleft
+    p.mt-3.mb-2 スプリット左ドロップだけ構造が若干異なる(一層多く必要)。
+    +collapseButton("#dropdowns-split-dropleft-structure") 構造(スプリット左ドロップ)
+    ul.struct.my-2.collapse#dropdowns-split-dropleft-structure
+      li (必須) 祖先ラッパ 
+        code div.btn-group
+        ul
+          li (中間)親 
+            code div.btn-group.dropleft
+            +attrBtn(".a8-1")
+            ul
+              li.att.collapse.a8-1 アクセシビリティ属性 
+                code role="group"
+              li 選択タブが先 
+                code button.btn.dropdown-toggle.dropdown-toggle-split ...
+              li 通常ボタンが後 
+                code button.btn.dropdown-toggle
+    h4.mt-4#dropdowns-menu-items
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-items") メニューアイテム
+    p.mb-2 (バージョン4から)メニューアイテムとして 
+      code button.dropdown-item
+      |  が使える(リンクではないため選択してもデフォルト動作でページ移動しない)。
+    p.my-2
+      div.dropdown
+        button.btn.btn-secondary.dropdown-toggle#dropdownMenu2(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu(aria-labelledby="dropdownMenu2")
+          +buttonActionItems
+          div.dropdown-divider
+          button.dropdown-item(type="button") Separated item
+    +collapseButton("#dropdowns-menu-items-structure") 構造
+    ul.struct.my-2.collapse#dropdowns-menu-items-structure
+      li ドロップダウンメニュー 
+        code div.dropdown-menu
+        +attrBtn(".a9-1")
+        ul
+          li.att.collapse.a9-1 アクセシビリティ属性 
+            code aria-labelledby=...
+          li メニューアイテム 
+            code button.dropdown-item
+            ul
+              li.att 属性 
+                code type="button"
+    p.mt-3.mb-2 選択できない(テキスト表示のみの)アイテムを 
+      code (span).dropdown-item-text
+      |  で作成できる。またアイテムには任意のHTML要素やCSSを用いた書式設定を行うことができる。
+    div.dropdown
+      button.btn.btn-secondary.dropdown-toggle#ex-item-text(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Text example
+      div.dropdown-menu(area-labelledby="ex-item-text")
+        span.dropdown-item-text 表示のみのアイテム(選択できない)
+        span.dropdown-item-text.text-muted 設定は 
+          code .dropdown-item-text
+          |  (この表示は 
+          code code
+          |  と 
+          code .text-muted
+          |  を使用)
+        a.dropdown-item(href="#") 通常アイテムにも設定可: 
+          strong strong
+          |  , 
+          em italic
+          |  , 
+          sub sub
+          |  , 
+          sup sup
+        a.dropdown-item(href="#") 配色も可能: 
+          each c in contexts
+            span(class=`text-${c}`)= ` ${c}`
+    h4.mt-4#dropdowns-active-disabled 状態表示(
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#active") アクティブ
+      | /
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#disabled-menu-items") 無効
+      | )
+    p.mt-3.mb-2 アイテムに 
+      code .active
+      |  を設定するとアクティブ(青背景に白字)表示になる(次の2番目アイテム)。
+    div.dropdown
+      button.btn.btn-secondary.dropdown-toggle#ex-active(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+      div.dropdown-menu(area-labelledby="ex-active")
+        a.dropdown-item(href="#") Regular link
+        a.dropdown-item.active(href="#") Active link
+        a.dropdown-item(href="#") Another link
+    p.mt-3.mb-2 アイテムに 
+      code .disabled
+      |  を設定すると灰色表示になる(次の2番目アイテム)。
+    div.dropdown
+      button.btn.btn-secondary.dropdown-toggle#ex-disabled(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+      div.dropdown-menu(area-labelledby="ex-disabled")
+        a.dropdown-item(href="#") Regular link
+        a.dropdown-item.disabled(href="#") Disabled link
+        a.dropdown-item(href="#") Another link
+    p.mt-3 ただしどちらも表示効果のみの設定で、
+      code .active
+      |  を用いたドロップダウンで別のアイテムを選択してもアクティブアイテムは変更されない。また
+      code .disabled
+      |  を設定したアイテムも選択可能で、要素が 
+      code a
+      |  の場合はページ移動もする(無効化されない)。これは上の2つのボタンで実際に確認することができる。
+    h5.mt-4#javascript-behaviors (応用) JavaScriptによる処理
+    p.my-2 これらを適切に処理するにはJavaScriptが必要になる。簡単な例を作ってみた。
+    div.mb-3
+      div.dropdown.d-inline
+        button.btn.btn-secondary.dropdown-toggle#button-active-disabled-example(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Interactive demo
+        div.dropdown-menu#active-disabled-example(area-labelledby="button-active-disabled-example")
+          each n in [1,2,3,4,5]
+            a(href="#" class=`dropdown-item${n == 1 ? " active" : ""}${n == 5 ? " disabled" : ""}`)= `Item ${n}${n == 5 ? " (disabled)" : ""}`
+      span.ml-3 アクティブアイテムは 
+        strong
+          span.text-danger#active-indicator Item 1
+    +collapseButton("#dom-structure") 構造(ポイントのみ)
+    | &nbsp;
+    +collapseButton(".dropdowns-javascript-code") JavaScriptコード
+    ul.struct.mt-2.collapse#dom-structure
+      li ボタンは今までと同じ
+      li ドロップダウンメニューにIDを設定 
+        code id="active-disabled-example"
+      li アイテム1を 
+        code .active
+        |  、アイテム5を
+        code .disabled
+        |  に設定
+      li 別の位置に
+        code span#active-indicator
+        |  で現在のアクティブアイテムを表示
+    pre.p-2.mt-3.border.bg-light.collapse.dropdowns-javascript-code
+      code
+        | // Dropdown: Active/disabled states demo
+        | $('#active-disabled-example').delegate('a', 'click', function(event) {
+        |   var item = $(this);
+        |   event.preventDefault();                   // prevent default link behaviors
+        |   if (item.hasClass('disabled')) return;    // implement disabled behaviors
+        |   // update the active item
+        |   $('#active-disabled-example a').removeClass('active');
+        |   item.addClass('active');
+        |   $('#active-indicator').text(item.text());
+        | });
+    ul.mt-2.collapse.dropdowns-javascript-code
+      li 
+        code click
+        |  イベントハンドラを親(ドロップダウンメニュー)に設定
+        ul
+          li イベントは親が受けて子アイテム 
+            code a
+            |  にデリゲート(子アイテムが個別に受けるより効率的)
+      li イベントハンドラ
+        ul
+          li まず 
+            code event.preventDefault()
+            |  でデフォルト動作を阻止
+            ul
+              li アイテムが 
+                code a
+                |  の場合必須 - これがないと(先頭に)ジャンプする
+              li アイテムが 
+                code button
+                |  の場合は不要
+          li 無効化の動作を実装
+            ul
+              li クリックしたアイテムに 
+                code .disabled
+                |  が設定されていれば何もしない(return)
+          li アクティブ動作を実装
+            ul
+              li まず全アイテムから 
+                code .active
+                |  を削除
+              li クリックしたアイテムに 
+                code .active
+                |  を追加
+          li アクティブアイテム表示を更新
+    h4.mt-4#dropdowns-menu-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-alignment") アラインメント
+    p.my-2 デフォルトではドロップダウンメニューは親要素(起動ボタンでも同じ)の左端に揃えるが、ドロップダウンメニューに 
+      code .dropdown-menu-right
+      |  を設定すると右端同士が一致するように揃える。
+    div.btn-group(style="margin-left: 16rem;")
+      button.btn.btn-secondary.dropdown-toggle#right-aligned(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Right-aligned
+      div.dropdown-menu.dropdown-menu-right(aria-labelledby="right-aligned")
+        +actionItems
+        div.dropdown-divider
+        a.dropdown-item(href="#") Separated item with longer text
+    h4.mt-4#dropdowns-headers
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#headers") ヘッダ
+    p.mt-3.mb-2 メニューのヘッダには 
+      code h6.dropdown-header
+      |  を用いる。次の例では先頭の 
+      strong Dropdown header
+      |  に設定している。リンク要素ではないため選択対象にはならない。
+    p.my-0
+      div.btn-group
+        button.btn.btn-secondary.dropdown-toggle#menu-header(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu(aria-labelledby="menu-header")
+          h6.dropdown-header(href="#") Dropdown header
+          +actionItems
+    h4.mt-4#dropdowns-dividers
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dividers") ディバイダ
+    p.my-2 メニューアイテムの上下区切りには 
+      code div.dropdown-divider
+      |  を用いる。
+    h4.mt-4#dropdowns-text
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#text") テキスト
+    p.my-2 ドロップダウンはメニュー選択用ではなくテキスト画面表示用にも利用できる。
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#ex-text(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Text example
+      div.dropdown-menu.p-3.text-faded(style="width: 180px;" area-labelledby="ex-text")
+        p Some example text that's free-flowing within the dropdown menu.
+        p.mb-0 And this is more example text.
+    +collapseButton("#dropdown-text-example") 設定
+    ul.struct.mt-2.collapse#dropdown-text-example
+      li 親 
+        code div.dropdown
+        ul
+          li ボタン 
+            code button.btn.btn-secondary.dropdown-toggle
+          li ドロップダウンメニュー 
+            code div.dropdown-menu
+            +attrsBtn(".a10-1")
+            ul
+              li.cls.collapse.a10-1 パディング 
+                code .p-3
+              li.cls.collapse.a10-1 テキスト色 
+                code .text-faded
+              li.att.collapse.a10-1 幅設定 
+                code style="width: 180px;"
+              li テキスト(パラグラフ) 
+                code p
+                +attrsBtn(".a10-2")
+                ul.collapse.a10-2
+                  li.cls 最後のパラグラフはマージン調整が必要 
+                    code .mb-0
+    h4.mt-4#dropdowns-forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#forms") フォーム
+    p.my-2 アイテムとして
+      a(href="components-5.html") フォーム
+      | を用いることもできる。
+    h6.mt-3#dropdowns-form-example 例
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#dropdown-form-example(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Sign in/Sign up
+      div.dropdown-menu(aria-labelledby="dropdown-form-example")
+        form.px-4.py-3
+          div.form-group
+            label(for="exampleDropdownFormEmail1") Email address
+            input.form-control#exampleDropdownFormEmail1(type="email" placeholder="email@example.com")
+          div.form-group
+            label(for="exampleDropdownFormPassword1") Password
+            input.form-control#exampleDropdownFormPassword1(type="password" placeholder="Password")
+          div.form-check.mb-2
+            input.form-check-input#dropdownCheck(type="checkbox")
+            label.form-check-label(for="dropdownCheck") Remember me
+          button.btn.btn-primary(type="submit") Sign in
+        div.dropdown-divider
+        a.dropdown-item(href="#") New around here? Sign up
+        a.dropdown-item(href="#") Forgot password?
+    +collapseButton("#dropdowns-form-example-structure") 構造
+    ul.struct.mt-2.collapse#dropdowns-form-example-structure
+      li 親 
+        code div.dropdown
+        ul
+          li ボタン 
+            code button.btn.btn-secondary.dropdown-toggle
+          li ドロップダウンメニュー 
+            code div.dropdown-menu
+            ul
+              li フォームアイテム 
+                code form
+                +attrBtn(".a11-1")
+                ul
+                  li.cls.collapse.a11-1 パディング調整 
+                    code .px-4.py-3
+                  li 内部は 
+                    a(href="components-5.html#basic-example") フォーム - 基本例
+                    |  と同様
+              li 
+                a(href="#dropdowns-dividers") ディバイダ 
+                code div.dropdown-divider
+              li テキストアイテム (
+                strong New around here? Sign up
+                | )
+              li テキストアイテム (
+                strong Forget password?
+                | )
+    h4.mt-4#dropdowns-dropdown-options
+      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropdown-options") その他の設定
+    p.my-2 属性 
+      code data-offset="{x-offset-px},{y-offset-px}"
+      |  を用いて表示位置の基準点を平行移動できる。
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#ex-data-offset(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="100,20")
+        code.text-light data-offset
+      div.dropdown-menu.text-(area-labelledby="ex-data-offset")
+        +actionItems
+    +collapseButton("#dropdown-offset-setting") 設定
+    ul.struct.mt-2.collapse#dropdown-offset-setting
+      li 親 
+        code div.dropdown
+        ul
+          li ボタン 
+            code button.btn.btn-secondary.dropdown-toggle
+            ul
+              li.att 属性を追加 
+                code data-offset="100,20"
+    p.mt-3.mb-2 属性 
+      code data-reference="parent"
+      |  を用いてメニュー表示の基準位置を親要素に変えることができる。スプリットボタンに用いると親(ボタングループ)を基準としてメニュー配置を行う。
+    div.btn-group
+      button.btn.btn-secondary(type="button")
+        code.text-light data-reference
+      button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split#ex-data-reference(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent")
+        span.sr-only Toggle Dropdown
+      div.dropdown-menu(aria-labelledby="ex-data-reference")
+        +actionItems
+    div.mt-3
+      +collapseButton("#dropdown-reference-setting") 設定
+    ul.struct.mt-2.collapse#dropdown-reference-setting
+      li 親 
+        code div.btn-group
+        ul
+          li 左 
+            code button.btn.btn-secondary.dropdown-toggle
+          li 右 
+            code button.btn.btn-secondary.dropdown-toggle.dropdown-toggle-split
+            ul
+              li.att 属性を追加 
+                code data-reference="parent"
+    p.mt-3.mb-2 属性 
+      code data-display="static"
+      |  を設定すると(Popperによる動的位置判定を無効化して)常に下向きにドロップする。
+    div.dropdown.mb-3
+      button.btn.btn-secondary.dropdown-toggle#ex-data-display(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static")
+        code.text-light data-display
+      div.dropdown-menu.text-(area-labelledby="ex-data-display")
+        +actionItems
+        +actionItems
+        +actionItems
+    +collapseButton("#dropdown-display-setting") 設定
+    ul.struct.mt-2.collapse#dropdown-display-setting
+      li 親 
+        code div.dropdown
+        ul
+          li ボタン 
+            code button.btn.btn-secondary.dropdown-toggle
+            ul
+              li.att 属性を追加 
+                code data-display="static"
+          li ドロップダウンメニュー(項目数を意図的に多く設定)
+            ul
+              li 画面下にはみ出しても常に下にドロップ表示
+
+    +breadcrumbLevel1("コンポーネント(4): カルーセル/折り畳み/ドロップダウン")

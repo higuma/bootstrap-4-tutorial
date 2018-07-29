@@ -1,0 +1,188 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Utilities (2): Colors / Display / Embed
+
+block body
+  div.container
+    +pageHeader("utilities-2")
+      p.lead Utilities (2): 
+        a(href="#colors") Colors
+        |  / 
+        a(href="#display") Display
+        |  / 
+        a(href="#embed") Embed
+
+    h2.mt-2#colors
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/") Colors
+    - const colors = "primary secondary success danger warning info light dark body muted white black-50 white-50".split(" ")
+    h4.mt-4.mb-0#colors-color
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#color") Text color
+    p.mt-0.mb-2
+      code= `.text-(${colors.join("|")})`
+    div.alert.alert-info 
+      code .color-black-50
+      |  and 
+      code .color-white-50
+      |  set translucent colors with 50% opacity.
+    h5.mt-3.mb-0#colors-color-samples Text samples
+    p.mt-0.mb-2
+      code span.text-(primary|secondary|...)
+    each c in colors
+      p.my-1
+        span(class=`text-${c}${["light","white","white-50"].indexOf(c) == -1 ? "" : " bg-dark"} my-1 px-1`)= `.text-${c}`
+    h5.mt-4.mb-0#colors-color-link-samples Link samples
+    p.mt-0.mb-2
+      code a.text-(primary|secondary|...)
+    each c in colors
+      p.my-1
+        a(href="#" class=`text-${c}${["light","white","white-50"].indexOf(c) == -1 ? "" : " bg-dark"} px-1`)
+          = `${c[0].toUpperCase()}${c.slice(1)} link`
+    h4.mt-4.mb-1#colors-background-color
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#background-color") Background color
+    - const bgcolors = "primary secondary success danger warning info light dark white transparent".split(" ")
+    p.mt-0.mb-3
+      code= `.bg-(${bgcolors.join("|")})`
+    each c in bgcolors
+      - if (c != "muted")
+        div(class=`mb-2 p-3 bg-${c}${["white","transparent"].indexOf(c) == -1 ? "" : " border"} text-${["light","white","transparent"].indexOf(c) == -1 ? "white" : "dark"}`)= `.bg-${c}`
+    div.alert.alert-info.mt-3
+      code .bg-transparent
+      |  is used to remove default background colors. See 
+      a(href="components-3.html#mixins-utilities") Cards - Mixin utilities
+      |  example.
+
+    h2.mt-5#display
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/") Display
+    p.mt-3.mb-1 Utility for setting CSS 
+      code display
+      |  property (see 
+      +extLink("https://developer.mozilla.org/en-US/docs/Web/CSS/display") CSS reference
+      |  for detail).
+    h4.mt-4.mb-1#display-notation
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#notation") Notation
+    p.mt-0.mb-1
+      code .d(-sm|-md|-lg|-xl)?-(none|inline|inline-block|block|...)
+    h5.mt-3#display-notation-responsive Responsive setting
+    ul
+      li
+        code .d-
+        |  apply as default (xs)
+      each w in [["sm",576],["md",768],["lg",992],["xl",1200]]
+        li
+          code= `.d-${w[0]}-`
+          = ` apply for ${w[0]}(≧${w[1]}px) breakpoint`
+    h5.mt-3#display-notation-display Setting CSS 
+      code display
+      |  property
+    ul
+      each p in ["none","inline","inline-block","block","table","table-cell","table-row","flex","inline-flex"]
+        li: code= p
+    h4.mt-4.mb-1#display-examples
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#examples") Changing default settings
+    p.mt-3.mb-2 Division elements forced as inline 
+      code div.d-inline
+      |  ⇒ arranged horizontally
+    div
+      div.d-inline.bg-primary.p-1
+        code.text-white div.d-inline
+      div.d-inline.bg-secondary.p-1
+        code.text-white div.d-inline
+    p.mt-4.mb-1 Span elements forced as block 
+      code span.d-block
+      |  ⇒ arranged vertically
+    span.d-block.bg-primary.p-1
+      code.text-white span.d-block
+    span.d-block.bg-secondary.p-1
+      code.text-white span.d-block
+    h4.mt-4.mb-1#display-hiding-elements
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#hiding-elements") Responsive showing/hiding elements
+    p.mt-2.mb-1 (1) e.g. setting for hiding a block element on md (768px&le;width&lt;992px) only (least to most prior).
+    ul.my-1
+      li
+        code display:block 
+        |  as default
+      li
+        code .d-md-none
+        |  hide for md (and above) (overrides default)
+      li
+        code .d-lg-block
+        |  display as a block for lg and above (most prior)
+    p.mt-3.mb-1 Sample for all cases (see source for detail)
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-sm-block(style="background: #337") Disappears only on XS (width &lt;576px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-sm-none.d-md-block(style="background: #559") Disappaers only on SM (576px&le;width&lt;768px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-md-none.d-lg-block(style="background: #77b") Disappaers only on MD (768px&le;width&lt;992px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-lg-none.d-xl-block(style="background: #99d") Disappaers only on LG (992px&le;width&lt;1200px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-xl-none(style="background: #bbf") Disappears only on XL (width&ge;1200px)
+    p.mt-4.mb-1 (2) e.g. setting for display as a block element on md (768px&le;width&lt;992px) only (least to most prior)
+    ul.my-1
+      li
+        code .d-none
+        |  hide element as default
+      li
+        code .d-md-block
+        |  display on md (and above)
+      li
+        code .m-lg-none
+        |  hide on lg and above (most prior)
+    p.mt-3.mb-1 Sample for all cases (see source for detail)
+    div.row.mx-1
+      div.col.text-white.p-2.d-block.d-sm-none(style="background: #337") Appears only on XS (width&lt;576px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-sm-block.d-md-none(style="background: #559") Appears only on SM (576px&le;width&lt;768px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-md-block.d-lg-none(style="background: #77b") Appears only on MD (768px&le;width&lt;992px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-lg-block.d-xl-none(style="background: #99d") Appears only on LG (992px&le;width&lt;1200px)
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-xl-block(style="background: #bbf") Appears only on XL(width&ge;1200px)
+    h4.mt-4.mb-1#display-in-print
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#display-in-print") Display in print
+    p Use 
+      code .d-print-(none|inline|inline-block|block|...)
+      |  for changing display setting only on printing.
+
+    h2.mt-5#embed
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") Embed
+    p.mt-3.mb-1 Responsive setting (structure) for embedded objects.
+    ul.struct.my-1
+      li parent 
+        code div.embed-responsive.embed-responsive-(21by9|16by9|4by3|1by1)
+        ul
+          li child 
+            code (iframe|embed|video|object).embed-responsible-item
+            ul
+              li.att Attribute 
+                code src="..."
+    h4.mt-4#embed-aspect-ratios
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") Aspect ratios
+    p.my-2 Parent's 
+      code (21by9|16by9|4by3|1by1)
+      |  specifies aspect ratio.
+    ul
+      li
+        code 21by9
+        |  21:9 - Ultra-Widescreen
+      li
+        code 16by9
+        |  16:9 - HD TV (Hi-Vision)
+      li
+        code 4by3
+        |  4:3 - SD(traditional) TV
+      li
+        code 1by1
+        |  1:1 - Square
+    h4.mt-4#embed-examples Examples
+    div.embed-responsive.embed-responsive-16by9
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/h-9UvrLyj3k" allowfullscreen)
+    p.mb-5
+    div.embed-responsive.embed-responsive-16by9
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/ev3vENli7wQ" allowfullscreen)
+
+    +breadcrumbLevel1("Utilities(2): Colors/Display/Embed")

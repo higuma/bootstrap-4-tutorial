@@ -1,0 +1,188 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: ユーティリティ(2): 色 / 表示 / 埋め込み
+
+block body
+  div.container
+    +pageHeader("utilities-2")
+      p.lead ユーティリティ(2): 
+        a(href="#colors") 色
+        |  / 
+        a(href="#display") 表示
+        |  / 
+        a(href="#embed") 埋め込み
+
+    h2.mt-2#colors
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/") 色
+    - const colors = "primary secondary success danger warning info light dark body muted white black-50 white-50".split(" ")
+    h4.mt-4.mb-0#colors-color
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#color") 文字色
+    p.mt-0.mb-2
+      code= `.text-(${colors.join("|")})`
+    div.alert.alert-info 
+      code .color-black-50
+      |  と 
+      code .color-white-50
+      |  は文字色を透過率50%の半透明に設定する。
+    h5.mt-3.mb-0#colors-color-samples 文字サンプル
+    p.mt-0.mb-2
+      code span.text-(primary|secondary|...)
+    each c in colors
+      p.my-1
+        span(class=`text-${c}${["light","white","white-50"].indexOf(c) == -1 ? "" : " bg-dark"} my-1 px-1`)= `.text-${c}`
+    h5.mt-4.mb-0#colors-color-link-samples リンクサンプル
+    p.mt-0.mb-2
+      code a.text-(primary|secondary|...)
+    each c in colors
+      p.my-1
+        a(href="#" class=`text-${c}${["light","white","white-50"].indexOf(c) == -1 ? "" : " bg-dark"} px-1`)
+          = `${c[0].toUpperCase()}${c.slice(1)} link`
+    h4.mt-4.mb-1#colors-background-color
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#background-color") 背景色
+    - const bgcolors = "primary secondary success danger warning info light dark white transparent".split(" ")
+    p.mt-0.mb-3
+      code= `.bg-(${bgcolors.join("|")})`
+    each c in bgcolors
+      - if (c != "muted")
+        div(class=`mb-2 p-3 bg-${c}${["white","transparent"].indexOf(c) == -1 ? "" : " border"} text-${["light","white","transparent"].indexOf(c) == -1 ? "white" : "dark"}`)= `.bg-${c}`
+    div.alert.alert-info.mt-3
+      code .bg-transparent
+      |  は元の背景色設定を除去するのに用いられる。
+      a(href="components-3.html#mixins-utilities") カード - 設定の組み合わせ
+      | に実例がある。
+
+    h2.mt-5#display
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/") 表示
+    p.mt-3.mb-1 CSSの 
+      code display
+      |  プロパティ(要素の表示と配置)を設定するユーティリティクラス
+    h4.mt-4.mb-1#display-notation
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#notation") 記法
+    p.mt-0.mb-1
+      code .d(-sm|-md|-lg|-xl)?-(none|inline|inline-block|block|...)
+    p.mt-2.mb-1 レスポンシブ設定
+    ul
+      li
+        code .d-
+        |  xs(デフォルト)で適用
+      each w in [["sm",576],["md",768],["lg",992],["xl",1200]]
+        li
+          code= `.d-${w[0]}-`
+          = ` ${w[0]}(≧${w[1]}px)で適用`
+    p.mt-2.mb-1
+      code display
+      |  プロパティの設定 (詳しくは
+      +extLink("https://developer.mozilla.org/ja/docs/Web/CSS/display") CSSリファレンス
+      | 参照)
+    ul
+      each p in ["none","inline","inline-block","block","table","table-cell","table-row","flex","inline-flex"]
+        li: code= p
+    h4.mt-4.mb-1#display-examples
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#examples") 要素のデフォルト設定の変更
+    p.mt-3.mb-2 Inlineを強制したdiv : 
+      code div.d-inline
+      |  ⇒ 横に並ぶ
+    div
+      div.d-inline.bg-primary.p-1
+        code.text-white div.d-inline
+      div.d-inline.bg-secondary.p-1
+        code.text-white div.d-inline
+    p.mt-4.mb-1 Blockを強制したspan : 
+      code span.d-block
+      |  ⇒ 縦に並ぶ
+    span.d-block.bg-primary.p-1
+      code.text-white span.d-block
+    span.d-block.bg-secondary.p-1
+      code.text-white span.d-block
+    h4.mt-4.mb-1#display-hiding-elements
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#hiding-elements") 要素の表示/非表示制御
+    p.mt-2.mb-1 (1) md(768px&le;幅&lt;992px)のみ非表示にするブロック要素は次の2つの組み合わせで実現できる(優先度低 ⇒ 高の順)
+    ul.my-1
+      li デフォルトは「block要素として表示」
+      li
+        code .d-md-none
+        |  md以上で非表示(デフォルトより優先)
+      li
+        code .d-lg-block
+        |  md以上で表示(優先度最大)
+    p.mt-3.mb-1 サンプル(全条件の設定はソース参照)
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-sm-block(style="background: #337") XS(幅&lt;576px)の時だけ消える
+    div.row.mx-1
+      div.col.text-white.p-2.d-sm-none.d-md-block(style="background: #559") SM(576px&le;幅&lt;768px)の時だけ消える
+    div.row.mx-1
+      div.col.text-white.p-2.d-md-none.d-lg-block(style="background: #77b") MD(768px&le;幅&lt;992px)の時だけ消える
+    div.row.mx-1
+      div.col.text-white.p-2.d-lg-none.d-xl-block(style="background: #99d") LG(992px&le;幅&lt;1200px)の時だけ消える
+    div.row.mx-1
+      div.col.text-white.p-2.d-xl-none(style="background: #bbf") XL(幅&ge;1200px)の時だけ消える
+    p.mt-4.mb-1 (2) md(768px&le;幅&lt;992px)のみ表示するブロック要素は次の3つの組み合わせで実現できる(優先度低 ⇒ 高の順)
+    ul.my-1
+      li
+        code .d-non
+        |  デフォルトを非表示に設定(優先度最小)
+      li
+        code .d-md-block
+        |  md以上で表示
+      li
+        code .m-lg-none
+        |  lg以上で非表示(優先度最大)
+    p.mt-3.mb-1 サンプル(全条件の設定はソース参照)
+    div.row.mx-1
+      div.col.text-white.p-2.d-block.d-sm-none(style="background: #337") XS(幅&lt;576px)の時だけ見える
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-sm-block.d-md-none(style="background: #559") SM(576px&le;幅&lt;768px)の時だけ見える
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-md-block.d-lg-none(style="background: #77b") MD(768px&le;幅&lt;992px)の時だけ見える
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-lg-block.d-xl-none(style="background: #99d") LG(992px&le;幅&lt;1200px)の時だけ見える
+    div.row.mx-1
+      div.col.text-white.p-2.d-none.d-xl-block(style="background: #bbf") XL(幅&ge;1200px)の時だけ見える
+    h4.mt-4.mb-1#display-in-print
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#display-in-print") 印刷に対する制御
+    p
+      code .d-print-(none|inline|inline-block+block|...)
+      |  を使い印刷時だけ有効な 
+      code display
+      |  の設定を行うことができる(略)。
+
+    h2.mt-5#embed
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") 埋め込み
+    p.mt-3.mb-1 埋め込みオブジェクト(動画など)のレスポンシブ設定
+    ul.struct.my-1
+      li 親 
+        code div.embed-responsive.embed-responsive-(21by9|16by9|4by3|1by1)
+        ul
+          li 子 
+            code (iframe|embed|video|object).embed-responsible-item
+            ul
+              li.att 属性 
+                code src="..."
+    h4.mt-4#embed-aspect-ratios
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") アスペクト比
+    p.my-2 親の 
+      code (21by9|16by9|4by3|1by1)
+      |  はアスペクト比を設定する。
+    ul
+      li
+        code 21by9
+        |  21:9 - Ultra-Widescreen (シネマスコープ)
+      li
+        code 16by9
+        |  16:9 - HD TV (ハイビジョン)
+      li
+        code 4by3
+        |  4:3 - SD TV (アナログTV)
+      li
+        code 1by1
+        |  1:1 - 正方形
+    h4.mt-4#embed-examples 設定例
+    div.embed-responsive.embed-responsive-16by9
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/h-9UvrLyj3k" allowfullscreen)
+    p.mb-5
+    div.embed-responsive.embed-responsive-16by9
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/ev3vENli7wQ" allowfullscreen)
+
+    +breadcrumbLevel1("ユーティリティ(2): 色/表示/埋め込み")

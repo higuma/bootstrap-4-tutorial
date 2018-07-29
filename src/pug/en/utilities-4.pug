@@ -1,0 +1,219 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Utilities (4): Position / Screenreaders / Shadows / Sizing / Spacing
+
+block body
+  div.container
+    +pageHeader("utilities-4")
+      p.lead Utilities (4): 
+        a(href="#position") Position
+        |  / 
+        a(href="#screenreaders") Screenreaders
+        |  / 
+        a(href="#shadows") Shadows
+        |  / 
+        a(href="#sizing") Sizing
+        |  / 
+        a(href="#spacing") Spacing
+
+    h2.mt-2#position
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/") Position
+    h4.mt-4#position-common-values
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#common-values") Classes
+    p.mb-2 Utility classes for setting CSS 
+      code position
+      |  property (see 
+      +extLink("https://developer.mozilla.org/en-US/docs/Web/CSS/position") CSS reference
+      |   for detail). There is no responsive class.
+    p.my-1
+      code .position-(static|relative|absolute|fixed|sticky)
+    h4.mt-4#position-fixed-sticky
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top") Fixed top
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom") Fixed bottom
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top") Sticky top
+    p.mb-2 Options for fixing an element on top or bottom, and displaying on topmost with setting 
+      a(href="layout-1.html#overview-z-index") Z-index
+      |  . These are typically used for 
+      a(href="components-10.html") navigation bars
+      |  . See navbar demos bellow for detail.
+    ul
+      li
+        a(href="navbar-fixed-top.html") Navbar demo using 
+          code .fixed-top
+      li
+        a(href="navbar-fixed-bottom.html") Navbar demo using 
+          code .fixed-bottom
+      li
+        a(href="navbar-sticky-top.html") Navbar demo using 
+          code .sticky-top
+
+    h2.mt-5#screenreaders
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/screenreaders/") Screenreaders
+    h4.mt-3#screenreaders-summary Summary
+    ul
+      li Set 
+        code .sr-only
+        |  to a element for screen reader users
+        ul
+          li Screen reader users can read it as screen-reader only information
+          li It is hidden for visual users
+      li Set 
+        code .sr-only-focusable
+        |  for screen reader users who use keyboards
+    h4.mt-3#screenreaders-example Example
+    p.my-2 An example using 
+      code .sr-only-focusable
+      |  .
+    ul.struct
+      li
+        code a.sr-only.sr-only-focusable
+        ul
+          li.att Atrtribute 
+            code href="#"
+          li.txt Text 
+            code Skip to main content
+    p.my-2 Working example: 
+      strong set inside the bracket next ⇒ ( 
+      a.sr-only.sr-only-focusable(href="#") Skip to main content
+      strong  )
+      | .
+    ul
+      li Screen reader users can read information and also get keybored focus.
+      li Visible users neither see it nor get keyboard focus.
+        ul
+          li Only tabstop is available. It displays by focusing with 
+            kbd Tab
+            |  keys.
+
+    h2.mt-5#shadows
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/shadows/") Shadows
+    p.mt-3
+      code .shadow(-none|-sm|-lg)?
+    h4.mt-4#shadows-examples Examples
+    each opt in [["-none","No"],["-sm","Small"],["","Regular"],["-lg","Larger"]]
+      p.mt-3.mb-2
+        code= `div.shadow${opt[0]}`
+      div(class=`shadow${opt[0]} p-3 mb-4 bg-${opt[0]=="-none" ? "light" : "white"} rounded`)= `${opt[1]} shadow`
+
+    h2.mt-5#sizing
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/sizing/") Sizing
+    p.mt-2.mb-1 Utility classes for setting width and height.
+    ul.my-0
+      li Width (25% step + auto) 
+        code .w-(25|50|75|100|auto)
+      li Height (25% step + auto) 
+        code .h-(25|50|75|100|auto)
+      li Max-width to 100% 
+        code .mw-100
+      li Max-height to 100% 
+        code .mh-100
+    p.mt-3.mb-1 Width example
+    each w in [25, 50, 75, 100, "auto"]
+      div(class=`w-${w} p-1 bg-light text-center border`)
+        code= `.w-${w}`
+    p.mt-3.mb-1 Height example (in the parent with 
+      code height:100px;
+      | )
+    div.border(style="height: 100px;")
+      for h in [25, 50, 75, 100, "auto"]
+        div(class=`h-${h} d-inline-block border bg-light text-center` style="width: 8rem;")
+            code= `.h-${h}`
+    p.mt-3.mb-1 Max-width example: 
+      code img.mw-100
+      |  (fits to the parent width)
+    img.mw-100(src="../img/2000x200.svg")
+    p.mt-3.mb-1 Max-height example: 
+      code img.mh-100
+      |  in the parent with 
+      code height:200px;
+      |  (fits to the parent height)
+    div.border(style="height:200px;")
+      img.mh-100(src="../img/320x320.svg")
+
+    h2.mt-5#spacing
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/") Spacing
+    p.my-2 Utility for setting margins and paddings.
+    h4.mt-3#spacing-notation
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/#notation") Notation
+    p.mt-2.mb-1
+      code .(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)
+    ul
+      li
+        code (m|p)
+        |  margin/padding
+        ul
+          each opt in ["margin","padding"]
+            li
+              code= opt[0]
+              = ` sets ${opt}`
+      li
+        code (t|b|l|r|x|y)
+        |  direction
+        ul
+          each opt in [["t","top"],["b","bottom"],["l","left"],["r","right"],["x","left+right"],["y","top+bottom"]]
+            li
+              code= opt[0]
+              = ` sets ${opt[1]} margin/padding`
+          li (none) sets all four directions
+      li
+        code (0|1|2|3|4|5|auto)
+        |  width
+        ul
+          li
+            code 0
+            |  sets to zero
+          each w in [[1,"1/4"],[2,"1/2"],[3,"1"],[4,"1.5"],[5,"3"]]
+            li
+              code= w[0]
+              |  sets to 
+              code= `${w[1]}rem`
+          li
+            code auto
+            |  (margin only) uses browser default
+    div.alert.alert-info.mt-3(role="alert")
+      strong Advanced (Sass required):
+      |  Width options can be changed by customizing Bootstrap (see 
+      a(href="getting-started.html#css-customizing") Customizing from Sass source code
+      |  for datail). Width is scaled by the Sass variable 
+      code $spacer
+      |  and its (default) value is 
+      code 1rem
+      |  (in source 
+      code _variables.scss
+      |  ).  Size options 
+      code 0,1,2...
+      |  are also specified by the map variable 
+      code $spacers
+      |  .
+    h4.mt-4#spacing-example Example
+    p.mt-2.mb-1 Setting paddings to table cell 
+      code td
+      |  (
+      code pb-(0|1|2|3|4|5)
+      |  (Bottom only) is omitted by no effect)
+    each dir in [["","All"],["x","Left+Right"],["y","Top+Bottom"],["t","Top"],["l","Left"],["r","Right"]]
+      p.my-1
+        code= `.p${dir[0]}-(0|1|2|3|4|5)`
+        = ` (${dir[1]})`
+      table.table.table-bordered
+        tbody
+          tr.p-0
+            each p in [0,1,2,3,4,5]
+              td(class=`p${dir[0]}-${p}`)
+                div.m-0.border.bg-light
+                  code= `.p${dir[0]}-${p}`
+    h4.mt-4#horizontal-centering
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering") Horizontal centering
+    p Use 
+      code .mx-auto
+      |  for horizontal centering of a fixed width element.
+    div.mx-auto.border.p-2.bg-light(style="width: 20rem;")
+      code div.mx-auto
+      |  + 
+      code style="width: 20rem;"
+
+    +breadcrumbLevel1("Utilities(4): Position/Screenreaders/Shadows/Sizing/Spacing")

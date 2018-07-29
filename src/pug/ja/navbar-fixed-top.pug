@@ -1,0 +1,32 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(10): ナビゲーションバー: 配置/上端固定
+
+block body
+  nav.navbar.fixed-top.navbar-dark.bg-info
+    a.navbar-brand(href="#") Fixed top
+  div.container
+    div(style="margin-top: 3.5rem;")
+      +pageHeader("navbar-fixed-top")
+        p.lead コンポーネント(10): ナビゲーションバー: 配置/上端固定
+
+    h2.mt-3#navbar
+      a(href="components-10.html") ナビゲーションバー
+    h5.mt-4#navbar-placement-fixed-top
+      a(href="components-10.html#placement") 配置
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#placement") 上端固定
+    p 本ページ上端のナビゲーションバーが 
+      code nav.navbar.fixed-top
+      |  の例(ページを上下スクロールしても常に上端に固定)。要素のDOM順序に関係なくどこに書いても上端に配置される。
+    p (以下スクロール用のダミー画像)
+    each n in [1,2,3]
+      h5(id=`pict-${n}`)= `Picture ${n}`
+      img.img-fluid.mb-4(src=`../img/1920x1080.svg`)
+    each n in [1,2,3]
+      h5(id=`slide-${n}`)= `Slide ${n}`
+      img.img-fluid.mb-4(src=`../img/slide-${n}.svg`)
+
+    +breadcrumbLevel2("components-10.html", "コンポーネント(10): ナビゲーションバー", "配置/上端固定")

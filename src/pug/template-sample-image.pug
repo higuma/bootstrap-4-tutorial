@@ -1,0 +1,4 @@
+mixin sampleImage(w, h, pt)
+  svg(width=w height=h xmlns="http://www.w3.org/2000/svg" viewBox=`0 0 ${w} ${h}` preserveAspectRatio="none")
+    rect(width=w height=w fill="#777")
+    text(text-anchor="middle" x=`${w/2}` y=`${(h + pt) / 2}` style=`fill:rgba(255,255,255,.75); font-weight:normal; font-family:Helvetica, monospace; font-size:${pt}pt;`)= `${w}x${h}`

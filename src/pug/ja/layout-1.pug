@@ -1,0 +1,1337 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: レイアウト(1): 概要 / グリッド
+
+block body
+  div.container
+    +pageHeader("layout-1")
+      p.lead レイアウト(1): 
+        a(href="#overview") 概要
+        |  / 
+        a(href="#grid") グリッド
+
+    h2.mt-2#overview
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/") 概要
+    h4.mt-3.mb-1#overview-containers
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#containers") コンテナ
+    p.mb-2
+    | Bootstrapではレイアウトのトップレベル要素(コンテナ)として 
+    code .container
+    |  または 
+    code .container-fluid
+    |  を用いる。
+  div.container.mt-3.mb-4.py-2.border.bg-light
+    code div.container
+    |  ⇒ (レスポンシブ) 画面幅の内側に入る固定ステップに調整、中央揃え
+  div.container-fluid.my-4.py-2.border.bg-light
+    code div.container-fluid
+    |  ⇒ 常に(親要素に対し)横幅100%に設定
+  div.container
+    h4.mt-4#overview-responsive-breakpoints
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints") レスポンシブ動作のブレークポイント
+    p.my-2 Bootstrapではレスポンシブ応答する幅のステップ設定をブレークポイント(breakpoint)と呼び、画面幅に対応した5通りの設定がある(詳しくは公式ドキュメントの 
+      a(href="https://getbootstrap.com/docs/4.1/layout/grid/#grid-options") Grid options
+      |  一覧表を参照)。
+    table.table.table-bordered
+      thead.thead-light
+        tr
+          th(scope="col") 名称
+          th(scope="col") ビューポート(画面)幅
+          th(scope="col")
+            code .container
+            |  に設定される幅
+      tbody
+        each item in [["(xs)","<576px","設定なし(auto)"],["sm","≧576px","540px"],["md","≧768px","720px"],["lg","≧992px","960px"],["xl","≧1200px","1140px"]]
+          tr
+            th(scope="row")= item[0]
+            td= item[1]
+            td= item[2]
+    p.mt-3.mb-2 Bootstrapでは 
+      code .col-md
+      |  のように上記2文字を用いたレスポンシブ設定を用いる。ルールは次の通り。
+    ul
+      li 幅指定なし(例: 
+        code .col
+        |  )は「全画面幅で有効(デフォルト)」、優先度は最小
+      li 幅指定(例: 
+        code .col-md
+        |  )は「この幅以上で有効」、幅指定なしより優先
+      li 幅指定が複数ある場合は幅の大きい設定が優先
+    div.alert.alert-info(role="alert") このルールのため 
+      code -xs
+      |  という幅指定は(意図的に)ない。また優先度を利用して特定の幅領域だけ設定を有効にしたり、設定を変えてレイアウトを組み替えたりすることができる。
+    h4.mt-4#overview-z-index
+      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#z-index") Z-index
+    p Bootstrapでは 
+      code 1000
+      |  以上の 
+      code z-index
+      |  を特定のコンポーネントのために予約している。また 
+      code 1,2,3
+      |  は要素の状態(ホバー、アクティブ、フォーカス)の表示カスタマイズのために用いられる(表示効果用に内部で作成される兄弟要素に設定される)。現在Bootstarpが使用している 
+      code z-index
+      |  の一覧は次の通り。
+    table.table.table-bordered
+      thead.thead-light
+        tr
+          th(scope="col") Z-index
+          th(scope="col") 使用目的(コンポーネント)
+      tbody
+        tr
+          th(scope="row") 1,2,3
+          td 要素状態(ホバー、アクティブ、フォーカス)の表示効果用
+        tr
+          th(scope="row") 1000
+          td
+            a(href="components-4.html#dropdowns") ドロップダウン
+        tr
+          th(scope="row") 1020
+          td
+            a(href="navbar-sticky-top.html") 上端張り付き
+            |  (ナビゲーションバー)
+        tr
+          th(scope="row") 1030
+          td
+            a(href="navbar-fixed-top.html") 上端固定
+            |  / 
+            a(href="navbar-fixed-bottom.html") 下端固定
+            |  (ナビゲーションバー)
+        tr
+          th(scope="row") 1040
+          td
+            a(href="components-8.html#behaviors") バックドロップ
+            |  (モーダル背景)
+        tr
+          th(scope="row") 1050
+          td
+            a(href="components-8.html") モーダル
+        tr
+          th(scope="row") 1060
+          td
+            a(href="components-11.html#popovers") ポップオーバー
+        tr
+          th(scope="row") 1070
+          td
+            a(href="components-12.html#tooltips") ツールチップ
+
+    h2.mt-5#grid
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/") グリッド
+    h4.mt-4#grid-overview
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#how-it-works") 基本的な使い方
+    p.my-2 グリッドはBootstrapの基本機能で、次に示す3階層の構造を用いてレイアウトを組む。
+    ul.struct
+      li 
+        a(href="#overview-containers") コンテナ(トップレベル) 
+        code div.container
+        |  (または 
+        code div.container-fluid
+        |  )
+        ul
+          li 行 
+            code div.row
+            |  (ここに 
+            code display: flex
+            |  が設定され、内側でflexbox機能を使える)
+            ul
+              li 列 
+                code div.col{+各種設定}
+    div.alert.alert-info 最初に読む場合は次の
+      a(href="#grid-gutters") ガター
+      | を飛ばしてその先の
+      a(href="#grid-equal-width") 列の等分配置
+      | に進むとよい。行や列に独自のマージン/パディング設定を行う場合にガターをよく理解する必要がある(設定が特殊)。
+    h4.mt-2#grid-gutters ガター
+    p.my-2 コンテナ 
+      code div.container(-fluid)?
+      |  にはガター(gutter)と呼ばれる左右15pxずつのパディング(内部要素との余白)が設定され、レイアウトする要素はその内側に配置される。そのため実際の内部要素の(最大)幅は 
+      code div.container
+      |  の幅(
+      a(href="#overview-responsive-breakpoints") ブレークポイント
+      | )から左右15pxずつ引いた値になる。
+    p.my-2 本ページ自身もコンテナを用いたレイアウトでガターが設定されている。次はそれを示す例で、仕組みが分かるようにコンテナに灰色のボーダー、内部要素の領域に淡い背景色を付けている。左右に15pxずつパディング(ガター)が付き、その内側にレイアウトされる。
+  div.container.border
+    div.bg-light
+      ul.mb-0
+        li 外側: コンテナ 
+          code div.container
+          |  (灰色ボーダーの領域)
+          ul
+            li ガターを設定: 
+              code padding-(left|right): 15px
+        li 内側(この部分): 内部要素(ライトグレー背景部分)
+        li 左右端: ガター(背景色が付いていない部分)
+  div.container
+    p.my-2 ガターはレイアウトの余白を確保するためのもので、列 
+      code .col
+      |  を複数横に配置すると30pxの余白を取る(Bootstrap標準値)。なおパディング(ガター)を設定した 
+      code .col 
+      |  の内部がコンテンツ領域なので、背景を設定する場合は内部にもう1レベル 
+      code div
+      |  などの要素が必要になる(上の例のライトグレー背景の部分)。
+    div.alert.alert-info.mt-3(role="alert")
+      strong 上級向け(要Sass): 
+      | ガターの値はSass変数 
+      code $grid-gutter-width
+      |  で設定しており、Sassレベルでカスタマイズすれば変更可能。詳しくは
+      a(href="getting-started.html#css-customizing") Sassソースからのカスタマイズ
+      | を参照。
+    p.mt-3.mb-2 グリッドを用いる場合はこの内部に行 
+      code div.row
+      |  を配置し、さらにその内側に列 
+      code div.col
+      |  を配置するが、ガターの扱いが各レベルで全て異なり、特殊な設定が行われている。次はそれを示す実例(内部の文章はその解説)。コンテナ/行/列にはそれぞれ別の色のボーダーを設定しているが、結果的に同じ領域になるため3つ重なって表示される。
+  div.container.border
+    div.row.border.border-danger
+      div.col.border.border-primary
+        div.bg-light
+          ul.mb-0
+            li 親: コンテナ 
+              code div.container
+              |  (灰色ボーダー)
+              ul
+                li ガターを設定: 
+                  code padding-(left|right): 15px
+            li 子: 行 
+              code div.row
+              |  (赤ボーダー)
+              ul
+                li ガターをキャンセル: 
+                  code margin-(left|right) : -15px
+                li パディングなし: 
+                  code padding-(left|right): 0
+            li 孫: 列 
+              code div.col
+              |  (青ボーダー)
+              ul
+                li マージンなし: 
+                  code margin-(left|right): 0
+                li ガターを(再)設定: 
+                  code padding-(left|right): 15px
+            li 内部要素(この部分) (淡い背景色)
+  div.container
+    div.alert.alert-warning.mt-3
+      strong 注: 
+      | 特に 
+      code .row
+      |  で左右マージンに負の値を設定してガターをキャンセルしている点に注意。そのためコンテナ/行/列への横方向のマージン/パディング設定を行う場合は注意が必要。特に行の横マージン、列の横パディングを独自に設定するとガターの設定を壊してしまい、予測外の結果になることが多い。
+    h4.mt-4#grid-equal-width
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#equal-width") 列の等分配置
+    p.my-2 行 
+      code div.row
+      |  の中に列 
+      code div.col
+      |  を複数用いると行の中に等分配置する。行の幅や内部要素の幅、種類などから一行に入る列の最大数をブラウザが判定し、それを超えると次の行に折り返す。
+    p.my-2 次は環境別の最大個数確認用に作った例(20個まで)。
+    div.alert.alert-info(role="alert") 以下の例ではレイアウトの内部構造が分かるように列 
+      code div.col*
+      |  に
+      a(href="utilities-1.html#borders-border") ボーダー 
+      code .border
+      | を付け、さらにコンテンツ領域と左右余白(ガター)の設定状態を表示するためコンテント領域に薄い
+      a(href="utilities-2.html#colors-background-color") 背景色 
+      code .bg-light
+      |  を付けている。
+    - for (let n = 1; n <= 20; n++)
+      div.row.my-2
+        - for (let i = 0; i < n; i++)
+          div.col.border
+            div.bg-light= `${i+1}/${n}`
+    p.mt-3.mb-2 構造は次の通り(以下すべて親のコンテナ 
+      code div.container
+      |  は省略)。
+    ul.struct.mt-2
+      li
+        code div.row
+        ul
+          li
+            code div.col
+            |  (&times;設定個数: 1..16)
+            ul
+              li.txt テキスト 
+                code {行内index}/{設定個数}
+    h4.mt-4#grid-equal-width-multi-row
+      +extLink(href="https://getbootstrap.com/docs/4.1/layout/grid/#equal-width-multi-row") 折り返し(改行)
+    p.my-2
+      code div.col
+      |  を用いた等分配置で、特定位置で折り返す場合は中身が空の 
+      code div.w-100
+      |  を挿入する。
+    div.row.mb-3
+      div.col.border
+        div.bg-light
+          code .row
+      div.col.border
+        div.bg-light
+          code .row
+          span.float-right ⇒ 
+            code .w-100
+      div.w-100
+      each i in [0,1]
+        div.col.border
+          div.bg-light
+            code .row
+      div.col.border
+        div.bg-light
+          code .row
+          span.float-right ⇒ 
+            code .w-100
+      div.w-100
+      each i in [0,1,2,3]
+        div.col.border
+          div.bg-light
+            code .row
+    div.my-3
+      +collapseButton("#grid-equal-width-multi-row-structure") 構造
+    ul.struct.collapse#grid-equal-width-multi-row-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col
+            |  (&times;2)
+          li
+            code div.w-100
+            |  (強制折り返し)
+          li
+            code div.col
+            |  (&times;3)
+          li
+            code div.w-100
+            |  (強制折り返し)
+          li
+            code div.col
+            |  (&times;4)
+    h4.mt-4#grid-column-width
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#setting-one-column-width") 列の幅指定(1/12ステップ)
+    p.my-2
+      code div.col-(1|2|3|4|5|6|7|8|9|10|11|12)
+    - for (let c = 1; c <= 12; c++)
+      div.row
+        div(class=`col-${c} border`)
+          div.bg-light
+            code= `.col-${c}`
+    h5.mt-4#grid-mixing-fixed-and-equal 固定幅と等分の組み合わせ
+    div.row
+      div.col.border
+        div.bg-light
+          code .col
+          |  (1/6)
+      div.col-6.border
+        div.bg-light
+          code .col-6
+          |  6/12固定
+      each n in [0,1]
+        div.col.border
+          div.bg-light
+            code .col
+            |  (1/6)
+    div.row
+      each n in [0,1]
+        div.col.border
+          div.bg-light
+            code .col
+            |  (7/36)
+      div.col-5.border
+        div.bg-light
+          code .col-5
+          |  5/12固定
+      div.col.border
+        div.bg-light
+          code .col
+          |  (7/36)
+    div.my-3
+      +collapseButton("#grid-mixing-fixed-and-equal-structure") 構造
+    ul.struct.collapse#grid-mixing-fixed-and-equal-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col
+          li
+            code div.col-6
+          li
+            code div.col
+            |  (&times;2)
+      li
+        code div.row
+        ul
+          li
+            code div.col
+            |  (&times;2)
+          li
+            code div.col-5
+          li
+            code div.col
+    h4.mt-4#variable-width-content
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") 幅の自動設定
+    p.my-2 (
+      code .col
+      |  の代わりに)
+      code .col-auto
+      |  を用いるとブラウザのデフォルト幅に設定する(CSSの 
+      code width: auto;
+      |  を設定)。この場合は(均等配分でなく)内部コンテンツに対応した幅に設定される。
+    div.row
+      each text in ["123", "1234567890", "12345678901234567890"]
+        div.col-auto.border
+          div.bg-light
+            code .col-auto
+            = ` ${text}`
+    div.alert.alert-info.mt-3(role="alert") 公式ドキュメントの例はレスポンシブ動作とFlexboxを利用した組み合わせ例。やや高度なので後で解説する(⇒ 
+      a(href="#grid-margin-auto") 幅の自動設定とFlexboxの組み合わせ
+      | )。
+    h4.mt-4#grid-column-wrapping
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-wrapping") 列の折り返し
+    p.my-2 1行に12を超える幅の列を設定した場合は≦12となるように適宜折り返される。
+    div.row.border
+      each c in [9, 4, 7, 3]
+        div(class=`col-${c} border`)
+          div.bg-light
+            code= `.col-${c}`
+    div.my-3
+      +collapseButton("#grid-column-wrapping-structure") 構造
+    ul.struct.collapse#grid-column-wrapping-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-9
+          li
+            code div.col-4
+            |  ⇒ 合計&gt;12のため折り返して次行の先頭として表示
+          li
+            code div.col-7
+          li
+            code div.col-3
+            |  ⇒ 合計&gt;12のため折り返して次行の先頭として表示
+    h4.mt-4#grid-column-breaks
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-breaks") 強制折り返し
+    p.my-2 幅を指定する場合も中身が空の 
+      code div.w-100
+      |  を挿入するとその位置で強制的に折り返す。
+    div.row.border
+      div.col-3.border
+        div.bg-light
+          code .col-3
+      div.col-5.border
+        div.bg-light
+          code .col-5
+          span.float-right ⇒ 
+            code .w-100
+      div.w-100
+      div.col-4.border
+        div.bg-light
+          code= `.col-4`
+    div.my-3
+      +collapseButton("#grid-column-breaks-structure") 構造
+    ul.struct.collapse#grid-column-breaks-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-3
+          li
+            code div.col-5
+          li
+            code div.w-100
+            |  (強制折り返し)
+          li
+            code div.col-4
+    h4.mt-4#responsive-classes
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#responsive-classes") レスポンシブ幅設定
+    p.my-2
+      code .col-(sm|md|lg|xl)(-1|-2|-3|...|-12|-auto)?
+    h5.mt-3#responsive-classes-example-1 例1: 等分のレスポンシブ動作
+    p.mt-2.mb-0
+      code .col
+      |  (常に2列等配分)
+    div.row
+      each n in [1,2]
+        div.col.border
+          div.bg-light
+            code .col
+    for sz in [["sm",576], ["md",768], ["lg",992], ["xl",1200]]
+      p.mt-2.mb-0
+        code= `.col-${sz[0]}`
+        = ` (幅≧${sz[1]}pxは2列、未満は2行( `
+        code .col
+        |  なしと同じ)
+      div.row
+        for i in [0,1]
+          div(class=`col-${sz[0]} border`)
+            div.bg-light
+              code= `.col-${sz[0]}`
+    div.my-3
+      +collapseButton("#responsive-classes-example-1-structure") 構造
+    ul.struct.collapse#responsive-classes-example-1-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col(-sm|-md|-lg|-xl)?
+            |  (&times;2)
+    h5.mt-3#responsive-classes-example-2 例2: 幅指定のレスポンシブ動作
+    each bp in [null,"sm","md","lg","xl"]
+      div.row.mt-3
+        each w in [3,6]
+          - let cls = bp ? `col-${bp}-${w}` : `col-${w}`
+          div(class=`${cls} border`)
+            div.bg-light
+              code= cls
+    div.my-3
+      +collapseButton("#responsive-classes-example-2-structure") 構造
+    ul.struct.collapse#responsive-classes-example-2-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col(-sm|-md|-lg|-xl)?-3
+          li
+            code div.col(-sm|-md|-lg|-xl)?-6
+    h5.mt-3#responsive-classes-example-3 例3: 自動幅のレスポンシブ動作
+    each bp in [null,"sm","md","lg","xl"]
+      div.row.mt-3
+        - let cls = bp ? `col-${bp}-auto` : "col-auto"
+        each text in ["12345", "12345678901234567890"]
+          div(class=`${cls} border`)
+            div.bg-light
+              code= cls
+              = ` ${text}`
+    div.my-3
+      +collapseButton("#responsive-classes-example-3-structure") 構造
+    ul.struct.collapse#responsive-classes-example-3-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col(-sm|-md|-lg|-xl)?-auto
+            |  (&times;2)
+            ul
+              li.txt テキスト(幅違いを2種類)
+    h4.mt-4#stacked-to-horizontal
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#stacked-to-horizontal") レイアウトの縦/横切り替え
+    p.my-2 ここから応用例。モバイル/PCで次のようにレイアウトを切り替える場合を考える。
+    div.row
+      div.col-5
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong モバイル
+          each n in ["1-1","1-2","2-1","2-2","2-3"]
+            div.row
+              div.col.border
+                div.bg-light.text-center= n
+      div.col-7
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong PC
+          div.row
+            div.col-8.border
+              div.bg-light.text-center 1-1
+            div.col-4.border
+              div.bg-light.text-center 1-2
+          div.row
+            each n in [1,2,3]
+              div.col.border
+                div.bg-light.text-center= `2-${n}`
+    p.my-3 設定例は次の通り(ブラウザで幅を変更すると切り替わる)。なおPC/モバイルの切り替えはmd(≧768px)に設定している(公式ドキュメントの例はsmだがPCブラウザで確認しやすいよう変更)。
+    div.row
+      div.col-md-8.border
+        div.bg-light 1-1 
+          code .col-md-8
+      div.col-md-4.border
+        div.bg-light 1-2 
+          code .col-md-4
+    div.row
+      each n in [1,2,3]
+        div.col-md.border
+          div.bg-light
+            = `2-${n} `
+            code .col-md
+    div.my-3
+      +collapseButton("#grid-stacked-to-horizontal-structure") 構造
+    ul.struct.collapse#grid-stacked-to-horizontal-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-md-8
+          li
+            code div.col-md-4
+      li
+        code div.row
+        ul
+          li
+            code div.col-md
+            |  (&times;3)
+    h4.mt-4#mix-and-match
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#mix-and-match") 幅指定とデバイス幅制御の組み合わせ
+    p.my-2 次もモバイル/PCの表示切り替え例。
+    div.row
+      div.col-5
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong モバイル
+          div.row
+            div.col.border
+              div.bg-light.text-center 1-1
+          div.row
+            div.col-6.border
+              div.bg-light.text-center 1-2
+          div.row
+            each n in [1,2]
+              div.col.border
+                div.bg-light.text-center= `2-${n}`
+          div.row
+            div.col-6.border
+              div.bg-light.text-center 2-3
+          div.row
+            each n in [1,2]
+              div.col.border
+                div.bg-light.text-center= `3-${n}`
+      div.col-7
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong PC
+          div.row
+            div.col-8.border
+              div.bg-light.text-center 1-1
+            div.col-4.border
+              div.bg-light.text-center 1-2
+          div.row
+            each n in [1,2,3]
+              div.col.border
+                div.bg-light.text-center= `2-${n}`
+          div.row
+            each n in [1,2]
+              div.col.border
+                div.bg-light.text-center= `3-${n}`
+    p.my-3 実際に設定した例は次の通り(mdブレークポイントで切り替え)。
+    div.row
+      div.col-12.col-md-8.border
+        div.bg-light 1-1 
+          code .col-12.col-md-8
+      div.col-6.col-md-4.border
+        div.bg-light 1-2 
+          code .col-6.col-md-4
+    div.row
+      each n in [1,2,3]
+        div.col-6.col-md-4.border
+          div.bg-light= `2-${n} `
+            code .col-6.col-md-4
+    div.row
+      each n in [1,2]
+        div.col-6.border
+          div.bg-light= `3-${n} `
+            code .col-6
+    h4.mt-4#grid-margin-auto
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") 幅の自動設定とFlexboxの組み合わせ
+    p.my-2 幅の自動設定、Flexboxとレスポンシブ動作を組み合わせた例(公式ドキュメントより、かなり複雑)。
+    ul
+      li 行 
+        code div.row
+        |  に 
+        code .justify-content-md-center
+        |  (⇒ 
+        a(href="utilities-3.html#flex") Flexbox
+        | )を設定(md以上で要素を中央寄せ)
+      li 各行内の中央列に 
+        code .col-md-auto
+        |  を設定(md以上でブラウザデフォルト幅)
+      li 左下の列に 
+        code .col
+        |  (等分、または取得できる最大幅)
+      li 残りすべての列に 
+        code .col.col-lg-2
+        |  (デフォルトは等分配置、lg以上で幅2)
+    p.my-3 実際に設定したものを先に示す( 
+      code .col-md-auto
+      |  を設定した中央要素は色を変えて表示)。
+    div.row.justify-content-md-center
+      div.col.col-lg-2.border
+        div.bg-light 1-1 
+          code.small .col.col-lg-2
+      div.col-md-auto.border
+        div.bg-warning 1-2 
+          code.small .col-md-auto
+      div.col.col-lg-2.border
+        div.bg-light 1-3 
+          code.small .col.col-lg-2
+    div.row
+      div.col.border
+        div.bg-light 2-1 
+          code.small .col
+      div.col-md-auto.border
+        div.bg-warning 2-2 
+          code.small .col-md-auto
+      div.col.col-lg-2.border
+        div.bg-light 2-3 
+          code.small .col.col-lg-2
+    p.my-3 全ケースのレスポンシブ動作は3通りある。
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong sm(&lt;768px)
+          each r in [1,2]
+            div.row
+              div.col.border
+                div.bg-light.text-center= `${r}-1`
+            div.row
+              div.col.border
+                div.bg-warning.text-center= `${r}-2`
+            div.row
+              div.col.border
+                div.bg-light.text-center= `${r}-1`
+          div.row.mt-3.mb-1
+            div.col.text-center
+              strong lg(&ge;992px)
+          div.row.justify-content-md-center
+            div.col-2.border
+              div.bg-light.text-center 1-1
+            div.col-auto.border
+              div.bg-warning.text-center 1-2
+            div.col-2.border
+              div.bg-light.text-center 1-3
+          div.row
+            div.col.border
+              div.bg-light.text-center 2-1
+            div.col-auto.border
+              div.bg-warning.text-center 2-2
+            div.col-2.border
+              div.bg-light.text-center 2-3
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong md(768px&le;width&lt;992px)
+          each r in [1,2]
+            div.row
+              div.col.border
+                div.bg-light.text-center= `${r}-1`
+              div.col-auto.border
+                div.bg-warning.text-center= `${r}-2`
+              div.col.border
+                div.bg-light.text-center= `${r}-3`
+    h4.mt-4#grid-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#alignment") アラインメント
+    p
+      a(href="utilities-3.html#flex") Flexboxユーティリティ
+      | を利用する。
+    h5.mt-3.mb-0#grid-vertical-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#vertical-alignment") 上下の配置
+    p.my-2 以下の例では行 
+      code div.row
+      |  に赤いボーダーを付け、高さを 
+      code 5rem
+      |  に固定
+    - const align = ["start", "center", "end"]
+    each al in align
+      p.mt-2.mb-0
+        code= `.row.align-items-${al}`
+      div(class=`row border border-danger align-items-${al}` style="height: 5rem;")
+        each n in [1,2,3]
+          div.col.border
+            div.bg-light.p-1
+              code .col
+              = ` (${n}/3)`
+    p.mt-2.mb-0
+      code .col.align-self-(start|center|end)
+    div.row.border.border-danger(style="height: 5rem;")
+      each al in align
+        div(class=`col align-self-${al} border`)
+          div.bg-light.p-1
+            code= `-${al}`
+    h5.mt-3.mb-0#grid-horizontal-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#horizontal-alignment") 左右の配置
+    each al in align.concat("around", "between")
+      p.mt-2.mb-0
+        code= `.row.justify-content-${al}`
+      div(class=`row justify-content-${al} border border-danger`)
+        - for (let i = 1; i <= 3; i++)
+          div.col-2.border
+            div.bg-light
+              code= `.col-2`
+              small= ` (${i}/3)`
+    h4.mt-4#griid-no-gutters
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#no-gutters") ガターの除去
+    p.my-2 グリッドには左右両方に15pxのパディング(
+      a(href="#grid-gutters") ガター
+      | )が設定されているが、行 
+      code div.row
+      |  に 
+      code .no-gutters
+      |  を追加するとガターを除去して配置する。
+    each cls in ["", ".no-gutters"]
+      p.mt-2.mb-0
+        code= `div.row${cls}`
+      div(class=`row${cls.replace(/\./, " ")}`) 
+        each n in [9,3]
+          div(class=`col-${n} border`)
+            div.bg-light
+              code= `.col-${n}`
+    p.mt-3.mb-2 実際には単にガターを除去するのではなく次の通り設定している。これに対する通常の設定は
+      a(href="#grid-gutters") ガター
+      | を参照(比較すること)。
+    ul
+      li
+        code div.row.no-gutters
+        ul
+          li 横マージン(通常は 
+            code -15px
+            |  )を解除( 
+            code 0
+            |  に設定)
+            ul
+              li これにより親コンテナのガターが適用され、両端が 
+                code 15px
+                |  ずつ短くなる
+          li (CSSの子結合子 
+            code &gt;
+            |  を用いて)子要素の列 
+            code div.col-* 
+            |  のガターを解除( 
+            code 0
+            |  に設定)
+
+    p.mt-3.mb-2 次は公式ドキュメントからの例(少し補足)。まず実例を示す。
+    each cls in ["", ".no-gutters"]
+      p.mt-2.mb-0
+        code= `div.row${cls}`
+      div(class=`row${cls.replace(/\./, " ")}`) 
+        div.col-12.col-sm-6.col-md-8.border
+          div.bg-light
+            code .col-12.col-sm-6.col-md-8
+        div.col-6.col-md-4.border
+          div.bg-light
+            code .col-6.col-md-4
+    p.mt-4.mb-3 これもレスポンシブ動作の例になっている。ガターとは関係ない(本題ではない)が、全応答ケースを示しておく。
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong xs(&lt;576px)
+          each cls in ["row", "row no-gutters mt-3"]
+            div(class=cls)
+              div.col-12.border
+                div.bg-light.text-center 12
+              div.col-6.border
+                div.bg-light.text-center 6
+          div.row.mt-3.mb-1
+            div.col.text-center
+              strong md以上(&ge;768px)
+          each cls in ["row", "row no-gutters mt-3"]
+            div.row(class=cls)
+              div.col-8.border
+                div.bg-light.text-center 8
+              div.col-4.border
+                div.bg-light.text-center 4
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong sm(576px&le;width&lt;768px)
+          each cls in ["row", "row no-gutters mt-3"]
+            div(class=cls)
+              each n in [1,2]
+                div.col-6.border
+                  div.bg-light.text-center 6
+    h4.mt-4#grid-ordering
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#order-classes") 列の順序指定
+    p.mt-2.mb-3
+      code div.col
+      |  はデフォルトでは記述順に配置するが 
+      code .order-*
+      |  で順序を制御できる(⇒ 
+      a(href="utilities-3.html#flex") Flexbox
+      |  )。
+    p.mt-2.mb-0
+      code .order-n
+      |  (1≦n≦12)を用いて設定 (12⇒1⇒
+      span.text-muted なし
+      | ⇒7の順に記述した場合: 
+      span.text-muted なし
+      | は先頭に配置される)
+    div.row
+      div.col.order-12.border
+        div.bg-light
+          code .order-12
+      div.col.order-1.border
+        div.bg-light
+          code .order-1
+      div.col.border
+        div.bg-light なし
+      div.col.order-7.border
+        div.bg-light
+          code .order-7
+    div.my-3
+      +collapseButton("#grid-ordering-1-structure") 構造
+    ul.struct.collapse#grid-ordering-1-structure
+      li
+        code div.row
+        ul
+          each n in [12,1,null,7]
+            li
+              code= `div.col${n ? `.order-${n}` : ""}`
+    p.mt-2.mb-0
+      code .order-first
+      | は必ず先頭、
+      code .order-last
+      | は必ず末尾 (
+      span.text-muted なし
+      | ⇒last⇒firstの順に記述した場合)
+    div.row
+      div.col.border
+        div.bg-light なし
+      div.col.order-last.border
+        div.bg-light
+          code .order-last
+      div.col.order-first.border
+        div.bg-light
+          code .order-first
+    div.my-3
+      +collapseButton("#grid-ordering-2-structure") 構造
+    ul.struct.collapse#grid-ordering-2-structure
+      li
+        code div.row
+        ul
+          each n in [null, "last", "first"]
+            li
+              code= `div.col${n ? `.order-${n}` : ""}`
+    h4.mt-4#grid-offsetting-columns
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offsetting-columns") 列の左右配置調整
+    h5.mt-3#grid-offset-classes
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offset-classes") 
+        code .offset-*
+        | を用いた配置制御
+    p.my-2
+      code .offset-(1|2|3|...)
+      |  で数値に対応した空間を確保できる。
+    div.row.border.my-3
+      div.col-4.border
+        div.bg-light
+          code .col-4
+      div.offset-4.col-4.border
+        div.bg-light
+          code .offset-4.col-4
+    div.my-3
+      +collapseButton("#grid-offset-1-structure") 構造
+    ul.struct.collapse#grid-offset-1-structure
+      li
+        code div.row
+        ul
+          li
+            code div.col-4
+          li
+            code div.offset-4.col-4
+    div.row.border.my-3
+      each n in [1,2]
+        div.offset-3.col-3.border
+          div.bg-light
+            code .offset-3.col-3
+    div.my-3
+      +collapseButton("#grid-offset-2-structure") 構造
+    ul.struct.collapse#grid-offset-2-structure
+      li
+        code div.row
+        ul
+          each n in [1,2]
+            li
+              code div.offset-3.col-3
+    div.row.border.my-3
+      div.offset-3.col-6.border
+        div.bg-light
+          code .offset-3.col-6
+    div.my-3
+      +collapseButton("#grid-offset-3-structure") 構造
+    ul.struct.collapse#grid-offset-3-structure
+      li
+        code div.row
+        ul
+          li
+            code div.offset-3.col-6
+    p.mt-3.mb-2 レスポンシブ設定 
+      code .offset-(xl|lg|md|sm)-(1|2|3|...)
+    p.mt-2.mb-3 次は複雑な例(公式ドキュメントより)。まず実際に設定したものを先に示す。
+    div.row
+      div.col-sm-5.col-md-6.border
+        div.bg-light
+          strong 1L
+          br
+          code .col-sm-5
+          br
+          code .col-md-6
+      div.offset-sm-2.col-sm-5.offset-md-0.col-md-6.border
+        div.bg-light
+          strong 1R
+          br
+          code .offset-sm-2.col-sm-5
+          br
+          code .offset-md-0.col-md-6
+    div.row
+      div.col-sm-6.col-md-5.col-lg-6.border
+        div.bg-light
+          strong 2L
+          br
+          code .col-sm-6
+          br
+          code .col-md-5
+          br
+          code .col-lg-6
+      div.col-sm-6.offset-md-2.col-md-5.offset-lg-0.col-lg-6.border
+        div.bg-light
+          strong 2R
+          br
+          code .col-sm-6
+          br
+          code .offset-md-2.col-md-5
+          br
+          code .offset-lg-0.col-lg-6
+    p.mt-4.mb-2 全条件は次の通り
+    table.table.table-sm.table-bordered
+      thead.thead-light
+        tr
+          each n in [1,2]
+            each item in ["","xs","sm","md","lg,xl"]
+              th.text-center(scope="col")= item
+      tbody
+        tr
+          th.table-light.text-center(scope="row") 1行目左
+            br
+            | (1L)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅5
+          td.text-center(colspan="2") 幅6
+          th.table-light.text-center(scope="row") 1行目右
+            br
+            | (1R)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center オフセット2
+            br
+            | 幅5
+          td.text-center(colspan="2") オフセット0 
+            sup
+              a(href="#offset-responsive-example-note") [注]
+            br
+            | 幅6
+        tr
+          th.table-light.text-center(scope="row") 2行目左
+            br
+            | (2L)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅6
+          td.text-center 幅5
+          td.text-center 幅6
+          th.table-light.text-center(scope="row") 2行目右
+            br
+            | (2R)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅6
+          td.text-center オフセット2
+            br
+            | 幅5
+          td.text-center オフセット0 
+            sup
+              a(href="#offset-responsive-example-note") [注]
+            br
+            | 幅6
+    div.alert.alert-warning#offset-responsive-example-note(role="alert")
+      strong 注: 
+      | 右側要素の最後でオフセットを0に設定するレスポンシブ設定クラスは(一見無意味に思えるが)必要。それよりも小さいブレークポイントでオフセットを設定しているため、それを0に打ち消すための設定が必要。
+    p.my-2 レスポンシブ動作は次の4通り
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong xs(&lt;576px)
+          each item in ["1L","1R","2L","2R"]
+            div.row
+              div.col.border
+                div.bg-light.text-center= item
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong sm(576px&le;width&lt;768px)
+          div.row
+            div.col-5.border
+              div.bg-light.text-center 1L
+            div.col-5.offset-2.border
+              div.bg-light.text-center 1R
+          div.row
+            div.col.border
+              div.bg-light.text-center 2L
+            div.col.border
+              div.bg-light.text-center 2R
+    div.row.mt-3
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong md(768px&le;width&lt;992px)
+          div.row
+            div.col.border
+              div.bg-light.text-center 1L
+            div.col.border
+              div.bg-light.text-center 1R
+          div.row
+            div.col-5.border
+              div.bg-light.text-center 2L
+            div.col-5.offset-2.border
+              div.bg-light.text-center 2R
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong lg,xl(&ge;992px)
+          div.row
+            div.col.border
+              div.bg-light.text-center 1L
+            div.col.border
+              div.bg-light.text-center 1R
+          div.row
+            div.col.border
+              div.bg-light.text-center 2L
+            div.col.border
+              div.bg-light.text-center 2R
+    h5.mt-4#margin-utilities
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#margin-utilities") マージンユーティリティ
+    p.mt-2.mb-3
+      a(href="utilities-4.html#spacing") 空白
+      | ユーティリティを用いた例。これも動作がやや複雑なのでまず設定例から示す。
+    div.row
+      div.col-md-4.border
+        div.bg-light.py-1
+          strong 1L 
+          code .col-md-4
+      div.col-md-4.ml-auto.border
+        div.bg-light.py-1
+          strong 1R 
+          code .col-md-4.ml-auto
+    div.row
+      div.col-md-3.ml-md-auto.border
+        div.bg-light.py-1
+          strong 2L 
+          code .col-md-3.ml-md-auto
+      div.col-md-3.ml-md-auto.border
+        div.bg-light.py-1
+          strong 2R 
+          code .col-md-3.ml-md-auto
+    div.row
+      div.col-auto.mr-auto.border
+        div.bg-light.py-1
+          strong 3L 
+          code .col-auto.mr-auto
+      div.col-auto.border
+        div.bg-light.py-1
+          strong 3R 
+          code .col-auto
+    p.mt-4.mb-2 条件は次の通り
+    table.table.table-sm.table-bordered
+      thead.thead-light
+        tr
+          each n in [1,2]
+            each item in ["","< md","≧ md"]
+              th.text-center(scope="col")= item
+      tbody
+        tr
+          th.table-light.text-center(scope="row") 1行目左
+            br
+            | (1L)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅4
+          th.table-light.text-center(scope="row") 1行目右
+            br
+            | (1R)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅4
+            br
+            | 左マージン 
+            code auto
+        tr
+          th.table-light.text-center(scope="row") 2行目左
+            br
+            | (2L)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅3
+            br
+            | 左マージン 
+            code auto
+          th.table-light.text-center(scope="row") 2行目右
+            br
+            | (2R)
+          td.text-center なし
+            br
+            | (幅100%)
+          td.text-center 幅3
+            br
+            | 左マージン 
+            code auto
+        tr
+          th.table-light.text-center(scope="row") 3行目左
+            br
+            | (3L)
+          td.text-center(colspan="2") 幅 
+            code auto
+            br
+            | 右マージン 
+            code auto
+          th.table-light.text-center(scope="row") 3行目右
+            br
+            | (3R)
+          td.text-center(colspan="2") 幅 
+            code auto
+    p.my-2 動作は次の通り。
+    div.row
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong xs, sm (&lt;768px)
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 1L
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 1R
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 2L
+          div.row
+            div.col.border
+              div.bg-light.text-center.px-2 2R
+          div.row
+            div.col-auto.mr-auto.border
+              div.bg-light.text-center.px-2 3L
+            div.col-auto.border
+              div.bg-light.text-center.px-2 3R
+      div.col-6
+        div.container
+          div.row.mb-1
+            div.col.text-center
+              strong md, lg, xl (&ge;768px)
+          div.row
+            div.col-4.border
+              div.bg-light.text-center.px-2 1L
+            div.col-4.ml-auto.border
+              div.bg-light.text-center.px-2 1R
+          div.row
+            div.col-3.ml-auto.border
+              div.bg-light.text-center.px-2 2L
+            div.col-3.ml-auto.border
+              div.bg-light.text-center.px-2 2R
+          div.row
+            div.col-auto.mr-auto.border
+              div.bg-light.text-center.px-2 3L
+            div.col-auto.border
+              div.bg-light.text-center.px-2 3R
+    h4.mt-4#grid-nesting
+      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#nesting") ネスト
+    p.mt-2.mb-3 列 
+      code div.col(-*)
+      |  の中に行 
+      code div.row(-*)
+      |  を入れてネストさせることができる(理論的には何重でも可能だが意味があるのはせいぜい2重まで)。例えば次のような(12と素因数の相性が悪い)8分割単位の互い違いレイアウトを作る場合に必要になる。
+    div.row
+      div.col-6
+        div.row
+          each n in [1,2,3,4]
+            div.col-3
+              div.bg-light.text-center= n
+    div.row
+      div.col-6.offset-6
+        div.row
+          each n in [5,6,7,8]
+            div.col-3
+              div.bg-light.text-center= n
+    div.my-3
+      +collapseButton("#grid-nesting-1-structure") 構造
+    ul.struct.collapse#grid-nesting-1-structure
+      li
+        code div.row
+        ul
+          li
+            code div col-6
+            |  (左上半分)
+            ul
+              li
+                code div.row
+                |  (ネストして内部を再分割)
+                ul
+                  li
+                    code div.col-3
+                    |  (&times;4)
+                    ul
+                      li
+                        code div.bg-light
+                        ul
+                          li.txt テキスト 
+                            code (1|2|3|4)
+      li
+        code div.row
+        ul
+          li
+            code div.col-6.offset-6
+            |  (右下半分)
+            ul
+              li
+                code div.row
+                |  (ネストして内部を再分割)
+                ul
+                  li
+                    code div.col-3
+                    |  (&times;4)
+                    ul
+                      li
+                        code div.bg-light
+                        ul
+                          li.txt テキスト 
+                            code (5|6|7|8)
+    p.my-3 構造を色分けしたものを次に示す。構造は上と同じだが要素境界にボーダを追加し、さらに外側 
+      code div.row
+      |  に薄緑、内側 
+      code div.row
+      |  にピンクの背景を付けている(上下パディングも適宜追加)。実際にはガター処理のため左右が15pxずつはみ出していることに注意。通常は行 
+      code .row(-*)
+      |  や列 
+      code .col(-*)
+      |  に背景やボーダーは付けないため見えないが、ここでは構造解説のためわざと見せている。
+    div.row.py-1.border(style="background:rgba(0,255,0,0.1)")
+      div.col-6.py-1(style="background:rgba(255,0,0,0.1)")
+        div.row
+          each n in [1,2,3,4]
+            div.col-3.border
+              div.bg-light.text-center= n
+    div.row.py-1.border(style="background:rgba(0,255,0,0.1)")
+      div.col-6.offset-6.py-1(style="background:rgba(255,0,0,0.1)")
+        div.row
+          each n in [5,6,7,8]
+            div.col-3.border
+              div.bg-light.text-center= n
+    div.alert.alert-info.mt-3(role="alert") ただでさえ複雑になりやすいのでなるべく避けるべき(多くの場合は回避できる)。上記の例はどうしても必要な状況を意図的に考えて作ったもので、単に8等分するなら
+      a(href="#grid-equal-width") 列の等分配置
+      | を使えばよい。
+
+    +breadcrumbLevel1("レイアウト(1): 概要/グリッド")

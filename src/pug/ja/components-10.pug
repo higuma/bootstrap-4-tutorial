@@ -1,0 +1,774 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+mixin colorDemoContent(n)
+  a.navbar-brand(href="#") Navbar
+  - const id = `colorDemo${n}`
+  button.navbar-toggler(type="button" data-toggle="collapse" data-target=`#${id}` aria-controls=id aria-expanded="false" aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  div.collapse.navbar-collapse(id=id)
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href="#") Home
+          span.sr-only (current)
+      each item in ["Features", "Pricing", "About"]
+        li.nav-item
+          a.nav-link(href="#")= item
+    form.form-inline.my-2.my-lg-0
+      input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+      button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(10): ナビゲーションバー
+
+block body
+  div.container
+    +pageHeader("components-10")
+      p.lead コンポーネント(10): 
+        a(href="#navbar") ナビゲーションバー
+
+    h2.mt-2#navbar
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/") ナビゲーションバー
+    p ナビゲーションバー用コンポーネント(部品一式)。
+    h4.my-3#supported-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#supported-content") 基本例と部品構成
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#") Navbar
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Link
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle#navbarDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+            div.dropdown-menu(aria-labelledby="navbarDropdown")
+              a.dropdown-item(href="#") Action
+              a.dropdown-item(href="#") Another action
+              div.dropdown-divider
+              a.dropdown-item(href="#") Something else here
+          li.nav-item
+            a.nav-link.disabled(href="#") Disabled
+        form.form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    +collapseButton("#basic-example") 構造
+    ul.struct.my-2.collapse#basic-example
+      li バー 
+        code nav.navbar
+        ul
+          li.cls トグラー設定 
+            code .navbar-expand-md
+            |  (mdブレークポイントで展開/折り畳み)
+          li.cls 配色設定 
+            code .navbar-light.bg-light
+            |  ⇒ 
+            a(href="#color-schemes") バーの配色
+          li
+            a(href="#brand") ブランド表示 
+            code a.navbar-brand
+            ul
+              li.txt テキスト 
+                strong Navbar
+          li
+            a(href="#toggler") トグラー 
+            code button.navbar-toggler
+            |  (折り畳み時に表示)
+            ul
+              li アイコン(三本線) 
+                code span.navbar-toggler-icon
+          li 折り畳みラッパー 
+            code div.collapse.navbar-collapse
+            |  (展開時に表示 ⇒ 
+            a(href="#toggler") トグラー
+            |  )
+            ul
+              li
+                a(href="#nav") ナビゲーション 
+                code ul.navbar-nav.mr-auto
+                ul
+                  li アイテム 
+                    strong Home Link ...
+              li
+                a(href="#forms") フォーム 
+                code form.form-inline
+                ul
+                  li 入力コントロール 
+                    code input.form-control
+                  li ボタン 
+                    code button.btn.btn-outline-success
+    h4.mt-4.mb-1#brand
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#brand") ブランド表示
+    h6.my-2#brand-standard (1) 標準 
+      code (a|span).navbar-brand
+    nav.navbar.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#") Navbar
+    +collapseButton("#brand-standard-structure") 構造
+    ul.struct.mt-2.collapse#brand-standard-structure
+      li バー 
+        code nav.navbar
+        ul
+          li.cls 色設定は 
+            a(href="#color-schemes") バーの配色
+            |  を参照
+          li ブランド表示 
+            code (a|span).navbar-brand
+            +attrBtn(".a1-1")
+            ul
+              li.att.collapse.a1-1 (要素が 
+                code a
+                |  の場合) 属性 
+                code href="..."
+              li.txt テキスト(例) 
+                code Navbar
+    h6.mt-3.mb-2#brand-heading (2) ヘッダ風スタイル 
+      code (a|span).navbar-brand.h1
+    nav.navbar.navbar-light.bg-light.mb-3
+      span.navbar-brand.h1.mb-0 Navbar
+    +collapseButton("#brand-heading-structure") 構造
+    ul.struct.mt-2.collapse#brand-heading-structure
+      li バー(同上)
+        ul
+          li ブランド表示 
+            code (a|span).navbar-brand.h1.mb-0
+            +attrBtn(".a2-1")
+            ul.collapse.a2-1
+              li.cls ヘッダ風テキスト設定 
+                code .h1
+                |  ( 
+                a(href="content-1.html#typo-headings") タイポグラフィ - 見出し
+                |  を参照)
+              li.cls マージン調整 
+                code .mb-0
+                |  (ヘッダ用マージン設定を除去)
+    h6.mt-3.mb-2#brand-image-only (3) 画像のみ
+    nav.navbar.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#")
+        img(src="../img/bootstrap-solid.svg" width="30" height="30" alt="Bootstrap logo")
+    +collapseButton("#brand-image-only-structure") 構造
+    ul.struct.mt-2.collapse#brand-image-only-structure
+      li バー(同上)
+        ul
+          li ブランド表示 
+            code (a|span).navbar-brand
+            ul
+              li 画像 
+                code img
+                +attrBtn(".a3-1")
+                ul.collapse.a3-1
+                  li.att 属性 
+                    code href="..."
+                  li.att 属性 
+                    code width="..."
+                  li.att 属性 
+                    code height="..."
+                  li.att 属性 
+                    code alt="..."
+    h6.mt-3.mb-2#image-and-text (4) 画像とテキスト 
+    nav.navbar.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#")
+        img.d-inline-block.align-top(src="../img/bootstrap-solid.svg" width="30" height="30" alt="Bootstrap logo")
+        | &nbsp;Bootstrap
+    +collapseButton("#brand-image-and-text-structure") 構造
+    ul.struct.mt-2.collapse#brand-image-and-text-structure
+      li バー(同上)
+        ul
+          li ブランド表示 
+            code (a|span).navbar-brand
+            ul
+              li 画像 
+                code img
+                +attrBtn(".a4-1")
+                ul.collapse.a4-1
+                  li.cls 表示 
+                    code .d-inline-block
+                    |  (⇒ 
+                    a(href="utilities-2.html#display") 表示ユーティリティ
+                    |  )
+                  li.cls 上下アラインメント 
+                    code .align-top
+                    |  (⇒ 
+                    a(href="utilities-5.html#vertical-align") 上下アライン
+                    |  )
+                  li.att 他の属性は
+                    a(href="#brand-image-only") (3) 画像のみ
+                    | と同じ
+              li.txt テキスト 
+                code= "&nbsp;Bootstrap"
+                |  (画像との間に空白文字が必要)
+    h4.mt-4#nav
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#nav") ナビゲーション
+    p.my-2 レスポンシブ動作するナビゲーションバーでは
+      a(href="components-9.html") ナビゲーション
+      | と
+      a(href="#toggler") トグラー
+      | を組み合わせて用いる。トグラーで指定したブレークポイントより画面幅が小さくなるとバーに配置したナビゲーションアイテムが自動的に折り畳まれ、展開用アイコンを表示する。
+    h6.mt-3.mb-2#nav-example-basic (1) 標準的な例: 
+      code ul
+      |  ベースのナビゲーションを使用
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#") Navbar
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarNav
+        ul.navbar-nav
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Features
+          li.nav-item
+            a.nav-link(href="#") Pricing
+          li.nav-item
+            a.nav-link.disabled(href="#") Disabled
+    +collapseButton("#nav-example-basic-structure") 構造
+    ul.struct.my-2.collapse#nav-example-basic-structure
+      li バー 
+        ul
+          li
+            a(href="#brand") ブランド表示
+          li
+            a(href="#toggler") トグラー
+            |  (詳しくは 
+            a(href="#toggler-example") トグラーの例
+            |  参照)
+          li 折り畳みラッパー
+            code div.collapse.navbar-collapse
+            +attrBtn(".a5-1")
+            ul
+              li.att.collapse.a5-1 属性(必須) 
+                code id="navbarNavAltMarkup"
+              li ナビゲーション 
+                code ul.navbar-nav
+                ul
+                  li アクティブアイテムの場合 
+                    code li.nav-item.active
+                    ul
+                      li リンク 
+                        code a.nav-item.nav-link.active
+                        +attrBtn(".a5-2")
+                        ul
+                          li.att.collapse.a5-2 属性 
+                            code href="..."
+                          li.txt テキスト(例) 
+                            code Home
+                          li スクリーンリーダ用 
+                            code span.sr-only
+                            ul
+                              li.txt テキスト 
+                                code (current)
+                  li 他の(通常とdisabled)アイテムは 
+                    a(href="components-9.html#base-nav") ナビゲーション - 基本構成
+                    |  と同様
+    h6.mt-3.mb-2#nav-example-div (2) ナビゲーションのベース要素に 
+      code div.navbar-nav
+      |  を用いる場合(DOM階層を1層低くできる)
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#") Navbar
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarNavAltMarkup
+        div.navbar-nav
+          a.nav-item.nav-link.active(href="#") Home
+            span.sr-only (current)
+          a.nav-item.nav-link(href="#") Features
+          a.nav-item.nav-link(href="#") Pricing
+          a.nav-item.nav-link.disabled(href="#") Disabled
+    +collapseButton("#nav-example-div-structure") 構造
+    div.collapse#nav-example-div-structure
+      p.my-2 ナビゲーション部のみ(他は同じ)
+      ul.struct
+        li 折り畳みラッパー内部: ナビゲーション 
+          code div.navbar-nav
+          ul
+            li アイテム/リンク 
+              code a.nav-item.nav-link(.active)
+              ul
+                li 内部は 
+                  a(href="#nav-example-basic") (1) 標準的な例
+                  |  と同じ
+    h6.mt-3.mb-2#nav-example-dropdown (3) ドロップダウン付き
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.mb-3
+      a.navbar-brand(href="#") Navbar
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarNavDropdown
+        ul.navbar-nav
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Features
+          li.nav-item
+            a.nav-link(href="#") Pricing
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle#navbarDropdownMenuLink(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown link
+            div.dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+              a.dropdown-item(href="#") Action
+              a.dropdown-item(href="#") Another action</a>
+              a.dropdown-item(href="#") Something else here</a>
+    +collapseButton("#nav-example-dropdown-structure") 構造
+    div.collapse#nav-example-dropdown-structure
+      p.my-2 ナビゲーション部のみ(他は同じ)
+      ul.struct
+        li 折り畳みラッパー内部: ナビゲーション 
+          code div.navbar-nav
+          ul
+            li テキストアイテムは 
+              a(href="#nav-example-basic") (1) 標準的な例
+              |  と同じ
+            li ドロップダウン 
+              code li.nav-item.dropdown
+              ul
+                li 内部設定は 
+                  a(href="components-9.html#using-dropdowns") ナビゲーション - ドロップダウンを用いる場合
+                  |  を参照
+    h4.mt-4#forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#forms") フォーム
+    p.my-2 ナビゲーションバーの内部に
+      a(href="components-5.html#inline-forms") インラインフォーム 
+      code form.form-inline
+      |  を用いることができる。
+    h6.mt-3.mb-2#forms-example-basic (1) 単純な例(トグラーなし)
+    nav.navbar.navbar-light.bg-light.mb-3
+      form.form-inline
+        input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+        button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    +collapseButton("#forms-example-basic-structure") 構造
+    ul.struct.mt-2.collapse#forms-example-basic-structure
+      li バー(トグラーなし)
+        ul
+          li インラインフォーム 
+            code form.form-inline
+            ul
+              li 
+                a(href="components-5.html#form-controls") 入力コントロール 
+                code input.form-control
+                +attrsBtn(".a6-1")
+                ul.collapse.a6-1
+                  li.cls (レスポンシブ)マージン 
+                    code .mr-sm-2
+                  li.att 属性 
+                    code type="search"
+                  li.att 属性 
+                    code placeholder="Search"
+                  li.att アクセシビリティ属性 
+                    code aria-label="Search"
+              li
+                a(href="components-2.html#buttons-outline-buttons") アウトラインボタン 
+                code button.btn.btn-outline-success
+                +attrsBtn(".a6-2")
+                ul
+                  li.cls.collapse.a6-2 (レスポンシブ)マージン 
+                    code .my-2.my-sm-0
+                  li.att.collapse.a6-2 属性 
+                    code type="submit"
+                  li.txt テキスト 
+                    code Search
+    h6.mt-3.mb-2#forms-example-alignment (2) 配置
+    nav.navbar.navbar-light.bg-light.justify-content-between.mb-3
+      a.navbar-brand Navbar
+      form.form-inline
+        input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+        button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    +collapseButton("#forms-example-alignment-structure") 構造
+    ul.struct.mt-2.collapse#forms-example-alignment-structure
+      li バーに 
+        code .justify-content-between
+        |  を追加(⇒ 
+        a(href="utilities-3.html#flex") Flexboxユーティリティ
+        |  )
+        ul
+          li
+            a(href="#brand") ブランド表示
+          li インラインフォーム - 
+            a(href="#forms-example-basic") (1) 単純な例(トグラーなし)
+            |  と同じ
+    div.alert.alert-info.mt-3(role="alert")
+      a(href="#toggler") トグラー
+      | を用い、折り畳みラッパー内部の最後にインラインフォームを配置すればこの設定は不要(自動的に右寄せになる)。
+    h6.mt-3.mb-2#forms-example-input-group (3) 
+      a(href="components-6.html#input-group") インプットグループ
+      |  を用いる場合
+    nav.navbar.navbar-light.bg-light.mb-3
+      form.form-inline
+        div.input-group
+          div.input-group-prepend
+            span.input-group-text#basic-addon1 @
+        input.form-control(type="text" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1")
+    +collapseButton("#forms-example-input-group-structure") 構造
+    ul.struct.mt-2.collapse#forms-example-input-group-structure
+      li バー(同じ)
+        ul
+          li インラインフォーム 
+            code form.form-inline
+            ul
+              li インプットグループ 
+                code div.input-group
+                ul
+                  li 内部は 
+                    a(href="components-6.html#basic-example") インプットグループ - 基本例
+                    |  と同様
+    h6.mt-3.mb-2#forms-example-buttons (4) 
+      a(href="components-2.html#buttons") ボタン
+      | とその
+      a(href="components-2.html#buttons-sizes") サイズ設定
+    nav.navbar.navbar-light.bg-light.mb-3
+      form.form-inline
+        button.btn.btn-outline-success(type="button") Main button
+        button.btn.btn-sm.btn-outline-secondary.ml-2(type="button") Smaller button
+    +collapseButton("#forms-example-buttons-structure") 構造
+    ul.struct.mt-2.collapse#forms-example-buttons-structure
+      li バー
+        ul
+          li インラインフォーム 
+            code form.form-inline
+            ul
+              li 
+                a(href="components-2.html#buttons-outline-buttons") アウトラインボタン 
+                code button.btn.btn-outline-success
+                +attrBtn(".a7-1")
+                ul
+                  li.att.collapse.a7-1 属性 
+                    code type="button"
+                  li.txt テキスト 
+                    code Main button
+              li アウトラインボタン(小) 
+                code button.btn.btn-sm.btn-outline-secondary
+                +attrsBtn(".a7-2")
+                ul
+                  li.cls.collapse.a7-2 マージン 
+                    code .ml-2
+                    |  (⇒ 
+                    a(href="utilities-4.html#spacing") 空白ユーティリティ
+                    |  )
+                  li.att.collapse.a7-2 属性 
+                    code type="button"
+                  li.txt テキスト 
+                    code Smaller button
+    h4.mt-4#navbar-text
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#text") テキスト
+    p.my-2 ナビゲーションバー内部の通常テキストには 
+      code span.navbar-text
+      |  を用いる。
+    h6.mt-3.mb-2#text-example-1 例(1)
+    nav.navbar.navbar-light.bg-light
+      span.navbar-text Navbar text with an inline element
+    h6.mt-3.mb-2#text-example-2 例(2)
+    nav.navbar.navbar-expand-md.navbar-light.bg-light
+      a.navbar-brand(href="#") Navbar w/ text
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarText
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Features
+          li.nav-item
+            a.nav-link(href="#") Pricing
+        span.navbar-text Navbar text with an inline element
+    h4.mt-4#color-schemes
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#color-schemes") バーの配色
+    p.my-2 テキスト配色と背景色の両方で設定する。
+    ul
+      li テキスト配色(どちらか片方を必ず設定)
+        code .navbar-(light|dark)
+        ul
+          li
+            code .navbar-light
+            |  : 明色背景用テキスト配色
+          li
+            code .navbar-dark
+            |  : 暗色背景用テキスト配色
+      li 背景色 
+        code .bg-(primary|secondary|...)
+        ul
+          li
+            a(href="utilities-2.html#colors-background-color") 背景色
+            | を参照
+          li カスタムスタイルによる記述も可(例) 
+            code style="backgroudnd-color: lightblue;"
+    h6.mt-2.mb-1#color-schemes-examples 例(公式ドキュメントより、若干修正)
+    p.my-1
+      code nav.navbar.navbar-dark.bg-dark
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      +colorDemoContent(1)
+    p.mt-3.mb-1
+      code nav.navbar.navbar-dark.bg-primary
+    nav.navbar.navbar-expand-md.navbar-dark.bg-primary
+      +colorDemoContent(2)
+    p.mt-3.mb-1
+      code nav.navbar.navbar-light
+      |  +属性 
+      code style="background-color: #e3f2fd;"
+    nav.navbar.navbar-expand-md.navbar-light(style="background-color: #e3f2fd;")
+      +colorDemoContent(3)
+    h4.mt-4#containers
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#containers") コンテナ
+    p.my-2 ナビゲーションバーを
+      a(href="layout-1.html#overview-containers") コンテナ
+      | の外部(通常は 
+      code body
+      |  のすぐ下)に配置すると画面幅いっぱいに表示する(次はその例)。
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href="#") Navbar
+  div.container
+    p.mt-3.mb-2 本ページのこれ以外のナビゲーションバーはすべて
+      a(href="layout-1.html#overview-containers") コンテナ 
+      code div.container
+      |  の内側に設定している(レスポンシブ幅、中央揃え配置)。
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href="#") Navbar
+    p.mt-3.mb-2 次の例は表示は上とほぼ同じだが、画面幅がlg以上の時だけブランド表示の手前にパディングを多めに取る。これはナビゲーションバー内部にコンテナを用いた場合の特殊動作を説明するためのもの。
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3
+      div.container
+        a.navbar-brand(href="#") Navbar
+    +collapseButton("#container-example-structure") 構造
+    ul.struct.mt-2.collapse#container-example-structure
+      li ナビゲーションバー 
+        code nav.navbar
+        ul
+          li.cls トグラー設定 
+            code .navbar-expand-lg
+            |  (lgブレークポイントで展開/折り畳み)
+          li コンテナ 
+            code div.container
+            ul
+              li ブランド表示 
+                strong Navbar
+    p.my-2 デフォルト状態のコンテナは左右15pxずつのパディング(gutter)を設定するが、トグラー付きナビゲーションバーの内部にあるコンテナは折り畳み時にパディング(gutter)を除去する。
+    ul
+      li 幅&ge;lg (展開時) ⇒ gutterを設定 (
+        strong Navbar
+        |  の手前に15px余計にパディングが付く)
+      li 幅&lt;lg (折り畳み時) ⇒ gutterを除去
+    h4.mt-4#placement
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#placement") バーの配置
+    ul
+      li デフォルト: 
+        code position: relative
+      li 上端固定: 
+        code position: fixed 
+      li 下端固定: 
+        code position: fixed 
+      li 上端張り付き: 
+        code position: sticky
+    h6.mt-3.mb-2#placement-example-default (1) デフォルト 
+      code nav.navbar
+      |  (ページと一緒にスクロールする)
+    nav.navbar.navbar-light.bg-light
+      a.navbar-brand(href="#") Default
+    h6.mt-3#placement-fixed-top (2) 上端固定 
+      code nav.navbar.fixed-top
+    p.ml-4 ⇒ 
+      a(href="navbar-fixed-top.html") デモページ
+    h6.mt-3#placement-fixed-bottom (3) 下端固定 
+      code nav.navbar.fixed-bottom
+    p.ml-4 ⇒ 
+      a(href="navbar-fixed-bottom.html") デモページ
+    h6.mt-3#placement-sticky-top (4) 上端張り付き 
+      code nav.navbar.sticky-top
+    p.ml-4 ⇒ 
+      a(href="navbar-sticky-top.html") デモページ
+    h4.mt-4#responsive-behaviors
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#responsive-behaviors") レスポンシブ動作の設定
+    p.my-2 ナビゲーションバーはトグラーを使ってレスポンシブ動作を行う。
+    ul
+      li 2種類のレイアウト(展開/折り畳み)を特定のブレークポイント(lt, md, lg, xlのいずれか)で切り替える
+      li 展開時はバーに配置したすべてのアイテム(ブランド、ナビゲーション、フォーム等)を表示する
+      li 折り畳み時はアイテムを非表示にして三本線アイコンを表示
+        ul
+          li アイコンをクリックすると折り畳まれていたアイテムを展開して上下積み重ね表示
+    h5.mt-4#toggler
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#toggler") トグラー
+    h5.mt-3#toggler-example 基本例
+    nav.navbar.navbar-light.bg-light.navbar-expand-md.mb-3
+      a.navbar-brand(href="#") Brand
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#toggler-demo" aria-controls="toggler-demo" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#toggler-demo
+        ul.navbar-nav.mr-auto.mt-2.mt-md-0
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Link
+          li.nav-item
+            a.nav-link.disabled(href="#") Disabled
+        form.form-inline.my-2.my-md-0
+          input.form-control.mr-sm-2(type="search" placeholder="Search")
+          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    +collapseButton("#toggler-example-structure") 構造
+    ul.struct.mt-2.collapse#toggler-example-structure
+      li バー 
+        code nav.navbar.navbar-light.bg-light
+        +attrBtn(".a8-1")
+        ul
+          li.cls.collapse.a8-1 トグラー設定 
+            code .navbar-expand-md
+            |  (mdブレークポイントで展開/折り畳み)
+          li
+            a(href="#brand") ブランド表示 
+            code a.navbar-brand ...
+          li トグラー 
+            code button.navbar-toggler
+            |  (折り畳み時に表示) 
+            +attrsBtn(".a8-2")
+            ul
+              li.att.collapse.a8-2 属性 
+                code type="button"
+              li.att.collapse.a8-2 属性 
+                code data-toggle="collapse"
+              li.att.collapse.a8-2 属性 
+                code data-target="#toggler-demo"
+                |  (折り畳みラッパーを設定)
+              li.att.collapse.a8-2 アクセシビリティ属性 
+                code aria-controls="toggler-demo"
+              li.att.collapse.a8-2 アクセシビリティ属性 
+                code aria-expanded="false"
+              li.att.collapse.a8-2 アクセシビリティ属性 
+                code aria-label="Toggle navigation"
+              li アイコン(三本線) 
+                code span.navbar-toggler-icon
+          li 折り畳みラッパー 
+            code div.collapse.navbar-collapse
+            |  (展開時に表示)
+            +attrBtn(".a8-3")
+            ul
+              li.att.collapse.a8-3 属性(必須) 
+                code id="toggler-demo"
+              li ナビゲーション 
+                code ul.navbar-nav
+                +attrBtn(".a8-4")
+                ul
+                  li.cls.collapse.a8-4 (レスポンシブ)マージン調整 
+                    code .mr-auto.mt-2.mt-md-0
+                  li アイテム 
+                    code li.nav-item(.active)
+              li
+                a(href="#forms") フォーム 
+                code form.form-inline ...
+    p.mt-2 トグラーのブレークポイント設定は 
+      code .navbar-expand-(sm|md|lg|xl)
+      |  を用いるが、常に展開したままにする場合は代わりに 
+      code .navbar-expand
+      |  を用いる。次の例は上の基本例と同じだが 
+      code .nabvar-expand-md
+      |  を 
+      code .nabvar-expand
+      |  に変えただけのもの(折り畳まない)。
+    nav.navbar.navbar-light.bg-light.navbar-expand
+      a.navbar-brand(href="#") Brand
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#toggler-demo-disabled" aria-controls="toggler-demo-disabled" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#toggler-demo-disabled
+        ul.navbar-nav.mr-auto.mt-2.mt-md-0
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Link
+          li.nav-item
+            a.nav-link.disabled(href="#") Disabled
+        form.form-inline.my-2.my-md-0
+          input.form-control.mr-sm-2(type="search" placeholder="Search")
+          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    h6.mt-4.mb-2#toggler-variation-1 バリエーション(1) 折り畳み時にブランドも非表示にする(アイコンのみ表示)
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.mb-3
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarTogglerDemo01
+        a.navbar-brand(href="#") Hidden brand
+        ul.navbar-nav.mr-auto.mt-2.mt-md-0
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Link
+          li.nav-item
+            a.nav-link.disabled(href="#") Disabled
+        form.form-inline.my-2.my-md-0
+          input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    +collapseButton("#toggler-variation-1-structure") 構造
+    ul.struct.mt-2.collapse#toggler-variation-1-structure
+      li バー
+        ul
+          li トグラー
+          li 折り畳みラッパー
+            ul
+              li ブランド表示(ここに移動)
+    h6.mt-4.mb-2#toggler-variation-2 バリエーション(2) 折り畳み時にブランド表示を右、アイコンを左にする
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.mb-3
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      a.navbar-brand(href="#") Navbar
+      div.collapse.navbar-collapse#navbarTogglerDemo03
+        ul.navbar-nav.mr-auto.mt-2.mt-md-0
+          li.nav-item.active
+            a.nav-link(href="#") Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="#") Link
+          li.nav-item
+            a.nav-link.disabled(href="#") Disabled
+        form.form-inline.my-2.my-md-0
+          input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+    +collapseButton("#toggler-variation-2-structure") 構造
+    ul.struct.mt-2.collapse#toggler-variation-2-structure
+      li 要素のDOM順序を次の通り変更する
+        ul
+          li トグラー
+          li ブランド表示
+          li 折り畳みラッパー
+    h5.mt-4#external-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/navbar/#external-content") バーの外にあるコンテントの折り畳み
+    p.my-2 トグラーを使ってバーの外にあるコンテントの折り畳みも行うことができる。
+    div.collapse#navbarToggleExternalContent
+      div.bg-secondary.p-4
+        h4.text-white Collapsed content 
+        span Toggleable via the navbar icon.
+    nav.navbar.navbar-dark.bg-dark.mb-3
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+    +collapseButton("#external-content-structure") 構造
+    ul.struct.mt-2.collapse#external-content-structure
+      li 折り畳みラッパー(バーの外) 
+        code div.collapse
+        +attrBtn(".a9-1")
+        ul
+          li.att.collapse.a9-1 属性(必須) 
+            code id="{wrapper-id}"
+          li 折り畳むコンテント 
+            code div.bg-dark.p-4
+            ul
+              li.txt 内部テキスト 
+                strong Collapsed content
+                |  ...
+      li バー 
+        code nav.navbar.navbar-dark.bg-dark
+        |  (常に畳み込み状態)
+        ul
+          li トグラー 
+            code button.navbar-toggler
+            +attrsBtn(".a9-2")
+            ul
+              li.att.collapse.a9-2 属性 
+                code type="button"
+              li.att.collapse.a9-2 属性 
+                code data-toggle="collapse"
+              li.att.collapse.a9-2 属性 
+                code= `data-target="#{wrapper-id}"`
+              li.att.collapse.a9-2 他の設定は 
+                a(href="#toggler-example") トグラー - 基本例
+                |  を参照
+              li アイコン(三本線) 
+                code span.navbar-toggler-icon
+
+    +breadcrumbLevel1("Components(10): Navbar")

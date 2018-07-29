@@ -1,0 +1,56 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Content (4): Figures
+
+block body
+  div.container
+    +pageHeader("content-4")
+      p.lead Content (4): 
+        a(href="#figures") Figures
+
+    h2.mt-2#figures
+      +extLink("https://getbootstrap.com/docs/4.1/content/figures/") Figures
+    h4.mt-3#basic Image with a caption
+    p.my-1 Use a 
+      code figure
+      |  and add a caption text with 
+      code figcaption
+      |  .
+    p.mt-3.mb-1 For a caption below an image
+    ul.struct
+      li
+        code figure.figure
+        ul
+          li: code img.figure-img.img-fluid
+          li: code figcaption.figure-caption
+    figure.figure
+      img.figure-img.img-fluid(src="../img/480x270.svg")
+      figcaption.figure-caption A caption for the above image
+    p.mt-3.mb-1 For a caption above an image
+    ul.struct
+      li
+        code figure.figure
+        ul
+          li: code figcaption.figure-caption.mb-2
+          li: code img.figure-img.img-fluid
+    figure.figure
+      figcaption.figure-caption.mb-2 A caption for the below image
+      img.figure-img.img-fluid(src="../img/480x270.svg")
+    h4.mt-4#placement Caption placement
+    p.mt-2.mb-3 Set 
+      code .text-(left|center|right)
+      |  to 
+      code figcaption
+      |  (⇒ 
+      a(href="utilities-5.html#text-alignment") Text utility
+      |  )
+    each al in ["left", "center", "right"]
+      p.mb-1
+        code= `figcaption.figure-caption.text-${al}`
+      figure.figure
+        img.figure-img.img-fluid(src="../img/480x270.svg")
+        figcaption(class=`figure-caption text-${al}`) A caption for the above image
+
+    +breadcrumbLevel1("Content(4): Figures")

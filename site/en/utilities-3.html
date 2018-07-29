@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Utilities (3): Flex / Float / Image replacement</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Utilities (3): <a href="#flex">Flex</a> / <a href="#float">Float</a> / <a href="#image-replacement">Image replacement</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/utilities-3.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="flex"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/" target="_blank">Flex</a>
+      </h2>
+      <p class="mt-2 mb-1">Bootstrap 4 fully utilizes CSS3 flexbox. About Flexbox, see <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A complete guide to Flexbox</a>.
+      </p>
+      <h4 class="mt-4 mb-1" id="flex-notation">Notation summary</h4>
+      <p class="my-3">Each notation maps to a corresponding CSS property name/value/value. See <a href="https://www.w3.org/TR/css-flexbox-1/" target="_blank">Flexbox (W3C)</a> or <a href="https://developer.mozilla.org/en-US/docs/Glossary/Flexbox" target="_blank">Flexbox (MDN Glossary)</a> for detail.
+      </p>
+      <p class="mt-3 mb-0">Sets <code>display</code> property (⇒ <a href="utilities-2.html#display">Display utility</a>)</p>
+      <p class="my-0"><code>.d(-sm|-md|-lg|-xl)?-(flex|inline-flex)</code></p>
+      <p class="mt-3 mb-0">Sets <code>flex-direction</code> property
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-(row|column)(-reverse)?</code></p>
+      <p class="mt-3 mb-0">Sets <code>justify-content</code> property
+      </p>
+      <p class="my-0"><code>.justify-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around)</code></p>
+      <p class="mt-3 mb-0">Sets <code>align-items</code> property
+      </p>
+      <p class="my-0"><code>.align-items(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <p class="mt-3 mb-0">Sets <code>align-self</code> property
+      </p>
+      <p class="my-0"><code>.align-self(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <p class="mt-3 mb-0">Sets <code>flex</code> property (to <code>flex: 1 1 auto;</code> )
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-fill</code></p>
+      <p class="mt-3 mb-0">Sets <code>flex-(grow|shrink)</code> property
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-(grow|shrink)-(0|1)</code></p>
+      <p class="mt-3 mb-0">Sets <code>flex-wrap</code> property
+      </p>
+      <p class="my-0"><code>.flex(-sm|-md|-lg|-xl)?-(nowrap|wrap|wrap-reverse)</code></p>
+      <p class="mt-3 mb-0">Sets <code>order</code> property
+      </p>
+      <p class="my-0"><code>.order(-sm|-md|-lg|-xl)?-(0|1|2|3|4|5|6|7|8|9|10|11|12|first|last)</code></p>
+      <p class="mt-3 mb-0">Sets <code>align-content</code> property
+      </p>
+      <p class="my-0"><code>.align-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around|stretch)</code></p>
+      <p class="mt-3 mb-0">Auto margin</p>
+      <p class="my-0"><code>.m(l|t|r|b)?-auto</code></p>
+      <div class="alert alert-info mt-3" role="alert">Auto margin is a utility for setting margins to  <code>auto</code> (⇒ <a href="utilities-4.html#spacing">Spacing</a> , not a part of flexbox utility). But it is explained here as it is frequently used in combination with flex utility.</div>
+      <h4 class="mt-4 mb-0" id="flex-direction"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#direction" target="_blank">Horizontal/Vertical direction</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-(row|column)(-reverse)?</code></p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-row</code></p>
+            <div class="d-flex flex-row border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-row-reverse</code></p>
+            <div class="d-flex flex-row-reverse border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-column</code></p>
+            <div class="d-flex flex-column border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>div.d-flex.flex-column-reverse</code></p>
+            <div class="d-flex flex-column-reverse border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="flex-justify-content"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#justify-content" target="_blank">Justify content</a>
+      </h4>
+      <p class="my-2"><code>.justify-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around)</code></p>
+      <div class="row">
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-start</code></p>
+            <div class="d-flex justify-content-start border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-end</code></p>
+            <div class="d-flex justify-content-end border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-center</code></p>
+            <div class="d-flex justify-content-center border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-between</code></p>
+            <div class="d-flex justify-content-between border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+        <dvi class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.justify-content-around</code></p>
+            <div class="d-flex justify-content-around border">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </dvi>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-align-items"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#align-items" target="_blank">Align items</a>
+      </h4>
+      <p class="my-2"><code>.align-items(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <p class="my-2">In examples below, parent box heights are fixed to <code>5rem</code>.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-start</code></p>
+            <div class="d-flex align-items-start border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-end</code></p>
+            <div class="d-flex align-items-end border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-center</code></p>
+            <div class="d-flex align-items-center border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-baseline</code></p>
+            <div class="d-flex align-items-baseline border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.d-flex.align-items-stretch</code></p>
+            <div class="d-flex align-items-stretch border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item 1</div>
+              <div class="border bg-light p-1">Flex item 2</div>
+              <div class="border bg-light p-1">Flex item 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-align-self"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#align-self" target="_blank">Align self</a>
+      </h4>
+      <p class="my-2"><code>.align-self(-sm|-md|-lg|-xl)?-(start|end|center|baseline|stretch)</code></p>
+      <ul></ul>
+      <p class="my-2">In examples below, parent box heights are fixed to <code>5rem</code>.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-self-start</code> to the central child.</p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-start border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-self-end</code> to the central child.</p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-end border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-self-center</code> to the central child.</p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-center border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-self-baseline</code> to the central child.</p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-baseline border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-self-stretch</code> to the central child.</p>
+            <div class="d-flex border" style="height: 5rem;">
+              <div class="border bg-light p-1">Flex item</div>
+              <div class="align-self-stretch border bg-light p-1">Aligned flex item</div>
+              <div class="border bg-light p-1">Flex item</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-fill"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#fill" target="_blank">Fill</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-fill</code></p>
+      <p class="my-2">Use <code>.flex-fill</code> to fill flex items into the parent. Each item's width (or height) is grown by its content width.</p>
+      <p class="mt-3 mb-1">Example: <code>.flex-fill</code> to each flex item</p>
+      <div class="d-flex">
+        <div class="flex-fill border bg-light p-1">Short</div>
+        <div class="flex-fill border bg-light p-1">Medium length text</div>
+        <div class="flex-fill border bg-light p-1">This is a slightly longer text content</div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-grow-and-shrink"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#grow-and-shrink" target="_blank">Grow and Shrink</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-(grow|shrink)-(0|1)</code></p>
+      <p class="my-2">CSS <code>flex-grow</code> property is set to <code>0</code> as default (i.e. does not grow). You can use <code>.flex-grow-1</code> (sets to <code>flex-grow: 1</code> ) to fill available width (or height) to the specific item.</p>
+      <div class="d-flex">
+        <div class="flex-grow-0 border bg-light p-1">Item (<code>flex-grow: 0</code>)</div>
+        <div class="flex-grow-1 border bg-light p-1">Item with <code>.flex-grow-1</code></div>
+        <div class="flex-grow-0 border bg-light p-1">Item (<code>flex-grow: 0</code>)</div>
+        <div class="flex-grow-0 border bg-light p-1">Item (<code>flex-grow: 0</code>)</div>
+      </div>
+      <p class="mt-3 mb-2">CSS <code>flex-shrink</code> property is set to <code>1</code> as default (i.e. shrinks with browser-default ratio if needed). You can use <code>.flex-shrink-0</code> (sets to <code>flex-shrink: 0</code> ) to set the specific item that does not shrink.</p>
+      <div class="d-flex">
+        <div class="w-100 border bg-light p-1">Item with <code>.w-100</code></div>
+        <div class="flex-shrink-0 border bg-light p-1">Item with <code>.flex-shrink-0</code> (does not shrink)</div>
+        <div class="flex-shrink-1 border bg-light p-1">Item with <code>.flex-shrink-1</code></div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-auto-margins"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#auto-margins" target="_blank">Auto margins</a>
+      </h4>
+      <p class="my-2"><code>.m(l|t|r|b)?-auto</code></p>
+      <p class="mt-3 mb-1">Default</p>
+      <div class="d-flex border">
+        <div class="border bg-light p-2">Flex item 1</div>
+        <div class="border bg-light p-2">Flex item 2</div>
+        <div class="border bg-light p-2">Flex item 3</div>
+      </div>
+      <p class="mt-3 mb-1"><code>.mr-auto</code> to item 1</p>
+      <div class="d-flex border">
+        <div class="border mr-auto bg-light p-2">Flex item 1 <code>.mr-auto</code></div>
+        <div class="border bg-light p-2">Flex item 2</div>
+        <div class="border bg-light p-2">Flex item 3</div>
+      </div>
+      <p class="mt-3 mb-1"><code>.ml-auto</code> to item 3</p>
+      <div class="d-flex border">
+        <div class="border bg-light p-2">Flex item 1</div>
+        <div class="border bg-light p-2">Flex item 2</div>
+        <div class="border ml-auto bg-light p-2">Flex item 3 <code>.ml-auto</code></div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-with-align-items"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#with-align-items" target="_blank">Auto-margins + align-items</a>
+      </h4>
+      <h5 class="mt-2 mb-1">Example 1</h5>
+      <ul class="my-1">
+        <li><code>.flex-column.align-items-start</code> + <code>style="height:10rem"</code> to parent box</li>
+        <li><code>.mb-auto</code> to item 1</li>
+      </ul>
+      <div class="d-flex flex-column align-items-start border" style="height:10rem;">
+        <div class="mb-auto p-2 border bg-light">Flex item 1 <code>.mb-auto</code></div>
+        <div class="p-2 border bg-light">Flex item 2</div>
+        <div class="p-2 border bg-light">Flex item 3</div>
+      </div>
+      <h5 class="mt-4 mb-1">Example 2</h5>
+      <ul class="my-1">
+        <li><code>.flex-column.align-items-end</code> + <code>style="height:10rem"</code> to parent box</li>
+        <li><code>.mt-auto</code> to item 3</li>
+      </ul>
+      <div class="d-flex flex-column align-items-end border" style="height: 10rem;">
+        <div class="p-2 border bg-light">Flex item 1 </div>
+        <div class="p-2 border bg-light">Flex item 2</div>
+        <div class="mt-auto p-2 border bg-light">Flex item 3 <code>.mt-auto</code></div>
+      </div>
+      <h4 class="mt-4 mb-1" id="flex-wrap"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#wrap" target="_blank">Wrapping</a>
+      </h4>
+      <p class="my-2"><code>.flex(-sm|-md|-lg|-xl)?-(nowrap|wrap|wrap-reverse)</code></p>
+      <p class="my-0">In examples blow, parent box width is fixed to <code>15rem</code> with lightgray background.</p>
+      <p class="mt-3 mb-1"><code>.d-flex.flex-nowrap</code></p>
+      <div class="d-flex flex-nowrap bg-light" style="width: 15rem;">
+        <div class="p-2 border">Flex item 1</div>
+        <div class="p-2 border">Flex item 2</div>
+        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border">Flex item 4</div>
+        <div class="p-2 border">Flex item 5</div>
+        <div class="p-2 border">Flex item 6</div>
+        <div class="p-2 border">Flex item 7</div>
+      </div>
+      <p class="mt-3 mb-1"><code>.d-flex.flex-wrap</code></p>
+      <div class="d-flex flex-wrap bg-light" style="width: 15rem;">
+        <div class="p-2 border">Flex item 1</div>
+        <div class="p-2 border">Flex item 2</div>
+        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border">Flex item 4</div>
+        <div class="p-2 border">Flex item 5</div>
+        <div class="p-2 border">Flex item 6</div>
+        <div class="p-2 border">Flex item 7</div>
+      </div>
+      <p class="mt-3 mb-1"><code>.d-flex.flex-wrap-reverse</code></p>
+      <div class="d-flex flex-wrap-reverse bg-light" style="width: 15rem;">
+        <div class="p-2 border">Flex item 1</div>
+        <div class="p-2 border">Flex item 2</div>
+        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border">Flex item 4</div>
+        <div class="p-2 border">Flex item 5</div>
+        <div class="p-2 border">Flex item 6</div>
+        <div class="p-2 border">Flex item 7</div>
+      </div>
+      <h4 class="mt-4" id="flex-order"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#order" target="_blank">Order</a>
+      </h4>
+      <p class="my-2"><code>.order(-sm|-md|-lg|-xl)?-(0|1|2|3|4|5|6|7|8|9|10|11|12|first|last)</code></p>
+      <p class="my-2">Example: DOM order is item-(1,2,3,4,5), <code>.order-*</code> is (4,2,5,1,3).</p>
+      <div class="d-flex border">
+        <div class="order-4 border p-1 bg-light">Item 1 <code>.order-4</code>
+        </div>
+        <div class="order-2 border p-1 bg-light">Item 2 <code>.order-2</code>
+        </div>
+        <div class="order-5 border p-1 bg-light">Item 3 <code>.order-5</code>
+        </div>
+        <div class="order-1 border p-1 bg-light">Item 4 <code>.order-1</code>
+        </div>
+        <div class="order-3 border p-1 bg-light">Item 5 <code>.order-3</code>
+        </div>
+      </div>
+      <div class="alert alert-info mt-4" role="alert">Also refer to <a href="layout-1.html#grid-ordering">Grid - Order classes</a> . Options <code>.order-(first|last)</code> (not explaind here) are also available.</div>
+      <h4 class="mt-4 mb-1" id="flex-align-content"><a href="https://getbootstrap.com/docs/4.1/utilities/flex/#align-content" target="_blank">Align content</a>
+      </h4>
+      <p class="my-2"><code>.align-content(-sm|-md|-lg|-xl)?-(start|end|center|between|around|stretch)</code></p>
+      <p class="my-2">Combination examples with <code>.flex-wrap</code> .</p><a class="btn btn-outline-info" data-toggle="collapse" href="#align-content-examples-structure" aria-control="#align-content-examples-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="align-content-examples-structure">
+        <li>Parent <code>div.flex-wrap</code>
+          <ul>
+            <li class="cls">Class <code>.align-content-(start|end|center|...)</code></li>
+            <li class="att">Attribute <code>style="width: 300px; height: 150px;"</code> (fix width and height)</li>
+            <li>Inner children <code>div</code> (&times;8)</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="row">
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-start.flex-wrap</code></p>
+            <div class="d-flex align-content-start flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-end.flex-wrap</code></p>
+            <div class="d-flex align-content-end flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-center.flex-wrap</code></p>
+            <div class="d-flex align-content-center flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-between.flex-wrap</code></p>
+            <div class="d-flex align-content-between flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-around.flex-wrap</code></p>
+            <div class="d-flex align-content-around flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-6 col-lg-4">
+          <div>
+            <p class="mt-3 mb-1"><code>.align-content-stretch.flex-wrap</code></p>
+            <div class="d-flex align-content-stretch flex-wrap border" style="width: 300px; height: 150px;">
+              <div class="p-1 border bg-light">Flex item 1</div>
+              <div class="p-1 border bg-light">Flex item 2</div>
+              <div class="p-1 border bg-light">Flex item 3</div>
+              <div class="p-1 border bg-light">Flex item 4</div>
+              <div class="p-1 border bg-light">Flex item 5</div>
+              <div class="p-1 border bg-light">Flex item 6</div>
+              <div class="p-1 border bg-light">Flex item 7</div>
+              <div class="p-1 border bg-light">Flex item 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="mt-5" id="float"><a href="https://getbootstrap.com/docs/4.1/utilities/float/" target="_blank">Float</a>
+      </h2>
+      <p class="my-2">Utility classes for floating an element to the left or right.</p>
+      <h4 class="my-2" id="float-classes"><a href="https://getbootstrap.com/docs/4.1/utilities/float/#classes" target="_blank">Classes</a>
+      </h4>
+      <p class="my-1"><code>.float-(left|right|none)</code></p>
+      <div class="row">
+        <div class="col border p-1"><img class="float-left rounded m-2" src="../img/64x64.svg">
+          <p class="m-1"><code>img.float-left</code></p>
+          <p class="m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col border p-1"><img class="float-right rounded m-2" src="../img/64x64.svg">
+          <p class="m-1"><code>img.float-right</code></p>
+          <p class="m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col border p-1"><img class="float-none rounded m-2" src="../img/64x64.svg">
+          <p class="m-1"><code>img.float-none</code></p>
+          <p class="m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <h4 class="mt-4" id="float-responsive"><a href="https://getbootstrap.com/docs/4.1/utilities/float/#responsive" target="_blank">Responsive classes</a>
+      </h4>
+      <p class="my-1"><code>.float-(sm|md|lg|xl)-(left|right|none)</code></p>
+      <h5 class="mt-3 mb-2">Example</h5>
+      <p class="mt-2 mb-0"><code>.float-sm-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-sm-left text-primary mx-2">Floats left on width≧576px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-sm-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-sm-right text-primary mx-2">Floats right on width≧576px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-md-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-md-left text-primary mx-2">Floats left on width≧768px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-md-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-md-right text-primary mx-2">Floats right on width≧768px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-lg-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-lg-left text-primary mx-2">Floats left on width≧992px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-lg-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-lg-right text-primary mx-2">Floats right on width≧992px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-xl-left</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-xl-left text-primary mx-2">Floats left on width≧1200px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <p class="mt-2 mb-0"><code>.float-xl-right</code></p>
+      <div class="row border">
+        <div class="col">
+          <p class="float-xl-right text-primary mx-2">Floats right on width≧1200px</p>
+          <p class="mx-2">Plain text</p>
+        </div>
+      </div>
+      <h2 class="mt-5" id="image-replacement"><a href="https://getbootstrap.com/docs/4.1/utilities/image-replacement/" target="_blank">Image replacement</a>
+      </h2>
+      <p class="mt-3 mb-1">Utility class for using a replacement image for text content (example setting as follows).</p>
+      <ul class="struct">
+        <li><code>h1.text.hide</code>
+          <ul>
+            <li class="att">Attribute <code>background-image: url("../img/sample-logo.png");</code></li>
+            <li class="att">Attribute <code>width: 224px;</code></li>
+            <li class="att">Attribute <code>height: 48px;</code></li>
+            <li class="txt">Text <code>Sample Logo</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">Example</p>
+      <h1 class="text-hide" style="background-image: url(&quot;../img/sample-logo.png&quot;); width: 224px; height: 48px;">Sample Logo</h1>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Utilities(3): Flex/Float/Image replacement</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (2): Buttons / Button group</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead mb-0">Components (2): <a href="#buttons">Buttons</a> / <a href="#button-group">Button group</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-2.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-4" id="buttons"><a href="https://getbootstrap.com/docs/4.1/components/buttons/" target="_blank">Buttons</a>
+      </h2>
+      <h4 class="mt-3" id="buttons-examples"><a href="https://getbootstrap.com/docs/4.1/components/buttons/#examples" target="_blank">Contextual examples</a>
+      </h4>
+      <p class="my-0"><code>button.btn.btn-(primary|secondary|success|danger|warning|info|light|dark|link)</code></p>
+      <p class="my-1">
+        <button class="btn btn-primary" type="button">Primary
+        </button>
+        <button class="btn btn-secondary" type="button">Secondary
+        </button>
+        <button class="btn btn-success" type="button">Success
+        </button>
+        <button class="btn btn-danger" type="button">Danger
+        </button>
+        <button class="btn btn-warning" type="button">Warning
+        </button>
+        <button class="btn btn-info" type="button">Info
+        </button>
+        <button class="btn btn-light" type="button">Light
+        </button>
+        <button class="btn btn-dark" type="button">Dark
+        </button>
+        <button class="btn btn-link" type="button">Link
+        </button>
+      </p>
+      <h4 class="mt-4" id="buttons-button-tags"><a href="https://getbootstrap.com/docs/4.1/components/buttons/#button-tags" target="_blank">Various elements and attributes</a>
+      </h4>
+      <div class="row">
+        <div class="col-sm-6 col-xl-4 py-1">
+          <div><a class="btn btn-primary" href="#">Link</a></div>
+          <div>
+            <ul class="struct">
+              <li><code>a.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+                <ul>
+                  <li class="att collapse a1-1">Attribute <code>href="#"</code></li>
+                  <li class="att collapse a1-1">Attribute <code>role="button"</code></li>
+                  <li class="txt">Text <code>Link</code></li>
+                  <li>Jumps to the top on click</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-4 py-1">
+          <div>
+            <button class="btn btn-primary" type="submit">Button</button>
+          </div>
+          <div>
+            <ul class="struct">
+              <li><code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attribute</a>
+                <ul>
+                  <li class="att collapse a1-2">Attribute <code>type="submit"</code></li>
+                  <li class="txt">Text <code>Button</code></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-4 py-1">
+          <div>
+            <input class="btn btn-primary" type="button" value="Input">
+          </div>
+          <div>
+            <ul class="struct">
+              <li><code>input.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attributes</a>
+                <ul class="collapse a1-3">
+                  <li class="att">Attribute <code>type="button"</code></li>
+                  <li class="att">Attribute <code>value="Input"</code></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-4 py-1">
+          <div>
+            <input class="btn btn-primary" type="submit" value="Submit">
+          </div>
+          <div>
+            <ul class="struct">
+              <li><code>input.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">Attributes</a>
+                <ul class="collapse a1-4">
+                  <li class="att">Attribute <code>type="submit"`</code></li>
+                  <li class="att">Attribute <code>value="Submit"</code></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-4 py-1">
+          <div>
+            <input class="btn btn-primary" type="reset" value="Reset">
+          </div>
+          <div>
+            <ul class="struct">
+              <li><code>input.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-5" aria-control=".a1-5" aria-expanded="false">Attributes</a>
+                <ul class="collapse a1-5">
+                  <li class="att">Attribute <code>type="reset"`</code></li>
+                  <li class="att">Attribute <code>value="Reset"</code></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="buttons-outline-buttons"><a href="https://getbootstrap.com/docs/4.1/components/buttons/#outline-buttons" target="_blank">Outline buttons</a>
+      </h4>
+      <p class="my-0"><code>button.btn.btn-outline-(primary|secondary|success|danger|warning|info|light|dark)</code></p>
+      <p class="my-1">
+        <button class="btn btn-outline-primary" type="button">Primary
+        </button>
+        <button class="btn btn-outline-secondary" type="button">Secondary
+        </button>
+        <button class="btn btn-outline-success" type="button">Success
+        </button>
+        <button class="btn btn-outline-danger" type="button">Danger
+        </button>
+        <button class="btn btn-outline-warning" type="button">Warning
+        </button>
+        <button class="btn btn-outline-info" type="button">Info
+        </button>
+        <button class="btn btn-outline-light" type="button">Light
+        </button>
+        <button class="btn btn-outline-dark" type="button">Dark
+        </button>
+      </p>
+      <h4 class="mt-4" id="buttons-sizes"><a href="https://getbootstrap.com/docs/4.1/components/buttons/#sizes" target="_blank">Sizes</a>
+      </h4>
+      <p class="my-0"><code>(button|...).btn.btn-(lg|sm)</code></p>
+      <p class="mt-1 mb-0">Large <code>.btn-lg</code></p>
+      <p class="my-0">
+        <button class="btn btn-primary btn-lg" type="button">Large button</button>
+        <button class="btn btn-secondary btn-lg" type="button">Large button</button>
+      </p>
+      <p class="mt-2 mb-0">Medium (default)</p>
+      <p class="my-0">
+        <button class="btn btn-primary" type="button">Medium button</button>
+        <button class="btn btn-secondary" type="button">Medium button</button>
+      </p>
+      <p class="mt-2 mb-0">Small <code>.btn-sm</code></p>
+      <p class="mt-0">
+        <button class="btn btn-primary btn-sm" type="button">Small button</button>
+        <button class="btn btn-secondary btn-sm" type="button">Small button</button>
+      </p>
+      <h5 class="mt-3 mb-1" id="buttons-block-level">Block level buttons</h5>
+      <p class="my-0">Add <code>.btn-block</code></p>
+      <p class="mt-1">
+        <button class="btn btn-primary btn-lg btn-block" type="button">Block level button</button>
+        <button class="btn btn-secondary btn-lg btn-block" type="button">Block level button</button>
+      </p>
+      <h4 class="mt-4" id="buttons-active-state"><a href="https://getbootstrap.com/docs/4.1/components/buttons/#active-state" target="_blank">Active state</a>
+      </h4>
+      <p class="my-2">Setting <code>.active</code> displays buttons with always active (pressed) state.</p>
+      <p class="mt-0"><a class="btn btn-primary active" href="#" role="button" aria-pressed="true">Primary link</a>&nbsp;<a class="btn btn-secondary active" href="#" role="button" aria-pressed="true">Secondary link</a>&nbsp;
+      </p>
+      <h4 class="mt-4" id="buttons-disabled-state"><a href="https://getbootstrap.com/docs/4.1/components/buttons/#disabled-state" target="_blank">Disabled state</a>
+      </h4>
+      <ul class="struct">
+        <li>With <code>button</code>
+          <ul>
+            <li class="att">Attibute <code>disabled</code> (acts on both display and action)</li>
+            <li class="cls">Or class <code>.disabled</code> (grayed display only)</li>
+          </ul>
+        </li>
+        <li>With <code>a</code>
+          <ul>
+            <li class="cls">Class <code>.disabled</code> (acts on both display and action)</li>
+            <li class="att">Accessibility attribute (recommended) <code>aria-disabled="true"</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3">Example 1: Attribute <code>disabled</code> to <code>button</code> (disables both display and action)</h6>
+      <div>
+        <button class="btn btn-primary" type="button" disabled>Primary button
+        </button>
+        <button class="btn btn-secondary" type="button" disabled>Secondary button
+        </button>
+      </div>
+      <h6 class="mt-3">Example 2: Class <code>.disabled</code> to <code>button</code> (can be still pressed)</h6>
+      <div>
+        <button class="btn btn-primary disabled" type="button">Primary button
+        </button>
+        <button class="btn btn-secondary disabled" type="button">Secondary button
+        </button>
+      </div>
+      <h6 class="mt-3">Example 3: Class <code>.disabled</code> to <code>a</code> (disables both display and action)</h6>
+      <div><a class="btn btn-primary disabled" href="#" role="button" aria-disabled="true">Primary link</a>&nbsp;<a class="btn btn-secondary disabled" href="#" role="button" aria-disabled="true">Secondary link</a>&nbsp;
+      </div>
+      <h2 class="mt-5" id="button-group"><a href="https://getbootstrap.com/docs/4.1/components/button-group/" target="_blank">Button group</a>
+      </h2>
+      <h4 class="my-3" id="button-group-basic-example"><a href="https://getbootstrap.com/docs/4.1/components/button-group/#basic-example" target="_blank">Basic example</a>
+      </h4>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-secondary" type="button">Left</button>
+        <button class="btn btn-secondary" type="button">Middle</button>
+        <button class="btn btn-secondary" type="button">Right</button>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#button-group-structure" aria-control="#button-group-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="button-group-structure">
+        <li>Button group <code>div.btn-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="att collapse a2-1">Accessibility attribute <code>role="group"</code></li>
+            <li class="att collapse a2-1">Accessibility attribute (e.g.) <code>aria-label="Basic example"</code></li>
+            <li>Button item(s) <code>button.btn.btn-(primary|secondary|...)</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-2" aria-control=".a2-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a2-2">Attribute <code>type="button"</code></li>
+                <li class="txt">Text (e.g.) <code>Left</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="button-group-button-toolbar"><a href="https://getbootstrap.com/docs/4.1/components/button-group/#button-toolbar" target="_blank">Button toolbar</a>
+      </h4>
+      <p class="my-2">A button toolbar is used to gather button groups, input groups, form controls, etc.</p>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#button-toolbar-structure" aria-control="#button-toolbar-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-3 mb-0 collapse" id="button-toolbar-structure">
+        <li>Button toolbar <code>div.btn-toolbar</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="att collapse a3-1">Accessibility attribute <code>role="toolbar"</code></li>
+            <li class="att collapse a3-1">Accessibility attribute (e.g.) <code>aria-label="Toolbar with button groups"</code></li>
+            <li>Button group(s) <code>div.btn-group</code>
+              <ul>
+                <li>See <a href="#button-group-basic-example">Basic example</a></li>
+              </ul>
+            </li>
+            <li>Or also: Input group (⇒ <a href="components-6.html#input-group">Input group</a> ), etc.</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Basic example of a button toolbar</p>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button class="btn btn-secondary" type="button">1</button>
+          <button class="btn btn-secondary" type="button">2</button>
+          <button class="btn btn-secondary" type="button">3</button>
+          <button class="btn btn-secondary" type="button">4</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <button class="btn btn-secondary" type="button">5</button>
+          <button class="btn btn-secondary" type="button">6</button>
+          <button class="btn btn-secondary" type="button">7</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Third group">
+          <button class="btn btn-secondary" type="button">8</button>
+        </div>
+      </div>
+      <p class="mt-4 mb-0">Examples using <a href="components-6.html">input group</a>s with alignment options</p>
+      <p class="my-1"><code>div.btn-toolbar</code>
+      </p>
+      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button class="btn btn-secondary" type="button">1</button>
+          <button class="btn btn-secondary" type="button">2</button>
+          <button class="btn btn-secondary" type="button">3</button>
+          <button class="btn btn-secondary" type="button">4</button>
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon1">@</div>
+          </div>
+          <input class="form-control" type="text" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon1">
+        </div>
+      </div>
+      <p class="my-1"><code>div.btn-toolbar.justify-content-between</code> (⇒ <a href="utilities-3.html#flex">Flex utilities</a> )
+      </p>
+      <div class="btn-toolbar justify-content-between mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button class="btn btn-secondary" type="button">1</button>
+          <button class="btn btn-secondary" type="button">2</button>
+          <button class="btn btn-secondary" type="button">3</button>
+          <button class="btn btn-secondary" type="button">4</button>
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon2">@</div>
+          </div>
+          <input class="form-control" type="text" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+        </div>
+      </div>
+      <p class="mt-4 mb-1">Example using radios: (see <a href="components-5.html#inline">Chexboxes and radios - Inline</a> )</p>
+      <p class="my-2">Radios are wrapped by <code>div.form.form-inline</code> and justified with <code>.mx-auto</code></p>
+      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with radios">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button class="btn btn-secondary" type="button">1</button>
+          <button class="btn btn-secondary" type="button">2</button>
+          <button class="btn btn-secondary" type="button">3</button>
+          <button class="btn btn-secondary" type="button">4</button>
+        </div>
+        <div class="form form-inline mx-auto">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" id="Radio1" type="radio" name="inlineRadioOptions" value="option1" checked>
+            <label class="form-check-label" for="inlineRadio${n}">1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">2</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+            <label class="form-check-label" for="inlineRadio3">3</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+            <label class="form-check-label" for="inlineRadio4">4</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+            <label class="form-check-label" for="inlineRadio5">5</label>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4 mb-1" id="button-group-sizing"><a href="https://getbootstrap.com/docs/4.1/components/button-group/#sizing" target="_blank">Sizing</a>
+      </h4>
+      <p class="mt-1 mb-2">Set <code>.btn-group-(lg|sm)</code></p>
+      <p class="my-1"><code>div.btn-group.btn-group-lg</code></p>
+      <div class="btn-group btn-group-lg mb-3" role="group" aria-label="Size example">
+        <button class="btn btn-secondary" type="button">Left</button>
+        <button class="btn btn-secondary" type="button">Middle</button>
+        <button class="btn btn-secondary" type="button">Right</button>
+      </div>
+      <p class="my-1"><code>div.btn-group</code></p>
+      <div class="btn-group mb-3" role="group" aria-label="Size example">
+        <button class="btn btn-secondary" type="button">Left</button>
+        <button class="btn btn-secondary" type="button">Middle</button>
+        <button class="btn btn-secondary" type="button">Right</button>
+      </div>
+      <p class="my-1"><code>div.btn-group.btn-group-sm</code></p>
+      <div class="btn-group btn-group-sm mb-3" role="group" aria-label="Size example">
+        <button class="btn btn-secondary" type="button">Left</button>
+        <button class="btn btn-secondary" type="button">Middle</button>
+        <button class="btn btn-secondary" type="button">Right</button>
+      </div>
+      <h4 class="mt-4" id="button-group-nesting"><a href="https://getbootstrap.com/docs/4.1/components/button-group/#nesting" target="_blank">Using dropdowns (nesting)</a>
+      </h4>
+      <p class="my-0"><a href="components-4.html#dropdowns">Dropdowns</a> can be used with nesting button groups.</p>
+      <div class="btn-group mt-1" role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-secondary" type="button">1</button>
+        <button class="btn btn-secondary" type="button">2</button>
+        <button class="btn btn-secondary" type="button">3</button>
+        <div class="btn-group" role="group">
+          <button class="btn btn-secondary dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"><a class="dropdown-item" href="#">Dropdown link 1</a><a class="dropdown-item" href="#">Dropdown link 2</a>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#using-dropdowns-structure" aria-control="#using-dropdowns-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct my-3 collapse" id="using-dropdowns-structure">
+        <li><code>div.btn-group</code>
+          <ul>
+            <li>Normal buttons <code>button.btn.btn-secondary</code></li>
+            <li>Nested <code>div.btn-group</code>
+              <ul>
+                <li>Dropdown <code>button.btn.btn-secondary.dropdown-toggle</code></li>
+                <li>Item list <code>div.dropdown-menu</code>
+                  <ul>
+                    <li>Items <code>a.dropdown-item</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-1" id="button-group-vertical-variation"><a href="https://getbootstrap.com/docs/4.1/components/button-group/#vertical-variation" target="_blank">Vertical variation</a>
+      </h4>
+      <p class="mb-2"><code>div.btn-group-vertical</code></p>
+      <div class="btn-group-vertical" role="group" aria-label="Vertical example">
+        <button class="btn btn-secondary" type="button">Button 1</button>
+        <button class="btn btn-secondary" type="button">Button 2</button>
+        <button class="btn btn-secondary" type="button">Button 3</button>
+        <button class="btn btn-secondary" type="button">Button 4</button>
+        <button class="btn btn-secondary" type="button">Button 5</button>
+      </div>
+      <p class="mt-3 mb-2">Vertival example with dropdowns (see source for detail)</p>
+      <div class="btn-group-vertical" role="group" aria-label="Vertical example with nesting">
+        <button class="btn btn-secondary" type="button">Button 1</button>
+        <button class="btn btn-secondary" type="button">Button 2</button>
+        <div class="btn-group">
+          <button class="btn btn-secondary dropdown-toggle" id="vertBtnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown 1</button>
+          <div class="dropdown-menu" aria-labelledby="vertBtnGroupDrop1"><a class="dropdown-item" href="#">Link 1-1</a><a class="dropdown-item" href="#">Link 1-2</a><a class="dropdown-item" href="#">Link 1-3</a>
+          </div>
+        </div>
+        <button class="btn btn-secondary" type="button">Button 3</button>
+        <button class="btn btn-secondary" type="button">Button 4</button>
+        <div class="btn-group">
+          <button class="btn btn-secondary dropdown-toggle" id="vertBtnGroupDrop2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown 2</button>
+          <div class="dropdown-menu" aria-labelledby="vertBtnGroupDrop2"><a class="dropdown-item" href="#">Link 2-1</a><a class="dropdown-item" href="#">Link 2-2</a>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary dropdown-toggle" id="vertBtnGroupDrop3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown 3</button>
+          <div class="dropdown-menu" aria-labelledby="vertBtnGroupDrop3"><a class="dropdown-item" href="#">Link 3-1</a><a class="dropdown-item" href="#">Link 3-2</a>
+          </div>
+        </div>
+        <button class="btn btn-secondary" type="button">Button 5</button>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(2): Buttons/Button group</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=".././js/main.js"></script></body>
+</html>

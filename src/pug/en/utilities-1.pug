@@ -1,0 +1,142 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Utilities (1): Borders / Clearfix / Close icon
+
+block body
+  div.container
+    +pageHeader("utilities-1")
+      p.lead Utilities (1): 
+        a(href="#borders") Borders
+        |  / 
+        a(href="#clearfix") Clearfix
+        |  / 
+        a(href="#close-icon") Close icon
+
+    h2.mt-2#borders
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/") Borders
+    h4.mt-3#borders-border
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/#border") Border
+    - const borders= " -top -right -bottom -left".split(" ")
+    - const dirRE = `(${borders.slice(1).join("|")})?`
+    h5.mt-3.mb-1#borders-additive Additive
+    p.mt-1.mb-2
+      code= `.border${dirRE}`
+    p.my-2 Specifying a direction draws a border only on the specified side.
+    div.row
+      each b in borders
+        div.col-lg.col-md-4.col-sm-6.mb-3
+          code= `.border${b}`
+          div(class=`border${b} ` style="width: 8rem; height: 8rem; background: #fdfdfd;")
+    h5.mt-3.mb-1#borders-subtractive Subtractive 
+    p.mt-1.mb-2
+      code= `.border${dirRE}-0`
+    p.my-2 Must be used with 
+      code .border
+      |  . Specifying a direction draws borders without the specified side.
+    div.row
+      each b in borders
+        div.col-lg-3.col-md-4.col-sm-6.mb-3
+          code= `.border.border${b}-0`
+          div(class=`border border${b}-0 mt-1` style="width: 8rem; height: 8rem; background: #fdfdfd;")
+    h4.mt-4#borders-border-color
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/#border-color") Border color
+    - const borderCol = "primary secondary success danger warning info light dark white".split(" ")
+    p.mb-1
+      code= `.border.border-(${borderCol.join("|")})`
+    p.my-2 Must be used with 
+      code .border
+      |  .
+    div.row
+      each c in borderCol
+        div(class=`col-lg-3 col-md-4 col-sm-6 mb-3 pb-2${c == "white" ? " bg-light" : ""}`)
+          code= `.border.border-${c}`
+          div(class=`border border-${c} mt-1${c != "light" ? " bg-light" : ""}` style="width: 8rem; height: 8rem;")
+    h4.mt-4.mb-1#borders-border-radius
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/borders/#border-radius") Border-radius
+    - const radius = " -top -right -bottom -left -circle -0".split(" ")
+    p.my-0
+      code= `.rounded(${radius.slice(1).join("|")})?`
+    div.row
+      each r in radius
+        div.col-md-3.col-sm-4.col-6.my-3
+          code= `img.rounded${r}`
+          br
+          img(src="../img/80x80.svg" class=`mt-1 rounded${r}`)
+
+    h2.mt-5#clearfix
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/clearfix/") Clearfix
+    p.mt-3.mb-1 For example, consider two floating elements on each sides inside of a block element.
+    ul.struct
+      li
+        code div
+        ul
+          li: code img.float-left
+          li: code img.float-right
+          li
+            code p
+            |  (content height is lower than floatings on both sides)
+    p.my-1 However, it causes a ploblem as follows.
+    p.mt-3.mb-1
+      code div
+      |  only
+    div.p-2.border.bg-light
+      img.float-left(src="../img/80x80.svg")
+      img.float-right(src="../img/80x80.svg")
+      span.mx-2 Text content (height is lower than floatings on both sides).
+    br
+    p.mt-5.mb-1 It is a famous side-effect of CSS 
+      code float: (left|right)
+      |  . When a browser calcutates inner height of 
+      code div
+      |  , floating items are not considered. As a result, 
+      code div
+      |  does not wrap floatings. In this case, using 
+      code .clearfix
+      |  resolve this problem.
+    p.mt-3.my-1
+      code div.clearfix
+    div.p-2.border.bg-light.clearfix
+      img.float-left(src="../img/80x80.svg")
+      img.float-right(src="../img/80x80.svg")
+      span.mx-2 Text content (height is lower than floatings on both sides).
+    div.alert.alert-info.mt-3(role="alert") Clearfix is a historically famous technique (originally a browser-bug polyfill). But flexbox is a better way for modern browsers. See the example below (no clearfix used).
+      div.d-flex.justify-content-between.mt-2.p-2.border.bg-light
+        img(src="../img/80x80.svg")
+        div.w-100.px-2 Text content (height is lower than floatings on both sides).
+        img(src="../img/80x80.svg")
+
+    h2.mt-5#close-icon
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/close-icon/") Close icon
+    p.mt-2.mb-1
+      span.text-faded ×
+      |  ( 
+      code &amp;times;
+      |  ) is used for 
+      a(href="components-8.html") Modal
+      |  and 
+      a(href="components-1.html#alerts") Alert 
+      strong Close
+      |  icons.
+    p.mt-2.mb-1 Example: displays as follows inside 
+      code button.close
+      |  .
+    div.row.mx-0.my-2.p-2.bg-light
+      button.close(type="button" aria-label="Close")
+        span(aria-hidden="true") &times;
+    ul.struct.mt-3
+      li
+        code button.close
+        ul
+          li.att Accessibility attribute 
+            code aria-label="Close"
+          li
+            code span
+            ul
+              li.att Accessibility attribute 
+                code aria-hidden="true"
+              li.txt Text 
+                code= "&times;"
+
+    +breadcrumbLevel1("Utilities(1): Borders/Clearfix/Close icon") 

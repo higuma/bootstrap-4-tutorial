@@ -1,0 +1,346 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Utilities (3): Flex / Float / Image replacement
+
+block body
+  div.container
+    +pageHeader("utilities-3")
+      p.lead Utilities (3): 
+        a(href="#flex") Flex
+        |  / 
+        a(href="#float") Float
+        |  / 
+        a(href="#image-replacement") Image replacement
+
+    h2.mt-2#flex
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/") Flex
+    - const RES = "(-sm|-md|-lg|-xl)?"
+    - const justify = "start end center between around".split(" ")
+    - const align = "start end center baseline stretch".split(" ")
+    - const alignContent = "start end center between around stretch".split(" ")
+    - const wrap = "nowrap wrap wrap-reverse".split(" ")
+    - const dirRE = `.flex${RES}-(row|column)(-reverse)?`
+    - const justifyRE = `.justify-content${RES}-(${justify.join("|")})`
+    - const alignItemsRE = `.align-items${RES}-(${align.join("|")})`
+    - const alignSelfRE = `.align-self${RES}-(${align.join("|")})`
+    - const fillRE = `.flex${RES}-fill`
+    - const growShrinkRE = `.flex${RES}-(grow|shrink)-(0|1)`
+    - const wrapRE = `.flex${RES}-(${wrap.join("|")})`
+    - const orderRE = `.order${RES}-(0|1|2|3|4|5|6|7|8|9|10|11|12|first|last)`
+    - const alignContentRE = `.align-content${RES}-(${alignContent.join("|")})`
+    - const autoMarginRE = ".m(l|t|r|b)?-auto"
+    p.mt-2.mb-1 Bootstrap 4 fully utilizes CSS3 flexbox. About Flexbox, see 
+      +extLink("https://css-tricks.com/snippets/css/a-guide-to-flexbox/") A complete guide to Flexbox
+      | .
+    h4.mt-4.mb-1#flex-notation Notation summary
+    p.my-3 Each notation maps to a corresponding CSS property name/value/value. See 
+      +extLink("https://www.w3.org/TR/css-flexbox-1/") Flexbox (W3C)
+      |  or 
+      +extLink("https://developer.mozilla.org/en-US/docs/Glossary/Flexbox") Flexbox (MDN Glossary)
+      |  for detail.
+    p.mt-3.mb-0 Sets 
+      code display
+      |  property (⇒ 
+      a(href="utilities-2.html#display") Display utility
+      | )
+    p.my-0
+      code= `.d${RES}-(flex|inline-flex)`
+    each opt in [["flex-direction",dirRE], ["justify-content",justifyRE], ["align-items",alignItemsRE], ["align-self",alignSelfRE], ["flex",fillRE], ["flex-(grow|shrink)",growShrinkRE],["flex-wrap",wrapRE],["order",orderRE],["align-content",alignContentRE]]
+      p.mt-3.mb-0 Sets 
+        code= opt[0]
+        |  property
+        - if (opt[0] == "flex")
+          |  (to 
+          code flex: 1 1 auto;
+          |  )
+      p.my-0
+        code= opt[1]
+    p.mt-3.mb-0 Auto margin
+    p.my-0
+      code= autoMarginRE
+    div.alert.alert-info.mt-3(role="alert") Auto margin is a utility for setting margins to  
+      code auto
+      |  (⇒ 
+      a(href="utilities-4.html#spacing") Spacing
+      |  , not a part of flexbox utility). But it is explained here as it is frequently used in combination with flex utility.
+    h4.mt-4.mb-0#flex-direction
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#direction") Horizontal/Vertical direction
+    p.my-2
+      code= dirRE
+    div.row
+      each dir in ["row","column"]
+        each rev in ["", "-reverse"]
+          div.col-lg-6
+            div
+              p.mt-3.mb-1
+                code= `div.d-flex.flex-${dir}${rev}`
+              div(class=`d-flex flex-${dir}${rev} border`)
+                each n in [1,2,3]
+                  div.border.bg-light.p-1= `Flex item ${n}`
+    h4.mt-4#flex-justify-content
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#justify-content") Justify content
+    p.my-2
+      code= justifyRE
+    div.row
+      each opt in justify
+        dvi.col-lg-6
+          div
+            p.mt-3.mb-1
+              code= `.d-flex.justify-content-${opt}`
+            div(class=`d-flex justify-content-${opt} border`)
+              each n in [1,2,3]
+                div.border.bg-light.p-1= `Flex item ${n}`
+    h4.mt-4.mb-1#flex-align-items
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-items") Align items
+    p.my-2
+      code= alignItemsRE
+    p.my-2 In examples below, parent box heights are fixed to 
+      code 5rem
+      | .
+    div.row
+      each opt in align
+        div.col-lg-6
+          div
+            p.mt-3.mb-1
+              code= `.d-flex.align-items-${opt}`
+            div(class=`d-flex align-items-${opt} border` style="height: 5rem;")
+              each n in [1,2,3]
+                div.border.bg-light.p-1= `Flex item ${n}`
+    h4.mt-4.mb-1#flex-align-self
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-self") Align self
+    p.my-2
+      code= alignSelfRE
+    ul
+    p.my-2 In examples below, parent box heights are fixed to 
+      code 5rem
+      | .
+    div.row
+      each opt in align
+        div.col-lg-6
+          div
+            p.mt-3.mb-1
+              code= `.align-self-${opt}`
+              |  to the central child.
+            div.d-flex.border(style="height: 5rem;")
+              div.border.bg-light.p-1 Flex item
+              div(class=`align-self-${opt} border bg-light p-1`) Aligned flex item
+              div.border.bg-light.p-1 Flex item
+    h4.mt-4.mb-1#flex-fill
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#fill") Fill
+    p.my-2
+      code= fillRE
+    p.my-2 Use 
+      code .flex-fill
+      |  to fill flex items into the parent. Each item's width (or height) is grown by its content width.
+    p.mt-3.mb-1 Example: 
+      code .flex-fill
+      |  to each flex item
+    div.d-flex
+      each text in ["Short", "Medium length text", "This is a slightly longer text content"]
+        div.flex-fill.border.bg-light.p-1= text
+    h4.mt-4.mb-1#flex-grow-and-shrink
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#grow-and-shrink") Grow and Shrink
+    p.my-2
+      code= growShrinkRE
+    p.my-2 CSS 
+      code flex-grow
+      |  property is set to 
+      code 0
+      |  as default (i.e. does not grow). You can use 
+      code .flex-grow-1
+      |  (sets to 
+      code flex-grow: 1
+      |  ) to fill available width (or height) to the specific item.
+    div.d-flex
+      div.flex-grow-0.border.bg-light.p-1 Item (
+        code flex-grow: 0
+        | )
+      div.flex-grow-1.border.bg-light.p-1 Item with 
+        code .flex-grow-1
+      div.flex-grow-0.border.bg-light.p-1 Item (
+        code flex-grow: 0
+        | )
+      div.flex-grow-0.border.bg-light.p-1 Item (
+        code flex-grow: 0
+        | )
+    p.mt-3.mb-2 CSS 
+      code flex-shrink
+      |  property is set to 
+      code 1
+      |  as default (i.e. shrinks with browser-default ratio if needed). You can use 
+      code .flex-shrink-0
+      |  (sets to 
+      code flex-shrink: 0
+      |  ) to set the specific item that does not shrink.
+    div.d-flex
+      div.w-100.border.bg-light.p-1 Item with 
+        code .w-100
+      div.flex-shrink-0.border.bg-light.p-1 Item with 
+        code .flex-shrink-0
+        |  (does not shrink)
+      div.flex-shrink-1.border.bg-light.p-1 Item with 
+        code .flex-shrink-1
+    h4.mt-4.mb-1#flex-auto-margins
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#auto-margins") Auto margins
+    p.my-2
+      code= autoMarginRE
+    p.mt-3.mb-1 Default
+    div.d-flex.border
+      div.border.bg-light.p-2 Flex item 1
+      div.border.bg-light.p-2 Flex item 2
+      div.border.bg-light.p-2 Flex item 3
+    p.mt-3.mb-1
+      code .mr-auto
+      |  to item 1
+    div.d-flex.border
+      div.border.mr-auto.bg-light.p-2 Flex item 1 
+        code .mr-auto
+      div.border.bg-light.p-2 Flex item 2
+      div.border.bg-light.p-2 Flex item 3
+    p.mt-3.mb-1
+      code .ml-auto
+      |  to item 3
+    div.d-flex.border
+      div.border.bg-light.p-2 Flex item 1
+      div.border.bg-light.p-2 Flex item 2
+      div.border.ml-auto.bg-light.p-2 Flex item 3 
+        code .ml-auto
+    h4.mt-4.mb-1#flex-with-align-items
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#with-align-items") Auto-margins + align-items
+    h5.mt-2.mb-1 Example 1
+    ul.my-1
+      li
+        code .flex-column.align-items-start
+        |  + 
+        code style="height:10rem"
+        |  to parent box
+      li
+        code .mb-auto
+        |  to item 1
+    div.d-flex.flex-column.align-items-start.border(style="height:10rem;")
+      div.mb-auto.p-2.border.bg-light Flex item 1 
+        code .mb-auto
+      div.p-2.border.bg-light Flex item 2
+      div.p-2.border.bg-light Flex item 3
+    h5.mt-4.mb-1 Example 2
+    ul.my-1
+      li
+        code .flex-column.align-items-end
+        |  + 
+        code style="height:10rem"
+        |  to parent box
+      li
+        code .mt-auto
+        |  to item 3
+    div.d-flex.flex-column.align-items-end.border(style="height: 10rem;")
+      div.p-2.border.bg-light Flex item 1 
+      div.p-2.border.bg-light Flex item 2
+      div.mt-auto.p-2.border.bg-light Flex item 3 
+        code .mt-auto
+    h4.mt-4.mb-1#flex-wrap
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#wrap") Wrapping
+    p.my-2
+      code= wrapRE
+    p.my-0 In examples blow, parent box width is fixed to 
+      code 15rem
+      |  with lightgray background.
+    each w in wrap
+      p.mt-3.mb-1
+        code= `.d-flex.flex-${w}`
+      div(class=`d-flex flex-${w} bg-light` style="width: 15rem;")
+        each n in [1,2,3,4,5,6,7]
+          div.p-2.border= `Flex item ${n}`
+    h4.mt-4#flex-order
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#order") Order
+    p.my-2
+      code= orderRE
+    p.my-2 Example: DOM order is item-(1,2,3,4,5), 
+      code .order-*
+      |  is (4,2,5,1,3).
+    div.d-flex.border
+      each n in [[1,4],[2,2],[3,5],[4,1],[5,3]]
+        div(class=`order-${n[1]} border p-1 bg-light`)
+          = `Item ${n[0]} `
+          code= `.order-${n[1]}`
+    div.alert.alert-info.mt-4(role="alert") Also refer to 
+      a(href="layout-1.html#grid-ordering") Grid - Order classes
+      |  . Options 
+      code .order-(first|last)
+      |  (not explaind here) are also available.
+    h4.mt-4.mb-1#flex-align-content
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-content") Align content
+    p.my-2
+      code= alignContentRE
+    p.my-2 Combination examples with 
+      code .flex-wrap
+      |  .
+    +collapseButton("#align-content-examples-structure") Structure
+    ul.struct.mt-2.collapse#align-content-examples-structure
+      li Parent 
+        code div.flex-wrap
+        ul
+          li.cls Class 
+            code .align-content-(start|end|center|...)
+          li.att Attribute 
+            code style="width: 300px; height: 150px;"
+            |  (fix width and height)
+          li Inner children 
+            code div
+            |  (&times;8)
+    div.row
+      each align in ["start","end","center","between","around","stretch"]
+        div.col.col-md-6.col-lg-4
+          div
+            p.mt-3.mb-1
+              code= `.align-content-${align}.flex-wrap`
+            div(class=`d-flex align-content-${align} flex-wrap border` style="width: 300px; height: 150px;")
+              - for (let n = 1; n <= 8; n++)
+                div.p-1.border.bg-light= `Flex item ${n}`
+
+    h2.mt-5#float
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/") Float
+    p.my-2 Utility classes for floating an element to the left or right.
+    h4.my-2#float-classes
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/#classes") Classes
+    p.my-1
+      code .float-(left|right|none)
+    div.row
+      each f in ["left","right","none"]
+        div.col.border.p-1
+          img(src="../img/64x64.svg" class=`float-${f} rounded m-2`)
+          p.m-1: code= `img.float-${f}`
+          p.m-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    h4.mt-4#float-responsive
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/#responsive") Responsive classes
+    p.my-1
+      code .float-(sm|md|lg|xl)-(left|right|none)
+    h5.mt-3.mb-2 Example
+    each w in [["sm",576],["md",768],["lg",992],["xl",1200]]
+      each f in ["left","right"]
+        p.mt-2.mb-0: code= `.float-${w[0]}-${f}`
+        div.row.border
+          div.col
+            p(class=`float-${w[0]}-${f} text-primary mx-2`)= `Floats ${f} on width≧${w[1]}px`
+            p.mx-2 Plain text
+
+    h2.mt-5#image-replacement
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/image-replacement/") Image replacement
+    p.mt-3.mb-1 Utility class for using a replacement image for text content (example setting as follows).
+    ul.struct
+      li
+        code h1.text.hide
+        ul
+          li.att Attribute 
+            code background-image: url("../img/sample-logo.png");
+          li.att Attribute 
+            code width: 224px;
+          li.att Attribute 
+            code height: 48px;
+          li.txt Text 
+            code Sample Logo
+    p.mt-3.mb-1 Example
+    h1.text-hide(style=`background-image: url("../img/sample-logo.png"); width: 224px; height: 48px;`) Sample Logo
+
+    +breadcrumbLevel1("Utilities(3): Flex/Float/Image replacement")

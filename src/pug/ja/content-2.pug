@@ -1,0 +1,124 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンテント(2): 画像
+
+block body
+  div.container
+    +pageHeader("content-2")
+      p.lead コンテント(2): 
+        a(href="#images") 画像
+
+    h2.mt-2#images
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/") 画像
+    h4.mt-4#responsive-images
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#responsive-images") レスポンシブ画像表示
+    p.my-2
+      code img
+      |  に 
+      code .img-fluid
+      |  を設定すると横幅を親要素に合わせ自動縮小調整する。
+    p.my-1
+      code img.img-fluid
+    img.img-fluid(src="../img/1920x1080.svg" alt="Responsible image")
+    h4.mt-4#image-thumbnails
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#image-thumbnails") サムネール用設定
+    p.mt-2.mb-1
+      code img.rounded
+      |  は画像の角を丸めて表示 (⇒ 
+      a(href="utilities-1.html#borders-border-radius") 角の丸め
+      |  )
+    img.rounded(src="../img/120x120.svg" alt="Rounded image")
+    p.mt-3.mb-1
+      code img.img-thumbnail
+      |  は幅1pxの角丸ボーダー付きで表示(画像自身は丸めない)
+    img.img-thumbnail(src="../img/120x120.svg" alt="Thumnail image")
+    h4.mt-4#aligning-images
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#aligning-images") アラインメント
+    p.my-2
+      code .float-left
+      | , 
+      code .float-right
+      |  で画像を左右フローティング表示(⇒ 
+      a(href="utilities-3.html#float") フロート
+      | ): 後続インライン要素に回り込みが発生する
+    div.row
+      div.col.px-0
+        img.m-3.rounded.float-left(src="../img/120x120.svg")
+        img.m-3.rounded.float-right(src="../img/120x120.svg")
+        p.m-2.p-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    p.my-2
+      code .mx-auto
+      |  (⇒ 
+      a(href="utilities-4.html#spacing") 空白
+      |  )を用いると固定幅ブロックとして自動センタリングする
+    img.rounded.mx-auto.d-block(src="../img/120x120.svg")
+    p.mt-3.mb-1
+      code div
+      |  にテキスト用アラインメント(⇒ 
+      a(href="utilities-5.html#text-alignment") テキスト - アラインメント
+      |  )を用い、その中に画像を入れてもよい
+      each al in ["left", "center", "right"]
+        p.mt-2.mb-1
+          code= `div.text-${al}`
+          |  の内部に 
+          code img
+        div(class=`text-${al} bg-light mb-3`)
+          img.rounded(src="../img/120x120.svg")
+    h4.mt-4#picture
+      +extLink("https://getbootstrap.com/docs/4.1/content/images/#picture")
+        code picture
+        |  を用いる場合
+    p.mb-2 次の例は幅(ブレークポイント)に合わせて1140&times;642(xl), 960&times;540(lg), 720&times;405(md), 540&times;304(sm以下)の画像を切り替える。
+    div.mb-3
+      picture
+        source(media="(min-width: 1200px)" srcset="../img/1140x642.svg")
+        source(media="(min-width: 992px)" srcset="../img/960x540.svg")
+        source(media="(min-width: 768px)" srcset="../img/720x405.svg")
+        img.img-fluid(src="../img/540x304.svg")
+    +collapseButton("#picture-structure") 構造
+    ul.struct.mt-3.collapse#picture-structure
+      li
+        code picture
+        ul
+          li
+            code source
+            +attrsBtn(".a1-1")
+            ul.collapse.a1-1
+              li.att 属性 
+                code media="(min-width: 1200px)"
+              li.att 属性 
+                code srcset="../img/1140x642.svg"
+          li
+            code source
+            +attrsBtn(".a1-2")
+            ul.collapse.a1-2
+              li.att 属性 
+                code media="(min-width: 992px)"
+              li.att 属性 
+                code srcset="../img/960x540.svg"
+          li
+            code source
+            +attrsBtn(".a1-3")
+            ul.collapse.a1-3
+              li.att 属性 
+                code media="(min-width: 768px)"
+              li.att 属性 
+                code srcset="../img/720x405.svg"
+          li
+            code img.img-fluid
+            +attrBtn(".a1-4")
+            ul.collapse.a1-4
+              li.att 属性 
+                code src="../img/540x304.svg"
+    div.alert.alert-warning.mt-3(role="alert")
+      strong 注意: 
+      code .img-fluid
+      |  は 
+      code img
+      |  に設定するのが正しい ( 
+      code source
+      |  に設定しないこと)。
+
+    +breadcrumbLevel1("コンテント(2): 画像")

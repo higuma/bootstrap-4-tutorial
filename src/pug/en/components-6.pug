@@ -1,0 +1,707 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+mixin dropdownMenu
+  div.dropdown-menu
+    a.dropdown-item(href="#") Action
+    a.dropdown-item(href="#") Another action
+    a.dropdown-item(href="#") Something else here
+    div.dropdown-divider(role="separator")
+    a.dropdown-item(href="#") Separated link
+
+mixin customSelect(id)
+  select.custom-select(id=id)
+    option(selected) Choose...
+    each item in [[1,"One"], [2, "Two"], [3,"Three"]]
+      option(value=item[0])= item[1]
+
+block head
+  title Bootstrap 4 tutorial: Components (6): Input group / Jumbotron
+
+block body
+  div.container
+    +pageHeader("components-6")
+      p.lead Components (6): 
+        a(href="#input-group") Input group
+        |  / 
+        a(href="#jumbotron") Jumbotron
+
+    h2.mt-2#input-group
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/") Input group
+    p.my-2 The input group is the extension for input elements (
+      code input
+      | , 
+      code textarea
+      | , etc.) to add text, buttons, or button groups.
+    h4.mt-4#basic-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#basic-example") Basic example
+    h5.my-3#basic-example-prepend Prepending
+    div.input-group.my-3
+      div.input-group-prepend
+        span.input-group-text#basic-addon1 @
+      input.form-control(type="text" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1")
+    +collapseButton("#basic-example-prepend-structure") Structure
+    ul.struct.mt-2.collapse#basic-example-prepend-structure
+      li Input group (outer frame) 
+        code div.input-group
+        ul
+          li Prepending group 
+            code div.input-group-prepend
+            ul
+              li
+                code span.input-group-text
+                +attrBtn(".a1-1")
+                ul
+                  li.att.collapse.a1-1 (Accessibility) attribute 
+                    code id="basic-addon1"
+                  li.txt Text 
+                    code @
+          li
+            a(href="components-5.html#form-controls") Form control 
+            code input.form-control
+            +attrsBtn(".a1-2")
+            ul.collapse.a1-2
+              li.att Attribute 
+                code type="text"
+              li.att Attribute 
+                code placeholder="Username"
+              li.att Accessibility attribute 
+                code aria-label="Username"
+              li.att Accessibility attribute 
+                code aria-describedby="basic-addon1"
+    p.mt-3.mb-2 Bellow are guidelines on using input groups (according to the official document).
+    ul
+      li Only one form control can be used in the input group
+        ul
+          li Multiple form controls in a single input group causes problems on 
+            a(href="components-5.html#custom-styles") Bootstrap style validation
+      li Labels must be used outside the input group
+        ul
+          li Or it may cause a problem on accessibility
+    div.alert.alert-warning(role="alert")
+      strong Caution: 
+      | The rules are not strict. Some examples in the official documant do not follow above rules.
+    div.alert.alert-info(role="alert") (On version 4.0) Support for validation is (slightly) incomplete. On displaying validation response, borders are not rounded (see 
+      a(href="#multiple-inputs-validation") validation example
+      |  below).
+    h5.mt-4.mb-3#basic-example-append Appending
+    div.input-group.my-3
+      input.form-control(type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2")
+      div.input-group-append
+        span.input-group-text#basic-addon2 @example.com
+    +collapseButton("#basic-example-append-structure") Structure
+    ul.struct.mt-2.collapse#basic-example-append-structure
+      li Input group (outer frame) 
+        code div.input-group
+        ul
+          li Form control 
+            code input.form-control
+          li Appending group 
+            code div.input-group-append
+    h5.mt-4.mb-3#example-label Using a 
+      code label
+    label(for="basic-url") Your vanity URL
+    div.input-group.mb-3
+      div.input-group-prepend
+        span.input-group-text#basic-addon3 https://example.com/users/
+      input.form-control#basic-url(type="text" aria-describedby="basic-addon3")
+    +collapseButton("#example-label-structure") Structure
+    ul.struct.mt-2.collapse#example-label-structure
+      li
+        code label
+        strong  (should be used outside the input group)
+        +attrBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 Attribute 
+            code for="basic-url"
+            |  (same as 
+            code input
+            |  ID)
+          li.txt Text 
+            code Your vanity URL
+      li Input group (outer frame)
+        ul
+          li Prepending group
+          li Form control 
+            code input
+            ul
+              li.att Attribute 
+                code id="basic-url"
+    h5.mt-4.mb-3#example-prepend-append Prepending + appending
+    div.input-group.mb-3
+      div.input-group-prepend
+        span.input-group-text $
+      input.form-control(type="text" aria-label="Amount (to the nearest dollar)")
+      div.input-group-append
+        span.input-group-text .00
+    +collapseButton("#example-prepend-append-structure") Structure
+    ul.struct.mt-2.collapse#example-prepend-append-structure
+      li Input group (outer frame)
+        ul
+          li Prepending group
+          li Form group
+          li Appending group
+    h5.mt-4.mb-3#example-textarea Using a 
+      code textarea
+    div.input-group.mb-3
+      div.input-group-prepend
+        span.input-group-text With textarea
+      textarea.form-control(aria-label="With textarea")
+    +collapseButton("#example-textarea-structure") Structure
+    ul.struct.mt-2.collapse#example-textarea-structure
+      li Input group (outer frame)
+        ul
+          li Prepending group
+          li Text area 
+            code textarea.form-control
+    h4.mt-4#sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#sizing") Sizing
+    p.my-2 Add 
+      code .input-group-(sm|lg)
+      |  to 
+      code div.input-group
+    each sz in [["sm","Small"],[null,"Default"],["lg","Large"]]
+      - const inputSz = sz[0] ? `input-group-${sz[0]}` : "",
+      -       id = `inputGroup-sizing-${sz[0] ? sz[0] : "default"}`
+      p.mt-3.mb-1
+        code= `${sz[0] ? `div.input-group.input-group-${sz[0]}` : "div.input-group"}`
+      div(class=`input-group ${inputSz} mb-3`)
+        div.input-group-prepend
+          span.input-group-text(id=id)= sz[1]
+        input.form-control(type="text" aria-label="Small" aria-describedby=id)
+    h4.mt-4#checkboxes-and-radios
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#checkboxes-and-radios") Checkboxes and radios
+    p.my-2 Checkboxes
+    div.input-group
+      div.input-group-prepend
+        div.input-group-text
+          each n in [1,2,3]
+            div.form-check.form-check-inline
+              input.form-check-input(id=`check-${n}` type="checkbox" value=n checked=(n==1) aria-label="Checkbox for following text input")
+              label.form-check-label(for= `check-${n}`)= n
+      input.form-control(type="text" aria-label="Text input with checkbox")
+    p.mt-3.mb-2 Radios
+    div.input-group.mb-3
+      div.input-group-prepend
+        div.input-group-text
+          each n in [1,2,3]
+            div.form-check.form-check-inline
+              input.form-check-input(id=`radio-${n}` type="radio" name="radio-example" value=n checked=(n==1) aria-label="Radio for following text input")
+              label.form-check-label(for= `radio-${n}`)= n
+      input.form-control(type="text" aria-label="Text input with checkbox")
+    +collapseButton("#example-checkboxes-and-radios-structure") Structure
+    ul.struct.mt-2.collapse#example-checkboxes-and-radios-structure
+      li Input group (outer frame)
+        ul
+          li Prepending group 
+            code div.input-group-prepend
+            ul
+              li
+                code div.input-group-text
+                |  (for setting backgroud)
+                ul
+                  li
+                    a(href="components-5.html#inline") Checkboxes/radios - inline
+                    |  (see link for detail)
+    div.alert.alert-warning.mt-3(role="alert")
+      strong Warning: 
+      |  These examples use multiple form controls in single input group (cause problems on 
+      a(href="components-5.html#custom-styles") Bootstrap style validation
+      | ).
+    h4.mt-4.mb-3#multiple-inputs
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#multiple-inputs") Multiple inputs
+    div.input-group.mb-3
+      div.input-group-prepend
+        span.input-group-text(id="") First and last name
+      each n in [1,2]
+        input.form-control(type="text")
+    +collapseButton("#example-multiple-inputs-structure") Structure
+    ul.struct.mt-2.collapse#example-multiple-inputs-structure
+      li List group (outer frame)
+        ul
+          li Prepending group
+          li Form controls (&times;2) (can be 3 or more)
+    h5.mt-4#multiple-inputs-validation Validation
+    p.mt-2.mb-3 Using multiple input controls causes problems on 
+      a(href="components-5.html#custom-styles") Bootstrap style validation
+      | . However, using single common invalid response for all input controls is OK (see example below).
+    div.input-group.was-validated.mb-3
+      div.input-group-prepend
+        span.input-group-text(id="") First and last name
+      each n in [1,2]
+        input.form-control(type="text" required)
+      div.invalid-feedback Please input your name
+    +collapseButton("#example-multiple-inputs-validation-structure") Structure
+    ul.struct.mt-2.collapse#example-multiple-inputs-validation-structure
+      li Input group (outer frame)
+        +attrBtn(".a3-1")
+        ul
+          li.cls.collapse.a3-1 Added 
+            code .was-validated
+            |  to indicate validation behaviors
+          li Prepending group
+          li Form controls 
+            code input.form-control
+            |  (&times;2)
+            +attrBtn(".a3-2")
+            ul.collapse.a3-2
+              li.att Added 
+                code required
+          li Response message on invalid 
+            code div.invalid-response
+            ul
+              li.txt Text 
+                code Please input your name
+
+    h4.mt-4.mb-3#multiple-addons
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#multiple-addons") Multiple addons
+    div.input-group.mb-3
+      div.input-group-prepend
+        each item in ["$", "0.00"]
+          span.input-group-text= item
+      input.form-control(type="text" aria-label="Amount (to the nearest dollar)")
+    +collapseButton("#example-multiple-addons-1-structure") Structure
+    ul.struct.mt-2.collapse#example-multiple-addons-1-structure
+      li Input group (outer frame) 
+        ul
+          li Prepending group 1 with text 
+            code $
+          li Prepending group 2 with text 
+            code 0.00
+          li Form control
+    div.input-group.mt-4.mb-3
+      input.form-control(type="text" aria-label="Amount (to the nearest dollar)")
+      div.input-group-append
+        each item in ["$", "0.00"]
+          span.input-group-text= item
+    +collapseButton("#example-multiple-addons-2-structure") Structure
+    ul.struct.mt-2.collapse#example-multiple-addons-2-structure
+      li Input group (outer frame) 
+        ul
+          li Form control
+          li Appending group 1 with text 
+            code $
+          li Appending group 2 with text 
+            code 0.00
+    h4.mt-4.mb-3#button-addons
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#button-addons") Button addons
+    div.input-group.my-3
+      div.input-group-prepend
+        button.btn.btn-outline-secondary(type="button") Button
+      input.form-control(type="text" placeholder="" aria-label="" aria-describedby="basic-addon1")
+    +collapseButton("#example-button-addons-1-structure") Structure
+    ul.struct.mt-2.collapse#example-button-addons-1-structure
+      li Input group (outer frame) 
+        ul
+          li Prepending group 
+            code div.input-group-prepend
+            ul
+              li
+                a(href="components-2.html#buttons-outline-buttons") Outline button 
+                code button.btn.btn-outline-secondary
+                +attrBtn(".a4-1")
+                ul
+                  li.att.collapse.a4-1 Attribute 
+                    code type="button"
+                  li.txt Text 
+                    code Button
+          li Form control 
+    div.input-group.mt-4.mb-3
+      input.form-control(type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2")
+      div.input-group-append
+        button.btn.btn-outline-secondary(type="button") Button
+    +collapseButton("#example-button-addons-2-structure") Structure
+    ul.struct.mt-2.collapse#example-button-addons-2-structure
+      li Input group (outer frame)
+        ul
+          li Form control
+          li Appending group 
+            code div.input-group-append
+            ul
+              li Outline button
+    div.input-group.mt-4.mb-3
+      div.input-group-prepend
+        each n in [0,1]
+          button.btn.btn-outline-secondary(type="button") Button
+      input.form-control(type="text" placeholder="" aria-label="" aria-describedby="basic-addon1")
+    +collapseButton("#example-button-addons-3-structure") Structure
+    ul.struct.mt-2.collapse#example-button-addons-3-structure
+      li Input group (outer frame) 
+        ul
+          li Prepending group
+            ul
+              li Outline button (&times;2)
+          li Form control
+    div.input-group.mt-4.mb-3
+      input.form-control(type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2")
+      div.input-group-append
+        each n in [0,1]
+          button.btn.btn-outline-secondary(type="button") Button
+    +collapseButton("#example-button-addons-4-structure") Structure
+    ul.struct.mt-2.collapse#example-button-addons-4-structure
+      li Input group (outer frame) 
+        ul
+          li Form control
+          li Appending group
+            ul
+              li Outline button (&times;2)
+    h4.mt-4.mb-3#buttons-with-dropdowns
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#buttons-with-dropdowns") Buttons with dropdowns
+    div.input-group.mb-3
+      div.input-group-prepend
+        button.btn.btn-outline-secondary.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        +dropdownMenu
+      input.form-control(type="text" aria-label="Text input with dropdown button")
+    +collapseButton("#example-buttons-with-dropdowns-1-structure") Structure
+    ul.struct.mt-2.collapse#example-buttons-with-dropdowns-1-structure
+      li Input group (outer frame) 
+        ul
+          li Prepending group 
+            code div.input-group-prepend
+            ul
+              li Outline button with 
+                a(href="components-4.html#dropdowns") dropdown 
+                code button.btn.btn-outline-secondary
+                +attrsBtn(".a5-1")
+                ul
+                  li.cls.collapse.a5-1 Class 
+                    code .dropdown-toggle
+                  li.att.collapse.a5-1 Attribute 
+                    code type="button"
+                  li.att.collapse.a5-1 Attribute 
+                    code data-toggle="dropdown"
+                  li.att.collapse.a5-1 Accessibilirty attribute 
+                    code aria-haspopup="true"
+                  li.att.collapse.a5-1 Accessibilirty attribute 
+                    code aria-expanded="false"
+                  li.txt Text 
+                    code Dropdown
+              li Menu (item list) 
+                code div.dropdown-menu
+                ul
+                  li See 
+                    a(href="components-4.html#dropdowns-examples") Dropdown - Examples
+                    |  for menu items
+          li Form control
+    div.input-group.mt-4.mb-3
+      input.form-control(type="text" aria-label="Text input with dropdown button")
+      div.input-group-append
+        button.btn.btn-outline-secondary.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        +dropdownMenu
+    +collapseButton("#example-buttons-with-dropdowns-2-structure") Structure
+    ul.struct.mt-2.collapse#example-buttons-with-dropdowns-2-structure
+      li Input group (outer frame)
+        ul
+          li Form control
+          li Appending group 
+            code div.input-group-append
+            ul
+              li Outline button with dropdown
+              li Item list
+    h4.mt-4.mb-3#split-buttons
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#segmented-buttons") Split buttons
+    div.input-group.mb-3
+      div.input-group-prepend
+        button.btn.btn-outline-secondary(type="button") Action
+        button.btn.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          span.sr-only Toggle Dropdown
+        +dropdownMenu
+      input.form-control(type="text" aria-label="Text input with split dropdown button")
+    +collapseButton("#example-split-buttons-1-structure") Structure
+    ul.struct.mt-2.collapse#example-split-buttons-1-structure
+      li Input group (outer frame)
+        ul
+          li Prepending group 
+            code div.input-group-prepend
+            ul
+              li Outline button 
+                code button.btn.btn-outline-secondary
+                +attrBtn(".a6-1")
+                ul
+                  li.att.collapse.a6-1 Attribute 
+                    code type="button"
+                  li.txt Text 
+                    code Action
+              li
+                a(href="components-4.html#dropdowns-split-button") Split button 
+                code button.btn.btn-outline-secondary
+                +attrsBtn(".a6-2")
+                ul
+                  li.cls.collapse.a6-2 Class 
+                    code .dropdown-toggle
+                  li.cls.collapse.a6-2 Class 
+                    code .dropdown-toggle-split
+                  li.att.collapse.a6-2 Attribute 
+                    code type="button"
+                  li.att.collapse.a6-2 Attribute 
+                    code data-toggle="dropdown"
+                  li.att.collapse.a6-2 Accessibility attribute 
+                    code aria-haspopup="true"
+                  li.att.collapse.a6-2 Accessibility attribute 
+                    code aria-expanded="false"
+                  li For screen reader 
+                    code span.sr-only
+                    ul
+                      li.txt Text 
+                        code Toggle Dropdown
+              li Menu (item list) 
+                code div.dropdown-menu
+                ul
+                  li See 
+                    a(href="components-4.html#dropdowns-examples") Dropdown - Examples
+                    |  for menu items
+          li Form control
+    div.input-group.mt-4.mb-3
+      input.form-control(type="text" aria-label="Text input with split dropdown button")
+      div.input-group-append
+        button.btn.btn-outline-secondary(type="button") Action
+        button.btn.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          span.sr-only Toggle Dropdown
+        +dropdownMenu
+    +collapseButton("#example-split-buttons-2-structure") Structure
+    ul.struct.mt-2.collapse#example-split-buttons-2-structure
+      li Input group (outer frame)
+        ul
+          li Form control
+          li Appending group 
+            code div.input-group-append
+            ul
+              li Outline button
+              li Split button dropdown
+              li Item list
+    h4.mt-4#custom-forms
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#custom-forms") Custom forms
+    p.my-2 Examples using 
+      a(href="components-5.html#custom-forms") custom forms
+    div.alert.alert-warning(role="alert")
+      strong Caution: 
+      |  Examples below (taken from the official document) do not follow the guideline that labels should be used outside the input groups (may cause a problem on accessibility).
+    h5.mt-3#custom-select
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#custom-select") Custom 
+        code select
+    div.input-group.my-3
+      div.input-group-prepend
+        label.input-group-text(for="inputGroupSelect1") Options
+      +customSelect("inputGroupSelect1")
+    +collapseButton("#example-custom-select-1-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-select-1-structure
+      li Input group (outer frame)
+        ul
+          li Prepending group
+            ul
+              li Label 
+                code label.input-group-text
+                +attrBtn(".a7-1")
+                ul
+                  li.att.collapse.a7-1 Attribute 
+                    code for="inputGroupSelect1"
+                  li.txt Text 
+                    code Options
+          li
+            a(href="components-5.html#select-menu") Custom select 
+            code select.custom-select
+            +attrBtn(".a7-2")
+            ul
+              li.att.collapse.a7-2 Attribute 
+                code id="inputGroupSelect1"
+              li Item 
+                code option ...
+                |  (&times;4)
+    div.input-group.mt-4.mb-3
+      +customSelect("inputGroupSelect2")
+      div.input-group-append
+        label.input-group-text(for="inputGroupSelect2") Options
+    +collapseButton("#example-custom-select-2-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-select-2-structure
+      li Input group (outer frame)
+      ul
+        li Custom select
+        li Appending group
+    div.input-group.mt-4.mb-3
+      div.input-group-prepend
+        button.btn.btn-outline-secondary(type="button") Button
+      +customSelect("inputGroupSelect3")
+    +collapseButton("#example-custom-select-3-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-select-3-structure
+      li Input group (outer frame)
+      ul
+        li Prepending group
+          ul
+            li Outline button
+        li Custom select
+    div.input-group.mt-4.mb-3
+      +customSelect("inputGroupSelect4")
+      div.input-group-append
+        button.btn.btn-outline-secondary(type="button") Button
+    +collapseButton("#example-custom-select-4-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-select-4-structure
+      li Input group (outer frame)
+      ul
+        li Custom select
+        li Appending group
+          ul
+            li Outline button
+    h5.mt-4.mb-3#custom-file-input
+      +extLink("https://getbootstrap.com/docs/4.1/components/input-group/#custom-file-input") Custom file input
+    div.input-group.my-3
+      div.input-group-prepend
+        span.input-group-text Upload
+      div.custom-file
+        input.custom-file-input#inputGroupFile1(type="file")
+        label.custom-file-label(for="inputGroupFile1") Choose file
+    +collapseButton("#example-custom-file-1-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-file-1-structure
+      li Input group (outer frame)
+        ul
+          li Prepending group (
+            strong Upload
+            | )
+          li
+            a(href="components-5.html#file-browser") Custom file browser 
+            code div.custom-file
+            ul
+              li Control 
+                code input.custom-file-input
+                +attrsBtn(".a8-1")
+                ul.collapse.a8-1
+                  li.att Attribute 
+                    code id="inputGroupFile1"
+                  li.att Attribute 
+                    code type="file"
+              li Label 
+                code label.custom-file-label
+                +attrBtn(".a8-2")
+                ul
+                  li.att.collapse.a8-2 Attribute 
+                    code for="inputGroupFile1"
+                  li.txt Text 
+                    code Choose file
+    div.alert.alert-info.mt-3(role="alert")
+      strong Browse
+      |  (on right) is a part of a custom file browser. Also, the filename part (initially 
+      strong Choose file
+      |  ) does not change automatically by selecting a file. JavaScript is required for update. See 
+      a(href="components-5.html#file-browser-code-example") Custom file browser - Code example
+      |  (set to the examples below).
+    div.input-group.mt-4.mb-3
+      div.custom-file
+        input.custom-file-input#inputGroupFile2(type="file")
+        label.custom-file-label(for="inputGroupFile2") Choose file
+      div.input-group-append
+        span.input-group-text Upload
+    +collapseButton("#example-custom-file-2-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-file-2-structure
+      li Input group (outer frame)
+      ul
+        li Custom file browser (until 
+          strong Browse
+          |  on the right)
+        li Appending group (Upload)
+    div.input-group.mt-4.mb-3
+      div.input-group-prepend
+        button.btn.btn-outline-secondary(type="button") Button
+      div.custom-file
+        input.custom-file-input#inputGroupFile3(type="file")
+        label.custom-file-label(for="inputGroupFile3") Choose file
+    +collapseButton("#example-custom-file-3-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-file-3-structure
+      li Input group (outer frame)
+      ul
+        li Prepending group
+        ul
+          li Outlie button
+        li Custom file browser
+    div.input-group.mt-4.mb-3
+      div.custom-file
+        input.custom-file-input#inputGroupFile4(type="file")
+        label.custom-file-label(for="inputGroupFile4") Choose file
+      div.input-group-append
+        button.btn.btn-outline-secondary(type="button") Button
+    +collapseButton("#example-custom-file-4-structure") Structure
+    ul.struct.mt-2.collapse#example-custom-file-4-structure
+      li Input group (outer frame)
+      ul
+        li Custom file browser
+        li Appending group
+        ul
+          li Outline button
+
+    h2.mt-5#jumbotron
+      +extLink("https://getbootstrap.com/docs/4.1/components/jumbotron/") Jumbotron
+    h4.mb-3#jumbotron-example-1 Basic example
+    div.jumbotron
+      h1.display-4 Hello, world!
+      p.lead This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+      hr.my-4
+      p It uses utility classes for typography and spacing to space content out within the larger container.
+      p.lead
+        a.btn.btn-primary.btn-lg(href="#" role="button") Learn more
+    +collapseButton("#example-jumbotron-1-structure") Structure
+    ul.struct.mt-2.collapse#example-jumbotron-1-structure
+      li
+        code div.jumbotron
+        ul
+          li
+            code h1.display-4
+            ul
+              li.txt Text 
+                code Hello, world!
+          li
+            code p.lead
+            ul
+              li.txt Text 
+                code This is a simple hero unit, ...
+          li
+            code hr.my-4
+          li
+            code p
+            ul
+              li Text 
+                code It uses utility classes ...
+          li
+            code p.lead
+            ul
+              li
+                code a.btn.btn-primary.btn-lg
+                +attrsBtn(".a9-1")
+                ul
+                  li.att.collapse.a9-1 Attribute 
+                    code href="#"
+                  li.att.collapse.a9-1  Accessibility attribute 
+                    code role="button"
+                  li.txt Text 
+                    code Learn more
+    h4.mt-4#jumbotron-example-2 Fluid variation
+  div.jumbotron.jumbotron-fluid
+    div.container
+      h1.display-4 Fluid jumbotron
+      p.lead This is a modified jumbotron that occupies the entire horizontal space of its parent.
+  div.container
+    +collapseButton("#example-jumbotron-2-structure") Structure
+    div.mt-2.collapse#example-jumbotron-2-structure
+      p.my-1 Using 
+        code .jumbotron-fluid
+        |  sets full width without rounded corners.
+      ul.struct
+        li
+          code div.jumbotron.jumbotron-fluid
+          |  must be a direct child of 
+          code body
+          |  (or it sets full width inside the parent)
+          ul
+            li
+              code div.container
+              |  (for appropriate centering)
+              ul
+                li
+                  code h1.display-4
+                  ul
+                    li.txt Text 
+                      code Fluid jumbotron
+                li
+                  code p
+                  ul
+                    li.txt Text 
+                      code This is a modified jumbotron ...
+
+    +breadcrumbLevel1("Components(6): Input group/Jumbotron")

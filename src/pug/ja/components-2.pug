@@ -1,0 +1,363 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(2): ボタン / ボタングループ
+
+block body
+  - const contexts = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+  - const contextRe = `(${contexts.join("|")})`
+
+  div.container
+    +pageHeader("components-2")
+      p.lead.mb-0 コンポーネント(2): 
+        a(href="#buttons") ボタン
+        |  / 
+        a(href="#button-group") ボタングループ
+
+    h2.mt-4#buttons
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/") ボタン
+    - const buttons = contexts.slice()
+    - buttons.push("link")
+    - const buttonRe = `(${buttons.join("|")})`
+    h4.mt-3#buttons-examples
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#examples") ボタンのサンプル
+    p.my-0
+      code= `button.btn.btn-${buttonRe}`
+    p.my-1
+      each c in buttons
+        button(type="button" class=`btn btn-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+
+    h4.mt-4#buttons-button-tags
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#button-tags") 各種要素への設定例
+    div.row
+      div.col-sm-6.col-xl-4.py-1
+        div
+          a.btn.btn-primary(href="#" role="button") Link
+        div
+          ul.struct
+            li
+              code= `a.btn.btn-primary`
+              +attrsBtn(".a1-1")
+              ul
+                li.att.collapse.a1-1 属性 
+                  code href="#"
+                li.att.collapse.a1-1 属性 
+                  code role="button"
+                li.txt テキスト 
+                  code Link
+      div.col-sm-6.col-xl-4.py-1
+        div
+          button.btn.btn-primary(type="submit") Button
+        div
+          ul.struct
+            li
+              code= `button.btn.btn-primary`
+              +attrBtn(".a1-2")
+              ul
+                li.att.collapse.a1-2 属性 
+                  code type="submit"
+                li.txt テキスト 
+                  code Button
+      div.col-sm-6.col-xl-4.py-1
+        div
+          input.btn.btn-primary(type="button" value="Input")
+        div
+          ul.struct
+            li
+              code input.btn.btn-primary
+              +attrBtn(".a1-3")
+              ul.collapse.a1-3
+                li.att 属性 
+                  code type="button"
+                li.att 属性 
+                  code value="Input"
+      div.col-sm-6.col-xl-4.py-1
+        div
+          input.btn.btn-primary(type="submit" value="Submit")
+        div
+          ul.struct
+            li
+              code input.btn.btn-primary
+              +attrBtn(".a1-4")
+              ul.collapse.a1-4
+                li.att 属性 
+                  code type="submit"`
+                li.att 属性 
+                  code value="Submit"
+      div.col-sm-6.col-xl-4.py-1
+        div
+          input.btn.btn-primary(type="reset" value="Reset")
+        div
+          ul.struct
+            li
+              code input.btn.btn-primary
+              +attrBtn(".a1-5")
+              ul.collapse.a1-5
+                li.att 属性 
+                  code type="reset"`
+                li.att 属性 
+                  code value="Reset"
+    h4.mt-4#buttons-outline-buttons
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#outline-buttons") アウトラインボタン
+    p.my-0
+      code= `button.btn.btn-outline-${contextRe}`
+    p.my-1
+      each c in contexts
+        button(type="button" class=`btn btn-outline-${c}`)
+          = c[0].toUpperCase() + c.slice(1)
+    h4.mt-4#buttons-sizes
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#sizes") サイズの設定
+    p.my-0
+      code .btn.btn-(lg|sm)
+    p.mt-1.mb-0 大 
+      code .btn-lg
+    p.my-0
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} btn-lg`) Large button
+    p.mt-2.mb-0 中(デフォルト)
+    p.my-0
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c}`) Medium button
+    p.mt-2.mb-0 小 
+      code .btn-sm
+    p.mt-0
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} btn-sm`) Small button
+    h5.mt-3.mb-1#buttons-block-level ブロックレベルボタン
+    p.my-0
+      code .btn-block
+      |  を追加
+    p.mt-1
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} btn-lg btn-block`) Block level button
+    h4.mt-4#buttons-active-state
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#active-state") アクティブ状態
+    p.my-2
+      code .active
+      |  を設定すると常に押された状態(pressed/active)の(濃い)配色で表示する。
+    p.mt-0
+      each c in contexts.slice(0, 2)
+        a(href="#" class=`btn btn-${c} active` role="button" aria-pressed="true")
+          = c[0].toUpperCase() + c.slice(1)
+          |  link
+        | &nbsp;
+    h4.mt-4#buttons-disabled-state
+      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#disabled-state") 無効化状態
+    ul
+      li
+        code button
+        |  の場合
+        ul
+          li 属性 
+            code disabled
+            |  を設定すると灰色表示になり動作も無効化
+          li クラス 
+            code .disabled
+            |  を設定すると灰色表示(動作は有効)
+      li
+        code a
+        |  の場合
+        ul
+          li クラス 
+            code .disabled
+            |  を設定すると灰色表示になり動作も無効化
+          li アクセシビリティ属性(推奨) 
+            code aria-disabled="true"
+    h6.mt-3 例1: 
+      code button
+      |  要素に属性 
+      code disabled
+      |  を設定(表示・機能とも無効化)
+    div
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c}` disabled)
+          = c[0].toUpperCase() + c.slice(1)
+          |  button
+    h6.mt-3 例2: 
+      code button
+      |  にクラス 
+      code .disabled
+      |  を設定(表示効果のみ、押せる)
+    div
+      each c in contexts.slice(0, 2)
+        button(type="button" class=`btn btn-${c} disabled`)
+          = c[0].toUpperCase() + c.slice(1)
+          |  button
+    h6.mt-3 例3: 
+      code a
+      |  にクラス 
+      code .disabled
+      |  を設定(表示・機能とも無効化)
+    div
+      each c in contexts.slice(0, 2)
+        a(href="#" class=`btn btn-${c} disabled` role="button" aria-disabled="true")
+          = c[0].toUpperCase() + c.slice(1)
+          |  link
+        | &nbsp;
+    h2.mt-5#button-group
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/") ボタングループ
+    h4.my-3#button-group-basic-example
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#basic-example") 基本例
+    div.btn-group(role="group" aria-label="Basic example")
+      each pos in ["Left", "Middle", "Right"]
+        button.btn.btn-secondary(type="button")= pos
+    div.my-3
+      +collapseButton("#button-group-structure") 構造
+    ul.struct.mt-3.collapse#button-group-structure
+      li ボタングループ 
+        code div.btn-group
+        +attrsBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 アクセシビリティ属性 
+            code role="group"
+          li.att.collapse.a2-1 アクセシビリティ属性(例) 
+            code aria-label="Basic example"
+          li ボタンアイテム(通常複数) 
+            code button.btn.btn-(primary|secondary|...)
+            +attrBtn(".a2-2")
+            ul
+              li.att.collapse.a2-2 属性 
+                code type="button"
+              li.txt テキスト(例) 
+                code Left
+    h4.mt-4#button-group-button-toolbar
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#button-toolbar") ボタンツールバー
+    p.my-2 ボタングループや他のコンポーネントを上位でグループ化する親要素。
+    div.my-3
+      +collapseButton("#button-toolbar-structure") 構造
+    ul.struct.mt-3.mb-0.collapse#button-toolbar-structure
+      li ツールバー 
+        code div.btn-toolbar
+        +attrsBtn(".a3-1")
+        ul
+          li.att.collapse.a3-1 アクセシビリティ属性 
+            code role="toolbar"
+          li.att.collapse.a3-1 アクセシビリティ属性(例) 
+            code aria-label="Toolbar with button groups"
+          li ボタングループ(通常複数) 
+            code div.btn-group
+            ul
+              li 以下 
+                a(href="#button-group-basic-example") 基本例
+                |  を参照
+          li または 
+            a(href="components-6.html#input-group") インプットグループ
+            |  , etc.
+    p.mt-3.mb-2 ボタンツールバーの基本例
+    div.btn-toolbar(role="toolbar" aria-label="Toolbar with button groups")
+      div.btn-group.mr-2(role="group" aria-label="First group")
+        each n in [1, 2, 3, 4]
+          button.btn.btn-secondary(type="button")= n
+      div.btn-group.mr-2(role="group" aria-label="Second group")
+        each n in [5, 6, 7]
+          button.btn.btn-secondary(type="button")= n
+      div.btn-group.mr-2(role="group" aria-label="Third group")
+        button.btn.btn-secondary(type="button") 8
+    p.mt-3.mb-0
+      a(href="components-6.html") インプットグループ
+      | との組み合わせ例
+    each opt in [null,"justify-content-between"]
+      p.my-1
+        code= `div.btn-toolbar${opt ? "."+opt : ""}`
+        - if (opt)
+          |  (⇒ 
+          a(href="utilities-3.html#flex") Flexboxユーティリティ
+          |  )
+      div(class=`btn-toolbar${opt ? " "+opt : ""} mb-3` role="toolbar" aria-label="Toolbar with button groups")
+        div.btn-group.mr-2(role="group" aria-label="First group")
+          each n in [1, 2, 3, 4]
+            button.btn.btn-secondary(type="button")= n
+        div.input-group
+          - let id = `btnGroupAddon${opt ? 2 : 1}`
+          div.input-group-prepend
+            div.input-group-text(id=id) @
+          input.form-control(type="text" placeholder="Input group example" aria-label="Input group example" aria-describedby=id)
+    p.mt-3.mb-1 応用: ボタンツールバーとラジオボタンの組み合わせ (⇒ 
+      a(href="components-5.html#inline") ラジオボタン(インライン配置)
+      |  )
+    p.my-2 ラジオボタンは 
+      code div.form.form-inline
+      |  の中に入れて 
+      code .mx-auto
+      |  で均等配置
+    div.btn-toolbar.mb-3(role="toolbar" aria-label="Toolbar with radios")
+      div.btn-group.mr-2(role="group" aria-label="First group")
+        each n in [1, 2, 3, 4]
+          button.btn.btn-secondary(type="button")= n
+      div.form.form-inline.mx-auto
+        div.form-check.form-check-inline
+          input.form-check-input#Radio1(type="radio" name="inlineRadioOptions" value="option1" checked)
+          label.form-check-label(for="inlineRadio${n}") 1
+        each n in [2,3,4,5]
+          div.form-check.form-check-inline
+            input.form-check-input(type="radio" name="inlineRadioOptions" id=`inlineRadio${n}` value=`option${n}`)
+            label.form-check-label(for=`inlineRadio${n}`)= n
+    h4.mt-4.mb-1#button-group-sizing
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#sizing") サイズ設定
+    p.mt-1.mb-2
+      code .btn-group-(lg|sm)
+      |  を用いる: 以下は設定サンプル
+    each sz in ["lg", null, "sm"]
+      p.my-1
+        code= `div.btn-group${sz ? ".btn-group-"+sz : ""}`
+      div(class=`btn-group${sz ? " btn-group-"+sz : ""} mb-3` role="group" aria-label="Size example")
+        each pos in ["Left","Middle","Right"]
+          button.btn.btn-secondary(type="button")= pos
+    h4.mt-4#button-group-nesting
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#nesting") ドロップダウン
+    p.my-0 ボタンの中に
+      a(href="components-4.html#dropdowns") ドロップダウン
+      | を用いる場合はボタングループを2重にネストする。
+    ul.struct.my-2
+      li
+        code div.btn-group
+        ul
+          li 通常のボタン 
+            code button.btn.btn-secondary
+          li ネストしたボタングループ 
+            code div.btn-group
+            ul
+              li ドロップダウン 
+                code button.btn.btn-secondary.dropdown-toggle
+              li アイテムリスト 
+                code div.dropdown-menu
+                ul
+                  li メニューアイテム 
+                    code a.dropdown-item
+    div.btn-group.mt-1(role="group" aria-label="Button group with nested dropdown")
+      each n in [1,2,3]
+        button.btn.btn-secondary(type="button")= n
+      div.btn-group(role="group")
+        button.btn.btn-secondary.dropdown-toggle#btnGroupDrop1(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown
+        div.dropdown-menu(aria-labelledby="btnGroupDrop1")
+          each n in [1, 2]
+            a.dropdown-item(href="#")= `Dropdown link ${n}`
+    h4.mt-4.mb-1#button-group-vertical-variation
+      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#vertical-variation") 縦の配置
+    p.mb-2
+      code div.btn-group-vertical
+    div.btn-group-vertical(role="group" aria-label="Vertical example")
+      each n in [1, 2, 3, 4, 5]
+        button.btn.btn-secondary(type="button")= `Button ${n}`
+    p.mt-3.mb-2 応用: 縦配置とネスティング(ドロップダウン)の組み合わせ
+    div.btn-group-vertical(role="group" aria-label="Vertical example with nesting")
+      each n in [1, 2]
+        button.btn.btn-secondary(type="button")= `Button ${n}`
+      div.btn-group
+        button.btn.btn-secondary.dropdown-toggle#vertBtnGroupDrop1(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropdown 1
+        div.dropdown-menu(aria-labelledby="vertBtnGroupDrop1")
+          each n in [1, 2, 3]
+            a.dropdown-item(href="#")= `Link 1-${n}`
+      each n in [3, 4]
+        button.btn.btn-secondary(type="button")= `Button ${n}`
+      each nDrop in [2, 3]
+        div.btn-group
+          button.btn.btn-secondary.dropdown-toggle(id=`vertBtnGroupDrop${nDrop}` type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")= `Dropdown ${nDrop}`
+          div.dropdown-menu(aria-labelledby=`vertBtnGroupDrop${nDrop}`)
+            each n in [1, 2]
+              a.dropdown-item(href="#")= `Link ${nDrop}-${n}`
+      button.btn.btn-secondary(type="button") Button 5
+
+    +breadcrumbLevel1("コンポーネント(2): ボタン/ボタングループ")

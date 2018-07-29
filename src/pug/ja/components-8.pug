@@ -1,0 +1,330 @@
+extends ../template-cdn-ja
+include ../mixins-ja
+
+mixin launchButton(target, text)
+  button.btn.btn-primary(type="button" data-toggle="modal" data-target=target)= text
+
+mixin modalDemo(modalId, labelId, dlgOption)
+  - dlgOption = dlgOption ? " " + dlgOption : ""
+  +launchButton(`#${modalId}`, "Launch demo modal")
+  div.modal.fade(id=modalId tabindex="-1" role="dialog" aria-labelledby=labelId aria-hidden="true")
+    div(class=`modal-dialog${dlgOption}` role="document")
+      div.modal-content
+        div.modal-header
+          h5.modal-title(id=labelId) Modal title
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
+        div.modal-body
+          block
+        div.modal-footer
+          button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+          button.btn.btn-primary(type="button") Save changes
+
+block head
+  title Bootstrap 4 tutorial: コンポーネント(8): モーダル
+
+block body
+  div.container
+    +pageHeader("components-8")
+      p.lead コンポーネント(8): 
+        a(href="#modal") モーダル
+
+    h2.mt-2#modal
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/") モーダル
+    h4.mt-3#modal-components
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#modal-components") モーダルの構成要素
+    p.my-2 表示サンプル: 常時表示するように変更したもの(通常の初期状態は非表示)
+    // div.modal(tabindex="-1" role="dialog") <= これだと非表示になるため変更
+    div.bg-light.py-2.mb-3(role="dialog")
+      div.modal-dialog(role="document")
+        div.modal-content
+          div.modal-header
+            h5.modal-title Modal title
+            button.close(type="button" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
+          div.modal-body
+            p Modal body text goes here.
+          div.modal-footer
+            button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+            button.btn.btn-primary(type="button") Save changes
+    +collapseButton("#basic-example-structure") 構造
+    ul.struct.mt-2.collapse#basic-example-structure
+      li 外枠 
+        code div.modal.fade
+        +attrsBtn(".a1-1")
+        ul
+          li.cls.collapse.a1-1 クラス 
+            code .fade
+            |  - アニメーション効果用(外すと起動時にスライドしない)
+          li.att.collapse.a1-1 属性 
+            code id="{モーダルID}"
+            |  (起動用に必要)
+          li.att.collapse.a1-1 属性 
+            code tabindex="-1"
+            |  (キーフォーカスから外す)
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code role="dialog"
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code aria-labelledby="{ラベルID}"
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code aria-hidden="true"
+          li 本体 
+            code div.modal-dialog
+            +attrBtn(".a1-2")
+            ul
+              li.att.collapse.a1-2 アクセシビリティ属性 
+                code role="document"
+              li コンテント 
+                code div.modal-content
+                ul
+                  li ヘッダ 
+                    code div.modal-header
+                    ul
+                      li タイトル 
+                        code h5.modal-title
+                        +attrBtn(".a1-3")
+                        ul
+                          li.att.collapse.a1-3 (アクセシビリティ用)属性 
+                            code id="{ラベルID}"
+                          li.txt テキスト 
+                            code Modal title
+                      li 右上クローズボタン 
+                        code button.close
+                        +attrsBtn(".a1-4")
+                        ul
+                          li.att.collapse.a1-4 属性 
+                            code type="button"
+                          li.att.collapse.a1-4 属性 
+                            code data-dismiss="modal"
+                          li.att.collapse.a1-4 アクセシビリティ属性 
+                            code aria-label="Close"
+                          li ボタンシンボル 
+                            code span
+                            +attrBtn(".a1-5")
+                            ul
+                              li.att.collapse.a1-5 アクセシビリティ属性 
+                                code aria-hidden="true"
+                              li.txt テキスト 
+                                code= `&times;`
+                  li ボディ 
+                    code div.modal-body
+                    ul
+                      li (例: 上記サンプルの場合) 
+                        code p
+                        ul
+                          li.txt テキスト 
+                            code Modal body text goes here.
+                  li フッタ 
+                    code div.modal-footer
+                    ul
+                      li Closeボタン 
+                        code button.btn.btn-secondary
+                        +attrsBtn(".a1-6")
+                        ul
+                          li.att.collapse.a1-6 属性 
+                            code type="button"
+                          li.att.collapse.a1-6 属性 
+                            code data-dismiss="modal"
+                          li.txt テキスト
+                            code Close
+                      li 用途により追加ボタン(例: 上記サンプルの場合) 
+                        code button.btn.btn-primary
+                        +attrBtn(".a1-7")
+                        ul
+                          li.att.collapse.a1-7 属性 
+                            code type="button"
+                          li.txt テキスト 
+                            code Save changes
+    div.alert.alert-info.mt-3(role="alert") 設定量は多いがボディ内部以外はほとんど同じ定型構造なのでテンプレートを作っておくとよい(このページのpugソースはmixinによるテンプレートを用いている)。
+    h4.mt-4#live-demo
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#live-demo") モーダルの起動
+    p.mt-2.mb-1 モーダルはボタンを使って起動できる。起動ボタンの基本構成は次の通り。
+    ul.struct.mt-1.mb-2
+      li
+        code button.btn.btn-primary
+        |  : 表示設定は何でもよいが、次の属性が必須
+        ul
+          li.att 属性 
+            code type="button"
+          li.att 属性 
+            code data-toggle="modal"
+          li.att 属性 
+            code= `data-target="#{モーダルID}"`
+          li.txt テキスト(例) 
+            code Launch demo modal
+    p.my-2 次のボタンを押すとページが暗転し、モーダルが上からスライドする。
+    +modalDemo("exampleModal", "exampleModalLabel")
+      p Woohoo, you're reading this text in a modal!
+    div.alert.alert-info.mt-3(role="alert")
+      code data-target
+      |  には任意のCSSセレクタ書式が可能。そのため 
+      code id
+      |  以外のセレクタ指定も可能だが、もし複数該当してもモーダルはひとつしか起動しない。起動するモーダルは常に一つで、ネスト(モーダル表示中に別のモーダルを起動)にも対応していない。
+    h5.mt-4#behaviors 動作のポイント(まとめ)
+    ul.my-1
+      li 背後の元ページを暗転するため全画面を半透明要素(
+        strong バックドロップ
+        | )で覆う(z-indexは 
+        code 1040
+        |  )
+      li その上にモーダルを中央上揃えで表示する(Z-indexは 
+        code 1050
+        |  )
+      ul: li
+        code .fade
+        |  を付けると上からスライド(CSSアニメーション)して表示
+      li 表示中はキーボードフォーカスやタブストップはモーダルのみが受ける
+      li スクロールバーのスクロール動作もモーダルが受ける(次に例を示す)
+      li 次のいずれかでクローズして元に戻る
+      ul
+        li クローズボタン(右上シンボル 
+          strong &times;
+          |  または右下 
+          strong Close
+          |  ボタン)をクリック
+        li モーダル外部の背景(バックドロップ)をクリック
+        li
+          kbd Esc
+          |  キー入力
+    h4.mt-4#scrolling-long-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#scrolling-long-content") モーダルの縦スクロール
+    p.my-2 モーダルの高さが表示デバイスより大きい場合はスクロールバーを表示する。この時スクロール対象はモーダルに設定され、元ページはスクロールせずモーダルだけ縦スクロールする。次のデモを起動すると確認できる。
+    - const sampleText = ["Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.", "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.", "Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla."]
+    +modalDemo("exampleModalLong", "exampleModalLongTitle")
+      each n in [1,2,3,4,5]
+        each text in sampleText
+          p= text
+    h4.mt-4#vertically-centered
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#vertically-centered") 画面中央への表示
+    p.my-2 デフォルトは中央上揃えだが、本体 
+      code div.modal-dialog
+      |  に 
+      code .modal-dialog-centered
+      |  を追加すると画面中央揃えで表示する。
+    +modalDemo("exampleModalCenter", "exampleModalCenterTitle", "modal-dialog-centered")
+      p= sampleText[0]
+    h4.mt-4#tooltips-and-popovers
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#tooltips-and-popovers") ツールチップとポップオーバー
+    p.my-2 ボディ内部ではほとんどの機能を利用できる。次は内部に
+      a(href="components-12.html#toolstips") ツールチップ
+      | と
+      a(href="components-11.html#popovers") ポップオーバー
+      | を用いた例。
+    +modalDemo("exampleModalTooltipsPopovers", "exampleModalTooltipsPopoversTitle")
+      h5 Popover in a modal
+      p This 
+        a.btn.btn-secondary.popover-test(href="#" role="button" data-toggle="popover" title="Popover title" data-content="Popover body content is set in this attribute.") button
+        |  triggers a popover on click.
+      h5 Tooltips in a modal
+      p
+        a.tooltip-test(href="#" data-toggle="tooltip" title="Tooltip") This link 
+        | and 
+        a.tooltip-test(href="#" data-toggle="tooltip" title="Tooltip") That link 
+        | have tooltips on hover.
+    h4.mt-4#using-the-grid
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#using-the-grid") グリッド
+    p.my-2 モーダルボディに
+      a(href="layout-1.html#grid") グリッド
+      | を用いた例。
+    +modalDemo("exampleModalGrid", "exampleModalGridTitle")
+      div.container-fluid
+        div.row.m-2
+          div.col-md-4.border.bg-light .col-md-4
+          div.col-md-4.ml-auto.border.bg-light .col-md-4.ml-auto
+        div.row.m-2
+          div.col-md-3.ml-auto.border.bg-light .col-md-3.ml-auto
+          div.col-md-2.ml-auto.border.bg-light .col-md-2.ml-auto
+        div.row.m-2
+          div.col-md-6.ml-auto.border.bg-light .col-md-6.ml-auto
+        div.row.m-2
+          div.col-sm-9.border.bg-light Level 1: .col-sm-9
+            div.row
+              div.col-8.col-sm-6.border.bg-warning Level 2: .col-8.col-sm-6
+              div.col-4.col-sm-6.border.bg-warning Level 2: .col-4.col-sm-6
+    h4.mt-4#varying-modal-content
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content") 起動時のコンテント更新
+    p.mt-2.mb-3 同じモーダルの起動時に起動ボタンの情報を読んで表示を変える例(要JavaScript)。
+    div.my-3
+      each item in ["mdo", "fat", "getbootstrap"]
+        button.btn.btn-primary(type="button" data-toggle="modal" data-target="#examplemodal" data-whatever=`@${item}`)= `open modal for @${item}`
+    div.modal.fade#examplemodal(tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true")
+      div.modal-dialog(role="document")
+        div.modal-content
+          div.modal-header
+            h5.modal-title#examplemodallabel new message
+            button.close(type="button" data-dismiss="modal" aria-label="close")
+              span(aria-hidden="true") &times;
+          div.modal-body
+            form
+              div.form-group
+                label.col-form-label(for="recipient-name") recipient:
+                input.form-control#recipient-name(type="text")
+              div.form-group
+                label.col-form-label(for="message-text") message:
+                textarea.form-control#message-text
+          div.modal-footer
+            button.btn.btn-secondary(type="button" data-dismiss="modal") close
+            button.btn.btn-primary(type="button") send message
+    +collapseButton(".javascript-code") JavaScriptコード
+    pre.p-2.border.bg-light.mt-3.collapse.javascript-code
+      code
+        | $('#examplemodal').on('show.bs.modal', function(event) {
+        |   var button = $(event.relatedTarget);
+        |   var recipient = button.data('whatever');
+        |   var modal = $(this);
+        |   modal.find('.modal-title').text('New message to ' + recipient);
+        |   modal.find('.modal-body input').val(recipient);
+        | });
+    ul.mt-2.collapse.javascript-code
+      li 起動ボタンに次の属性を設定(例): 
+        code data-whatever="@mdo"
+      li JavaScript(jQuery)で起動イベント 
+        code show.bs.modal
+        |  を検出(⇒ 
+        +extLink("https://getbootstrap.com/docs/4.1/components/modal/#events") Events
+        |  ): 次の2つの違いに注意
+        ul
+          li
+            code show.bs.modal
+            |  起動(ボタンクリック)時: まだ表示前(こちらを使用)
+          li
+            code shown.bs.modal
+            |  モーダル表示の完了時
+      li 起動ボタン( 
+        code event.relatedTarget
+        |  )から属性 
+        code data-whatever
+        |  を読み取る
+      li 読み取った値をタイトルと 
+        code input
+        |  要素に設定
+    h4.mt-4#optional-sizes
+      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#optional-sizes") サイズ指定
+    p.my-1
+      code div.modal-dialog.modal-(lg|sm)
+      | を用いる。
+    - const modalSize = ["lg", "md", "sm"]
+    - const sizeText = {lg:"Large", md:"Medium", sm:"Small"}
+    each sz in modalSize
+      +launchButton(`.bd-example-modal-${sz}`, `${sizeText[sz]} modal`)
+    each sz in modalSize
+      div(class=`modal fade bd-example-modal-${sz}` tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true")
+        div(class=`modal-dialog modal-${sz}`)
+          div.modal-content
+            div.modal-header
+              h5.modal-title= `${sizeText[sz]} modal`
+              button.close(type="button" data-dismiss="modal" aria-label="close")
+                span(aria-hidden="true") &times;
+            div.modal-body ...
+            div.modal-footer
+              button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+              button.btn.btn-primary(type="button") Save changes
+    div.alert.alert-info.my-3(role="alert")
+      strong 注:
+      |  上の実例でMediumに設定している 
+      code .modal-md
+      |  には何も書式設定はされていない(単にデフォルトサイズで表示)。ここでは 
+      code data-target
+      |  のセレクタとして利用している。
+
+    +breadcrumbLevel1("コンポーネント(8): モーダル")

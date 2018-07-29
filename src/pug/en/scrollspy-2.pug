@@ -1,0 +1,118 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Components(12): Scrollspy: Example with nested nav
+
+block body
+  div.container
+    div.row
+      div.col-4.col-lg-3.mt-4
+        nav.navbar.navbar-light.bg-light
+          span.navbar-brand Scrollspy demo (2)
+          nav.nav.nav-pills.flex-column#scrollspy-demo
+            a.nav-link.mb-1(href="#about") About this demo
+            a.nav-link(href=`#picture`) Pictures
+            nav.nav.nav-pills.flex-column
+              each n in [1,2]
+                a.nav-link.ml-4.my-1(href=`#picture-${n}`)= `Picture ${n}`
+                nav.nav.nav-pills.flex-column
+                  each m in [1,2,3]
+                    a.nav-link.ml-5(href=`#picture-${n}-${m}`)= `Picture ${n}-${m}`
+            a.nav-link.mb-1(href=`#slide`) Slides
+            nav.nav.nav-pills.flex-column
+              each n in [1,2,3]
+                a.nav-link.ml-4(href=`#slide-${n}`)= `Slide ${n}`
+      div.col-8.col-lg-9.mt-4(data-spy="scroll" data-target="#scrollspy-demo" data-offset="10" style="height: 40rem; overflow-y: scroll;")
+        +pageHeader("scrollspy-2")
+          p.lead Components(12): Scrollspy: Example with nested nav
+
+        h2.mt-2#about About this demo
+        p.my-2
+          a(href="components-12.html#scrollspy-example-with-nested-nav") Scrollspy demo
+          |  using three-level nested 
+          a(href="components-9.html") Navigation
+          | s.
+        ul.struct
+          li Container 
+            code div.container
+            ul
+              li Left 
+                code div.col-4.col-lg-3
+                ul
+                  li Navigation 
+                    code nav.nav.nav-pills.flex-column
+                    +attrBtn(".a1-1")
+                    ul
+                      li.att.collapse.a1-1 Attribute 
+                        code id="scrollspy-demo"
+                      li Item 
+                        code a.list-group-item
+                        +attrBtn(".a1-2")
+                        ul.collapse.a1-2
+                          li.att Attribute 
+                            code= `href="#{position-id}"`
+                      li Or nested navigation 
+                        code nav.nav.nav-pills.flex-column
+                        ul
+                          li.att ( 
+                            code id
+                            |  is not required for inner navs)
+                          li Item 
+                            code a.list-group-item
+                            +attrsBtn(".a1-3")
+                            ul.collapse.a1-3
+                              li.att Attribute 
+                                code= `href="#{position-id}"`
+                              li.cls Indent 
+                                code .ml-(4|5)
+                                |  (⇒ 
+                                a(href="utilities-4.html#spacing") Spacing
+                                |  )
+                          li Can be nested any levels
+              li Right 
+                code div.col-8.col-lg-9
+                |  - Scrolling contents (here)
+                +attrsBtn(".a1-4")
+                ul
+                  li.att.collapse.a1-4 Attribute 
+                    code data-spy="scroll"
+                  li.att.collapse.a1-4 Attribute 
+                    code data-target="#scrollspy-demo"
+                  li.att.collapse.a1-4 Attribute 
+                    code data-offset="10"
+                    |  (⇒ 
+                    a(href="#note") Note
+                    |  )
+                  li.att.collapse.a1-4 Style 
+                    code style="height: 32rem; overflow-y: scroll;"
+                  li Scrolling elements
+                    +attrBtn(".a1-5")
+                    ul.collapse.a1-5
+                      li Set 
+                        code id="{position-id}"
+                        |  to the tracking targets
+        div.alert.alert-info#note(role="alert")
+          strong Note: 
+          | This demo sets 
+          code data-offset="10"
+          |  (px) for adjusting scrolling position calculation. Ideally, it should be 
+          code "0"
+          |  . But it sometimes causes a problem that it does not activate a pill when a use click a pill to scroll the page (possibly by numerical errors). Setting an offset around 
+          code "10"
+          |  results to natural behaviors.
+        p Below are dummy scrolling contents. Each heading have a specific 
+          code id="{position-id}"
+          |  for scroll tracking.
+        h2#picture Pictures
+        each n in [1,2]
+          h4(id=`picture-${n}`)= `Picture ${n}`
+          each m in [1,2,3]
+            h5(id=`picture-${n}-${m}`)= `Picture ${n}-${m}`
+            img.img-fluid.mb-4(src=`../img/1920x1080.svg`)
+        h2#slide Slides
+        each n in [1,2,3]
+          h4(id=`slide-${n}`)= `Slide ${n}`
+          img.img-fluid.mb-4(src=`../img/slide-${n}.svg`)
+
+    +breadcrumbLevel2("components-12.html#scrollspy-example-with-nested-nav", "Components(12): Scrollspy", "Example with nested nav")

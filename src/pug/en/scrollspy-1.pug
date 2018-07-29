@@ -1,0 +1,128 @@
+include ../mixins-en
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+    title Bootstrap 4 tutorial: Components (12): Scrollspy: Example in navbar
+    style.
+    style.
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+
+  body(data-spy="scroll" data-target="#scrollspy-demo" data-offset="56")
+    nav.navbar.fixed-top.navbar-light#scrollspy-demo(style="background: rgba(222,222,222,0.6);")
+      a.navbar-brand(href="#") Scrollspy demo (1)
+      ul.nav.nav-pills
+        li.nav-item
+          a.nav-link(href=`#about`) About
+        each n in [1,2,3]
+          li.nav-item
+            a.nav-link(href=`#picture-${n}`)= `Picture ${n}`
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false") Slide
+          div.dropdown-menu
+            each n in [1,2,3]
+              a.dropdown-item(href=`#slide-${n}`)= `Slide ${n}`
+    div.container
+      div(style="margin-top: 3.5rem;")
+        +pageHeader("scrollspy-1")
+          p.lead Components (12): Scrollspy: Example in navbar
+
+      h2.mt-2#about About this demo
+      p.my-2
+        a(href="components-12.html#scrollspy-example-in-navbar") Scrollspy demo
+        |  using a 
+        a(href="components-10.html") navigation bar
+      ul.struct
+        li Scrolling content 
+          code body
+          +attrsBtn(".a1-1")
+          ul
+            li.att.collapse.a1-1 Attribute 
+              code data-spy="scroll"
+            li.att.collapse.a1-1 Attribute 
+              code data-target="#scrollspy-demo"
+            li.att.collapse.a1-1 Attribute 
+              code data-offset="56"
+              |  (⇒ 
+              a(href="#note-1") Note 1
+              |  )
+            li Navigation bar (fixed top) 
+              code nav.navbar.fixed-top.navbar-light
+              +attrsBtn(".a1-2")
+              ul
+                li.att.collapse.a1-2 Attribute 
+                  code id="scrollspy-demo"
+                li.att.collapse.a1-2 Style (set to translucent) 
+                  code style="background: rgba(222,222,222,0.6);"
+                  |  (⇒ 
+                  a(href="#note-2") Note 2
+                  |  )
+                li.txt Title text 
+                  code Scrollspy demo (1)
+                  |  (see 
+                  a(href="components-10.html#brand") Navbar - brand
+                  |  )
+                li Item list 
+                  code ul.nav.nav-pills
+                  |  (see 
+                  a(href="components-10.html#nav") Navbar - nav
+                  |  )
+                  ul
+                    li Items 
+                      code li.nav-item
+                      ul
+                        li Link 
+                          code a.nav-link
+                          +attrBtn(".a1-3")
+                          ul
+                            li.att.collapse.a1-3 Attribute (e.g.) 
+                              code href=`#about`
+                            li.txt Text (e.g.) 
+                              code About
+                    li Dropdown ( 
+                      strong Slide&dtrif; 
+                      | ) 
+                      code li.nav-item.dropdown
+                      |  (see  
+                      a(href="components-4.html#dropdowns") Dropdowns
+                      | )
+            li Contents 
+              code div.container
+              +attrBtn(".a1-4")
+              ul.collapse.a1-4
+                li Set 
+                  code id="{position-id}"
+                  |  to the tracking targete elements
+      div.alert.alert-info#note-1(role="alert")
+        strong Note 1: 
+        code data-offset="56"
+        |  is the height of the navigation bar (px). As this page uses a fixed-top bar, scroll caluculation should be adjusted to set the origin of scroll tracking to just beneath the bar.
+      div.alert.alert-info#note-2(role="alert")
+        strong Note 2: 
+        | Regardless of the navigation bar, scrolling inside page with hash (by clicking pills, etc.) always scroll target elements to the top of the page. As the result, targets are always hidden by the bar. It is difficult to resolve this problem (official demos also behave the same, or you may have to use 
+        code iframe
+        |  ). This demo uses a translucent navigation bar as compromise.
+      p Below are dummy scrolling contents. Each heading have a specific 
+        code id="{position-id}"
+        |  for scroll tracking.
+      each n in [1,2,3]
+        h2(id=`picture-${n}`)= `Picture ${n}`
+        img.img-fluid.mb-4(src=`../img/1920x1080.svg`)
+      each n in [1,2,3]
+        h2(id=`slide-${n}`)= `Slide ${n}`
+        img.img-fluid.mb-4(src=`../img/slide-${n}.svg`)
+
+      +breadcrumbLevel2("components-12.html#scrollspy-example-in-navbar", "Components(12): Scrollspy", "Example in navbar")
+
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous")

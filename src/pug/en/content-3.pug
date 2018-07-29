@@ -1,0 +1,284 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+mixin tableHeader(cls)
+  - const headers = ["#","First","Last","Handle"]
+  thead(class=cls)
+    tr
+      each item in headers
+        th(scope="col")= item
+
+mixin tableBody
+  - const members = [[1,"Mark","Otto","@mdo"],[2,"Jacob","Thornton","@fat"],[3,"Larry","the Bird","@twitter"]]
+  tbody
+    each member in members
+      tr
+        th(scope="row")= member[0]
+          each item in member.slice(1)
+            td= item
+
+mixin tableAll(tblCls, hdrCls)
+  table(class=tblCls)
+    +tableHeader(hdrCls)
+    +tableBody
+
+block head
+  title Bootstrap 4 tutorial: Content (3): Tables
+
+block body
+  div.container
+    +pageHeader("content-3")
+      p.lead Content (3): 
+        a(href="#tables") Tables
+
+    h2.mt-2#tables
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/") Tables
+    h4.mt-4#examples
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#examples") Basic example
+    div.my-3
+      +collapseButton("#table-structure") Structure
+    ul.struct.mt-3.collapse#table-structure
+      li
+        code table.table
+        |  (Add 
+        code .table-dark
+        |  to invert colors)
+        ul
+          li Head 
+            code thead
+            ul
+              li Header column 
+                code tr
+                ul
+                  li Header cell 
+                    code th
+                    +attrBtn(".a1-1")
+                    ul.collapse.a1-1
+                      li.att Attribute 
+                        code scope="col"
+                        |  (to column header cells)
+          li Body 
+            code tbody
+            ul
+              li Column 
+                code tr
+                ul
+                  li Header cells (typically leftmost) 
+                    code th
+                    +attrBtn(".a1-2")
+                    ul.collapse.a1-2
+                      li.att Attribute 
+                        code scope="row"
+                        |  (to row header cells)
+                  li Normal cells 
+                    code td
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table${tblStyle}`
+      +tableAll(`table${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#table-head-options
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#table-head-options") Table head options
+    p Set 
+      code .thead-(dark|light)
+      |  to 
+      code thead
+      |  (or also 
+      code .table-(dark|light)
+      |  )
+    each hdrStyle in ["thead-dark", "thead-light"]
+      p.mb-1
+        code= `.${hdrStyle}`
+      +tableAll("table", hdrStyle)
+    h4.mt-4#striped-rows
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#striped-rows") Striped rows
+    p Set 
+      code .table-striped
+      |  to 
+      code table
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table.table-striped${tblStyle}`
+      +tableAll(`table table-striped${tblStyle.replace(/\./, " ")}`)
+    each opt in ["bordered", "borderless"]
+      h4.mt-4(id=`${opt}-table`)
+        +extLink(`https://getbootstrap.com/docs/4.1/content/tables/#${opt}-table`)
+          = opt[0].toUpperCase() + opt.slice(1) + " table"
+      p.mb-1 Set 
+        code= `.table-${opt}`
+        |  to 
+        code table
+      each tblStyle in ["", ".table-dark"]
+        p.mb-1
+          code= `table.table.table-${opt}${tblStyle}`
+        +tableAll(`table table-${opt}${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#hoverable-rows
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#hoverable-rows") Hoverable rows
+    p Set 
+      code .table-hover
+      |  to 
+      code table
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table.table-hover${tblStyle}`
+      +tableAll(`table table-hover${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#small-table
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#small-table") Small table
+    p Set 
+      code .table-sm
+      |  to 
+      code table
+      |  for cutting cell paddings to half
+    each tblStyle in ["", ".table-dark"]
+      p.mb-1
+        code= `table.table.table-sm${tblStyle}`
+      +tableAll(`table table-sm${tblStyle.replace(/\./, " ")}`)
+    h4.mt-4#contextual-classes
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#contextual-classes") Contextual classes
+    p.my-1
+      code .table-(primary|secondary|success|danger|warning|info|light|dark|active)
+    p.my-1 Available for all levels ( 
+      code table
+      |  , 
+      code thead
+      |  , 
+      code tbody
+      |  , 
+      code tr
+      |  , 
+      code th
+      |  , 
+      code td
+      |  )
+    p.my-2 See differences from 
+      a(href="utilities-2.html#colors") basic contextual colors
+      |  as follows.
+    ul
+      li No 
+        code -muted
+        |  , 
+        code -white
+        |  (
+        code .table-muted
+        |  and 
+        code .table-muted
+        |  do not exist)
+      li Has 
+        code -active
+        |  (
+        code .table-active
+        |  )
+    h6.mt-3.mb-2 Example for 
+      code tr
+    table.table
+      thead
+        tr
+          each th in ["Class","Heading","Heading"]
+            th= th
+      tbody
+        th(scope="col") (default)
+        td Cell
+        td Cell
+        each context in ["primary","secondary","success","danger","warning","info","light","dark","active"]
+          tr(class=`table-${context}`)
+            th(scope="col")
+              code= `.table-${context}`
+            td Cell
+            td Cell
+    p.mt-4
+      code .table-{context}
+      |  applys to both text and background (in above example, remark 
+      code .table-dark
+      |  reverses the text color of cells). Also it sets a background color lighter than 
+      code .bg-{context}
+      | . Setting a background color directly is available. But you may also have to set a text color.
+    p.mt-3.mb-1 Example: Used 
+      code .bg-{context}
+      |  for background, 
+      code .text-(dark|white)
+      |  for text
+    table.table.table-bordered
+      thead
+        tr
+          each th in ["Class","Heading","Heading"]
+            th= th
+          each col in [["primary","white"],["secondary","white"],["success","white"],["danger","white"],["warning","white"],["info","white"],["light","dark"],["dark","white"],["white","dark"]]
+            tr(class=`bg-${col[0]} text-${col[1]}`)
+              th(scope="col")
+                - if (["light","white"].indexOf(col[0]) != -1)
+                  code= `.bg-${col[0]}.text-${col[1]}`
+                - else
+                  code.text-white= `.bg-${col[0]}.text-${col[1]}`
+              td Cell
+              td Cell
+    h4.mt-4#captions
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#captions") Captions
+    p.mt-2.mb-1 Use 
+      code caption
+    ul.struct
+      li
+        code table.table
+        ul
+          li
+            code caption
+            ul
+              li.cls Alignment (optional) 
+                code .text-(left|center|right)
+                |  (⇒ 
+                a(href="utilities-5.html#text-alignment") Text utilities
+                |  )
+          li
+            code thead
+            |  (same as former examples)
+          li
+            code tbody
+            |  (same)
+    p.my-2 Example: Caption 
+      strong List of users
+      |  is aligned center with 
+      code .text-center
+    table.table
+      caption.text-center List of users
+      +tableHeader
+      +tableBody
+    h4.mt-4#responsive-tables
+      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#responsive-tables") Responsive tables
+    p.mt-3.mb-1 Add 
+      code  .table-responsive
+      |  to 
+      code table.table
+      |  ( 
+      code table.table.table-responsive
+      |  )
+    p.mt-2.mb-3 ⇒ Shows a horizontal scroll bar on table width greater than viewport width
+    table.table.table-responsive
+      thead
+        tr
+          th #
+          - for (let c = 1; c <= 10; c++)
+            th Heading
+      tbody
+        - for (let r = 1; r <= 3; r++)
+          tr
+            th(scope="row")= r
+            - for (let c = 1; c <= 10; c++)
+              td Cell
+    p.mt-3.mb-1 Use 
+      code .table-responsive-(sm|md|lg|xl)
+      |  for responsive tables with specific breakpoints
+    each width in ["sm","md","lg","xl"]
+      p.mt-2.mb-1
+        code= `table.table.table-responsive-${width}`
+      table(class=`table table-responsive-${width}`)
+        thead
+          tr
+            th #
+            - for (let c = 1; c <= 12; c++)
+              th Heading
+        tbody
+          - for (let r = 1; r <= 1; r++)
+            tr
+              th(scope="row")= r
+              - for (let c = 1; c <= 12; c++)
+                td Cell
+
+    +breadcrumbLevel1("Content(3): Tables")

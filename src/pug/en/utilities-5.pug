@@ -1,0 +1,169 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+mixin visibilityExample(classToHide)
+  - classToHide = classToHide ? " " + classToHide : ""
+  div.container
+    div.row
+      div.col.border.bg-light .col
+    div.row
+      div.col.border.bg-light .col
+      div(class=`col px-3 border bg-secondary${classToHide}`)
+        span.text-light .col (to hide)
+      div.col.border.bg-light .col
+    div.row
+      div.col.border.bg-light .col
+
+block head
+  title Bootstrap 4 tutorial: Utilities (5): Text / Vertical align / Visibility
+
+block body
+  div.container
+    +pageHeader("utilities-5")
+      p.lead Utilities (5): 
+        a(href="#text") Text
+        |  / 
+        a(href="#vertical-align") Vertical align
+        |  / 
+        a(href="#visibility") Visibility
+
+    h2.mt-2#text
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/") Text
+    - const sampleText = "The quick brown fox jumps over the lazy dog."
+    h4.mt-3#text-alignment
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-alignment") Text alignment
+    h5.mt-4.mb-0 Justification 
+      code .text-justify
+    each justify in [false, true]
+      p.mt-3.mb-0
+        = justify ? "(With " : "(Without " 
+        code .text-justify
+        |  )
+      p(class=`${justify ? "text-justify " : ""}my-1`) Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
+    h5.mt-4.mb-0 Left/Center/Right 
+      code .text(-sm|-md|-lg|-xl)?-(left|center|right)
+    each al in ["left", "center", "right"]
+      p.mt-3.mb-0
+        code= `.text-${al}`
+      p(class=`text-${al} mt-0 mb-3 border`)
+        = `${al[0].toUpperCase()}${al.slice(1)}-aligned on all viewport sizes.`
+    - const szPx = { sm:576, md:768, lg:992, xl:1200 }
+    each al in ["center", "right"]
+      each sz in ["sm", "md", "lg", "xl"]
+        p.mt-3.mb-0
+          code= `.text-${sz}-${al}`
+        p(class=`text-${sz}-${al} mt-0 mb-3 border`)
+          = `${al[0].toUpperCase()}${al.slice(1)}-aligned on viewport width ≧ ${szPx[sz]}px`
+    h4.mt-4#text-wrapping-and-overflow
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-wrapping-and-overflow") Text wrapping and overflow
+    p.my-2 (1) Wrapping (Box width is fixed to 
+      code 15rem
+      |  )
+    each wrap in [false, true]
+      p.mb-1
+        = wrap ? "With " : "Without "
+        code .text-nowrap
+      div(class=`${wrap ? "text-nowrap": ""} p-2 border bg-lightm mb-3` style="width: 15rem;")= sampleText
+    p.my-2 (2) Truncation for block elements (Box width is fixed to 
+      code 15rem
+      |  )
+    each truncate in [false, true]
+      p.mb-1
+        = truncate ? "With " : "Without " 
+        code .text-truncate
+      div(class=`border p-2 mb-3${truncate ? " text-truncate" : ""}` style="width: 15rem;")= sampleText
+    p.my-2 (2) Truncation for inline block elements (Box is limited to 
+      code style="max-width: 15rem;"
+      |  )
+    each truncate in [false, true]
+      p.mb-1
+        = truncate ? "With " : "Without " 
+        code .text-truncate
+      div.mb-3
+        span(class=`d-inline-block border p-2${truncate ? " text-truncate" : ""}` style="max-width: 15rem;")= sampleText
+    h4.mt-4#text-transform
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-transform") Text transform
+    each trans in [null, "lowercase", "uppercase", "capitalize"]
+      p.mt-3.mb-0
+        - if (trans)
+          code= `.text-${trans}`
+        - else
+          | (default)
+      p(class=`${trans ? `text-${trans}` : ""} mt-1 mb-2`)= sampleText
+    h4.mt-4#text-font
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#font-weight-and-italics") Font weight and italics
+    each font in ["weight-normal", "weight-bold", "weight-light", "italic"]
+      p.mt-3.mb-0
+        code= `.font-${font}`
+        - if (font == "weight-normal")
+          |  (default)
+      p(class=`font-${font} mt-0 mb-2`)= sampleText
+    h4.mt-4#text-monospace
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#monospace") Monospace
+    p.mt-2.mb-0
+      code .text-monospace
+    p.text-monospace This is in monospace.
+
+    h2.mt-5#vertical-align
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/vertical-align/") Vertical alignment
+    p.my-2 Utility classes for setting CSS 
+      code vertical-align
+      |  property (see 
+      a(href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align") CSS reference
+      |  for detail).
+    p.my-2
+      code .align-(baseline|top|middle|bottom|text-top|text-bottom)
+      - const vertAlign = ["baseline", "top", "middle", "bottom", "text-top", "text-bottom"]
+    h5.mt-4#vertical-align-examples Examples
+    p.mt-1.mb-2
+      code .align-*
+      |  for inline elements 
+      code span
+    p.my-1.bg-secondary
+      each align in vertAlign
+        span(class=`m-1 bg-warning align-${align} px-1`)= align
+    p.mt-4.mb-2
+      code .align-*
+      |  for table cells 
+      code td
+      |  (table height is fixed to 
+      code 8rem
+      |  )
+    table.table-bordered.bg-light(style="height: 8rem;")
+      tbody
+        tr
+          each align in vertAlign
+            td(class=`align-${align} p-1`)= align
+
+    h2.mt-5#visibility
+      +extLink("https://getbootstrap.com/docs/4.1/utilities/visibility/") Visibility
+    p.mt-2.mb-1 Utility classes for setting CSS 
+      code visibility
+      |  property (see 
+      a(href="https://developer.mozilla.org/en-US/docs/Web/CSS/visibility") CSS reference
+      |  for detail).
+    ul
+      li
+        code .visible
+        |  ⇒ set 
+        code visibility: visible
+      li
+        code .invisible
+        |  ⇒ set 
+        code visibility: hidden
+    h4.mt-4#visibility Example
+    p.mt-2.mb-1 Consider a following grid layout.
+    +visibilityExample
+    p.mt-3.mb-1 Bootstrap has two utility classses to get rid of a element with different results.
+    p.mt-2.mb-1
+      code .d-none
+      |  (see 
+      a(href="utilities-2.html#display") Display utility
+      |  ) ⇒ element is removed from layout
+    +visibilityExample("d-none")
+    p.mt-3.mb-1
+      code .invisible
+      |  ⇒ element hides but remains as a part of layout
+    +visibilityExample("invisible")
+
+    +breadcrumbLevel1("Utilities(5): Text/Vertical align/Visibility")
