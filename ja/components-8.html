@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンポーネント(8): メディアオブジェクト / モーダル</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンポーネント(8): <a href="#media-object">メディアオブジェクト</a> / <a href="#modal">モーダル</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-8.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="media-object"><a href="https://getbootstrap.com/docs/4.2/components/media-object/" target="_blank">メディアオブジェクト</a>
+      </h2>
+      <h4 class="mt-4" id="media-example"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#example" target="_blank">基本構成</a>
+      </h4>
+      <div class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <ul class="struct mt-3">
+        <li>外枠 <code>div.media</code>
+          <ul>
+            <li>サムネール画像 <code>img</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+              <ul class="collapse a1-1">
+                <li class="cls">クラス <code>.mr-3</code> (右側の本文との間に1remの間隔を確保 ⇒ <a href="utilities-4.html#spacing">空白ユーティリティ</a>)</li>
+                <li class="att">属性 <code>href="..."</code></li>
+                <li class="att">属性 <code>alt="..."</code></li>
+              </ul>
+            </li>
+            <li>ヘッダ + 本文 <code>div.media-body</code>
+              <ul>
+                <li>ヘッダ <code>h5</code>
+                  <ul>
+                    <li class="txt">テキスト <code>Media heading</code></li>
+                  </ul>
+                </li>
+                <li class="txt">本文 <code>Lorem ipsum ...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="media-nesting"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#nesting" target="_blank">ネスト</a>
+      </h4>
+      <p class="my-2"><code>div.media-body</code> の子として <code>div.media</code> をネストして配置できる。</p>
+      <p class="mt-2 mb-1">2重ネストの例</p>
+      <div class="media mt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+            <div class="media-body">
+              <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 mb-1">3重ネスト(以下何重でもOK)</p>
+      <div class="media mt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+            <div class="media-body">
+              <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+                <div class="media-body">
+                  <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-alignment"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#alignment" target="_blank">アラインメント</a>
+      </h4>
+      <p class="my-2"><a href="utilities-3.html#flex">Flexboxユーティリティ</a>の <code>.align-self(start|center|end)</code> を用いる。次は <code>img</code> の配置例(枠に確認用のボーダーを追加)。</p>
+      <p class="mt-2 mb-1"><code>img.align-self-start</code></p>
+      <div class="media mb-3 border"><img class="align-self-start mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Top-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <p class="mt-2 mb-1"><code>img.align-self-center</code></p>
+      <div class="media mb-3 border"><img class="align-self-center mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Center-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <p class="mt-2 mb-1"><code>img.align-self-end</code></p>
+      <div class="media mb-3 border"><img class="align-self-end mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Bottom-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-order"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#order" target="_blank">コンテンツの順序</a>
+      </h4>
+      <p class="my-2">(1) 要素の順序を変更して <code>img</code> を最後にすると右配置になる</p>
+      <div class="media mt-2">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div><img class="ml-3 order-last" src="../img/48x48.svg" alt="48x48 placeholder image">
+      </div>
+      <p class="mt-4 mb-2">(2) <a href="utilities-3.html#flex">Flexboxユーティリティ</a>の <code>.order-*</code> を使い順序を入れ替えても同じことができる</p>
+      <div class="media mt-2"><img class="ml-3 order-last" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-list"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#media-list" target="_blank">リスト要素を用いる場合</a>
+      </h4>
+      <p class="my-2"><code>ul</code> ( <code>ol</code> でも同じ)を用いた例</p>
+      <ul class="list-unstyled">
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (1)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (2)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (3)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+      </ul>
+      <ul class="struct mt-3">
+        <li><code>ul.list-unstyled</code>
+          <ul>
+            <li class="cls"><code>.list-unstyled</code> で先頭シンボルを非表示(⇒ <a href="content-1.html#typo-list-unstyled">リストのデフォルト書式解除</a>)</li>
+            <li>アイテム(個数分) <code>li.media.my-3</code>
+              <ul>
+                <li class="cls"><code>.my-3</code> は上下マージン調整(⇒ <a href="utilities-4.html#spacing">空白ユーティリティ</a>)</li>
+                <li>以下<a href="#media-example">基本構成</a>の内部と同様</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="modal"><a href="https://getbootstrap.com/docs/4.2/components/modal/" target="_blank">モーダル</a>
+      </h2>
+      <h4 class="mt-3" id="modal-components"><a href="https://getbootstrap.com/docs/4.2/components/modal/#modal-components" target="_blank">モーダルの構成要素</a>
+      </h4>
+      <p class="my-2">表示サンプル: 常時表示するように変更したもの(通常の初期状態は非表示)</p>
+      <!-- div.modal(tabindex="-1" role="dialog") <= これだと非表示になるため変更-->
+      <div class="bg-light py-2 mb-3" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-structure" aria-control="#basic-example-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="basic-example-structure">
+        <li>外枠 <code>div.modal.fade</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="cls collapse a1-1">クラス <code>.fade</code> - アニメーション効果用(外すと起動時にスライドしない)</li>
+            <li class="att collapse a1-1">属性 <code>id="{モーダルID}"</code> (起動用に必要)</li>
+            <li class="att collapse a1-1">属性 <code>tabindex="-1"</code> (キーフォーカスから外す)</li>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>role="dialog"</code></li>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>aria-labelledby="{ラベルID}"</code></li>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>aria-hidden="true"</code></li>
+            <li>本体 <code>div.modal-dialog</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a1-2">アクセシビリティ属性 <code>role="document"</code></li>
+                <li>コンテント <code>div.modal-content</code>
+                  <ul>
+                    <li>ヘッダ <code>div.modal-header</code>
+                      <ul>
+                        <li>タイトル <code>h5.modal-title</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">属性</a>
+                          <ul>
+                            <li class="att collapse a1-3">(アクセシビリティ用)属性 <code>id="{ラベルID}"</code></li>
+                            <li class="txt">テキスト <code>Modal title</code></li>
+                          </ul>
+                        </li>
+                        <li>右上クローズボタン <code>button.close</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">属性</a>
+                          <ul>
+                            <li class="att collapse a1-4">属性 <code>type="button"</code></li>
+                            <li class="att collapse a1-4">属性 <code>data-dismiss="modal"</code></li>
+                            <li class="att collapse a1-4">アクセシビリティ属性 <code>aria-label="Close"</code></li>
+                            <li>ボタンシンボル <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-5" aria-control=".a1-5" aria-expanded="false">属性</a>
+                              <ul>
+                                <li class="att collapse a1-5">アクセシビリティ属性 <code>aria-hidden="true"</code></li>
+                                <li class="txt">テキスト <code>&amp;times;</code></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>ボディ <code>div.modal-body</code>
+                      <ul>
+                        <li>(例: 上記サンプルの場合) <code>p</code>
+                          <ul>
+                            <li class="txt">テキスト <code>Modal body text goes here.</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>フッタ <code>div.modal-footer</code>
+                      <ul>
+                        <li>Closeボタン <code>button.btn.btn-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-6" aria-control=".a1-6" aria-expanded="false">属性</a>
+                          <ul>
+                            <li class="att collapse a1-6">属性 <code>type="button"</code></li>
+                            <li class="att collapse a1-6">属性 <code>data-dismiss="modal"</code></li>
+                            <li class="txt">テキスト<code>Close</code></li>
+                          </ul>
+                        </li>
+                        <li>用途により追加ボタン(例: 上記サンプルの場合) <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-7" aria-control=".a1-7" aria-expanded="false">属性</a>
+                          <ul>
+                            <li class="att collapse a1-7">属性 <code>type="button"</code></li>
+                            <li class="txt">テキスト <code>Save changes</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">設定量は多いがボディ内部以外はほとんど同じ定型構造なのでテンプレートを作っておくとよい(このページのpugソースはmixinによるテンプレートを用いている)。</div>
+      <h4 class="mt-4" id="live-demo"><a href="https://getbootstrap.com/docs/4.2/components/modal/#live-demo" target="_blank">モーダルの起動</a>
+      </h4>
+      <p class="mt-2 mb-1">モーダルはボタンを使って起動できる。起動ボタンの基本構成は次の通り。</p>
+      <ul class="struct mt-1 mb-2">
+        <li><code>button.btn.btn-primary</code> : 表示設定は何でもよいが、次の属性が必須
+          <ul>
+            <li class="att">属性 <code>type="button"</code></li>
+            <li class="att">属性 <code>data-toggle="modal"</code></li>
+            <li class="att">属性 <code>data-target=&quot;#{モーダルID}&quot;</code></li>
+            <li class="txt">テキスト(例) <code>Launch demo modal</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">次のボタンを押すとページが暗転し、モーダルが上からスライドする。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Woohoo, you're reading this text in a modal!</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-info mt-3" role="alert"><code>data-target</code> には任意のCSSセレクタ書式が可能。そのため <code>id</code> 以外のセレクタ指定も可能だが、もし複数該当してもモーダルはひとつしか起動しない。起動するモーダルは常に一つで、ネスト(モーダル表示中に別のモーダルを起動)にも対応していない。</div>
+      <h5 class="mt-4" id="behaviors">動作のポイント(まとめ)</h5>
+      <ul class="my-1">
+        <li>背後の元ページを暗転するため全画面を半透明要素(<strong>バックドロップ</strong>)で覆う(z-indexは <code>1040</code> )</li>
+        <li>その上にモーダルを中央上揃えで表示する(Z-indexは <code>1050</code> )</li>
+        <ul>
+          <li><code>.fade</code> を付けると上からスライド(CSSアニメーション)して表示</li>
+        </ul>
+        <li>表示中はキーボードフォーカスやタブストップはモーダルのみが受ける</li>
+        <li>スクロールバーのスクロール動作もモーダルが受ける(次に例を示す)</li>
+        <li>次のいずれかでクローズして元に戻る</li>
+        <ul>
+          <li>クローズボタン(右上シンボル <strong>&times;</strong> または右下 <strong>Close</strong> ボタン)をクリック</li>
+          <li>モーダル外部の背景(バックドロップ)をクリック</li>
+          <li><kbd>Esc</kbd> キー入力</li>
+        </ul>
+      </ul>
+      <h4 class="mt-4" id="scrolling-long-content"><a href="https://getbootstrap.com/docs/4.2/components/modal/#scrolling-long-content" target="_blank">モーダルの縦スクロール</a>
+      </h4>
+      <p class="my-2">モーダルの高さが表示デバイスより大きい場合はスクロールバーを表示する。この時スクロール対象はモーダルに設定され、元ページはスクロールせずモーダルだけ縦スクロールする。次のデモを起動すると確認できる。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalLong">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="vertically-centered"><a href="https://getbootstrap.com/docs/4.2/components/modal/#vertically-centered" target="_blank">画面中央への表示</a>
+      </h4>
+      <p class="my-2">デフォルトは中央上揃えだが、本体 <code>div.modal-dialog</code> に <code>.modal-dialog-centered</code> を追加すると画面中央揃えで表示する。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="tooltips-and-popovers"><a href="https://getbootstrap.com/docs/4.2/components/modal/#tooltips-and-popovers" target="_blank">ツールチップとポップオーバー</a>
+      </h4>
+      <p class="my-2">ボディ内部ではほとんどの機能を利用できる。次は内部に<a href="components-12.html#toolstips">ツールチップ</a>と<a href="components-11.html#popovers">ポップオーバー</a>を用いた例。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalTooltipsPopovers">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalTooltipsPopovers" tabindex="-1" role="dialog" aria-labelledby="exampleModalTooltipsPopoversTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalTooltipsPopoversTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <h5>Popover in a modal</h5>
+              <p>This <a class="btn btn-secondary popover-test" href="#" role="button" data-toggle="popover" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+              <h5>Tooltips in a modal</h5>
+              <p><a class="tooltip-test" href="#" data-toggle="tooltip" title="Tooltip">This link </a>and <a class="tooltip-test" href="#" data-toggle="tooltip" title="Tooltip">That link </a>have tooltips on hover.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="using-the-grid"><a href="https://getbootstrap.com/docs/4.2/components/modal/#using-the-grid" target="_blank">グリッド</a>
+      </h4>
+      <p class="my-2">モーダルボディに<a href="layout-1.html#grid">グリッド</a>を用いた例。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalGrid">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalGrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalGridTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row m-2">
+                  <div class="col-md-4 border bg-light">.col-md-4</div>
+                  <div class="col-md-4 ml-auto border bg-light">.col-md-4.ml-auto</div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-md-3 ml-auto border bg-light">.col-md-3.ml-auto</div>
+                  <div class="col-md-2 ml-auto border bg-light">.col-md-2.ml-auto</div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-md-6 ml-auto border bg-light">.col-md-6.ml-auto</div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-sm-9 border bg-light">Level 1: .col-sm-9
+                    <div class="row">
+                      <div class="col-8 col-sm-6 border bg-warning">Level 2: .col-8.col-sm-6</div>
+                      <div class="col-4 col-sm-6 border bg-warning">Level 2: .col-4.col-sm-6</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="varying-modal-content"><a href="https://getbootstrap.com/docs/4.2/components/modal/#varying-modal-content" target="_blank">起動時のコンテント更新</a>
+      </h4>
+      <p class="mt-2 mb-3">同じモーダルの起動時に起動ボタンの情報を読んで表示を変える例(要JavaScript)。</p>
+      <div class="my-3">
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#examplemodal" data-whatever="@mdo">open modal for @mdo</button>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#examplemodal" data-whatever="@fat">open modal for @fat</button>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#examplemodal" data-whatever="@getbootstrap">open modal for @getbootstrap</button>
+      </div>
+      <div class="modal fade" id="examplemodal" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="examplemodallabel">new message</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label class="col-form-label" for="recipient-name">recipient:</label>
+                  <input class="form-control" id="recipient-name" type="text">
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="message-text">message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">close</button>
+              <button class="btn btn-primary" type="button">send message</button>
+            </div>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href=".javascript-code" aria-control=".javascript-code" aria-expanded="false">JavaScriptコード</a>
+      <pre class="p-2 border bg-light mt-3 collapse javascript-code"><code>$('#examplemodal').on('show.bs.modal', function(event) {
+  var button = $(event.relatedTarget);
+  var recipient = button.data('whatever');
+  var modal = $(this);
+  modal.find('.modal-title').text('New message to ' + recipient);
+  modal.find('.modal-body input').val(recipient);
+});</code></pre>
+      <ul class="mt-2 collapse javascript-code">
+        <li>起動ボタンに次の属性を設定(例): <code>data-whatever="@mdo"</code></li>
+        <li>JavaScript(jQuery)で起動イベント <code>show.bs.modal</code> を検出(⇒ <a href="https://getbootstrap.com/docs/4.2/components/modal/#events" target="_blank">Events</a> ): 次の2つの違いに注意
+          <ul>
+            <li><code>show.bs.modal</code> 起動(ボタンクリック)時: まだ表示前(こちらを使用)</li>
+            <li><code>shown.bs.modal</code> モーダル表示の完了時</li>
+          </ul>
+        </li>
+        <li>起動ボタン( <code>event.relatedTarget</code> )から属性 <code>data-whatever</code> を読み取る</li>
+        <li>読み取った値をタイトルと <code>input</code> 要素に設定</li>
+      </ul>
+      <h4 class="mt-4" id="optional-sizes"><a href="https://getbootstrap.com/docs/4.2/components/modal/#optional-sizes" target="_blank">サイズ指定</a>
+      </h4>
+      <p class="my-1"><code>div.modal-dialog.modal-(xl|lg|sm)</code> を用いる。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-xl">Extra large modal</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-lg">Large modal</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-md">Default modal</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-sm">Small modal</button>
+      <div class="modal fade" id="modal-example-size-xl" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Extra large modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-example-size-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Large modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-example-size-md" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Default modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-example-size-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Small modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(8): メディアオブジェクト/モーダル</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

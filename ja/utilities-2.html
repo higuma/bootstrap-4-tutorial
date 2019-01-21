@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: ユーティリティ(2): 色 / 表示 / 埋め込み</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">ユーティリティ(2): <a href="#colors">色</a> / <a href="#display">表示</a> / <a href="#embed">埋め込み</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/utilities-2.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="colors"><a href="https://getbootstrap.com/docs/4.2/utilities/colors/" target="_blank">色</a>
+      </h2>
+      <h4 class="mt-4 mb-0" id="colors-color"><a href="https://getbootstrap.com/docs/4.2/utilities/colors/#color" target="_blank">文字色</a>
+      </h4>
+      <p class="mt-0 mb-2"><code>.text-(primary|secondary|success|danger|warning|info|light|dark|body|muted|white|black-50|white-50)</code></p>
+      <div class="alert alert-info"> <code>.color-black-50</code> と <code>.color-white-50</code> は文字色を透過率50%の半透明に設定する。</div>
+      <h5 class="mt-3 mb-0" id="colors-color-samples">文字サンプル</h5>
+      <p class="mt-0 mb-2"><code>span.text-(primary|secondary|...)</code></p>
+      <p class="my-1"><span class="text-primary my-1 px-1">.text-primary</span></p>
+      <p class="my-1"><span class="text-secondary my-1 px-1">.text-secondary</span></p>
+      <p class="my-1"><span class="text-success my-1 px-1">.text-success</span></p>
+      <p class="my-1"><span class="text-danger my-1 px-1">.text-danger</span></p>
+      <p class="my-1"><span class="text-warning my-1 px-1">.text-warning</span></p>
+      <p class="my-1"><span class="text-info my-1 px-1">.text-info</span></p>
+      <p class="my-1"><span class="text-light bg-dark my-1 px-1">.text-light</span></p>
+      <p class="my-1"><span class="text-dark my-1 px-1">.text-dark</span></p>
+      <p class="my-1"><span class="text-body my-1 px-1">.text-body</span></p>
+      <p class="my-1"><span class="text-muted my-1 px-1">.text-muted</span></p>
+      <p class="my-1"><span class="text-white bg-dark my-1 px-1">.text-white</span></p>
+      <p class="my-1"><span class="text-black-50 my-1 px-1">.text-black-50</span></p>
+      <p class="my-1"><span class="text-white-50 bg-dark my-1 px-1">.text-white-50</span></p>
+      <h5 class="mt-4 mb-0" id="colors-color-link-samples">リンクサンプル</h5>
+      <p class="mt-0 mb-2"><code>a.text-(primary|secondary|...)</code></p>
+      <p class="my-1"><a class="text-primary px-1" href="#">Primary link</a></p>
+      <p class="my-1"><a class="text-secondary px-1" href="#">Secondary link</a></p>
+      <p class="my-1"><a class="text-success px-1" href="#">Success link</a></p>
+      <p class="my-1"><a class="text-danger px-1" href="#">Danger link</a></p>
+      <p class="my-1"><a class="text-warning px-1" href="#">Warning link</a></p>
+      <p class="my-1"><a class="text-info px-1" href="#">Info link</a></p>
+      <p class="my-1"><a class="text-light bg-dark px-1" href="#">Light link</a></p>
+      <p class="my-1"><a class="text-dark px-1" href="#">Dark link</a></p>
+      <p class="my-1"><a class="text-body px-1" href="#">Body link</a></p>
+      <p class="my-1"><a class="text-muted px-1" href="#">Muted link</a></p>
+      <p class="my-1"><a class="text-white bg-dark px-1" href="#">White link</a></p>
+      <p class="my-1"><a class="text-black-50 px-1" href="#">Black-50 link</a></p>
+      <p class="my-1"><a class="text-white-50 bg-dark px-1" href="#">White-50 link</a></p>
+      <h4 class="mt-4 mb-1" id="colors-background-color"><a href="https://getbootstrap.com/docs/4.2/utilities/colors/#background-color" target="_blank">背景色</a>
+      </h4>
+      <p class="mt-0 mb-3"><code>.bg-(primary|secondary|success|danger|warning|info|light|dark|white|transparent)</code></p>
+      <div class="mb-2 p-3 bg-primary text-white">.bg-primary</div>
+      <div class="mb-2 p-3 bg-secondary text-white">.bg-secondary</div>
+      <div class="mb-2 p-3 bg-success text-white">.bg-success</div>
+      <div class="mb-2 p-3 bg-danger text-white">.bg-danger</div>
+      <div class="mb-2 p-3 bg-warning text-white">.bg-warning</div>
+      <div class="mb-2 p-3 bg-info text-white">.bg-info</div>
+      <div class="mb-2 p-3 bg-light text-dark">.bg-light</div>
+      <div class="mb-2 p-3 bg-dark text-white">.bg-dark</div>
+      <div class="mb-2 p-3 bg-white border text-dark">.bg-white</div>
+      <div class="mb-2 p-3 bg-transparent border text-dark">.bg-transparent</div>
+      <div class="alert alert-info mt-3"><code>.bg-transparent</code> は元の背景色設定を除去するのに用いられる。<a href="components-3.html#mixins-utilities">カード - 設定の組み合わせ</a>に実例がある。</div>
+      <h2 class="mt-5" id="display"><a href="https://getbootstrap.com/docs/4.2/utilities/display/" target="_blank">表示</a>
+      </h2>
+      <p class="mt-3 mb-1">CSSの <code>display</code> プロパティ(要素の表示と配置)を設定するユーティリティクラス</p>
+      <h4 class="mt-4 mb-1" id="display-notation"><a href="https://getbootstrap.com/docs/4.2/utilities/display/#notation" target="_blank">記法</a>
+      </h4>
+      <p class="mt-0 mb-1"><code>.d(-sm|-md|-lg|-xl)?-(none|inline|inline-block|block|...)</code></p>
+      <p class="mt-2 mb-1">レスポンシブ設定</p>
+      <ul>
+        <li><code>.d-</code> xs(デフォルト)で適用</li>
+        <li><code>.d-sm-</code> sm(≧576px)で適用
+        </li>
+        <li><code>.d-md-</code> md(≧768px)で適用
+        </li>
+        <li><code>.d-lg-</code> lg(≧992px)で適用
+        </li>
+        <li><code>.d-xl-</code> xl(≧1200px)で適用
+        </li>
+      </ul>
+      <p class="mt-2 mb-1"><code>display</code> プロパティの設定 (詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/CSS/display" target="_blank">CSSリファレンス</a>参照)
+      </p>
+      <ul>
+        <li><code>none</code></li>
+        <li><code>inline</code></li>
+        <li><code>inline-block</code></li>
+        <li><code>block</code></li>
+        <li><code>table</code></li>
+        <li><code>table-cell</code></li>
+        <li><code>table-row</code></li>
+        <li><code>flex</code></li>
+        <li><code>inline-flex</code></li>
+      </ul>
+      <h4 class="mt-4 mb-1" id="display-examples"><a href="https://getbootstrap.com/docs/4.2/utilities/display/#examples" target="_blank">要素のデフォルト設定の変更</a>
+      </h4>
+      <p class="mt-3 mb-2">Inlineを強制したdiv : <code>div.d-inline</code> ⇒ 横に並ぶ</p>
+      <div>
+        <div class="d-inline bg-primary p-1"><code class="text-white">div.d-inline</code></div>
+        <div class="d-inline bg-secondary p-1"><code class="text-white">div.d-inline</code></div>
+      </div>
+      <p class="mt-4 mb-1">Blockを強制したspan : <code>span.d-block</code> ⇒ 縦に並ぶ</p><span class="d-block bg-primary p-1"><code class="text-white">span.d-block</code></span><span class="d-block bg-secondary p-1"><code class="text-white">span.d-block</code></span>
+      <h4 class="mt-4 mb-1" id="display-hiding-elements"><a href="https://getbootstrap.com/docs/4.2/utilities/display/#hiding-elements" target="_blank">要素の表示/非表示制御</a>
+      </h4>
+      <p class="mt-2 mb-1">(1) md(768px&le;幅&lt;992px)のみ非表示にするブロック要素は次の2つの組み合わせで実現できる(優先度低 ⇒ 高の順)</p>
+      <ul class="my-1">
+        <li>デフォルトは「block要素として表示」</li>
+        <li><code>.d-md-none</code> md以上で非表示(デフォルトより優先)</li>
+        <li><code>.d-lg-block</code> md以上で表示(優先度最大)</li>
+      </ul>
+      <p class="mt-3 mb-1">サンプル(全条件の設定はソース参照)</p>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-none d-sm-block" style="background: #337">XS(幅&lt;576px)の時だけ消える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-sm-none d-md-block" style="background: #559">SM(576px&le;幅&lt;768px)の時だけ消える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-md-none d-lg-block" style="background: #77b">MD(768px&le;幅&lt;992px)の時だけ消える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-lg-none d-xl-block" style="background: #99d">LG(992px&le;幅&lt;1200px)の時だけ消える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-xl-none" style="background: #bbf">XL(幅&ge;1200px)の時だけ消える</div>
+      </div>
+      <p class="mt-4 mb-1">(2) md(768px&le;幅&lt;992px)のみ表示するブロック要素は次の3つの組み合わせで実現できる(優先度低 ⇒ 高の順)</p>
+      <ul class="my-1">
+        <li><code>.d-non</code> デフォルトを非表示に設定(優先度最小)</li>
+        <li><code>.d-md-block</code> md以上で表示</li>
+        <li><code>.m-lg-none</code> lg以上で非表示(優先度最大)</li>
+      </ul>
+      <p class="mt-3 mb-1">サンプル(全条件の設定はソース参照)</p>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-block d-sm-none" style="background: #337">XS(幅&lt;576px)の時だけ見える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-none d-sm-block d-md-none" style="background: #559">SM(576px&le;幅&lt;768px)の時だけ見える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-none d-md-block d-lg-none" style="background: #77b">MD(768px&le;幅&lt;992px)の時だけ見える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-none d-lg-block d-xl-none" style="background: #99d">LG(992px&le;幅&lt;1200px)の時だけ見える</div>
+      </div>
+      <div class="row mx-1">
+        <div class="col text-white p-2 d-none d-xl-block" style="background: #bbf">XL(幅&ge;1200px)の時だけ見える</div>
+      </div>
+      <h4 class="mt-4 mb-1" id="display-in-print"><a href="https://getbootstrap.com/docs/4.2/utilities/display/#display-in-print" target="_blank">印刷に対する制御</a>
+      </h4>
+      <p><code>.d-print-(none|inline|inline-block+block|...)</code> を使い印刷時だけ有効な <code>display</code> の設定を行うことができる(略)。</p>
+      <h2 class="mt-5" id="embed"><a href="https://getbootstrap.com/docs/4.2/utilities/embed/" target="_blank">埋め込み</a>
+      </h2>
+      <p class="mt-3 mb-1">埋め込みオブジェクト(動画など)のレスポンシブ設定</p>
+      <ul class="struct my-1">
+        <li>親 <code>div.embed-responsive.embed-responsive-(21by9|16by9|4by3|1by1)</code>
+          <ul>
+            <li>子 <code>(iframe|embed|video|object).embed-responsible-item</code>
+              <ul>
+                <li class="att">属性 <code>src="..."</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="embed-aspect-ratios"><a href="https://getbootstrap.com/docs/4.2/utilities/embed/" target="_blank">アスペクト比</a>
+      </h4>
+      <p class="my-2">親の <code>(21by9|16by9|4by3|1by1)</code> はアスペクト比を設定する。</p>
+      <ul>
+        <li><code>21by9</code> 21:9 - Ultra-Widescreen (シネマスコープ)</li>
+        <li><code>16by9</code> 16:9 - HD TV (ハイビジョン)</li>
+        <li><code>4by3</code> 4:3 - SD TV (アナログTV)</li>
+        <li><code>1by1</code> 1:1 - 正方形</li>
+      </ul>
+      <h4 class="mt-4" id="embed-examples">設定例</h4>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AjI2J2SQ528" allowfullscreen></iframe>
+      </div>
+      <p class="mb-5"></p>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ev3vENli7wQ" allowfullscreen></iframe>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">ユーティリティ(2): 色/表示/埋め込み</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (8): Media Object / Modal</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (8): <a href="#media-object">Media object</a> / <a href="#modal">Modal</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-8.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="media-object"><a href="https://getbootstrap.com/docs/4.2/components/media-object/" target="_blank">Media Object</a>
+      </h2>
+      <h4 class="mt-4" id="media-example"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#example" target="_blank">Basic example</a>
+      </h4>
+      <div class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <ul class="struct mt-3">
+        <li>Media object (frame) <code>div.media</code>
+          <ul>
+            <li>Thumbnail image <code>img</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a1-1">
+                <li class="cls">Margin <code>.mr-3</code> (keeps 1rem between media body on right ⇒ <a href="utilities-4.html#spacing">Spacing utilities</a> )</li>
+                <li class="att">Attribute <code>href="..."</code></li>
+                <li class="att">Attribute <code>alt="..."</code></li>
+              </ul>
+            </li>
+            <li>Body <code>div.media-body</code>
+              <ul>
+                <li>Heading <code>h5</code>
+                  <ul>
+                    <li class="txt">Heading text <code>Media heading</code></li>
+                  </ul>
+                </li>
+                <li class="txt">Body text <code>Lorem ipsum ...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="media-nesting"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#nesting" target="_blank">Nesting</a>
+      </h4>
+      <p class="my-2"><code>div.media</code> can be nested inside <code>div.media-body</code></p>
+      <p class="mt-3 mb-1">Nesting example</p>
+      <div class="media mt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+            <div class="media-body">
+              <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 mb-1">Three levels (more levels as the same way)</p>
+      <div class="media mt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+            <div class="media-body">
+              <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <div class="media pt-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+                <div class="media-body">
+                  <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-alignment"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#alignment" target="_blank">Alignment</a>
+      </h4>
+      <p class="my-2">Use <a href="utilities-3.html#flex">Flex utilities</a> . Examples for aligning <code>img</code> (with added borders).</p>
+      <p class="mt-2 mb-1"><code>img.align-self-start</code></p>
+      <div class="media mb-3 border"><img class="align-self-start mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Top-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <p class="mt-2 mb-1"><code>img.align-self-center</code></p>
+      <div class="media mb-3 border"><img class="align-self-center mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Center-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <p class="mt-2 mb-1"><code>img.align-self-end</code></p>
+      <div class="media mb-3 border"><img class="align-self-end mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0">Bottom-aligned media</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-order"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#order" target="_blank">Order</a>
+      </h4>
+      <p class="my-2">(1) Change DOM element order: move <code>img</code> to the last</p>
+      <div class="media mt-2">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div><img class="ml-3 order-last" src="../img/48x48.svg" alt="48x48 placeholder image">
+      </div>
+      <p class="mt-4 mb-2">(2) Change order with <code>.order-*</code> of <a href="utilities-3.html#flex">Flex utilities</a> .</p>
+      <div class="media mt-2"><img class="ml-3 order-last" src="../img/48x48.svg" alt="48x48 placeholder image">
+        <div class="media-body">
+          <h5>Media heading</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <h4 class="mt-4" id="media-list"><a href="https://getbootstrap.com/docs/4.2/components/media-object/#media-list" target="_blank">Media list</a>
+      </h4>
+      <p class="my-2">Example using <code>ul</code> (same as <code>ol</code> )</p>
+      <ul class="list-unstyled">
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (1)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (2)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+        <li class="media my-3"><img class="mr-3" src="../img/48x48.svg" alt="48x48 placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0">Media heading (3)</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          </div>
+        </li>
+      </ul>
+      <ul class="struct mt-3">
+        <li><code>ul.list-unstyled</code>
+          <ul>
+            <li class="cls">Remove prefix symbols with <code>.list-unstyled</code> (⇒ <a href="content-1.html#typo-list-unstyled">Lists - Unstyled</a> )</li>
+            <li>Items <code>li.media.my-3</code>
+              <ul>
+                <li class="cls">Adjust top/bottom margins with <code>.my-3</code> (⇒ <a href="utilities-4.html#spacing">Spacing utilities</a> )</li>
+                <li>See <a href="#media-example">Basic example</a> for inside</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="modal"><a href="https://getbootstrap.com/docs/4.2/components/modal/" target="_blank">Modal</a>
+      </h2>
+      <h4 class="mt-3" id="modal-components"><a href="https://getbootstrap.com/docs/4.2/components/modal/#modal-components" target="_blank">Modal components</a>
+      </h4>
+      <p class="my-2">Sample: modified to always-displayed (hidden as default)</p>
+      <!-- div.modal(tabindex="-1" role="dialog") <= default (hidden)-->
+      <div class="bg-light py-2 mb-3" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-structure" aria-control="#basic-example-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="basic-example-structure">
+        <li>Modal <code>div.modal</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="cls collapse a1-1">Animation <code>.fade</code> (does not slides down if removed)</li>
+            <li class="att collapse a1-1">Attribute <code>id="{modal-id}"</code> (required for invocation)</li>
+            <li class="att collapse a1-1">Attribute <code>tabindex="-1"</code> (removes from tab stops)</li>
+            <li class="att collapse a1-1">Accessibility attribute <code>role="dialog"</code></li>
+            <li class="att collapse a1-1">Accessibility attribute <code>aria-labelledby="{label-id}"</code></li>
+            <li class="att collapse a1-1">Accessibility attribute <code>aria-hidden="true"</code></li>
+            <li>Modal dialog <code>div.modal-dialog</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a1-2">Accessibility attribute <code>role="document"</code></li>
+                <li>Content <code>div.modal-content</code>
+                  <ul>
+                    <li>Header <code>div.modal-header</code>
+                      <ul>
+                        <li>Title <code>h5.modal-title</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attribute</a>
+                          <ul>
+                            <li class="att collapse a1-3">Accessibility attribute <code>id="{label-id}"</code></li>
+                            <li class="txt">Title text <code>Modal title</code></li>
+                          </ul>
+                        </li>
+                        <li>Close button (upper-right) <code>button.close</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">Attributes</a>
+                          <ul>
+                            <li class="att collapse a1-4">Attribute <code>type="button"</code></li>
+                            <li class="att collapse a1-4">Attribute <code>data-dismiss="modal"</code></li>
+                            <li class="att collpse a1-4">Accessibility attribute <code>aria-label="Close"</code></li>
+                            <li>Button symbol <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-5" aria-control=".a1-5" aria-expanded="false">Attribute</a>
+                              <ul>
+                                <li class="att collapse a1-5">Accessibility attribute <code>aria-hidden="true"</code></li>
+                                <li class="txt">Symbol text <code>&amp;times;</code></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Body <code>div.modal-body</code>
+                      <ul>
+                        <li>Content (e.g.) <code>p</code>
+                          <ul>
+                            <li class="txt">Text <code>Modal body text goes here.</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Footer <code>div.modal-footer</code>
+                      <ul>
+                        <li>Close button <code>button.btn.btn-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-6" aria-control=".a1-6" aria-expanded="false">Attributes</a>
+                          <ul>
+                            <li class="att collapse a1-6">Attribute <code>type="button"</code></li>
+                            <li class="att collapse a1-6">Attribute <code>data-dismiss="modal"</code></li>
+                            <li class="txt">Text <code>Close</code></li>
+                          </ul>
+                        </li>
+                        <li>Additional button (e.g.) <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-7" aria-control=".a1-7" aria-expanded="false">Attribute</a>
+                          <ul>
+                            <li class="att collapse a1-7">Attribute <code>type="button"</code></li>
+                            <li class="txt">Text <code>Save changes</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">There are so many markups. But most of them are fixed presets (without title, body and additional button(s)). Making a template is convenient to make use of modals. This page utilizes pug <code>mixin</code> templates (see source).</div>
+      <h4 class="mt-4" id="live-demo"><a href="https://getbootstrap.com/docs/4.2/components/modal/#live-demo" target="_blank">Modal invocation</a>
+      </h4>
+      <p class="my-2">Modals can be invoked with buttons.</p>
+      <ul class="struct">
+        <li><code>button.btn.(btn-primary|...)</code> Following attibutes are required
+          <ul>
+            <li class="att"><code>type="button"</code></li>
+            <li class="att"><code>data-toggle="modal"</code></li>
+            <li class="att"><code>data-target="#{modal-id}"</code></li>
+            <li class="txt">Text (e.g.) <code>Launch demo modal</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">See the example below (clicking the button show a modal).</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Woohoo, you're reading this text in a modal!</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-info mt-3" role="alert">Example above finds the modal element by ID. However, <code>data-target</code> accepts arbitrary CSS selector. It is possible to use a selector to query mutiple elements but invokes only the first one. Modals also do not support nesting invocations.</div>
+      <h5 class="mt-4" id="behaviors">Behaviors (summary)</h5>
+      <ul class="my-1">
+        <li>Background is covered by a dark translucent whole-screen element (<strong>backdrop</strong>) (Z-index = <code>1040</code> )</li>
+        <li>Modal shows at top-center (Z-index = <code>1050</code> )</li>
+        <ul>
+          <li>With <code>.fade</code> , uses CSS animation on showing modal (slides down from top)</li>
+        </ul>
+        <li>While displaying modal, keyboard event are sent to modal</li>
+        <li>Modal also get scrolling events (see example below)</li>
+        <li>Modal closes on one of followings</li>
+        <ul>
+          <li>Click a close button (upper-right <strong>&times;</strong> symbol, or bottom-right <kbd>Close</kbd> button)</li>
+          <li>Click on background outside modal (backdrop)</li>
+          <li><kbd>Esc</kbd> key input</li>
+        </ul>
+      </ul>
+      <h4 class="mt-4" id="scrolling-long-content"><a href="https://getbootstrap.com/docs/4.2/components/modal/#scrolling-long-content" target="_blank">Scrolling long content</a>
+      </h4>
+      <p class="my-2">When modal height is greater than viewport size, the vertical scroll bar is shown at the right. The scroll bar scrolls the modal (not background contents). Check with the demo below.</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalLong">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="vertically-centered"><a href="https://getbootstrap.com/docs/4.2/components/modal/#vertically-centered" target="_blank">Vertically centered</a>
+      </h4>
+      <p class="my-2">Adding <code>.modal-dialog-centered</code> to <code>div.modal-dialog</code> displays a modal on vertically center.</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="tooltips-and-popovers"><a href="https://getbootstrap.com/docs/4.2/components/modal/#tooltips-and-popovers" target="_blank">Tooltops and popovers</a>
+      </h4>
+      <p class="my-2">Example using a <a href="components-12.html#toolstips">Tooltip</a> and <a href="components-11.html#popovers">Popovers</a> </p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalTooltipsPopovers">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalTooltipsPopovers" tabindex="-1" role="dialog" aria-labelledby="exampleModalTooltipsPopoversTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalTooltipsPopoversTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <h5>Popover in a modal</h5>
+              <p>This <a class="btn btn-secondary popover-test" href="#" role="button" data-toggle="popover" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+              <h5>Tooltips in a modal</h5>
+              <p><a class="tooltip-test" href="#" data-toggle="tooltip" title="Tooltip">This link </a>and <a class="tooltip-test" href="#" data-toggle="tooltip" title="Tooltip">That link </a>have tooltips on hover.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="using-the-grid"><a href="https://getbootstrap.com/docs/4.2/components/modal/#using-the-grid" target="_blank">Using the grid</a>
+      </h4>
+      <p class="my-2">Example using <a href="layout-1.html#grid">Grid</a> (see source for detail).</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalGrid">Launch demo modal</button>
+      <div class="modal fade" id="exampleModalGrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalGridTitle">Modal title</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row m-2">
+                  <div class="col-md-4 border bg-light">.col-md-4</div>
+                  <div class="col-md-4 ml-auto border bg-light">.col-md-4.ml-auto</div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-md-3 ml-auto border bg-light">.col-md-3.ml-auto</div>
+                  <div class="col-md-2 ml-auto border bg-light">.col-md-2.ml-auto</div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-md-6 ml-auto border bg-light">.col-md-6.ml-auto</div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-sm-9 border bg-light">Level 1: .col-sm-9
+                    <div class="row">
+                      <div class="col-8 col-sm-6 border bg-warning">Level 2: .col-8.col-sm-6</div>
+                      <div class="col-4 col-sm-6 border bg-warning">Level 2: .col-4.col-sm-6</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="varying-modal-content"><a href="https://getbootstrap.com/docs/4.2/components/modal/#varying-modal-content" target="_blank">Varying modal content</a>
+      </h4>
+      <p class="mt-2 mb-3">Example below is a demo for displaying button(recipient)-dependent contents to the same modal using JavaScript.</p>
+      <div class="my-3">
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#examplemodal" data-whatever="@mdo">open modal for @mdo</button>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#examplemodal" data-whatever="@fat">open modal for @fat</button>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#examplemodal" data-whatever="@getbootstrap">open modal for @getbootstrap</button>
+      </div>
+      <div class="modal fade" id="examplemodal" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="examplemodallabel">new message</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label class="col-form-label" for="recipient-name">recipient:</label>
+                  <input class="form-control" id="recipient-name" type="text">
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="message-text">message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">close</button>
+              <button class="btn btn-primary" type="button">send message</button>
+            </div>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href=".javascript-code" aria-control=".javascript-code" aria-expanded="false">JavaScript code</a>
+      <pre class="p-2 border bg-light mt-3 collapse javascript-code"><code>$('#examplemodal').on('show.bs.modal', function(event) {
+  var button = $(event.relatedTarget);
+  var recipient = button.data('whatever');
+  var modal = $(this);
+  modal.find('.modal-title').text('New message to ' + recipient);
+  modal.find('.modal-body input').val(recipient);
+});</code></pre>
+      <ul class="mt-2 collapse javascript-code">
+        <li>Preliminarily set recipients' data in invocation buttons: e.g. <code>data-whatever="@mdo"</code></li>
+        <li>Set event handler for <code>show.bs.modal</code> : see <a href="https://getbootstrap.com/docs/4.2/components/modal/#events" target="_blank">Events</a> for the difference of following two events
+          <ul>
+            <li><code>show.bs.modal</code> (used here) On modal triggered (not yet displayed)</li>
+            <li><code>shown.bs.modal</code> On modal displayed</li>
+          </ul>
+        </li>
+        <li>In event handler
+          <ul>
+            <li>Get the invocation button <code>event.relatedTarget</code></li>
+            <li>Read attribute <code>data-whatever</code> to variable <code>recipient</code></li>
+            <li>Set <code>recipient</code> to the modal title and the element <code>input</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="optional-sizes"><a href="https://getbootstrap.com/docs/4.2/components/modal/#optional-sizes" target="_blank">Optional sizes</a>
+      </h4>
+      <p class="my-2">Use <code>div.modal-dialog.modal-(xl|lg|sm)</code></p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-xl">Extra large modal</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-lg">Large modal</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-md">Default modal</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-example-size-sm">Small modal</button>
+      <div class="modal fade" id="modal-example-size-xl" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Extra large modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-example-size-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Large modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-example-size-md" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Default modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-example-size-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Small modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(8): Media object / Modal</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

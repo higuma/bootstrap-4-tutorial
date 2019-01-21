@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (9): Navs</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (9): <a href="#navs">Navs</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-9.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="navs"><a href="https://getbootstrap.com/docs/4.2/components/navs/" target="_blank">Navs</a>
+      </h2>
+      <h4 class="mt-3" id="base-nav"><a href="https://getbootstrap.com/docs/4.2/components/navs/#base-nav" target="_blank">Base nav</a>
+      </h4>
+      <h6 class="my-2"><code>ul</code>-based nav</h6><a class="btn btn-outline-info" data-toggle="collapse" href="#ul-based-structure" aria-control="#ul-based-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="ul-based-structure">
+        <li><code>ul.nav</code>
+          <ul>
+            <li>Item <code>li.nav-item</code>
+              <ul>
+                <li>Link <code>a.nav-link</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a1-1">
+                    <li class="att">Attribute <code>href="..."</code></li>
+                    <li class="cls">Add <code>.active</code> for an active item</li>
+                    <li class="cls">Add <code>.disabled</code> for disabled items</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">Example (added border to indicate boundary)</p>
+      <ul class="nav border">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <h6 class="mt-4 mb-2"><code>nav</code>-based nav (can be built with one level fewer hierarchy)</h6><a class="btn btn-outline-info" data-toggle="collapse" href="#nav-based-structure" aria-control="#nav-based-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="nav-based-structure">
+        <li><code>nav.nav</code>
+          <ul>
+            <li>Item+Link <code>a.nav-link</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attributes</a>
+              <ul class="collapse a2-1">
+                <li class="att">Attribute <code>href="..."</code></li>
+                <li class="cls">Add <code>.active</code> for an active item</li>
+                <li class="cls">Add <code>.disabled</code> for disabled items</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="nav border mt-3"><a class="nav-link active" href="#">Active</a><a class="nav-link" href="#">Link</a><a class="nav-link" href="#">Link</a><a class="nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <h4 class="mt-4" id="available-styles"><a href="https://getbootstrap.com/docs/4.2/components/navs/#available-styles" target="_blank">Available styles</a>
+      </h4>
+      <p>Use <a href="utilities.html#flex">Flex utilities</a></p>
+      <h5 class="mt-3 mb-1" id="horizontal-alignment"><a href="https://getbootstrap.com/docs/4.2/components/navs/#horizontal-alignment" target="_blank">Horizontal alignment</a>
+      </h5>
+      <p class="mt-1">Use <code>.justify-content-(start|center|end)</code></p>
+      <p class="mt-3 mb-1"><code>.justify-content-start</code> (default)
+      </p>
+      <ul class="nav justify-content-start border">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1"><code>.justify-content-center</code>
+      </p>
+      <ul class="nav justify-content-center border">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1"><code>.justify-content-end</code>
+      </p>
+      <ul class="nav justify-content-end border">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <h5 class="mt-3 mb-1" id="vertical"><a href="https://getbootstrap.com/docs/4.2/components/navs/#vertical" target="_blank">Vertical</a>
+      </h5>
+      <p class="mt-1">Add <code>.flex-column</code></p>
+      <p class="my-1">Used in <code>ul</code> ⇒ <code>ul.nav.flex-column</code></p>
+      <ul class="nav flex-column border">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Used in <code>nav</code> ⇒ <code>nav.nav.flex-column</code></p>
+      <nav class="flex-column border"><a class="nav-link active" href="#">Active</a><a class="nav-link" href="#">Link</a><a class="nav-link" href="#">Link</a><a class="nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <h4 class="mt-4 mb-0" id="tabs"><a href="https://getbootstrap.com/docs/4.2/components/navs/#tabs" target="_blank">Tabs</a>
+      </h4>
+      <p class="mt-1">Add <code>.nav-tabs</code> to <code>ul</code>-based navs.</p>
+      <p class="mt-3 mb-1">Example: <code>ul.nav.nav-tabs</code></p>
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-4 mb-1">Also available for <code>nav</code>-based nav. But <code>nav.nav.nav-tabs</code> draws a false line under an active item (see below).</p>
+      <nav class="nav nav-tabs"><a class="nav-link active" href="#">Active</a><a class="nav-link" href="#">Link</a><a class="nav-link" href="#">Link</a><a class="nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <p class="mt-3 mb-1">To fix the problem, add <code>.nav-item</code> to link items ⇒ <code>a.nav-item.nav-link(.active)?</code></p>
+      <nav class="nav nav-tabs"><a class="nav-item nav-link active" href="#">Active</a><a class="nav-item nav-link" href="#">Link</a><a class="nav-item nav-link" href="#">Link</a><a class="nav-item nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <h4 class="mt-4 mb-0" id="pills"><a href="https://getbootstrap.com/docs/4.2/components/navs/#pills" target="_blank">Pills</a>
+      </h4>
+      <p class="mt-0 mb-1">Set <code>.nav-pills</code></p>
+      <p class="mt-2 mb-1">Used in <code>ul</code> ⇒ <code>ul.nav.nav-pills</code></p>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Used in <code>nav.nav</code> ⇒ <code>nav.nav.nav-pills</code></p>
+      <nav class="nav nav-pills"><a class="nav-link active" href="#">Active</a><a class="nav-link" href="#">Link</a><a class="nav-link" href="#">Link</a><a class="nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <h4 class="mt-4" id="fill-and-justify"><a href="https://getbootstrap.com/docs/4.2/components/navs/#fill-and-justify" target="_blank">Fill and justify</a>
+      </h4>
+      <p class="my-1">Default pills (for comparison): added borders to show element boundaries</p>
+      <ul class="nav nav-pills border">
+        <li class="nav-item"><a class="nav-link active border" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link border" href="#">Longer nav link</a></li>
+        <li class="nav-item"><a class="nav-link border" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled border" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Auto-width fill: Add <code>.nav-fill</code> to <code>ul</code> ⇒ <code>ul.nav.nav-pills.nav-fill</code></p>
+      <ul class="nav nav-pills nav-fill border">
+        <li class="nav-item"><a class="nav-link active border" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link border" href="#">Longer nav link</a></li>
+        <li class="nav-item"><a class="nav-link border" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled border" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">For <code>nav.nav.nav-pills.nav-fill</code> , add <code>.nav-item</code> to link items ⇒ <code>a.nav-item.nav-link</code></p>
+      <nav class="nav nav-pills nav-fill border"><a class="nav-item nav-link active border" href="#">Active</a><a class="nav-item nav-link border" href="#">Longer nav link</a><a class="nav-item nav-link border" href="#">Link</a><a class="nav-item nav-link disabled border" href="#">Disabled</a>
+      </nav>
+      <p class="mt-3 mb-1">Equal-width fill: <code>.nav-justified</code> ⇒ <code>ul.nav.nav-pills.nav-justified</code></p>
+      <ul class="nav nav-pills nav-justified border">
+        <li class="nav-item"><a class="nav-link active border" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link border" href="#">Longer nav link</a></li>
+        <li class="nav-item"><a class="nav-link border" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled border" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">For <code>nav.nav.nav-pills.nav-fill</code> , use <code>a.nav-item.nav-link</code></p>
+      <nav class="nav nav-pills nav-justified border"><a class="nav-item nav-link active border" href="#">Active</a><a class="nav-item nav-link border" href="#">Longer nav link</a><a class="nav-item nav-link border" href="#">Link</a><a class="nav-item nav-link disabled border" href="#">Disabled</a>
+      </nav>
+      <p class="mt-3 mb-1">Same way as tabs: default (for comparison)</p>
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Longer nav link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Auto-width fill for <code>ul</code> ⇒ <code>ul.nav.nav-tabs.nav-fill</code></p>
+      <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Longer nav link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Auto-width fill for <code>nav</code> ⇒ <code>nav.nav.nav-tabs.nav-fill</code></p>
+      <nav class="nav nav-tabs nav-fill"><a class="nav-item nav-link active" href="#">Active</a><a class="nav-item nav-link" href="#">Longer nav link</a><a class="nav-item nav-link" href="#">Link</a><a class="nav-item nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <p class="mt-3 mb-1">Eual-width fill for <code>ul</code> ⇒ <code>ul.nav.nav-tabs.nav-justified</code></p>
+      <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Longer nav link</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Eual-width fill for <code>nav</code> ⇒ <code>nav.nav.nav-tabs.nav-justified</code></p>
+      <nav class="nav nav-tabs nav-justified"><a class="nav-item nav-link active" href="#">Active</a><a class="nav-item nav-link" href="#">Longer nav link</a><a class="nav-item nav-link" href="#">Link</a><a class="nav-item nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <h4 class="mt-4" id="working-with-flex-utilities"><a href="https://getbootstrap.com/docs/4.2/components/navs/#working-with-flex-utilities" target="_blank">Working with flex utilities</a>
+      </h4>
+      <p class="my-2">Responsive example using <a href="utilities-3.html#flex">Flex utilities</a></p>
+      <nav class="nav nav-pills flex-column flex-md-row border mt-3"><a class="flex-md-fill text-md-center nav-link active" href="#">Active</a><a class="flex-md-fill text-md-center nav-link" href="#">Link</a><a class="flex-md-fill text-md-center nav-link" href="#">Link</a><a class="flex-md-fill text-md-center nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#flex-example-structure" aria-control="#flex-example-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-2 collapse" id="flex-example-structure">
+        <li><code>nav.nav.nav-pills</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="cls collapse a3-1">Vertical (stacked) as default <code>.flex-column</code></li>
+            <li class="cls collapse a3-1">Horizontal (inline) on md (width&ge;768px) <code>.flex-md-row</code></li>
+            <li>Items <code>a.nav-link</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a3-2">
+                <li class="cls">Fills horizontally to the parent on md (width&ge;768px) <code>.flex-md-fill</code></li>
+                <li class="cls">Aligns center on md (width&ge;768px) <code>.text-md-center</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="regarding-accessibility"><a href="https://getbootstrap.com/docs/4.2/components/navs/#regarding-accessibility" target="_blank">Regarding accessibility</a>
+      </h4>
+      <p class="mt-2">Navigations ought to have a role <code>navigation</code>. However it cannot be set to <code>ul</code> elements (see <a href="https://www.w3.org/TR/html52/grouping-content.html#the-ul-element" target="_blank">W3C - the ul element</a> : <code>navigation</code> is not allowed to be a role value of <code>ul</code>).
+      </p>
+      <p class="my-2">You can use parent wrapper elements for <code>ul</code>-based navigations. For this purpose, <code>nav</code> (see <a href="https://www.w3.org/TR/html52/sections.html#the-nav-element" target="_blank">W3C - the nav element</a>) is a proper element.
+      </p>
+      <li>Parent wrapper <code>nav</code> (or <code>div</code>, etc.) + Role attribute <code>role="navigation"</code>
+        <ul>
+          <li>Navigation <code>ul.nav</code></li>
+        </ul>
+      </li>
+      <p class="my-2">For the <code>nav</code>-based nav, you can set the roll directly.</p>
+      <ul class="mt-1 mb-2">
+        <li>Navigation <code>nav.nav</code> +Role attribute <code>role="navigation"</code></li>
+      </ul>
+      <div class="alert alert-warning" role="alert"><strong>Caution: </strong>The role always must be <code>navigation</code>. Even with <code>.nav-tabs</code>, it must not be <code>tab</code>, <code>tablist</code>, or <code>tabpanel</code>.</div>
+      <div class="alert alert-info" role="alert">It is also recommended to use <code>span.sr-only</code> (⇒ <a href="utilities-4.html#screenreaders">Screenreaders</a>) with text e.g. <code>(current)</code> within an active element for screen reader users. See the actual example in <a href="components-10.html#nav">Navbar</a>.</div>
+      <h4 class="mt-4" id="using-dropdowns"><a href="https://getbootstrap.com/docs/4.2/components/navs/#using-dropdowns" target="_blank">Using dropdowns</a>
+      </h4>
+      <p class="mt-2 mb-3"><a href="components-4.html#dropdowns">Dropdown</a>s can be used as navigation items.</p><a class="btn btn-outline-info" data-toggle="collapse" href="#using-dropdowns-structure" aria-control="#using-dropdowns-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="using-dropdowns-structure">
+        <li>Dropdown item <code>li.nav-item.dropdown</code>
+          <ul>
+            <li>Link with dropdown <code>a.nav-link.dropdown-toggle</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="att collapse a4-1">Attribute <code>href="..."</code></li>
+                <li class="att collapse a4-1">Attribute <code>data-toggle="dropdown"</code></li>
+                <li class="att collapse a4-1">Accessibility attribute <code>role="button"</code></li>
+                <li class="att collapse a4-1">Accessibility attribute <code>aria-haspopup="true"</code></li>
+                <li class="att collapse a4-1">Accessibility attribute <code>aria-expanded="false"</code></li>
+                <li class="txt">Text (e.g.) <code>Dropdown</code></li>
+              </ul>
+            </li>
+            <li>Item list <code>div.dropdown-menu</code>
+              <ul>
+                <li>Items ⇒ see <a href="components-4.html#dropdowns-examples">Dropdowns - Examples</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-1">Example used in <code>ul.nav.nav-tabs</code></p>
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Example used in <code>ul.nav.nav-pills</code></p>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+      </ul>
+      <p class="mt-3 mb-1">Example used in <code>nav.nav.nav-tabs</code></p>
+      <nav class="nav nav-tabs"><a class="nav-item nav-link active" href="#">Active</a><a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
+        </div><a class="nav-link" href="#">Link</a><a class="nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <p class="mt-3 mb-1">Example used in <code>nav.nav.nav-pills</code></p>
+      <nav class="nav nav-pills"><a class="nav-item nav-link active" href="#">Active</a><a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
+        </div><a class="nav-link" href="#">Link</a><a class="nav-link disabled" href="#">Disabled</a>
+      </nav>
+      <h4 class="mt-4" id="javascript-behavior"><a href="https://getbootstrap.com/docs/4.2/components/navs/#javascript-behavior" target="_blank">JavaScript behavior (tabbable panes)</a>
+      </h4>
+      <p class="my-2">You can build tabbable panes with a list group (using bootstrap.js) by setting as follows.</p>
+      <p class="mt-2 mb-3">For <code>ul</code>-based nav</p><a class="btn btn-outline-info" data-toggle="collapse" href="#javascript-ul" aria-control="#javascript-ul" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="javascript-ul">
+        <li>Tablist <code>ul.nav.nav-(tabs|pills)</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a5-1">Accessibility attribute <code>role="tablist"</code> (Caution: not <code>"navigation"</code> )</li>
+            <li>Tab item <code>li.nav-item</code>
+              <ul>
+                <li>Link <code>a.nav-link</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-2" aria-control=".a5-2" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a5-2">Add <code>.active</code> to an initlly-visible item</li>
+                    <li class="att collapse a5-2">Attribute <code>id="{tab-id}"</code></li>
+                    <li class="att collapse a5-2">Attribute <code>data-toggle="tab"</code> or <code>"pill"</code> (no difference)</li>
+                    <li class="att collapse a5-2">Attribute <code>href=&quot;#{content-id}&quot;</code></li>
+                    <li class="att collapse a5-2">Accessibility attribute <code>role="tab"</code></li>
+                    <li class="att collapse a5-2">Accessibility attribute <code>aria-controls="{content-id}"</code></li>
+                    <li class="att collapse a5-2">Accessibility attribute <code>aria-selected="true"</code> (on active) or <code>"false"</code></li>
+                    <li class="txt">Text (e.g.) <code>Home</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Tab content <code>div.tabcontent</code>
+          <ul>
+            <li>Content item <code>div.tab-pane</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-3" aria-control=".a5-3" aria-expanded="false">Attributes</a>
+              <ul class="collapse a5-3">
+                <li class="cls">Add <code>.fade</code> for fade in/out animation effect</li>
+                <li class="cls">Add <code>.show.active</code> to an initially-visible item</li>
+                <li class="att">Attribute <code>id="{content-id}"</code></li>
+                <li class="att">Accessibility attribute <code>role="tabpanel"</code></li>
+                <li class="att">Accessibility attribute <code>aria-labelledby="{tab-id}"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-4 mb-2"><code>ul.nav.nav-tabs</code></p>
+      <ul class="nav nav-tabs mb-2" role="tablist">
+        <li class="nav-item"><a class="nav-link active" id="home-ul-tab-tab" data-toggle="tab" href="#home-ul-tab" role="tab" aria-controls="home-ul-tab" aria-selected="true">Home</a></li>
+        <li class="nav-item"><a class="nav-link" id="profile-ul-tab-tab" data-toggle="tab" href="#profile-ul-tab" role="tab" aria-controls="profile-ul-tab" aria-selected="false">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" id="contact-ul-tab-tab" data-toggle="tab" href="#contact-ul-tab" role="tab" aria-controls="contact-ul-tab" aria-selected="false">Contact</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="home-ul-tab" role="tabpanel" aria-labelledby="home-ul-tab-tab">
+          <h6 class="my-1">Home-ul-tabs</h6>
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade" id="profile-ul-tab" role="tabpanel" aria-labelledby="profile-ul-tab-tab">
+          <h6>Profile-ul-tabs</h6>
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        </div>
+        <div class="tab-pane fade" id="contact-ul-tab" role="tabpanel" aria-labelledby="contact-ul-tab-tab">
+          <h6>Contact-ul-tabs</h6>
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+      </div>
+      <p class="mt-4 mb-2"><code>ul.nav.nav-pills</code></p>
+      <ul class="nav nav-pills mb-2" role="tablist">
+        <li class="nav-item"><a class="nav-link active" id="home-ul-pill-tab" data-toggle="pill" href="#home-ul-pill" role="tab" aria-controls="home-ul-pill" aria-selected="true">Home</a></li>
+        <li class="nav-item"><a class="nav-link" id="profile-ul-pill-tab" data-toggle="pill" href="#profile-ul-pill" role="tab" aria-controls="profile-ul-pill" aria-selected="false">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" id="contact-ul-pill-tab" data-toggle="pill" href="#contact-ul-pill" role="tab" aria-controls="contact-ul-pill" aria-selected="false">Contact</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="home-ul-pill" role="tabpanel" aria-labelledby="home-ul-pill-tab">
+          <h6 class="my-1">Home-ul-pills</h6>
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade" id="profile-ul-pill" role="tabpanel" aria-labelledby="profile-ul-pill-tab">
+          <h6>Profile-ul-pills</h6>
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        </div>
+        <div class="tab-pane fade" id="contact-ul-pill" role="tabpanel" aria-labelledby="contact-ul-pill-tab">
+          <h6>Contact-ul-pills</h6>
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+      </div>
+      <p class="mt-4 mb-3">For <code>nav</code>-based nav (see the top-level structure difference below)</p><a class="btn btn-outline-info" data-toggle="collapse" href="#javascript-nav" aria-control="#javascript-nav" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="javascript-nav">
+        <li>Parent wrapper (for accessibility) <code>nav</code>
+          <ul>
+            <li>Actual nav root <code>div.nav.nav-(tabs|pills)</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a6-1">Accessibility attribute <code>role="tablist"</code></li>
+                <li>Tab item/link <code>a.nav-item.nav-link(.active)?</code>
+                  <ul>
+                    <li>Attributes and text (same as <code>ul</code>-based)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Tab content <code>div.tabcontent</code> (same as <code>ul</code>-based)</li>
+      </ul>
+      <p class="mt-4 mb-2"><code>nav</code> &gt; <code>div.nav.nav-tabs</code></p>
+      <nav>
+        <div class="nav nav-tabs mb-2" role="tablist"><a class="nav-item nav-link active" id="home-nav-tab-tab" data-toggle="tab" href="#home-nav-tab" role="tab" aria-controls="home-nav-tab" aria-selected="true">Home</a><a class="nav-item nav-link" id="profile-nav-tab-tab" data-toggle="tab" href="#profile-nav-tab" role="tab" aria-controls="profile-nav-tab" aria-selected="false">Profile</a><a class="nav-item nav-link" id="contact-nav-tab-tab" data-toggle="tab" href="#contact-nav-tab" role="tab" aria-controls="contact-nav-tab" aria-selected="false">Contact</a>
+        </div>
+      </nav>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="home-nav-tab" role="tabpanel" aria-labelledby="home-nav-tab-tab">
+          <h6 class="my-1">Home-nav-tabs</h6>
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade" id="profile-nav-tab" role="tabpanel" aria-labelledby="profile-nav-tab-tab">
+          <h6>Profile-nav-tabs</h6>
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        </div>
+        <div class="tab-pane fade" id="contact-nav-tab" role="tabpanel" aria-labelledby="contact-nav-tab-tab">
+          <h6>Contact-nav-tabs</h6>
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+      </div>
+      <p class="mt-4 mb-2"><code>nav</code> &gt; <code>div.nav.nav-pills</code></p>
+      <nav>
+        <div class="nav nav-pills mb-2" role="tablist"><a class="nav-item nav-link active" id="home-nav-pill-tab" data-toggle="tab" href="#home-nav-pill" role="tab" aria-controls="home-nav-pill" aria-selected="true">Home</a><a class="nav-item nav-link" id="profile-nav-pill-tab" data-toggle="tab" href="#profile-nav-pill" role="tab" aria-controls="profile-nav-pill" aria-selected="false">Profile</a><a class="nav-item nav-link" id="contact-nav-pill-tab" data-toggle="tab" href="#contact-nav-pill" role="tab" aria-controls="contact-nav-pill" aria-selected="false">Contact</a>
+        </div>
+      </nav>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="home-nav-pill" role="tabpanel" aria-labelledby="home-nav-pill-tab">
+          <h6 class="my-1">Home-nav-pills</h6>
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade" id="profile-nav-pill" role="tabpanel" aria-labelledby="profile-nav-pill-tab">
+          <h6>Profile-nav-pills</h6>
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        </div>
+        <div class="tab-pane fade" id="contact-nav-pill" role="tabpanel" aria-labelledby="contact-nav-pill-tab">
+          <h6>Contact-nav-pills</h6>
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+      </div>
+      <p class="mt-4 mb-3">The last example below is a layout variation with Flexbox (vertical pills on left, content on right, see source for details).</p>
+      <div class="d-flex">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"><a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a><a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a><a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a><a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a></div>
+        <div class="tab-content ml-3 mt-2" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <h6>Home</h6>
+            <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat.</p>
+          </div>
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <h6>Profile</h6>
+            <p>Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit qui esse anim eiusmod do sint minim consectetur qui.</p>
+          </div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            <h6>Messages</h6>
+            <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+          </div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <h6>Settings</h6>
+            <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.</p>
+          </div>
+        </div>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"> Components(9): Navs</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

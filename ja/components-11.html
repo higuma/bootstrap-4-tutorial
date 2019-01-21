@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンポーネント(11): ページネーション / ポップオーバー / プログレスバー</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンポーネント(11): <a href="#pagination">ページネーション</a> / <a href="#popovers">ポップオーバー</a> / <a href="#progress">プログレスバー</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-11.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="pagination"><a href="https://getbootstrap.com/docs/4.2/components/pagination/" target="_blank">ページネーション</a>
+      </h2>
+      <h4 class="mt-3" id="pagination-overview"><a href="https://getbootstrap.com/docs/4.2/components/pagination/#overview" target="_blank">基本構成</a>
+      </h4>
+      <ul class="struct my-1">
+        <li>アクセシビリティ用外枠 <code>nav</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>aria-label="Pagination example"</code></li>
+            <li>ページネーション <code>ul.pagination</code>
+              <ul>
+                <li>アイテム(複数) <code>li.page-item</code>
+                  <ul>
+                    <li>リンク <code>a</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a1-2">属性 <code>href="..."</code></li>
+                        <li class="txt">テキスト <code>Previous</code> , <code>1</code> , <code>2</code> , ... , <code>Next</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="working-with-icons"><a href="https://getbootstrap.com/docs/4.2/components/pagination/#working-with-icons" target="_blank">アイコン(シンボル)の利用</a>
+      </h4>
+      <p class="my-2">例: 前後ボタンにシンボル文字を用いる場合</p>
+      <ul class="struct my-0">
+        <li>先頭アイテム <code>li.page-item</code>
+          <ul>
+            <li class="txt">テキスト <code>&amp;laquo;</code></li>
+            <li>アクセシビリティ用 <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a2-1">属性 <code>area-hidden="true"</code></li>
+                <li class="txt">テキスト <code>前/Previous</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>最終アイテム <code>li.page-item</code>
+          <ul>
+            <li class="txt">テキスト <code>&amp;raquo;</code></li>
+            <li>アクセシビリティ用 <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-2" aria-control=".a2-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a2-2">属性 <code>area-hidden="true"</code></li>
+                <li class="txt">テキスト <code>次/Next</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">前/Previous</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">次/Next</span></a></li>
+        </ul>
+      </nav>
+      <p class="mt-4 mb-2">アイコンを用いる場合も同様: 次は <a href="https://github.com/iconic/open-iconic" target="_blank">Open Iconic</a> の使用例(詳しくはソース参照)
+      </p>
+      <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><img src="../img/openiconic/svg/chevron-left.svg" width="10" height="10" style="opacity: 0.6;"><span class="sr-only">Previous</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><img src="../img/openiconic/svg/chevron-right.svg" width="10" height="10" style="opacity: 0.6;"><span class="sr-only">Next</span></a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="pagination-disabled-and-active-states"><a href="https://getbootstrap.com/docs/4.2/components/pagination/#disabled-and-active-states" target="_blank">アイテムの状態設定(無効化/アクティブ)</a>
+      </h4>
+      <p class="my-2">各アイテムには状況に応じて無効化/アクティブの状態を設定する。次は最も一般的な条件の例。</p>
+      <ul>
+        <li>現在のページのアイテムはアクティブ表示、しかしリンクは無効化する</li>
+        <li>先頭ページの場合 <strong>Previous</strong> (前)は表示/リンクとも無効化</li>
+        <li>最終ページの場合 <strong>Next</strong> (次)は表示/リンクとも無効化</li>
+      </ul>
+      <h5 class="mt-3" id="pagination-disabled-state">無効化状態の設定</h5>
+      <p class="my-2"><code>li</code> に <code>.page-item</code> を追加すれば内側のリンク <code>a</code> は自動的に無効化される。</p>
+      <ul class="struct">
+        <li><code>li.page-item</code>
+          <ul>
+            <li class="cls">無効化するアイテムに <code>.disabled</code> を追加</li>
+            <li>リンク <code>a</code>
+              <ul>
+                <li class="att">属性 <code>tabindex="-1"</code> を設定(タブストップを受けないようにする)</li>
+                <li class="txt">テキスト(例) <code>Previous</code> (自動的に灰色表示)</li>
+                <li>アクセシビリティ対応: 現在のページに <code>span.sr-only</code> を設定
+                  <ul>
+                    <li class="txt">テキスト <code>(current)</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-1">例(1ページ目を表示している場合): <strong>Previous</strong> と <strong>1</strong> が無効化アイテム</p>
+      <nav class="my-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1<span class="sr-only">(current)</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h5 class="mt-4" id="pagination-active-state">アクティブ状態の設定</h5>
+      <p class="my-2"><code>li.list-item</code> に <code>.active</code> を設定すればアイテムはアクティブ表示になる(Primary/青の背景)。しかし内部リンクは無効化されない。さらに<code>.disabled</code> と一緒に設定しても効果がない(無効化の設定が優先してアクティブ表示しない)。</p>
+      <p class="my-2">そこで構造を変更し、無効化アイテムにはリンク <code>a</code> ではなく <code>span</code> を用いれば根本的に解決できる。</p>
+      <ul class="struct">
+        <li>アクティブまたは無効化設定するアイテム <code>li.page-item.(active|disabled)</code>
+          <ul>
+            <li><code>span.page-link</code> ( <code>a.page-link</code> から変更)</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-1">例(1ページ目の場合): <strong>Previous</strong> は無効化、<strong>1</strong> はアクティブ、どちらもリンクがないのでアクションは受けない</p>
+      <nav class="my-2" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item disabled"><span class="page-link">Previous</span></li>
+          <li class="page-item active"><span class="page-link">1<span class="sr-only">(current)</span></span></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="pagination-sizing"><a href="https://getbootstrap.com/docs/4.2/components/pagination/#sizing" target="_blank">サイズ設定</a>
+      </h4>
+      <p class="my-1">リストの親 <code>li.pagenation</code> に <code>.pagination-(lg|sm)</code> を追加する。</p>
+      <p class="mt-2 mb-1"><code>.ul.pagination.pagination-lg</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="mt-0 mb-2 pagination pagination-lg">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>.ul.pagination</code> (デフォルト)
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="mt-0 mb-2 pagination">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>.ul.pagination.pagination-sm</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="mt-0 mb-2 pagination pagination-sm">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+      <h4 class="mt-4" id="pagination-alignment"><a href="https://getbootstrap.com/docs/4.2/components/pagination/#alignment" target="_blank">配置</a>
+      </h4>
+      <p class="my-1">Flexboxユーティリティの <code>.justify-content-*</code> を用いる(⇒ <a href="utilities-3.html#flex-justify-content">.justify-content-* を用いた配置設定</a> )。</p>
+      <p class="mt-2 mb-1"><code>ul-pagination.justify-content-start</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-start">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>ul-pagination.justify-content-center</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <p class="mt-2 mb-1"><code>ul-pagination.justify-content-end</code>
+      </p>
+      <nav class="mb-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      <h2 class="mt-5" id="popovers"><a href="https://getbootstrap.com/docs/4.2/components/popovers/" target="_blank">ポップオーバー</a>
+      </h2>
+      <p class="my-2">ポップオーバーは(iOSの同名機能と同様の)ポップアップ表示コンポーネント。実装に <a href="https://popper.js.org/" target="_blank">Popper.js</a> を利用している。
+      </p>
+      <h4 class="mt-3" id="popovers-init"><a href="https://getbootstrap.com/docs/4.2/components/popovers/#example-enable-popovers-everywhere" target="_blank">初期化方法</a>
+      </h4>
+      <p>ポップオーバーは初期状態はOFFになっており、有効にするためにはJavaScriptを用いた処理が必要。最も簡単なコード例を示す。</p>
+      <pre class="p-2 border bg-light"><code>$('[data-toggle="popover"]').popover();</code></pre>
+      <div class="alert alert-warning my-3" role="alert"><strong>注: </strong>コードの置き場所に注意。ポップオーバーを使っている場所(の近く)に <code>script</code> を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。</div>
+      <h4 class="ht-4" id="popovers-example"><a href="https://getbootstrap.com/docs/4.2/components/popovers/#example" target="_blank">設定方法</a>
+      </h4>
+      <ul class="my-1">
+        <li>任意の要素に設定可: 次の属性を設定</li>
+        <ul>
+          <li><code>data-toggle="popover"</code></li>
+          <li><code>title="{タイトルテキスト}"</code></li>
+          <li><code>data-content="{本文テキスト}"</code></li>
+          <li>(注) <code>title</code> , <code>data-content</code> は片方だけでもOK(どちらも値が空の場合は表示しない)</li>
+        </ul>
+      </ul>
+      <p class="my-2">設定例(クリックで表示、再クリックで表示終了)</p>
+      <button class="btn btn-lg btn-danger" type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+      <h4 class="mt-4" id="popovers-four-directions"><a href="https://getbootstrap.com/docs/4.2/components/popovers/#four-directions" target="_blank">表示方向の設定</a>
+      </h4>
+      <ul class="my-1">
+        <li>次の属性を追加(デフォルトは <code>"right"</code> )
+          <ul>
+            <li><code>data-placement=("top"|"right"|"bottom"|"left")</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-2 mb-1">設定例</p>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-center">
+          <button class="btn btn-light mt-0" type="button" data-toggle="popover" data-placement="top" title="Popover on top"><code>data-placement="top"</code></button>
+        </div>
+      </div>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-right pr-2">
+          <button class="btn btn-light my-0" type="button" data-toggle="popover" data-placement="left" title="Popover on left"><code>data-placement="left"</code></button>
+        </div>
+        <div class="col m-0 text-left pl-2">
+          <button class="btn btn-light my-0" type="button" data-toggle="popover" data-placement="right" title="Popover on right"><code>data-placement="right"</code></button>
+        </div>
+      </div>
+      <div class="row m-0 py-1">
+        <div class="col m-0 text-center">
+          <button class="btn btn-light mt-0" type="button" data-toggle="popover" data-placement="bottom" title="Tooltip on bottom"><code>data-placement="bottom"</code></button>
+        </div>
+      </div>
+      <div class="alert alert-info my-3" role="alert">表示時は(Popper.jsを利用して)動的位置判定を行い、空間不足の場合は逆方向に表示する。上の例で全て表示したままの状態にして、上下スクロールしたりブラウザのビューポート幅を変更すれば確認できる。</div>
+      <h4 class="mt-4" id="popovers-dismiss-on-next-click"><a href="https://getbootstrap.com/docs/4.2/components/popovers/#dismiss-on-next-click" target="_blank">クリックに対する動作の変更</a>
+      </h4>
+      <p class="my-2">(デフォルトは)要素のクリックで表示したポップオーバーは同じ要素の再クリックで表示終了する。これにより複数同時表示が可能だが、逆に不自然(または不便)な場合もある。そのような場合は別の要素をクリックした時に表示終了(より正確にはフォーカスで表示ON/OFF)するように動作変更できる。</p>
+      <ul class="my-1">
+        <li>属性 <code>data-trigger="focus"</code> を設定(ブラウザ側が完全対応すれば将来的にはこれだけでOK)</li>
+        <li>(クロスプラットフォーム対応)要素は <code>a</code> に限定( <code>button</code> ではまだ動作保証できない)</li>
+        <li>(クロスプラットフォーム対応)属性 <code>tabindex="0"</code> を必ず設定</li>
+      </ul>
+      <p class="mt-3 mb-1">設定例</p>
+      <p class="mt-1"><a class="btn btn-lg btn-danger" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a></p>
+      <div class="alert alert-warning mt-3" role="alert">現時点ではまだブラウザ/プラットフォーム間の動作依存を回避するため上記設定が必要。</div>
+      <h4 class="mt-4" id="popovers-disabled-elements"><a href="https://getbootstrap.com/docs/4.2/components/popovers/#disabled-elements" target="_blank">無効化した要素への設定</a>
+      </h4>
+      <p class="my-2">要素に属性 <code>disabled</code> が設定されている場合ポップオーバーは効かなくなる。次の例は <code>button</code> に下記の通り設定しているがポップオーバーは表示されない。</p>
+      <ul class="struct">
+        <li><code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a3-1">属性 <code>type="button"</code></li>
+            <li class="att collapse a3-1">属性 <code>data-toggle="popover"</code> (設定している)</li>
+            <li class="att collapse a3-1">属性 <code>title="Disabled popover"</code> (これも設定、しかし...)</li>
+            <li class="att collapse a3-1">属性 <code>disabled</code> (これを設定するとポップオーバーも無効化される)</li>
+            <li class="txt">テキスト <code>Disabled button</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">
+        <button class="btn btn-primary" type="button" data-toggle="popover" title="Disabled tooltip" disabled>Disabled button</button>
+      </p>
+      <p class="mt-3 mb-1">しかし <code>disabled</code> は設定するが、ポップオーバーは効くようにしたいケースもある。その場合は親要素を作ってそこにポップオーバーを設定し、その中に <code>disabled</code> を設定した要素を入れればよい。対応例は次の通り。</p>
+      <ul class="struct">
+        <li>ポップオーバー動作用親要素 <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="cls collapse a4-1">設定<code>.d-inline-block</code> ( <code>button</code> と同じ <code>display</code> にする)</li>
+            <li class="att collapse a4-1">属性 <code>data-toggle="popover"</code></li>
+            <li class="att collapse a4-1">属性 <code>title="Disabled popover"</code></li>
+            <li>子要素 <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-2" aria-control=".a4-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a4-2">属性 <code>type="button" </code></li>
+                <li class="att collapse a4-2">属性 <code>style="pointer-events: none;"</code> (ポインタイベントを受けないようにする)</li>
+                <li class="att collapse a4-2">属性 <code>disabled</code></li>
+                <li class="txt">テキスト <code>Disabled button</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3">設定例: ボタンは <code>disabled</code> だがポップオーバーは動作する(実際は親要素が処理している)。</p>
+      <p><span class="d-inline-block" data-toggle="popover" title="Disabled popover">
+          <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button></span></p>
+      <h2 class="mt-2" id="progress"><a href="https://getbootstrap.com/docs/4.2/components/progress/" target="_blank">プログレスバー</a>
+      </h2>
+      <p class="mt-2"><code>progress</code> 要素の代替を目的としたコンポーネントで、バーの積み重ねやアニメーション付きストライプバーなど <code>progress</code> にはない追加機能を持つ。</p>
+      <h4 class="mt-3" id="progress-how-it-works"><a href="https://getbootstrap.com/docs/4.2/components/progress/#how-it-works" target="_blank">基本設定</a>
+      </h4>
+      <ul class="struct my-1">
+        <li>ベース部 <code>div.progress</code>
+          <ul>
+            <li>カラーバー <code>div.progress-bar</code> (複数積み重ね可) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">属性</a>
+              <ul class="collapse a5-1">
+                <li class="att">幅(必須) (例) <code>style="width: 50%"</code></li>
+                <li class="att">アクセシビリティ属性 <code>role="progressbar" </code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-valuenow="50"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-valuemin="0"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-valuemax="100"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="progress-width">幅の設定</h4>
+      <p class="mt-2 mb-0">(1) カスタムスタイル <code>style="width: {width}%”</code></p>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 0%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 25%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 50%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 75%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;width: 100%;&quot;</code></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-3 mb-1">(2) 幅設定ユーティリティ <code>.w-(25|75|100)</code> (⇒ <a href="utilities-4.html#sizing">サイズユーティリティ</a> 、25%ステップ)</p>
+      <p class="mt-1 mb-0"><code>.w-25</code></p>
+      <div class="progress">
+        <div class="progress-bar w-25" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.w-50</code></p>
+      <div class="progress">
+        <div class="progress-bar w-50" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.w-75</code></p>
+      <div class="progress">
+        <div class="progress-bar w-75" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.w-100</code></p>
+      <div class="progress">
+        <div class="progress-bar w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-labels"><a href="https://getbootstrap.com/docs/4.2/components/progress/#labels" target="_blank">ラベル文字の追加</a>
+      </h4>
+      <p class="my-2">バー <code>div.progress-bar</code> の内部テキストを記述する。</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div>
+      <h4 class="mt-4" id="progress-height"><a href="https://getbootstrap.com/docs/4.2/components/progress/#height" target="_blank">高さの設定</a>
+      </h4>
+      <p class="my-2">ベースの <code>div.progress</code> に設定する。</p>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 5px;&quot;</code></p>
+      <div class="progress" style="height: 5px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 10px;&quot;</code></p>
+      <div class="progress" style="height: 10px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 15px;&quot;</code></p>
+      <div class="progress" style="height: 15px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>style=&quot;height: 20px;&quot;</code></p>
+      <div class="progress" style="height: 20px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-backgrounds"><a href="https://getbootstrap.com/docs/4.2/components/progress/#backgrounds" target="_blank">バーの色</a>
+      </h4>
+      <p class="my-2"><code>div.progress-bar</code> に背景色 <code>.bg-{context}</code> を追加(⇒ <a href="utilities-2.html#colors-background-color">色 - 背景色</a> )</p>
+      <p class="mt-1 mb-0"><code>.bg-success</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.bg-info</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.bg-warning</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p class="mt-1 mb-0"><code>.bg-danger</code></p>
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-multiple-bars"><a href="https://getbootstrap.com/docs/4.2/components/progress/#multiple-bars" target="_blank">バーの積み重ね </a>
+      </h4>
+      <p class="my-2"><code>div.progress-bar</code> を複数用いれば左から右に積み重なる。</p>
+      <div class="progress">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-striped"><a href="https://getbootstrap.com/docs/4.2/components/progress/#striped" target="_blank">ストライプ表示</a>
+      </h4>
+      <p class="my-2">バーに <code>.progress-bar-striped</code> を追加する。</p>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-2">
+        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4 class="mt-4" id="progress-animated-stripes"><a href="https://getbootstrap.com/docs/4.2/components/progress/#animated-stripes" target="_blank">ストライプのアニメーション</a>
+      </h4>
+      <p class="mt-3 mb-2">さらに <code>.progress-bar-animated</code> を追加する。</p>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(11): ページネーション/ポップオーバー/プログレスバー</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

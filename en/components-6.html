@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Components (6): Input group / Jumbotron</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Components (6): <a href="#input-group">Input group</a> / <a href="#jumbotron">Jumbotron</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/components-6.html">Japanese (日本語)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="input-group"><a href="https://getbootstrap.com/docs/4.2/components/input-group/" target="_blank">Input group</a>
+      </h2>
+      <p class="my-2">The input group is the extension for input elements (<code>input</code>, <code>textarea</code>, etc.) to add text, buttons, or button groups.</p>
+      <h4 class="mt-4" id="basic-example"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#basic-example" target="_blank">Basic example</a>
+      </h4>
+      <h5 class="my-3" id="basic-example-prepend">Prepending</h5>
+      <div class="input-group my-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">@</span></div>
+        <input class="form-control" type="text" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-prepend-structure" aria-control="#basic-example-prepend-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="basic-example-prepend-structure">
+        <li>Input group (outer frame) <code>div.input-group</code>
+          <ul>
+            <li>Prepending group <code>div.input-group-prepend</code>
+              <ul>
+                <li><code>span.input-group-text</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a1-1">(Accessibility) attribute <code>id="basic-addon1"</code></li>
+                    <li class="txt">Text <code>@</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="components-5.html#form-controls">Form control </a><code>input.form-control</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attributes</a>
+              <ul class="collapse a1-2">
+                <li class="att">Attribute <code>type="text"</code></li>
+                <li class="att">Attribute <code>placeholder="Username"</code></li>
+                <li class="att">Accessibility attribute <code>aria-label="Username"</code></li>
+                <li class="att">Accessibility attribute <code>aria-describedby="basic-addon1"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">Bellow are guidelines on using input groups (according to the official document).</p>
+      <ul>
+        <li>Only one form control can be used in the input group
+          <ul>
+            <li>Multiple form controls in a single input group causes problems on <a href="components-5.html#custom-styles">Bootstrap style validation</a></li>
+          </ul>
+        </li>
+        <li>Labels must be used outside the input group
+          <ul>
+            <li>Or it may cause a problem on accessibility</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning" role="alert"><strong>Caution: </strong>The rules are not strict. Some examples in the official documant do not follow above rules.</div>
+      <div class="alert alert-info" role="alert">(On version 4.0) Support for validation is (slightly) incomplete. On displaying validation response, borders are not rounded (see <a href="#multiple-inputs-validation">validation example</a> below).</div>
+      <h5 class="mt-4 mb-3" id="basic-example-append">Appending</h5>
+      <div class="input-group my-3">
+        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append"><span class="input-group-text" id="basic-addon2">@example.com</span></div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-append-structure" aria-control="#basic-example-append-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="basic-example-append-structure">
+        <li>Input group (outer frame) <code>div.input-group</code>
+          <ul>
+            <li>Form control <code>input.form-control</code></li>
+            <li>Appending group <code>div.input-group-append</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="example-label">Using a <code>label</code></h5>
+      <label for="basic-url">Your vanity URL</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="basic-addon3">https://example.com/users/</span></div>
+        <input class="form-control" id="basic-url" type="text" aria-describedby="basic-addon3">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-label-structure" aria-control="#example-label-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-label-structure">
+        <li><code>label</code><strong> (should be used outside the input group)</strong> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="att collapse a2-1">Attribute <code>for="basic-url"</code> (same as <code>input</code> ID)</li>
+            <li class="txt">Text <code>Your vanity URL</code></li>
+          </ul>
+        </li>
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group</li>
+            <li>Form control <code>input</code>
+              <ul>
+                <li class="att">Attribute <code>id="basic-url"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="example-prepend-append">Prepending + appending</h5>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+        <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append"><span class="input-group-text">.00</span></div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-prepend-append-structure" aria-control="#example-prepend-append-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-prepend-append-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group</li>
+            <li>Form group</li>
+            <li>Appending group</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="example-textarea">Using a <code>textarea</code></h5>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text">With textarea</span></div>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-textarea-structure" aria-control="#example-textarea-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-textarea-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group</li>
+            <li>Text area <code>textarea.form-control</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="sizing"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#sizing" target="_blank">Sizing</a>
+      </h4>
+      <p class="my-2">Add <code>.input-group-(sm|lg)</code> to <code>div.input-group</code></p>
+      <p class="mt-3 mb-1"><code>div.input-group.input-group-sm</code></p>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-sm">Small</span></div>
+        <input class="form-control" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <p class="mt-3 mb-1"><code>div.input-group</code></p>
+      <div class="input-group  mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">Default</span></div>
+        <input class="form-control" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <p class="mt-3 mb-1"><code>div.input-group.input-group-lg</code></p>
+      <div class="input-group input-group-lg mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg">Large</span></div>
+        <input class="form-control" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-lg">
+      </div>
+      <h4 class="mt-4" id="checkboxes-and-radios"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a>
+      </h4>
+      <p class="my-2">Checkboxes</p>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="check-1" type="checkbox" value="1" checked aria-label="Checkbox for following text input">
+              <label class="form-check-label" for="check-1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="check-2" type="checkbox" value="2" aria-label="Checkbox for following text input">
+              <label class="form-check-label" for="check-2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="check-3" type="checkbox" value="3" aria-label="Checkbox for following text input">
+              <label class="form-check-label" for="check-3">3</label>
+            </div>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with checkbox">
+      </div>
+      <p class="mt-3 mb-2">Radios</p>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="radio-1" type="radio" name="radio-example" value="1" checked aria-label="Radio for following text input">
+              <label class="form-check-label" for="radio-1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="radio-2" type="radio" name="radio-example" value="2" aria-label="Radio for following text input">
+              <label class="form-check-label" for="radio-2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="radio-3" type="radio" name="radio-example" value="3" aria-label="Radio for following text input">
+              <label class="form-check-label" for="radio-3">3</label>
+            </div>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with checkbox">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-checkboxes-and-radios-structure" aria-control="#example-checkboxes-and-radios-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-checkboxes-and-radios-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group <code>div.input-group-prepend</code>
+              <ul>
+                <li><code>div.input-group-text</code> (for setting backgroud)
+                  <ul>
+                    <li><a href="components-5.html#inline">Checkboxes/radios - inline</a> (see link for detail)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" role="alert"><strong>Warning: </strong> These examples use multiple form controls in single input group (cause problems on <a href="components-5.html#custom-styles">Bootstrap style validation</a>).</div>
+      <h4 class="mt-4 mb-3" id="multiple-inputs"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#multiple-inputs" target="_blank">Multiple inputs</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="">First and last name</span></div>
+        <input class="form-control" type="text">
+        <input class="form-control" type="text">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-inputs-structure" aria-control="#example-multiple-inputs-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-inputs-structure">
+        <li>List group (outer frame)
+          <ul>
+            <li>Prepending group</li>
+            <li>Form controls (&times;2) (can be 3 or more)</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="multiple-inputs-validation">Validation</h5>
+      <p class="mt-2 mb-3">Using multiple input controls causes problems on <a href="components-5.html#custom-styles">Bootstrap style validation</a>. However, using single common invalid response for all input controls is OK (see example below).</p>
+      <div class="input-group was-validated mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="">First and last name</span></div>
+        <input class="form-control" type="text" required>
+        <input class="form-control" type="text" required>
+        <div class="invalid-feedback">Please input your name</div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-inputs-validation-structure" aria-control="#example-multiple-inputs-validation-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-inputs-validation-structure">
+        <li>Input group (outer frame) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">Attribute</a>
+          <ul>
+            <li class="cls collapse a3-1">Added <code>.was-validated</code> to indicate validation behaviors</li>
+            <li>Prepending group</li>
+            <li>Form controls <code>input.form-control</code> (&times;2) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">Attribute</a>
+              <ul class="collapse a3-2">
+                <li class="att">Added <code>required</code></li>
+              </ul>
+            </li>
+            <li>Response message on invalid <code>div.invalid-response</code>
+              <ul>
+                <li class="txt">Text <code>Please input your name</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="multiple-addons"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#multiple-addons" target="_blank">Multiple addons</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text">$</span><span class="input-group-text">0.00</span>
+        </div>
+        <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-addons-1-structure" aria-control="#example-multiple-addons-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-addons-1-structure">
+        <li>Input group (outer frame) 
+          <ul>
+            <li>Prepending group 1 with text <code>$</code></li>
+            <li>Prepending group 2 with text <code>0.00</code></li>
+            <li>Form control</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append"><span class="input-group-text">$</span><span class="input-group-text">0.00</span>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-addons-2-structure" aria-control="#example-multiple-addons-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-addons-2-structure">
+        <li>Input group (outer frame) 
+          <ul>
+            <li>Form control</li>
+            <li>Appending group 1 with text <code>$</code></li>
+            <li>Appending group 2 with text <code>0.00</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="button-addons"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#button-addons" target="_blank">Button addons</a>
+      </h4>
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <input class="form-control" type="text" placeholder="" aria-label="" aria-describedby="basic-addon1">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-1-structure" aria-control="#example-button-addons-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-1-structure">
+        <li>Input group (outer frame) 
+          <ul>
+            <li>Prepending group <code>div.input-group-prepend</code>
+              <ul>
+                <li><a href="components-2.html#buttons-outline-buttons">Outline button </a><code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a4-1">Attribute <code>type="button"</code></li>
+                    <li class="txt">Text <code>Button</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Form control </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-2-structure" aria-control="#example-button-addons-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-2-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Form control</li>
+            <li>Appending group <code>div.input-group-append</code>
+              <ul>
+                <li>Outline button</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <input class="form-control" type="text" placeholder="" aria-label="" aria-describedby="basic-addon1">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-3-structure" aria-control="#example-button-addons-3-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-3-structure">
+        <li>Input group (outer frame) 
+          <ul>
+            <li>Prepending group
+              <ul>
+                <li>Outline button (&times;2)</li>
+              </ul>
+            </li>
+            <li>Form control</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-4-structure" aria-control="#example-button-addons-4-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-4-structure">
+        <li>Input group (outer frame) 
+          <ul>
+            <li>Form control</li>
+            <li>Appending group
+              <ul>
+                <li>Outline button (&times;2)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="buttons-with-dropdowns"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#buttons-with-dropdowns" target="_blank">Buttons with dropdowns</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with dropdown button">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-buttons-with-dropdowns-1-structure" aria-control="#example-buttons-with-dropdowns-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-buttons-with-dropdowns-1-structure">
+        <li>Input group (outer frame) 
+          <ul>
+            <li>Prepending group <code>div.input-group-prepend</code>
+              <ul>
+                <li>Outline button with <a href="components-4.html#dropdowns">dropdown </a><code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a5-1">Class <code>.dropdown-toggle</code></li>
+                    <li class="att collapse a5-1">Attribute <code>type="button"</code></li>
+                    <li class="att collapse a5-1">Attribute <code>data-toggle="dropdown"</code></li>
+                    <li class="att collapse a5-1">Accessibilirty attribute <code>aria-haspopup="true"</code></li>
+                    <li class="att collapse a5-1">Accessibilirty attribute <code>aria-expanded="false"</code></li>
+                    <li class="txt">Text <code>Dropdown</code></li>
+                  </ul>
+                </li>
+                <li>Menu (item list) <code>div.dropdown-menu</code>
+                  <ul>
+                    <li>See <a href="components-4.html#dropdowns-examples">Dropdown - Examples</a> for menu items</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Form control</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" aria-label="Text input with dropdown button">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-buttons-with-dropdowns-2-structure" aria-control="#example-buttons-with-dropdowns-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-buttons-with-dropdowns-2-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Form control</li>
+            <li>Appending group <code>div.input-group-append</code>
+              <ul>
+                <li>Outline button with dropdown</li>
+                <li>Item list</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="split-buttons"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#segmented-buttons" target="_blank">Split buttons</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Action</button>
+          <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with split dropdown button">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-split-buttons-1-structure" aria-control="#example-split-buttons-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-split-buttons-1-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group <code>div.input-group-prepend</code>
+              <ul>
+                <li>Outline button <code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a6-1">Attribute <code>type="button"</code></li>
+                    <li class="txt">Text <code>Action</code></li>
+                  </ul>
+                </li>
+                <li><a href="components-4.html#dropdowns-split-button">Split button </a><code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="cls collapse a6-2">Class <code>.dropdown-toggle</code></li>
+                    <li class="cls collapse a6-2">Class <code>.dropdown-toggle-split</code></li>
+                    <li class="att collapse a6-2">Attribute <code>type="button"</code></li>
+                    <li class="att collapse a6-2">Attribute <code>data-toggle="dropdown"</code></li>
+                    <li class="att collapse a6-2">Accessibility attribute <code>aria-haspopup="true"</code></li>
+                    <li class="att collapse a6-2">Accessibility attribute <code>aria-expanded="false"</code></li>
+                    <li>For screen reader <code>span.sr-only</code>
+                      <ul>
+                        <li class="txt">Text <code>Toggle Dropdown</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Menu (item list) <code>div.dropdown-menu</code>
+                  <ul>
+                    <li>See <a href="components-4.html#dropdowns-examples">Dropdown - Examples</a> for menu items</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Form control</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" aria-label="Text input with split dropdown button">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Action</button>
+          <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-split-buttons-2-structure" aria-control="#example-split-buttons-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-split-buttons-2-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Form control</li>
+            <li>Appending group <code>div.input-group-append</code>
+              <ul>
+                <li>Outline button</li>
+                <li>Split button dropdown</li>
+                <li>Item list</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="custom-forms"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#custom-forms" target="_blank">Custom forms</a>
+      </h4>
+      <p class="my-2">Examples using <a href="components-5.html#custom-forms">custom forms</a></p>
+      <div class="alert alert-warning" role="alert"><strong>Caution: </strong> Examples below (taken from the official document) do not follow the guideline that labels should be used outside the input groups (may cause a problem on accessibility).</div>
+      <h5 class="mt-3" id="custom-select"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#custom-select" target="_blank">Custom <code>select</code></a>
+      </h5>
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect1">Options</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect1">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-1-structure" aria-control="#example-custom-select-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-1-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group
+              <ul>
+                <li>Label <code>label.input-group-text</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-1" aria-control=".a7-1" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a7-1">Attribute <code>for="inputGroupSelect1"</code></li>
+                    <li class="txt">Text <code>Options</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="components-5.html#select-menu">Custom select </a><code>select.custom-select</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-2" aria-control=".a7-2" aria-expanded="false">Attribute</a>
+              <ul>
+                <li class="att collapse a7-2">Attribute <code>id="inputGroupSelect1"</code></li>
+                <li>Item <code>option ...</code> (&times;4)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <select class="custom-select" id="inputGroupSelect2">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <div class="input-group-append">
+          <label class="input-group-text" for="inputGroupSelect2">Options</label>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-2-structure" aria-control="#example-custom-select-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-2-structure">
+        <li>Input group (outer frame)</li>
+        <ul>
+          <li>Custom select</li>
+          <li>Appending group</li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <select class="custom-select" id="inputGroupSelect3">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-3-structure" aria-control="#example-custom-select-3-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-3-structure">
+        <li>Input group (outer frame)</li>
+        <ul>
+          <li>Prepending group
+            <ul>
+              <li>Outline button</li>
+            </ul>
+          </li>
+          <li>Custom select</li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <select class="custom-select" id="inputGroupSelect4">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-4-structure" aria-control="#example-custom-select-4-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-4-structure">
+        <li>Input group (outer frame)</li>
+        <ul>
+          <li>Custom select</li>
+          <li>Appending group
+            <ul>
+              <li>Outline button</li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+      <h5 class="mt-4 mb-3" id="custom-file-input"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#custom-file-input" target="_blank">Custom file input</a>
+      </h5>
+      <div class="input-group my-3">
+        <div class="input-group-prepend"><span class="input-group-text">Upload</span></div>
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile1" type="file">
+          <label class="custom-file-label" for="inputGroupFile1">Choose file</label>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-1-structure" aria-control="#example-custom-file-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-1-structure">
+        <li>Input group (outer frame)
+          <ul>
+            <li>Prepending group (<strong>Upload</strong>)</li>
+            <li><a href="components-5.html#file-browser">Custom file browser </a><code>div.custom-file</code>
+              <ul>
+                <li>Control <code>input.custom-file-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-1" aria-control=".a8-1" aria-expanded="false">Attributes</a>
+                  <ul class="collapse a8-1">
+                    <li class="att">Attribute <code>id="inputGroupFile1"</code></li>
+                    <li class="att">Attribute <code>type="file"</code></li>
+                  </ul>
+                </li>
+                <li>Label <code>label.custom-file-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-2" aria-control=".a8-2" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a8-2">Attribute <code>for="inputGroupFile1"</code></li>
+                    <li class="txt">Text <code>Choose file</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert"><strong>Browse</strong> (on right) is a part of a custom file browser. Also, the filename part (initially <strong>Choose file</strong> ) does not change automatically by selecting a file. JavaScript is required for update. See <a href="components-5.html#file-browser-code-example">Custom file browser - Code example</a> (set to the examples below).</div>
+      <div class="input-group mt-4 mb-3">
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile2" type="file">
+          <label class="custom-file-label" for="inputGroupFile2">Choose file</label>
+        </div>
+        <div class="input-group-append"><span class="input-group-text">Upload</span></div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-2-structure" aria-control="#example-custom-file-2-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-2-structure">
+        <li>Input group (outer frame)</li>
+        <ul>
+          <li>Custom file browser (until <strong>Browse</strong> on the right)</li>
+          <li>Appending group (Upload)</li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile3" type="file">
+          <label class="custom-file-label" for="inputGroupFile3">Choose file</label>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-3-structure" aria-control="#example-custom-file-3-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-3-structure">
+        <li>Input group (outer frame)</li>
+        <ul>
+          <li>Prepending group</li>
+          <ul>
+            <li>Outlie button</li>
+          </ul>
+          <li>Custom file browser</li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile4" type="file">
+          <label class="custom-file-label" for="inputGroupFile4">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-4-structure" aria-control="#example-custom-file-4-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-4-structure">
+        <li>Input group (outer frame)</li>
+        <ul>
+          <li>Custom file browser</li>
+          <li>Appending group</li>
+          <ul>
+            <li>Outline button</li>
+          </ul>
+        </ul>
+      </ul>
+      <h2 class="mt-5" id="jumbotron"><a href="https://getbootstrap.com/docs/4.2/components/jumbotron/" target="_blank">Jumbotron</a>
+      </h2>
+      <h4 class="mb-3" id="jumbotron-example-1">Basic example</h4>
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead"><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-jumbotron-1-structure" aria-control="#example-jumbotron-1-structure" aria-expanded="false">Structure</a>
+      <ul class="struct mt-2 collapse" id="example-jumbotron-1-structure">
+        <li><code>div.jumbotron</code>
+          <ul>
+            <li><code>h1.display-4</code>
+              <ul>
+                <li class="txt">Text <code>Hello, world!</code></li>
+              </ul>
+            </li>
+            <li><code>p.lead</code>
+              <ul>
+                <li class="txt">Text <code>This is a simple hero unit, ...</code></li>
+              </ul>
+            </li>
+            <li><code>hr.my-4</code></li>
+            <li><code>p</code>
+              <ul>
+                <li>Text <code>It uses utility classes ...</code></li>
+              </ul>
+            </li>
+            <li><code>p.lead</code>
+              <ul>
+                <li><code>a.btn.btn-primary.btn-lg</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-1" aria-control=".a9-1" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="att collapse a9-1">Attribute <code>href="#"</code></li>
+                    <li class="att collapse a9-1"> Accessibility attribute <code>role="button"</code></li>
+                    <li class="txt">Text <code>Learn more</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="jumbotron-example-2">Fluid variation</h4>
+    </div>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      </div>
+    </div>
+    <div class="container"><a class="btn btn-outline-info" data-toggle="collapse" href="#example-jumbotron-2-structure" aria-control="#example-jumbotron-2-structure" aria-expanded="false">Structure</a>
+      <div class="mt-2 collapse" id="example-jumbotron-2-structure">
+        <p class="my-1">Using <code>.jumbotron-fluid</code> sets full width without rounded corners.</p>
+        <ul class="struct">
+          <li><code>div.jumbotron.jumbotron-fluid</code> must be a direct child of <code>body</code> (or it sets full width inside the parent)
+            <ul>
+              <li><code>div.container</code> (for appropriate centering)
+                <ul>
+                  <li><code>h1.display-4</code>
+                    <ul>
+                      <li class="txt">Text <code>Fluid jumbotron</code></li>
+                    </ul>
+                  </li>
+                  <li><code>p</code>
+                    <ul>
+                      <li class="txt">Text <code>This is a modified jumbotron ...</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Components(6): Input group/Jumbotron</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

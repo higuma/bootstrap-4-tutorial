@@ -1,0 +1,5 @@
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" preserveAspectRatio="none">
+  <style type="text/css"> text { fill:rgba(255,255,255,.75);font-weight:normal;font-family:Helvetica, monospace;font-size:18pt }</style>
+  <rect width="320" height="320" fill="#777"></rect>
+  <text text-anchor="middle" x="160" y="169">320x320</text>
+</svg>

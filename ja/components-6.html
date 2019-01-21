@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: コンポーネント(6): インプットグループ / ジャンボトロン</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">コンポーネント(6): <a href="#input-group">インプットグループ</a> / <a href="#jumbotron">ジャンボトロン</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-6.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="input-group"><a href="https://getbootstrap.com/docs/4.2/components/input-group/" target="_blank">インプットグループ</a>
+      </h2>
+      <p class="my-2">入力要素(<code>input</code> , <code>textarea</code> , etc.)の前後にテキスト、ボタンなどの補助機能を配置するための拡張用コンポーネント。</p>
+      <h4 class="mt-4" id="basic-example"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#basic-example" target="_blank">基本例</a>
+      </h4>
+      <h5 class="my-3" id="basic-example-prepend">前置の場合</h5>
+      <div class="input-group my-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">@</span></div>
+        <input class="form-control" type="text" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-prepend-structure" aria-control="#basic-example-prepend-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="basic-example-prepend-structure">
+        <li>グループ外枠 <code>div.input-group</code>
+          <ul>
+            <li>前置グループ <code>div.input-group-prepend</code>
+              <ul><code>span.input-group-text</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+                <ul>
+                  <li class="att collapse a1-1">(アクセシビリティ)属性 <code>id="basic-addon1"</code></li>
+                  <li class="txt">テキスト <code>@</code></li>
+                </ul>
+              </ul>
+            </li>
+            <li><a href="components-5.html#form-controls">フォームコントロール </a><code>input.form-control <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a></code>
+              <ul class="collapse a1-2">
+                <li class="att">属性 <code>type="text"</code></li>
+                <li class="att">属性 <code>placeholder="Username"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-label="Username"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-describedby="basic-addon1"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">(公式ドキュメントより)使用上のガイドラインは次の通り。</p>
+      <ul>
+        <li>インプットグループ中にフォームコントロールは1つのみ
+          <ul>
+            <li>これを守らないと<a href="components-5.html#custom-styles">Bootstrap 4方式バリデーション</a>を用いる場合に問題を生じる</li>
+          </ul>
+        </li>
+        <li>ラベル <code>label</code> はインプットグループの外部に用いる
+          <ul>
+            <li>これを守らないとアクセシビリティ上の支障を生じる可能性がある</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning" role="alert"><strong>注: </strong>厳密な規則ではなく、以下に示す公式ドキュメントの例もこれに従っていないものが多い。</div>
+      <div class="alert alert-info" role="alert">(バージョン4.1の時点) バリデーションへの対応がやや不完全で、実行中は枠の角が丸くならない。下記の<a href="#multiple-inputs-validation">バリデーション設定例</a>を参照。</div>
+      <h5 class="mt-4 mb-3" id="basic-example-append">後置の場合</h5>
+      <div class="input-group mb-3">
+        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append"><span class="input-group-text" id="basic-addon2">@example.com</span></div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#basic-example-append-structure" aria-control="#basic-example-append-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="basic-example-append-structure">
+        <li>グループ外枠(前置と同じ)
+          <ul>
+            <li>フォームコントロール <code>input.form-control</code> : 設定は前置と同様(略)</li>
+            <li>後置グループ <code>div.input-group-append</code>
+              <ul>
+                <li>以下設定は前置と同様(略)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="example-label">ラベル <code>label</code> の使用例</h5>
+      <label for="basic-url">Your vanity URL</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="basic-addon3">https://example.com/users/</span></div>
+        <input class="form-control" id="basic-url" type="text" aria-describedby="basic-addon3">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-label-structure" aria-control="#example-label-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-label-structure">
+        <li><code>label</code> はインプットグループの外部(それを指し示す位置)に用いる <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a2-1">属性(例) <code>for="basic-url"</code> (インプットグループ内の <code>input</code> のIDと同じ)</li>
+            <li class="txt">テキスト <code>Your vanity URL</code></li>
+          </ul>
+        </li>
+        <li>グループ外枠(以下前置の基本例と同様)</li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="example-prepend-append">前後両方のグループを用いる例</h5>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+        <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append"><span class="input-group-text">.00</span></div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-prepend-append-structure" aria-control="#example-prepend-append-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-prepend-append-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ</li>
+            <li>フォームコントロール</li>
+            <li>後置グループ</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4 mb-3" id="example-textarea">テキストエリア <code>textarea</code> の使用例</h5>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text">With textarea</span></div>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-textarea-structure" aria-control="#example-textarea-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-textarea-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ</li>
+            <li>テキストエリア <code>textarea.form-control</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="sizing"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#sizing" target="_blank">サイズ設定</a>
+      </h4>
+      <p class="my-2">グループ外枠に <code>.input-group-(sm|lg)</code> を追加する。</p>
+      <p class="mt-3 mb-1"><code>div.input-group.input-group-sm</code></p>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-sm">Small</span></div>
+        <input class="form-control" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <p class="mt-3 mb-1"><code>div.input-group</code></p>
+      <div class="input-group  mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">Default</span></div>
+        <input class="form-control" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <p class="mt-3 mb-1"><code>div.input-group.input-group-lg</code></p>
+      <div class="input-group input-group-lg mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg">Large</span></div>
+        <input class="form-control" type="text" aria-label="Small" aria-describedby="inputGroup-sizing-lg">
+      </div>
+      <h4 class="mt-4" id="checkboxes-and-radios"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#checkboxes-and-radios" target="_blank">チェックボックス、ラジオボタン</a>
+      </h4>
+      <p class="my-2">チェックボックス</p>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="check-1" type="checkbox" value="1" checked aria-label="Checkbox for following text input">
+              <label class="form-check-label" for="check-1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="check-2" type="checkbox" value="2" aria-label="Checkbox for following text input">
+              <label class="form-check-label" for="check-2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="check-3" type="checkbox" value="3" aria-label="Checkbox for following text input">
+              <label class="form-check-label" for="check-3">3</label>
+            </div>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with checkbox">
+      </div>
+      <p class="mt-3 mb-2">ラジオボタン</p>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="radio-1" type="radio" name="radio-example" value="1" checked aria-label="Radio for following text input">
+              <label class="form-check-label" for="radio-1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="radio-2" type="radio" name="radio-example" value="2" aria-label="Radio for following text input">
+              <label class="form-check-label" for="radio-2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" id="radio-3" type="radio" name="radio-example" value="3" aria-label="Radio for following text input">
+              <label class="form-check-label" for="radio-3">3</label>
+            </div>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with checkbox">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-checkboxes-and-radios-structure" aria-control="#example-checkboxes-and-radios-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-checkboxes-and-radios-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ <code>div.input-group-prepend</code>
+              <ul>
+                <li><code>div.input-group-text</code> (背景塗りつぶし用)
+                  <ul>
+                    <li><a href="components-5.html#line">チェックボックス/ラジオ - インライン配置</a> (詳しい設定はリンク先参照)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-warning mt-3" role="alert"><strong>注: </strong> 内部に入力コントロールが複数あるため<a href="components-5.html#custom-styles">Bootstrap 4方式バリデーション</a>で問題を生じる。</div>
+      <h4 class="mt-4 mb-3" id="multiple-inputs"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#multiple-inputs" target="_blank">複数の入力コントロール</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="">First and last name</span></div>
+        <input class="form-control" type="text">
+        <input class="form-control" type="text">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-inputs-structure" aria-control="#example-multiple-inputs-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-inputs-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ</li>
+            <li>フォームコントロール <code>input.form-control</code> (&times;2) (3以上も可、等分配置)</li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-4" id="multiple-inputs-validation">バリデーション</h5>
+      <p class="mt-2 mb-3">この構成は入力コントロールは1つだけという規則に従っていないため、<a href="components-5.html#custom-styles">Bootstrap 4方式バリデーション</a>で問題を生じる。ただし不正(invalid)時に共通のメッセージを表示するという仕様であれば矛盾は生じない。次の設定例を参照。</p>
+      <div class="input-group was-validated mb-3">
+        <div class="input-group-prepend"><span class="input-group-text" id="">First and last name</span></div>
+        <input class="form-control" type="text" required>
+        <input class="form-control" type="text" required>
+        <div class="invalid-feedback">Please input your name</div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-inputs-validation-structure" aria-control="#example-multiple-inputs-validation-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-inputs-validation-structure">
+        <li>グループ外枠 <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="cls collapse a3-1">バリデーション状態表示のため <code>.was-validated</code> を追加</li>
+            <li>前置グループ</li>
+            <li>フォームコントロール <code>input.form-control</code> (&times;2) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-2" aria-control=".a3-2" aria-expanded="false">属性</a>
+              <ul class="collapse a3-2">
+                <li class="att">属性 <code>required</code> を追加</li>
+              </ul>
+            </li>
+            <li>不正時メッセージ <code>div.invalid-response</code>
+              <ul>
+                <li class="txt">テキスト <code>Please input your name</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="multiple-addons"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#multiple-addons" target="_blank">複数のアドオン</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"><span class="input-group-text">$</span><span class="input-group-text">0.00</span>
+        </div>
+        <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-addons-1-structure" aria-control="#example-multiple-addons-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-addons-1-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ1 <strong>$</strong></li>
+            <li>前置グループ2 <strong>0.00</strong></li>
+            <li>フォームコントロール</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append"><span class="input-group-text">$</span><span class="input-group-text">0.00</span>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-multiple-addons-2-structure" aria-control="#example-multiple-addons-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-multiple-addons-2-structure">
+        <li>グループ外枠
+          <ul>
+            <li>フォームコントロール</li>
+            <li>後置グループ1 <strong>$</strong></li>
+            <li>後置グループ2 <strong>0.00</strong></li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="button-addons"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#button-addons" target="_blank">ボタンアドオン</a>
+      </h4>
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <input class="form-control" type="text" placeholder="" aria-label="" aria-describedby="basic-addon1">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-1-structure" aria-control="#example-button-addons-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-1-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ <code>div.input-group-prepend</code>
+              <ul>
+                <li><a href="components-2.html#buttons-outline-buttons">アウトラインボタン </a><code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a4-1">属性 <code>type="button"</code></li>
+                    <li class="txt">テキスト <code>Button</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>フォームコントロール</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-2-structure" aria-control="#example-button-addons-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-2-structure">
+        <li>グループ外枠
+          <ul>
+            <li>フォームコントロール</li>
+            <li>後置グループ <code>div.input-group-append</code>
+              <ul>
+                <li>アウトラインボタン (設定は同じ)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <input class="form-control" type="text" placeholder="" aria-label="" aria-describedby="basic-addon1">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-3-structure" aria-control="#example-button-addons-3-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-3-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ 
+              <ul>
+                <li>アウトラインボタン (&times;2)</li>
+              </ul>
+            </li>
+            <li>フォームコントロール</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-button-addons-4-structure" aria-control="#example-button-addons-4-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-button-addons-4-structure">
+        <li>グループ外枠
+          <ul>
+            <li>フォームコントロール</li>
+            <li>後置グループ 
+              <ul>
+                <li>アウトラインボタン (&times;2)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="buttons-with-dropdowns"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#buttons-with-dropdowns" target="_blank">ドロップダウン</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with dropdown button">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-buttons-with-dropdowns-1-structure" aria-control="#example-buttons-with-dropdowns-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-buttons-with-dropdowns-1-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ <code>div.input-group-prepend</code>
+              <ul>
+                <li>アウトラインボタン + <a href="components-4.html#dropdowns">ドロップダウン </a><code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a5-1">クラス <code>.dropdown-toggle</code></li>
+                    <li class="att collapse a5-1">属性 <code>type="button"</code></li>
+                    <li class="att collapse a5-1">属性 <code>data-toggle="dropdown"</code></li>
+                    <li class="att collapse a5-1">アクセシビリティ属性 <code>aria-haspopup="true"</code></li>
+                    <li class="att collapse a5-1">アクセシビリティ属性 <code>aria-expanded="false"</code></li>
+                    <li class="txt">テキスト <code>Dropdown</code></li>
+                  </ul>
+                </li>
+                <li>メニュー(アイテムリスト) <code>div.dropdown-menu</code>
+                  <ul>
+                    <li>内部(メニューアイテム)の設定は <a href="components-4.html#dropdowns-examples">ドロップダウン - 基本例</a> を参照</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>フォームコントロール</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" aria-label="Text input with dropdown button">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-buttons-with-dropdowns-2-structure" aria-control="#example-buttons-with-dropdowns-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-buttons-with-dropdowns-2-structure">
+        <li>グループ外枠
+          <ul>
+            <li>フォームコントロール</li>
+            <li>後置グループ <code>div.input-group-append</code>
+              <ul>
+                <li>アウトラインボタン + ドロップダウン</li>
+                <li>アイテムリスト </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4 mb-3" id="split-buttons"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#segmented-buttons" target="_blank">スプリットボタン</a>
+      </h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Action</button>
+          <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        <input class="form-control" type="text" aria-label="Text input with split dropdown button">
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-split-buttons-1-structure" aria-control="#example-split-buttons-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-split-buttons-1-structure">
+        <li>グループ外枠
+          <ul>
+            <li>前置グループ <code>div.input-group-prepend</code>
+              <ul>
+                <li>アウトラインボタン <code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a6-1">属性 <code>type="button"</code></li>
+                    <li class="txt">テキスト <code>Action</code></li>
+                  </ul>
+                </li>
+                <li><a href="components-4.html#dropdowns-split-button">スプリットボタン </a><code>button.btn.btn-outline-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a6-2">クラス <code>.dropdown-toggle</code></li>
+                    <li class="cls collapse a6-2">クラス <code>.dropdown-toggle-split</code></li>
+                    <li class="att collapse a6-2">属性 <code>type="button"</code></li>
+                    <li class="att collapse a6-2">属性 <code>data-toggle="dropdown"</code></li>
+                    <li class="att collapse a6-2">アクセシビリティ属性 <code>aria-haspopup="true"</code></li>
+                    <li class="att collapse a6-2">アクセシビリティ属性 <code>aria-expanded="false"</code></li>
+                    <li>スクリーンリーダ用要素 <code>span.sr-only</code>
+                      <ul>
+                        <li class="txt">テキスト <code>Toggle Dropdown</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>アイテムリスト <code>div.dropdown-menu</code>
+                  <ul>
+                    <li>内部の設定は <a href="components-4.html#dropdowns-examples">ドロップダウン - 基本例</a> を参照</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>フォームコントロール</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <input class="form-control" type="text" aria-label="Text input with split dropdown button">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Action</button>
+          <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider" role="separator"></div><a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-split-buttons-2-structure" aria-control="#example-split-buttons-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-split-buttons-2-structure">
+        <li>グループ外枠
+          <ul>
+            <li>フォームコントロール</li>
+            <li>後置グループ <code>div.input-group-append</code>
+              <ul>
+                <li>アウトラインボタン</li>
+                <li>スプリットドロップダウン</li>
+                <li>アイテムリスト</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="custom-forms"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#custom-forms" target="_blank">カスタムフォームコントロール</a>
+      </h4>
+      <p class="my-2"><a href="components-5.html#custom-forms">カスタムフォームコントロール</a>を用いた応用例。</p>
+      <div class="alert alert-warning" role="alert"><strong>注: </strong> 以下の例はすべて公式ドキュメントからのものだが、ラベルはインプットグループの外部に用いるというガイドラインに従っていない(アクセシビリティ上問題を生じる可能性あり)。</div>
+      <h5 class="mt-3" id="custom-select"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#custom-select" target="_blank">カスタム <code>select</code></a>
+      </h5>
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect1">Options</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect1">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-1-structure" aria-control="#example-custom-select-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-1-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>前置グループ 
+            <ul>
+              <li>ラベル <code>label.input-group-text</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-1" aria-control=".a7-1" aria-expanded="false">属性</a>
+                <ul>
+                  <li class="att collapse a7-1">属性 <code>for="inputGroupSelect1"</code></li>
+                  <li class="txt">テキスト <code>Options</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="components-5.html#select-menu">カスタムselect </a><code>select.custom-select</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-2" aria-control=".a7-2" aria-expanded="false">属性</a>
+            <ul>
+              <li class="att collapse a7-2">属性 <code>id="inputGroupSelect1"</code></li>
+              <li>アイテム <code>option ...</code> (&times;4)</li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <select class="custom-select" id="inputGroupSelect2">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <div class="input-group-append">
+          <label class="input-group-text" for="inputGroupSelect2">Options</label>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-2-structure" aria-control="#example-custom-select-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-2-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>カスタムselect </li>
+          <li>後置グループ </li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <select class="custom-select" id="inputGroupSelect3">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-3-structure" aria-control="#example-custom-select-3-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-3-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>前置グループ 
+            <ul>
+              <li>アウトラインボタン</li>
+            </ul>
+          </li>
+          <li>カスタムselect </li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <select class="custom-select" id="inputGroupSelect4">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-select-4-structure" aria-control="#example-custom-select-4-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-select-4-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>カスタムselect </li>
+          <li>後置グループ 
+            <ul>
+              <li>アウトラインボタン</li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+      <h5 class="mt-4 mb-3" id="custom-file-input"><a href="https://getbootstrap.com/docs/4.2/components/input-group/#custom-file-input" target="_blank">カスタムファイルブラウザ</a>
+      </h5>
+      <div class="input-group my-3">
+        <div class="input-group-prepend"><span class="input-group-text">アップロード</span></div>
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile1" type="file">
+          <label class="custom-file-label" for="inputGroupFile1">選択されていません</label>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-1-structure" aria-control="#example-custom-file-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-1-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>前置グループ (アップロード)</li>
+          <li><a href="components-5.html#file-browser">カスタムファイルブラウザ </a><code>div.custom-file</code>
+            <ul>
+              <li>コントロール <code>code input.custom-file-input</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-1" aria-control=".a8-1" aria-expanded="false">属性</a>
+                <ul class="collapse a8-1">
+                  <li class="att">属性 <code>id="inputGroupFile1"</code></li>
+                  <li class="att">属性 <code>type="file"</code></li>
+                </ul>
+              </li>
+              <li>ラベル <code>label.custom-file-label</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-2" aria-control=".a8-2" aria-expanded="false">属性</a>
+                <ul>
+                  <li class="att collapse a8-2">属性 <code>for="inputGroupFile1"</code></li>
+                  <li class="txt">テキスト <code>選択されていません</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+      <div class="alert alert-info mt-3" role="alert">右端の <strong>ファイル選択</strong> はカスタムファイルブラウザの一部。またファイル名表示(初期値「<strong>選択されていません</strong>」)はファイル選択してもそのままでは更新されず、JavaScriptによる処理が必要。カスタムファイルブラウザの<a href="components-5.html#custom-file-code-example">コード例</a>を参照(本ページはすべて設定済み)。</div>
+      <div class="input-group mt-4 mb-3">
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile2" type="file">
+          <label class="custom-file-label" for="inputGroupFile2">選択されていません</label>
+        </div>
+        <div class="input-group-append"><span class="input-group-text">アップロード</span></div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-2-structure" aria-control="#example-custom-file-2-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-2-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>カスタムファイルブラウザ (Browseまで)</li>
+          <li>後置グループ (アップロード)</li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile3" type="file">
+          <label class="custom-file-label" for="inputGroupFile3">選択されていません</label>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-3-structure" aria-control="#example-custom-file-3-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-3-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>前置グループ</li>
+          <ul>
+            <li>アウトラインボタン</li>
+          </ul>
+          <li>カスタムファイルブラウザ</li>
+        </ul>
+      </ul>
+      <div class="input-group mt-4 mb-3">
+        <div class="custom-file">
+          <input class="custom-file-input" id="inputGroupFile4" type="file">
+          <label class="custom-file-label" for="inputGroupFile4">選択されていません</label>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-custom-file-4-structure" aria-control="#example-custom-file-4-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-custom-file-4-structure">
+        <li>グループ外枠</li>
+        <ul>
+          <li>カスタムファイルブラウザ</li>
+          <li>後置グループ</li>
+          <ul>
+            <li>アウトラインボタン</li>
+          </ul>
+        </ul>
+      </ul>
+      <h2 class="mt-5" id="jumbotron"><a href="https://getbootstrap.com/docs/4.2/components/jumbotron/" target="_blank">ジャンボトロン</a>
+      </h2>
+      <h4 class="mb-3" id="jumbotron-example-1">例1 (基本構成)</h4>
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead"><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      </div><a class="btn btn-outline-info" data-toggle="collapse" href="#example-jumbotron-1-structure" aria-control="#example-jumbotron-1-structure" aria-expanded="false">構造</a>
+      <ul class="struct mt-2 collapse" id="example-jumbotron-1-structure">
+        <li><code>div.jumbotron</code>
+          <ul>
+            <li><code>h1.display-4</code>
+              <ul>
+                <li class="txt">タイトル <code>Hello, world!</code></li>
+              </ul>
+            </li>
+            <li><code>p.lead</code>
+              <ul>
+                <li class="txt">テキスト <code>This is a simple hero unit, ...</code></li>
+              </ul>
+            </li>
+            <li><code>hr.my-4</code></li>
+            <li><code>p</code>
+              <ul>
+                <li class="txt">テキスト <code>It uses utility classes ...</code></li>
+              </ul>
+            </li>
+            <li><code>p.lead</code>
+              <ul>
+                <li><code>a.btn.btn-primary.btn-lg</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-1" aria-control=".a9-1" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a9-1">属性 <code>href="#"</code></li>
+                    <li class="att collapse a9-1">アクセシビリティ属性 <code>role="button"</code></li>
+                    <li class="txt">テキスト <code>Learn more</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="jumbotron-example-2">例2 (バリエーション)</h4>
+    </div>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      </div>
+    </div>
+    <div class="container"><a class="btn btn-outline-info" data-toggle="collapse" href="#example-jumbotron-2-structure" aria-control="#example-jumbotron-2-structure" aria-expanded="false">構造</a>
+      <div class="struct mt-2 collapse" id="example-jumbotron-2-structure">
+        <p class="my-1">横幅いっぱいに(角を丸めず)配置する場合は <code>.jumbotron-fluid</code> を使い、その中に <code>div.container</code> 以下を入れる。</p>
+        <ul class="struct">
+          <li>親は必ず <code>body</code> (親がいるとその内側100%に配置する)
+            <ul>
+              <li><code>div.jumbotron.jumbotron-fluid</code>
+                <ul>
+                  <li><code>div.container</code>
+                    <ul>
+                      <li><code>h1.display-4</code>
+                        <ul>
+                          <li class="txt">テキスト <code>Fluid jumbotron</code></li>
+                        </ul>
+                      </li>
+                      <li><code>p</code>
+                        <ul>
+                          <li class="txt">テキスト <code>This is a modified jumbotron ...</code></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(6): インプットグループ/ジャンボトロン</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Bootstrap 4 tutorial: Components (12): Scrollspy: Example in navbar</title>
+    <style></style>
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration:none; margin-left:0.5rem; color:white; }
+      a.heading-link:hover { color:skyblue; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+      
+    </style>
+  </head>
+  <body data-spy="scroll" data-target="#scrollspy-demo" data-offset="56">
+    <nav class="navbar fixed-top navbar-light" id="scrollspy-demo" style="background: rgba(222,222,222,0.6);"><a class="navbar-brand" href="#">Scrollspy demo (1)</a>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#picture-1">Picture 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="#picture-2">Picture 2</a></li>
+        <li class="nav-item"><a class="nav-link" href="#picture-3">Picture 3</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Slide</a>
+          <div class="dropdown-menu"><a class="dropdown-item" href="#slide-1">Slide 1</a><a class="dropdown-item" href="#slide-2">Slide 2</a><a class="dropdown-item" href="#slide-3">Slide 3</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div style="margin-top: 3.5rem;">
+        <div class="row">
+          <div class="col-auto mr-auto">
+            <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+            <p class="lead">Components (12): Scrollspy: Example in navbar</p>
+          </div>
+          <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+            <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/scrollspy-1.html">Japanese (日本語)</a></div>
+          </div>
+        </div>
+      </div>
+      <h2 class="mt-2" id="about">About this demo</h2>
+      <p class="my-2"><a href="components-12.html#scrollspy-example-in-navbar">Scrollspy demo</a> using a <a href="components-10.html">navigation bar</a></p>
+      <ul class="struct">
+        <li>Scrolling content <code>body</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="att collapse a1-1">Attribute <code>data-spy="scroll"</code></li>
+            <li class="att collapse a1-1">Attribute <code>data-target="#scrollspy-demo"</code></li>
+            <li class="att collapse a1-1">Attribute <code>data-offset="56"</code> (⇒ <a href="#note-1">Note 1</a> )</li>
+            <li>Navigation bar (fixed top) <code>nav.navbar.fixed-top.navbar-light</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="att collapse a1-2">Attribute <code>id="scrollspy-demo"</code></li>
+                <li class="att collapse a1-2">Style (set to translucent) <code>style="background: rgba(222,222,222,0.6);"</code> (⇒ <a href="#note-2">Note 2</a> )</li>
+                <li class="txt">Title text <code>Scrollspy demo (1)</code> (see <a href="components-10.html#brand">Navbar - brand</a> )</li>
+                <li>Item list <code>ul.nav.nav-pills</code> (see <a href="components-10.html#nav">Navbar - nav</a> )
+                  <ul>
+                    <li>Items <code>li.nav-item</code>
+                      <ul>
+                        <li>Link <code>a.nav-link</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attribute</a>
+                          <ul>
+                            <li class="att collapse a1-3">Attribute (e.g.) <code>href=`#about`</code></li>
+                            <li class="txt">Text (e.g.) <code>About</code></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Dropdown ( <strong>Slide&dtrif; </strong>) <code>li.nav-item.dropdown</code> (see  <a href="components-4.html#dropdowns">Dropdowns</a>)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Contents <code>div.container</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">Attribute</a>
+              <ul class="collapse a1-4">
+                <li>Set <code>id="{position-id}"</code> to the tracking targete elements</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="alert alert-info" id="note-1" role="alert"><strong>Note 1: </strong><code>data-offset="56"</code> is the height of the navigation bar (px). As this page uses a fixed-top bar, scroll caluculation should be adjusted to set the origin of scroll tracking to just beneath the bar.</div>
+      <div class="alert alert-info" id="note-2" role="alert"><strong>Note 2: </strong>Regardless of the navigation bar, scrolling inside page with hash (by clicking pills, etc.) always scroll target elements to the top of the page. As the result, targets are always hidden by the bar. It is difficult to resolve this problem (official demos also behave the same, or you may have to use <code>iframe</code> ). This demo uses a translucent navigation bar as compromise.</div>
+      <p>Below are dummy scrolling contents. Each heading have a specific <code>id="{position-id}"</code> for scroll tracking.</p>
+      <h2 id="picture-1">Picture 1</h2><img class="img-fluid mb-4" src="../img/1920x1080.svg">
+      <h2 id="picture-2">Picture 2</h2><img class="img-fluid mb-4" src="../img/1920x1080.svg">
+      <h2 id="picture-3">Picture 3</h2><img class="img-fluid mb-4" src="../img/1920x1080.svg">
+      <h2 id="slide-1">Slide 1</h2><img class="img-fluid mb-4" src="../img/slide-1.svg">
+      <h2 id="slide-2">Slide 2</h2><img class="img-fluid mb-4" src="../img/slide-2.svg">
+      <h2 id="slide-3">Slide 3</h2><img class="img-fluid mb-4" src="../img/slide-3.svg">
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="components-12.html#scrollspy-example-in-navbar">Components(12): Scrollspy</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Example in navbar</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</html>

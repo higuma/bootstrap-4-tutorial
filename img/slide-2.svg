@@ -1,0 +1,5 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+  <style type="text/css"> text { fill:rgba(0,0,0,0.2);font-weight:normal;font-family:Helvetica, monospace;font-size:80pt }</style>
+  <rect width="1920" height="1080" fill="#888"></rect>
+  <text text-anchor="middle" x="960" y="580">Second slide</text>
+</svg>

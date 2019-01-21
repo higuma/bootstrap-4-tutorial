@@ -1,0 +1,5 @@
+<svg width="2000" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 200" preserveAspectRatio="none">
+  <style type="text/css"> text { fill:rgba(255,255,255,.75);font-weight:normal;font-family:Helvetica, monospace;font-size:40pt }</style>
+  <rect width="2000" height="200" fill="#777"></rect>
+  <text text-anchor="middle" x="1000" y="120">2000x200</text>
+</svg>

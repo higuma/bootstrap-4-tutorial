@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/index.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-4" id="toc">目次</h2>
+      <ul>
+        <li><a href="#about">このチュートリアルについて</a>
+          <ul>
+            <li class="mb-2"><a href="#notation">記法</a></li>
+          </ul>
+        </li>
+        <li><a href="getting-started.html">Getting started (はじめに)</a></li>
+        <li>レイアウト
+          <ul>
+            <li><a href="layout-1.html">概要</a> / <a href="layout-1.html#grid">グリッド</a> / <a href="layout-1.html#utilities">レイアウトユーティリティ</a></li>
+          </ul>
+        </li>
+        <li>コンテント
+          <ol>
+            <li><a href="content-1.html">Reboot</a> / <a href="content-1.html#typography">タイポグラフィ</a> / <a href="content-1.html#code">コード</a></li>
+            <li><a href="content-2.html">画像</a></li>
+            <li><a href="content-3.html">表</a></li>
+            <li><a href="content-4.html">図</a></li>
+          </ol>
+        </li>
+        <li>コンポーネント
+          <ol>
+            <li><a href="components-1.html">アラート</a> / <a href="components-1.html#badges">バッジ</a> / <a href="components-1.html#breadcrumb">パンくずリスト</a></li>
+            <li><a href="components-2.html">ボタン</a> / <a href="components-2.html#button-group">ボタングループ</a></li>
+            <li><a href="components-3.html">カード</a></li>
+            <li><a href="components-4.html">カルーセル</a> / <a href="components-4.html#collapse">折り畳み</a> / <a href="components-4.html#dropdowns">ドロップダウン</a></li>
+            <li><a href="components-5.html">フォーム</a></li>
+            <li><a href="components-6.html">インプットグループ</a> / <a href="components-6.html#jumbotron">ジャンボトロン</a></li>
+            <li><a href="components-7.html">リストグループ</a></li>
+            <li><a href="components-8.html">メディアオブジェクト</a> / <a href="components-8.html#modal">モーダル</a></li>
+            <li><a href="components-9.html">ナビゲーション</a></li>
+            <li><a href="components-10.html">ナビゲーションバー</a></li>
+            <li><a href="components-11.html">ページネーション</a> / <a href="components-11.html#popovers">ポップオーバー</a> / <a href="components-11.html#progress">プログレスバー</a></li>
+            <li><a href="components-12.html">スクロールスパイ</a> / <a href="components-12.html#spinners">スピナー</a> / <a href="components-12.html#toasts">トースト</a> / <a href="components-12.html#tooltips">ツールチップ</a></li>
+          </ol>
+        </li>
+        <li>ユーティリティ
+          <ol>
+            <li><a href="utilities-1.html">ボーダー</a> / <a href="utilities-1.html#clearfix">クリアフィックス</a> / <a href="utilities-1.html#close-icon">クローズアイコン</a></li>
+            <li><a href="utilities-2.html">色</a> / <a href="utilities-2.html#display">表示</a> / <a href="utilities-2.html#embed">埋め込み</a></li>
+            <li><a href="utilities-3.html">Flexbox</a> / <a href="utilities-3.html#float">フロート</a> / <a href="utilities-3.html#image-replacement">画像置換</a></li>
+            <li><a href="utilities-4.html">配置</a> / <a href="utilities-4.html#screenreaders">スクリーンリーダ</a> / <a href="utilities-4.html#shadows">シャドウ</a> / <a href="utilities-4.html#sizing">サイズ</a> / <a href="utilities-4.html#spacing">空白</a></li>
+            <li><a href="utilities-5.html">テキスト</a> / <a href="utilities-5.html#vertical-align">上下アライン</a> / <a href="utilities-5.html#visibility">可視性</a></li>
+          </ol>
+        </li>
+        <li><a href="extend+migration+about.html">Extend</a> / <a href="extend+migration+about.html#migration">Migration</a> / <a href="extend+migration+about.html#about">About</a></li>
+      </ul>
+      <h2 class="mt-5" id="about">このチュートリアルについて</h2>
+      <p class="my-2"> <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> 4の自習用チュートリアルです。<a href="https://getbootstrap.com/docs/4.2/" target="_blank">公式ドキュメント</a>と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
+      </p>
+      <p class="my-2">このチュートリアル自身は<a href="https://pugjs.org/" target="_blank">pug</a>で記述し、<a href="https://nodejs.org/" target="_blank">node.js</a>/<a href="https://docs.npmjs.com/" target="_blank">npm</a>環境の<a href="https://webpack.js.org/" target="_blank">Webpack</a>でビルドしています。<a href="https://github.com/higuma/bootstrap-4-tutorial" target="_blank">ソースコード</a>は<a href="https://github.com/" target="_blank">GitHub</a>で公開し、サイトのホスティングは<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>を用いています。
+      </p>
+      <h4 class="mt-4" id="notation">記法</h4>
+      <p class="mt-2 mb-3">本チュートリアルではHTMLの説明に独自の方法を用います。次の<a href="components-2.html#button-group-button-toolbar">ボタンツールバー</a>を例に説明します。</p>
+      <div class="btn-toolbar" role="toolbar" aria-label="Button toolbar">
+        <div class="btn-group" role="group" aria-label="Group 1">
+          <button class="btn btn-secondary" role="button">1</button>
+          <button class="btn btn-secondary" role="button">2</button>
+          <button class="btn btn-secondary" role="button">3</button>
+        </div>
+        <div class="btn-group ml-2" role="group" aria-label="Group 2">
+          <button class="btn btn-secondary" role="button">A</button>
+          <button class="btn btn-secondary" role="button">B</button>
+        </div>
+      </div>
+      <p class="my-3">これは次のHTMLで作られています。</p>
+      <pre class="p-2 border bg-light"><code>&lt;div class=&quot;btn-toolbar&quot; role=&quot;toolbar&quot; aria-label=&quot;Button toolbar&quot;&gt;
+  &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Group 1&quot;&gt;
+    &lt;button class=&quot;btn btn-secondary&quot; role=&quot;button&quot;&gt;1&lt;/button&gt;
+    &lt;button class=&quot;btn btn-secondary&quot; role=&quot;button&quot;&gt;2&lt;/button&gt;
+    &lt;button class=&quot;btn btn-secondary&quot; role=&quot;button&quot;&gt;3&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;btn-group ml-2&quot; role=&quot;group&quot; aria-label=&quot;Group 2&quot;&gt;
+    &lt;button class=&quot;btn btn-secondary&quot; role=&quot;button&quot;&gt;A&lt;/button&gt;
+    &lt;button class=&quot;btn btn-secondary&quot; role=&quot;button&quot;&gt;B&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <p class="my-3">これを解説付きの多重リストで表現します。</p>
+      <ul>
+        <li>次の 
+          <button class="btn btn-outline-info">構造</button> ボタンで全体構造を入れ子のリストで表示します
+          <ul>
+            <li>その先の
+              <button class="btn btn-sm btn-outline-info my-1 px-1 py-0">属性</button> ボタンで要素の属性を展開表示します
+            </li>
+          </ul>
+        </li>
+      </ul><a class="btn btn-outline-info" data-toggle="collapse" href="#example-structure" aria-control="#example-structure" aria-expanded="false">構造</a> ⇐ ここをクリック
+      <ul class="struct collapse my-3" id="example-structure">
+        <li>ボタンツールバー <code>div.btn-toolbar</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>role="toolbar"</code></li>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>aria-label="Button toolbar"</code></li>
+            <li>(第1)ボタングループ <code>div.btn-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a1-2">アクセシビリティ属性 <code>role="group"</code></li>
+                <li class="att collapse a1-2">アクセシビリティ属性 <code>aria-label="Group 1"</code></li>
+                <li>ボタン <code>button.btn</code> (&times;3) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a1-3">ボタン色 <code>.btn-secondary</code></li>
+                    <li class="att collapse a1-3">アクセシビリティ属性 <code>role="button"</code></li>
+                    <li class="txt">テキスト <code>1</code>, <code>2</code>, <code>3</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>(第2)ボタングループ <code>div.btn-group</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">属性</a>
+              <ul>
+                <li class="cls collapse a1-4">左マージン <code>.ml-2</code></li>
+                <li class="att collapse a1-4">アクセシビリティ属性 <code>role="group"</code></li>
+                <li class="att collapse a1-4">アクセシビリティ属性 <code>aria-label="Group 2"</code></li>
+                <li>ボタン <code>button.btn</code> (&times;2) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-5" aria-control=".a1-5" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="cls collapse a1-5">ボタン色 <code>.btn-secondary</code></li>
+                    <li class="att collapse a1-5">アクセシビリティ属性 <code>role="button"</code></li>
+                    <li class="txt">テキスト <code>A</code>, <code>B</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">記法のルールは次の通りです。</p>
+      <ul class="struct">
+        <li>要素は先頭シンボルが黒丸(disc)、要素名は <code>code</code> 要素の書式(赤色)で表現</li>
+        <li>クラス付きの要素はCSSドット記法を用いる (例: <code>div.modal.fade</code> )</li>
+        <li>要素の属性と子要素はリストをネストして子アイテムで表現
+          <ul>
+            <li class="cls">追加クラスは先頭が白丸(circle)でCSSドット記法 <code>.{クラス}</code></li>
+            <li class="att">属性は先頭が白丸(circle)でHTML属性の記法 <code>{属性}="{値}"</code></li>
+            <li class="txt">テキストは先頭文字なし <code>テキストコンテント</code></li>
+            <li>子要素は親要素と同じ書式(先頭は黒丸)、以下子孫も同様</li>
+          </ul>
+        </li>
+      </ul>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">ホーム</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>
