@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
       ul.struct li     { list-style: disc; }
       ul.struct li.cls { list-style: circle; }
@@ -29,7 +29,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/getting-started.html">英語 (English)</a></div>
         </div>
       </div>
-      <h2 class="mt-4" id="intro"><a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/" target="_blank">スタートアップ</a>
+      <h2 class="mt-4" id="intro"><a href="https://getbootstrap.com/docs/4.2/getting-started/introduction/" target="_blank">スタートアップ</a>
       </h2>
       <p class="my-2">まずBootstrapの最も簡単な利用方法として<a href="https://ja.wikipedia.org/wiki/コンテンツデリバリネットワーク" target="_blank">CDN</a>を利用する方法を説明する(本チュートリアルもこの方法で作られている）。
       </p>
@@ -102,6 +102,9 @@
           </ul>
         </li>
       </ul>
+      <p class="my-2">CDNを利用した読み込みにはそれぞれURLとSHA-384文字列が必要。具体的な設定は公式サイトの次の例文からコピペすればよい。</p>
+      <p class="my-2">⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template" target="_blank">Starter template</a>
+      </p>
       <h4 class="mt-4" id="intro-doctype">DOCTYPE宣言</h4>
       <p class="my-2">HTMLの先頭は必ず <code>&lt;!DOCTYPE html&gt;</code> と書く。これは後方互換(HTML4以前との判別)用の記述で、HTML5以降の(新しい)HTML文書であることを示すのに用いられる。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#intro-doctype-reference" aria-control="#intro-doctype-reference" aria-expanded="false">リファレンス</a> <a class="btn btn-outline-info" data-toggle="collapse" href="#intro-doctype-note" aria-control="#intro-doctype-note" aria-expanded="false">補足</a>
       </p>
@@ -151,13 +154,13 @@
         </li>
       </ul>
       <div class="alert alert-info collapse" id="intro-viewport-note" role="alert">
-        <p><strong>補足(2018年5月現在): </strong>元はiPhone独自の設定だったが、その後Android等も採用し事実上の業界標準になった。元のiPhone専用書式は <code>meta</code> に記述する形式のみだったが、その後CSSの一部として正式に仕様化を進めることになった経緯がある。</p>
+        <p><strong>補足(2018年8月現在): </strong>ビューポート設定はもともとiPhoneの独自仕様だったが、その後Android等も採用し標準化された。元のiPhone専用書式は <code>meta</code> に記述する形式のみだったが、その後CSSの一部として正式に仕様化を進めることになった経緯がある。</p>
         <p>そのため現在のWorking draft(暫定仕様)はCSS扱いだが、実際にはまだ多くのブラウザは <code>meta</code> 側の実装しか行っていない(CSSへの対応状況は <a href="https://caniuse.com/#search=%40viewport" target="_blank">caniuse - @viewport</a> や <a href="https://developer.mozilla.org/ja/docs/Web/CSS/Reference/@viewport" target="_blank">MDN - @viewport</a> を参照)。
         </p>
         <p class="mb-0">また暫定仕様では元のiPhone仕様との整合性確保のため、<code>content</code> 属性の値とCSS(<code>@viewport</code>)の間の変換規則(<a href="https://www.w3.org/TR/css-device-adapt-1/#parsing-algorithm" target="_blank">英文</a>/<a href="https://momdo.github.io/css-device-adapt-1/#parsing-algorithm" target="_blank">日本語</a>)がある。特に文の区切りにCSSの <code>;</code> ではなく <code>,</code> を用いる点に注意。
         </p>
       </div>
-      <div class="alert alert-warning collapse" id="intro-viewport-ios9" role="alert"><strong>iOS 9に関する注意: </strong><code>shrink-to-fit=no</code> はiPhone iOS 9(Safari 9)専用の設定。このバージョンのSafariはこれがないとページを自動縮小して全体表示する機能が優先され <code>initial-scale=1</code> が無効になる(勝手に縮小する)。9で追加されたが10で廃止されたため上記リファレンス仕様に書かれていない。<a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_0.html" target="_blank">What's New in Safari - 9.0</a> を参照。なお他のブラウザは単に無視する(付けておいても無害)。
+      <div class="alert alert-warning collapse" id="intro-viewport-ios9" role="alert"><strong>iOS 9に関する注意: </strong><code>shrink-to-fit=no</code> はiPhone iOS 9(Safari 9)専用の設定。このバージョンのSafariはこれがないとページを自動縮小して全体表示する機能が優先され <code>initial-scale=1</code> が無効になる(勝手に縮小する)。9で追加されたが10で廃止されたため上記リファレンス仕様に書かれていない(<a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_0.html" target="_blank">What's New in Safari - 9.0</a> 参照)。なお他のブラウザは単に無視する(付けておいても無害)。
       </div>
       <h4 class="mt-4" id="intro-cdn">CDN読み込み</h4>
       <p>CDNを利用する場合は外部読み込みタグ(CSSは <code>link</code>, JavaScriptは <code>script</code>)に属性 <code>integrity="sha384-{SHA-384文字列}"</code> と <code>crossorigin="anonymous"</code> を追加する。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#intro-cdn-reference" aria-control="#intro-cdn-reference" aria-expanded="false">リファレンス</a> <a class="btn btn-outline-info" data-toggle="collapse" href="#intro-cdn-note" aria-control="#intro-cdn-note" aria-expanded="false">補足</a>
@@ -183,14 +186,14 @@
       <div class="alert alert-info collapse" id="intro-cdn-note" role="alert"><strong>補足: </strong>SHA-384は<a href="https://ja.wikipedia.org/wiki/暗号学的ハッシュ関数" target="_blank">暗号学的ハッシュ関数</a> <a href="https://ja.wikipedia.org/wiki/SHA-2" target="_blank">SHA-2</a>のひとつで、現在(2018年)のところ十分な強度を持つと見なされている。これを用いてあらかじめハッシュ値(の<a href="https://ja.wikipedia.org/wiki/Base64" target="_blank">Base64</a>エンコード文字列)を求めておきホスト先と照合を行う(付けないとホスト先からの応答が遅くなることがある)。通常は公式サイトのテンプレートをそのままコピペすればよい。また自分で計算する場合は<a href="https://developer.mozilla.org/ja/docs/Web/Security/Subresource_Integrity/#Tools_for_generating_SRI_hashes" target="_blank">MDNリファレンス</a>に例文付きの解説があるので参考にするとよい。
       </div>
       <h5 class="mt-4" id="intro-bootstrap-css">Bootstrap CSS読み込み</h5>
-      <p>通常は公式ドキュメントの <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template" target="_blank">Starter template</a> の設定をそのまま使えばよい。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#intro-bootstrap-css-note" aria-control="#intro-bootstrap-css-note" aria-expanded="false">補足</a>
+      <p>通常は公式ドキュメントの <a href="https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template" target="_blank">Starter template</a> の設定をそのまま使えばよい。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#intro-bootstrap-css-note" aria-control="#intro-bootstrap-css-note" aria-expanded="false">補足</a>
       </p>
       <div class="alert alert-info collapse" id="intro-bootstrap-css-note" role="alert"><strong>補足: </strong>BootstrapのCDNホスト先は今までに数回変わっている(大昔はNetDNA、その後はMaxCDN、現在はStackPath)。そのためサイト運営中も定期的に確認すべき。現在のCDNホストは<a href="https://www.bootstrapcdn.com/" target="_blank">BootstrapCDN</a>を参照。旧バージョンもここから利用できる(→ <a href="https://www.bootstrapcdn.com/legacy/bootstrap/" target="_blank">Bootstrap Legacy</a>)。
       </div>
       <h5 class="mt-4" id="intro-javascript">JavaScript読み込み</h5>
-      <p>Bootstrapは一部の動的機能をJavaScriptで実装している。これは<a href="http://jquery.com/" target="_blank">jQuery</a>プラグインとして実装されたことから伝統的に「(Bootstrap) JavaScriptプラグイン」と呼ばれておりjQueryに依存している。また現バージョン(V4以降)は<a href="https://popper.js.org/" target="_blank">Popper.js</a>にも依存している。そのためこの2つを事前に読み込む必要がある。
+      <p>BootstrapはCSSだけで実現できない機能をJavaScriptで実装している。これは<a href="http://jquery.com/" target="_blank">jQuery</a>プラグイン形式で実装されていることから伝統的に「(Bootstrapの) JavaScriptプラグイン」と呼ばれておりjQueryに全面依存している。また現バージョン(V4以降)は<a href="https://popper.js.org/" target="_blank">Popper.js</a>にも依存している。そのためこの2つを事前に読み込む必要がある。
       </p>
-      <p>通常は次の順番で読み込むが、jQueryとPopper.jsの間に依存性はないので1と2は逆でもよい。CDN用の全設定は <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template" target="_blank">Starter template</a> を参照(内容が分からなくてもこの通り記述すれば使える)。
+      <p>通常は次の順番で読み込むが、jQueryとPopper.jsの間に依存性はないので1と2は逆でもよい。CDN用の全設定は <a href="https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template" target="_blank">Starter template</a> を参照(内容が分からなくてもこの通り記述すれば使える)。
       </p>
       <ol>
         <li>jQuery - 1.9.1以上、Slim build (AJAX, Effectsなし版)で十分</li>
@@ -198,41 +201,47 @@
         <li>Bootstrap JavaScript</li>
       </ol>
       <div class="alert alert-info" role="alert">開発の初期段階はCDNを利用し、ある程度理解した後でカスタマイズを検討するのがお勧め。ここから下は大部分がカスタマイズを行う人向けの内容なので、最初は飛ばして<a href="#accessibility">アクセシビリティ</a>だけ確認して先に進むとよい。</div>
-      <h2 class="mt-4" id="download"><a href="https://getbootstrap.com/docs/4.1/getting-started/download/" target="_blank">Bootstrapの利用法</a>
+      <h2 class="mt-5" id="download"><a href="https://getbootstrap.com/docs/4.2/getting-started/download/" target="_blank">Bootstrapの利用法</a>
       </h2>
       <p class="my-2">Bootstrapの様々な入手/利用方法(概要のみ)。</p>
       <ul>
-        <li>ビルド済みファイルのみ必要な場合 ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js" target="_blank">Compiled CSS and JS</a>
+        <li>ビルド済みファイルのみ必要な場合 ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#compiled-css-and-js" target="_blank">Compiled CSS and JS</a>
         </li>
-        <li>SassやJavaScriptなどのソースファイルが必要な場合 ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#source-files" target="_blank">Source files</a>
+        <li>SassやJavaScriptなどのソースファイルが必要な場合 ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#source-files" target="_blank">Source files</a>
           <ul>
             <li>マスターはGitHub( <a href="https://github.com/twbs/bootstrap/" target="_blank">https://github.com/twbs/bootstrap/</a> からZIPダウンロード)
             </li>
           </ul>
         </li>
-        <li>CDNを利用する場合 ⇒<a href="https://getbootstrap.com/docs/4.1/getting-started/download/#bootstrapcdn" target="_blank">BootstrapCDN</a> (詳しくは <a href="#intro">スタートアップ</a>を参照)
+        <li>CDNを利用する場合 ⇒<a href="https://getbootstrap.com/docs/4.2/getting-started/download/#bootstrapcdn" target="_blank">BootstrapCDN</a> (詳しくは <a href="#intro">スタートアップ</a>を参照)
         </li>
-        <li>ビルド済みファイルのみ必要な場合 ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js" target="_blank">Compiled CSS and JS</a>
+        <li>ビルド済みファイルのみ必要な場合 ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#compiled-css-and-js" target="_blank">Compiled CSS and JS</a>
         </li>
-        <li>管理ツールを用いる場合 ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#package-managers" target="_blank">Package managers</a>
+        <li>管理ツールを用いる場合 ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#package-managers" target="_blank">Package managers</a>
           <ul>
-            <li>JavaScript(node.js) ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#npm" target="_blank">npm</a> (Bootstrap自身はnpm環境でビルドされている)
+            <li>JavaScript(node.js)
+              <ul>
+                <li>⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#npm" target="_blank">npm</a> (Bootstrap自身はnpm環境でビルドされている)
+                </li>
+                <li>⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#yarn" target="_blank">yarn</a>
+                </li>
+              </ul>
             </li>
-            <li>Ruby ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#rubygems" target="_blank">RubyGems</a>
+            <li>Ruby ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#rubygems" target="_blank">RubyGems</a>
             </li>
-            <li>PHP ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#composer" target="_blank">Composer</a>
+            <li>PHP ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#composer" target="_blank">Composer</a>
             </li>
-            <li>.NET ⇒ <a href="https://getbootstrap.com/docs/4.1/getting-started/download/#composer" target="_blank">NuGet</a>
+            <li>.NET ⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/download/#composer" target="_blank">NuGet</a>
             </li>
           </ul>
         </li>
       </ul>
       <div class="alert alert-info" role="alert">Bootstrapの全データは<a href="https://github.com/" target="_blank">GitHub</a>の<a href="https://github.com/twbs/bootstrap" target="_blank">bootstrapレポジトリ</a>で管理している。リリースの全バージョン履歴は<a href="https://github.com/twbs/bootstrap/releases" target="_blank">Releases</a>ページで確認でき、ここから全ソースをダウンロードできる。
       </div>
-      <h2 class="mt-4" id="contents"><a href="https://getbootstrap.com/docs/4.1/getting-started/contents/" target="_blank">ファイルコンテンツ</a>
+      <h2 class="mt-5" id="contents"><a href="https://getbootstrap.com/docs/4.2/getting-started/contents/" target="_blank">ファイルコンテンツ</a>
       </h2>
       <p class="my-2">Bootstrapのファイル内容について。</p>
-      <h4 class="ht-4" id="contents-precompiled"><a href="https://getbootstrap.com/docs/4.1/getting-started/contents/#precompiled-bootstrap" target="_blank">配布版(コンパイル済み)Bootstrap</a>
+      <h4 class="ht-4" id="contents-precompiled"><a href="https://getbootstrap.com/docs/4.2/getting-started/contents/#precompiled-bootstrap" target="_blank">配布版(コンパイル済み)Bootstrap</a>
       </h4>
       <p class="my-2">(<code>.map</code> ファイルは除外)</p>
       <ul>
@@ -254,7 +263,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="contents-source-code"><a href="https://getbootstrap.com/docs/4.1/getting-started/contents/#bootstrap-source-code" target="_blank">Bootstrapソースコード</a>
+      <h4 class="mt-4" id="contents-source-code"><a href="https://getbootstrap.com/docs/4.2/getting-started/contents/#bootstrap-source-code" target="_blank">Bootstrapソースコード</a>
       </h4>
       <p class="my-2">(主要部分のディレクトリ構造のみ)</p>
       <ul>
@@ -264,41 +273,126 @@
             <li><code>build/</code> - ビルド用スクリプトコードと設定ファイル</li>
             <li><code>dist/</code> - コンパイル済みファイル(<a href="#contents-precompiled">配布版(コンパイル済み)Bootstrap</a>と同じ)</li>
             <li><code>docs/</code> - ドキュメント用ソースファイル(Markdown)</li>
-            <li><code>js/</code> JavaScriptファイル <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".src-js" aria-control=".src-js" aria-expanded="false">ファイル</a>
+            <li><code>js/</code> JavaScriptファイル <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".src-js" aria-control=".src-js" aria-expanded="false">ファイル</a> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href="#javascript-modules" aria-control="#javascript-modules" aria-expanded="false">モジュール形式について</a>
               <ul class="collapse src-js">
-                <li><code>dist/</code> - モジュールファイルを単体コンパイルしたもの(個別読み込み用)</li>
+                <li><code>dist/</code> - モジュールファイル(UMD形式 - CommonJSとAMDに対応)</li>
                 <li><code>src/</code> - モジュールファイル(ES2015形式)</li>
                 <li><code>tests/</code> - テスト用ファイル</li>
               </ul>
             </li>
             <li><code>nuget/</code> - NuGet (.NET用パッケージマネージャ)用ファイル</li>
-            <li><code>scss/</code> Sass(.scss)ソースファイル</li>
+            <li><code>scss/</code> Sass(.scss)ソースファイル一式</li>
             <li><code>package.json</code></li>
           </ul>
         </li>
       </ul>
-      <h2 class="mt-4" id="browsers-devices"><a href="https://getbootstrap.com/docs/4.1/getting-started/browsers-devices/" target="_blank">対応ブラウザ</a>
+      <div id="javascript-modules-button"><a class="btn btn-outline-info" data-toggle="collapse" href="#javascript-modules" aria-control="#javascript-modules" aria-expanded="false">JavaScriptモジュール形式について</a>
+      </div>
+      <div class="alert alert-info collapse mt-3" id="javascript-modules" role="alert"> 
+        <p class="my-2">現在のJavaScriptでは中規模以上の開発にモジュール化の手法が用いられ、現行の主流モジュール仕様として次の3種類がある。</p>
+        <ul class="my-2">
+          <li>ES2015(ES6) (最新仕様、Bootstrap 4はこれを採用)</li>
+          <li>CommonJS (<a href="https://nodejs.org/ja/" target="_blank">node.js</a> など)
+          </li>
+          <li>AMD (<a href="https://requirejs.org/" target="_blank">require.js</a> など)
+          </li>
+        </ul>
+        <p class="my-2">BootstrapのJavaScriptモジュールはES2015形式で、他のES2015モジュール(例えば <a href="https://popper.js.org/" target="_blank">Popper.js</a> のバンドル前モジュールソース)とそのまま組み合わせて利用できる。
+        </p>
+        <p class="my-2">またバージョン4.1.3からCommonJSとAMDにも対応するようになった。<code>bootstrap-4.X.X/js/dist/</code> のファイルは元のES2015形式モジュールを <a href="https://rollupjs.org/" target="_blank">rollup.js</a> でUMD(Universal Module Definition)形式に変換したもの。UMDはCommonJSとAMDの両方に対応するファイル形式で、rollup.jsではさらにブラウザから <code>&lt;script&gt;</code> で直接読み込むことにも対応している。
+        </p>
+        <p class="my-2">また配布版BootstrapのJavaScriptファイルはrollup.jsでES2015形式モジュールソースをバンドルしたもの。Popper.jsもES2015モジュールなので両者のバンドル版もある。</p>
+      </div>
+      <h2 class="mt-5" id="browsers-devices"><a href="https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/" target="_blank">対応ブラウザ</a>
       </h2>
-      <p class="my-2">Bootstrap 4は現行の主要ブラウザに対応しており、対応ブラウザの条件を<code>package.json</code> (⇒ <a href="#contents-source-code">Bootstrapソースコード</a>)に <a href="https://github.com/browserslist/browserslist" target="_blank">browserslist</a> 形式で記述している(書式は <a href="https://github.com/browserslist/browserslist#best-practices" target="_blank">Best Practices</a> と <a href="https://github.com/browserslist/browserslist#full-list" target="_blank">Full List</a> を参照)。 ⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#browserslist" aria-control="#browserslist" aria-expanded="false">表示</a>
+      <p class="my-2">Bootstrap 4は現行の主要ブラウザに対応しており、対応ブラウザの条件を <a href="https://github.com/twbs/bootstrap/blob/v4.1.3/.browserslistrc" target="_blank"><code>.browserslistrc</code></a> (v4.1.2までは <a href="https://github.com/twbs/bootstrap/blob/v4.1.2/package.json" target="_blank"><code>package.json</code></a> の中)に <a href="https://github.com/browserslist/browserslist" target="_blank">browserslist</a> 形式で記述している(書式は <a href="https://github.com/browserslist/browserslist#best-practices" target="_blank">Best Practices</a> と <a href="https://github.com/browserslist/browserslist#full-list" target="_blank">Full List</a> を参照)。 ⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#browserslist" aria-control="#browserslist" aria-expanded="false">表示</a>
       </p>
-      <pre class="mt-3 p-2 border bg-light collapse" id="browserslist"><code>&quot;browserslist&quot;: [
-  &quot;last 1 major version&quot;,
-  &quot;&gt;= 1%&quot;,
-  &quot;Chrome &gt;= 45&quot;,
-  &quot;Firefox &gt;= 38&quot;,
-  &quot;Edge &gt;= 12&quot;,
-  &quot;Explorer &gt;= 10&quot;,
-  &quot;iOS &gt;= 9&quot;,
-  &quot;Safari &gt;= 9&quot;,
-  &quot;Android &gt;= 4.4&quot;,
-  &quot;Opera &gt;= 30&quot;
-],</code></pre>
+      <pre class="mt-3 p-2 border bg-light collapse" id="browserslist"><code># https://github.com/browserslist/browserslist#readme
+
+&gt;= 1%
+last 1 major version
+not dead
+Chrome &gt;= 45
+Firefox &gt;= 38
+Edge &gt;= 12
+Explorer &gt;= 10
+iOS &gt;= 9
+Safari &gt;= 9
+Android &gt;= 4.4
+Opera &gt;= 30
+</code></pre>
       <p class="my-2">この情報は <a href="https://github.com/postcss/autoprefixer" target="_blank">Autoprefixer</a> を用いてCSSにベンダープリフィクスを付加する処理に用いられる。なおAutoprefixerはBootstrap CSSをカスタマイズする際の必須ツール(V3.2以降で導入)。詳しくは<a href="#css-customizing">CSSのカスタマイズ</a>を参照。
       </p>
-      <h2 class="mt-4" id="javascript"><a href="https://getbootstrap.com/docs/4.1/getting-started/javascript/" target="_blank">JavaScript</a>
+      <p class="my-2">具体的なサポート状況はオフィシャルページを参照すること。</p>
+      <ul>
+        <li>⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/#mobile-devices" target="_blank">モバイル機器</a>
+        </li>
+        <li>⇒ <a href="https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/#desktop-browsers" target="_blank">デスクトップブラウザ</a>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="javascript"><a href="https://getbootstrap.com/docs/4.2/getting-started/javascript/" target="_blank">JavaScript</a>
       </h2>
-      <p class="my-2">(TODO)</p>
-      <h2 class="mt-4" id="css"><a href="https://getbootstrap.com/docs/4.1/getting-started/theming/" target="_blank">CSSのカスタマイズ</a>
+      <p class="my-2">BootstrapはCSSだけでは実現できない動的処理にJavaScriptを用いている(jQueryプラグインとして書かれているため「JavaScriptプラグイン」と呼ばれている)。基本的な利用(設定)方法は<a href="#intro-javascript">JavaScript読み込み</a>を参照。</p>
+      <p class="my-2">また(バンドル前の)ソースコードはES2016(ES6)形式で、Webpackなどの各種モジュールバンドル対応ツールからモジュール単位で利用することもできる。詳しくは<a href="#contents-source-code">Bootstrapソースコード</a>を参照(モジュール形式の詳細は <a class="btn btn-outline-info btn-sm" href="#javascript-modules-button">JavaScriptモジュール形式について</a> ボタンで表示)。</p>
+      <p class="my-2">BootstrapのJavaScriptプラグインは読み込み時に自動的に初期設定を実行する(通常は自分でコードを書かなくてよい)。ただし次のコンポーネントは自分で簡単な初期化用JavaScriptコードを記述する必要がある(リンク先にコード例あり)。</p>
+      <ul>
+        <li><a href="components-11.html/#popovers">ポップオーバー</a></li>
+        <li><a href="components-12.html/#toasts">トースト</a></li>
+        <li><a href="components-12.html/#tooltips">ツールチップ</a></li>
+      </ul>
+      <h4 class="mt-3" id="javascript-data-attributes"><a href="https://getbootstrap.com/docs/4.2/getting-started/javascript/#data-attributes" target="_blank">data属性</a>
+      </h4>
+      <p class="my-2">動作の設定には <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Global_attributes/data-*" target="_blank">カスタムデータ属性 <code>data-*</code></a> が用いられる。HTMLタグ中に <code>data-</code> で始まるBootstrap用の属性を記述し、JavaScriptの初期化時にこの設定が読み込まれ処理される。
+      </p>
+      <h4 class="mt-3" id="javascript-data-attributes"><a href="https://getbootstrap.com/docs/4.2/getting-started/javascript/#programmatic-api" target="_blank">API呼び出し</a>
+      </h4>
+      <p class="my-2">BootstrapのJavaScript APIはjQueryプラグイン仕様に基づいており、jQueryで対象要素を抽出してメソッド呼び出しすることにより機能する。以下は<a href="components-8.html/#modal">モーダル</a>のAPI呼び出し例。使用できるオプション一覧は公式ドキュメントの <a href="https://getbootstrap.com/docs/4.2/components/modal/#options" target="_blank">Options</a>、メソッドに渡すコマンド(文字列)一覧は <a href="https://getbootstrap.com/docs/4.2/components/modal/#methods" target="_blank">Methods</a> を参照。
+      </p>
+      <pre class="mt-3 p-2 border bg-light"><code>// 例1: デフォルト設定でインターフェースを生成(自動的に行われるため通常不要)
+$('#my-modal').modal();
+ 
+// 例2: オプションを設定(属性を用いてdata-keyboard="false"と設定するのと同様)
+// (公式ドキュメントのoptionsを参照)
+$('#my-modal').modal({ keyboard: false });
+ 
+// 例3: コマンドを実行
+// (公式ドキュメントのmethodsを参照)
+$('#my-modal').modal('show');</code></pre>
+      <h4 class="mt-3" id="javascript-events"><a href="https://getbootstrap.com/docs/4.2/getting-started/javascript/#events" target="_blank">イベント</a>
+      </h4>
+      <p class="my-2">Bootstrap JavaScript APIでは各コンポーネントの特定タイミングにカスタムイベントが設定してある。イベント名はjQueryの名前空間を用いてドット区切りで次のように表現されている。</p>
+      <ul>
+        <li><code>{イベント}.bs.{コンポーネント}</code>
+          <ul>
+            <li><code>{イベント}</code> - コンポーネント別のイベント名 (例: <code>show</code> )</li>
+            <li><code>bs</code> - Bootstrapのカスタムイベントであることを表す</li>
+            <li><code>{コンポーネント}</code> - jQueryにプラグイン登録しているコンポーネント名 (例: <code>modal</code> )</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="my-2">次も<a href="components-8.html/#modal">モーダル</a>へのイベント設定例。イベント一覧は公式ドキュメントの <a href="https://getbootstrap.com/docs/4.2/components/modal/#events" target="_blank">Events</a> を参照すること。
+      </p>
+      <pre class="mt-3 p-2 border bg-light"><code>// イベント"show.bs.modal"はモーダル表示開始時に発生する
+$('#my-modal').on('show.bs.modal', function(event) {
+  // まだモーダルは表示していないので
+  // ここでモーダルに表示する内容を設定できる
+});</code></pre>
+      <p class="my-2">より詳しい実例は本チュートリアルの <a href="components-8.html/#varying-modal-content">起動時のコンテント更新</a> を参照(実際に動作しているコード例あり)。</p>
+      <h4 class="mt-3" id="javascript-jquery-plugin">jQueryプラグイン</h4>
+      <h5 class="mt-2" id="javascript-no-conflict"><a href="https://getbootstrap.com/docs/4.2/getting-started/javascript/#no-conflict" target="_blank">.noConflict()</a>
+      </h5>
+      <p class="my-2">先に示した通り、BootstrapのJavaScript APIはjQueryプラグインとして実装されており、具体的には <code>$.fn.button</code> のように小文字のコンポーネント名でそのまま登録されている(他に <code>alert</code>, <code>carousel</code>, <code>collapse</code>, etc.)。他のjQueryプラグインと名前が衝突する場合に対応するため <code>.noConflict()</code> を用意している。</p>
+      <pre class="mt-3 p-2 border bg-light"><code>// Bootstrapが設定する前の$.fn.buttonに戻してから、
+// Bootstrapのbuttonプラグインを返す
+var bootstrapButton = $.fn.button.noConflict();
+// bootstrapButtonという(衝突しない)名前で再登録
+$.fn.bootstrapBtn = bootstrapButton;</code></pre>
+      <h5 class="mt-2" id="javascript-default-settings"><a href="https://getbootstrap.com/docs/4.2/getting-started/javascript/#default-settings" target="_blank">デフォルト設定の変更</a>
+      </h5>
+      <p class="my-2">各プラグインのデフォルト設定は <code>$.fn.{プラグイン名}.Constructor.Default</code> オブジェクトに設定されており、必要に応じて次のように変更できる。</p>
+      <pre class="mt-3 p-2 border bg-light"><code>// 例: モーダルのキーボード操作のデフォルト動作をOFFにする
+$.fn.modal.Constructor.Default.keyboard = false;</code></pre>
+      <h2 class="mt-5" id="css"><a href="https://getbootstrap.com/docs/4.2/getting-started/theming/" target="_blank">CSSのカスタマイズ</a>
       </h2>
       <p class="my-2">バージョン4以上のBootstrap CSSのソースファイルは <a href="https://sass-lang.com/" target="_blank">Sass</a> (⇒ <a href="https://ja.wikipedia.org/wiki/Sass" target="_blank">Wikipedia</a>)で記述されており、現在のBootstrapは拡張用Sassソースを自分で書き、Bootstrap Sassソースコードをインポートしてカスタマイズする方法を推奨している。ただし当然ながらSassの習得が必須で、さらに開発ツールの知識も必要なため初心者にはややハードルが高い。
       </p>
@@ -308,9 +402,7 @@
       <p class="my-2">本チュートリアルはSassを知らなくても理解できるようにこの昔の方法を採用して部分的にCSSをオーバーライドしており、具体的には次の2箇所に用いている。</p>
       <ul>
         <li><a href="components-1.html#breadcrumb-changing-the-separator">パンくずリスト - セパレータの変更</a></li>
-        <li><a href="components-5.html#translating-or-customizing-the-strings">フォーム - 文字のカスタマイズ/多言語対応</a> (
-          <button class="btn btn-outline-info">CSSコード例</button> ボタンで表示)
-        </li>
+        <li><a href="components-5.html#translating-or-customizing-the-strings-with-custom-css">フォーム - 文字のカスタマイズ/多言語対応</a> - <a class="btn btn-outline-info btn-sm" href="components-5.html#custom-file-css-button">CSSコード例</a> ボタンで表示</li>
       </ul>
       <p class="my-2">基本的にはBootstrap CSSの後にそれを上書きするように設定すればよい(考え方としても分かりやすい)。ただしCSSセレクタの優先順位に注意(Bootstrapソースを検索してそれと同じCSSセレクタを使うのが確実)。</p>
       <h4 class="mt-3" id="css-customizing">Sassソースからのカスタマイズ</h4>
@@ -331,7 +423,7 @@
       <p class="mt-2">⇒ <a href="https://higuma.github.io/bootstrap-4-css-customization/ja/" target="_blank"><strong>カスタマイズ法のチュートリアルに進む(別サイト)</strong></a>
       </p>
       <div class="alert alert-info">別サイトにした理由は単なる解説ではなく読者が実際に操作できるようにするため。npmパッケージ形式になっており、ツールのインストールやカスタマイズ(ビルド)作業すべてを実際にnpmコマンドで行う事ができる。</div>
-      <h2 class="mt-4" id="build"><a href="https://getbootstrap.com/docs/4.1/getting-started/build-tools/" target="_blank">Bootstrapのビルド</a>
+      <h2 class="mt-5" id="build"><a href="https://getbootstrap.com/docs/4.2/getting-started/build-tools/" target="_blank">Bootstrapのビルド</a>
       </h2>
       <div class="alert alert-info" role="alert">配布版を利用する場合は読む必要なし。しかしスタイルのカスタマイズには(Autoprefixerが必須なので)npmの知識が必要になる。スタイルをカスタマイズしたいが方法が分からない人は一回これを実際にやってみるとよい勉強になる。</div>
       <p class="my-2">BootstrapのソースファイルはGitHubにあり <a href="https://github.com/twbs/bootstrap/releases" target="_blank">Releases</a> ページで全バージョンのソースを入手できる。ここではGitHubから入手したソース(バージョン4.0.0以上)からビルドやテストを行う方法を説明する。
@@ -361,7 +453,7 @@
         </li>
       </ul>
       <h4 class="mt-4" id="build-commands">ビルドコマンド</h4>
-      <p class="my-2">Bootstrap 4はビルド用ツールとしてnpmを用いる。コマンド一覧は <kbd>npm run</kbd> で表示できるが、それより <code>package.json</code> の <code>"scripts":</code> の部分を直接読んだ方が仕組みがよく分かる。主なコマンドだけ示す。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#build-commands-list" aria-control="#build-commands-list" aria-expanded="false">コマンド</a>
+      <p class="my-2">Bootstrap 4はビルド用ツールとしてnpmを用いる。コマンド一覧は <kbd>npm run</kbd> で表示できるが、それより <code>package.json</code> の <code>"scripts":</code> フィールドを直接読んだ方が仕組みがよく分かる(お勧め)。主なコマンドだけ示す。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#build-commands-list" aria-control="#build-commands-list" aria-expanded="false">コマンド</a>
       </p>
       <ul class="collapse" id="build-commands-list">
         <li><kbd>npm run dist</kbd> - CSSとJavaScriptのビルドを実行し<code>./dist</code> ディレクトリに出力</li>
@@ -370,23 +462,17 @@
         <li><kbd>npm run docs-serve</kbd> - ドキュメントサイトのローカルサーバ起動 ⇒ <a href="http://localhost:9001/" target="_blank"><code>http://localhost:9001/</code></a>
         </li>
       </ul>
-      <h2 class="mt-4" id="webpack"><a href="https://getbootstrap.com/docs/4.1/getting-started/webpack/" target="_blank">Webpack</a>
+      <h2 class="mt-5" id="webpack"><a href="https://getbootstrap.com/docs/4.2/getting-started/webpack/" target="_blank">Webpack</a>
       </h2>
-      <p class="my-2">(2018年5月現在) <a href="https://webpack.js.org/" target="_blank">Webpack</a> はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(2018年2月にWebpack 4がリリースされたが、BootstrapドキュメントはまだWebpack 3の内容)。
+      <p class="my-2">(2018年8月現在) <a href="https://webpack.js.org/" target="_blank">Webpack</a> はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(記述が不十分)。
       </p>
       <p class="my-2">そこで最新バージョン(具体的にはWebpack 4とBootstrap 4の組み合わせ)で動作するサンプルプロジェクトを作成した。詳しくは次のGitHub repoを参照(実際に動くものでなければ意味がない)。</p>
       <ul>
         <li><a href="https://github.com/higuma/webpack-bootstrap-starter" target="_blank">webpack-bootstrap-starter (GitHub)</a>
         </li>
       </ul>
-      <div class="alert alert-info" role="alert">(日本向け) Webpackは進化が非常に早く、このようなサンプルもすぐ時代遅れになるので各自検索すること。例えば次を参照(定期的にメインテナンスしているので最新内容を保持している可能性が高い)。
-        <ul class="mb-0">
-          <li><a href="https://ics.media/entry/17749" target="_blank">ICS Media: 最新版で学ぶwebpack 4入門 – Bootstrapをバンドルする方法</a>
-          </li>
-        </ul>
-      </div>
-      <div class="alert alert-info" role="alert">本チュートリアルもWebpackでビルドしているが、ほぼpugからHTMLを生成するためにしか使っていない。また難解にならないよう意図的にCSSやJavaScriptのカスタマイズも行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。</div>
-      <h2 class="mt-4" id="accessibility"><a href="https://getbootstrap.com/docs/4.1/getting-started/accessibility/" target="_blank">アクセシビリティ</a>
+      <div class="alert alert-info" role="alert">本チュートリアルもWebpackでビルドしているが、難解にならないようJavaScriptやCSSのバンドル、カスタマイズは行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。</div>
+      <h2 class="mt-5" id="accessibility"><a href="https://getbootstrap.com/docs/4.2/getting-started/accessibility/" target="_blank">アクセシビリティ</a>
       </h2>
       <p class="my-2">Webアクセシビリティの標準仕様はW3Cにより <a href="https://www.w3.org/WAI/" target="_blank">WAI</a>-<a href="https://www.w3.org/WAI/intro/aria" target="_blank">ARIA</a> としてまとめられている。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#accessibility-reference" aria-control="#accessibility-reference" aria-expanded="false">リファレンス</a>
       </p>
@@ -402,7 +488,7 @@
         <li>ARIA属性(例) <code>aria-expanded="false"</code></li>
       </ul>
       <p class="my-2">本チュートリアルでは各コンポーネントの構造説明の際に用いるアクセシビリティ属性を具体的に示す。</p>
-      <p class="my-2">⇒ <a href="components-8.html#modal-components">説明例(モーダル)</a> (
+      <p class="my-2">⇒ <a href="components-8.html#modal-components">説明例(モーダル)</a> (リンク先に進み 
         <button class="btn btn-outline-info btn-sm">構造</button> で表示、さらに
         <button class="btn btn-outline-info btn-sm px-1 py-0">属性</button> でアクセシビリティ属性を展開)
       </p>
@@ -415,7 +501,7 @@
       </nav>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src=".././js/main.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 </html>

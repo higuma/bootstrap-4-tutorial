@@ -28,9 +28,9 @@ block body
         a(href="#dropdowns") ドロップダウン
 
     h2.mt-2#carousel
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/") カルーセル
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/") カルーセル
     h4.mt-3#carousel-basic
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#slides-only") 基本構成(自動スライドのみ)
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#slides-only") 基本構成(自動スライドのみ)
     div.carousel.slide.mb-3(data-ride="carousel")
       div.carousel-inner
         each item in [[1,"First"],[2,"Second"],[3,"Third"]]
@@ -61,7 +61,7 @@ block body
                       li.att 属性 
                         code src="..."
     h4.mt-4#carousel-with-controls
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-controls") 前後コントロールの追加
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-controls") 前後コントロールの追加
     div.carousel.slide.mb-3#carouselExampleControls(data-ride="carousel")
       div.carousel-inner
         each item in [[1,"First"],[2,"Second"],[3,"Third"]]
@@ -106,7 +106,7 @@ block body
                     li.txt テキスト 
                       code= dir[1]
     h4.mt-4#carousel-with-indicators
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-indicators") インジケータ(兼コントロール)の追加
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-indicators") インジケータ(兼コントロール)の追加
     div.carousel.slide.mb-3#carouselExampleIndicators(data-ride="carousel")
       ol.carousel-indicators
         each index in [0,1,2]
@@ -148,7 +148,7 @@ block body
             a(href="#carousel-with-controls") 前後コントロールの追加
             |  と同じ
     h4.mt-4#carousel-with-captions
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-captions") 見出しの追加
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-captions") 見出しの追加
     div.carousel.slide.mb-3#carouselExampleCaptions(data-ride="carousel")
       ol.carousel-indicators
         each index in [0,1,2]
@@ -193,7 +193,7 @@ block body
                             code Nulla vitae ...
           li 前後コントロール(以下同じ)
     h4.mt-4#carousel-crossfade
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#crossfade") クロスフェード
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#crossfade") クロスフェード
     div.carousel.slide.carousel-fade.mb-3#carouselExampleFade(data-ride="carousel")
       div.carousel-inner
         each item in [[1,"First"],[2,"Second"],[3,"Third"]]
@@ -214,11 +214,11 @@ block body
         code .carousel-fade
         |  を追加
     h2.mt-5#collapse
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/") 折り畳み
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/") 折り畳み
     p.my-2 ボタンを用いてセレクタで指定した(隠れ)ターゲット要素の表示をON/OFFする。
     - const sampleText = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."
     h4.mt-3.mb-2#collapse-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#example") 基本例
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/#example") 基本例
     p.mt-3.mb-1 設定例: 左は 
       code a
       |  , 右は 
@@ -295,7 +295,7 @@ block body
       button.btn.btn-sm.btn-outline-info.px-1.py-0 属性
       |  ボタンも折り畳み機能を利用して作られている。
     h4.mt-4#collapse-multiple-targets
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#multiple-targets") 複数ターゲットの連動ON/OFF
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/#multiple-targets") 複数ターゲットの連動ON/OFF
     p.mt-2.mb-3 ターゲットセレクタに(IDではなく)クラスを用いることにより複数ターゲットを同時にON/OFFすることができる。
     +collapseButton("#collapse-multiple-targets-structure") 構造
     ul.struct.my-2.collapse#collapse-multiple-targets-structure
@@ -339,7 +339,7 @@ block body
           div.collapse.multi-collapse-b(id=`ex-multi-b-${n}`)
             div.card.card-body= `(${n}) ${sampleText}`
     h4.mt-4#collapse-accordion-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#accordion-example") アコーディオン
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/#accordion-example") アコーディオン
     p.my-1 表示に
       a(href="components-3.html") カード
       | を用い、3つのテキストを交互に出し入れする組み合わせ応用例。
@@ -407,11 +407,11 @@ block body
                   li.txt 本文テキスト
 
     h2.mt-5#dropdowns
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/") ドロップダウン
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/") ドロップダウン
     - const contexts = ["primary", "secondary", "success", "info", "warning", "danger"]
     - const contextRe = `(${contexts.join("|")})`
     h4.mt-3.mb-1#dropdowns-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#examples") 基本例
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#examples") 基本例
     h5.mt-3.mb-1#dropdowns-example-button ボタンに 
       code button
       |  を用いる場合
@@ -507,7 +507,7 @@ block body
         ul
           li 内部(同上)
     h4.mt-4#dropdowns-split-button
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#split-button") スプリットボタン
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#split-button") スプリットボタン
     p.mt-2.mb-1 左側は通常のボタン、右端にドロップダウン用タブ(実際は2つの 
       code button
       |  要素)
@@ -548,7 +548,7 @@ block body
                     code Toggle Dropdown
           li ドロップダウンメニュー(同じ)
     h4.mt-4.mb-0#dropdowns-sizing
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#sizing") サイズ設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#sizing") サイズ設定
     p.my-2
       code .btn-(lg|sm)
       |  を追加する。
@@ -569,12 +569,12 @@ block body
           div.dropdown-menu(aria-labelledby=`dropdown-split-size-${sz[0] ? sz[0] : "default"}`)
             +actionItemsWithLink
     h4.mt-4.mb-0#dropdowns-drop-up-right-left
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#directions") ドロップ方向 (
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropup") 上
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#directions") ドロップ方向 (
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropup") 上
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropright") 右
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropright") 右
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropleft") 左
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropleft") 左
       | )
     p.mt-2.mb-0 親として 
       code div.btn-group
@@ -621,7 +621,7 @@ block body
               li 通常ボタンが後 
                 code button.btn.dropdown-toggle
     h4.mt-4#dropdowns-menu-items
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-items") メニューアイテム
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#menu-items") メニューアイテム
     p.mb-2 (バージョン4から)メニューアイテムとして 
       code button.dropdown-item
       |  が使える(リンクではないため選択してもデフォルト動作でページ移動しない)。
@@ -671,9 +671,9 @@ block body
           each c in contexts
             span(class=`text-${c}`)= ` ${c}`
     h4.mt-4#dropdowns-active-disabled 状態表示(
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#active") アクティブ
-      | /
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#disabled-menu-items") 無効
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#active") アクティブ
+      |  / 
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#disabled") 無効
       | )
     p.mt-3.mb-2 アイテムに 
       code .active
@@ -773,7 +773,7 @@ block body
                 |  を追加
           li アクティブアイテム表示を更新
     h4.mt-4#dropdowns-menu-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-alignment") アラインメント
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#menu-alignment") アラインメント
     p.my-2 デフォルトではドロップダウンメニューは親要素(起動ボタンでも同じ)の左端に揃えるが、ドロップダウンメニューに 
       code .dropdown-menu-right
       |  を設定すると右端同士が一致するように揃える。
@@ -784,7 +784,7 @@ block body
         div.dropdown-divider
         a.dropdown-item(href="#") Separated item with longer text
     h4.mt-4#dropdowns-headers
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#headers") ヘッダ
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#headers") ヘッダ
     p.mt-3.mb-2 メニューのヘッダには 
       code h6.dropdown-header
       |  を用いる。次の例では先頭の 
@@ -797,12 +797,12 @@ block body
           h6.dropdown-header(href="#") Dropdown header
           +actionItems
     h4.mt-4#dropdowns-dividers
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dividers") ディバイダ
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dividers") ディバイダ
     p.my-2 メニューアイテムの上下区切りには 
       code div.dropdown-divider
       |  を用いる。
     h4.mt-4#dropdowns-text
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#text") テキスト
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#text") テキスト
     p.my-2 ドロップダウンはメニュー選択用ではなくテキスト画面表示用にも利用できる。
     div.dropdown.mb-3
       button.btn.btn-secondary.dropdown-toggle#ex-text(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Text example
@@ -833,7 +833,7 @@ block body
                   li.cls 最後のパラグラフはマージン調整が必要 
                     code .mb-0
     h4.mt-4#dropdowns-forms
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#forms") フォーム
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#forms") フォーム
     p.my-2 アイテムとして
       a(href="components-5.html") フォーム
       | を用いることもできる。
@@ -884,7 +884,7 @@ block body
                 strong Forget password?
                 | )
     h4.mt-4#dropdowns-dropdown-options
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropdown-options") その他の設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropdown-options") その他の設定
     p.my-2 属性 
       code data-offset="{x-offset-px},{y-offset-px}"
       |  を用いて表示位置の基準点を平行移動できる。

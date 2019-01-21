@@ -40,14 +40,18 @@ mixin collapseButton(target)
   a.btn.btn-outline-info(data-toggle="collapse" href=target aria-control=target aria-expanded="false")
     block
 
+mixin collapseButtonSm(target)
+  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false")
+    block
+
 mixin attrBtn(target)
-  |  
-  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false") 属性
+  | 
+  +collapseButtonSm(target) 属性
 
 mixin attrsBtn(target)
-  |  
-  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false") 属性
+  | 
+  +collapseButtonSm(target) 属性
 
 mixin filesBtn(target)
-  |  
-  a.btn.btn-sm.btn-outline-info.my-1.px-1.py-0(data-toggle="collapse" href=target aria-control=target aria-expanded="false") ファイル
+  | 
+  +collapseButtonSm(target) ファイル

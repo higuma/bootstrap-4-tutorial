@@ -2,7 +2,7 @@ extends ../template-cdn-en
 include ../mixins-en
 
 block head
-  title Bootstrap 4 tutorial: Layout (1): Overview / Grid System
+  title Bootstrap 4 tutorial: Layout (1): Overview / Grid System / Utilities for layout
 
 block body
   div.container
@@ -11,11 +11,13 @@ block body
         a(href="#overview") Overview
         |  / 
         a(href="#grid") Grid System
+        |  / 
+        a(href="#utilities") Utilities for layout
 
     h2.mt-2#overview
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/") Overview
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/") Overview
     h4.mt-3.mb-1#overview-containers
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#containers") Containers
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/#containers") Containers
     p.mb-2
     | In Bootstrap, a container 
     code .container
@@ -30,11 +32,11 @@ block body
     |  ⇒ Fits to the parent (100%)
   div.container
     h4.mt-4#overview-responsive-breakpoints
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints") Responsive breakpoints
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/#responsive-breakpoints") Responsive breakpoints
     p.my-2 A width of a container 
       code .container
       |  is set within the breakpoints as below (see 
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#grid-options") Grid options
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#grid-options") Grid options
       |  table for details)
     table.table.table-bordered
       thead.thead-light
@@ -66,7 +68,7 @@ block body
       code -xs
       |  class-fix (same as setting as default). Using breakpoint priorities, you can switch layouts, or show/hide some contents with specific viewport range.
     h4.mt-4#overview-z-index
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#z-index") Z-index
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/#z-index") Z-index
     p Some Bootstrap components reserve z-indexes (&ge;
       code 1000
       | ) for specific purposes. 
@@ -115,9 +117,9 @@ block body
             a(href="components-12.html#tooltips") Tooltip
 
     h2.mt-5#grid
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/") Grid system
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/") Grid system
     h4.mt-4#grid-overview
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#how-it-works") Basic usage
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#how-it-works") Basic usage
     p.my-2 The grid system has the following three layer structure.
     ul.struct
       li 
@@ -213,7 +215,7 @@ block body
       strong Caution: 
       | You should take care for changing horizontal margins or paddings from grid system defaults. Especially, changing margins of rows, or changing paddings of columns can corrupt layouts easily.
     h4.mt-4#grid-equal-width
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#equal-width") Equal-width
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#equal-width") Equal-width
     p.my-2 Setting multiple columns 
       code div.col
       |  inside a row 
@@ -249,7 +251,7 @@ block body
               li.txt Text 
                 code {index}/{number of columns}
     h4.mt-4#grid-equal-width-multi-row
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#equal-width-multi-row") Equal-width multi-row
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#equal-width-multi-row") Equal-width multi-row
     p.my-2  For equal-width layouts using 
       code div.col
       | , use an empty 
@@ -301,7 +303,7 @@ block body
             code div.col
             |  (&times;4)
     h4.mt-4#grid-column-width
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#setting-one-column-width") Setting one column width
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#setting-one-column-width") Setting one column width
     p.my-2 Width of a grid column can be set from 1/12 (approx. 8.3%) to 12/12 (100%).
     p.my-2
       code div.col-(1|2|3|4|5|6|7|8|9|10|11|12)
@@ -363,7 +365,7 @@ block body
           li
             code div.col
     h4.mt-4#variable-width-content
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") Variable width content
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#variable-width-content") Variable width content
     p.my-2
       code .col-auto
       |  sets an element width to browser default (by CSS 
@@ -379,7 +381,7 @@ block body
       a(href="#grid-margin-auto") Variable width content with flex
       |  )。
     h4.mt-4#grid-column-wrapping
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-wrapping") Column wrapping
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#column-wrapping") Column wrapping
     p.my-2 Setting 12 or more columns in total automatically breaks to a next line.
     div.row.border
       each c in [9, 4, 7, 3]
@@ -403,7 +405,7 @@ block body
             code div.col-3
             |  breaks by being greater than 12
     h4.mt-4#grid-column-breaks
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-breaks") Column breaks
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#column-breaks") Column breaks
     p.my-2 On setting each width to columns, 
       code div.w-100
       |  also can be used to insert a break to a new line.
@@ -436,7 +438,7 @@ block body
           li
             code div.col-4
     h4.mt-4#responsive-classes
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#responsive-classes") Responsive classes
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#responsive-classes") Responsive classes
     p.my-2
       code .col-(sm|md|lg|xl)(-1|-2|-3|...|-12|-auto)?
     h5.mt-3#responsive-classes-example-1 Example 1: Equal-widths
@@ -473,7 +475,7 @@ block body
           - let cls = bp ? `col-${bp}-${w}` : `col-${w}`
           div(class=`${cls} border`)
             div.bg-light
-              code= cls
+              code= `.${cls}`
     div.my-3
       +collapseButton("#responsive-classes-example-2-structure") Structure
     ul.struct.collapse#responsive-classes-example-2-structure
@@ -491,7 +493,7 @@ block body
         each text in ["12345", "12345678901234567890"]
           div(class=`${cls} border`)
             div.bg-light
-              code= cls
+              code= `.${cls}`
               = ` ${text}`
     div.my-3
       +collapseButton("#responsive-classes-example-3-structure") Structure
@@ -505,7 +507,7 @@ block body
             ul
               li.txt Text (two different lengths)
     h4.mt-4#stacked-to-horizontal
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#stacked-to-horizontal") Switching layouts
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#stacked-to-horizontal") Switching layouts
     p.my-2 The next example demonstrates switching between stacked (as mobile) and horizontal (as PC) layouts on the md breakpoint (768px) as follows.
     div.row
       div.col-5
@@ -562,7 +564,7 @@ block body
             code div.col-md
             |  (&times;3)
     h4.mt-4#mix-and-match
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#mix-and-match") Mix and match
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#mix-and-match") Mix and match
     p.my-2 Another example of layout switching on the md breakpoint.
     div.row
       div.col-5
@@ -624,7 +626,7 @@ block body
           div.bg-light= `3-${n} `
             code .col-6
     h4.mt-4#grid-margin-auto
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") Variable width contents with flex
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#variable-width-content") Variable width contents with flex
     p.my-2 A complex example using auto-width, flexbox, and responsive behaviors (from the official document).
     ul
       li Adds 
@@ -714,12 +716,12 @@ block body
               div.col.border
                 div.bg-light.text-center= `${r}-3`
     h4.mt-4#grid-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#alignment") Alignment
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#alignment") Alignment
     p Use 
       a(href="utilities-3.html#flex") Flex utilities
       | .
     h5.mt-3.mb-0#grid-vertical-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#vertical-alignment") Vertical alignment
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#vertical-alignment") Vertical alignment
     p.my-2 In examples below, red border is added and height is fixed to 
       code 5rem
       |  for each row.
@@ -741,7 +743,7 @@ block body
           div.bg-light.p-1
             code= `-${al}`
     h5.mt-3.mb-0#grid-horizontal-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#horizontal-alignment") Horizontal alignment
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#horizontal-alignment") Horizontal alignment
     each al in align.concat("around", "between")
       p.mt-2.mb-0
         code= `.row.justify-content-${al}`
@@ -752,7 +754,7 @@ block body
               code= `.col-2`
               small= ` (${i}/3)`
     h4.mt-4#griid-no-gutters
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#no-gutters") No gutters
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#no-gutters") No gutters
     p.my-2 Adding 
       code .no-gutters
       |  to 
@@ -833,7 +835,7 @@ block body
                 div.col-6.border
                   div.bg-light.text-center 6
     h4.mt-4#grid-ordering
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#order-classes") Order classes
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#order-classes") Order classes
     p.my-2 You can change columns' order with adding 
       code .order-(1|2|3|...|12)
       |  (⇒ 
@@ -879,9 +881,9 @@ block body
             li
               code= `div.col${n ? `.order-${n}` : ""}`
     h4.mt-4#grid-offsetting-columns
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offsetting-columns") Offsetting columns
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#offsetting-columns") Offsetting columns
     h5.mt-3#grid-offset-classes
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offset-classes") Offset classes
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#offset-classes") Offset classes
     p.mt-2.mb-3
       code .offset-(1|2|3|...)
       |  sets offset spacing on the left as the same width as 
@@ -1083,7 +1085,7 @@ block body
             div.col.border
               div.bg-light.text-center 2R
     h5.mt-4#margin-utilities
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#margin-utilities") Margin utilities
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#margin-utilities") Margin utilities
     p.mt-2.mb-3 An example below (from the official document) shows how to use 
       a(href="utilities-4.html#spacing") spacing utilities
       |  for responsive grid layouts (advanced).
@@ -1221,7 +1223,7 @@ block body
               div.bg-light.text-center.px-2 3R
 
     h4.mt-4#grid-nesting
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#nesting") Nesting
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#nesting") Nesting
     p.mt-2.mb-3 You can nest grid row/column structures with inserting 
       code div.row(-*)
       | 's to 
@@ -1306,4 +1308,16 @@ block body
       a(href="#grid-equal-width") equal-width
       |  class is more suitable.
 
-    +breadcrumbLevel1("Layout(1): Overview/Grid system")
+    h2.mt-5#utilities
+      +extLink("https://getbootstrap.com/docs/4.2/layout/utilities-for-layout/") Utilities for layout
+    ul.mb-3
+      li Showing/Hiding elements ⇒ 
+        a(href="utilities-2.html#display") Display
+      li Layout using flexbox ⇒ 
+        a(href="utilities-3.html#flex") Flex
+      li Setting margins and/or paddings ⇒ 
+        a(href="utilities-4.html#spacing") Spacing
+      li Showing/Hiding elements without changing layout ⇒ 
+        a(href="utilities-5.html#visibility") Visibility
+
+    +breadcrumbLevel1("Layout(1): Overview/Grid system/Utilities for layout")

@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+# Deletes unused dummy JavaScript output by Webpack
+# (requies bash and sed)
+
+for file in site/en/*.html
+do
+  echo $file
+  sed -i '/dummy\.js/d' $file
+done
+
+for file in site/ja/*.html
+do
+  echo $file
+  sed -i '/dummy\.js/d' $file
+done
+
+echo 'rm -rf site/js/dummy.js'
+rm -rf site/js.dummy.js
+
+# Copy website files to .tmp (to switch to gh-pages branch)
+rm -rf .tmp
+mkdir .tmp
+cp -r site/* .tmp/

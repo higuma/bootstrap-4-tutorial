@@ -1,130 +1,53 @@
 extends ../template-cdn-ja
 include ../mixins-ja
 
+mixin toastContent(header, text)
+  div.toast-header
+    img.rounded.mr-2(src="../img/20x20-blue.svg" alt="Logo placeholder")
+    strong.mr-auto Bootstrap
+    small.muted= header
+    button.ml-2.mb-1.close(type="button" data-dismiss="toast" aria-label="Close")
+      span(aria-hidden="true") &times;
+  div.toast-body= text
+
+mixin stdToastContent
+  +toastContent("11 mins ago", "Hello, world! This is a toast message.")
+
+mixin toast1
+  div.toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+    +stdToastContent
+
+mixin toast2
+    each msg in [["just now","See? Just like this."], ["2 seconds ago","Heads up, toasts will stack automatically."]]
+      div.toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+        +toastContent(msg[0], msg[1])
+
 block head
-  title Bootstrap 4 tutorial: コンポーネント(12): プログレスバー / スクロールスパイ / ツールチップ
+  title Bootstrap 4 tutorial: コンポーネント(12): スクロールスパイ / スピナー / トースト / ツールチップ
 
 block body
-  - const contextTypes = ["primary", "secondary", "success", "info", "warning", "danger"]
+  - const contexts = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+
   div.container
     +pageHeader("components-12")
       p.lead コンポーネント(12): 
-        a(href="#progress") プログレスバー
-        |  / 
         a(href="#scrollspy") スクロールスパイ
+        |  / 
+        a(href="#spinners") スピナー
+        |  / 
+        a(href="#toasts") トースト
         |  / 
         a(href="#tooltips") ツールチップ
 
-    h2.mt-2#progress
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/") プログレスバー
-    p.mt-2
-      code progress
-      |  要素の代替を目的としたコンポーネントで、バーの積み重ねやアニメーション付きストライプバーなど 
-      code progress
-      |  にはない追加機能を持つ。
-    h4.mt-3#progress-how-it-works
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#how-it-works") 基本設定
-    ul.struct.my-1
-      li ベース部 
-        code div.progress
-        ul
-          li カラーバー 
-            code div.progress-bar
-            |  (複数積み重ね可)
-            +attrsBtn(".a1-1")
-            ul.collapse.a1-1
-              li.att 幅(必須) (例) 
-                code style="width: 50%"
-              li.att アクセシビリティ属性 
-                code role="progressbar" 
-              li.att アクセシビリティ属性 
-                code aria-valuenow="50"
-              li.att アクセシビリティ属性 
-                code aria-valuemin="0"
-              li.att アクセシビリティ属性 
-                code aria-valuemax="100"
-    h4.mt-4#progress-width 幅の設定
-    p.mt-2.mb-0 (1) カスタムスタイル 
-      code style="width: {width}%”
-    each w in [0,25,50,75,100]
-      p.mt-1.mb-0
-        code= `style="width: ${w}%;"`
-      div.progress
-        div.progress-bar(role="progressbar" style=`width: ${w}%;` aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
-    p.mt-3.mb-1 (2) 幅設定ユーティリティ 
-      code .w-(25|75|100)
-      |  (⇒ 
-      a(href="utilities-4.html#sizing") サイズユーティリティ
-      |  、25%ステップ)
-    each w in [25,50,75,100]
-      p.mt-1.mb-0
-        code= `.w-${w}`
-      div.progress
-        div(class=`progress-bar w-${w}` role="progressbar" aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-labels
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#labels") ラベル文字の追加
-    p.my-2 バー 
-      code div.progress-bar
-      |  の内部テキストを記述する。
-    div.progress
-      div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
-    h4.mt-4#progress-height
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#height") 高さの設定
-    p.my-2 ベースの 
-      code div.progress
-      |  に設定する。
-    each h in [5,10,15,20]
-      p.mt-1.mb-0
-        code= `style="height: ${h}px;"`
-      div.progress(style=`height: ${h}px;`)
-        div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-backgrounds
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#backgrounds") バーの色
-    p.my-2
-      code div.progress-bar
-      |  に背景色 
-      code .bg-{context}
-      |  を追加(⇒ 
-      a(href="utilities-2.html#colors-background-color") 色 - 背景色
-      |  )
-    each col in ["success","info","warning","danger"]
-      p.mt-1.mb-0
-        code= `.bg-${col}`
-      div.progress
-        div(class=`progress-bar bg-${col}` role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-multiple-bars
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#multiple-bars") バーの積み重ね 
-    p.my-2
-      code div.progress-bar
-      |  を複数用いれば左から右に積み重なる。
-    div.progress
-      each bar in [["primary",10], ["success",40], ["warning",20], ["danger",10]]
-        div(class=`progress-bar bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-striped
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#striped") ストライプ表示
-    p.my-2 バーに 
-      code .progress-bar-striped
-      |  を追加する。
-    each bar in [["primary",20], ["success",40], ["info",60], ["warning",80], ["danger",100]]
-      div.progress.my-2
-        div(class=`progress-bar progress-bar-striped bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-animated-stripes
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#animated-stripes") ストライプのアニメーション
-    p.mt-3.mb-2 さらに 
-      code .progress-bar-animated
-      |  を追加する。
-    div.progress
-      div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;")
-
     h2.mt-5#scrollspy
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/") スクロールスパイ
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/") スクロールスパイ
     p.my-2 インジケータコンポーネント( 
       a(href="components-9.html") ナビゲーション
       |  または 
       a(href="components-7.html") リストグループ
       |  )のアクティブアイテム表示と縦スクロールするコンテンツのスクロールを同期させる機能。
     h4.mt-3#scrollspy-how-it-works
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#how-it-works") 仕組み
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#how-it-works") 仕組み
     p.my-2 スクロールスパイはJavaScriptを用いてスクロールするコンテンツの現在位置を監視し、インジケータ(ナビゲーションまたはリストグループ)のアクティブ表示を更新する。機能上の必要条件は次の通り。
     ul
       li インジケータコンポーネントとして
@@ -178,20 +101,436 @@ block body
             code= `href="#{target-id}"`
             |  を設定する
     h4.mt-3#scrollspy-example-in-navbar
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-in-navbar") ナビゲーションバーへの設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#example-in-navbar") ナビゲーションバーへの設定
     p ⇒ 
       a(href="scrollspy-1.html") デモページ
     h4.mt-4#scrollspy-example-with-nested-nav
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-nested-nav") 階層ナビゲーションへの設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#example-with-nested-nav") 階層ナビゲーションへの設定
     p ⇒ 
       a(href="scrollspy-2.html") デモページ
     h4.mt-4#scrollspy-example-with-list-group
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-list-group") リストグループへの設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#example-with-list-group") リストグループへの設定
     p ⇒ 
       a(href="scrollspy-3.html") デモページ
 
+    h2.mt-5#spinners
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/") スピナー
+    p スピナーは主に「ロード中」状態を表示するのに用いられる。
+    h4.mt-3#spinners-border-spinner
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#border-spinner") ボーダースピナー
+    div.spinner-border(role="status")
+      span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-border-structure") 構造
+    ul.struct.mt-3.collapse#spinner-border-structure
+      li ボーダースピナー
+        code div.spinner-border
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 アクセシビリティ属性 
+            code role="status"
+          li スクリーンリーダ用 
+            code span.sr-only
+            ul
+              li.txt Text 
+                code Loading...
+    h5.mt-3#spinners-colors
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#colors") 色の設定
+    p.my-2
+      code= `.text-(${contexts.join('|')})`
+      |  を追加する。
+    div.row
+      each c in contexts
+        div.col-lg-2.col-md-3.col-sm-4.flex-column
+          div
+            code= `.text-${c}`
+          div(class=`spinner-border text-${c}` role="status")
+            span.sr-only(Loading...)
+    h4.mt-4#spinners-growing-spinner
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#growing-spinner") 拡大スピナー
+    div.spinner-grow(role="status")
+      span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-grow-structure") 構造
+    ul.struct.mt-3.collapse#spinner-grow-structure
+      li 拡大スピナー 
+        code div.spinner-grow
+        +attrBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 アクセシビリティ属性 
+            code role="status"
+          li スクリーンリーダ用 
+            code span.sr-only
+            ul
+              li.txt テキスト 
+                code Loading...
+    div.row
+      each c in contexts
+        div.col-lg-2.col-md-3.col-sm-4.flex-column
+          div
+            code= `.text-${c}`
+          div(class=`spinner-grow text-${c}` role="status")
+            span.sr-only(Loading...)
+    h4.mt-4#spinners-alignment
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#alignment") アラインメント
+    h5.mt-3#spinners-margin
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#margin") マージン
+    p
+      a(href="utilities-4.html/#spacing") 空白ユーティリティ
+      |  を用いる。
+    div.row
+      each m in [0,1,2,3,4,5]
+        div.col-lg-2.col-md-3.col-sm-4.flex-column.border
+          div
+            code= `.m-${m}`
+          div(class=`spinner-border m-${m}` role="status")
+            span.sr-only(Loading...)
+    h5.mt-3#spinners-placement
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#placement") 配置
+    p.my-2 各種ユーティリティを利用できる。
+    h6.mt-3#spinners-flex
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#flex") Flexboxユーティリティ
+    p.my-2
+      a(href="utilities-3.html#flex-align-items") 要素の配置設定
+      |  と 
+      a(href="utilities-3.html#flex-auto-margins") 自動マージン
+      |  を用いた例。
+    div.d-flex.align-items-center
+      strong Loading...
+      div.spinner-border.ml-auto(role="status" aria-hidden="true")
+    div.my-3
+      +collapseButton("#spinner-flex-structure") 構造
+    ul.struct.mt-3.collapse#spinner-flex-structure
+      li
+        code div.d-flex.align-items-center
+        ul
+          li
+            code strong 
+            ul
+              li.txt テキスト 
+                code Loading...
+        ul
+          li スピナー 
+            code div.spinner-border
+            +attrsBtn(".a3-1")
+            ul.collapse.a3-1
+              li.att アクセシビリティ属性 
+                code role="status"
+              li.att アクセシビリティ属性 
+                code aria-hidden="true"
+    h6.mt-3#spinners-floats
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#floats") フロート
+    p.my-2
+      a(href="utilities-3.html#float") フロート
+      |  と 
+      a(href="utilities-1.html#clearfix") クリアフィックス
+      |  を用いた例。
+    each dir in ["left","right"]
+      div.mt-2
+        code= `.float-${dir}`
+      div.clearfix
+        div(class=`spinner-border float-${dir}` role="status")
+          span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-floats-structure") 構造
+    ul.struct.mt-3.collapse#spinner-floats-structure
+      li
+        code div.clearfix
+        ul
+          li スピナー 
+            code div.spinner-border
+            +attrsBtn(".a4-1")
+            ul
+              li.att.collapse.a4-1 フロート 
+                code .float-(left|right)
+              li.att.collapse.a4-1 アクセシビリティ属性 
+                code role="status"
+              li スクリーンリーダ用 
+                code span.sr-only
+    h6.mt-3#spinners-text-align
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#text-align") テキストアライン
+    p
+      a(href="utilities-5.html/#text-alignment") テキストユーティリティ 
+      | を用いた例。
+    each al in ["left","center","right"]
+      div.mt-2
+        code= `.text-${al}`
+      div(class=`text-${al}`)
+        div(class=`spinner-border` role="status")
+          span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-text-align-structure") 構造
+    ul.struct.mt-3.collapse#spinner-text-align-structure
+      li
+        code div.text-(left|center|right)
+        ul
+          li スピナー 
+            code div.spinner-border
+            +attrBtn(".a5-1")
+            ul.collapse.a5-1
+              li.att アクセシビリティ属性 
+                code role="status"
+            ul
+              li スクリーンリーダ用 
+                code span.sr-only
+    h4.mt-4#spinners-size
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#size") サイズ
+    p.my-2 小型のスピナーは
+      code .spinner-(border|grow)-sm
+      |  を追加する。
+    div.row
+      each t in ["border","grow"]
+        div.col
+          code= `div.spinner-${t}.spinner-${t}-sm`
+          br
+          div(class=`spinner-${t} spinner-${t}-sm` role="status")
+            span.sr-only(Loading...)
+    p.mt-3.mb-2 カスタムCSSまたはインラインスタイルを用いて任意の大きさに設定できる。
+    div.row
+      each sz in [1,2,3,4,5,6]
+        div.col-lg-4.col-md-6.mt-2
+          code= `style="width: ${sz}rem; height: ${sz}rem;"`
+          br
+          each t in ["border","grow"]
+            div(class=`spinner-${t}` style=`width: ${sz}rem; height: ${sz}rem;` role="status")
+              span.sr-only(Loading...)
+    h4.mt-4#spinners-buttons
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#buttons") ボタン
+    p.my-2 ボタン内部にスピナーを用いて現在実行中のアクションを表現できる。
+    each t in ["border","grow"]
+      div.my-2
+        button.btn.btn-primary(type="button" disabled)
+          div(class=`spinner-${t} spinner-${t}-sm` role="status" aria-hidden="true")
+          span.sr-only(Loading...)
+        button.btn.btn-primary(type="button" disabled)
+          div(class=`spinner-${t} spinner-${t}-sm` role="status" aria-hidden="true")
+          |  Loading...
+    div.my-3
+      +collapseButton("#spinner-buttons-structure") 構造
+    ul.struct.mt-3.collapse#spinner-buttons-structure
+      li ボタン 
+        code button.btn.btn-primary
+        +attrsBtn(".a6-1")
+        ul.collapse.a6-1
+          li.att 属性 
+            code type="button"
+          li.att 属性 
+            code disabled
+        ul
+          li 小型スピナー 
+            code div.spinner-(border|grow).spinner-(border|grow)-sm
+            +attrsBtn(".a6-2")
+            ul.collapse.a6-2
+              li.att アクセシビリティ属性 
+                code role="status"
+              li.att アクセシビリティ属性 
+                code aria-hidden="true"
+          li (左側のみ: テキストなしボタン用) スクリーンリーダ用 
+            code span.sr-only
+            ul
+              li.txt テキスト 
+                code Loading...
+          li.txt (右側のみ) テキスト 
+            code Loading...
+
+    h2.mt-5#toasts
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/") トースト
+    p トーストは主に短時間だけ表示する通知メッセージ用に用いられる。トーストはデフォルト状態は非表示であり、表示するには次のようなJavaScriptコードを用いる。
+    pre.p-2.border.bg-light.mt-3
+      code $('.toast').toast('show');
+    p デフォルト設定では表示後500ms後に自動的に画面から消去されるが、下記の
+      a(href='#toasts-data-options') data属性オプション
+      | を用いて消去までの時間を設定したり、消去せずそのまま画面上に残すこともできる。
+    h4.mt-3#toasts-examples
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#examples") 例
+    h5.mt-3#toasts-basic
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#basic") 基本例
+    +toast1
+    div.my-3
+      +collapseButton("#toasts-basic-structure") 構造
+    ul.struct.mt-3.collapse#toasts-basic-structure
+      li トースト(外枠) 
+        code div.toast
+        +attrsBtn(".a7-1")
+        ul
+          li.att.collapse.a7-1 アクセシビリティ属性 
+            code role="alert"
+          li.att.collapse.a7-1 アクセシビリティ属性 
+            code aria-live="assertive"
+          li.att.collapse.a7-1 アクセシビリティ属性 
+            code aria-atomic="true"
+          li.att.collapse.a7-1 オプション(自動消去しない) 
+            code data-autohide="false"
+          li ヘッダ 
+            code div.toast-header
+            ul
+              li ロゴアイコン 
+                code img.rounded.mr-2
+                +attrsBtn(".a7-2")
+                ul.collapse.a7-2
+                  li.att 属性 
+                    code src="../img/20x20-blue.svg"
+                  li.att 属性 
+                    code alt="Logo placeholder"
+              li タイトル 
+                code strong.mr-auto
+                ul
+                  li.txt テキスト 
+                    code Bootstrap
+              li ヘッダ 
+                code small.muted
+                ul
+                  li.txt Text 
+                    code 11 mins ago
+              li クローズボタン 
+                code button.ml-2.mb-1.close
+                +attrsBtn(".a7-3")
+                ul
+                  li.att.collapse.a7-3 属性 
+                    code type="button"
+                  li.att.collapse.a7-3 属性 
+                    code data-dismiss="toast"
+                  li.att.collapse.a7-3 アクセシビリティ属性 
+                    code aria-label="Close"
+                  li ボタンテキスト 
+                    code span
+                    +attrBtn(".a7-4")
+                    ul
+                      li.att.collapse.a7-4 アクセシビリティ属性 
+                        code aria-hidden="true"
+                      li.txt テキスト 
+                        code= "&times;"
+          li ボディ 
+            code div.toast-body
+            ul
+              li テキスト 
+                code Hello, world! This is a toast message.
+    h5.mt-3#toasts-data-options data属性オプション
+    p.my-2 トースト外枠 
+      code div.toast
+      |  に次の属性を用いて動作を設定できる。
+    ul
+      li
+        code data-delay="{時間[msec]}"
+        |  消去までの時間を設定(デフォルト値は
+        code "500"
+        | [msec])
+      li
+        code data-animation="(true|false)"
+        |  CSSアニメーションの設定(デフォルト値は 
+        code "true"
+        |  )
+      li
+        code data-autohide="(true|false)"
+        |  自動消去の設定(デフォルト値は 
+        code "true"
+        |  )
+    h6.mt-2#toasts-live-demo デモ
+    p.my-2 次のデモを使って上記data属性オプションを実際に確認できる。
+    div.form-inline
+      label.my-1.mr-2(for="toasts-demo-delay") Delay
+      select.custom-select.my-1.mr-3#toasts-demo-delay
+        each item in [[200,"200ms"],[500,"500ms (default)"],[1000,"1s"],[2000,"2s"],[5000,"5s"],[10000,"10s"],[-1,"does not hide"]]
+          option(value=item[0] selected=item[0]==500)= item[1]
+      div.custom-control.custom-checkbox.my-1.mr-3
+        input.custom-control-input#toasts-demo-animation(type="checkbox" checked)
+        label.custom-control-label(for="toasts-demo-animation") CSS animation
+      button.btn.btn-primary.my-1.mr-sm-2#toasts-demo-start Start
+    div.toast.fade.hide#toasts-demo(role="alert" aria-live="assertive" aria-atomic="true")
+      +toastContent("just now", "Hello, world! This is a toast message.")
+    h5.mt-3#toasts-translucent
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#translucent") 半透明
+    p.my-2 トーストは半透明で(背景が透けて見える)、さらにブラウザが 
+      +extLink("https://developer.mozilla.org/ja/docs/Web/CSS/backdrop-filter")
+        code backdrop-filter
+      |  CSSプロパティをサポートしている場合は背景のぼかし効果も加える。
+    div.bg-secondary.p-2(style="background-image: url('../img/GitHub-Mark-32px.png');")
+      +toast1
+    h5.mt-3#toasts-stacking
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#stacking") 積み重ね
+    p.my-2 トーストは複数個を同時表示可能で、上下に積み重なった状態で表示する。
+    +toast2
+    h4.mt-3#toasts-placement
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#placement") 配置
+    p.my-2 CSSのインラインスタイルを用いて、トーストを任意の場所に配置できる。次は(もっとも典型的な)左上への配置例(設定方法は下記 
+      button.btn.btn-outline-info.btn-sm 構造
+      |  をクリックして表示)。
+
+    div.bg-secondary(aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;")
+      div.toast(style="position: absolute; top: 0; right: 0;" data-autohide="false")
+        +stdToastContent
+    div.my-3
+      +collapseButton("#toasts-placement-1-structure") 構造
+    ul.struct.mt-3.collapse#toasts-placement-1-structure
+      li 親要素(背景) 
+        code div.bg-secondary
+        +attrsBtn(".a8-1")
+        ul
+          li.att.collapse.a8-1 アクセシビリティ属性 
+            code aria-live="polite"
+          li.att.collapse.a8-1 アクセシビリティ属性 
+            code aria-atomic="true"
+          li.att.collapse.a8-1 インラインスタイル 
+            code style="position: relative; min-height: 200px;"
+          li トースト(外枠) 
+            code div.toast
+            +attrsBtn(".a8-2")
+            ul
+              li.att.collapse.a8-2 インラインスタイル 
+                code style="position: absolute; top: 0; right: 0;"
+              li.att.collapse.a8-2 オプション 
+                code data-autohide="false"
+              li ヘッダ(
+                a(href="#toasts-basic") 基本例
+                | と同じ)
+              li ボディ(
+                a(href="#toasts-basic") 基本例
+                | と同じ)
+    p.mt-3.mb-2 複数積み重ね表示と組み合わせる場合はラッパ要素を用いてグループ化すればよい。
+    div.bg-secondary(aria-live="polite" aria-atomic="true" style="position: relative; min-height: 250px;")
+      div(style="position: absolute; top: 0; right: 0;")
+        +toast2
+    div.my-3
+      +collapseButton("#toasts-placement-2-structure") 構造
+    ul.struct.mt-3.collapse#toasts-placement-2-structure
+      li 親(背景) 
+        code div.bg-secondary
+        +attrsBtn(".a9-1")
+        ul
+          li.att.collapse.a9-1 アクセシビリティ属性 
+            code aria-live="polite"
+          li.att.collapse.a9-1 アクセシビリティ属性 
+            code aria-atomic="true"
+          li.att.collapse.a9-1 インラインスタイル 
+            code style="position: relative; min-height: 250px;"
+          li.att ラッパ 
+            code div
+            +attrBtn(".a9-2")
+            ul
+              li.att.collapse.a9-2 インラインスタイル 
+                code style="position: absolute; top: 0; right: 0;"
+              each n in [1,2]
+                li= `トースト(${n}) (`
+                  a(href="#toasts-basic") 基本例
+                  | と同じ)
+    h4.mt-3#toasts-accessibility
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#accessibility") アクセシビリティ
+    h5.mt-2#toasts-accessibility-summary まとめ
+    ul
+      li 全体を 
+        +extLink("https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/ARIA_Live_Regions") aria-live region
+        |  で囲む(具体的には外枠に 
+        code aria-live="(assertive|polite|...)"
+        |  を設定)
+      li
+        code aria-atomic="true"
+        |  を設定する
+      li ロール属性 
+        code role="(alert|status|...)"
+        |  を設定する
+
     h2.mt-5#tooltips
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/") ツールチップ
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/") ツールチップ
     p.mt-2.mb-1 HTML要素の 
       code title
       |  属性を用いたツールチップ(ポップアップ)表示機能をカスタマイズしたもの。実装に 
@@ -212,7 +551,7 @@ block body
       kbd Tab
       |  キーでフォーカスした場合もポップアップ表示する。
     h4.mt-4#tooltips-example-enable-tooltips-everywhere
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#example-enable-tooltips-everywhere") 初期化方法
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/#example-enable-tooltips-everywhere") 初期化方法
     p Bootstrapのツールチップは初期状態では無効になっており、有効にするためにはJavaScriptコードが必要。最も簡単な方法を次に示す。
     pre.p-2.border.bg-light
       code $('[data-toggle="tooltip"]').tooltip();
@@ -222,7 +561,7 @@ block body
       code script
       |  を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。
     h4.mt-4#tooltips-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#examples") 設定方法
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/#examples") 設定方法
     ul.my-1
       li 任意の要素に設定可: 次の属性を設定
       ul
@@ -270,7 +609,7 @@ block body
       span.text-danger(data-toggle="tooltip" data-html="true" title="TNT(C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>)") この部分
       |  をホバーすると表示
     h4.mt-4#disabled-elements
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#disabled-elements") 無効化した要素への設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/#disabled-elements") 無効化した要素への設定
     p.my-2 要素に属性 
       code disabled
       |  を設定した場合ツールチップは表示されなくなる。次の例は 
@@ -346,4 +685,4 @@ block body
         button.btn.btn-primary(style="pointer-events: none;" type="button" disabled)
           | Disabled button
 
-    +breadcrumbLevel1("コンポーネント(12): プログレスバー/スクロールスパイ/ツールチップ")
+    +breadcrumbLevel1("コンポーネント(12): スクロールスパイ / スピナー / トースト / ツールチップ")

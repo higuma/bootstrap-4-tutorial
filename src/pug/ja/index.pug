@@ -11,20 +11,19 @@ block body
     ul
       li
         a(href="#about") このチュートリアルについて
-      li.mb-2
-        a(href="#notation") 記法について
+        ul
+          li.mb-2
+            a(href="#notation") 記法
       li
-        a(href="getting-started.html") Getting started
+        a(href="getting-started.html") Getting started (はじめに)
       li レイアウト
-        ol
+        ul
           li
             a(href="layout-1.html") 概要
             |  / 
             a(href="layout-1.html#grid") グリッド
-          li
-            a(href="layout-2.html") メディアオブジェクト
             |  / 
-            a(href="layout-2.html#utilities") レイアウトユーティリティ
+            a(href="layout-1.html#utilities") レイアウトユーティリティ
       li コンテント
         ol
           li
@@ -62,18 +61,28 @@ block body
             a(href="components-6.html") インプットグループ
             |  / 
             a(href="components-6.html#jumbotron") ジャンボトロン
-          li: a(href="components-7.html") リストグループ
-          li: a(href="components-8.html") モーダル
-          li: a(href="components-9.html") ナビゲーション
-          li: a(href="components-10.html") ナビゲーションバー
+          li
+            a(href="components-7.html") リストグループ
+          li
+            a(href="components-8.html") メディアオブジェクト
+            |  / 
+            a(href="components-8.html#modal") モーダル
+          li
+            a(href="components-9.html") ナビゲーション
+          li
+            a(href="components-10.html") ナビゲーションバー
           li
             a(href="components-11.html") ページネーション
             |  / 
             a(href="components-11.html#popovers") ポップオーバー
-          li
-            a(href="components-12.html") プログレスバー
             |  / 
-            a(href="components-12.html#scrollspy") スクロールスパイ
+            a(href="components-11.html#progress") プログレスバー
+          li
+            a(href="components-12.html") スクロールスパイ
+            |  / 
+            a(href="components-12.html#spinners") スピナー
+            |  / 
+            a(href="components-12.html#toasts") トースト
             |  / 
             a(href="components-12.html#tooltips") ツールチップ
       li ユーティリティ
@@ -123,7 +132,7 @@ block body
     p.my-2 
       +extLink("https://getbootstrap.com/") Bootstrap
       |  4の自習用チュートリアルです。
-      +extLink("https://getbootstrap.com/docs/4.1/") 公式ドキュメント
+      +extLink("https://getbootstrap.com/docs/4.2/") 公式ドキュメント
       | と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
     p.my-2 このチュートリアル自身は
       +extLink("https://pugjs.org/") pug
@@ -140,7 +149,7 @@ block body
       | で公開し、サイトのホスティングは
       +extLink("https://pages.github.com/") GitHub Pages
       | を用いています。
-    h2.mt-5#notation 記法について
+    h4.mt-4#notation 記法
     p.mt-2.mb-3 本チュートリアルではHTMLの説明に独自の方法を用います。次の
       a(href="components-2.html#button-group-button-toolbar") ボタンツールバー
       | を例に説明します。

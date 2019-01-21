@@ -18,9 +18,9 @@ block body
         a(href="#breadcrumb") パンくずリスト
 
     h2.mt-4#alerts
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/") アラート
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/") アラート
     h4.mt-4#alerts-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#examples") 基本例
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/#examples") 基本例
     div.my-3
       +collapseButton("#alerts-example-structure") 構造
     ul.struct.mt-3.collapse#alerts-example-structure
@@ -44,7 +44,7 @@ block body
         |  ) - 
         a.alert-link(href="#") linkサンプル
     h4.mt-4#alerts-additional-content
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#additional-content") 内部レイアウト例(+表示サンプル)
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/#additional-content") 内部レイアウト例(+表示サンプル)
     div.alert.alert-success(role="alert")
       h4.alert-heading Alert内ヘッダ 
         code h4.alert-heading
@@ -74,11 +74,18 @@ block body
       code .mb-3
       |  と同じ)なので、そのままでは下の余白が増えて不自然になる。そこで 
       code .mb-0
-      |  で下マージンを除去すればアラート自身のパディングに設定され上下のバランスが取れる。
+      |  で下マージンを除去すればアラート自身のパディングに設定され上下間隔が均等になる。
     h4.mt-4.mb-3#alerts-dismissing
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#dismissing") 消去機能付きアラート
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/#dismissing") 消去機能付きアラート
     div.alert.alert-info(role="alert")
       strong 設定例: 
+      |  右端の 
+      strong &times;
+      |  をクリックすると消去
+      button.close(type="button" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+    div.alert.alert-info.fade.show(role="alert")
+      strong 設定例(フェードアウト付き): 
       |  右端の 
       strong &times;
       |  をクリックすると消去
@@ -89,31 +96,34 @@ block body
     ul.struct.mt-3.collapse#alerts-dismissing-structure
       li
         code div.alert.alert-(primary|secondary|...)
+        +attrBtn(".a2-1")
         ul
+          li.cls.collapse.a2-1 (オプション)フェードアウト効果 
+            code .fade.show
           li 内部テキスト(略)
           li クローズボタン 
             code button.close
-            +attrsBtn(".a2-1")
+            +attrsBtn(".a2-2")
             ul
-              li.att.collapse.a2-1 属性 
+              li.att.collapse.a2-2 属性 
                 code type="button"
-              li.att.collapse.a2-1 属性 
+              li.att.collapse.a2-2 属性 
                 code data-dismiss="alert"
-              li.att.collapse.a2-1 アクセシビリティ属性 
+              li.att.collapse.a2-2 アクセシビリティ属性 
                 code aria-label="Close"
               li スクリーンリーダ用 
                 code span
-                +attrBtn(".a2-2")
+                +attrBtn(".a2-3")
                 ul
-                  li.att.collapse.a2-2 アクセシビリティ属性 
+                  li.att.collapse.a2-3 アクセシビリティ属性 
                     code aria-hidden="true"
                   li.txt テキスト 
                     code= `&times;`
 
     h2.mt-5#badges
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/") バッジ
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/") バッジ
     h4.mt-4#badges-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#example") 例
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#example") 例
     h5.my-2#badges-example-headings タイトルに付けるバッジの例 ( 
       span.badge.badge-secondary New
       |  がバッジ)
@@ -157,7 +167,7 @@ block body
             li.txt テキスト 
               code 未読数
     h4.mt-4#badges-contextual-variations
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#contextual-variations") バッジ一覧
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#contextual-variations") バッジ一覧
     p.my-0
       code= `span.badge.badge-${contextRe}`
     p.my-0
@@ -166,7 +176,7 @@ block body
           = c[0].toUpperCase() + c.slice(1)
         | &nbsp;
     h4.mt-4#badges-pill-badges
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#pill-badges") ピルバッジ
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#pill-badges") ピルバッジ
     p.my-0
       code= `span.badge.badge-pill.badge-${contextRe}`
     p.my-0
@@ -175,7 +185,7 @@ block body
           = c[0].toUpperCase() + c.slice(1)
         | &nbsp;
     h4.mt-4#badges-links
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#links") バッジを使ったリンク( 
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#links") バッジを使ったリンク( 
         code a
         |  要素)
     p.my-0
@@ -187,7 +197,7 @@ block body
         | &nbsp;
 
     h2.mt-5#breadcrumb
-      +extLink("https://getbootstrap.com/docs/4.1/components/breadcrumb/") パンくずリスト
+      +extLink("https://getbootstrap.com/docs/4.2/components/breadcrumb/") パンくずリスト
     p.mt-2.mb-3 パンくずリスト(ブレッドクラム)は主にサイト階層の表現に用いる。
     +collapseButton("#breadcrumb-structure") 構造
     ul.struct.collapse.mt-3#breadcrumb-structure
@@ -236,7 +246,7 @@ block body
           a(href="#") Library
         li.breadcrumb-item.active(aria-current="page") Data
     h4.mt-4#breadcrumb-changing-the-separator
-      +extLink("https://getbootstrap.com/docs/4.1/components/breadcrumb/#changing-the-separator") セパレータの変更
+      +extLink("https://getbootstrap.com/docs/4.2/components/breadcrumb/#changing-the-separator") セパレータの変更
     p.my-2 セパレータ文字はデフォルトで 
       code "/"
       |  に設定されているが、

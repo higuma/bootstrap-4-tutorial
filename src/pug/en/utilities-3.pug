@@ -15,7 +15,7 @@ block body
         a(href="#image-replacement") Image replacement
 
     h2.mt-2#flex
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/") Flex
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/") Flex
     - const RES = "(-sm|-md|-lg|-xl)?"
     - const justify = "start end center between around".split(" ")
     - const align = "start end center baseline stretch".split(" ")
@@ -66,7 +66,7 @@ block body
       a(href="utilities-4.html#spacing") Spacing
       |  , not a part of flexbox utility). But it is explained here as it is frequently used in combination with flex utility.
     h4.mt-4.mb-0#flex-direction
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#direction") Horizontal/Vertical direction
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#direction") Horizontal/Vertical direction
     p.my-2
       code= dirRE
     div.row
@@ -80,7 +80,7 @@ block body
                 each n in [1,2,3]
                   div.border.bg-light.p-1= `Flex item ${n}`
     h4.mt-4#flex-justify-content
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#justify-content") Justify content
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#justify-content") Justify content
     p.my-2
       code= justifyRE
     div.row
@@ -93,7 +93,7 @@ block body
               each n in [1,2,3]
                 div.border.bg-light.p-1= `Flex item ${n}`
     h4.mt-4.mb-1#flex-align-items
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-items") Align items
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#align-items") Align items
     p.my-2
       code= alignItemsRE
     p.my-2 In examples below, parent box heights are fixed to 
@@ -109,7 +109,7 @@ block body
               each n in [1,2,3]
                 div.border.bg-light.p-1= `Flex item ${n}`
     h4.mt-4.mb-1#flex-align-self
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-self") Align self
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#align-self") Align self
     p.my-2
       code= alignSelfRE
     ul
@@ -128,7 +128,7 @@ block body
               div(class=`align-self-${opt} border bg-light p-1`) Aligned flex item
               div.border.bg-light.p-1 Flex item
     h4.mt-4.mb-1#flex-fill
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#fill") Fill
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#fill") Fill
     p.my-2
       code= fillRE
     p.my-2 Use 
@@ -141,7 +141,7 @@ block body
       each text in ["Short", "Medium length text", "This is a slightly longer text content"]
         div.flex-fill.border.bg-light.p-1= text
     h4.mt-4.mb-1#flex-grow-and-shrink
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#grow-and-shrink") Grow and Shrink
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#grow-and-shrink") Grow and Shrink
     p.my-2
       code= growShrinkRE
     p.my-2 CSS 
@@ -183,7 +183,7 @@ block body
       div.flex-shrink-1.border.bg-light.p-1 Item with 
         code .flex-shrink-1
     h4.mt-4.mb-1#flex-auto-margins
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#auto-margins") Auto margins
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#auto-margins") Auto margins
     p.my-2
       code= autoMarginRE
     p.mt-3.mb-1 Default
@@ -208,7 +208,7 @@ block body
       div.border.ml-auto.bg-light.p-2 Flex item 3 
         code .ml-auto
     h4.mt-4.mb-1#flex-with-align-items
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#with-align-items") Auto-margins + align-items
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#with-align-items") Auto-margins + align-items
     h5.mt-2.mb-1 Example 1
     ul.my-1
       li
@@ -240,7 +240,7 @@ block body
       div.mt-auto.p-2.border.bg-light Flex item 3 
         code .mt-auto
     h4.mt-4.mb-1#flex-wrap
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#wrap") Wrapping
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#wrap") Wrapping
     p.my-2
       code= wrapRE
     p.my-0 In examples blow, parent box width is fixed to 
@@ -253,7 +253,7 @@ block body
         each n in [1,2,3,4,5,6,7]
           div.p-2.border= `Flex item ${n}`
     h4.mt-4#flex-order
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#order") Order
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#order") Order
     p.my-2
       code= orderRE
     p.my-2 Example: DOM order is item-(1,2,3,4,5), 
@@ -270,7 +270,7 @@ block body
       code .order-(first|last)
       |  (not explaind here) are also available.
     h4.mt-4.mb-1#flex-align-content
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-content") Align content
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#align-content") Align content
     p.my-2
       code= alignContentRE
     p.my-2 Combination examples with 
@@ -300,10 +300,10 @@ block body
                 div.p-1.border.bg-light= `Flex item ${n}`
 
     h2.mt-5#float
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/") Float
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/float/") Float
     p.my-2 Utility classes for floating an element to the left or right.
     h4.my-2#float-classes
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/#classes") Classes
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/float/#classes") Classes
     p.my-1
       code .float-(left|right|none)
     div.row
@@ -313,7 +313,7 @@ block body
           p.m-1: code= `img.float-${f}`
           p.m-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     h4.mt-4#float-responsive
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/#responsive") Responsive classes
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/float/#responsive") Responsive classes
     p.my-1
       code .float-(sm|md|lg|xl)-(left|right|none)
     h5.mt-3.mb-2 Example
@@ -326,7 +326,7 @@ block body
             p.mx-2 Plain text
 
     h2.mt-5#image-replacement
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/image-replacement/") Image replacement
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/image-replacement/") Image replacement
     p.mt-3.mb-1 Utility class for using a replacement image for text content (example setting as follows).
     ul.struct
       li

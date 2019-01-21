@@ -29,9 +29,9 @@ block body
         a(href="#cards") カード
 
     h2.mt-2#cards
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/") カード
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/") カード
     h4.mt-3#example
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#example") 基本例
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#example") 基本例
     div.card.my-3(style="width: 18rem;")
       +img286x180top
       div.card-body
@@ -75,10 +75,10 @@ block body
                   li.txt テキスト 
                     code Go somewhere
     h4.mt-4#content-types
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#content-types") 構成要素
-    p.my-2 以下の書式設定はカード用だが、他の目的にも使用できる。
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#content-types") 構成要素
+    p.mt-2.mb-3 以下の書式設定はカード用だが、他の目的にも使用できる。
     h5.mt-2#body
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#body") ボディ
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#body") ボディ
     p.my-2 ボディ(本文)は全体を 
       code div.card-body
       |  で囲む。
@@ -95,7 +95,7 @@ block body
               li.txt テキスト 
                 code This is some text within a card body.
     h5.mt-4#titles-text-and-links
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#titles-text-and-links") タイトル、テキスト、リンク
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#titles-text-and-links") タイトル、テキスト、リンク
     p.my-2 カード用の書式設定: まとめて示す。
     div.card.my-3(style="width: 18rem;")
       div.card-body
@@ -121,7 +121,7 @@ block body
       li テキスト 
         code (p).card-text
     h5.mt-4#images
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#images") 画像
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#images") 画像
     p.my-2
       code img.card-img-top
       | でカード上部に配置する。
@@ -145,7 +145,7 @@ block body
       | を参照。
 
     h4.mt-4#list-groups
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#list-groups") リストグループ
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#list-groups") リストグループ
     h5.mt-3#flush-list 基本構造(フラッシュリスト)
     div.card.my-3(style="width: 18rem;")
       ul.list-group.list-group-flush
@@ -176,7 +176,7 @@ block body
             |  (次のリストに上下密着して配置)
           li リスト+子アイテム(以下同じ)
     h4.mt-4#kitchen-sink
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#kitchen-sink") アイテムの積み重ね
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#kitchen-sink") アイテムの積み重ね
     p.my-2 組み合わせ例
     div.card.mt-2.mb-3(style="width: 18rem;")
       +img286x180top
@@ -218,7 +218,7 @@ block body
               li リンク 
                 code a.card-link
     h4.mt-4#header-and-footer
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#header-and-footer") ヘッダ、フッタ
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#header-and-footer") ヘッダ、フッタ
     p.mb-2 基本構造( 
       code .card-body
       |  の中ではなく、最初または最後の兄弟として設定)
@@ -272,12 +272,12 @@ block body
         a.btn.btn-primary(href="#") Go somewhere
       div.card-footer.text-muted 2 days ago
     h4.mt-4#sizing
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#sizing") 幅の設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#sizing") 幅の設定
     p
       code div.card
       |  はデフォルトでは幅いっぱい(親に対し100%)に割り当てる。幅の設定(調整)には様々な方法がある。
     h5.mt-3#using-grid-markup
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#using-grid-markup") グリッドによる設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#using-grid-markup") グリッドによる設定
     p.my-2 レスポンシブ設定の例: mdブレークポイント(768px)で1行2列と2行1列を切り替え
     div.row
       each n in [1,2]
@@ -301,7 +301,7 @@ block body
                   ul
                     li (上と同じ)
     h5.mt-3#using-utilities
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#using-utilities") サイズユーティリティによる設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#using-utilities") サイズユーティリティによる設定
     p.my-2
       code .w-(25|50|75|100)
       |  を用いた幅設定 (⇒ 
@@ -316,7 +316,7 @@ block body
           p.card-text= sampleText2
           a.btn.btn-primary(href="#") Button
     h5.mt-3#using-custom-css
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#using-custom-css") スタイル属性 
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#using-custom-css") スタイル属性 
         code= `style="..."`
         |  による幅設定
     each width in [16, 24]
@@ -330,7 +330,7 @@ block body
           p.card-text= sampleText2
           a.btn.btn-primary(href="#") Button
     h4.mt-4#text-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#text-alignment") テキストの配置
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#text-alignment") テキストの配置
     p.mt-2.mb-0 テキストユーティリティ 
       code .text-(left|center|right)
       |  を用いた配置(⇒ 
@@ -349,7 +349,7 @@ block body
               p.card-text= sampleText2
               a.btn.btn-primary(href="#") Go somewhere
     h4.mt-4#navigation
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#navigation") ナビゲーション
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#navigation") ナビゲーション
     p.my-2
       a(href="components-9.html") ナビゲーション
       |  コンポーネントとの組み合わせ例
@@ -370,7 +370,7 @@ block body
           p.card-text= sampleText
           a.btn.btn-primary(href="#") Go somewhere
     h4.mt-4#images-1
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#images-1") 画像の設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#images-1") 画像の設定
     p.my-2 ヘッダやフッタに画像を用いる場合は 
       code img.card-img-(top|bottom)
       |  を設定する。
@@ -391,7 +391,7 @@ block body
         +textLastUpdated
       img.card-img-bottom(src="../img/1000x100.svg" alt="Card image cap")
     h4.mt-4#image-overlays
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#image-overlays") 画像内への文字重ね合わせ
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#image-overlays") 画像内への文字重ね合わせ
     p.my-2 画像内へテキストをオーバーレイ表示するには 
       code div.card-img-overlay
       |  を用いる。
@@ -402,7 +402,7 @@ block body
         p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
         p.card-text Last updated 3 mins ago
     h4.mt-4#background-and-color
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#background-and-color") 配色の設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#background-and-color") 配色の設定
     p.mb-0
       a(href="utilities-2.html#colors") 色ユーティリティ
       |  を用いる。
@@ -418,7 +418,7 @@ block body
               h5.card-title= `${c[0].toUpperCase()}${c.slice(1)} card title`
               p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
     h4.mt-4#border
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#border") ボーダーの設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#border") ボーダーの設定
     p.mb-0
       a(href="utilities-1.html#borders") ボーダーユーティリティ
       |  を用いる(⇒ 
@@ -435,7 +435,7 @@ block body
               h5.card-title= `${c[0].toUpperCase()}${c.slice(1)} card title`
               p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
     h4.mt-4#mixins-utilities
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#mixins-utilities") 設定の組み合わせ
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#mixins-utilities") 設定の組み合わせ
     p.mt-2.mb-3 ヘッダ/フッタなどの各構成要素には親要素と別のテキスト/背景/ボーダー設定が可能。さらに 
       code .bg-transparent
       |  で背景なしにすることも可能。設定例を次に示す。
@@ -476,7 +476,7 @@ block body
             div(class=`card-footer bg-${c}${cText} border-success`)
               = `${c[0].toUpperCase()}${c.slice(1)} footer`
     h4.mt-4#card-layout
-      +extLink("https://getbootstrap.com/docs/4.1/components/card/#card-layout") レイアウト
+      +extLink("https://getbootstrap.com/docs/4.2/components/card/#card-layout") レイアウト
     ul.my-2
       li 親を追加 
         code div.card-(group|deck|columns)

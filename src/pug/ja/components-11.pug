@@ -2,7 +2,7 @@ extends ../template-cdn-ja
 include ../mixins-ja
 
 block head
-  title Bootstrap 4 tutorial: コンポーネント(11): ページネーション / ポップオーバー
+  title Bootstrap 4 tutorial: コンポーネント(11): ページネーション / ポップオーバー / プログレスバー
 
 block body
   div.container
@@ -11,11 +11,13 @@ block body
         a(href="#pagination") ページネーション
         |  / 
         a(href="#popovers") ポップオーバー
+        |  / 
+        a(href="#progress") プログレスバー
 
     h2.mt-2#pagination
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/") ページネーション
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/") ページネーション
     h4.mt-3#pagination-overview
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#overview") 基本構成
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#overview") 基本構成
     ul.struct.my-1
       li アクセシビリティ用外枠 
         code nav
@@ -53,7 +55,7 @@ block body
         li.page-item
           a.page-link(href="#") Next
     h4.mt-4#working-with-icons
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#working-with-icons") アイコン(シンボル)の利用
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#working-with-icons") アイコン(シンボル)の利用
     p.my-2 例: 前後ボタンにシンボル文字を用いる場合
     ul.struct.my-0
       li 先頭アイテム 
@@ -112,7 +114,7 @@ block body
             img(src="../img/openiconic/svg/chevron-right.svg" width="10" height="10" style="opacity: 0.6;")
             span.sr-only Next
     h4.mt-4#pagination-disabled-and-active-states
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#disabled-and-active-states") アイテムの状態設定(無効化/アクティブ)
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#disabled-and-active-states") アイテムの状態設定(無効化/アクティブ)
     p.my-2 各アイテムには状況に応じて無効化/アクティブの状態を設定する。次は最も一般的な条件の例。
     ul
       li 現在のページのアイテムはアクティブ表示、しかしリンクは無効化する
@@ -212,7 +214,7 @@ block body
           a.page-link(href="#") Next
 
     h4.mt-4#pagination-sizing
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#sizing") サイズ設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#sizing") サイズ設定
     p.my-1 リストの親 
       code li.pagenation
       |  に 
@@ -231,7 +233,7 @@ block body
             li.page-item
               a.page-link(href="#")= n
     h4.mt-4#pagination-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#alignment") 配置
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#alignment") 配置
     p.my-1 Flexboxユーティリティの 
       code .justify-content-*
       |  を用いる(⇒ 
@@ -251,12 +253,12 @@ block body
               a.page-link(href="#")= n
 
     h2.mt-5#popovers
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/") ポップオーバー
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/") ポップオーバー
     p.my-2 ポップオーバーは(iOSの同名機能と同様の)ポップアップ表示コンポーネント。実装に 
       +extLink("https://popper.js.org/") Popper.js
       |  を利用している。
     h4.mt-3#popovers-init
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere") 初期化方法
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#example-enable-popovers-everywhere") 初期化方法
     p ポップオーバーは初期状態はOFFになっており、有効にするためにはJavaScriptを用いた処理が必要。最も簡単なコード例を示す。
     pre.p-2.border.bg-light
       code $('[data-toggle="popover"]').popover();
@@ -266,7 +268,7 @@ block body
       code script
       |  を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。
     h4.ht-4#popovers-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example") 設定方法
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#example") 設定方法
     ul.my-1
       li 任意の要素に設定可: 次の属性を設定
       ul
@@ -284,7 +286,7 @@ block body
     p.my-2 設定例(クリックで表示、再クリックで表示終了)
     button.btn.btn-lg.btn-danger(type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?") Click to toggle popover
     h4.mt-4#popovers-four-directions
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#four-directions") 表示方向の設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#four-directions") 表示方向の設定
     ul.my-1
       li 次の属性を追加(デフォルトは 
         code "right"
@@ -310,7 +312,7 @@ block body
           code data-placement="bottom"
     div.alert.alert-info.my-3(role="alert") 表示時は(Popper.jsを利用して)動的位置判定を行い、空間不足の場合は逆方向に表示する。上の例で全て表示したままの状態にして、上下スクロールしたりブラウザのビューポート幅を変更すれば確認できる。
     h4.mt-4#popovers-dismiss-on-next-click
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#dismiss-on-next-click") クリックに対する動作の変更
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#dismiss-on-next-click") クリックに対する動作の変更
     p.my-2 (デフォルトは)要素のクリックで表示したポップオーバーは同じ要素の再クリックで表示終了する。これにより複数同時表示が可能だが、逆に不自然(または不便)な場合もある。そのような場合は別の要素をクリックした時に表示終了(より正確にはフォーカスで表示ON/OFF)するように動作変更できる。
     ul.my-1
       li 属性 
@@ -327,9 +329,9 @@ block body
     p.mt-3.mb-1 設定例
     p.mt-1
       a.btn.btn-lg.btn-danger(tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?") Dismissible popover
-    div.alert.alert-warning.mt-3(role="alert") Ver 4.1の時点ではまだブラウザ/プラットフォーム間の動作依存を回避するため上記設定が必要。
+    div.alert.alert-warning.mt-3(role="alert") 現時点ではまだブラウザ/プラットフォーム間の動作依存を回避するため上記設定が必要。
     h4.mt-4#popovers-disabled-elements
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#disabled-elements") 無効化した要素への設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#disabled-elements") 無効化した要素への設定
     p.my-2 要素に属性 
       code disabled
       |  が設定されている場合ポップオーバーは効かなくなる。次の例は 
@@ -396,4 +398,105 @@ block body
       span.d-inline-block(data-toggle="popover" title="Disabled popover")
         button.btn.btn-primary(style="pointer-events: none;" type="button" disabled) Disabled button
 
-    +breadcrumbLevel1("コンポーネント(11): ページネーション/ポップオーバー")
+    h2.mt-2#progress
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/") プログレスバー
+    p.mt-2
+      code progress
+      |  要素の代替を目的としたコンポーネントで、バーの積み重ねやアニメーション付きストライプバーなど 
+      code progress
+      |  にはない追加機能を持つ。
+    h4.mt-3#progress-how-it-works
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#how-it-works") 基本設定
+    ul.struct.my-1
+      li ベース部 
+        code div.progress
+        ul
+          li カラーバー 
+            code div.progress-bar
+            |  (複数積み重ね可)
+            +attrsBtn(".a5-1")
+            ul.collapse.a5-1
+              li.att 幅(必須) (例) 
+                code style="width: 50%"
+              li.att アクセシビリティ属性 
+                code role="progressbar" 
+              li.att アクセシビリティ属性 
+                code aria-valuenow="50"
+              li.att アクセシビリティ属性 
+                code aria-valuemin="0"
+              li.att アクセシビリティ属性 
+                code aria-valuemax="100"
+    h4.mt-4#progress-width 幅の設定
+    p.mt-2.mb-0 (1) カスタムスタイル 
+      code style="width: {width}%”
+    each w in [0,25,50,75,100]
+      p.mt-1.mb-0
+        code= `style="width: ${w}%;"`
+      div.progress
+        div.progress-bar(role="progressbar" style=`width: ${w}%;` aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    p.mt-3.mb-1 (2) 幅設定ユーティリティ 
+      code .w-(25|75|100)
+      |  (⇒ 
+      a(href="utilities-4.html#sizing") サイズユーティリティ
+      |  、25%ステップ)
+    each w in [25,50,75,100]
+      p.mt-1.mb-0
+        code= `.w-${w}`
+      div.progress
+        div(class=`progress-bar w-${w}` role="progressbar" aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-labels
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#labels") ラベル文字の追加
+    p.my-2 バー 
+      code div.progress-bar
+      |  の内部テキストを記述する。
+    div.progress
+      div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
+    h4.mt-4#progress-height
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#height") 高さの設定
+    p.my-2 ベースの 
+      code div.progress
+      |  に設定する。
+    each h in [5,10,15,20]
+      p.mt-1.mb-0
+        code= `style="height: ${h}px;"`
+      div.progress(style=`height: ${h}px;`)
+        div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-backgrounds
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#backgrounds") バーの色
+    p.my-2
+      code div.progress-bar
+      |  に背景色 
+      code .bg-{context}
+      |  を追加(⇒ 
+      a(href="utilities-2.html#colors-background-color") 色 - 背景色
+      |  )
+    each col in ["success","info","warning","danger"]
+      p.mt-1.mb-0
+        code= `.bg-${col}`
+      div.progress
+        div(class=`progress-bar bg-${col}` role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-multiple-bars
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#multiple-bars") バーの積み重ね 
+    p.my-2
+      code div.progress-bar
+      |  を複数用いれば左から右に積み重なる。
+    div.progress
+      each bar in [["primary",10], ["success",40], ["warning",20], ["danger",10]]
+        div(class=`progress-bar bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-striped
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#striped") ストライプ表示
+    p.my-2 バーに 
+      code .progress-bar-striped
+      |  を追加する。
+    each bar in [["primary",20], ["success",40], ["info",60], ["warning",80], ["danger",100]]
+      div.progress.my-2
+        div(class=`progress-bar progress-bar-striped bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-animated-stripes
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#animated-stripes") ストライプのアニメーション
+    p.mt-3.mb-2 さらに 
+      code .progress-bar-animated
+      |  を追加する。
+    div.progress
+      div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;")
+
+    +breadcrumbLevel1("コンポーネント(11): ページネーション/ポップオーバー/プログレスバー")

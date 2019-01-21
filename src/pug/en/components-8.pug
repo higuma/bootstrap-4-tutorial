@@ -1,6 +1,13 @@
 extends ../template-cdn-en
 include ../mixins-en
 
+mixin bodyTextExample
+  h5 Media heading
+  | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+mixin imageSample
+  img.mr-3(src="../img/48x48.svg" alt="48x48 placeholder image")
+
 mixin launchButton(target, text)
   button.btn.btn-primary(type="button" data-toggle="modal" data-target=target)= text
 
@@ -21,18 +28,151 @@ mixin modalDemo(modalId, labelId, dlgOption)
           button.btn.btn-primary(type="button") Save changes
 
 block head
-  title Bootstrap 4 tutorial: Components (8): Modal
+  title Bootstrap 4 tutorial: Components (8): Media Object / Modal
 
 block body
   div.container
     +pageHeader("components-8")
       p.lead Components (8): 
+        a(href="#media-object") Media object
+        |  / 
         a(href="#modal") Modal
 
-    h2.mt-2#modal
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/") Modal
+    h2.mt-2#media-object
+      +extLink("https://getbootstrap.com/docs/4.2/components/media-object/") Media Object
+    h4.mt-4#media-example
+      +extLink("https://getbootstrap.com/docs/4.2/components/media-object/#example") Basic example
+    div.media.my-3
+      +imageSample
+      div.media-body
+        +bodyTextExample
+    ul.struct.mt-3
+      li Media object (frame) 
+        code div.media
+        ul
+          li Thumbnail image 
+            code img
+            +attrsBtn(".a1-1")
+            ul.collapse.a1-1
+              li.cls Margin 
+                code .mr-3
+                |  (keeps 1rem between media body on right ⇒ 
+                a(href="utilities-4.html#spacing") Spacing utilities
+                |  )
+              li.att Attribute 
+                code href="..."
+              li.att Attribute 
+                code alt="..."
+          li Body 
+            code div.media-body
+            ul
+              li Heading 
+                code h5
+                ul
+                  li.txt Heading text 
+                    code Media heading
+              li.txt Body text 
+                code Lorem ipsum ...
+    h4.mt-4#media-nesting
+      +extLink("https://getbootstrap.com/docs/4.2/components/media-object/#nesting") Nesting
+    p.my-2
+      code div.media
+      |  can be nested inside 
+      code div.media-body
+    p.mt-3.mb-1 Nesting example
+    div.media.mt-3
+      +imageSample
+      div.media-body
+        +bodyTextExample
+        div.media.pt-3
+          +imageSample
+          div.media-body
+            +bodyTextExample
+    p.mt-4.mb-1 Three levels (more levels as the same way)
+    div.media.mt-3
+      +imageSample
+      div.media-body
+        +bodyTextExample
+        div.media.pt-3
+          +imageSample
+          div.media-body
+            +bodyTextExample
+            div.media.pt-3
+              +imageSample
+              div.media-body
+                +bodyTextExample
+    h4.mt-4#media-alignment
+      +extLink("https://getbootstrap.com/docs/4.2/components/media-object/#alignment") Alignment
+    p.my-2 Use 
+      a(href="utilities-3.html#flex") Flex utilities
+      |  . Examples for aligning 
+      code img
+      |  (with added borders).
+    each algn in [["start", "Top"], ["center", "Center"], ["end", "Bottom"]]
+      p.mt-2.mb-1
+        code= `img.align-self-${algn[0]}`
+      div.media.mb-3.border
+        img(class=`align-self-${algn[0]} mr-3` src="../img/48x48.svg" alt="48x48 placeholder image")
+        div.media-body
+          h5.mt-0= `${algn[1]}-aligned media`
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    h4.mt-4#media-order
+      +extLink("https://getbootstrap.com/docs/4.2/components/media-object/#order") Order
+    p.my-2 (1) Change DOM element order: move 
+      code img
+      |  to the last
+    div.media.mt-2
+      div.media-body
+        +bodyTextExample
+      img.ml-3.order-last(src="../img/48x48.svg" alt="48x48 placeholder image")
+    p.mt-4.mb-2 (2) Change order with 
+      code .order-*
+      |  of 
+      a(href="utilities-3.html#flex") Flex utilities
+      |  .
+    div.media.mt-2
+      img.ml-3.order-last(src="../img/48x48.svg" alt="48x48 placeholder image")
+      div.media-body
+        +bodyTextExample
+    h4.mt-4#media-list
+      +extLink("https://getbootstrap.com/docs/4.2/components/media-object/#media-list") Media list
+    p.my-2 Example using 
+      code ul
+      |  (same as 
+      code ol
+      |  )
+    ul.list-unstyled
+      each n in [1,2,3]
+        li.media.my-3
+          +imageSample
+          div.media-body
+            h5.mt-0= `Media heading (${n})`
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    ul.struct.mt-3
+      li
+        code ul.list-unstyled
+        ul
+          li.cls Remove prefix symbols with 
+            code .list-unstyled
+            |  (⇒ 
+            a(href="content-1.html#typo-list-unstyled") Lists - Unstyled
+            |  )
+          li Items 
+            code li.media.my-3
+            ul
+              li.cls Adjust top/bottom margins with 
+                code .my-3
+                |  (⇒ 
+                a(href="utilities-4.html#spacing") Spacing utilities
+                |  )
+              li See 
+                a(href="#media-example") Basic example
+                |  for inside
+
+    h2.mt-5#modal
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/") Modal
     h4.mt-3#modal-components
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#modal-components") Modal components
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#modal-components") Modal components
     p.my-2 Sample: modified to always-displayed (hidden as default)
     // div.modal(tabindex="-1" role="dialog") <= default (hidden)
     div.bg-light.py-2.mb-3(role="dialog")
@@ -139,7 +279,7 @@ block body
       code mixin
       |  templates (see source).
     h4.mt-4#live-demo
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#live-demo") Modal invocation
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#live-demo") Modal invocation
     p.my-2 Modals can be invoked with buttons.
     ul.struct
       li
@@ -188,7 +328,7 @@ block body
           kbd Esc
           |  key input
     h4.mt-4#scrolling-long-content
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#scrolling-long-content") Scrolling long content
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#scrolling-long-content") Scrolling long content
     p.my-2 When modal height is greater than viewport size, the vertical scroll bar is shown at the right. The scroll bar scrolls the modal (not background contents). Check with the demo below.
     - const sampleText = ["Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.", "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.", "Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla."]
     +modalDemo("exampleModalLong", "exampleModalLongTitle")
@@ -196,7 +336,7 @@ block body
         each text in sampleText
           p= text
     h4.mt-4#vertically-centered
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#vertically-centered") Vertically centered
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#vertically-centered") Vertically centered
     p.my-2 Adding 
       code .modal-dialog-centered
       |  to 
@@ -205,7 +345,7 @@ block body
     +modalDemo("exampleModalCenter", "exampleModalCenterTitle", "modal-dialog-centered")
       p= sampleText[0]
     h4.mt-4#tooltips-and-popovers
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#tooltips-and-popovers") Tooltops and popovers
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#tooltips-and-popovers") Tooltops and popovers
     p.my-2 Example using a 
       a(href="components-12.html#toolstips") Tooltip
       |  and 
@@ -223,7 +363,7 @@ block body
         a.tooltip-test(href="#" data-toggle="tooltip" title="Tooltip") That link 
         | have tooltips on hover.
     h4.mt-4#using-the-grid
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#using-the-grid") Using the grid
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#using-the-grid") Using the grid
     p.my-2 Example using 
       a(href="layout-1.html#grid") Grid
       |  (see source for detail).
@@ -243,7 +383,7 @@ block body
               div.col-8.col-sm-6.border.bg-warning Level 2: .col-8.col-sm-6
               div.col-4.col-sm-6.border.bg-warning Level 2: .col-4.col-sm-6
     h4.mt-4#varying-modal-content
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#varying-modal-content") Varying modal content
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#varying-modal-content") Varying modal content
     p.mt-2.mb-3 Example below is a demo for displaying button(recipient)-dependent contents to the same modal using JavaScript.
     div.my-3
       each item in ["mdo", "fat", "getbootstrap"]
@@ -282,7 +422,7 @@ block body
       li Set event handler for 
         code show.bs.modal
         |  : see 
-        +extLink("https://getbootstrap.com/docs/4.1/components/modal/#events") Events
+        +extLink("https://getbootstrap.com/docs/4.2/components/modal/#events") Events
         |  for the difference of following two events
         ul
           li
@@ -304,16 +444,16 @@ block body
             |  to the modal title and the element 
             code input
     h4.mt-4#optional-sizes
-      +extLink("https://getbootstrap.com/docs/4.1/components/modal/#optional-sizes") Optional sizes
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#optional-sizes") Optional sizes
     p.my-2 Use 
-      code div.modal-dialog.modal-(lg|sm)
-    - const modalSize = ["lg", "md", "sm"]
-    - const sizeText = {lg:"Large", md:"Medium", sm:"Small"}
+      code div.modal-dialog.modal-(xl|lg|sm)
+    - const modalSize = ["xl", "lg", "md", "sm"]
+    - const sizeText = {xl:"Extra large",lg:"Large",md:"Default",sm:"Small"}
     each sz in modalSize
-      +launchButton(`.bd-example-modal-${sz}`, `${sizeText[sz]} modal`)
+      +launchButton(`#modal-example-size-${sz}`, `${sizeText[sz]} modal`)
     each sz in modalSize
-      div(class=`modal fade bd-example-modal-${sz}` tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true")
-        div(class=`modal-dialog modal-${sz}`)
+      div.modal.fade(id=`modal-example-size-${sz}` tabindex="-1" role="dialog" aria-hidden="true")
+        div(class=`modal-dialog${sz != "md" ? ` modal-${sz}` : ""}`)
           div.modal-content
             div.modal-header
               h5.modal-title= `${sizeText[sz]} modal`
@@ -323,12 +463,5 @@ block body
             div.modal-footer
               button.btn.btn-secondary(type="button" data-dismiss="modal") Close
               button.btn.btn-primary(type="button") Save changes
-    div.alert.alert-info.my-3(role="alert")
-      strong Note: 
-      |  Above example sets 
-      code .modal-md
-      |  to the midium modal but it does not has any display effect (just displays as default size). It is used for a selector of 
-      code data-target
-      |  attribute.
 
-    +breadcrumbLevel1("Components(8): Modal")
+    +breadcrumbLevel1("Components(8): Media object / Modal")

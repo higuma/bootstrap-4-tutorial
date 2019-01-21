@@ -10,7 +10,7 @@ block body
       p.lead Getting started
 
     h2.mt-4#intro
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/") Startup with CDN
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/") Startup with CDN
     p.my-2 The easiest way to start up with Bootstrap 4 is using 
       +extLink("https://en.wikipedia.org/wiki/Content_delivery_network") CDN
       | . This tutorial is also made throughout with CDN.
@@ -110,7 +110,7 @@ block body
       | . But it is now case-insensitive (since HTML5.0, see 
       +extLink("https://www.w3.org/TR/html52/syntax.html#the-doctype") W3C reference
       | ). Bootstrap 
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") starter template
       |  uses lowercase 
       code= `<!doctype html>`
       | . It is valid but still rare.
@@ -268,7 +268,7 @@ block body
         +extLink("https://en.wikipedia.org/wiki/Base64") Base64
         |  string of SHA-384) of data.
       p.mb-0 You can copy and paste fingerprint strings from Bootstrap 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") starter template
         | . You can also calculate strings by yourself using terminal command-line (see 
         +extLink("https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity/#Tools_for_generating_SRI_hashes")
           em Tools for generating SRI hashes
@@ -281,7 +281,7 @@ block body
       |  from 
       +extLink("https://www.bootstrapcdn.com/") BootstrapCDN
       | . See 
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") starter template
       |  for actual attributes. ⇒ 
       +collapseButton("#intro-bootstrap-css-note") Note
     div.alert.alert-info.collapse#intro-bootstrap-css-note(role="alert")
@@ -300,7 +300,7 @@ block body
       +extLink("https://popper.js.org/") Popper.js
       | .
     p Both of them must be loaded before Bootstrap JavaScript plugin. Usually, JavaScript libraries are loaded in the following order. But you can exchange 1 and 2 as jQuery and Popper.js are independent. See 
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") starter template
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") starter template
       |  for actual attributes.
     ol
       li jQuery - 1.9.1 or above (see package.json), Slim build (without AJAX, Effects) can be used
@@ -310,36 +310,40 @@ block body
       a(href="#accessibility") Accessibility
       |  if you are not interested in customization.
 
-    h2.mt-4#download
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/") Download
+    h2.mt-5#download
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/") Download
     p.my-2 You can get and use Bootstrap in various ways. 
     ul
       li Downloading procompiled files ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
         |  (see 
         a(href="#contents-precompiled") Precompiled bootstrap
         | )
       li Getting source code ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#source-files") Source files
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#source-files") Source files
         |  (see 
         a(href="#contents-source-code") Bootstrap source code
         | )
       li Using CDN ⇒ see 
         a(href="#intro") Startup with CDN
       li Using a package manager for each environment ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#package-managers") Package managers
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#package-managers") Package managers
         ul
-          li JavaScript (node.js) ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#npm") npm
+          li JavaScript(node.js)
             ul
-              li Bootstrap itself uses npm as a buid tool ⇒ see 
+              li ⇒ 
+                +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#npm") npm
+                |  (Bootstrap itself uses npm as a buid tool ⇒ see 
                 a(href="#build") Building Bootstrap
+                | )
+              li ⇒ 
+                +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#yarn") yarn
           li Ruby ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#rubygems") RubyGems
+            +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#rubygems") RubyGems
           li PHP ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") Composer
+            +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#composer") Composer
           li .NET ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") NuGet
+            +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#composer") NuGet
     div.alert.alert-info(role="alert")
       +extLink("https://github.com/twbs/bootstrap") Bootstrap repositry
       |  is published in GitHub. You can get full source code of all versions from 
@@ -348,10 +352,10 @@ block body
       a(href="#build") Building Bootstrap
       |  for detail).
 
-    h2.mt-4#contents
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/") Contents
+    h2.mt-5#contents
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/contents/") Contents
     h4.ht-4#contents-precompiled
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#precompiled-bootstrap") Precompiled bootstrap
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/contents/#precompiled-bootstrap") Precompiled bootstrap
     p.my-2 (
       code .map
       |  files are omitted)
@@ -390,7 +394,7 @@ block body
                 code bootstrap(.min).js
                 |  - Bootstrap JS only (jQuery and Popper.js requied as prerequisites)
     h4.mt-4#contents-source-code
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#bootstrap-source-code") Bootstrap source code
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/contents/#bootstrap-source-code") Bootstrap source code
     p.my-2 (Partial items only)
     ul
       li
@@ -418,10 +422,13 @@ block body
             ul.collapse.src-js
               li
                 code dist/
-                |  - JavaScript module files processed by Babel
+                |  - JavaScript module files (CommonJS and AMD) processed by 
+                +extLink("https://babeljs.io/") Babel
+                |  and 
+                +extLink("https://rollupjs.org/") Rollup.js
               li
                 code src/
-                |  - JavaScript module source files
+                |  - JavaScript module source files (ES2015)
               li
                 code tests/
                 |  - Files for tests
@@ -433,14 +440,38 @@ block body
             |  Sass (.scss) source files
           li
             code package.json
+    div#javascript-modules-button
+      +collapseButton("#javascript-modules") About JavaScript modules
+    div.alert.alert-info.collapse.mt-3#javascript-modules(role="alert") 
+      p.my-2 In current JavaScript programming, three major mojule specifications exist as follows.
+      ul.my-2
+        li ES2015(ES6) (Newest, used by Bootstrap 4)
+        li CommonJS (
+          +extLink("https://nodejs.org/ja/") node.js
+          | , etc.)
+        li AMD (
+          +extLink("https://requirejs.org/") require.js
+          | , etc.)
+      p.my-2 Bootstrap JavaScript modular sources are written in ES2015. They can be combined with other ES2015 modules (e.g. unbundled modular sources of 
+        +extLink("https://popper.js.org/") Popper.js
+        | ).
+      p.my-2 CommonJS and AMD are also supported from version 4.1.3. Modular source files in 
+        code bootstrap-4.X.X/js/dist/
+        |  are processed output by 
+        +extLink("https://rollupjs.org/") rollup.js
+        |  to UMD (Universal Module Definition - a file format which supports both CommonJS and AMD). UMD files processed by rollup.js also support loading directly from browsers with 
+        code= '<script>'
+        |  tags.
 
-    h2.mt-4#browsers-devices
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/browsers-devices/") Browsers and devices
-    p.my-2 Bootstrap 4 supports major browsers and platforms. Supported browsers are written in 
-      code package.json
-      |  (see 
-      a(href="#contents-source-code") Bootstrap source code
-      | ) by 
+    h2.mt-5#browsers-devices
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/") Browsers and devices
+    p.my-2 Bootstrap 4 supports major browsers and platforms. Supported browsers are described in 
+      +extLink("https://github.com/twbs/bootstrap/blob/v4.1.3/.browserslistrc")
+        code .browserslistrc
+      |  (
+      +extLink("https://github.com/twbs/bootstrap/blob/v4.1.2/package.json")
+        code package.json
+      |  until v4.1.2) by 
       +extLink("https://github.com/browserslist/browserslist") browserslist
       |  format (see 
       +extLink("https://github.com/browserslist/browserslist#best-practices") Best Practices
@@ -450,30 +481,168 @@ block body
       +collapseButton("#browserslist") Show entry
     pre.mt-3.p-2.border.bg-light.collapse#browserslist
       code
-        = `"browserslist": [\n`
-        = `  "last 1 major version",\n`
-        = `  ">= 1%",\n`
-        = `  "Chrome >= 45",\n`
-        = `  "Firefox >= 38",\n`
-        = `  "Edge >= 12",\n`
-        = `  "Explorer >= 10",\n`
-        = `  "iOS >= 9",\n`
-        = `  "Safari >= 9",\n`
-        = `  "Android >= 4.4",\n`
-        = `  "Opera >= 30"\n`
-        = `],`
+        = `# https://github.com/browserslist/browserslist#readme\n`
+        = `\n`
+        = `>= 1%\n`
+        = `last 1 major version\n`
+        = `not dead\n`
+        = `Chrome >= 45\n`
+        = `Firefox >= 38\n`
+        = `Edge >= 12\n`
+        = `Explorer >= 10\n`
+        = `iOS >= 9\n`
+        = `Safari >= 9\n`
+        = `Android >= 4.4\n`
+        = `Opera >= 30\n`
     p.my-2 It is referenced by 
       +extLink("https://github.com/postcss/autoprefixer") Autoprefixer
       |  to process CSS with adding vendor prefixes. Autoprefixer is a required tool for customizing Bootstrap CSS (&ge; ver. 3.2, see 
       a(href="css") Customizing CSS
       |  for detail).
+    p.my-2 See the official pages for actual supports as below links.
+    ul
+      li ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/#mobile-devices") Mobile devices
+      li ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/#desktop-browsers") Desktop browsers
 
-    h2.mt-4#javascript
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/javascript/") JavaScript
-    p.my-2 (TODO)
+    h2.mt-5#javascript
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/") JavaScript
+    p.my-2 Bootstrap has JavaScript API for implementing dynamic behaiviors. They are is called "(Bootstrap) JavasScript plugins" as they are made as jQuery plugins. See 
+      a(href="#intro-javascript") Loading JavaScript
+      |  for the basic startup settings.
+    p.my-2 Their original (unbundled) source files are written as ES2015(ES6) modules. You can also make use of JavaScript API's as modules. See 
+      a(href="#contents-source-code") Bootstrap source code
+      |  (press 
+      a.btn.btn-outline-info.btn-sm(href="#javascript-modules-button") About JavaScript modules
+      |  button to show detail).
+    p.my-2 Bootstrap JavaScript plugins implicitly perform initialization processes on startup on load as default (usually you do not have to write any code). However, following components need explicit initializations (see code examples at target links).
+    ul
+      li
+        a(href="components-11.html/#popovers") Popovers
+      li
+        a(href="components-12.html/#toasts") Toasts
+      li
+        a(href="components-12.html/#tooltips") Tooltips
+    h4.mt-3#javascript-data-attributes
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#data-attributes") Data attributes
+    p.my-2 Bootstrap JavaScript plugins use 
+      +extLink("https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*") custom data attributes (
+        code data-*
+        | )
+      |  for setting options. You can write HTML attributes which begin with 
+      code data-
+      |  (e.g. 
+      code data-collapse
+      | ) to set various API options without any additional JavaScript code.
+    h4.mt-3#javascript-data-attributes
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#programmatic-api") Programmatic API
+    p.my-2 Bootstrap JavaScript API is made as a collection of jQuery plugins. You first select elements with jQuery, and invoke methods from elements. The code below is example invocations of 
+      a(href="components-8.html/#modal") Modals
+      | . See available options for 
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#options") Options
+      | , also see methods (command strings) for 
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#methods") Methods
+      | .
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // Example 1: Creates an interface object with defaults (normally not required)
+        | $('#my-modal').modal();
+        | 
+        | // Example 2: Sets an option (same as setting an attribute as data-keyboard="false")
+        | // (see "Options" of the official document)
+        | $('#my-modal').modal({ keyboard: false });
+        | 
+        | // Example 3: Executes a command
+        | // (see "Methods" of the official document)
+        | $('#my-modal').modal('show');
+    h4.mt-3#javascript-events
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#events") Events
+    p.my-2 Bootstrap JavaScript plugins provide custom events for their specific actions. Event names are provided with the jQuery event namespace (dot-separated). See the naming convention as follows.
+    ul
+      li
+        code {event}.bs.{component}
+        |  (e.g. 
+        code show.bs.modal
+        | )
+        ul
+          li
+            code {event}
+            |  - Event name (e.g. 
+            code show
+            |  )
+          li
+            code bs
+            |  - First namespace - Specifies it is a part of Bootstrap API
+          li
+            code {component}
+            |  - Second namespace - A component name as a jQuery plugin (e.g. 
+            code modal
+            |  )
+    p.my-2 The code below is an example of setting an event handler to a 
+      a(href="components-8.html/#modal") Modal
+      |  component. See 
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#events") Events
+      |  for the whole listing of available events.
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // Event "show.bs.modal" fires when the method $().modal('show') is invoked.
+        | $('#my-modal').on('show.bs.modal', function(event) {
+        |   // The modal is going to show but is not shown yet.
+        |   // You can use here to change modal contents to display.
+        | });
+    p.my-2 Also see the live demo example of 
+      a(href="components-8.html/#varying-modal-content") Varying modal content
+      |  (working JavaScript code and detailed comments are available).
+    h4.mt-3#javascript-jquery-plugin As jQuery plugins
+    h5.mt-2#javascript-no-conflict
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#no-conflict") No conflict
+    p.my-2 Bootstrap JavaScript plugins are registered to 
+      code $.fn
+      |  (jQuery prototype object). All Bootstrap plugins are 
+      code ($.fn.)alert
+      | , 
+      code button
+      | , 
+      code carousel
+      | , 
+      code collapse
+      | , 
+      code dropdown
+      | , 
+      code modal
+      | , 
+      code popover
+      | , 
+      code scrollspy
+      | , 
+      code tab
+      | , 
+      code toast
+      | , and 
+      code tooltip
+      | . As they they are registered as plain lowercase names, they may conflict to other jQuery plugins. You can use 
+      code .noConflict()
+      |  to resolve conflicts.
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // Restores (the original) $.fn.button and gets Bootstrap button plugin object.
+        | var bootstrapButton = $.fn.button.noConflict();
+        | // Re-registor as a safe different name (bootstrapBtn)
+        | $.fn.bootstrapBtn = bootstrapButton;
+        | // You can call button API as $(SELECTOR).bootstrapBtn(ARGUMENTS)
+    h5.mt-2#javascript-default-settings
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#default-settings") Default settings
+    p.my-2 Default settings of each plugins are set to 
+      code $.fn.{module-name}.Constructor.Default
+      |  objects. You can change API defaults as follows.
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // Example: Changes the default setting of keyboard operation to OFF.
+        | $.fn.modal.Constructor.Default.keyboard = false;
 
-    h2.mt-4#css
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/theming/") Customizing CSS
+    h2.mt-5#css
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/theming/") Customizing CSS
     p.my-2 Bootstrap 4 CSS source files are written in 
       +extLink("https://sass-lang.com/") Sass
       |  (⇒ 
@@ -485,7 +654,7 @@ block body
       li
         a(href="components-1.html#breadcrumb-changing-the-separator") Breadcrumb - Changing the separator
       li
-        a(href="components-5.html#translating-or-customizing-the-strings") Forms - Translating or customizing the strings
+        a(href="components-5.html#translating-or-customizing-the-strings-with-custom-css") Forms - Translating or customizing the strings with custom CSS
         |  (press 
         button.btn.btn-outline-info CSS example
         |  to display)
@@ -511,8 +680,8 @@ block body
       +extLink("https://github.com/higuma/bootstrap-4-css-customization/archive/master.zip") Download ZIP
       | ). You can install required tools and build samples (in fact, site contents themselves) with npm commands.
 
-    h2.mt-4#build
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/build-tools/") Building Bootstrap
+    h2.mt-5#build
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/build-tools/") Building Bootstrap
     div.alert.alert-info(role="alert") You do not have to read this section if you just want to use precompiled Bootstrap distribution. But customizing Bootstrap styles needs basic knowlkedge of node.js and npm. Building bootstrap by yourself is a good study to learn npm-based development for beginners.
     p.my-2 Bootstrap repositry is published in GitHub. You can get source code of all versions from 
       +extLink("https://github.com/twbs/bootstrap/releases") Releases
@@ -594,8 +763,8 @@ block body
         code package.json
       |  directly to check full commands. It is a better way to study how internal building processes are formed using npm scripts.
 
-    h2.mt-4#webpack
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/webpack/") Webpack
+    h2.mt-5#webpack
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/webpack/") Webpack
     p.my-2 (May 2018) 
       +extLink("https://webpack.js.org/") Webpack
       |  is one of the most popular Web development tools. But Webpack itself has been developing very fast. Webpack 4 was released on Feb. 2018. But Bootstrap documentation (still about Webpack 3) has not catch up with Webpack 4.
@@ -606,8 +775,8 @@ block body
     div.alert.alert-info(role="alert") As Webpack develops too fast, starter examples above will get depretated soon. Please check for yourself to find newest examples.
     div.alert.alert-info(role="alert") This tutorial also uses Webpack for a build tool. But it is actually used only for pug compilation and file operations. CSS and JavaScript files are not customized to avoid complexity for beginners. 
 
-    h2.mt-4#accessibility
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/accessibility/") Accessibility
+    h2.mt-5#accessibility
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/accessibility/") Accessibility
     p.my-2 
       +extLink("https://www.w3.org/WAI/") WAI
       | -

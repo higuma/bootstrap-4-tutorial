@@ -2,7 +2,7 @@ extends ../template-cdn-en
 include ../mixins-en
 
 block head
-  title Bootstrap 4 tutorial: Components (11): Pagination / Popovers
+  title Bootstrap 4 tutorial: Components (11): Pagination / Popovers / Progress
 
 block body
   div.container
@@ -11,11 +11,13 @@ block body
         a(href="#pagination") Pagination
         |  / 
         a(href="#popovers") Popovers
+        |  / 
+        a(href="#progress") Progress
 
     h2.mt-2#pagination
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/") Pagination
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/") Pagination
     h4.mt-3#pagination-overview
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#overview") Overview
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#overview") Overview
     ul.struct.my-1
       li Wrapping parent (for accessibility) 
         code nav
@@ -53,7 +55,7 @@ block body
         li.page-item
           a.page-link(href="#") Next
     h4.mt-4#working-with-icons
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#working-with-icons") Working with icons
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#working-with-icons") Working with icons
     p.my-2 Example: using Unicode symbol characters
     ul.struct.my-0
       li First item 
@@ -112,7 +114,7 @@ block body
             img(src="../img/openiconic/svg/chevron-right.svg" width="10" height="10" style="opacity: 0.6;")
             span.sr-only Next
     h4.mt-4#pagination-disabled-and-active-states
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#disabled-and-active-states") Disabled and active states
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#disabled-and-active-states") Disabled and active states
     p.my-2 Pagination items should be disabled or activated with various situations. The most common conditions are as follows.
     ul
       li The current page item is displayed as active, but its link is disabled.
@@ -209,7 +211,7 @@ block body
         li.page-item
           a.page-link(href="#") Next
     h4.mt-4#pagination-sizing
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#sizing") Sizing
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#sizing") Sizing
     p.my-1 Add 
       code .pagination-(lg|sm)
       |  to 
@@ -227,7 +229,7 @@ block body
             li.page-item
               a.page-link(href="#")= n
     h4.mt-4#pagination-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/components/pagination/#alignment") Alignment
+      +extLink("https://getbootstrap.com/docs/4.2/components/pagination/#alignment") Alignment
     p.my-1 Use 
       code .justify-content-*
       |  (see 
@@ -247,12 +249,12 @@ block body
               a.page-link(href="#")= n
 
     h2.mt-5#popovers
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/") Popovers
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/") Popovers
     p.my-2 Popover is a popup component like those found in iOS. It utilizes 
       +extLink("https://popper.js.org/") Popper.js
       |  for implementation.
     h4.mt-3#popovers-init
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere") Initialization
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#example-enable-popovers-everywhere") Initialization
     p Popovers are inactivated as defaut. JavaScript is required to activate them. Below is a simple code to activate all popovers.
     pre.p-2.border.bg-light
       code $('[data-toggle="popover"]').popover();
@@ -260,7 +262,7 @@ block body
       strong Caution: 
       |  jQuery, Popper.js, and bootstrap.js are required. Use this script after those libraries.
     h4.ht-4#popovers-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example") How to use it
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#example") How to use it
     ul.my-1
       li Available for any elements with setting following attributes
       ul
@@ -278,7 +280,7 @@ block body
     p.my-2 Example (Click to show, click again to hide)
     button.btn.btn-lg.btn-danger(type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?") Click to toggle popover
     h4.mt-4#popovers-four-directions
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#four-directions") Directions
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#four-directions") Directions
     ul.my-1
       li Add an following attribute ( 
         code "right"
@@ -304,7 +306,7 @@ block body
           code data-placement="bottom"
     div.alert.alert-info.my-3(role="alert") Popovers always watch viewport size and elements' posistions, and switch to the opposite sides when space is not enough. It can be demonstrated with the above example by scrolling (top/bottom) or changing viewport width (left/right).
     h4.mt-4#popovers-dismiss-on-next-click
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#dismiss-on-next-click") Dismiss on next click   
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#dismiss-on-next-click") Dismiss on next click   
     p.my-2 As default, a popover shows on click and hides on the next click on the same element. This specification enables showing multiple popovers at the same time (can be demonstrated by the Directions example above).
     p.my-2 However, it is possible to dismiss a popover by clicking another element (more precisely, showing/hiding by focus events) with the following settings.
     ul.my-y
@@ -320,7 +322,7 @@ block body
     p.mt-3.mb-1 Example
     a.btn.btn-lg.btn-danger.mt-1.mb-3(tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?") Dismissible popover
     h4.mt-4#popovers-disabled-elements
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#disabled-elements") Using popovers for disabled elements
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#disabled-elements") Using popovers for disabled elements
     p.my-2 If the attribute 
       code disabled
       |  is set to the element, it also disables a popover (example below).
@@ -378,4 +380,105 @@ block body
       span.d-inline-block(data-toggle="popover" title="Disabled popover")
         button.btn.btn-primary(style="pointer-events: none;" type="button" disabled) Disabled button
 
-    +breadcrumbLevel1("Components(11): Pagination/Popovers")
+    h2.mt-5#progress
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/") Progress
+    p.mt-2 The progress component is a Bootstrap alternative of 
+      code progress
+      |  elements. It has extra features as multiple indicator bars, animated stripes and so on.
+    h4.mt-3#progress-how-it-works
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#how-it-works") Basic structure
+    ul.struct.my-1
+      li Progress bar (base) 
+        code div.progress
+        ul
+          li Indicator bar(s) 
+            code div.progress-bar
+            |  (stacked from left to right) 
+            +attrsBtn(".a5-1")
+            ul.collapse.a5-1
+              li.att Width (required) (e.g.) 
+                code style="width: 50%"
+              li.att Accessibility attribute 
+                code role="progressbar" 
+              li.att Accessibility attribute 
+                code aria-valuenow="50"
+              li.att Accessibility attribute 
+                code aria-valuemin="0"
+              li.att Accessibility attribute 
+                code aria-valuemax="100"
+    h4.mt-4#progress-width Width
+    p.mt-2.mb-0 (1) Set 
+      code style="width: {width}%”
+    each w in [0,25,50,75,100]
+      p.mt-1.mb-0
+        code= `style="width: ${w}%;"`
+      div.progress
+        div.progress-bar(role="progressbar" style=`width: ${w}%;` aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    p.mt-3.mb-1 (2) Set 
+      code .w-(25|75|100)
+      |  (see 
+      a(href="utilities-4.html#sizing") Sizing
+      |  , 25% steps)
+    each w in [25,50,75,100]
+      p.mt-1.mb-0
+        code= `.w-${w}`
+      div.progress
+        div(class=`progress-bar w-${w}` role="progressbar" aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-labels
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#labels") Labels
+    p.my-2 Set inner text of 
+      code div.progress-bar
+    div.progress
+      div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
+    h4.mt-4#progress-height
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#height") Height
+    p.my-2 Set style (e.g. 
+      code style="height: 10px;"
+      |  ) to 
+      code div.progress
+    each h in [5,10,15,20]
+      p.mt-1.mb-0
+        code= `style="height: ${h}px;"`
+      div.progress(style=`height: ${h}px;`)
+        div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-backgrounds
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#backgrounds") Indicator colors
+    p.my-2 Add 
+      code .bg-{context}
+      |  to 
+      code div.progress-bar
+      |  (see 
+      a(href="utilities-2.html#colors-background-color") Colors - Background
+      |  ).
+    each col in ["success","info","warning","danger"]
+      p.mt-1.mb-0
+        code= `.bg-${col}`
+      div.progress
+        div(class=`progress-bar bg-${col}` role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-multiple-bars
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#multiple-bars") Multiple indicators
+    p.my-2 Use mutiple 
+      code div.progress-bar
+      | 's you need (stacked from left to right).
+    div.progress
+      each bar in [["primary",10], ["success",40], ["warning",20], ["danger",10]]
+        div(class=`progress-bar bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-striped
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#striped") Striped bars
+    p.my-2 Add 
+      code .progress-bar-striped
+      |  to bars.
+    each bar in [["primary",20], ["success",40], ["info",60], ["warning",80], ["danger",100]]
+      div.progress.my-2
+        div(class=`progress-bar progress-bar-striped bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
+    h4.mt-4#progress-animated-stripes
+      +extLink("https://getbootstrap.com/docs/4.2/components/progress/#animated-stripes") Animated stripes
+    p.my-2 Add 
+      code .progress-bar-animated
+      |  .
+    p.mt-2.mb-1 Example: 
+      code div.progress-bar.progress-bar-striped.progress-bar-animated
+    div.progress
+      div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;")
+
+    +breadcrumbLevel1("Components(11): Pagination/Popovers/Progress")

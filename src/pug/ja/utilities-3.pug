@@ -15,7 +15,7 @@ block body
         a(href="#image-replacement") 画像置換
 
     h2.mt-2#flex
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/") Flexbox
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/") Flexbox
     - const RES = "(-sm|-md|-lg|-xl)?"
     - const justify = "start end center between around".split(" ")
     - const align = "start end center baseline stretch".split(" ")
@@ -68,7 +68,7 @@ block body
       a(href="utilities-4.html#spacing") 空白ユーティリティ
       | の一部。Flexboxとの組み合わせで用いることが多いためここで説明している。
     h4.mt-4.mb-0#flex-direction
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#direction") 縦横の配置順序
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#direction") 縦横の配置順序
     p.my-2
       code= dirRE
     div.row
@@ -82,7 +82,7 @@ block body
                 each n in [1,2,3]
                   div.border.bg-light.p-1= `Flex item ${n}`
     h4.mt-4#flex-justify-content
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#justify-content") 要素の間隔設定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#justify-content") 要素の間隔設定
     p.my-2
       code= justifyRE
     div.row
@@ -95,7 +95,7 @@ block body
               each n in [1,2,3]
                 div.border.bg-light.p-1= `Flex item ${n}`
     h4.mt-4.mb-1#flex-align-items
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-items") 要素の配置設定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#align-items") 要素の配置設定
     p.my-2
       code= alignItemsRE
     p.my-2 In examples below, parent box heights are fixed to 
@@ -111,7 +111,7 @@ block body
               each n in [1,2,3]
                 div.border.bg-light.p-1= `Flex item ${n}`
     h4.mt-4.mb-1#flex-align-self
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-self") 個別要素の配置設定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#align-self") 個別要素の配置設定
     p.my-2
       code= alignSelfRE
     ul
@@ -129,7 +129,7 @@ block body
               div(class=`align-self-${opt} border bg-light p-1`) Aligned flex item
               div.border.bg-light.p-1 Flex item
     h4.mt-4.mb-1#flex-fill
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#fill") フィル
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#fill") フィル
     p.my-2
       code= fillRE
     p.my-2 子アイテムを親ボックス全体にフィルする場合は 
@@ -142,7 +142,7 @@ block body
       each text in ["Short", "Medium length text", "This is a slightly longer text content"]
         div.flex-fill.border.bg-light.p-1= text
     h4.mt-4.mb-1#flex-grow-and-shrink
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#grow-and-shrink") 伸び縮み
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#grow-and-shrink") 伸び縮み
     p.my-2
       code= growShrinkRE
     p.my-2 CSSの 
@@ -184,7 +184,7 @@ block body
       div.flex-shrink-1.border.bg-light.p-1 Item with 
         code .flex-shrink-1
     h4.mt-4.mb-1#flex-auto-margins
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#auto-margins") 自動マージン
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#auto-margins") 自動マージン
     p.my-2
       code= autoMarginRE
     p.mt-3.mb-1 デフォルト
@@ -209,7 +209,7 @@ block body
       div.border.ml-auto.bg-light.p-2 Flex item 3 
         code .ml-auto
     h4.mt-4.mb-1#flex-with-align-items
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#with-align-items") 自動マージン + 個別要素配置
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#with-align-items") 自動マージン + 個別要素配置
     h5.mt-2.mb-1 例1
     ul.my-1
       li 親ボックスに
@@ -241,7 +241,7 @@ block body
       div.mt-auto.p-2.border.bg-light Flex item 3 
         code .mt-auto
     h4.mt-4.mb-1#flex-wrap
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#wrap") ラップ
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#wrap") ラップ
     p.my-2
       code= wrapRE
     p.my-0 以下の例では親ボックスの幅を 
@@ -254,7 +254,7 @@ block body
         each n in [1,2,3,4,5,6,7]
           div.p-2.border= `Flex item ${n}`
     h4.mt-4#flex-order
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#order") 順序
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#order") 順序
     p.my-2
       code= orderRE
     p.mt-3.mb-2 例: DOM順序は(1,2,3,4,5)、
@@ -271,7 +271,7 @@ block body
       a(href="layout-1.html#grid-ordering") グリッド - 列の順序指定
       | に説明がある)。
     h4.mt-4.mb-1#flex-align-content
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/flex/#align-content") アラインメント
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/flex/#align-content") アラインメント
     p.my-2
       code= alignContentRE
     p.my-2 例: ラップ
@@ -303,10 +303,10 @@ block body
 
 
     h2.mt-5#float
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/") フロート
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/float/") フロート
     p.my-2 要素フローティングの設定(左右配置して後続インライン要素をボックス内回り込み処理)
     h4.my-2#float-classes
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/float/#classes") 基本設定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/float/#classes") 基本設定
     p.my-1
       code .float-(left|right|none)
     div.row
@@ -316,7 +316,7 @@ block body
           p.m-1: code= `img.float-${f}`
           p.m-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     h4.mt-4#float-responsive
-      +extLink(href="https://getbootstrap.com/docs/4.1/utilities/float/#responsive") レスポンシブ設定
+      +extLink(href="https://getbootstrap.com/docs/4.2/utilities/float/#responsive") レスポンシブ設定
     p.my-1
       code .float-(sm|md|lg|xl)-(left|right|none)
     h5.mt-3.mb-2 設定例
@@ -329,7 +329,7 @@ block body
             p.mx-2 通常テキスト
 
     h2.mt-5#image-replacement
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/image-replacement/") 画像置換
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/image-replacement/") 画像置換
     p.mt-3.mb-1 サイトのタイトルやロゴに専用画像を用いる場合の対応法(以下例)
     ul.struct
       li

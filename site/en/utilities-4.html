@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
       ul.struct li     { list-style: disc; }
       ul.struct li.cls { list-style: circle; }
@@ -29,14 +29,14 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/utilities-4.html">Japanese (日本語)</a></div>
         </div>
       </div>
-      <h2 class="mt-2" id="position"><a href="https://getbootstrap.com/docs/4.1/utilities/position/" target="_blank">Position</a>
+      <h2 class="mt-2" id="position"><a href="https://getbootstrap.com/docs/4.2/utilities/position/" target="_blank">Position</a>
       </h2>
-      <h4 class="mt-4" id="position-common-values"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#common-values" target="_blank">Classes</a>
+      <h4 class="mt-4" id="position-common-values"><a href="https://getbootstrap.com/docs/4.2/utilities/position/#common-values" target="_blank">Classes</a>
       </h4>
       <p class="mb-2">Utility classes for setting CSS <code>position</code> property (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank">CSS reference</a>  for detail). There is no responsive class.
       </p>
       <p class="my-1"><code>.position-(static|relative|absolute|fixed|sticky)</code></p>
-      <h4 class="mt-4" id="position-fixed-sticky"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top" target="_blank">Fixed top</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom" target="_blank">Fixed bottom</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top" target="_blank">Sticky top</a>
+      <h4 class="mt-4" id="position-fixed-sticky"><a href="https://getbootstrap.com/docs/4.2/utilities/position/#fixed-top" target="_blank">Fixed top</a> / <a href="https://getbootstrap.com/docs/4.2/utilities/position/#fixed-bottom" target="_blank">Fixed bottom</a> / <a href="https://getbootstrap.com/docs/4.2/utilities/position/#sticky-top" target="_blank">Sticky top</a>
       </h4>
       <p class="mb-2">Options for fixing an element on top or bottom, and displaying on topmost with setting <a href="layout-1.html#overview-z-index">Z-index</a> . These are typically used for <a href="components-10.html">navigation bars</a> . See navbar demos bellow for detail.</p>
       <ul>
@@ -44,7 +44,7 @@
         <li><a href="navbar-fixed-bottom.html">Navbar demo using <code>.fixed-bottom</code></a></li>
         <li><a href="navbar-sticky-top.html">Navbar demo using <code>.sticky-top</code></a></li>
       </ul>
-      <h2 class="mt-5" id="screenreaders"><a href="https://getbootstrap.com/docs/4.1/utilities/screenreaders/" target="_blank">Screenreaders</a>
+      <h2 class="mt-5" id="screenreaders"><a href="https://getbootstrap.com/docs/4.2/utilities/screenreaders/" target="_blank">Screenreaders</a>
       </h2>
       <h4 class="mt-3" id="screenreaders-summary">Summary</h4>
       <ul>
@@ -75,7 +75,7 @@
           </ul>
         </li>
       </ul>
-      <h2 class="mt-5" id="shadows"><a href="https://getbootstrap.com/docs/4.1/utilities/shadows/" target="_blank">Shadows</a>
+      <h2 class="mt-5" id="shadows"><a href="https://getbootstrap.com/docs/4.2/utilities/shadows/" target="_blank">Shadows</a>
       </h2>
       <p class="mt-3"><code>.shadow(-none|-sm|-lg)?</code></p>
       <h4 class="mt-4" id="shadows-examples">Examples</h4>
@@ -87,9 +87,11 @@
       <div class="shadow p-3 mb-4 bg-white rounded">Regular shadow</div>
       <p class="mt-3 mb-2"><code>div.shadow-lg</code></p>
       <div class="shadow-lg p-3 mb-4 bg-white rounded">Larger shadow</div>
-      <h2 class="mt-5" id="sizing"><a href="https://getbootstrap.com/docs/4.1/utilities/sizing/" target="_blank">Sizing</a>
+      <h2 class="mt-5" id="sizing"><a href="https://getbootstrap.com/docs/4.2/utilities/sizing/" target="_blank">Sizing</a>
       </h2>
       <p class="mt-2 mb-1">Utility classes for setting width and height.</p>
+      <h4 class="mt-3" id="sizing-relative-to-the-parent"><a href="https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-parent" target="_blank">Relative to the parent</a>
+      </h4>
       <ul class="my-0">
         <li>Width (25% step + auto) <code>.w-(25|50|75|100|auto)</code></li>
         <li>Height (25% step + auto) <code>.h-(25|50|75|100|auto)</code></li>
@@ -113,12 +115,33 @@
       <p class="mt-3 mb-1">Max-width example: <code>img.mw-100</code> (fits to the parent width)</p><img class="mw-100" src="../img/2000x200.svg">
       <p class="mt-3 mb-1">Max-height example: <code>img.mh-100</code> in the parent with <code>height:200px;</code> (fits to the parent height)</p>
       <div class="border" style="height:200px;"><img class="mh-100" src="../img/320x320.svg"></div>
-      <h2 class="mt-5" id="spacing"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/" target="_blank">Spacing</a>
+      <h4 class="mt-3" id="sizing-relative-to-the-viewport"><a href="https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-viewport" target="_blank">Relative to the viewport</a>
+      </h4>
+      <ul class="my-2">
+        <li>Min-width 100% to the viewport <code>.min-vw-100</code></li>
+        <li>Min-height 100% to the viewport <code>.min-vh-100</code></li>
+        <li>Width 100% to the viewport <code>.vw-100</code></li>
+        <li>Height 100% to the viewport <code>.vh-100</code></li>
+      </ul>
+      <h5 class="mt-3" id="sizing-relative-to-the-viewport-examples">Examples</h5>
+      <p class="mt-3 mb-1">Min-width 100vw <code>div.min-vw-100</code></p>
+    </div>
+    <div class="min-vw-100 bg-light border">Min-width 100vw</div>
+    <div class="container">
+      <p class="mt-3 mb-1">Min-height 100vw <code>div.min-vh-100</code></p>
+      <div class="min-vh-100 bg-light border">Min-height 100vh</div>
+      <p class="mt-3 mb-1">Width 100vw <code>div.vw-100</code></p>
+    </div>
+    <div class="vw-100 bg-light border">Width 100vw</div>
+    <div class="container">
+      <p class="mt-3 mb-1">Height 100vw <code>div.vh-100</code></p>
+      <div class="vh-100 bg-light border">Height 100vh</div>
+      <h2 class="mt-5" id="spacing"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/" target="_blank">Spacing</a>
       </h2>
       <p class="my-2">Utility for setting margins and paddings.</p>
-      <h4 class="mt-3" id="spacing-notation"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#notation" target="_blank">Notation</a>
+      <h4 class="mt-3" id="spacing-notation"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/#notation" target="_blank">Notation</a>
       </h4>
-      <p class="mt-2 mb-1"><code>.(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)</code></p>
+      <p class="mt-2 mb-1"><code>.(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|n1|n2|n3|n4|n5|auto)</code></p>
       <ul>
         <li><code>(m|p)</code> margin/padding
           <ul>
@@ -145,14 +168,29 @@
             <li>(none) sets all four directions</li>
           </ul>
         </li>
-        <li><code>(0|1|2|3|4|5|auto)</code> width
+        <li><code>(0|1|2|3|4|5|n1|n2|n3|n4|n5|auto)</code> width
           <ul>
             <li><code>0</code> sets to zero</li>
-            <li><code>1</code> sets to <code>1/4rem</code></li>
-            <li><code>2</code> sets to <code>1/2rem</code></li>
-            <li><code>3</code> sets to <code>1rem</code></li>
-            <li><code>4</code> sets to <code>1.5rem</code></li>
-            <li><code>5</code> sets to <code>3rem</code></li>
+            <li><code>1</code> sets to <code>1/4rem</code>
+            </li>
+            <li><code>2</code> sets to <code>1/2rem</code>
+            </li>
+            <li><code>3</code> sets to <code>1rem</code>
+            </li>
+            <li><code>4</code> sets to <code>1.5rem</code>
+            </li>
+            <li><code>5</code> sets to <code>3rem</code>
+            </li>
+            <li><code>n1</code> (margin only) sets to <code>-1/4rem</code>
+            </li>
+            <li><code>n2</code> (margin only) sets to <code>-1/2rem</code>
+            </li>
+            <li><code>n3</code> (margin only) sets to <code>-1rem</code>
+            </li>
+            <li><code>n4</code> (margin only) sets to <code>-1.5rem</code>
+            </li>
+            <li><code>n5</code> (margin only) sets to <code>-3rem</code>
+            </li>
             <li><code>auto</code> (margin only) uses browser default</li>
           </ul>
         </li>
@@ -316,10 +354,56 @@
           </tr>
         </tbody>
       </table>
-      <h4 class="mt-4" id="horizontal-centering"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering" target="_blank">Horizontal centering</a>
+      <h4 class="mt-4" id="horizontal-centering"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/#horizontal-centering" target="_blank">Horizontal centering</a>
       </h4>
       <p>Use <code>.mx-auto</code> for horizontal centering of a fixed width element.</p>
       <div class="mx-auto border p-2 bg-light" style="width: 20rem;"><code>div.mx-auto</code> + <code>style="width: 20rem;"</code></div>
+      <h4 class="mt-4" id="negative-margin"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/#negative-margin" target="_blank">Negative Margin</a>
+      </h4>
+      <p>Negative margins are typically used for adjusting grid column gutters (see <a href="layout-1.html/#grid-gutters">Gutters</a>). The example below demonstrates responsive gutter adjustment as follows.</p>
+      <ul>
+        <li>Grows gutters to 3rem on width &ge; 768px (md or wider)</li>
+        <li>Shrinks gutters to default (15px) on width &lt; 768px (sm or narrower)</li>
+      </ul>
+      <div class="border py-2">
+        <div class="row mx-md-n5">
+          <div class="col py-3 px-md-5 border bg-white">
+            <div class="border bg-light">Custom column padding</div>
+          </div>
+          <div class="col py-3 px-md-5 border bg-white">
+            <div class="border bg-light">Custom column padding</div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spacing-negative-margin-structure" aria-control="#spacing-negative-margin-structure" aria-expanded="false">Structure</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spacing-negative-margin-structure">
+        <li>Frame (to indicate the container width) <code>div </code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">Attributes</a>
+          <ul>
+            <li class="att collapse a1-1">Border <code>.border</code></li>
+            <li class="att collapse a1-1">Vertical padding <code>.py-2</code></li>
+            <li>Grid row <code>div.row</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attributes</a>
+              <ul>
+                <li class="attr collapse a1-2">Negative margin (3rem) on width &ge; 768px <code>.mx-md-n5</code></li>
+                <li>Grid column (&times;2) <code>div.col</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attributes</a>
+                  <ul>
+                    <li class="att collapse a1-3">Vertical padding (1rem) <code>.py-3</code></li>
+                    <li class="att collapse a1-3">Horizontal padding (3rem on width &ge; 768px) <code>.px-md-5</code></li>
+                    <li class="att collapse a1-3">Border <code>.border</code></li>
+                    <li class="att collapse a1-3">Background (white) <code>.bg-white</code></li>
+                    <li>Inner <code>div</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">Attributes</a>
+                      <ul>
+                        <li class="att collapse a1-4">Background (light gray) <code>.bg-light</code></li>
+                        <li class="txt">Text <code>Custom column padding</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
       <nav class="mt-4 mb-5" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -328,7 +412,7 @@
       </nav>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src=".././js/main.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
       ul.struct li     { list-style: disc; }
       ul.struct li.cls { list-style: circle; }
@@ -30,14 +30,16 @@
       </div>
       <h2 class="mt-4" id="toc">目次</h2>
       <ul>
-        <li><a href="#about">このチュートリアルについて</a></li>
-        <li class="mb-2"><a href="#notation">記法について</a></li>
-        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="#about">このチュートリアルについて</a>
+          <ul>
+            <li class="mb-2"><a href="#notation">記法</a></li>
+          </ul>
+        </li>
+        <li><a href="getting-started.html">Getting started (はじめに)</a></li>
         <li>レイアウト
-          <ol>
-            <li><a href="layout-1.html">概要</a> / <a href="layout-1.html#grid">グリッド</a></li>
-            <li><a href="layout-2.html">メディアオブジェクト</a> / <a href="layout-2.html#utilities">レイアウトユーティリティ</a></li>
-          </ol>
+          <ul>
+            <li><a href="layout-1.html">概要</a> / <a href="layout-1.html#grid">グリッド</a> / <a href="layout-1.html#utilities">レイアウトユーティリティ</a></li>
+          </ul>
         </li>
         <li>コンテント
           <ol>
@@ -56,11 +58,11 @@
             <li><a href="components-5.html">フォーム</a></li>
             <li><a href="components-6.html">インプットグループ</a> / <a href="components-6.html#jumbotron">ジャンボトロン</a></li>
             <li><a href="components-7.html">リストグループ</a></li>
-            <li><a href="components-8.html">モーダル</a></li>
+            <li><a href="components-8.html">メディアオブジェクト</a> / <a href="components-8.html#modal">モーダル</a></li>
             <li><a href="components-9.html">ナビゲーション</a></li>
             <li><a href="components-10.html">ナビゲーションバー</a></li>
-            <li><a href="components-11.html">ページネーション</a> / <a href="components-11.html#popovers">ポップオーバー</a></li>
-            <li><a href="components-12.html">プログレスバー</a> / <a href="components-12.html#scrollspy">スクロールスパイ</a> / <a href="components-12.html#tooltips">ツールチップ</a></li>
+            <li><a href="components-11.html">ページネーション</a> / <a href="components-11.html#popovers">ポップオーバー</a> / <a href="components-11.html#progress">プログレスバー</a></li>
+            <li><a href="components-12.html">スクロールスパイ</a> / <a href="components-12.html#spinners">スピナー</a> / <a href="components-12.html#toasts">トースト</a> / <a href="components-12.html#tooltips">ツールチップ</a></li>
           </ol>
         </li>
         <li>ユーティリティ
@@ -75,11 +77,11 @@
         <li><a href="extend+migration+about.html">Extend</a> / <a href="extend+migration+about.html#migration">Migration</a> / <a href="extend+migration+about.html#about">About</a></li>
       </ul>
       <h2 class="mt-5" id="about">このチュートリアルについて</h2>
-      <p class="my-2"> <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> 4の自習用チュートリアルです。<a href="https://getbootstrap.com/docs/4.1/" target="_blank">公式ドキュメント</a>と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
+      <p class="my-2"> <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> 4の自習用チュートリアルです。<a href="https://getbootstrap.com/docs/4.2/" target="_blank">公式ドキュメント</a>と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
       </p>
       <p class="my-2">このチュートリアル自身は<a href="https://pugjs.org/" target="_blank">pug</a>で記述し、<a href="https://nodejs.org/" target="_blank">node.js</a>/<a href="https://docs.npmjs.com/" target="_blank">npm</a>環境の<a href="https://webpack.js.org/" target="_blank">Webpack</a>でビルドしています。<a href="https://github.com/higuma/bootstrap-4-tutorial" target="_blank">ソースコード</a>は<a href="https://github.com/" target="_blank">GitHub</a>で公開し、サイトのホスティングは<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>を用いています。
       </p>
-      <h2 class="mt-5" id="notation">記法について</h2>
+      <h4 class="mt-4" id="notation">記法</h4>
       <p class="mt-2 mb-3">本チュートリアルではHTMLの説明に独自の方法を用います。次の<a href="components-2.html#button-group-button-toolbar">ボタンツールバー</a>を例に説明します。</p>
       <div class="btn-toolbar" role="toolbar" aria-label="Button toolbar">
         <div class="btn-group" role="group" aria-label="Group 1">
@@ -170,7 +172,7 @@
       </nav>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src=".././js/main.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 </html>

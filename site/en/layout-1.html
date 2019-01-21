@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
       ul.struct li     { list-style: disc; }
       ul.struct li.cls { list-style: circle; }
@@ -15,32 +15,32 @@
       .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
       .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
     </style>
-    <title>Bootstrap 4 tutorial: Layout (1): Overview / Grid System</title>
+    <title>Bootstrap 4 tutorial: Layout (1): Overview / Grid System / Utilities for layout</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-auto mr-auto">
           <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
-          <p class="lead">Layout (1): <a href="#overview">Overview</a> / <a href="#grid">Grid System</a></p>
+          <p class="lead">Layout (1): <a href="#overview">Overview</a> / <a href="#grid">Grid System</a> / <a href="#utilities">Utilities for layout</a></p>
         </div>
         <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
           <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">English (英語)</a><a class="dropdown-item" href="../ja/layout-1.html">Japanese (日本語)</a></div>
         </div>
       </div>
-      <h2 class="mt-2" id="overview"><a href="https://getbootstrap.com/docs/4.1/layout/overview/" target="_blank">Overview</a>
+      <h2 class="mt-2" id="overview"><a href="https://getbootstrap.com/docs/4.2/layout/overview/" target="_blank">Overview</a>
       </h2>
-      <h4 class="mt-3 mb-1" id="overview-containers"><a href="https://getbootstrap.com/docs/4.1/layout/overview/#containers" target="_blank">Containers</a>
+      <h4 class="mt-3 mb-1" id="overview-containers"><a href="https://getbootstrap.com/docs/4.2/layout/overview/#containers" target="_blank">Containers</a>
       </h4>
       <p class="mb-2"></p>In Bootstrap, a container <code>.container</code> or a fluid container <code>.container-fluid</code> is used for a basic layout element.
     </div>
     <div class="container mt-3 mb-4 p-2 border bg-light"><code>div.container</code> ⇒ Responsive: width is set to one of the fixed steps (breakpoints), center-aligned</div>
     <div class="container-fluid my-4 p-2 border bg-light"><code>div.container-fluid</code> ⇒ Fits to the parent (100%)</div>
     <div class="container">
-      <h4 class="mt-4" id="overview-responsive-breakpoints"><a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints" target="_blank">Responsive breakpoints</a>
+      <h4 class="mt-4" id="overview-responsive-breakpoints"><a href="https://getbootstrap.com/docs/4.2/layout/overview/#responsive-breakpoints" target="_blank">Responsive breakpoints</a>
       </h4>
-      <p class="my-2">A width of a container <code>.container</code> is set within the breakpoints as below (see <a href="https://getbootstrap.com/docs/4.1/layout/grid/#grid-options" target="_blank">Grid options</a> table for details)
+      <p class="my-2">A width of a container <code>.container</code> is set within the breakpoints as below (see <a href="https://getbootstrap.com/docs/4.2/layout/grid/#grid-options" target="_blank">Grid options</a> table for details)
       </p>
       <table class="table table-bordered">
         <thead class="thead-light">
@@ -85,7 +85,7 @@
         <li>Wider breakpoint is prior</li>
       </ul>
       <div class="alert alert-info" role="alert">There is no <code>-xs</code> class-fix (same as setting as default). Using breakpoint priorities, you can switch layouts, or show/hide some contents with specific viewport range.</div>
-      <h4 class="mt-4" id="overview-z-index"><a href="https://getbootstrap.com/docs/4.1/layout/overview/#z-index" target="_blank">Z-index</a>
+      <h4 class="mt-4" id="overview-z-index"><a href="https://getbootstrap.com/docs/4.2/layout/overview/#z-index" target="_blank">Z-index</a>
       </h4>
       <p>Some Bootstrap components reserve z-indexes (&ge;<code>1000</code>) for specific purposes. <code>1,2,3</code> are also used for visual customization for element states (hover, active, and focus) (set to internally-created sibling elements for presentation).</p>
       <table class="table table-bordered">
@@ -130,9 +130,9 @@
           </tr>
         </tbody>
       </table>
-      <h2 class="mt-5" id="grid"><a href="https://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">Grid system</a>
+      <h2 class="mt-5" id="grid"><a href="https://getbootstrap.com/docs/4.2/layout/grid/" target="_blank">Grid system</a>
       </h2>
-      <h4 class="mt-4" id="grid-overview"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#how-it-works" target="_blank">Basic usage</a>
+      <h4 class="mt-4" id="grid-overview"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#how-it-works" target="_blank">Basic usage</a>
       </h4>
       <p class="my-2">The grid system has the following three layer structure.</p>
       <ul class="struct">
@@ -198,7 +198,7 @@
     </div>
     <div class="container">
       <div class="alert alert-warning mt-3"><strong>Caution: </strong>You should take care for changing horizontal margins or paddings from grid system defaults. Especially, changing margins of rows, or changing paddings of columns can corrupt layouts easily.</div>
-      <h4 class="mt-4" id="grid-equal-width"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#equal-width" target="_blank">Equal-width</a>
+      <h4 class="mt-4" id="grid-equal-width"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#equal-width" target="_blank">Equal-width</a>
       </h4>
       <p class="my-2">Setting multiple columns <code>div.col</code> inside a row <code>div.row</code> arranges columns horizontally with the same width. A maximum number of columns in a row is determined by a browser from widths of a row and colomns. See examples below (up to 20 columns).</p>
       <div class="alert alert-info" role="alert">Examples set gray <a href="utilities-1.html#borders-border">borders</a> (<code>.border</code>) to columns <code>div.col*</code> to indicate boundaries. Areas of inner contents also set <a href="utilities-2.html#colors-background-color">background colors</a> (<code>.bg-light</code>) to indicate gutters.</div>
@@ -884,7 +884,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="grid-equal-width-multi-row"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#equal-width-multi-row" target="_blank">Equal-width multi-row</a>
+      <h4 class="mt-4" id="grid-equal-width-multi-row"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#equal-width-multi-row" target="_blank">Equal-width multi-row</a>
       </h4>
       <p class="my-2"> For equal-width layouts using <code>div.col</code>, use an empty <code>div.w-100</code> to insert a break to a new line.</p>
       <div class="row">
@@ -931,7 +931,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="grid-column-width"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#setting-one-column-width" target="_blank">Setting one column width</a>
+      <h4 class="mt-4" id="grid-column-width"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#setting-one-column-width" target="_blank">Setting one column width</a>
       </h4>
       <p class="my-2">Width of a grid column can be set from 1/12 (approx. 8.3%) to 12/12 (100%).</p>
       <p class="my-2"><code>div.col-(1|2|3|4|5|6|7|8|9|10|11|12)</code></p>
@@ -1042,7 +1042,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="variable-width-content"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content" target="_blank">Variable width content</a>
+      <h4 class="mt-4" id="variable-width-content"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#variable-width-content" target="_blank">Variable width content</a>
       </h4>
       <p class="my-2"><code>.col-auto</code> sets an element width to browser default (by CSS <code>width: auto;</code> ). A width of a element is automatically calculated by a browser from its inner content.</p>
       <div class="row">
@@ -1060,7 +1060,7 @@
         </div>
       </div>
       <div class="alert alert-info mt-3" role="alert">An example of the official document is a complex combination with responsive and flexbox (explained later ⇒ <a href="#grid-margin-auto">Variable width content with flex</a> )。</div>
-      <h4 class="mt-4" id="grid-column-wrapping"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#column-wrapping" target="_blank">Column wrapping</a>
+      <h4 class="mt-4" id="grid-column-wrapping"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#column-wrapping" target="_blank">Column wrapping</a>
       </h4>
       <p class="my-2">Setting 12 or more columns in total automatically breaks to a next line.</p>
       <div class="row border">
@@ -1089,7 +1089,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="grid-column-breaks"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#column-breaks" target="_blank">Column breaks</a>
+      <h4 class="mt-4" id="grid-column-breaks"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#column-breaks" target="_blank">Column breaks</a>
       </h4>
       <p class="my-2">On setting each width to columns, <code>div.w-100</code> also can be used to insert a break to a new line.</p>
       <div class="row border">
@@ -1116,7 +1116,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="responsive-classes"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#responsive-classes" target="_blank">Responsive classes</a>
+      <h4 class="mt-4" id="responsive-classes"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#responsive-classes" target="_blank">Responsive classes</a>
       </h4>
       <p class="my-2"><code>.col-(sm|md|lg|xl)(-1|-2|-3|...|-12|-auto)?</code></p>
       <h5 class="mt-3" id="responsive-classes-example-1">Example 1: Equal-widths</h5>
@@ -1181,42 +1181,42 @@
       <h5 class="mt-3" id="responsive-classes-example-2">Example 2: Setting columns widths</h5>
       <div class="row mt-3">
         <div class="col-3 border">
-          <div class="bg-light"><code>col-3</code></div>
+          <div class="bg-light"><code>.col-3</code></div>
         </div>
         <div class="col-6 border">
-          <div class="bg-light"><code>col-6</code></div>
+          <div class="bg-light"><code>.col-6</code></div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-sm-3 border">
-          <div class="bg-light"><code>col-sm-3</code></div>
+          <div class="bg-light"><code>.col-sm-3</code></div>
         </div>
         <div class="col-sm-6 border">
-          <div class="bg-light"><code>col-sm-6</code></div>
+          <div class="bg-light"><code>.col-sm-6</code></div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-md-3 border">
-          <div class="bg-light"><code>col-md-3</code></div>
+          <div class="bg-light"><code>.col-md-3</code></div>
         </div>
         <div class="col-md-6 border">
-          <div class="bg-light"><code>col-md-6</code></div>
+          <div class="bg-light"><code>.col-md-6</code></div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-lg-3 border">
-          <div class="bg-light"><code>col-lg-3</code></div>
+          <div class="bg-light"><code>.col-lg-3</code></div>
         </div>
         <div class="col-lg-6 border">
-          <div class="bg-light"><code>col-lg-6</code></div>
+          <div class="bg-light"><code>.col-lg-6</code></div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-xl-3 border">
-          <div class="bg-light"><code>col-xl-3</code></div>
+          <div class="bg-light"><code>.col-xl-3</code></div>
         </div>
         <div class="col-xl-6 border">
-          <div class="bg-light"><code>col-xl-6</code></div>
+          <div class="bg-light"><code>.col-xl-6</code></div>
         </div>
       </div>
       <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#responsive-classes-example-2-structure" aria-control="#responsive-classes-example-2-structure" aria-expanded="false">Structure</a>
@@ -1232,51 +1232,51 @@
       <h5 class="mt-3" id="responsive-classes-example-3">Example 3: Variable width contents</h5>
       <div class="row mt-3">
         <div class="col-auto border">
-          <div class="bg-light"><code>col-auto</code> 12345
+          <div class="bg-light"><code>.col-auto</code> 12345
           </div>
         </div>
         <div class="col-auto border">
-          <div class="bg-light"><code>col-auto</code> 12345678901234567890
+          <div class="bg-light"><code>.col-auto</code> 12345678901234567890
           </div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-sm-auto border">
-          <div class="bg-light"><code>col-sm-auto</code> 12345
+          <div class="bg-light"><code>.col-sm-auto</code> 12345
           </div>
         </div>
         <div class="col-sm-auto border">
-          <div class="bg-light"><code>col-sm-auto</code> 12345678901234567890
+          <div class="bg-light"><code>.col-sm-auto</code> 12345678901234567890
           </div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-md-auto border">
-          <div class="bg-light"><code>col-md-auto</code> 12345
+          <div class="bg-light"><code>.col-md-auto</code> 12345
           </div>
         </div>
         <div class="col-md-auto border">
-          <div class="bg-light"><code>col-md-auto</code> 12345678901234567890
+          <div class="bg-light"><code>.col-md-auto</code> 12345678901234567890
           </div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-lg-auto border">
-          <div class="bg-light"><code>col-lg-auto</code> 12345
+          <div class="bg-light"><code>.col-lg-auto</code> 12345
           </div>
         </div>
         <div class="col-lg-auto border">
-          <div class="bg-light"><code>col-lg-auto</code> 12345678901234567890
+          <div class="bg-light"><code>.col-lg-auto</code> 12345678901234567890
           </div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-xl-auto border">
-          <div class="bg-light"><code>col-xl-auto</code> 12345
+          <div class="bg-light"><code>.col-xl-auto</code> 12345
           </div>
         </div>
         <div class="col-xl-auto border">
-          <div class="bg-light"><code>col-xl-auto</code> 12345678901234567890
+          <div class="bg-light"><code>.col-xl-auto</code> 12345678901234567890
           </div>
         </div>
       </div>
@@ -1293,7 +1293,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="stacked-to-horizontal"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#stacked-to-horizontal" target="_blank">Switching layouts</a>
+      <h4 class="mt-4" id="stacked-to-horizontal"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#stacked-to-horizontal" target="_blank">Switching layouts</a>
       </h4>
       <p class="my-2">The next example demonstrates switching between stacked (as mobile) and horizontal (as PC) layouts on the md breakpoint (768px) as follows.</p>
       <div class="row">
@@ -1394,7 +1394,7 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="mix-and-match"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#mix-and-match" target="_blank">Mix and match</a>
+      <h4 class="mt-4" id="mix-and-match"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#mix-and-match" target="_blank">Mix and match</a>
       </h4>
       <p class="my-2">Another example of layout switching on the md breakpoint.</p>
       <div class="row">
@@ -1499,7 +1499,7 @@
           <div class="bg-light">3-2 <code>.col-6</code></div>
         </div>
       </div>
-      <h4 class="mt-4" id="grid-margin-auto"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content" target="_blank">Variable width contents with flex</a>
+      <h4 class="mt-4" id="grid-margin-auto"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#variable-width-content" target="_blank">Variable width contents with flex</a>
       </h4>
       <p class="my-2">A complex example using auto-width, flexbox, and responsive behaviors (from the official document).</p>
       <ul>
@@ -1625,10 +1625,10 @@
           </div>
         </div>
       </div>
-      <h4 class="mt-4" id="grid-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#alignment" target="_blank">Alignment</a>
+      <h4 class="mt-4" id="grid-alignment"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#alignment" target="_blank">Alignment</a>
       </h4>
       <p>Use <a href="utilities-3.html#flex">Flex utilities</a>.</p>
-      <h5 class="mt-3 mb-0" id="grid-vertical-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#vertical-alignment" target="_blank">Vertical alignment</a>
+      <h5 class="mt-3 mb-0" id="grid-vertical-alignment"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#vertical-alignment" target="_blank">Vertical alignment</a>
       </h5>
       <p class="my-2">In examples below, red border is added and height is fixed to <code>5rem</code> for each row.</p>
       <p class="mt-2 mb-0"><code>.row.align-items-start</code></p>
@@ -1688,7 +1688,7 @@
           <div class="bg-light p-1"><code>-end</code></div>
         </div>
       </div>
-      <h5 class="mt-3 mb-0" id="grid-horizontal-alignment"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#horizontal-alignment" target="_blank">Horizontal alignment</a>
+      <h5 class="mt-3 mb-0" id="grid-horizontal-alignment"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#horizontal-alignment" target="_blank">Horizontal alignment</a>
       </h5>
       <p class="mt-2 mb-0"><code>.row.justify-content-start</code></p>
       <div class="row justify-content-start border border-danger">
@@ -1750,7 +1750,7 @@
           <div class="bg-light"><code>.col-2</code><small> (3/3)</small></div>
         </div>
       </div>
-      <h4 class="mt-4" id="griid-no-gutters"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#no-gutters" target="_blank">No gutters</a>
+      <h4 class="mt-4" id="griid-no-gutters"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#no-gutters" target="_blank">No gutters</a>
       </h4>
       <p class="my-2">Adding <code>.no-gutters</code> to <code>div.row</code> removes <a href="#grid-gutters">gutters</a> from a row.</p>
       <p class="mt-2 mb-0"><code>div.row</code></p>
@@ -1875,7 +1875,7 @@
           </div>
         </div>
       </div>
-      <h4 class="mt-4" id="grid-ordering"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#order-classes" target="_blank">Order classes</a>
+      <h4 class="mt-4" id="grid-ordering"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#order-classes" target="_blank">Order classes</a>
       </h4>
       <p class="my-2">You can change columns' order with adding <code>.order-(1|2|3|...|12)</code> (⇒ <a href="utilities-3.html#flex">Flex utilities</a> ).</p>
       <div class="row">
@@ -1934,9 +1934,9 @@
           </ul>
         </li>
       </ul>
-      <h4 class="mt-4" id="grid-offsetting-columns"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#offsetting-columns" target="_blank">Offsetting columns</a>
+      <h4 class="mt-4" id="grid-offsetting-columns"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#offsetting-columns" target="_blank">Offsetting columns</a>
       </h4>
-      <h5 class="mt-3" id="grid-offset-classes"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#offset-classes" target="_blank">Offset classes</a>
+      <h5 class="mt-3" id="grid-offset-classes"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#offset-classes" target="_blank">Offset classes</a>
       </h5>
       <p class="mt-2 mb-3"><code>.offset-(1|2|3|...)</code> sets offset spacing on the left as the same width as <code>.col-(1|2|3...)</code></p>
       <div class="row border my-3">
@@ -2150,7 +2150,7 @@
           </div>
         </div>
       </div>
-      <h5 class="mt-4" id="margin-utilities"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#margin-utilities" target="_blank">Margin utilities</a>
+      <h5 class="mt-4" id="margin-utilities"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#margin-utilities" target="_blank">Margin utilities</a>
       </h5>
       <p class="mt-2 mb-3">An example below (from the official document) shows how to use <a href="utilities-4.html#spacing">spacing utilities</a> for responsive grid layouts (advanced).</p>
       <div class="row">
@@ -2283,7 +2283,7 @@
           </div>
         </div>
       </div>
-      <h4 class="mt-4" id="grid-nesting"><a href="https://getbootstrap.com/docs/4.1/layout/grid/#nesting" target="_blank">Nesting</a>
+      <h4 class="mt-4" id="grid-nesting"><a href="https://getbootstrap.com/docs/4.2/layout/grid/#nesting" target="_blank">Nesting</a>
       </h4>
       <p class="mt-2 mb-3">You can nest grid row/column structures with inserting <code>div.row(-*)</code>'s to <code>div.col(-*)</code>'s (in any level but practically once). It is typically required to make eight (any number that does not divide 12) column layouts with mutiple span(s). See the example below.</p>
       <div class="row">
@@ -2412,15 +2412,23 @@
         <li>Addded slight vertical paddings to show nesting levels</li>
       </ul>
       <div class="alert alert-info mt-3" role="alert">Grid nesting tends to be complex and you can avoid it for most cases. For example, if you (just) want 8-column grids, using <a href="#grid-equal-width">equal-width</a> class is more suitable.</div>
+      <h2 class="mt-5" id="utilities"><a href="https://getbootstrap.com/docs/4.2/layout/utilities-for-layout/" target="_blank">Utilities for layout</a>
+      </h2>
+      <ul class="mb-3">
+        <li>Showing/Hiding elements ⇒ <a href="utilities-2.html#display">Display</a></li>
+        <li>Layout using flexbox ⇒ <a href="utilities-3.html#flex">Flex</a></li>
+        <li>Setting margins and/or paddings ⇒ <a href="utilities-4.html#spacing">Spacing</a></li>
+        <li>Showing/Hiding elements without changing layout ⇒ <a href="utilities-5.html#visibility">Visibility</a></li>
+      </ul>
       <nav class="mt-4 mb-5" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Layout(1): Overview/Grid system</li>
+          <li class="breadcrumb-item active" aria-current="page">Layout(1): Overview/Grid system/Utilities for layout</li>
         </ol>
       </nav>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src=".././js/main.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 </html>

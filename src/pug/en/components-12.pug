@@ -1,129 +1,53 @@
 extends ../template-cdn-en
 include ../mixins-en
 
+mixin toastContent(header, text)
+  div.toast-header
+    img.rounded.mr-2(src="../img/20x20-blue.svg" alt="Logo placeholder")
+    strong.mr-auto Bootstrap
+    small.muted= header
+    button.ml-2.mb-1.close(type="button" data-dismiss="toast" aria-label="Close")
+      span(aria-hidden="true") &times;
+  div.toast-body= text
+
+mixin stdToastContent
+  +toastContent("11 mins ago", "Hello, world! This is a toast message.")
+
+mixin toast1
+  div.toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+    +stdToastContent
+
+mixin toast2
+    each msg in [["just now","See? Just like this."], ["2 seconds ago","Heads up, toasts will stack automatically."]]
+      div.toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+        +toastContent(msg[0], msg[1])
+
 block head
-  title Bootstrap 4 tutorial: Components (12): Progress / Scrollspy / Tooltips
+  title Bootstrap 4 tutorial: Components (12): Scrollspy / Spinners / Toasts / Tooltips
 
 block body
-  - const contextTypes = ["primary", "secondary", "success", "info", "warning", "danger"]
+  - const contexts = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+
   div.container
     +pageHeader("components-12")
       p.lead Components (12): 
-        a(href="#progress") Progress
-        |  / 
         a(href="#scrollspy") Scrollspy
+        |  / 
+        a(href="#spinners") Spinners
+        |  / 
+        a(href="#toasts") Toasts
         |  / 
         a(href="#tooltips") Tooltips
 
-    h2.mt-2#progress
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/") Progress
-    p.mt-2 The progress component is a Bootstrap alternative of 
-      code progress
-      |  elements. It has extra features as multiple indicator bars, animated stripes and so on.
-    h4.mt-3#progress-how-it-works
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#how-it-works") Basic structure
-    ul.struct.my-1
-      li Progress bar (base) 
-        code div.progress
-        ul
-          li Indicator bar(s) 
-            code div.progress-bar
-            |  (stacked from left to right) 
-            +attrsBtn(".a1-1")
-            ul.collapse.a1-1
-              li.att Width (required) (e.g.) 
-                code style="width: 50%"
-              li.att Accessibility attribute 
-                code role="progressbar" 
-              li.att Accessibility attribute 
-                code aria-valuenow="50"
-              li.att Accessibility attribute 
-                code aria-valuemin="0"
-              li.att Accessibility attribute 
-                code aria-valuemax="100"
-    h4.mt-4#progress-width Width
-    p.mt-2.mb-0 (1) Set 
-      code style="width: {width}%”
-    each w in [0,25,50,75,100]
-      p.mt-1.mb-0
-        code= `style="width: ${w}%;"`
-      div.progress
-        div.progress-bar(role="progressbar" style=`width: ${w}%;` aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
-    p.mt-3.mb-1 (2) Set 
-      code .w-(25|75|100)
-      |  (see 
-      a(href="utilities-4.html#sizing") Sizing
-      |  , 25% steps)
-    each w in [25,50,75,100]
-      p.mt-1.mb-0
-        code= `.w-${w}`
-      div.progress
-        div(class=`progress-bar w-${w}` role="progressbar" aria-valuenow=val aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-labels
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#labels") Labels
-    p.my-2 Set inner text of 
-      code div.progress-bar
-    div.progress
-      div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
-    h4.mt-4#progress-height
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#height") Height
-    p.my-2 Set style (e.g. 
-      code style="height: 10px;"
-      |  ) to 
-      code div.progress
-    each h in [5,10,15,20]
-      p.mt-1.mb-0
-        code= `style="height: ${h}px;"`
-      div.progress(style=`height: ${h}px;`)
-        div.progress-bar(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-backgrounds
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#backgrounds") Indicator colors
-    p.my-2 Add 
-      code .bg-{context}
-      |  to 
-      code div.progress-bar
-      |  (see 
-      a(href="utilities-2.html#colors-background-color") Colors - Background
-      |  ).
-    each col in ["success","info","warning","danger"]
-      p.mt-1.mb-0
-        code= `.bg-${col}`
-      div.progress
-        div(class=`progress-bar bg-${col}` role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-multiple-bars
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#multiple-bars") Multiple indicators
-    p.my-2 Use mutiple 
-      code div.progress-bar
-      | 's you need (stacked from left to right).
-    div.progress
-      each bar in [["primary",10], ["success",40], ["warning",20], ["danger",10]]
-        div(class=`progress-bar bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-striped
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#striped") Striped bars
-    p.my-2 Add 
-      code .progress-bar-striped
-      |  to bars.
-    each bar in [["primary",20], ["success",40], ["info",60], ["warning",80], ["danger",100]]
-      div.progress.my-2
-        div(class=`progress-bar progress-bar-striped bg-${bar[0]}` role="progressbar" style=`width: ${bar[1]}%;` aria-valuenow=bar[1] aria-valuemin="0" aria-valuemax="100")
-    h4.mt-4#progress-animated-stripes
-      +extLink("https://getbootstrap.com/docs/4.1/components/progress/#animated-stripes") Animationg stripes
-    p.my-2 Add 
-      code .progress-bar-animated
-      |  .
-    p.mt-2.mb-1 Example: 
-      code div.progress-bar.progress-bar-striped.progress-bar-animated
-    div.progress
-      div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;")
-    h2.mt-5#scrollspy
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/") Scrollspy
+    h2.mt-2#scrollspy
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/") Scrollspy
     p.my-2 Scrollspy is a functional component which synchronizes the active item display of the indicator (
       a(href="components-9.html") navigation
       |  or 
       a(href="components-7.html") list group
       |  ) components and the horizontal scroll position of the content.
     h4.mt-3#scrollspy-how-it-works
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#how-it-works") How it works
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#how-it-works") How it works
     p.my-2 Scrollspy watches the scrolling content and update the position indicator (navigation or list group) with JavaScript. Requirements are as follows.
     ul
       li The indicator component must be 
@@ -175,20 +99,426 @@ block body
             code= `href="#{target-id}"`
             |  into the correcponding indicator items
     h4.mt-3#scrollspy-example-in-navbar
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-in-navbar") Example in navbar
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#example-in-navbar") Example in navbar
     p ⇒ 
       a(href="scrollspy-1.html") Demo page
     h4.mt-4#scrollspy-example-with-nested-nav
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-nested-nav") Example with nested nav
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#example-with-nested-nav") Example with nested nav
     p ⇒ 
       a(href="scrollspy-2.html") Demo page
     h4.mt-4#scrollspy-example-with-list-group
-      +extLink("https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-list-group") Example with list-group
+      +extLink("https://getbootstrap.com/docs/4.2/components/scrollspy/#example-with-list-group") Example with list-group
     p ⇒ 
       a(href="scrollspy-3.html") Demo page
 
+    h2.mt-5#spinners
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/") Spinners
+    p Spinners can be used to show the loading states in your projects.
+    h4.mt-3#spinners-border-spinner
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#border-spinner") Border spinner
+    div.spinner-border(role="status")
+      span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-border-structure") Structure
+    ul.struct.mt-3.collapse#spinner-border-structure
+      li Border spinner 
+        code div.spinner-border
+        +attrBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Accessibility attribute 
+            code role="status"
+          li For screen reader 
+            code span.sr-only
+            ul
+              li.txt Text 
+                code Loading...
+    h5.mt-3#spinners-colors
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#colors") Colors
+    p.my-2 Add 
+      code= `.text-(${contexts.join('|')})`
+      | .
+    div.row
+      each c in contexts
+        div.col-lg-2.col-md-3.col-sm-4.flex-column
+          div
+            code= `.text-${c}`
+          div(class=`spinner-border text-${c}` role="status")
+            span.sr-only(Loading...)
+    h4.mt-4#spinners-growing-spinner
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#growing-spinner") Growing spinner
+    div.spinner-grow(role="status")
+      span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-grow-structure") Structure
+    ul.struct.mt-3.collapse#spinner-grow-structure
+      li Growing spinner 
+        code div.spinner-grow
+        +attrBtn(".a2-1")
+        ul
+          li.att.collapse.a2-1 Accessibility attribute 
+            code role="status"
+          li For screen reader 
+            code span.sr-only
+            ul
+              li.txt Text 
+                code Loading...
+    div.row
+      each c in contexts
+        div.col-lg-2.col-md-3.col-sm-4.flex-column
+          div
+            code= `.text-${c}`
+          div(class=`spinner-grow text-${c}` role="status")
+            span.sr-only(Loading...)
+    h4.mt-4#spinners-alignment
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#alignment") Alignment
+    h5.mt-3#spinners-margin
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#margin") Margin
+    p Use 
+      a(href="utilities-4.html/#spacing") Spacing utility
+      | .
+    div.row
+      each m in [0,1,2,3,4,5]
+        div.col-lg-2.col-md-3.col-sm-4.flex-column.border
+          div
+            code= `.m-${m}`
+          div(class=`spinner-border m-${m}` role="status")
+            span.sr-only(Loading...)
+    h5.mt-3#spinners-placement
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#placement") Placement
+    p.my-2 Various utilities are available for locating spinners to appropriate positions.
+    h6.mt-3#spinners-flex
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#flex") Flex
+    p.my-2 Example using 
+      a(href="utilities-3.html#flex-align-items") Align items
+      |  and 
+      a(href="utilities-3.html#flex-auto-margins") Auto margins
+    div.d-flex.align-items-center
+      strong Loading...
+      div.spinner-border.ml-auto(role="status" aria-hidden="true")
+    div.my-3
+      +collapseButton("#spinner-flex-structure") Structure
+    ul.struct.mt-3.collapse#spinner-flex-structure
+      li
+        code div.d-flex.align-items-center
+        ul
+          li
+            code strong 
+            ul
+              li.txt Text 
+                code Loading...
+        ul
+          li Spinner 
+            code div.spinner-border
+            +attrsBtn(".a3-1")
+            ul.collapse.a3-1
+              li.att Accessibility attribute 
+                code role="status"
+              li.att Accessibility attribute 
+                code aria-hidden="true"
+    h6.mt-3#spinners-floats
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#floats") Floats
+    p.my-2 Example using 
+      a(href="utilities-3.html#float") Float
+      |  with 
+      a(href="utilities-1.html#clearfix") Clearfix
+      | .
+    each dir in ["left","right"]
+      div.mt-2
+        code= `.float-${dir}`
+      div.clearfix
+        div(class=`spinner-border float-${dir}` role="status")
+          span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-floats-structure") Structure
+    ul.struct.mt-3.collapse#spinner-floats-structure
+      li
+        code div.clearfix
+        ul
+          li Spinner 
+            code div.spinner-border
+            +attrsBtn(".a4-1")
+            ul
+              li.att.collapse.a4-1 Float 
+                code .float-(left|right)
+              li.att.collapse.a4-1 Accessibility attribute 
+                code role="status"
+              li For screen reader 
+                code span.sr-only
+    h6.mt-3#spinners-text-align
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#text-align") Text align
+    each al in ["left","center","right"]
+      div.mt-2
+        code= `.text-${al}`
+      div(class=`text-${al}`)
+        div(class=`spinner-border` role="status")
+          span.sr-only(Loading...)
+    div.my-3
+      +collapseButton("#spinner-text-align-structure") Structure
+    ul.struct.mt-3.collapse#spinner-text-align-structure
+      li
+        code div.text-(left|center|right)
+        ul
+          li Spinner 
+            code div.spinner-border
+            +attrBtn(".a5-1")
+            ul.collapse.a5-1
+              li.att Accessibility attribute 
+                code role="status"
+            ul
+              li For screen reader 
+                code span.sr-only
+    h4.mt-4#spinners-size
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#size") Size
+    p.my-2 Add 
+      code .spinner-(border|grow)-sm
+      |  for smaller spinners.
+    div.row
+      each t in ["border","grow"]
+        div.col
+          code= `div.spinner-${t}.spinner-${t}-sm`
+          br
+          div(class=`spinner-${t} spinner-${t}-sm` role="status")
+            span.sr-only(Loading...)
+    p.my-2 You can also use custom CSS or inline styles to set any sizes you need.
+    div.row
+      each sz in [1,2,3,4,5,6]
+        div.col-lg-4.col-md-6.mt-2
+          code= `style="width: ${sz}rem; height: ${sz}rem;"`
+          br
+          each t in ["border","grow"]
+            div(class=`spinner-${t}` style=`width: ${sz}rem; height: ${sz}rem;` role="status")
+              span.sr-only(Loading...)
+    h4.mt-4#spinners-buttons
+      +extLink("https://getbootstrap.com/docs/4.2/components/spinners/#buttons") Buttons
+    p.my-2 You can use spinners inside buttons to indicate current actions.
+    each t in ["border","grow"]
+      div.my-2
+        button.btn.btn-primary(type="button" disabled)
+          div(class=`spinner-${t} spinner-${t}-sm` role="status" aria-hidden="true")
+          span.sr-only(Loading...)
+        button.btn.btn-primary(type="button" disabled)
+          div(class=`spinner-${t} spinner-${t}-sm` role="status" aria-hidden="true")
+          |  Loading...
+    div.my-3
+      +collapseButton("#spinner-buttons-structure") Structure
+    ul.struct.mt-3.collapse#spinner-buttons-structure
+      li Button 
+        code button.btn.btn-primary
+        +attrsBtn(".a6-1")
+        ul.collapse.a6-1
+          li.att Attribute 
+            code type="button"
+          li.att Attribute 
+            code disabled
+        ul
+          li Small spinner 
+            code div.spinner-(border|grow).spinner-(border|grow)-sm
+            +attrsBtn(".a6-2")
+            ul.collapse.a6-2
+              li.att Accessibility attribute 
+                code role="status"
+              li.att Accessibility attribute 
+                code aria-hidden="true"
+          li (Left only: for no-text buttons) for screen reader 
+            code span.sr-only
+            ul
+              li.txt Text 
+                code Loading...
+          li.txt (Right only) text 
+            code Loading...
+
+    h2.mt-5#toasts
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/") Toasts
+    p Toasts are used for short-time alert messages. To activate them, use JavaScript code as below.
+    pre.p-2.border.bg-light.mt-3
+      code $('.toast').toast('show');
+    p Normally, it hides automatically after the short moment (500ms as default). You can change the delay time (or keep showing) with 
+      a(href='#toasts-data-options') Data options
+      | .
+    h4.mt-3#toasts-examples
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#examples") Examples
+    h5.mt-3#toasts-basic
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#basic") Basic
+    +toast1
+    div.my-3
+      +collapseButton("#toasts-basic-structure") Structure
+    ul.struct.mt-3.collapse#toasts-basic-structure
+      li Toast (frame) 
+        code div.toast
+        +attrsBtn(".a7-1")
+        ul
+          li.att.collapse.a7-1 Accessibility attribute 
+            code role="alert"
+          li.att.collapse.a7-1 Accessibility attribute 
+            code aria-live="assertive"
+          li.att.collapse.a7-1 Accessibility attribute 
+            code aria-atomic="true"
+          li.att.collapse.a7-1 Option (keep showing) 
+            code data-autohide="false"
+          li Header 
+            code div.toast-header
+            ul
+              li Logo icon 
+                code img.rounded.mr-2
+                +attrsBtn(".a7-2")
+                ul.collapse.a7-2
+                  li.att Attribute 
+                    code src="../img/20x20-blue.svg"
+                  li.att Attribute 
+                    code alt="Logo placeholder"
+              li Title 
+                code strong.mr-auto
+                ul
+                  li.txt Text 
+                    code Bootstrap
+              li Header 
+                code small.muted
+                ul
+                  li.txt Text 
+                    code 11 mins ago
+              li Close button 
+                code button.ml-2.mb-1.close
+                +attrsBtn(".a7-3")
+                ul
+                  li.att.collapse.a7-3 Attribute 
+                    code type="button"
+                  li.att.collapse.a7-3 Attribute 
+                    code data-dismiss="toast"
+                  li.att.collapse.a7-3 Accessibility attribute 
+                    code aria-label="Close"
+                  li Button text 
+                    code span
+                    +attrBtn(".a7-4")
+                    ul
+                      li.att.collapse.a7-4 Accessibility attribute 
+                        code aria-hidden="true"
+                      li.txt Text 
+                        code= "&times;"
+          li Body 
+            code div.toast-body
+            ul
+              li Text 
+                code Hello, world! This is a toast message.
+    h5.mt-3#toasts-data-options Data options
+    p.my-2 Option attributes as below can be used for a toast frame 
+      code div.toast
+      | .
+    ul
+      li
+        code data-delay="{delay in milliseconds}"
+        |  sets delay time to hide a toast (
+        code "500"
+        | [msec] as default).
+      li
+        code data-animation="(true|false)"
+        |  sets CSS animation (
+        code "true"
+        |  as default).
+      li
+        code data-autohide="(true|false)"
+        |  hides a toast automatically (
+        code "true"
+        |  as default).
+    h6.mt-2#toasts-live-demo Live demo
+    p.my-2 You can check data options above with the live demo below.
+    div.form-inline
+      label.my-1.mr-2(for="toasts-demo-delay") Delay
+      select.custom-select.my-1.mr-3#toasts-demo-delay
+        each item in [[200,"200ms"],[500,"500ms (default)"],[1000,"1s"],[2000,"2s"],[5000,"5s"],[10000,"10s"],[-1,"does not hide"]]
+          option(value=item[0] selected=item[0]==500)= item[1]
+      div.custom-control.custom-checkbox.my-1.mr-3
+        input.custom-control-input#toasts-demo-animation(type="checkbox" checked)
+        label.custom-control-label(for="toasts-demo-animation") CSS animation
+      button.btn.btn-primary.my-1.mr-sm-2#toasts-demo-start Start
+    div.toast.fade.hide#toasts-demo(role="alert" aria-live="assertive" aria-atomic="true")
+      +toastContent("just now", "Hello, world! This is a toast message.")
+    h5.mt-3#toasts-translucent
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#translucent") Translucent
+    p.my-2 Toasts are translucent. They also attempt to blur background contents if the browser supports 
+      +extLink("https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter")
+        code backdrop-filter
+      |  CSS property.
+    div.bg-secondary.p-2(style="background-image: url('../img/GitHub-Mark-32px.png');")
+      +toast1
+    h5.mt-3#toasts-stacking
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#stacking") Stacking
+    p.my-2 You can show multiple toasts. They display vertically stacked.
+    +toast2
+    h4.mt-3#toasts-placement
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#placement") Placement
+    p.my-2 Use inline CSS style to locate a toast to the appropriate position (examle for the top-right below).
+    div.bg-secondary(aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;")
+      div.toast(style="position: absolute; top: 0; right: 0;" data-autohide="false")
+        +stdToastContent
+    div.my-3
+      +collapseButton("#toasts-placement-1-structure") Structure
+    ul.struct.mt-3.collapse#toasts-placement-1-structure
+      li Parent 
+        code div.bg-secondary
+        +attrsBtn(".a8-1")
+        ul
+          li.att.collapse.a8-1 Accessibility attribute 
+            code aria-live="polite"
+          li.att.collapse.a8-1 Accessibility attribute 
+            code aria-atomic="true"
+          li.att.collapse.a8-1 Inline style 
+            code style="position: relative; min-height: 200px;"
+          li Toast (frame) 
+            code div.toast
+            +attrsBtn(".a8-2")
+            ul
+              li.att.collapse.a8-2 Inline style 
+                code style="position: absolute; top: 0; right: 0;"
+              li.att.collapse.a8-2 Data option 
+                code data-autohide="false"
+              li Toast Header (same as 
+                a(href="#toasts-basic") basic example
+                | )
+              li Toast body (same as 
+                a(href="#toasts-basic") basic example
+                | )
+    p.mt-3.mb-2 You can also use a wrapper to locate mutiple toasts. See the example below.
+    div.bg-secondary(aria-live="polite" aria-atomic="true" style="position: relative; min-height: 250px;")
+      div(style="position: absolute; top: 0; right: 0;")
+        +toast2
+    div.my-3
+      +collapseButton("#toasts-placement-2-structure") Structure
+    ul.struct.mt-3.collapse#toasts-placement-2-structure
+      li Parent 
+        code div.bg-secondary
+        +attrsBtn(".a9-1")
+        ul
+          li.att.collapse.a9-1 Accessibility attribute 
+            code aria-live="polite"
+          li.att.collapse.a9-1 Accessibility attribute 
+            code aria-atomic="true"
+          li.att.collapse.a9-1 Inline style 
+            code style="position: relative; min-height: 250px;"
+          li.att Wrapper 
+            code div
+            +attrBtn(".a9-2")
+            ul
+              li.att.collapse.a9-2 Inline stype 
+                code style="position: absolute; top: 0; right: 0;"
+              each n in [1,2]
+                li= `Toast (${n}) (same as `
+                  a(href="#toasts-basic") basic example
+                  | )
+    h4.mt-3#toasts-accessibility
+      +extLink("https://getbootstrap.com/docs/4.2/components/toasts/#accessibility") Accessibility
+    h5.mt-2#toasts-accessibility-summary Summary
+    ul
+      li Wrap toasts in an 
+        +extLink("https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions") aria-live region
+        | . e.g. 
+        code aria-live="(assertive|polite|...)"
+      li Include 
+        code aria-atomic="true"
+      li Use 
+        code role="(alert|status|...)"
+
     h2.mt-5#tooltips
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/") Tooltips
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/") Tooltips
     p.mt-2.mb-1 Bootstrap tooltip is customization of tooltip display by 
       code title
       |  attribute. It utilizes 
@@ -207,7 +537,7 @@ block body
       kbd Tab
       |  keys.
     h4.mt-4#tooltips-example-enable-tooltips-everywhere
-      +extLink("https://getbootstrap.com/docs/4.1/components/popovers/#example-enable-popovers-everywhere") Initialization
+      +extLink("https://getbootstrap.com/docs/4.2/components/popovers/#example-enable-popovers-everywhere") Initialization
     p Bootstrap tooltips are inactivated as defaut. JavaScript is required to activate. Below is a simple code to activate all tooltips.
     pre.p-2.border.bg-light
       code $('[data-toggle="tooltip"]').tooltip();
@@ -215,7 +545,7 @@ block body
       strong Caution: 
       |  jQuery, Popper.js, and bootstrap.js are required. Use this script after those libraries.
     h4.mt-4#tooltips-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#examples") How to use it
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/#examples") How to use it
     ul.my-1
       li Available for any elements with setting following attributes
       ul
@@ -259,22 +589,22 @@ block body
     p Example ⇒ Hover 
       span.text-danger(data-toggle="tooltip" data-html="true" title="TNT(C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>)") here
     h4.mt-4#tooltips-disabled-elements
-      +extLink("https://getbootstrap.com/docs/4.1/components/tooltips/#disabled-elements") Using tooltips for disabled elements
+      +extLink("https://getbootstrap.com/docs/4.2/components/tooltips/#disabled-elements") Using tooltips for disabled elements
     p.my-2 If the attribute 
       code disabled
       |  is set to the element, it also disables a tooltip (example below).
     ul.struct.mb-2
       li
         code button.btn.btn-primary
-        +attrsBtn(".a2-1")
+        +attrsBtn(".a10-1")
         ul
-          li.att.collapse.a2-1 Attribute 
+          li.att.collapse.a10-1 Attribute 
             code type="button"
-          li.att.collapse.a2-1 Attribute 
+          li.att.collapse.a10-1 Attribute 
             code data-toggle="tooltip"
-          li.att.collapse.a2-1 Attribute 
+          li.att.collapse.a10-1 Attribute 
             code title="Disabled tooltip"
-          li.att.collapse.a2-1 Attribute 
+          li.att.collapse.a10-1 Attribute 
             code disabled
             |  (also disables a tooltip)
           li.txt Text 
@@ -286,29 +616,29 @@ block body
     ul.struct.mb-2
       li Wrapping parent 
         code span
-        +attrsBtn(".a3-1")
+        +attrsBtn(".a103-1")
         ul
-          li.cls.collapse.a3-1 Utility class 
+          li.cls.collapse.a103-1 Utility class 
             code .d-inline-block
             |  (set to the same 
             code display
             |  setting as 
             code button
             |  )
-          li.att.collapse.a3-1 Attribute 
+          li.att.collapse.a103-1 Attribute 
             code data-toggle="tooltip"
-          li.att.collapse.a3-1 Attribute 
+          li.att.collapse.a103-1 Attribute 
             code title="Disabled tooltip"
           li Target element 
             code button.btn.btn-primary
-            +attrsBtn(".a3-2")
+            +attrsBtn(".a103-2")
             ul
-              li.att.collapse.a3-2 Attribute 
+              li.att.collapse.a103-2 Attribute 
                 code type="button" 
-              li.att.collapse.a3-2 Attribute 
+              li.att.collapse.a103-2 Attribute 
                 code style="pointer-events: none;"
                 |  (to prevent receiving pointer events)
-              li.att.collapse.a3-2 Attribute 
+              li.att.collapse.a103-2 Attribute 
                 code disabled
               li.txt Text 
                 code Disabled button
@@ -317,4 +647,4 @@ block body
       span.d-inline-block(data-toggle="tooltip" title="Disabled tooltip")
         button.btn.btn-primary(style="pointer-events: none;" type="button" disabled) Disabled button
 
-    +breadcrumbLevel1("Components(12): Progress/Scrollspy/Tooltips")
+    +breadcrumbLevel1("Components(12): Scrollspy/Spinners/Toasts/Tooltips")

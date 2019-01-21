@@ -28,9 +28,9 @@ block body
         a(href="#dropdowns") Dropdowns
 
     h2.mt-2#carousel
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/") Carousel
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/") Carousel
     h4.mt-3#carousel-basic
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#slides-only") Basic (auto-slide only)
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#slides-only") Basic (auto-slide only)
     div.carousel.slide.mb-3(data-ride="carousel")
       div.carousel-inner
         each item in [[1,"First"],[2,"Second"],[3,"Third"]]
@@ -62,7 +62,7 @@ block body
                       li.att.collapse.a1-2 Attribute 
                         code src="..."
     h4.mt-4#carousel-with-controls
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-controls") With controls
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-controls") With controls
     div.carousel.slide.mb-3#carouselExampleControls(data-ride="carousel")
       div.carousel-inner
         each item in [[1,"First"],[2,"Second"],[3,"Third"]]
@@ -105,7 +105,7 @@ block body
                     li.txt Text 
                       code= dir[1]
     h4.mt-4#carousel-with-indicators
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-indicators") With indicators
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-indicators") With indicators
     div.carousel.slide.mb-3#carouselExampleIndicators(data-ride="carousel")
       ol.carousel-indicators
         each index in [0,1,2]
@@ -145,7 +145,7 @@ block body
           li Carousel (inner) and Previous/Next controls - same as 
             a(href="#carousel-with-controls") With controls
     h4.mt-4#carousel-with-captions
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#with-captions") With captions
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-captions") With captions
     div.carousel.slide.mb-3#carouselExampleCaptions(data-ride="carousel")
       ol.carousel-indicators
         each index in [0,1,2]
@@ -189,7 +189,7 @@ block body
                             code Nulla vitae ...
           li Previous/Next controls (same as above)
     h4.mt-4#carousel-crossfade
-      +extLink("https://getbootstrap.com/docs/4.1/components/carousel/#crossfade") Crossfade
+      +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#crossfade") Crossfade
     div.carousel.slide.carousel-fade.mb-3#carouselExampleFade(data-ride="carousel")
       div.carousel-inner
         each item in [[1,"First"],[2,"Second"],[3,"Third"]]
@@ -210,11 +210,11 @@ block body
         code div.carousel.slide
 
     h2.mt-5#collapse
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/") Collapse
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/") Collapse
     - const sampleText = "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."
     p.my-2 You can toggle collapse (hidden) and expanded (shown) states of a target element with a button.
     h4.mt-3.mb-2#collapse-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#example") Example
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/#example") Example
     p.mt-3.mb-1 Live examples below (
       code a
       |  on left, 
@@ -294,7 +294,7 @@ block body
       button.btn.btn-outline-secondary.btn-sm.px-1.py-0 Attributes
       |  buttons above are also made with the collapse function.
     h4.mt-4#collapse-multiple-targets
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#multiple-targets") Multiple targets
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/#multiple-targets") Multiple targets
     p.mt-2.mb-3 Multiple targets can be specified by a class.
     +collapseButton("#collapse-multiple-targets-structure") Structure
     ul.struct.my-2.collapse#collapse-multiple-targets-structure
@@ -338,7 +338,7 @@ block body
           div.collapse.multi-collapse-b(id=`ex-multi-b-${n}`)
             div.card.card-body= `(${n}) ${sampleText}`
     h4.mt-4#collapse-accordion-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/collapse/#accordion-example") Accordion example
+      +extLink("https://getbootstrap.com/docs/4.2/components/collapse/#accordion-example") Accordion example
     p.my-1 Extended example using 
       a(href="components-3.html") card
       | s.
@@ -406,11 +406,11 @@ block body
                   li.txt Content text 
 
     h2.mt-5#dropdowns
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/") Dropdowns
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/") Dropdowns
     - const contexts = ["primary", "secondary", "success", "info", "warning", "danger"]
     - const contextRe = `(${contexts.join("|")})`
     h4.mt-3.mb-1#dropdowns-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#examples") Examples
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#examples") Examples
     h5.mt-3.mb-1#dropdowns-example-button With 
       code button
     div.dropdown.mt-2.mb-3
@@ -504,7 +504,7 @@ block body
         ul
           li Inside (same as above)
     h4.mt-4#dropdowns-split-button
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#split-button") Split button
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#split-button") Split button
     p.my-2
       each c in contexts
         div.btn-group
@@ -538,7 +538,7 @@ block body
                     code Toggle Dropdown
           li Dropdown menu (same)
     h4.mt-4.mb-0#dropdowns-sizing
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#sizing") Sizing
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#sizing") Sizing
     p.my-2 Add 
       code .btn-(lg|sm)
     each sz in [["lg","Large"], [null, "Medium"], ["sm", "Small"]]
@@ -558,12 +558,12 @@ block body
           div.dropdown-menu(aria-labelledby=`dropdown-split-size-${sz[0] ? sz[0] : "default"}`)
             +actionItemsWithLink
     h4.mt-4.mb-0#dropdowns-directions
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#directions") Directions (
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropup") Up
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#directions") Directions (
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropup") Up
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropright") Right
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropright") Right
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropleft") Left
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropleft") Left
       | )
     p.mt-2.mb-0 Add 
       code .(dropup|dropright|dropleft)
@@ -609,7 +609,7 @@ block body
               li Button for 2nd 
                 code button.btn ...
     h4.mt-4#dropdowns-menu-items
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-items") Menu items
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#menu-items") Menu items
     p.mb-2
       code button.dropdown-item
       |  elements can be used for items (does not jump on click by default).
@@ -663,9 +663,9 @@ block body
           each c in contexts
             span(class=`text-${c}`)= ` ${c}`
     h4.mt-4#dropdowns-active-disabled
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#active") Active
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#active") Active
       | /
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#disabled") disabled
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#disabled") disabled
       |  items
     p.mt-3.mb-2 Add 
       code .active
@@ -768,7 +768,7 @@ block body
                 |  to a clicked item
           li Updates an active item indicator
     h4.mt-4#dropdowns-menu-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#menu-alignment") Menu alignment
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#menu-alignment") Menu alignment
     p.my-2 A dropdown menu aligns left to a parent (same as a trigger button) as default. Adding 
       code .dropdown-menu-right
       |  to an item list, it alignes right at a parent (trigger button)'s right side.
@@ -779,7 +779,7 @@ block body
         div.dropdown-divider
         a.dropdown-item(href="#") Separated item with longer text
     h4.mt-4#dropdowns-headers
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#headers") Headers
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#headers") Headers
     p.mt-3.mb-2 Use 
       code h6.dropdown-header
       |  for menu headers (static i.e. not selectable). The example below sets a header as the first item 
@@ -792,12 +792,12 @@ block body
           h6.dropdown-header(href="#") Dropdown header
           +actionItems
     h4.mt-4#dropdowns-dividers
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dividers") Dividers
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dividers") Dividers
     p.my-2 Use 
       code div.dropdown-divider
       |  to separate item groups.
     h4.mt-4#dropdowns-text
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#text") Text
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#text") Text
     p.my-2 You can also use dropdowns for showing popup text contents.
     div.dropdown.mb-3
       button.btn.btn-secondary.dropdown-toggle#ex-text(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Text example
@@ -828,7 +828,7 @@ block body
                   li.cls The last paragraph needs margin adjustment 
                     code .mb-0
     h4.mt-4#dropdowns-forms
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#forms") Forms
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#forms") Forms
     p.my-2 A 
       a(href="components-5.html") form
       |  can be used as a dropdown item.
@@ -878,7 +878,7 @@ block body
                 strong Forget password?
                 | )
     h4.mt-4#dropdowns-dropdown-options
-      +extLink("https://getbootstrap.com/docs/4.1/components/dropdowns/#dropdown-options") Dropdown options
+      +extLink("https://getbootstrap.com/docs/4.2/components/dropdowns/#dropdown-options") Dropdown options
     p.my-2 You can specify menu position offset with 
       code data-offset="{x-offset-px},{y-offset-px}"
       | .

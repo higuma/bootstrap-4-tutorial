@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
       ul.struct li     { list-style: disc; }
       ul.struct li.cls { list-style: circle; }
@@ -15,160 +15,24 @@
       .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
       .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
     </style>
-    <title>Bootstrap 4 tutorial: コンポーネント(12): プログレスバー / スクロールスパイ / ツールチップ</title>
+    <title>Bootstrap 4 tutorial: コンポーネント(12): スクロールスパイ / スピナー / トースト / ツールチップ</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-auto mr-auto">
           <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
-          <p class="lead">コンポーネント(12): <a href="#progress">プログレスバー</a> / <a href="#scrollspy">スクロールスパイ</a> / <a href="#tooltips">ツールチップ</a></p>
+          <p class="lead">コンポーネント(12): <a href="#scrollspy">スクロールスパイ</a> / <a href="#spinners">スピナー</a> / <a href="#toasts">トースト</a> / <a href="#tooltips">ツールチップ</a></p>
         </div>
         <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
           <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/components-12.html">英語 (English)</a></div>
         </div>
       </div>
-      <h2 class="mt-2" id="progress"><a href="https://getbootstrap.com/docs/4.1/components/progress/" target="_blank">プログレスバー</a>
-      </h2>
-      <p class="mt-2"><code>progress</code> 要素の代替を目的としたコンポーネントで、バーの積み重ねやアニメーション付きストライプバーなど <code>progress</code> にはない追加機能を持つ。</p>
-      <h4 class="mt-3" id="progress-how-it-works"><a href="https://getbootstrap.com/docs/4.1/components/progress/#how-it-works" target="_blank">基本設定</a>
-      </h4>
-      <ul class="struct my-1">
-        <li>ベース部 <code>div.progress</code>
-          <ul>
-            <li>カラーバー <code>div.progress-bar</code> (複数積み重ね可) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
-              <ul class="collapse a1-1">
-                <li class="att">幅(必須) (例) <code>style="width: 50%"</code></li>
-                <li class="att">アクセシビリティ属性 <code>role="progressbar" </code></li>
-                <li class="att">アクセシビリティ属性 <code>aria-valuenow="50"</code></li>
-                <li class="att">アクセシビリティ属性 <code>aria-valuemin="0"</code></li>
-                <li class="att">アクセシビリティ属性 <code>aria-valuemax="100"</code></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h4 class="mt-4" id="progress-width">幅の設定</h4>
-      <p class="mt-2 mb-0">(1) カスタムスタイル <code>style="width: {width}%”</code></p>
-      <p class="mt-1 mb-0"><code>style=&quot;width: 0%;&quot;</code></p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;width: 25%;&quot;</code></p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;width: 50%;&quot;</code></p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;width: 75%;&quot;</code></p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;width: 100%;&quot;</code></p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-3 mb-1">(2) 幅設定ユーティリティ <code>.w-(25|75|100)</code> (⇒ <a href="utilities-4.html#sizing">サイズユーティリティ</a> 、25%ステップ)</p>
-      <p class="mt-1 mb-0"><code>.w-25</code></p>
-      <div class="progress">
-        <div class="progress-bar w-25" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>.w-50</code></p>
-      <div class="progress">
-        <div class="progress-bar w-50" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>.w-75</code></p>
-      <div class="progress">
-        <div class="progress-bar w-75" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>.w-100</code></p>
-      <div class="progress">
-        <div class="progress-bar w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-4" id="progress-labels"><a href="https://getbootstrap.com/docs/4.1/components/progress/#labels" target="_blank">ラベル文字の追加</a>
-      </h4>
-      <p class="my-2">バー <code>div.progress-bar</code> の内部テキストを記述する。</p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-      </div>
-      <h4 class="mt-4" id="progress-height"><a href="https://getbootstrap.com/docs/4.1/components/progress/#height" target="_blank">高さの設定</a>
-      </h4>
-      <p class="my-2">ベースの <code>div.progress</code> に設定する。</p>
-      <p class="mt-1 mb-0"><code>style=&quot;height: 5px;&quot;</code></p>
-      <div class="progress" style="height: 5px;">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;height: 10px;&quot;</code></p>
-      <div class="progress" style="height: 10px;">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;height: 15px;&quot;</code></p>
-      <div class="progress" style="height: 15px;">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>style=&quot;height: 20px;&quot;</code></p>
-      <div class="progress" style="height: 20px;">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-4" id="progress-backgrounds"><a href="https://getbootstrap.com/docs/4.1/components/progress/#backgrounds" target="_blank">バーの色</a>
-      </h4>
-      <p class="my-2"><code>div.progress-bar</code> に背景色 <code>.bg-{context}</code> を追加(⇒ <a href="utilities-2.html#colors-background-color">色 - 背景色</a> )</p>
-      <p class="mt-1 mb-0"><code>.bg-success</code></p>
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>.bg-info</code></p>
-      <div class="progress">
-        <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>.bg-warning</code></p>
-      <div class="progress">
-        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p class="mt-1 mb-0"><code>.bg-danger</code></p>
-      <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-4" id="progress-multiple-bars"><a href="https://getbootstrap.com/docs/4.1/components/progress/#multiple-bars" target="_blank">バーの積み重ね </a>
-      </h4>
-      <p class="my-2"><code>div.progress-bar</code> を複数用いれば左から右に積み重なる。</p>
-      <div class="progress">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-4" id="progress-striped"><a href="https://getbootstrap.com/docs/4.1/components/progress/#striped" target="_blank">ストライプ表示</a>
-      </h4>
-      <p class="my-2">バーに <code>.progress-bar-striped</code> を追加する。</p>
-      <div class="progress my-2">
-        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <div class="progress my-2">
-        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <div class="progress my-2">
-        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <div class="progress my-2">
-        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <div class="progress my-2">
-        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-4" id="progress-animated-stripes"><a href="https://getbootstrap.com/docs/4.1/components/progress/#animated-stripes" target="_blank">ストライプのアニメーション</a>
-      </h4>
-      <p class="mt-3 mb-2">さらに <code>.progress-bar-animated</code> を追加する。</p>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-      </div>
-      <h2 class="mt-5" id="scrollspy"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/" target="_blank">スクロールスパイ</a>
+      <h2 class="mt-5" id="scrollspy"><a href="https://getbootstrap.com/docs/4.2/components/scrollspy/" target="_blank">スクロールスパイ</a>
       </h2>
       <p class="my-2">インジケータコンポーネント( <a href="components-9.html">ナビゲーション</a> または <a href="components-7.html">リストグループ</a> )のアクティブアイテム表示と縦スクロールするコンテンツのスクロールを同期させる機能。</p>
-      <h4 class="mt-3" id="scrollspy-how-it-works"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#how-it-works" target="_blank">仕組み</a>
+      <h4 class="mt-3" id="scrollspy-how-it-works"><a href="https://getbootstrap.com/docs/4.2/components/scrollspy/#how-it-works" target="_blank">仕組み</a>
       </h4>
       <p class="my-2">スクロールスパイはJavaScriptを用いてスクロールするコンテンツの現在位置を監視し、インジケータ(ナビゲーションまたはリストグループ)のアクティブ表示を更新する。機能上の必要条件は次の通り。</p>
       <ul>
@@ -202,16 +66,523 @@
         <li>インジケータコンポーネントに <code>id="{indicator-id}"</code> を設定する</li>
         <li>アイテムの内部にリンク <code>a</code> と属性 <code>href=&quot;#{target-id}&quot;</code> を設定する</li>
       </ul>
-      <h4 class="mt-3" id="scrollspy-example-in-navbar"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#example-in-navbar" target="_blank">ナビゲーションバーへの設定</a>
+      <h4 class="mt-3" id="scrollspy-example-in-navbar"><a href="https://getbootstrap.com/docs/4.2/components/scrollspy/#example-in-navbar" target="_blank">ナビゲーションバーへの設定</a>
       </h4>
       <p>⇒ <a href="scrollspy-1.html">デモページ</a></p>
-      <h4 class="mt-4" id="scrollspy-example-with-nested-nav"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-nested-nav" target="_blank">階層ナビゲーションへの設定</a>
+      <h4 class="mt-4" id="scrollspy-example-with-nested-nav"><a href="https://getbootstrap.com/docs/4.2/components/scrollspy/#example-with-nested-nav" target="_blank">階層ナビゲーションへの設定</a>
       </h4>
       <p>⇒ <a href="scrollspy-2.html">デモページ</a></p>
-      <h4 class="mt-4" id="scrollspy-example-with-list-group"><a href="https://getbootstrap.com/docs/4.1/components/scrollspy/#example-with-list-group" target="_blank">リストグループへの設定</a>
+      <h4 class="mt-4" id="scrollspy-example-with-list-group"><a href="https://getbootstrap.com/docs/4.2/components/scrollspy/#example-with-list-group" target="_blank">リストグループへの設定</a>
       </h4>
       <p>⇒ <a href="scrollspy-3.html">デモページ</a></p>
-      <h2 class="mt-5" id="tooltips"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/" target="_blank">ツールチップ</a>
+      <h2 class="mt-5" id="spinners"><a href="https://getbootstrap.com/docs/4.2/components/spinners/" target="_blank">スピナー</a>
+      </h2>
+      <p>スピナーは主に「ロード中」状態を表示するのに用いられる。</p>
+      <h4 class="mt-3" id="spinners-border-spinner"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#border-spinner" target="_blank">ボーダースピナー</a>
+      </h4>
+      <div class="spinner-border" role="status"><span class="sr-only" Loading...></span></div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spinner-border-structure" aria-control="#spinner-border-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spinner-border-structure">
+        <li>ボーダースピナー<code>div.spinner-border</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a1-1">アクセシビリティ属性 <code>role="status"</code></li>
+            <li>スクリーンリーダ用 <code>span.sr-only</code>
+              <ul>
+                <li class="txt">Text <code>Loading...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="spinners-colors"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#colors" target="_blank">色の設定</a>
+      </h5>
+      <p class="my-2"><code>.text-(primary|secondary|success|danger|warning|info|light|dark)</code> を追加する。</p>
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-primary</code></div>
+          <div class="spinner-border text-primary" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-secondary</code></div>
+          <div class="spinner-border text-secondary" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-success</code></div>
+          <div class="spinner-border text-success" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-danger</code></div>
+          <div class="spinner-border text-danger" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-warning</code></div>
+          <div class="spinner-border text-warning" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-info</code></div>
+          <div class="spinner-border text-info" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-light</code></div>
+          <div class="spinner-border text-light" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-dark</code></div>
+          <div class="spinner-border text-dark" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="spinners-growing-spinner"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#growing-spinner" target="_blank">拡大スピナー</a>
+      </h4>
+      <div class="spinner-grow" role="status"><span class="sr-only" Loading...></span></div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spinner-grow-structure" aria-control="#spinner-grow-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spinner-grow-structure">
+        <li>拡大スピナー <code>div.spinner-grow</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a2-1">アクセシビリティ属性 <code>role="status"</code></li>
+            <li>スクリーンリーダ用 <code>span.sr-only</code>
+              <ul>
+                <li class="txt">テキスト <code>Loading...</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-primary</code></div>
+          <div class="spinner-grow text-primary" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-secondary</code></div>
+          <div class="spinner-grow text-secondary" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-success</code></div>
+          <div class="spinner-grow text-success" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-danger</code></div>
+          <div class="spinner-grow text-danger" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-warning</code></div>
+          <div class="spinner-grow text-warning" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-info</code></div>
+          <div class="spinner-grow text-info" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-light</code></div>
+          <div class="spinner-grow text-light" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column">
+          <div><code>.text-dark</code></div>
+          <div class="spinner-grow text-dark" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="spinners-alignment"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#alignment" target="_blank">アラインメント</a>
+      </h4>
+      <h5 class="mt-3" id="spinners-margin"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#margin" target="_blank">マージン</a>
+      </h5>
+      <p><a href="utilities-4.html/#spacing">空白ユーティリティ</a> を用いる。</p>
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column border">
+          <div><code>.m-0</code></div>
+          <div class="spinner-border m-0" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column border">
+          <div><code>.m-1</code></div>
+          <div class="spinner-border m-1" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column border">
+          <div><code>.m-2</code></div>
+          <div class="spinner-border m-2" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column border">
+          <div><code>.m-3</code></div>
+          <div class="spinner-border m-3" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column border">
+          <div><code>.m-4</code></div>
+          <div class="spinner-border m-4" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 flex-column border">
+          <div><code>.m-5</code></div>
+          <div class="spinner-border m-5" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+      </div>
+      <h5 class="mt-3" id="spinners-placement"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#placement" target="_blank">配置</a>
+      </h5>
+      <p class="my-2">各種ユーティリティを利用できる。</p>
+      <h6 class="mt-3" id="spinners-flex"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#flex" target="_blank">Flexboxユーティリティ</a>
+      </h6>
+      <p class="my-2"><a href="utilities-3.html#flex-align-items">要素の配置設定</a> と <a href="utilities-3.html#flex-auto-margins">自動マージン</a> を用いた例。</p>
+      <div class="d-flex align-items-center"><strong>Loading...</strong>
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spinner-flex-structure" aria-control="#spinner-flex-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spinner-flex-structure">
+        <li><code>div.d-flex.align-items-center</code>
+          <ul>
+            <li><code>strong </code>
+              <ul>
+                <li class="txt">テキスト <code>Loading...</code></li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+            <li>スピナー <code>div.spinner-border</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a3-1" aria-control=".a3-1" aria-expanded="false">属性</a>
+              <ul class="collapse a3-1">
+                <li class="att">アクセシビリティ属性 <code>role="status"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-hidden="true"</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3" id="spinners-floats"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#floats" target="_blank">フロート</a>
+      </h6>
+      <p class="my-2"><a href="utilities-3.html#float">フロート</a> と <a href="utilities-1.html#clearfix">クリアフィックス</a> を用いた例。</p>
+      <div class="mt-2"><code>.float-left</code></div>
+      <div class="clearfix">
+        <div class="spinner-border float-left" role="status"><span class="sr-only" Loading...></span></div>
+      </div>
+      <div class="mt-2"><code>.float-right</code></div>
+      <div class="clearfix">
+        <div class="spinner-border float-right" role="status"><span class="sr-only" Loading...></span></div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spinner-floats-structure" aria-control="#spinner-floats-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spinner-floats-structure">
+        <li><code>div.clearfix</code>
+          <ul>
+            <li>スピナー <code>div.spinner-border</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a4-1" aria-control=".a4-1" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a4-1">フロート <code>.float-(left|right)</code></li>
+                <li class="att collapse a4-1">アクセシビリティ属性 <code>role="status"</code></li>
+                <li>スクリーンリーダ用 <code>span.sr-only</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="mt-3" id="spinners-text-align"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#text-align" target="_blank">テキストアライン</a>
+      </h6>
+      <p><a href="utilities-5.html/#text-alignment">テキストユーティリティ </a>を用いた例。</p>
+      <div class="mt-2"><code>.text-left</code></div>
+      <div class="text-left">
+        <div class="spinner-border" role="status"><span class="sr-only" Loading...></span></div>
+      </div>
+      <div class="mt-2"><code>.text-center</code></div>
+      <div class="text-center">
+        <div class="spinner-border" role="status"><span class="sr-only" Loading...></span></div>
+      </div>
+      <div class="mt-2"><code>.text-right</code></div>
+      <div class="text-right">
+        <div class="spinner-border" role="status"><span class="sr-only" Loading...></span></div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spinner-text-align-structure" aria-control="#spinner-text-align-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spinner-text-align-structure">
+        <li><code>div.text-(left|center|right)</code>
+          <ul>
+            <li>スピナー <code>div.spinner-border</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a5-1" aria-control=".a5-1" aria-expanded="false">属性</a>
+              <ul class="collapse a5-1">
+                <li class="att">アクセシビリティ属性 <code>role="status"</code></li>
+              </ul>
+              <ul>
+                <li>スクリーンリーダ用 <code>span.sr-only</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="spinners-size"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#size" target="_blank">サイズ</a>
+      </h4>
+      <p class="my-2">小型のスピナーは<code>.spinner-(border|grow)-sm</code> を追加する。</p>
+      <div class="row">
+        <div class="col"><code>div.spinner-border.spinner-border-sm</code><br>
+          <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col"><code>div.spinner-grow.spinner-grow-sm</code><br>
+          <div class="spinner-grow spinner-grow-sm" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+      </div>
+      <p class="mt-3 mb-2">カスタムCSSまたはインラインスタイルを用いて任意の大きさに設定できる。</p>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mt-2"><code>style=&quot;width: 1rem; height: 1rem;&quot;</code><br>
+          <div class="spinner-border" style="width: 1rem; height: 1rem;" role="status"><span class="sr-only" Loading...></span></div>
+          <div class="spinner-grow" style="width: 1rem; height: 1rem;" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-2"><code>style=&quot;width: 2rem; height: 2rem;&quot;</code><br>
+          <div class="spinner-border" style="width: 2rem; height: 2rem;" role="status"><span class="sr-only" Loading...></span></div>
+          <div class="spinner-grow" style="width: 2rem; height: 2rem;" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-2"><code>style=&quot;width: 3rem; height: 3rem;&quot;</code><br>
+          <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only" Loading...></span></div>
+          <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-2"><code>style=&quot;width: 4rem; height: 4rem;&quot;</code><br>
+          <div class="spinner-border" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only" Loading...></span></div>
+          <div class="spinner-grow" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-2"><code>style=&quot;width: 5rem; height: 5rem;&quot;</code><br>
+          <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status"><span class="sr-only" Loading...></span></div>
+          <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-2"><code>style=&quot;width: 6rem; height: 6rem;&quot;</code><br>
+          <div class="spinner-border" style="width: 6rem; height: 6rem;" role="status"><span class="sr-only" Loading...></span></div>
+          <div class="spinner-grow" style="width: 6rem; height: 6rem;" role="status"><span class="sr-only" Loading...></span></div>
+        </div>
+      </div>
+      <h4 class="mt-4" id="spinners-buttons"><a href="https://getbootstrap.com/docs/4.2/components/spinners/#buttons" target="_blank">ボタン</a>
+      </h4>
+      <p class="my-2">ボタン内部にスピナーを用いて現在実行中のアクションを表現できる。</p>
+      <div class="my-2">
+        <button class="btn btn-primary" type="button" disabled>
+          <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div><span class="sr-only" Loading...></span>
+        </button>
+        <button class="btn btn-primary" type="button" disabled>
+          <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div> Loading...
+        </button>
+      </div>
+      <div class="my-2">
+        <button class="btn btn-primary" type="button" disabled>
+          <div class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></div><span class="sr-only" Loading...></span>
+        </button>
+        <button class="btn btn-primary" type="button" disabled>
+          <div class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></div> Loading...
+        </button>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spinner-buttons-structure" aria-control="#spinner-buttons-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spinner-buttons-structure">
+        <li>ボタン <code>button.btn.btn-primary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-1" aria-control=".a6-1" aria-expanded="false">属性</a>
+          <ul class="collapse a6-1">
+            <li class="att">属性 <code>type="button"</code></li>
+            <li class="att">属性 <code>disabled</code></li>
+          </ul>
+          <ul>
+            <li>小型スピナー <code>div.spinner-(border|grow).spinner-(border|grow)-sm</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">属性</a>
+              <ul class="collapse a6-2">
+                <li class="att">アクセシビリティ属性 <code>role="status"</code></li>
+                <li class="att">アクセシビリティ属性 <code>aria-hidden="true"</code></li>
+              </ul>
+            </li>
+            <li>(左側のみ: テキストなしボタン用) スクリーンリーダ用 <code>span.sr-only</code>
+              <ul>
+                <li class="txt">テキスト <code>Loading...</code></li>
+              </ul>
+            </li>
+            <li class="txt">(右側のみ) テキスト <code>Loading...</code></li>
+          </ul>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="toasts"><a href="https://getbootstrap.com/docs/4.2/components/toasts/" target="_blank">トースト</a>
+      </h2>
+      <p>トーストは主に短時間だけ表示する通知メッセージ用に用いられる。トーストはデフォルト状態は非表示であり、表示するには次のようなJavaScriptコードを用いる。</p>
+      <pre class="p-2 border bg-light mt-3"><code>$('.toast').toast('show');</code></pre>
+      <p>デフォルト設定では表示後500ms後に自動的に画面から消去されるが、下記の<a href="#toasts-data-options">data属性オプション</a>を用いて消去までの時間を設定したり、消去せずそのまま画面上に残すこともできる。</p>
+      <h4 class="mt-3" id="toasts-examples"><a href="https://getbootstrap.com/docs/4.2/components/toasts/#examples" target="_blank">例</a>
+      </h4>
+      <h5 class="mt-3" id="toasts-basic"><a href="https://getbootstrap.com/docs/4.2/components/toasts/#basic" target="_blank">基本例</a>
+      </h5>
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">11 mins ago</small>
+          <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="toast-body">Hello, world! This is a toast message.</div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#toasts-basic-structure" aria-control="#toasts-basic-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="toasts-basic-structure">
+        <li>トースト(外枠) <code>div.toast</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-1" aria-control=".a7-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a7-1">アクセシビリティ属性 <code>role="alert"</code></li>
+            <li class="att collapse a7-1">アクセシビリティ属性 <code>aria-live="assertive"</code></li>
+            <li class="att collapse a7-1">アクセシビリティ属性 <code>aria-atomic="true"</code></li>
+            <li class="att collapse a7-1">オプション(自動消去しない) <code>data-autohide="false"</code></li>
+            <li>ヘッダ <code>div.toast-header</code>
+              <ul>
+                <li>ロゴアイコン <code>img.rounded.mr-2</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-2" aria-control=".a7-2" aria-expanded="false">属性</a>
+                  <ul class="collapse a7-2">
+                    <li class="att">属性 <code>src="../img/20x20-blue.svg"</code></li>
+                    <li class="att">属性 <code>alt="Logo placeholder"</code></li>
+                  </ul>
+                </li>
+                <li>タイトル <code>strong.mr-auto</code>
+                  <ul>
+                    <li class="txt">テキスト <code>Bootstrap</code></li>
+                  </ul>
+                </li>
+                <li>ヘッダ <code>small.muted</code>
+                  <ul>
+                    <li class="txt">Text <code>11 mins ago</code></li>
+                  </ul>
+                </li>
+                <li>クローズボタン <code>button.ml-2.mb-1.close</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-3" aria-control=".a7-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a7-3">属性 <code>type="button"</code></li>
+                    <li class="att collapse a7-3">属性 <code>data-dismiss="toast"</code></li>
+                    <li class="att collapse a7-3">アクセシビリティ属性 <code>aria-label="Close"</code></li>
+                    <li>ボタンテキスト <code>span</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a7-4" aria-control=".a7-4" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a7-4">アクセシビリティ属性 <code>aria-hidden="true"</code></li>
+                        <li class="txt">テキスト <code>&amp;times;</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>ボディ <code>div.toast-body</code>
+              <ul>
+                <li>テキスト <code>Hello, world! This is a toast message.</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h5 class="mt-3" id="toasts-data-options">data属性オプション</h5>
+      <p class="my-2">トースト外枠 <code>div.toast</code> に次の属性を用いて動作を設定できる。</p>
+      <ul>
+        <li><code>data-delay="{時間[msec]}"</code> 消去までの時間を設定(デフォルト値は<code>"500"</code>[msec])</li>
+        <li><code>data-animation="(true|false)"</code> CSSアニメーションの設定(デフォルト値は <code>"true"</code> )</li>
+        <li><code>data-autohide="(true|false)"</code> 自動消去の設定(デフォルト値は <code>"true"</code> )</li>
+      </ul>
+      <h6 class="mt-2" id="toasts-live-demo">デモ</h6>
+      <p class="my-2">次のデモを使って上記data属性オプションを実際に確認できる。</p>
+      <div class="form-inline">
+        <label class="my-1 mr-2" for="toasts-demo-delay">Delay</label>
+        <select class="custom-select my-1 mr-3" id="toasts-demo-delay">
+          <option value="200">200ms</option>
+          <option value="500" selected>500ms (default)</option>
+          <option value="1000">1s</option>
+          <option value="2000">2s</option>
+          <option value="5000">5s</option>
+          <option value="10000">10s</option>
+          <option value="-1">does not hide</option>
+        </select>
+        <div class="custom-control custom-checkbox my-1 mr-3">
+          <input class="custom-control-input" id="toasts-demo-animation" type="checkbox" checked>
+          <label class="custom-control-label" for="toasts-demo-animation">CSS animation</label>
+        </div>
+        <button class="btn btn-primary my-1 mr-sm-2" id="toasts-demo-start">Start</button>
+      </div>
+      <div class="toast fade hide" id="toasts-demo" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">just now</small>
+          <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="toast-body">Hello, world! This is a toast message.</div>
+      </div>
+      <h5 class="mt-3" id="toasts-translucent"><a href="https://getbootstrap.com/docs/4.2/components/toasts/#translucent" target="_blank">半透明</a>
+      </h5>
+      <p class="my-2">トーストは半透明で(背景が透けて見える)、さらにブラウザが <a href="https://developer.mozilla.org/ja/docs/Web/CSS/backdrop-filter" target="_blank"><code>backdrop-filter</code></a> CSSプロパティをサポートしている場合は背景のぼかし効果も加える。
+      </p>
+      <div class="bg-secondary p-2" style="background-image: url('../img/GitHub-Mark-32px.png');">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+          <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">11 mins ago</small>
+            <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="toast-body">Hello, world! This is a toast message.</div>
+        </div>
+      </div>
+      <h5 class="mt-3" id="toasts-stacking"><a href="https://getbootstrap.com/docs/4.2/components/toasts/#stacking" target="_blank">積み重ね</a>
+      </h5>
+      <p class="my-2">トーストは複数個を同時表示可能で、上下に積み重なった状態で表示する。</p>
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">just now</small>
+          <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="toast-body">See? Just like this.</div>
+      </div>
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">2 seconds ago</small>
+          <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="toast-body">Heads up, toasts will stack automatically.</div>
+      </div>
+      <h4 class="mt-3" id="toasts-placement"><a href="https://getbootstrap.com/docs/4.2/components/toasts/#placement" target="_blank">配置</a>
+      </h4>
+      <p class="my-2">CSSのインラインスタイルを用いて、トーストを任意の場所に配置できる。次は(もっとも典型的な)左上への配置例(設定方法は下記 
+        <button class="btn btn-outline-info btn-sm">構造</button> をクリックして表示)。
+      </p>
+      <div class="bg-secondary" aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+        <div class="toast" style="position: absolute; top: 0; right: 0;" data-autohide="false">
+          <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">11 mins ago</small>
+            <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="toast-body">Hello, world! This is a toast message.</div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#toasts-placement-1-structure" aria-control="#toasts-placement-1-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="toasts-placement-1-structure">
+        <li>親要素(背景) <code>div.bg-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-1" aria-control=".a8-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a8-1">アクセシビリティ属性 <code>aria-live="polite"</code></li>
+            <li class="att collapse a8-1">アクセシビリティ属性 <code>aria-atomic="true"</code></li>
+            <li class="att collapse a8-1">インラインスタイル <code>style="position: relative; min-height: 200px;"</code></li>
+            <li>トースト(外枠) <code>div.toast</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a8-2" aria-control=".a8-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a8-2">インラインスタイル <code>style="position: absolute; top: 0; right: 0;"</code></li>
+                <li class="att collapse a8-2">オプション <code>data-autohide="false"</code></li>
+                <li>ヘッダ(<a href="#toasts-basic">基本例</a>と同じ)</li>
+                <li>ボディ(<a href="#toasts-basic">基本例</a>と同じ)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-3 mb-2">複数積み重ね表示と組み合わせる場合はラッパ要素を用いてグループ化すればよい。</p>
+      <div class="bg-secondary" aria-live="polite" aria-atomic="true" style="position: relative; min-height: 250px;">
+        <div style="position: absolute; top: 0; right: 0;">
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+            <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">just now</small>
+              <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="toast-body">See? Just like this.</div>
+          </div>
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+            <div class="toast-header"><img class="rounded mr-2" src="../img/20x20-blue.svg" alt="Logo placeholder"><strong class="mr-auto">Bootstrap</strong><small class="muted">2 seconds ago</small>
+              <button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="toast-body">Heads up, toasts will stack automatically.</div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#toasts-placement-2-structure" aria-control="#toasts-placement-2-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="toasts-placement-2-structure">
+        <li>親(背景) <code>div.bg-secondary</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-1" aria-control=".a9-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a9-1">アクセシビリティ属性 <code>aria-live="polite"</code></li>
+            <li class="att collapse a9-1">アクセシビリティ属性 <code>aria-atomic="true"</code></li>
+            <li class="att collapse a9-1">インラインスタイル <code>style="position: relative; min-height: 250px;"</code></li>
+            <li class="att">ラッパ <code>div</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a9-2" aria-control=".a9-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="att collapse a9-2">インラインスタイル <code>style="position: absolute; top: 0; right: 0;"</code></li>
+                <li>トースト(1) (<a href="#toasts-basic">基本例</a>と同じ)</li>
+                <li>トースト(2) (<a href="#toasts-basic">基本例</a>と同じ)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-3" id="toasts-accessibility"><a href="https://getbootstrap.com/docs/4.2/components/toasts/#accessibility" target="_blank">アクセシビリティ</a>
+      </h4>
+      <h5 class="mt-2" id="toasts-accessibility-summary">まとめ</h5>
+      <ul>
+        <li>全体を <a href="https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" target="_blank">aria-live region</a> で囲む(具体的には外枠に <code>aria-live="(assertive|polite|...)"</code> を設定)
+        </li>
+        <li><code>aria-atomic="true"</code> を設定する</li>
+        <li>ロール属性 <code>role="(alert|status|...)"</code> を設定する</li>
+      </ul>
+      <h2 class="mt-5" id="tooltips"><a href="https://getbootstrap.com/docs/4.2/components/tooltips/" target="_blank">ツールチップ</a>
       </h2>
       <p class="mt-2 mb-1">HTML要素の <code>title</code> 属性を用いたツールチップ(ポップアップ)表示機能をカスタマイズしたもの。実装に <a href="https://popper.js.org/" target="_blank">Popper.js</a> を利用している。
       </p>
@@ -220,12 +591,12 @@
         <li>Bootstrapのツールチップ ⇒ <span class="text-danger" title="Bootstrapのツールチップ" data-toggle="tooltip">この部分</span> をホバーすると表示</li>
       </ul>
       <div class="alert alert-info" role="alert"><code>a</code> や <code>button</code> などタブストップを受ける要素は <kbd>Tab</kbd> キーでフォーカスした場合もポップアップ表示する。</div>
-      <h4 class="mt-4" id="tooltips-example-enable-tooltips-everywhere"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/#example-enable-tooltips-everywhere" target="_blank">初期化方法</a>
+      <h4 class="mt-4" id="tooltips-example-enable-tooltips-everywhere"><a href="https://getbootstrap.com/docs/4.2/components/tooltips/#example-enable-tooltips-everywhere" target="_blank">初期化方法</a>
       </h4>
       <p>Bootstrapのツールチップは初期状態では無効になっており、有効にするためにはJavaScriptコードが必要。最も簡単な方法を次に示す。</p>
       <pre class="p-2 border bg-light"><code>$('[data-toggle="tooltip"]').tooltip();</code></pre>
       <div class="alert alert-warning" role="alert"><strong>注: </strong>コードの置き場所に注意。ツールチップを使っている場所(の近く)に <code>script</code> を使っても動作しない。jquery, popper.js, bootstrap.jsが事前に必要で、これら3つの後に設定(実行)すること。</div>
-      <h4 class="mt-4" id="tooltips-examples"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/#examples" target="_blank">設定方法</a>
+      <h4 class="mt-4" id="tooltips-examples"><a href="https://getbootstrap.com/docs/4.2/components/tooltips/#examples" target="_blank">設定方法</a>
       </h4>
       <ul class="my-1">
         <li>任意の要素に設定可: 次の属性を設定</li>
@@ -277,7 +648,7 @@
         </li>
       </ul>
       <p>設定例 ⇒ <span class="text-danger" data-toggle="tooltip" data-html="true" title="TNT(C&lt;sub&gt;6&lt;/sub&gt;H&lt;sub&gt;2&lt;/sub&gt;(NO&lt;sub&gt;2&lt;/sub&gt;)&lt;sub&gt;3&lt;/sub&gt;CH&lt;sub&gt;3&lt;/sub&gt;)">この部分</span> をホバーすると表示</p>
-      <h4 class="mt-4" id="disabled-elements"><a href="https://getbootstrap.com/docs/4.1/components/tooltips/#disabled-elements" target="_blank">無効化した要素への設定</a>
+      <h4 class="mt-4" id="disabled-elements"><a href="https://getbootstrap.com/docs/4.2/components/tooltips/#disabled-elements" target="_blank">無効化した要素への設定</a>
       </h4>
       <p class="my-2">要素に属性 <code>disabled</code> を設定した場合ツールチップは表示されなくなる。次の例は <code>button</code> に下記の通り設定しているが、ツールチップはポップアップしない。</p>
       <ul class="struct">
@@ -320,12 +691,12 @@
       <nav class="mt-4 mb-5" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
-          <li class="breadcrumb-item active" aria-current="page">コンポーネント(12): プログレスバー/スクロールスパイ/ツールチップ</li>
+          <li class="breadcrumb-item active" aria-current="page">コンポーネント(12): スクロールスパイ / スピナー / トースト / ツールチップ</li>
         </ol>
       </nav>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src=".././js/main.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 </html>

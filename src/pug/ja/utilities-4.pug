@@ -19,9 +19,9 @@ block body
         a(href="#spacing") 空白
 
     h2.mt-2#position
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/") 配置
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/") 配置
     h4.mt-4#position-common-values
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#common-values") 設定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#common-values") 設定
     p.my-1
       code .position-(static|relative|absolute|fixed|sticky)
     p.my-2 CSSの 
@@ -32,11 +32,11 @@ block body
       +extLink("https://developer.mozilla.org/ja/docs/Web/CSS/position") CSSリファレンス
       | 参照)
     h4.mt-4#position-fixed-sticky
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top") 上端固定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#fixed-top") 上端固定
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom") 下端固定
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#fixed-bottom") 下端固定
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top") 上端張り付き
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#sticky-top") 上端張り付き
     p.mb-2 要素を画面の上下端に固定し、さらに 
       a(href="layout-1.html#overview-z-index") Z-index
       |  を操作して重なっている他要素より上に表示する機能。
@@ -57,7 +57,7 @@ block body
         a(href="navbar-sticky-top.html") ナビゲーションバーのデモ
 
     h2.mt-5#screenreaders
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/screenreaders/") スクリーンリーダ
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/screenreaders/") スクリーンリーダ
     h5.mt-3#screenreaders-summary スクリーンリーダ対応(まとめ)
     ul
       li スクリーンリーダ利用者のみに提供する要素に 
@@ -97,7 +97,7 @@ block body
             |  キーでフォーカスすると表示する
 
     h2.mt-5#shadows
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/shadows/") シャドウ
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/shadows/") シャドウ
     p.mt-3
       code .shadow(-none|-sm|-lg)?
     h4.mt-4#shadows-examples 表示例
@@ -107,8 +107,10 @@ block body
       div(class=`shadow${opt[0]} p-3 mb-4 bg-${opt[0]=="-none" ? "light" : "white"} rounded`)= `${opt[1]} shadow`
 
     h2.mt-5#sizing
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/sizing/") サイズ
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/sizing/") サイズ
     p.mt-2.mb-1 幅と高さを設定するユーティリティクラス。
+    h4.mt-3#sizing-relative-to-the-parent
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-parent") 親に対する相対指定
     ul.my-0
       li 幅 (25%ステップ + auto) 
         code .w-(25|50|75|100|auto)
@@ -138,14 +140,40 @@ block body
       |  (親の高さにフィット)
     div.border(style="height:200px;")
       img.mh-100(src="../img/320x320.svg")
+    h4.mt-3#sizing-relative-to-the-viewport
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-viewport") ビューポートに対する相対指定
+    ul.my-2
+      li 最小幅をビューポートに対して100% 
+        code .min-vw-100
+      li 最小高さをビューポートに対して100% 
+        code .min-vh-100
+      li 幅をビューポートに対して100% 
+        code .vw-100
+      li 高さをビューポートに対して100% 
+        code .vh-100
+    h5.mt-3#sizing-relative-to-the-viewport-examples 例
+    p.mt-3.mb-1 最小幅をビューポートに対して100% 
+      code div.min-vw-100
+  div.min-vw-100.bg-light.border Min-width 100vw
+  div.container
+    p.mt-3.mb-1 最小高さをビューポートに対して100% 
+      code div.min-vh-100
+    div.min-vh-100.bg-light.border Min-height 100vh
+    p.mt-3.mb-1 幅をビューポートに対して100% 
+      code div.vw-100
+  div.vw-100.bg-light.border Width 100vw
+  div.container
+    p.mt-3.mb-1 高さをビューポートに対して100% 
+      code div.vh-100
+    div.vh-100.bg-light.border Height 100vh
 
     h2.mt-5#spacing
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/") 空白
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/") 空白
     p.my-2 マージン(要素のボックス境界と外部要素の間隔)とパディング(ボックス境界と内部要素の間隔)の設定に用いる
     h4.mt-3#spacing-notation
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/#notation") 記法
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/#notation") 記法
     p.mt-2.mb-1
-      code .(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)
+      code .(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|n1|n2|n3|n4|n5|auto)
     ul
       li
         code (m|p)
@@ -171,9 +199,11 @@ block body
           li
             code 0
             |  間隔を0に設定
-          each w in [[1,"1/4"],[2,"1/2"],[3,"1"],[4,"1.5"],[5,"3"]]
+          each w in [[1,"1/4"],[2,"1/2"],[3,"1"],[4,"1.5"],[5,"3"],["n1","-1/4"],["n2","-1/2"],["n3","-1"],["n4","-1.5"],["n5","-3"]]
             li
               code= w[0]
+              - if (w[1][0] == "-")
+                |  (マージンのみ)
               |  間隔を 
               code= `${w[1]}rem`
               |  に設定
@@ -211,7 +241,7 @@ block body
                 div.m-0.border.bg-light
                   code= `.p${dir[0]}-${p}`
     h4.mt-4#horizontal-centering
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering") 要素の横センタリング
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/#horizontal-centering") 要素の横センタリング
     p 幅を指定したブロック要素の横センタリングに 
       code .mx-auto
       |  を用いることができる。
@@ -219,5 +249,56 @@ block body
       code div.mx-auto
       |  + 
       code style="width: 20rem;"
+
+    h4.mt-4#negative-margin
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/#negative-margin") 負のマージン
+    p 負のマージンは特にグリッド列の
+      a(href="layout-1.html/#grid-gutters") ガター
+      | を調節するのに用いられる。次は画面幅に応じてレスポンシブにガターを調節する例。
+    ul
+      li 幅 &ge; 768px (md以上)でガターを3remに拡大
+      li 幅 &lt; 768px (sm以下)でガターをデフォルト値(15px)に戻す
+    div.border.py-2
+      div.row.mx-md-n5
+        each n in [0,1]
+          div.col.py-3.px-md-5.border.bg-white
+            div.border.bg-light Custom column padding
+    div.my-3
+      +collapseButton("#spacing-negative-margin-structure") 構造
+    ul.struct.mt-3.collapse#spacing-negative-margin-structure
+      li フレーム (コンテナ幅表示用) 
+        code div 
+        +attrsBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 ボーダー 
+            code .border
+          li.att.collapse.a1-1 上下パディング 
+            code .py-2
+          li グリッド行 
+            code div.row
+            +attrsBtn(".a1-2")
+            ul
+              li.attr.collapse.a1-2 幅&ge;768pxで負のマージン(3rem)を設定 
+                code .mx-md-n5
+              li グリッド列 (&times;2) 
+                code div.col
+                +attrsBtn(".a1-3")
+                ul
+                  li.att.collapse.a1-3 上下パディング (1rem) 
+                    code .py-3
+                  li.att.collapse.a1-3 左右パディング (幅&ge;768pxで3rem) 
+                    code .px-md-5
+                  li.att.collapse.a1-3 ボーダー 
+                    code .border
+                  li.att.collapse.a1-3 背景色(白) 
+                    code .bg-white
+                  li 内部 
+                    code div
+                    +attrsBtn(".a1-4")
+                    ul
+                      li.att.collapse.a1-4 背景色(ライトグレー) 
+                        code .bg-light
+                      li.txt テキスト 
+                        code Custom column padding
 
     +breadcrumbLevel1("ユーティリティ(4): 配置/スクリーンリーダ/シャドウ/サイズ/空白")

@@ -16,12 +16,12 @@ block body
         a(href="#button-group") ボタングループ
 
     h2.mt-4#buttons
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/") ボタン
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/") ボタン
     - const buttons = contexts.slice()
     - buttons.push("link")
     - const buttonRe = `(${buttons.join("|")})`
     h4.mt-3#buttons-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#examples") ボタンのサンプル
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/#examples") ボタンのサンプル
     p.my-0
       code= `button.btn.btn-${buttonRe}`
     p.my-1
@@ -30,7 +30,7 @@ block body
           = c[0].toUpperCase() + c.slice(1)
 
     h4.mt-4#buttons-button-tags
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#button-tags") 各種要素への設定例
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/#button-tags") 各種要素への設定例
     div.row
       div.col-sm-6.col-xl-4.py-1
         div
@@ -100,7 +100,7 @@ block body
                 li.att 属性 
                   code value="Reset"
     h4.mt-4#buttons-outline-buttons
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#outline-buttons") アウトラインボタン
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/#outline-buttons") アウトラインボタン
     p.my-0
       code= `button.btn.btn-outline-${contextRe}`
     p.my-1
@@ -108,7 +108,7 @@ block body
         button(type="button" class=`btn btn-outline-${c}`)
           = c[0].toUpperCase() + c.slice(1)
     h4.mt-4#buttons-sizes
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#sizes") サイズの設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/#sizes") サイズの設定
     p.my-0
       code .btn.btn-(lg|sm)
     p.mt-1.mb-0 大 
@@ -133,7 +133,7 @@ block body
       each c in contexts.slice(0, 2)
         button(type="button" class=`btn btn-${c} btn-lg btn-block`) Block level button
     h4.mt-4#buttons-active-state
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#active-state") アクティブ状態
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/#active-state") アクティブ状態
     p.my-2
       code .active
       |  を設定すると常に押された状態(pressed/active)の(濃い)配色で表示する。
@@ -144,7 +144,7 @@ block body
           |  link
         | &nbsp;
     h4.mt-4#buttons-disabled-state
-      +extLink("https://getbootstrap.com/docs/4.1/components/buttons/#disabled-state") 無効化状態
+      +extLink("https://getbootstrap.com/docs/4.2/components/buttons/#disabled-state") 無効化状態
     ul
       li
         code button
@@ -197,9 +197,9 @@ block body
           |  link
         | &nbsp;
     h2.mt-5#button-group
-      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/") ボタングループ
+      +extLink("https://getbootstrap.com/docs/4.2/components/button-group/") ボタングループ
     h4.my-3#button-group-basic-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#basic-example") 基本例
+      +extLink("https://getbootstrap.com/docs/4.2/components/button-group/#basic-example") 基本例
     div.btn-group(role="group" aria-label="Basic example")
       each pos in ["Left", "Middle", "Right"]
         button.btn.btn-secondary(type="button")= pos
@@ -223,7 +223,7 @@ block body
               li.txt テキスト(例) 
                 code Left
     h4.mt-4#button-group-button-toolbar
-      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#button-toolbar") ボタンツールバー
+      +extLink("https://getbootstrap.com/docs/4.2/components/button-group/#button-toolbar") ボタンツールバー
     p.my-2 ボタングループや他のコンポーネントを上位でグループ化する親要素。
     div.my-3
       +collapseButton("#button-toolbar-structure") 構造
@@ -295,7 +295,7 @@ block body
             input.form-check-input(type="radio" name="inlineRadioOptions" id=`inlineRadio${n}` value=`option${n}`)
             label.form-check-label(for=`inlineRadio${n}`)= n
     h4.mt-4.mb-1#button-group-sizing
-      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#sizing") サイズ設定
+      +extLink("https://getbootstrap.com/docs/4.2/components/button-group/#sizing") サイズ設定
     p.mt-1.mb-2
       code .btn-group-(lg|sm)
       |  を用いる: 以下は設定サンプル
@@ -306,7 +306,7 @@ block body
         each pos in ["Left","Middle","Right"]
           button.btn.btn-secondary(type="button")= pos
     h4.mt-4#button-group-nesting
-      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#nesting") ドロップダウン
+      +extLink("https://getbootstrap.com/docs/4.2/components/button-group/#nesting") ドロップダウン
     p.my-0 ボタンの中に
       a(href="components-4.html#dropdowns") ドロップダウン
       | を用いる場合はボタングループを2重にネストする。
@@ -335,7 +335,7 @@ block body
           each n in [1, 2]
             a.dropdown-item(href="#")= `Dropdown link ${n}`
     h4.mt-4.mb-1#button-group-vertical-variation
-      +extLink("https://getbootstrap.com/docs/4.1/components/button-group/#vertical-variation") 縦の配置
+      +extLink("https://getbootstrap.com/docs/4.2/components/button-group/#vertical-variation") 縦の配置
     p.mb-2
       code div.btn-group-vertical
     div.btn-group-vertical(role="group" aria-label="Vertical example")

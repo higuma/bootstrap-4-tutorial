@@ -16,13 +16,15 @@ block body
         a(href="#code") Code
 
     h2.mt-2#reboot
-      +extLink("https://getbootstrap.com/docs/4.1/content/reboot/") Reboot
-    p About Reboot (reset CSS introduced by Bootstrap 4).
+      +extLink("https://getbootstrap.com/docs/4.2/content/reboot/") Reboot
+    p About Reboot (reset CSS introduced by Bootstrap 4). See the 
+      +extLink("https://getbootstrap.com/docs/4.2/content/reboot/") official document
+      |  for detail.
 
     h2.mt-5#typography
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/") Typography
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/") Typography
     h4.mt-3.mt-1#typo-headings
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#headings") Headings
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#headings") Headings
     p.my-1 Sample headings for 
       code h1
       |  , 
@@ -53,7 +55,7 @@ block body
       span(class=`h${i}`)
         = ` span.h${i} `
     h4.mt-4.mb-1#typo-customizing-headings
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#customizing-headings") Customizing headings
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#customizing-headings") Customizing headings
     p.my-2 Example using 
       code .text-muted
       |  for a secondary heading (see 
@@ -62,7 +64,7 @@ block body
     h3 Fancy display heading 
       small.text-muted With faded secondary text
     h4.mt-4.mb-1#typo-display-headings
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#display-headings") Display headings
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#display-headings") Display headings
     p.mt-1.mb-0 Add 
       code .display-(1|2|3|4)
       |  to a heading to stand out (examples used in 
@@ -78,7 +80,7 @@ block body
     p.my-1
       span.display-4 span.display-4
     h4.mt-4.mb-1#typo-lead
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#lead") Lead
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#lead") Lead
     p.mt-1 Add 
       code .lead
       |  to stand out a paragraph.
@@ -89,7 +91,7 @@ block body
       code .lead
       = `) ${lorem}`
     h4.mt-4.mb-2#typo-inline-text-elements
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#inline-text-elements") Inline text elements
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#inline-text-elements") Inline text elements
     p.my-2
       code mark
       |  example ⇒ You can use the mark tag to 
@@ -124,7 +126,7 @@ block body
       |  example ⇒ 
       em This line rendered as italicized text.
     h4.mt-4.mb-2#typo-abbreviations
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#abbreviations") Abbreviations
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#abbreviations") Abbreviations
     p.my-2
       code abbr
       |  is used for abbreviations and acronyms. It shows text with a dotted underline and popups a tooltip on hover.
@@ -151,7 +153,7 @@ block body
     p.ml-3.my-1
       abbr.initialism(title="HyperText Markup Language") HTML
     h4.mt-4.mb-1#typo-blockquotes
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#blockquotes") Blockquotes
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#blockquotes") Blockquotes
     p.mt-1.mb-3
       code blockquote
       |  is used for quoting blocks of content from another source (an example below).
@@ -185,7 +187,7 @@ block body
                       li.txt Text 
                         code Source Title
     h4.mt-4.mb-1#typo-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#alignment") Alignment
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#alignment") Alignment
     p.mt-1 Use 
       code .text-(left|center|right)
       |  (see 
@@ -200,9 +202,9 @@ block body
         footer.blockquote-footer Someone famous in
           cite(title="Source Title") Source Title
     h4.mt-4.mb-1#typo-list
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#lists") Lists (ul, ol)
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#lists") Lists (ul, ol)
     h5.mt-3.mb-1#typo-list-unstyled
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#unstyled") Unstyled
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#unstyled") Unstyled
     p.my-2
       code (ul|ol).list-unstyled
       |  removes default CSS 
@@ -218,7 +220,7 @@ block body
       li Laboris nisi ut aliquip ex ea commodo consequat.
       li Duis aute irure dolor in
     h5.mt-3.mb-1#typo-list-inline
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#inline") Inline
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#inline") Inline
     p.mb-2 Use 
       code (ul|ol).list-inline
       |  to arrange items inline (horizontally)
@@ -226,7 +228,7 @@ block body
       each line in ["Lorem ipsum", "Phasellus iaculis", "Nulla volutpat"]
         li.list-inline-item= line
     h4.mt-4#typo-description-list-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/content/typography/#description-list-alignment") Description list alignment
+      +extLink("https://getbootstrap.com/docs/4.2/content/typography/#description-list-alignment") Description list alignment
     p.mt-2.mb-3 Elements for the description list (
       code dl
       |  , 
@@ -273,15 +275,15 @@ block body
           dd.col-md-8 Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.
 
     h2.mt-4#code
-      +extLink("https://getbootstrap.com/docs/4.1/content/code/") Code
+      +extLink("https://getbootstrap.com/docs/4.2/content/code/") Code
     h4.mt-4.mb-1#code-inline-code
-      +extLink("https://getbootstrap.com/docs/4.1/content/code/#inline-code") Inline code
+      +extLink("https://getbootstrap.com/docs/4.2/content/code/#inline-code") Inline code
     p.mb-2 Use 
       code code
     p.ml-4.mt-2 Example ⇒ 
       code Math.sqrt(a*a + b*b)
     h4.mt-4.mb-1#code-code-blocks
-      +extLink("https://getbootstrap.com/docs/4.1/content/code/#code-blocks") Code blocks
+      +extLink("https://getbootstrap.com/docs/4.2/content/code/#code-blocks") Code blocks
     p.my-2 Use 
       code code
       |  within 
@@ -310,7 +312,7 @@ block body
       code= "&gt;"
       |  , ...) respectively.
     h4.mt-4.mb-1#code-variables
-      +extLink("https://getbootstrap.com/docs/4.1/content/code/#variables") Variables
+      +extLink("https://getbootstrap.com/docs/4.2/content/code/#variables") Variables
     p Use 
       code var
       |  (displays italicized)
@@ -324,13 +326,13 @@ block body
       var c
 
     h4.mt-4.mb-1#code-user-input
-      +extLink("https://getbootstrap.com/docs/4.1/content/code/#user-input") User input
+      +extLink("https://getbootstrap.com/docs/4.2/content/code/#user-input") User input
     p.mb-2 Use 
       code kbd
     p.ml-4.mt-2 Example ⇒ 
       kbd npm install --save-dev bootstrap
     h4.mt-4.mb-1#code-sample-output
-      +extLink("https://getbootstrap.com/docs/4.1/content/code/#sample-output") Sample output
+      +extLink("https://getbootstrap.com/docs/4.2/content/code/#sample-output") Sample output
     p.mb-2 Use 
       code samp
     p.ml-4.mt-2 Example ⇒ 

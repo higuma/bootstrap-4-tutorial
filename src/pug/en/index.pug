@@ -11,20 +11,19 @@ block body
     ul
       li
         a(href="#about") About this tutorial
-      li.mb-2
-        a(href="#notation") Notation
+        ul
+          li.mb-2
+            a(href="#notation") Notation
       li
         a(href="getting-started.html") Getting started
       li Layout
-        ol
+        ul
           li
             a(href="layout-1.html") Overview
             |  / 
             a(href="layout-1.html#grid") Grid system
-          li
-            a(href="layout-2.html") Media object
             |  / 
-            a(href="layout-2.html#utilities") Utilities for layout
+            a(href="layout-1.html#utilities") Utilities for layout
       li Content
         ol
           li
@@ -60,18 +59,28 @@ block body
             a(href="components-6.html") Input group
             |  / 
             a(href="components-6.html#jumbotron") Jumbotron
-          li: a(href="components-7.html") List group
-          li: a(href="components-8.html") Modal
-          li: a(href="components-9.html") Navs
-          li: a(href="components-10.html") Navbar
+          li
+            a(href="components-7.html") List group
+          li
+            a(href="components-8.html") Media object
+            |  / 
+            a(href="components-8.html#modal") Modal
+          li
+            a(href="components-9.html") Navs
+          li
+            a(href="components-10.html") Navbar
           li
             a(href="components-11.html") Pagination
             |  / 
             a(href="components-11.html#popovers") Popovers
-          li
-            a(href="components-12.html") Progress
             |  / 
-            a(href="components-12.html#scrollspy") Scrollspy
+            a(href="components-11.html#progress") Progress
+          li
+            a(href="components-12.html") Scrollspy
+            |  / 
+            a(href="components-12.html#spinners") Spinners
+            |  / 
+            a(href="components-12.html#toasts") Toasts
             |  / 
             a(href="components-12.html#tooltips") Tooltips
       li Utilities
@@ -85,7 +94,7 @@ block body
           li
             a(href="utilities-2.html") Colors
             |  / 
-            a(href="utilities-2.html#display") Display
+            a(href="utilities-2.html#display") Display property
             |  / 
             a(href="utilities-2.html#embed") Embed
           li
@@ -118,7 +127,7 @@ block body
         a(href="extend+migration+about.html#about") About
 
     h2.mt-5#about About this tutorial
-    p.my-2 This is a self-study tutorial for Bootstrap version 4. It is written mostly the same order as official Bootstrap 4.1 document. But you can read in any order you like.
+    p.my-2 This is a self-study tutorial for Bootstrap version 4. It is basically written in the same order as official Bootstrap 4.2 document. But you can read in any order you like.
     p.my-2 The tutorial is written in 
       +extLink("https://pugjs.org/") pug
       |  and built with 
@@ -134,7 +143,7 @@ block body
       | . The site is hosted by 
       +extLink("https://pages.github.com/") GitHub Pages
       | .
-    h2.mt-5#notation Notation
+    h4.mt-4#notation Notation
     p.mt-2.mb-3 This tutorial uses a special notation for representing HTML structures. For example, consider a 
       a(href="components-2.html#button-group-button-toolbar") button toolbar
       |  as below.

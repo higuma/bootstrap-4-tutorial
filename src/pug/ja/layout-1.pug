@@ -2,20 +2,22 @@ extends ../template-cdn-ja
 include ../mixins-ja
 
 block head
-  title Bootstrap 4 tutorial: レイアウト(1): 概要 / グリッド
+  title Bootstrap 4 tutorial: レイアウト: 概要 / グリッド / レイアウトユーティリティ
 
 block body
   div.container
     +pageHeader("layout-1")
-      p.lead レイアウト(1): 
+      p.lead レイアウト: 
         a(href="#overview") 概要
         |  / 
         a(href="#grid") グリッド
+        |  / 
+        a(href="#utilities") レイアウトユーティリティ
 
     h2.mt-2#overview
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/") 概要
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/") 概要
     h4.mt-3.mb-1#overview-containers
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#containers") コンテナ
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/#containers") コンテナ
     p.mb-2
     | Bootstrapではレイアウトのトップレベル要素(コンテナ)として 
     code .container
@@ -30,9 +32,9 @@ block body
     |  ⇒ 常に(親要素に対し)横幅100%に設定
   div.container
     h4.mt-4#overview-responsive-breakpoints
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints") レスポンシブ動作のブレークポイント
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/#responsive-breakpoints") レスポンシブ動作のブレークポイント
     p.my-2 Bootstrapではレスポンシブ応答する幅のステップ設定をブレークポイント(breakpoint)と呼び、画面幅に対応した5通りの設定がある(詳しくは公式ドキュメントの 
-      a(href="https://getbootstrap.com/docs/4.1/layout/grid/#grid-options") Grid options
+      a(href="https://getbootstrap.com/docs/4.2/layout/grid/#grid-options") Grid options
       |  一覧表を参照)。
     table.table.table-bordered
       thead.thead-light
@@ -63,7 +65,7 @@ block body
       code -xs
       |  という幅指定は(意図的に)ない。また優先度を利用して特定の幅領域だけ設定を有効にしたり、設定を変えてレイアウトを組み替えたりすることができる。
     h4.mt-4#overview-z-index
-      +extLink("https://getbootstrap.com/docs/4.1/layout/overview/#z-index") Z-index
+      +extLink("https://getbootstrap.com/docs/4.2/layout/overview/#z-index") Z-index
     p Bootstrapでは 
       code 1000
       |  以上の 
@@ -117,9 +119,9 @@ block body
             a(href="components-12.html#tooltips") ツールチップ
 
     h2.mt-5#grid
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/") グリッド
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/") グリッド
     h4.mt-4#grid-overview
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#how-it-works") 基本的な使い方
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#how-it-works") 基本的な使い方
     p.my-2 グリッドはBootstrapの基本機能で、次に示す3階層の構造を用いてレイアウトを組む。
     ul.struct
       li 
@@ -217,7 +219,7 @@ block body
       code .row
       |  で左右マージンに負の値を設定してガターをキャンセルしている点に注意。そのためコンテナ/行/列への横方向のマージン/パディング設定を行う場合は注意が必要。特に行の横マージン、列の横パディングを独自に設定するとガターの設定を壊してしまい、予測外の結果になることが多い。
     h4.mt-4#grid-equal-width
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#equal-width") 列の等分配置
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#equal-width") 列の等分配置
     p.my-2 行 
       code div.row
       |  の中に列 
@@ -252,7 +254,7 @@ block body
               li.txt テキスト 
                 code {行内index}/{設定個数}
     h4.mt-4#grid-equal-width-multi-row
-      +extLink(href="https://getbootstrap.com/docs/4.1/layout/grid/#equal-width-multi-row") 折り返し(改行)
+      +extLink(href="https://getbootstrap.com/docs/4.2/layout/grid/#equal-width-multi-row") 折り返し(改行)
     p.my-2
       code div.col
       |  を用いた等分配置で、特定位置で折り返す場合は中身が空の 
@@ -304,7 +306,7 @@ block body
             code div.col
             |  (&times;4)
     h4.mt-4#grid-column-width
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#setting-one-column-width") 列の幅指定(1/12ステップ)
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#setting-one-column-width") 列の幅指定(1/12ステップ)
     p.my-2
       code div.col-(1|2|3|4|5|6|7|8|9|10|11|12)
     - for (let c = 1; c <= 12; c++)
@@ -365,7 +367,7 @@ block body
           li
             code div.col
     h4.mt-4#variable-width-content
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") 幅の自動設定
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#variable-width-content") 幅の自動設定
     p.my-2 (
       code .col
       |  の代わりに)
@@ -383,7 +385,7 @@ block body
       a(href="#grid-margin-auto") 幅の自動設定とFlexboxの組み合わせ
       | )。
     h4.mt-4#grid-column-wrapping
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-wrapping") 列の折り返し
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#column-wrapping") 列の折り返し
     p.my-2 1行に12を超える幅の列を設定した場合は≦12となるように適宜折り返される。
     div.row.border
       each c in [9, 4, 7, 3]
@@ -407,7 +409,7 @@ block body
             code div.col-3
             |  ⇒ 合計&gt;12のため折り返して次行の先頭として表示
     h4.mt-4#grid-column-breaks
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#column-breaks") 強制折り返し
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#column-breaks") 強制折り返し
     p.my-2 幅を指定する場合も中身が空の 
       code div.w-100
       |  を挿入するとその位置で強制的に折り返す。
@@ -440,7 +442,7 @@ block body
           li
             code div.col-4
     h4.mt-4#responsive-classes
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#responsive-classes") レスポンシブ幅設定
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#responsive-classes") レスポンシブ幅設定
     p.my-2
       code .col-(sm|md|lg|xl)(-1|-2|-3|...|-12|-auto)?
     h5.mt-3#responsive-classes-example-1 例1: 等分のレスポンシブ動作
@@ -479,7 +481,7 @@ block body
           - let cls = bp ? `col-${bp}-${w}` : `col-${w}`
           div(class=`${cls} border`)
             div.bg-light
-              code= cls
+              code= `.${cls}`
     div.my-3
       +collapseButton("#responsive-classes-example-2-structure") 構造
     ul.struct.collapse#responsive-classes-example-2-structure
@@ -497,7 +499,7 @@ block body
         each text in ["12345", "12345678901234567890"]
           div(class=`${cls} border`)
             div.bg-light
-              code= cls
+              code= `.${cls}`
               = ` ${text}`
     div.my-3
       +collapseButton("#responsive-classes-example-3-structure") 構造
@@ -511,7 +513,7 @@ block body
             ul
               li.txt テキスト(幅違いを2種類)
     h4.mt-4#stacked-to-horizontal
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#stacked-to-horizontal") レイアウトの縦/横切り替え
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#stacked-to-horizontal") レイアウトの縦/横切り替え
     p.my-2 ここから応用例。モバイル/PCで次のようにレイアウトを切り替える場合を考える。
     div.row
       div.col-5
@@ -568,7 +570,7 @@ block body
             code div.col-md
             |  (&times;3)
     h4.mt-4#mix-and-match
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#mix-and-match") 幅指定とデバイス幅制御の組み合わせ
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#mix-and-match") 幅指定とデバイス幅制御の組み合わせ
     p.my-2 次もモバイル/PCの表示切り替え例。
     div.row
       div.col-5
@@ -630,7 +632,7 @@ block body
           div.bg-light= `3-${n} `
             code .col-6
     h4.mt-4#grid-margin-auto
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#variable-width-content") 幅の自動設定とFlexboxの組み合わせ
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#variable-width-content") 幅の自動設定とFlexboxの組み合わせ
     p.my-2 幅の自動設定、Flexboxとレスポンシブ動作を組み合わせた例(公式ドキュメントより、かなり複雑)。
     ul
       li 行 
@@ -720,12 +722,12 @@ block body
               div.col.border
                 div.bg-light.text-center= `${r}-3`
     h4.mt-4#grid-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#alignment") アラインメント
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#alignment") アラインメント
     p
       a(href="utilities-3.html#flex") Flexboxユーティリティ
       | を利用する。
     h5.mt-3.mb-0#grid-vertical-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#vertical-alignment") 上下の配置
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#vertical-alignment") 上下の配置
     p.my-2 以下の例では行 
       code div.row
       |  に赤いボーダーを付け、高さを 
@@ -749,7 +751,7 @@ block body
           div.bg-light.p-1
             code= `-${al}`
     h5.mt-3.mb-0#grid-horizontal-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#horizontal-alignment") 左右の配置
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#horizontal-alignment") 左右の配置
     each al in align.concat("around", "between")
       p.mt-2.mb-0
         code= `.row.justify-content-${al}`
@@ -760,7 +762,7 @@ block body
               code= `.col-2`
               small= ` (${i}/3)`
     h4.mt-4#griid-no-gutters
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#no-gutters") ガターの除去
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#no-gutters") ガターの除去
     p.my-2 グリッドには左右両方に15pxのパディング(
       a(href="#grid-gutters") ガター
       | )が設定されているが、行 
@@ -844,7 +846,7 @@ block body
                 div.col-6.border
                   div.bg-light.text-center 6
     h4.mt-4#grid-ordering
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#order-classes") 列の順序指定
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#order-classes") 列の順序指定
     p.mt-2.mb-3
       code div.col
       |  はデフォルトでは記述順に配置するが 
@@ -906,9 +908,9 @@ block body
             li
               code= `div.col${n ? `.order-${n}` : ""}`
     h4.mt-4#grid-offsetting-columns
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offsetting-columns") 列の左右配置調整
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#offsetting-columns") 列の左右配置調整
     h5.mt-3#grid-offset-classes
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#offset-classes") 
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#offset-classes") 
         code .offset-*
         | を用いた配置制御
     p.my-2
@@ -1111,7 +1113,7 @@ block body
             div.col.border
               div.bg-light.text-center 2R
     h5.mt-4#margin-utilities
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#margin-utilities") マージンユーティリティ
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#margin-utilities") マージンユーティリティ
     p.mt-2.mb-3
       a(href="utilities-4.html#spacing") 空白
       | ユーティリティを用いた例。これも動作がやや複雑なのでまず設定例から示す。
@@ -1248,7 +1250,7 @@ block body
             div.col-auto.border
               div.bg-light.text-center.px-2 3R
     h4.mt-4#grid-nesting
-      +extLink("https://getbootstrap.com/docs/4.1/layout/grid/#nesting") ネスト
+      +extLink("https://getbootstrap.com/docs/4.2/layout/grid/#nesting") ネスト
     p.mt-2.mb-3 列 
       code div.col(-*)
       |  の中に行 
@@ -1330,8 +1332,21 @@ block body
           each n in [5,6,7,8]
             div.col-3.border
               div.bg-light.text-center= n
-    div.alert.alert-info.mt-3(role="alert") ただでさえ複雑になりやすいのでなるべく避けるべき(多くの場合は回避できる)。上記の例はどうしても必要な状況を意図的に考えて作ったもので、単に8等分するなら
+    div.alert.alert-info.mt-3(role="alert") ただでさえ複雑になりやすいのでなるべく避けるべき(多くの場合は回避できる)。上記の例はどうしても必要になる状況を意図的に作ったもので、単に8等分するなら
       a(href="#grid-equal-width") 列の等分配置
       | を使えばよい。
 
-    +breadcrumbLevel1("レイアウト(1): 概要/グリッド")
+    h2.mt-5#utilities
+      +extLink("https://getbootstrap.com/docs/4.2/layout/utilities-for-layout/") レイアウトユーティリティ
+    p.mb-2 レイアウト用のBootstrapユーティリティについて(簡単な紹介のみ)
+    ul.mb-3
+      li 要素の表示/非表示の設定 ⇒ 
+        a(href="utilities-2.html#display") 表示
+      li flexboxを用いたレイアウト ⇒ 
+        a(href="utilities-3.html#flex") Flexbox
+      li マージンとパディングの設定 ⇒ 
+        a(href="utilities-4.html#spacing") 空白
+      li (配置を変えずに)表示だけ消す場合 ⇒ 
+        a(href="utilities-5.html#visibility") 可視性
+
+    +breadcrumbLevel1("レイアウト: 概要/グリッド/レイアウトユーティリティ")

@@ -32,9 +32,9 @@ block body
         a(href="#tables") Tables
 
     h2.mt-2#tables
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/") Tables
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/") Tables
     h4.mt-4#examples
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#examples") Basic example
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#examples") Basic example
     div.my-3
       +collapseButton("#table-structure") Structure
     ul.struct.mt-3.collapse#table-structure
@@ -77,7 +77,7 @@ block body
         code= `table.table${tblStyle}`
       +tableAll(`table${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#table-head-options
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#table-head-options") Table head options
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#table-head-options") Table head options
     p Set 
       code .thead-(dark|light)
       |  to 
@@ -90,7 +90,7 @@ block body
         code= `.${hdrStyle}`
       +tableAll("table", hdrStyle)
     h4.mt-4#striped-rows
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#striped-rows") Striped rows
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#striped-rows") Striped rows
     p Set 
       code .table-striped
       |  to 
@@ -101,7 +101,7 @@ block body
       +tableAll(`table table-striped${tblStyle.replace(/\./, " ")}`)
     each opt in ["bordered", "borderless"]
       h4.mt-4(id=`${opt}-table`)
-        +extLink(`https://getbootstrap.com/docs/4.1/content/tables/#${opt}-table`)
+        +extLink(`https://getbootstrap.com/docs/4.2/content/tables/#${opt}-table`)
           = opt[0].toUpperCase() + opt.slice(1) + " table"
       p.mb-1 Set 
         code= `.table-${opt}`
@@ -112,7 +112,7 @@ block body
           code= `table.table.table-${opt}${tblStyle}`
         +tableAll(`table table-${opt}${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#hoverable-rows
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#hoverable-rows") Hoverable rows
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#hoverable-rows") Hoverable rows
     p Set 
       code .table-hover
       |  to 
@@ -122,7 +122,7 @@ block body
         code= `table.table.table-hover${tblStyle}`
       +tableAll(`table table-hover${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#small-table
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#small-table") Small table
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#small-table") Small table
     p Set 
       code .table-sm
       |  to 
@@ -133,7 +133,7 @@ block body
         code= `table.table.table-sm${tblStyle}`
       +tableAll(`table table-sm${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#contextual-classes
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#contextual-classes") Contextual classes
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#contextual-classes") Contextual classes
     p.my-1
       code .table-(primary|secondary|success|danger|warning|info|light|dark|active)
     p.my-1 Available for all levels ( 
@@ -211,7 +211,7 @@ block body
               td Cell
               td Cell
     h4.mt-4#captions
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#captions") Captions
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#captions") Captions
     p.mt-2.mb-1 Use 
       code caption
     ul.struct
@@ -241,7 +241,7 @@ block body
       +tableHeader
       +tableBody
     h4.mt-4#responsive-tables
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#responsive-tables") Responsive tables
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#responsive-tables") Responsive tables
     p.mt-3.mb-1 Add 
       code  .table-responsive
       |  to 

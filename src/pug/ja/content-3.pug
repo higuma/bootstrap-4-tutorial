@@ -32,9 +32,9 @@ block body
         a(href="#tables") 表
 
     h2.mt-2#tables
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/") 表
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/") 表
     h4.mt-4#examples
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#examples") 基本構成
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#examples") 基本構成
     div.my-3
       +collapseButton("#table-structure") 構造
     ul.struct.mt-3.collapse#table-structure
@@ -77,7 +77,7 @@ block body
         code= `table.table${tblStyle}`
       +tableAll(`table${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#table-head-options
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#table-head-options") ヘッダ部の設定
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#table-head-options") ヘッダ部の設定
     p
       code thead
       |  に 
@@ -90,7 +90,7 @@ block body
         code= `.${hdrStyle}`
       +tableAll("table", hdrStyle)
     h4.mt-4#striped-rows
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#striped-rows") 一行おきストライプ表示
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#striped-rows") 一行おきストライプ表示
     p
       code table
       |  に 
@@ -102,7 +102,7 @@ block body
       +tableAll(`table table-striped${tblStyle.replace(/\./, " ")}`)
     each opt in ["bordered", "borderless"]
       h4.mt-4(id=`${opt}-table`)
-        +extLink(`https://getbootstrap.com/docs/4.1/content/tables/#${opt}-table`)= `罫線${opt=="bordered" ? "" : "なし"}`
+        +extLink(`https://getbootstrap.com/docs/4.2/content/tables/#${opt}-table`)= `罫線${opt=="bordered" ? "" : "なし"}`
       p.mb-1
         code table
         |  に 
@@ -113,7 +113,7 @@ block body
           code= `table.table.table-${opt}${tblStyle}`
         +tableAll(`table table-${opt}${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#hoverable-rows
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#hoverable-rows") 行のホバー表示
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#hoverable-rows") 行のホバー表示
     p
       code table
       |  に 
@@ -124,7 +124,7 @@ block body
         code= `table.table.table-hover${tblStyle}`
       +tableAll(`table table-hover${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#small-table
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#small-table") 縮小表示
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#small-table") 縮小表示
     p
       code table
       |  に 
@@ -135,7 +135,7 @@ block body
         code= `table.table.table-sm${tblStyle}`
       +tableAll(`table table-sm${tblStyle.replace(/\./, " ")}`)
     h4.mt-4#contextual-classes
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#contextual-classes") コンテキスト配色設定
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#contextual-classes") コンテキスト配色設定
     p.my-1
       code .table-(primary|secondary|success|danger|warning|info|light|dark|active)
     p.my-1 表要素の各レベル ( 
@@ -215,7 +215,7 @@ block body
               td Cell
               td Cell
     h4.mt-4#captions
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#captions") 見出し
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#captions") 見出し
     p.mt-2.mb-1
       code caption
       |  要素を用いる
@@ -244,7 +244,7 @@ block body
       +tableHeader
       +tableBody
     h4.mt-4#responsive-tables
-      +extLink("https://getbootstrap.com/docs/4.1/content/tables/#responsive-tables") レスポンシブ設定
+      +extLink("https://getbootstrap.com/docs/4.2/content/tables/#responsive-tables") レスポンシブ設定
     p.mt-3.mb-1
       code table.table
       |  に 

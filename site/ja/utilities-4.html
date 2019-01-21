@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
       ul.struct li     { list-style: disc; }
       ul.struct li.cls { list-style: circle; }
@@ -29,14 +29,14 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/utilities-4.html">英語 (English)</a></div>
         </div>
       </div>
-      <h2 class="mt-2" id="position"><a href="https://getbootstrap.com/docs/4.1/utilities/position/" target="_blank">配置</a>
+      <h2 class="mt-2" id="position"><a href="https://getbootstrap.com/docs/4.2/utilities/position/" target="_blank">配置</a>
       </h2>
-      <h4 class="mt-4" id="position-common-values"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#common-values" target="_blank">設定</a>
+      <h4 class="mt-4" id="position-common-values"><a href="https://getbootstrap.com/docs/4.2/utilities/position/#common-values" target="_blank">設定</a>
       </h4>
       <p class="my-1"><code>.position-(static|relative|absolute|fixed|sticky)</code></p>
       <p class="my-2">CSSの <code>position</code> プロパティを設定するユーティリティクラス。クラス名はCSSの <code>position</code> プロパティ値と直接対応しているため説明略(<a href="https://developer.mozilla.org/ja/docs/Web/CSS/position" target="_blank">CSSリファレンス</a>参照)
       </p>
-      <h4 class="mt-4" id="position-fixed-sticky"><a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top" target="_blank">上端固定</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom" target="_blank">下端固定</a> / <a href="https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top" target="_blank">上端張り付き</a>
+      <h4 class="mt-4" id="position-fixed-sticky"><a href="https://getbootstrap.com/docs/4.2/utilities/position/#fixed-top" target="_blank">上端固定</a> / <a href="https://getbootstrap.com/docs/4.2/utilities/position/#fixed-bottom" target="_blank">下端固定</a> / <a href="https://getbootstrap.com/docs/4.2/utilities/position/#sticky-top" target="_blank">上端張り付き</a>
       </h4>
       <p class="mb-2">要素を画面の上下端に固定し、さらに <a href="layout-1.html#overview-z-index">Z-index</a> を操作して重なっている他要素より上に表示する機能。<a href="components-10.html">ナビゲーションバー</a>でこれらを利用したデモを作成している(詳細は各デモを参照)。</p>
       <ul>
@@ -44,7 +44,7 @@
         <li>下端固定 <code>.fixed-bottom</code> ⇒ <a href="navbar-fixed-bottom.html">ナビゲーションバーのデモ</a></li>
         <li>上端張り付き <code>.sticky-top</code> ⇒ <a href="navbar-sticky-top.html">ナビゲーションバーのデモ</a></li>
       </ul>
-      <h2 class="mt-5" id="screenreaders"><a href="https://getbootstrap.com/docs/4.1/utilities/screenreaders/" target="_blank">スクリーンリーダ</a>
+      <h2 class="mt-5" id="screenreaders"><a href="https://getbootstrap.com/docs/4.2/utilities/screenreaders/" target="_blank">スクリーンリーダ</a>
       </h2>
       <h5 class="mt-3" id="screenreaders-summary">スクリーンリーダ対応(まとめ)</h5>
       <ul>
@@ -75,7 +75,7 @@
           </ul>
         </li>
       </ul>
-      <h2 class="mt-5" id="shadows"><a href="https://getbootstrap.com/docs/4.1/utilities/shadows/" target="_blank">シャドウ</a>
+      <h2 class="mt-5" id="shadows"><a href="https://getbootstrap.com/docs/4.2/utilities/shadows/" target="_blank">シャドウ</a>
       </h2>
       <p class="mt-3"><code>.shadow(-none|-sm|-lg)?</code></p>
       <h4 class="mt-4" id="shadows-examples">表示例</h4>
@@ -87,9 +87,11 @@
       <div class="shadow p-3 mb-4 bg-white rounded">Regular shadow</div>
       <p class="mt-3 mb-2"><code>div.shadow-lg</code></p>
       <div class="shadow-lg p-3 mb-4 bg-white rounded">Larger shadow</div>
-      <h2 class="mt-5" id="sizing"><a href="https://getbootstrap.com/docs/4.1/utilities/sizing/" target="_blank">サイズ</a>
+      <h2 class="mt-5" id="sizing"><a href="https://getbootstrap.com/docs/4.2/utilities/sizing/" target="_blank">サイズ</a>
       </h2>
       <p class="mt-2 mb-1">幅と高さを設定するユーティリティクラス。</p>
+      <h4 class="mt-3" id="sizing-relative-to-the-parent"><a href="https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-parent" target="_blank">親に対する相対指定</a>
+      </h4>
       <ul class="my-0">
         <li>幅 (25%ステップ + auto) <code>.w-(25|50|75|100|auto)</code></li>
         <li>高さ (25%ステップ + auto) <code>.h-(25|50|75|100|auto)</code></li>
@@ -113,12 +115,33 @@
       <p class="mt-3 mb-1">最大幅設定の例: <code>img.mw-100</code> (親の幅にフィット)</p><img class="mw-100" src="../img/2000x200.svg">
       <p class="mt-3 mb-1">最大高さ設定の例: 親要素 <code>height:200px;</code> の中に <code>img.mh-100</code> (親の高さにフィット)</p>
       <div class="border" style="height:200px;"><img class="mh-100" src="../img/320x320.svg"></div>
-      <h2 class="mt-5" id="spacing"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/" target="_blank">空白</a>
+      <h4 class="mt-3" id="sizing-relative-to-the-viewport"><a href="https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-viewport" target="_blank">ビューポートに対する相対指定</a>
+      </h4>
+      <ul class="my-2">
+        <li>最小幅をビューポートに対して100% <code>.min-vw-100</code></li>
+        <li>最小高さをビューポートに対して100% <code>.min-vh-100</code></li>
+        <li>幅をビューポートに対して100% <code>.vw-100</code></li>
+        <li>高さをビューポートに対して100% <code>.vh-100</code></li>
+      </ul>
+      <h5 class="mt-3" id="sizing-relative-to-the-viewport-examples">例</h5>
+      <p class="mt-3 mb-1">最小幅をビューポートに対して100% <code>div.min-vw-100</code></p>
+    </div>
+    <div class="min-vw-100 bg-light border">Min-width 100vw</div>
+    <div class="container">
+      <p class="mt-3 mb-1">最小高さをビューポートに対して100% <code>div.min-vh-100</code></p>
+      <div class="min-vh-100 bg-light border">Min-height 100vh</div>
+      <p class="mt-3 mb-1">幅をビューポートに対して100% <code>div.vw-100</code></p>
+    </div>
+    <div class="vw-100 bg-light border">Width 100vw</div>
+    <div class="container">
+      <p class="mt-3 mb-1">高さをビューポートに対して100% <code>div.vh-100</code></p>
+      <div class="vh-100 bg-light border">Height 100vh</div>
+      <h2 class="mt-5" id="spacing"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/" target="_blank">空白</a>
       </h2>
       <p class="my-2">マージン(要素のボックス境界と外部要素の間隔)とパディング(ボックス境界と内部要素の間隔)の設定に用いる</p>
-      <h4 class="mt-3" id="spacing-notation"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#notation" target="_blank">記法</a>
+      <h4 class="mt-3" id="spacing-notation"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/#notation" target="_blank">記法</a>
       </h4>
-      <p class="mt-2 mb-1"><code>.(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)</code></p>
+      <p class="mt-2 mb-1"><code>.(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|n1|n2|n3|n4|n5|auto)</code></p>
       <ul>
         <li><code>(m|p)</code> マージン/パディングの種別
           <ul>
@@ -148,11 +171,26 @@
         <li><code>(0|1|2|3|4|5|auto)</code> 間隔の設定
           <ul>
             <li><code>0</code> 間隔を0に設定</li>
-            <li><code>1</code> 間隔を <code>1/4rem</code> に設定</li>
-            <li><code>2</code> 間隔を <code>1/2rem</code> に設定</li>
-            <li><code>3</code> 間隔を <code>1rem</code> に設定</li>
-            <li><code>4</code> 間隔を <code>1.5rem</code> に設定</li>
-            <li><code>5</code> 間隔を <code>3rem</code> に設定</li>
+            <li><code>1</code> 間隔を <code>1/4rem</code> に設定
+            </li>
+            <li><code>2</code> 間隔を <code>1/2rem</code> に設定
+            </li>
+            <li><code>3</code> 間隔を <code>1rem</code> に設定
+            </li>
+            <li><code>4</code> 間隔を <code>1.5rem</code> に設定
+            </li>
+            <li><code>5</code> 間隔を <code>3rem</code> に設定
+            </li>
+            <li><code>n1</code> (マージンのみ) 間隔を <code>-1/4rem</code> に設定
+            </li>
+            <li><code>n2</code> (マージンのみ) 間隔を <code>-1/2rem</code> に設定
+            </li>
+            <li><code>n3</code> (マージンのみ) 間隔を <code>-1rem</code> に設定
+            </li>
+            <li><code>n4</code> (マージンのみ) 間隔を <code>-1.5rem</code> に設定
+            </li>
+            <li><code>n5</code> (マージンのみ) 間隔を <code>-3rem</code> に設定
+            </li>
             <li><code>auto</code> (マージンのみ)ブラウザデフォルト値に設定</li>
           </ul>
         </li>
@@ -316,10 +354,56 @@
           </tr>
         </tbody>
       </table>
-      <h4 class="mt-4" id="horizontal-centering"><a href="https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering" target="_blank">要素の横センタリング</a>
+      <h4 class="mt-4" id="horizontal-centering"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/#horizontal-centering" target="_blank">要素の横センタリング</a>
       </h4>
       <p>幅を指定したブロック要素の横センタリングに <code>.mx-auto</code> を用いることができる。</p>
       <div class="mx-auto border p-2 bg-light" style="width: 20rem;"><code>div.mx-auto</code> + <code>style="width: 20rem;"</code></div>
+      <h4 class="mt-4" id="negative-margin"><a href="https://getbootstrap.com/docs/4.2/utilities/spacing/#negative-margin" target="_blank">負のマージン</a>
+      </h4>
+      <p>負のマージンは特にグリッド列の<a href="layout-1.html/#grid-gutters">ガター</a>を調節するのに用いられる。次は画面幅に応じてレスポンシブにガターを調節する例。</p>
+      <ul>
+        <li>幅 &ge; 768px (md以上)でガターを3remに拡大</li>
+        <li>幅 &lt; 768px (sm以下)でガターをデフォルト値(15px)に戻す</li>
+      </ul>
+      <div class="border py-2">
+        <div class="row mx-md-n5">
+          <div class="col py-3 px-md-5 border bg-white">
+            <div class="border bg-light">Custom column padding</div>
+          </div>
+          <div class="col py-3 px-md-5 border bg-white">
+            <div class="border bg-light">Custom column padding</div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3"><a class="btn btn-outline-info" data-toggle="collapse" href="#spacing-negative-margin-structure" aria-control="#spacing-negative-margin-structure" aria-expanded="false">構造</a>
+      </div>
+      <ul class="struct mt-3 collapse" id="spacing-negative-margin-structure">
+        <li>フレーム (コンテナ幅表示用) <code>div </code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-1" aria-control=".a1-1" aria-expanded="false">属性</a>
+          <ul>
+            <li class="att collapse a1-1">ボーダー <code>.border</code></li>
+            <li class="att collapse a1-1">上下パディング <code>.py-2</code></li>
+            <li>グリッド行 <code>div.row</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a>
+              <ul>
+                <li class="attr collapse a1-2">幅&ge;768pxで負のマージン(3rem)を設定 <code>.mx-md-n5</code></li>
+                <li>グリッド列 (&times;2) <code>div.col</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a1-3">上下パディング (1rem) <code>.py-3</code></li>
+                    <li class="att collapse a1-3">左右パディング (幅&ge;768pxで3rem) <code>.px-md-5</code></li>
+                    <li class="att collapse a1-3">ボーダー <code>.border</code></li>
+                    <li class="att collapse a1-3">背景色(白) <code>.bg-white</code></li>
+                    <li>内部 <code>div</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-4" aria-control=".a1-4" aria-expanded="false">属性</a>
+                      <ul>
+                        <li class="att collapse a1-4">背景色(ライトグレー) <code>.bg-light</code></li>
+                        <li class="txt">テキスト <code>Custom column padding</code></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
       <nav class="mt-4 mb-5" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
@@ -328,7 +412,7 @@
       </nav>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src=".././js/main.js"></script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 </html>

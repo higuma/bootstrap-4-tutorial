@@ -28,10 +28,10 @@ block body
         a(href="#visibility") 可視性
 
     h2.mt-2#text
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/") テキスト
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/") テキスト
     - const sampleText = "The quick brown fox jumps over the lazy dog."
     h4.mt-3#text-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-alignment") アラインメント
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-alignment") アラインメント
     h6.mt-4.mb-0 均等割り付け 
       code .text-justify
     each justify in [false, true]
@@ -54,7 +54,7 @@ block body
         p(class=`text-${sz}-${al} mt-0 mb-3 border`)
           = `${al[0].toUpperCase()}${al.slice(1)} aligned on viewport width ≧ ${szPx[sz]}px`
     h4.mt-4#text-wrapping-and-overflow
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-wrapping-and-overflow") ラッピングとオーバーフロー
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-wrapping-and-overflow") ラッピングとオーバーフロー
     p.my-2 (1) ラッピング (ボックス幅は 
       code 15rem
       |  に固定)
@@ -81,7 +81,7 @@ block body
       div.mb-3
         span(class=`d-inline-block border p-2${truncate ? " text-truncate" : ""}` style="max-width: 15rem;")= sampleText
     h4.mt-4#text-transform
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-transform") 大文字/小文字変換
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-transform") 大文字/小文字変換
     each trans in [null, "lowercase", "uppercase", "capitalize"]
       p.mt-3.mb-0
         - if (trans)
@@ -90,21 +90,63 @@ block body
           | (デフォルト表示)
       p(class=`${trans ? `text-${trans}` : ""} mt-1 mb-2`)= sampleText
     h4.mt-4#text-font
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#font-weight-and-italics") 文字の太さと斜体
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#font-weight-and-italics") 文字の太さと斜体
     each font in ["weight-normal", "weight-bold", "weight-light", "italic"]
       p.mt-3.mb-0
         code= `.font-${font}`
         - if (font == "weight-normal")
           |  (デフォルト)
       p(class=`font-${font} mt-0 mb-2`)= sampleText
+    p.mt-3.mb-2 (Ver 4.2以降) 
+      code .font-weight-(bolder|lighter)
+      |  は親要素の設定に対して相対的にフォント太さを増減する。
+    p.my-2 例(
+      code p
+      | ): base &gt; 
+      span.font-weight-bolder bolder
+        |  &gt; 
+        span.font-weight-bolder even bolder
+    p.my-2.font-weight-bold 例(
+      code p.font-weight-bold
+      | ): base &gt; 
+      span.font-weight-lighter lighter
+        |  &gt; 
+        span.font-weight-lighter even lighter
+
+
+
+
     h4.mt-4#text-monospace
-      +extLink(href="https://getbootstrap.com/docs/4.1/utilities/text/#monospace") 等幅フォント
+      +extLink(href="https://getbootstrap.com/docs/4.2/utilities/text/#monospace") 等幅フォント
     p.mt-2.mb-0
       code .text-monospace
     p.text-monospace This is in monospace.
 
+    h4.mt-4#text-reset-color
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#reset-color") 色設定の継承
+    p
+      code .reset-color
+      |  は要素の色設定を除去して親要素の色設定を継承する。
+    p.text-muted
+      | Muted text with a 
+      a.text-reset(href="#") reset link
+      | .
+    h4.mt-4#text-decoration
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-decoration") テキスト飾りの除去
+    p
+      code .text-decoration-none
+      |  はテキストのデフォルト修飾設定を除去する。
+    p
+      code u
+      |  ⇒ 
+      u Underline
+    p
+      code u.text-decoration-none
+      |  ⇒ 
+      u.text-decoration-none No underline
+
     h2.mt-5#vertical-align
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/vertical-align/") 上下アライン
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/vertical-align/") 上下アライン
     p.my-2 CSSの 
       code vertical-align
       |  プロパティを設定するユーティリティクラス (詳しくは
@@ -135,7 +177,7 @@ block body
             td(class=`align-${align} p-1`)= align
 
     h2.mt-5#visibility
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/visibility/") 可視性
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/visibility/") 可視性
     p.mt-2.mb-1 CSSの 
       code visibility
       |  プロパティを設定するユーティリティクラス(詳しくは

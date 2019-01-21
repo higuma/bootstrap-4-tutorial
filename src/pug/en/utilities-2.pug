@@ -15,10 +15,10 @@ block body
         a(href="#embed") Embed
 
     h2.mt-2#colors
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/") Colors
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/colors/") Colors
     - const colors = "primary secondary success danger warning info light dark body muted white black-50 white-50".split(" ")
     h4.mt-4.mb-0#colors-color
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#color") Text color
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/colors/#color") Text color
     p.mt-0.mb-2
       code= `.text-(${colors.join("|")})`
     div.alert.alert-info 
@@ -40,7 +40,7 @@ block body
         a(href="#" class=`text-${c}${["light","white","white-50"].indexOf(c) == -1 ? "" : " bg-dark"} px-1`)
           = `${c[0].toUpperCase()}${c.slice(1)} link`
     h4.mt-4.mb-1#colors-background-color
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#background-color") Background color
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/colors/#background-color") Background color
     - const bgcolors = "primary secondary success danger warning info light dark white transparent".split(" ")
     p.mt-0.mb-3
       code= `.bg-(${bgcolors.join("|")})`
@@ -54,14 +54,14 @@ block body
       |  example.
 
     h2.mt-5#display
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/") Display
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/") Display property
     p.mt-3.mb-1 Utility for setting CSS 
       code display
       |  property (see 
       +extLink("https://developer.mozilla.org/en-US/docs/Web/CSS/display") CSS reference
       |  for detail).
     h4.mt-4.mb-1#display-notation
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#notation") Notation
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#notation") Notation
     p.mt-0.mb-1
       code .d(-sm|-md|-lg|-xl)?-(none|inline|inline-block|block|...)
     h5.mt-3#display-notation-responsive Responsive setting
@@ -80,7 +80,7 @@ block body
       each p in ["none","inline","inline-block","block","table","table-cell","table-row","flex","inline-flex"]
         li: code= p
     h4.mt-4.mb-1#display-examples
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#examples") Changing default settings
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#examples") Changing default settings
     p.mt-3.mb-2 Division elements forced as inline 
       code div.d-inline
       |  ⇒ arranged horizontally
@@ -97,7 +97,7 @@ block body
     span.d-block.bg-secondary.p-1
       code.text-white span.d-block
     h4.mt-4.mb-1#display-hiding-elements
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#hiding-elements") Responsive showing/hiding elements
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#hiding-elements") Responsive showing/hiding elements
     p.mt-2.mb-1 (1) e.g. setting for hiding a block element on md (768px&le;width&lt;992px) only (least to most prior).
     ul.my-1
       li
@@ -143,13 +143,13 @@ block body
     div.row.mx-1
       div.col.text-white.p-2.d-none.d-xl-block(style="background: #bbf") Appears only on XL(width&ge;1200px)
     h4.mt-4.mb-1#display-in-print
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#display-in-print") Display in print
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#display-in-print") Display in print
     p Use 
       code .d-print-(none|inline|inline-block|block|...)
       |  for changing display setting only on printing.
 
     h2.mt-5#embed
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") Embed
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/embed/") Embed
     p.mt-3.mb-1 Responsive setting (structure) for embedded objects.
     ul.struct.my-1
       li parent 
@@ -161,7 +161,7 @@ block body
               li.att Attribute 
                 code src="..."
     h4.mt-4#embed-aspect-ratios
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") Aspect ratios
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/embed/") Aspect ratios
     p.my-2 Parent's 
       code (21by9|16by9|4by3|1by1)
       |  specifies aspect ratio.
@@ -180,7 +180,7 @@ block body
         |  1:1 - Square
     h4.mt-4#embed-examples Examples
     div.embed-responsive.embed-responsive-16by9
-      iframe.embed-responsive-item(src="https://www.youtube.com/embed/h-9UvrLyj3k" allowfullscreen)
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/AjI2J2SQ528" allowfullscreen)
     p.mb-5
     div.embed-responsive.embed-responsive-16by9
       iframe.embed-responsive-item(src="https://www.youtube.com/embed/ev3vENli7wQ" allowfullscreen)

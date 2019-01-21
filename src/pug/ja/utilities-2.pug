@@ -15,10 +15,10 @@ block body
         a(href="#embed") 埋め込み
 
     h2.mt-2#colors
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/") 色
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/colors/") 色
     - const colors = "primary secondary success danger warning info light dark body muted white black-50 white-50".split(" ")
     h4.mt-4.mb-0#colors-color
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#color") 文字色
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/colors/#color") 文字色
     p.mt-0.mb-2
       code= `.text-(${colors.join("|")})`
     div.alert.alert-info 
@@ -40,7 +40,7 @@ block body
         a(href="#" class=`text-${c}${["light","white","white-50"].indexOf(c) == -1 ? "" : " bg-dark"} px-1`)
           = `${c[0].toUpperCase()}${c.slice(1)} link`
     h4.mt-4.mb-1#colors-background-color
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/colors/#background-color") 背景色
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/colors/#background-color") 背景色
     - const bgcolors = "primary secondary success danger warning info light dark white transparent".split(" ")
     p.mt-0.mb-3
       code= `.bg-(${bgcolors.join("|")})`
@@ -54,12 +54,12 @@ block body
       | に実例がある。
 
     h2.mt-5#display
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/") 表示
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/") 表示
     p.mt-3.mb-1 CSSの 
       code display
       |  プロパティ(要素の表示と配置)を設定するユーティリティクラス
     h4.mt-4.mb-1#display-notation
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#notation") 記法
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#notation") 記法
     p.mt-0.mb-1
       code .d(-sm|-md|-lg|-xl)?-(none|inline|inline-block|block|...)
     p.mt-2.mb-1 レスポンシブ設定
@@ -80,7 +80,7 @@ block body
       each p in ["none","inline","inline-block","block","table","table-cell","table-row","flex","inline-flex"]
         li: code= p
     h4.mt-4.mb-1#display-examples
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#examples") 要素のデフォルト設定の変更
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#examples") 要素のデフォルト設定の変更
     p.mt-3.mb-2 Inlineを強制したdiv : 
       code div.d-inline
       |  ⇒ 横に並ぶ
@@ -97,7 +97,7 @@ block body
     span.d-block.bg-secondary.p-1
       code.text-white span.d-block
     h4.mt-4.mb-1#display-hiding-elements
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#hiding-elements") 要素の表示/非表示制御
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#hiding-elements") 要素の表示/非表示制御
     p.mt-2.mb-1 (1) md(768px&le;幅&lt;992px)のみ非表示にするブロック要素は次の2つの組み合わせで実現できる(優先度低 ⇒ 高の順)
     ul.my-1
       li デフォルトは「block要素として表示」
@@ -141,7 +141,7 @@ block body
     div.row.mx-1
       div.col.text-white.p-2.d-none.d-xl-block(style="background: #bbf") XL(幅&ge;1200px)の時だけ見える
     h4.mt-4.mb-1#display-in-print
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/display/#display-in-print") 印刷に対する制御
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/display/#display-in-print") 印刷に対する制御
     p
       code .d-print-(none|inline|inline-block+block|...)
       |  を使い印刷時だけ有効な 
@@ -149,7 +149,7 @@ block body
       |  の設定を行うことができる(略)。
 
     h2.mt-5#embed
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") 埋め込み
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/embed/") 埋め込み
     p.mt-3.mb-1 埋め込みオブジェクト(動画など)のレスポンシブ設定
     ul.struct.my-1
       li 親 
@@ -161,7 +161,7 @@ block body
               li.att 属性 
                 code src="..."
     h4.mt-4#embed-aspect-ratios
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/embed/") アスペクト比
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/embed/") アスペクト比
     p.my-2 親の 
       code (21by9|16by9|4by3|1by1)
       |  はアスペクト比を設定する。
@@ -180,7 +180,7 @@ block body
         |  1:1 - 正方形
     h4.mt-4#embed-examples 設定例
     div.embed-responsive.embed-responsive-16by9
-      iframe.embed-responsive-item(src="https://www.youtube.com/embed/h-9UvrLyj3k" allowfullscreen)
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/AjI2J2SQ528" allowfullscreen)
     p.mb-5
     div.embed-responsive.embed-responsive-16by9
       iframe.embed-responsive-item(src="https://www.youtube.com/embed/ev3vENli7wQ" allowfullscreen)

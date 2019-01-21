@@ -18,9 +18,9 @@ block body
         a(href="#breadcrumb") Breadcrumb
 
     h2.mt-4#alerts
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/") Alerts
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/") Alerts
     h4.mt-4#alerts-examples
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#examples") Examples
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/#examples") Examples
     div.my-3
       +collapseButton("#alerts-example-structure") Structure
     ul.struct.mt-3.collapse#alerts-example-structure
@@ -44,7 +44,7 @@ block body
         |  ) - 
         a.alert-link(href="#") link sample
     h4.mt-4#alerts-additional-content
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#additional-content") Additional content
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/#additional-content") Additional content
     p.my-2 Example using various-size headings, paragraphs, and a horizontal rule.
     div.alert.alert-success(role="alert")
       h4.alert-heading Heading 
@@ -78,10 +78,17 @@ block body
       |  ). Removing the paragraph's bottom margin with 
       code mb-0
       |  sets equal top and bottom spacings.
-    h4.mt-4.mb-1#alerts-dismissing
-      +extLink("https://getbootstrap.com/docs/4.1/components/alerts/#dismissing") Dismissing
-    div.alert.alert-info.mt-2(role="alert")
+    h4.mt-4.mb-3#alerts-dismissing
+      +extLink("https://getbootstrap.com/docs/4.2/components/alerts/#dismissing") Dismissing
+    div.alert.alert-info(role="alert")
       strong Alert example: 
+      |  Dismiss this alert to click 
+      strong &times;
+      |  on right ⇒
+      button.close(type="button" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+    div.alert.alert-info.fade.show(role="alert")
+      strong Alert example (with fade-out): 
       |  Dismiss this alert to click 
       strong &times;
       |  on right ⇒
@@ -92,31 +99,34 @@ block body
     ul.struct.mt-3.collapse#alerts-dismissing-structure
       li
         code div.alert.alert-(primary|secondary|...)
+        +attrBtn(".a2-1")
         ul
+          li.cls.collapse.a2-1 (Optional) fade-out effect 
+            code .fade.show
           li Alert content
           li Close button 
             code button.close
-            +attrsBtn(".a2-1")
+            +attrsBtn(".a2-2")
             ul
-              li.att.collapse.a2-1 Atrribute 
+              li.att.collapse.a2-2 Atrribute 
                 code type="button"
-              li.att.collapse.a2-1 Atrribute 
+              li.att.collapse.a2-2 Atrribute 
                 code data-dismiss="alert"
-              li.att.collapse.a2-1 Accessibility atrribute 
+              li.att.collapse.a2-2 Accessibility atrribute 
                 code aria-label="Close"
               li For accessibility 
                 code span
-                +attrBtn(".a2-2")
+                +attrBtn(".a2-3")
                 ul
-                  li.att.collapse.a2-2 Accessibility atrribute 
+                  li.att.collapse.a2-3 Accessibility atrribute 
                     code aria-hidden="true"
                   li.txt Text 
                     code= `&times;`
 
     h2.mt-5#badges
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/") Badges
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/") Badges
     h4.mt-4#badges-example
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#example") Examples
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#example") Examples
     h5.mt-3.mb-1#badges-example-headings Used in headings
     h1 h1 Heading 
       span.badge.badge-secondary New
@@ -156,7 +166,7 @@ block body
             li.txt Text 
               code unread messages
     h4.mt-4#badges-contextual-variations
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#contextual-variations") Contextual variations
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#contextual-variations") Contextual variations
     p.my-0
       code= `span.badge.badge-${contextRe}`
     p.my-1
@@ -165,7 +175,7 @@ block body
           = c[0].toUpperCase() + c.slice(1)
         | &nbsp;
     h4.mt-4#badges-pill-badges
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#pill-badges") Pill badges
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#pill-badges") Pill badges
     p.my-1
       code= `span.badge.badge-pill.badge-${contextRe}`
     p.my-1
@@ -174,7 +184,7 @@ block body
           = c[0].toUpperCase() + c.slice(1)
         | &nbsp;
     h4.mt-4#badges-links
-      +extLink("https://getbootstrap.com/docs/4.1/components/badge/#links") Links
+      +extLink("https://getbootstrap.com/docs/4.2/components/badge/#links") Links
     p.my-1
       code= `a.badge.badge-${contextRe}`
     p.my-1
@@ -184,7 +194,7 @@ block body
         | &nbsp;
 
     h2.mt-5#breadcrumb
-      +extLink("https://getbootstrap.com/docs/4.1/components/breadcrumb/") Breadcrumb
+      +extLink("https://getbootstrap.com/docs/4.2/components/breadcrumb/") Breadcrumb
     p.mt-2.mb-3 Breadcrumb indicates current page's location within a navigational hierarchy.
     +collapseButton("#breadcrumb-structure") Structure
     ul.struct.collapse.mt-3#breadcrumb-structure
@@ -233,7 +243,7 @@ block body
           a(href="#") Library
         li.breadcrumb-item.active(aria-current="page") Data
     h4.mt-4#breadcrumb-changing-the-separator
-      +extLink("https://getbootstrap.com/docs/4.1/components/breadcrumb/#changing-the-separator") Changing the separator
+      +extLink("https://getbootstrap.com/docs/4.2/components/breadcrumb/#changing-the-separator") Changing the separator
     p.my-2 If you want to change the separator symbol ( 
       code "/"
       |  as default), you can append a short CSS as below at the end of 

@@ -10,7 +10,7 @@ block body
       p.lead Getting started
 
     h2.mt-4#intro
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/") スタートアップ
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/") スタートアップ
     p.my-2 まずBootstrapの最も簡単な利用方法として
       +extLink("https://ja.wikipedia.org/wiki/コンテンツデリバリネットワーク") CDN
       | を利用する方法を説明する(本チュートリアルもこの方法で作られている）。
@@ -89,6 +89,9 @@ block body
                       code integrity="sha384-{SHA-384文字列}"
                     li.att 属性 
                       code crossorigin="anonymous"
+    p.my-2 CDNを利用した読み込みにはそれぞれURLとSHA-384文字列が必要。具体的な設定は公式サイトの次の例文からコピペすればよい。
+    p.my-2 ⇒ 
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") Starter template
     h4.mt-4#intro-doctype DOCTYPE宣言
     p.my-2 HTMLの先頭は必ず 
       code= "<!DOCTYPE html>"
@@ -193,8 +196,8 @@ block body
         | )
     div.alert.alert-info.collapse#intro-viewport-note(role="alert")
       p
-        strong 補足(2018年5月現在): 
-        | 元はiPhone独自の設定だったが、その後Android等も採用し事実上の業界標準になった。元のiPhone専用書式は 
+        strong 補足(2018年8月現在): 
+        | ビューポート設定はもともとiPhoneの独自仕様だったが、その後Android等も採用し標準化された。元のiPhone専用書式は 
         code meta
         |  に記述する形式のみだったが、その後CSSの一部として正式に仕様化を進めることになった経緯がある。
       p そのため現在のWorking draft(暫定仕様)はCSS扱いだが、実際にはまだ多くのブラウザは 
@@ -222,9 +225,9 @@ block body
       code shrink-to-fit=no
       |  はiPhone iOS 9(Safari 9)専用の設定。このバージョンのSafariはこれがないとページを自動縮小して全体表示する機能が優先され 
       code initial-scale=1
-      |  が無効になる(勝手に縮小する)。9で追加されたが10で廃止されたため上記リファレンス仕様に書かれていない。
+      |  が無効になる(勝手に縮小する)。9で追加されたが10で廃止されたため上記リファレンス仕様に書かれていない(
       +extLink("https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_0.html") What's New in Safari - 9.0
-      |  を参照。なお他のブラウザは単に無視する(付けておいても無害)。
+      |  参照)。なお他のブラウザは単に無視する(付けておいても無害)。
     h4.mt-4#intro-cdn CDN読み込み
     p CDNを利用する場合は外部読み込みタグ(CSSは 
       code link
@@ -274,7 +277,7 @@ block body
       | に例文付きの解説があるので参考にするとよい。
     h5.mt-4#intro-bootstrap-css Bootstrap CSS読み込み
     p 通常は公式ドキュメントの 
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") Starter template
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") Starter template
       |  の設定をそのまま使えばよい。⇒ 
       +collapseButton("#intro-bootstrap-css-note") 補足
     div.alert.alert-info.collapse#intro-bootstrap-css-note(role="alert")
@@ -285,13 +288,13 @@ block body
       +extLink("https://www.bootstrapcdn.com/legacy/bootstrap/") Bootstrap Legacy
       | )。
     h5.mt-4#intro-javascript JavaScript読み込み
-    p Bootstrapは一部の動的機能をJavaScriptで実装している。これは
+    p BootstrapはCSSだけで実現できない機能をJavaScriptで実装している。これは
       +extLink("http://jquery.com/") jQuery
-      | プラグインとして実装されたことから伝統的に「(Bootstrap) JavaScriptプラグイン」と呼ばれておりjQueryに依存している。また現バージョン(V4以降)は
+      | プラグイン形式で実装されていることから伝統的に「(Bootstrapの) JavaScriptプラグイン」と呼ばれておりjQueryに全面依存している。また現バージョン(V4以降)は
       +extLink("https://popper.js.org/") Popper.js
       | にも依存している。そのためこの2つを事前に読み込む必要がある。
     p 通常は次の順番で読み込むが、jQueryとPopper.jsの間に依存性はないので1と2は逆でもよい。CDN用の全設定は 
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/introduction/#starter-template") Starter template
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/#starter-template") Starter template
       |  を参照(内容が分からなくてもこの通り記述すれば使える)。
     ol
       li jQuery - 1.9.1以上、Slim build (AJAX, Effectsなし版)で十分
@@ -301,37 +304,41 @@ block body
       a(href="#accessibility") アクセシビリティ
       | だけ確認して先に進むとよい。
 
-    h2.mt-4#download
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/") Bootstrapの利用法
+    h2.mt-5#download
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/") Bootstrapの利用法
     p.my-2 Bootstrapの様々な入手/利用方法(概要のみ)。
     ul
       li ビルド済みファイルのみ必要な場合 ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
       li SassやJavaScriptなどのソースファイルが必要な場合 ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#source-files") Source files
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#source-files") Source files
         ul
           li マスターはGitHub( 
             +extLink("https://github.com/twbs/bootstrap/") https://github.com/twbs/bootstrap/
             |  からZIPダウンロード)
       li CDNを利用する場合 ⇒
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#bootstrapcdn") BootstrapCDN
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#bootstrapcdn") BootstrapCDN
         |  (詳しくは 
         a(href="#intro") スタートアップ
         | を参照)
       li ビルド済みファイルのみ必要な場合 ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#compiled-css-and-js") Compiled CSS and JS
       li 管理ツールを用いる場合 ⇒ 
-        +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#package-managers") Package managers
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#package-managers") Package managers
         ul
-          li JavaScript(node.js) ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#npm") npm
-            |  (Bootstrap自身はnpm環境でビルドされている)
+          li JavaScript(node.js)
+            ul
+              li ⇒ 
+                +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#npm") npm
+                |  (Bootstrap自身はnpm環境でビルドされている)
+              li ⇒ 
+                +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#yarn") yarn
           li Ruby ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#rubygems") RubyGems
+            +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#rubygems") RubyGems
           li PHP ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") Composer
+            +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#composer") Composer
           li .NET ⇒ 
-            +extLink("https://getbootstrap.com/docs/4.1/getting-started/download/#composer") NuGet
+            +extLink("https://getbootstrap.com/docs/4.2/getting-started/download/#composer") NuGet
     div.alert.alert-info(role="alert") Bootstrapの全データは
       +extLink("https://github.com/") GitHub
       | の
@@ -340,11 +347,11 @@ block body
       +extLink("https://github.com/twbs/bootstrap/releases") Releases
       | ページで確認でき、ここから全ソースをダウンロードできる。
 
-    h2.mt-4#contents
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/") ファイルコンテンツ
+    h2.mt-5#contents
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/contents/") ファイルコンテンツ
     p.my-2 Bootstrapのファイル内容について。
     h4.ht-4#contents-precompiled
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#precompiled-bootstrap") 配布版(コンパイル済み)Bootstrap
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/contents/#precompiled-bootstrap") 配布版(コンパイル済み)Bootstrap
     p.my-2 (
       code .map
       |  ファイルは除外)
@@ -383,7 +390,7 @@ block body
                 code bootstrap(.min).js
                 |  - Bootstrap JSのみ(事前にjQueryとPopper.jsの読み込みが必要)
     h4.mt-4#contents-source-code
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/contents/#bootstrap-source-code") Bootstrapソースコード
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/contents/#bootstrap-source-code") Bootstrapソースコード
     p.my-2 (主要部分のディレクトリ構造のみ)
     ul
       li
@@ -408,10 +415,12 @@ block body
             code js/
             |  JavaScriptファイル
             +filesBtn(".src-js")
+            | 
+            +collapseButtonSm("#javascript-modules") モジュール形式について
             ul.collapse.src-js
               li
                 code dist/
-                |  - モジュールファイルを単体コンパイルしたもの(個別読み込み用)
+                |  - モジュールファイル(UMD形式 - CommonJSとAMDに対応)
               li
                 code src/
                 |  - モジュールファイル(ES2015形式)
@@ -423,17 +432,42 @@ block body
             |  - NuGet (.NET用パッケージマネージャ)用ファイル
           li
             code scss/
-            |  Sass(.scss)ソースファイル
+            |  Sass(.scss)ソースファイル一式
           li
             code package.json
+    div#javascript-modules-button
+      +collapseButton("#javascript-modules") JavaScriptモジュール形式について
+    div.alert.alert-info.collapse.mt-3#javascript-modules(role="alert") 
+      p.my-2 現在のJavaScriptでは中規模以上の開発にモジュール化の手法が用いられ、現行の主流モジュール仕様として次の3種類がある。
+      ul.my-2
+        li ES2015(ES6) (最新仕様、Bootstrap 4はこれを採用)
+        li CommonJS (
+          +extLink("https://nodejs.org/ja/") node.js
+          |  など)
+        li AMD (
+          +extLink("https://requirejs.org/") require.js
+          |  など)
+      p.my-2 BootstrapのJavaScriptモジュールはES2015形式で、他のES2015モジュール(例えば 
+        +extLink("https://popper.js.org/") Popper.js
+        |  のバンドル前モジュールソース)とそのまま組み合わせて利用できる。
+      p.my-2 またバージョン4.1.3からCommonJSとAMDにも対応するようになった。
+        code bootstrap-4.X.X/js/dist/
+        |  のファイルは元のES2015形式モジュールを 
+        +extLink("https://rollupjs.org/") rollup.js
+        |  でUMD(Universal Module Definition)形式に変換したもの。UMDはCommonJSとAMDの両方に対応するファイル形式で、rollup.jsではさらにブラウザから 
+        code= '<script>'
+        |  で直接読み込むことにも対応している。
+      p.my-2 また配布版BootstrapのJavaScriptファイルはrollup.jsでES2015形式モジュールソースをバンドルしたもの。Popper.jsもES2015モジュールなので両者のバンドル版もある。
 
-    h2.mt-4#browsers-devices
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/browsers-devices/") 対応ブラウザ
-    p.my-2 Bootstrap 4は現行の主要ブラウザに対応しており、対応ブラウザの条件を
-      code package.json
-      |  (⇒ 
-      a(href="#contents-source-code") Bootstrapソースコード
-      | )に 
+    h2.mt-5#browsers-devices
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/") 対応ブラウザ
+    p.my-2 Bootstrap 4は現行の主要ブラウザに対応しており、対応ブラウザの条件を 
+      +extLink("https://github.com/twbs/bootstrap/blob/v4.1.3/.browserslistrc")
+        code .browserslistrc
+      |  (v4.1.2までは 
+      +extLink("https://github.com/twbs/bootstrap/blob/v4.1.2/package.json")
+        code package.json
+      |  の中)に 
       +extLink("https://github.com/browserslist/browserslist") browserslist
       |  形式で記述している(書式は 
       +extLink("https://github.com/browserslist/browserslist#best-practices") Best Practices
@@ -443,30 +477,146 @@ block body
       +collapseButton("#browserslist") 表示
     pre.mt-3.p-2.border.bg-light.collapse#browserslist
       code
-        = `"browserslist": [\n`
-        = `  "last 1 major version",\n`
-        = `  ">= 1%",\n`
-        = `  "Chrome >= 45",\n`
-        = `  "Firefox >= 38",\n`
-        = `  "Edge >= 12",\n`
-        = `  "Explorer >= 10",\n`
-        = `  "iOS >= 9",\n`
-        = `  "Safari >= 9",\n`
-        = `  "Android >= 4.4",\n`
-        = `  "Opera >= 30"\n`
-        = `],`
+        = `# https://github.com/browserslist/browserslist#readme\n`
+        = `\n`
+        = `>= 1%\n`
+        = `last 1 major version\n`
+        = `not dead\n`
+        = `Chrome >= 45\n`
+        = `Firefox >= 38\n`
+        = `Edge >= 12\n`
+        = `Explorer >= 10\n`
+        = `iOS >= 9\n`
+        = `Safari >= 9\n`
+        = `Android >= 4.4\n`
+        = `Opera >= 30\n`
     p.my-2 この情報は 
       +extLink("https://github.com/postcss/autoprefixer") Autoprefixer
       |  を用いてCSSにベンダープリフィクスを付加する処理に用いられる。なおAutoprefixerはBootstrap CSSをカスタマイズする際の必須ツール(V3.2以降で導入)。詳しくは
       a(href="#css-customizing") CSSのカスタマイズ
       | を参照。
+    p.my-2 具体的なサポート状況はオフィシャルページを参照すること。
+    ul
+      li ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/#mobile-devices") モバイル機器
+      li ⇒ 
+        +extLink("https://getbootstrap.com/docs/4.2/getting-started/browsers-devices/#desktop-browsers") デスクトップブラウザ
 
-    h2.mt-4#javascript
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/javascript/") JavaScript
-    p.my-2 (TODO)
+    h2.mt-5#javascript
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/") JavaScript
+    p.my-2 BootstrapはCSSだけでは実現できない動的処理にJavaScriptを用いている(jQueryプラグインとして書かれているため「JavaScriptプラグイン」と呼ばれている)。基本的な利用(設定)方法は
+      a(href="#intro-javascript") JavaScript読み込み
+      | を参照。
+    p.my-2 また(バンドル前の)ソースコードはES2016(ES6)形式で、Webpackなどの各種モジュールバンドル対応ツールからモジュール単位で利用することもできる。詳しくは
+      a(href="#contents-source-code") Bootstrapソースコード
+      | を参照(モジュール形式の詳細は 
+      a.btn.btn-outline-info.btn-sm(href="#javascript-modules-button") JavaScriptモジュール形式について
+      |  ボタンで表示)。
+    p.my-2 BootstrapのJavaScriptプラグインは読み込み時に自動的に初期設定を実行する(通常は自分でコードを書かなくてよい)。ただし次のコンポーネントは自分で簡単な初期化用JavaScriptコードを記述する必要がある(リンク先にコード例あり)。
+    ul
+      li
+        a(href="components-11.html/#popovers") ポップオーバー
+      li
+        a(href="components-12.html/#toasts") トースト
+      li
+        a(href="components-12.html/#tooltips") ツールチップ
+    h4.mt-3#javascript-data-attributes
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#data-attributes") data属性
+    p.my-2 動作の設定には 
+      +extLink("https://developer.mozilla.org/ja/docs/Web/HTML/Global_attributes/data-*") カスタムデータ属性 
+        code data-*
+      |  が用いられる。HTMLタグ中に 
+      code data-
+      |  で始まるBootstrap用の属性を記述し、JavaScriptの初期化時にこの設定が読み込まれ処理される。
+    h4.mt-3#javascript-data-attributes
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#programmatic-api") API呼び出し
+    p.my-2 BootstrapのJavaScript APIはjQueryプラグイン仕様に基づいており、jQueryで対象要素を抽出してメソッド呼び出しすることにより機能する。以下は
+      a(href="components-8.html/#modal") モーダル
+      | のAPI呼び出し例。使用できるオプション一覧は公式ドキュメントの 
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#options") Options
+      | 、メソッドに渡すコマンド(文字列)一覧は 
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#methods") Methods
+      |  を参照。
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // 例1: デフォルト設定でインターフェースを生成(自動的に行われるため通常不要)
+        | $('#my-modal').modal();
+        | 
+        | // 例2: オプションを設定(属性を用いてdata-keyboard="false"と設定するのと同様)
+        | // (公式ドキュメントのoptionsを参照)
+        | $('#my-modal').modal({ keyboard: false });
+        | 
+        | // 例3: コマンドを実行
+        | // (公式ドキュメントのmethodsを参照)
+        | $('#my-modal').modal('show');
+    h4.mt-3#javascript-events
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#events") イベント
+    p.my-2 Bootstrap JavaScript APIでは各コンポーネントの特定タイミングにカスタムイベントが設定してある。イベント名はjQueryの名前空間を用いてドット区切りで次のように表現されている。
+    ul
+      li
+        code {イベント}.bs.{コンポーネント}
+        ul
+          li
+            code {イベント}
+            |  - コンポーネント別のイベント名 (例: 
+            code show
+            |  )
+          li
+            code bs
+            |  - Bootstrapのカスタムイベントであることを表す
+          li
+            code {コンポーネント}
+            |  - jQueryにプラグイン登録しているコンポーネント名 (例: 
+            code modal
+            |  )
+    p.my-2 次も
+      a(href="components-8.html/#modal") モーダル
+      | へのイベント設定例。イベント一覧は公式ドキュメントの 
+      +extLink("https://getbootstrap.com/docs/4.2/components/modal/#events") Events
+      |  を参照すること。
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // イベント"show.bs.modal"はモーダル表示開始時に発生する
+        | $('#my-modal').on('show.bs.modal', function(event) {
+        |   // まだモーダルは表示していないので
+        |   // ここでモーダルに表示する内容を設定できる
+        | });
+    p.my-2 より詳しい実例は本チュートリアルの 
+      a(href="components-8.html/#varying-modal-content") 起動時のコンテント更新
+      |  を参照(実際に動作しているコード例あり)。
+    h4.mt-3#javascript-jquery-plugin jQueryプラグイン
+    h5.mt-2#javascript-no-conflict
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#no-conflict") .noConflict()
+    p.my-2 先に示した通り、BootstrapのJavaScript APIはjQueryプラグインとして実装されており、具体的には 
+      code $.fn.button
+      |  のように小文字のコンポーネント名でそのまま登録されている(他に 
+      code alert
+      | , 
+      code carousel
+      | , 
+      code collapse
+      | , etc.)。他のjQueryプラグインと名前が衝突する場合に対応するため 
+      code .noConflict()
+      |  を用意している。
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // Bootstrapが設定する前の$.fn.buttonに戻してから、
+        | // Bootstrapのbuttonプラグインを返す
+        | var bootstrapButton = $.fn.button.noConflict();
+        | // bootstrapButtonという(衝突しない)名前で再登録
+        | $.fn.bootstrapBtn = bootstrapButton;
+    h5.mt-2#javascript-default-settings
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/javascript/#default-settings") デフォルト設定の変更
+    p.my-2 各プラグインのデフォルト設定は 
+      code $.fn.{プラグイン名}.Constructor.Default
+      |  オブジェクトに設定されており、必要に応じて次のように変更できる。
+    pre.mt-3.p-2.border.bg-light
+      code
+        | // 例: モーダルのキーボード操作のデフォルト動作をOFFにする
+        | $.fn.modal.Constructor.Default.keyboard = false;
 
-    h2.mt-4#css
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/theming/") CSSのカスタマイズ
+    h2.mt-5#css
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/theming/") CSSのカスタマイズ
     p.my-2 バージョン4以上のBootstrap CSSのソースファイルは 
       +extLink("https://sass-lang.com/") Sass
       |  (⇒ 
@@ -481,10 +631,10 @@ block body
       li
         a(href="components-1.html#breadcrumb-changing-the-separator") パンくずリスト - セパレータの変更
       li
-        a(href="components-5.html#translating-or-customizing-the-strings") フォーム - 文字のカスタマイズ/多言語対応
-        |  (
-        button.btn.btn-outline-info CSSコード例
-        |  ボタンで表示)
+        a(href="components-5.html#translating-or-customizing-the-strings-with-custom-css") フォーム - 文字のカスタマイズ/多言語対応
+        |  - 
+        a.btn.btn-outline-info.btn-sm(href="components-5.html#custom-file-css-button") CSSコード例
+        |  ボタンで表示
     p.my-2 基本的にはBootstrap CSSの後にそれを上書きするように設定すればよい(考え方としても分かりやすい)。ただしCSSセレクタの優先順位に注意(Bootstrapソースを検索してそれと同じCSSセレクタを使うのが確実)。
     h4.mt-3#css-customizing Sassソースからのカスタマイズ
     p.my-2 現在の推奨方法はSassソースからの拡張で、ややレベルは高いがカスタマイズの自由度ははるかに高い。
@@ -507,8 +657,8 @@ block body
         strong カスタマイズ法のチュートリアルに進む(別サイト)
     div.alert.alert-info 別サイトにした理由は単なる解説ではなく読者が実際に操作できるようにするため。npmパッケージ形式になっており、ツールのインストールやカスタマイズ(ビルド)作業すべてを実際にnpmコマンドで行う事ができる。
 
-    h2.mt-4#build
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/build-tools/") Bootstrapのビルド
+    h2.mt-5#build
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/build-tools/") Bootstrapのビルド
     div.alert.alert-info(role="alert") 配布版を利用する場合は読む必要なし。しかしスタイルのカスタマイズには(Autoprefixerが必須なので)npmの知識が必要になる。スタイルをカスタマイズしたいが方法が分からない人は一回これを実際にやってみるとよい勉強になる。
     p.my-2 BootstrapのソースファイルはGitHubにあり 
       +extLink("https://github.com/twbs/bootstrap/releases") Releases
@@ -557,7 +707,7 @@ block body
       code package.json
       |  の 
       code "scripts":
-      |  の部分を直接読んだ方が仕組みがよく分かる。主なコマンドだけ示す。⇒ 
+      |  フィールドを直接読んだ方が仕組みがよく分かる(お勧め)。主なコマンドだけ示す。⇒ 
       +collapseButton("#build-commands-list") コマンド
     ul.collapse#build-commands-list
       li
@@ -577,23 +727,19 @@ block body
         +extLink("http://localhost:9001/")
           code http://localhost:9001/
 
-    h2.mt-4#webpack
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/webpack/") Webpack
-    p.my-2 (2018年5月現在) 
+    h2.mt-5#webpack
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/webpack/") Webpack
+    p.my-2 (2018年8月現在) 
       +extLink("https://webpack.js.org/") Webpack
-      |  はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(2018年2月にWebpack 4がリリースされたが、BootstrapドキュメントはまだWebpack 3の内容)。
+      |  はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(記述が不十分)。
     p.my-2 そこで最新バージョン(具体的にはWebpack 4とBootstrap 4の組み合わせ)で動作するサンプルプロジェクトを作成した。詳しくは次のGitHub repoを参照(実際に動くものでなければ意味がない)。
     ul
       li
         +extLink("https://github.com/higuma/webpack-bootstrap-starter") webpack-bootstrap-starter (GitHub)
-    div.alert.alert-info(role="alert") (日本向け) Webpackは進化が非常に早く、このようなサンプルもすぐ時代遅れになるので各自検索すること。例えば次を参照(定期的にメインテナンスしているので最新内容を保持している可能性が高い)。
-      ul.mb-0
-        li
-          +extLink("https://ics.media/entry/17749") ICS Media: 最新版で学ぶwebpack 4入門 – Bootstrapをバンドルする方法
-    div.alert.alert-info(role="alert") 本チュートリアルもWebpackでビルドしているが、ほぼpugからHTMLを生成するためにしか使っていない。また難解にならないよう意図的にCSSやJavaScriptのカスタマイズも行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。
+    div.alert.alert-info(role="alert") 本チュートリアルもWebpackでビルドしているが、難解にならないようJavaScriptやCSSのバンドル、カスタマイズは行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。
 
-    h2.mt-4#accessibility
-      +extLink("https://getbootstrap.com/docs/4.1/getting-started/accessibility/") アクセシビリティ
+    h2.mt-5#accessibility
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/accessibility/") アクセシビリティ
     p.my-2 Webアクセシビリティの標準仕様はW3Cにより 
       +extLink("https://www.w3.org/WAI/") WAI
       | -
@@ -617,7 +763,7 @@ block body
     p.my-2 本チュートリアルでは各コンポーネントの構造説明の際に用いるアクセシビリティ属性を具体的に示す。
     p.my-2 ⇒ 
       a(href="components-8.html#modal-components") 説明例(モーダル)
-      |  (
+      |  (リンク先に進み 
       button.btn.btn-outline-info.btn-sm 構造
       |  で表示、さらに
       button.btn.btn-outline-info.btn-sm.px-1.py-0 属性

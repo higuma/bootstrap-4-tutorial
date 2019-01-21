@@ -28,10 +28,10 @@ block body
         a(href="#visibility") Visibility
 
     h2.mt-2#text
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/") Text
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/") Text
     - const sampleText = "The quick brown fox jumps over the lazy dog."
     h4.mt-3#text-alignment
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-alignment") Text alignment
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-alignment") Text alignment
     h5.mt-4.mb-0 Justification 
       code .text-justify
     each justify in [false, true]
@@ -55,7 +55,7 @@ block body
         p(class=`text-${sz}-${al} mt-0 mb-3 border`)
           = `${al[0].toUpperCase()}${al.slice(1)}-aligned on viewport width ≧ ${szPx[sz]}px`
     h4.mt-4#text-wrapping-and-overflow
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-wrapping-and-overflow") Text wrapping and overflow
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-wrapping-and-overflow") Text wrapping and overflow
     p.my-2 (1) Wrapping (Box width is fixed to 
       code 15rem
       |  )
@@ -82,7 +82,7 @@ block body
       div.mb-3
         span(class=`d-inline-block border p-2${truncate ? " text-truncate" : ""}` style="max-width: 15rem;")= sampleText
     h4.mt-4#text-transform
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#text-transform") Text transform
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-transform") Text transform
     each trans in [null, "lowercase", "uppercase", "capitalize"]
       p.mt-3.mb-0
         - if (trans)
@@ -91,21 +91,58 @@ block body
           | (default)
       p(class=`${trans ? `text-${trans}` : ""} mt-1 mb-2`)= sampleText
     h4.mt-4#text-font
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#font-weight-and-italics") Font weight and italics
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#font-weight-and-italics") Font weight and italics
     each font in ["weight-normal", "weight-bold", "weight-light", "italic"]
       p.mt-3.mb-0
         code= `.font-${font}`
         - if (font == "weight-normal")
           |  (default)
       p(class=`font-${font} mt-0 mb-2`)= sampleText
+    p.mt-3.mb-2 (Ver 4.2 or later) 
+      code .font-weight-(bolder|lighter)
+      |  adjusts a font weight relatively to the parent element.
+    p.my-2 Example(
+      code p
+      | ): base &gt; 
+      span.font-weight-bolder bolder
+        |  &gt; 
+        span.font-weight-bolder even bolder
+    p.my-2.font-weight-bold Example(
+      code p.font-weight-bold
+      | ): base &gt; 
+      span.font-weight-lighter lighter
+        |  &gt; 
+        span.font-weight-lighter even lighter
     h4.mt-4#text-monospace
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/text/#monospace") Monospace
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#monospace") Monospace
     p.mt-2.mb-0
       code .text-monospace
     p.text-monospace This is in monospace.
+    h4.mt-4#text-reset-color
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#reset-color") Reset color
+    p
+      code .reset-color
+      |  cancels a color setting and inherits it from parent color.
+    p.text-muted
+      | Muted text with a 
+      a.text-reset(href="#") reset link
+      | .
+    h4.mt-4#text-decoration
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/text/#text-decoration") Text decoration
+    p Use 
+      code .text-decoration-none
+      |  to remove default text decoration.
+    p
+      code u
+      |  ⇒ 
+      u Underline
+    p
+      code u.text-decoration-none
+      |  ⇒ 
+      u.text-decoration-none No underline
 
     h2.mt-5#vertical-align
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/vertical-align/") Vertical alignment
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/vertical-align/") Vertical alignment
     p.my-2 Utility classes for setting CSS 
       code vertical-align
       |  property (see 
@@ -136,7 +173,7 @@ block body
             td(class=`align-${align} p-1`)= align
 
     h2.mt-5#visibility
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/visibility/") Visibility
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/visibility/") Visibility
     p.mt-2.mb-1 Utility classes for setting CSS 
       code visibility
       |  property (see 

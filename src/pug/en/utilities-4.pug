@@ -19,9 +19,9 @@ block body
         a(href="#spacing") Spacing
 
     h2.mt-2#position
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/") Position
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/") Position
     h4.mt-4#position-common-values
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#common-values") Classes
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#common-values") Classes
     p.mb-2 Utility classes for setting CSS 
       code position
       |  property (see 
@@ -30,11 +30,11 @@ block body
     p.my-1
       code .position-(static|relative|absolute|fixed|sticky)
     h4.mt-4#position-fixed-sticky
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#fixed-top") Fixed top
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#fixed-top") Fixed top
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#fixed-bottom") Fixed bottom
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#fixed-bottom") Fixed bottom
       |  / 
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/position/#sticky-top") Sticky top
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/position/#sticky-top") Sticky top
     p.mb-2 Options for fixing an element on top or bottom, and displaying on topmost with setting 
       a(href="layout-1.html#overview-z-index") Z-index
       |  . These are typically used for 
@@ -52,7 +52,7 @@ block body
           code .sticky-top
 
     h2.mt-5#screenreaders
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/screenreaders/") Screenreaders
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/screenreaders/") Screenreaders
     h4.mt-3#screenreaders-summary Summary
     ul
       li Set 
@@ -90,7 +90,7 @@ block body
             |  keys.
 
     h2.mt-5#shadows
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/shadows/") Shadows
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/shadows/") Shadows
     p.mt-3
       code .shadow(-none|-sm|-lg)?
     h4.mt-4#shadows-examples Examples
@@ -100,8 +100,10 @@ block body
       div(class=`shadow${opt[0]} p-3 mb-4 bg-${opt[0]=="-none" ? "light" : "white"} rounded`)= `${opt[1]} shadow`
 
     h2.mt-5#sizing
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/sizing/") Sizing
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/sizing/") Sizing
     p.mt-2.mb-1 Utility classes for setting width and height.
+    h4.mt-3#sizing-relative-to-the-parent
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-parent") Relative to the parent
     ul.my-0
       li Width (25% step + auto) 
         code .w-(25|50|75|100|auto)
@@ -133,14 +135,40 @@ block body
       |  (fits to the parent height)
     div.border(style="height:200px;")
       img.mh-100(src="../img/320x320.svg")
+    h4.mt-3#sizing-relative-to-the-viewport
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/sizing/#relative-to-the-viewport") Relative to the viewport
+    ul.my-2
+      li Min-width 100% to the viewport 
+        code .min-vw-100
+      li Min-height 100% to the viewport 
+        code .min-vh-100
+      li Width 100% to the viewport 
+        code .vw-100
+      li Height 100% to the viewport 
+        code .vh-100
+    h5.mt-3#sizing-relative-to-the-viewport-examples Examples
+    p.mt-3.mb-1 Min-width 100vw 
+      code div.min-vw-100
+  div.min-vw-100.bg-light.border Min-width 100vw
+  div.container
+    p.mt-3.mb-1 Min-height 100vw 
+      code div.min-vh-100
+    div.min-vh-100.bg-light.border Min-height 100vh
+    p.mt-3.mb-1 Width 100vw 
+      code div.vw-100
+  div.vw-100.bg-light.border Width 100vw
+  div.container
+    p.mt-3.mb-1 Height 100vw 
+      code div.vh-100
+    div.vh-100.bg-light.border Height 100vh
 
     h2.mt-5#spacing
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/") Spacing
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/") Spacing
     p.my-2 Utility for setting margins and paddings.
     h4.mt-3#spacing-notation
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/#notation") Notation
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/#notation") Notation
     p.mt-2.mb-1
-      code .(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|auto)
+      code .(m|p)(t|b|l|r|x|y)?-(0|1|2|3|4|5|n1|n2|n3|n4|n5|auto)
     ul
       li
         code (m|p)
@@ -160,15 +188,17 @@ block body
               = ` sets ${opt[1]} margin/padding`
           li (none) sets all four directions
       li
-        code (0|1|2|3|4|5|auto)
+        code (0|1|2|3|4|5|n1|n2|n3|n4|n5|auto)
         |  width
         ul
           li
             code 0
             |  sets to zero
-          each w in [[1,"1/4"],[2,"1/2"],[3,"1"],[4,"1.5"],[5,"3"]]
+          each w in [[1,"1/4"],[2,"1/2"],[3,"1"],[4,"1.5"],[5,"3"],["n1","-1/4"],["n2","-1/2"],["n3","-1"],["n4","-1.5"],["n5","-3"]]
             li
               code= w[0]
+              - if (w[1][0] == "-")
+                |  (margin only)
               |  sets to 
               code= `${w[1]}rem`
           li
@@ -207,7 +237,7 @@ block body
                 div.m-0.border.bg-light
                   code= `.p${dir[0]}-${p}`
     h4.mt-4#horizontal-centering
-      +extLink("https://getbootstrap.com/docs/4.1/utilities/spacing/#horizontal-centering") Horizontal centering
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/#horizontal-centering") Horizontal centering
     p Use 
       code .mx-auto
       |  for horizontal centering of a fixed width element.
@@ -215,5 +245,55 @@ block body
       code div.mx-auto
       |  + 
       code style="width: 20rem;"
+    h4.mt-4#negative-margin
+      +extLink("https://getbootstrap.com/docs/4.2/utilities/spacing/#negative-margin") Negative Margin
+    p Negative margins are typically used for adjusting grid column gutters (see 
+      a(href="layout-1.html/#grid-gutters") Gutters
+      | ). The example below demonstrates responsive gutter adjustment as follows.
+    ul
+      li Grows gutters to 3rem on width &ge; 768px (md or wider)
+      li Shrinks gutters to default (15px) on width &lt; 768px (sm or narrower)
+    div.border.py-2
+      div.row.mx-md-n5
+        each n in [0,1]
+          div.col.py-3.px-md-5.border.bg-white
+            div.border.bg-light Custom column padding
+    div.my-3
+      +collapseButton("#spacing-negative-margin-structure") Structure
+    ul.struct.mt-3.collapse#spacing-negative-margin-structure
+      li Frame (to indicate the container width) 
+        code div 
+        +attrsBtn(".a1-1")
+        ul
+          li.att.collapse.a1-1 Border 
+            code .border
+          li.att.collapse.a1-1 Vertical padding 
+            code .py-2
+          li Grid row 
+            code div.row
+            +attrsBtn(".a1-2")
+            ul
+              li.attr.collapse.a1-2 Negative margin (3rem) on width &ge; 768px 
+                code .mx-md-n5
+              li Grid column (&times;2) 
+                code div.col
+                +attrsBtn(".a1-3")
+                ul
+                  li.att.collapse.a1-3 Vertical padding (1rem) 
+                    code .py-3
+                  li.att.collapse.a1-3 Horizontal padding (3rem on width &ge; 768px) 
+                    code .px-md-5
+                  li.att.collapse.a1-3 Border 
+                    code .border
+                  li.att.collapse.a1-3 Background (white) 
+                    code .bg-white
+                  li Inner 
+                    code div
+                    +attrsBtn(".a1-4")
+                    ul
+                      li.att.collapse.a1-4 Background (light gray) 
+                        code .bg-light
+                      li.txt Text 
+                        code Custom column padding
 
     +breadcrumbLevel1("Utilities(4): Position/Screenreaders/Shadows/Sizing/Spacing")

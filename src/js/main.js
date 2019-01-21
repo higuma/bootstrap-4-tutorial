@@ -5,9 +5,14 @@ $('h2[id],h3[id],h4[id],h5[id],h6[id]').append(function() {
 
 // Enable Popovers
 $('[data-toggle="popover"]').popover();
+$('[data-popover]').popover();
 
 // Enable Tooltips
 $('[data-toggle="tooltip"]').tooltip();
+$('[data-tooltip]').tooltip();
+
+// Enable (show) Toasts
+$('.toast:not(#toasts-demo)').toast('show');
 
 // function: Enable custom file browser
 function enableCustomFileBrowser(id) {
@@ -55,4 +60,20 @@ $('#examplemodal').on('show.bs.modal', function (event) {
   var modal = $(this);
   modal.find('.modal-title').text('New message to ' + recipient);
   modal.find('.modal-body input').val(recipient);
+});
+
+// Toasts: Live demo
+var $toastsDemo = $('#toasts-demo');
+$toastsDemo.toast('hide'); // create a toast instance with initially hidden
+$('#toasts-demo-start').on('click', function() {
+  var delay = $($('#toasts-demo-delay')[0].selectedOptions[0]).attr('value');
+  var animation = $('#toasts-demo-animation')[0].checked;
+  // None of .data(), .attr('data-*'), and .toast(config) works here.
+  // (Bootstrap JS code is possively wrong...)
+  // After an Toast instance is created, it only uses ._config property.
+  var config = $toastsDemo.data('bs.toast')._config;
+  config.autohide = delay > 0;
+  if (delay > 0) config.delay = delay;
+  config.animation = animation;
+  $toastsDemo.toast('show');
 });
