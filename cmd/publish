@@ -16,7 +16,7 @@ do
 done
 
 echo 'rm -rf site/js/dummy.js'
-rm -rf site/js.dummy.js
+rm -rf site/js/dummy.js
 
 # Copy website files to .tmp (to switch to gh-pages branch)
 rm -rf .tmp
