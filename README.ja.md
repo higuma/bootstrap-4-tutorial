@@ -7,7 +7,7 @@
 ## 目次
 
 * [このチュートリアルについて](https://higuma.github.io/bootstrap-4-tutorial/ja/#about)
-    * [記法](https://higuma.github.io/bootstrap-4-tutorial/ja/#notation)
+    * [記法](https://higuma.github.io/bootstrap-4-tutorial/ja/#notation) / [ソースコード](https://higuma.github.io/bootstrap-4-tutorial/ja/#source-code)
 * Getting started (はじめに)
     * [スタートアップ](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-1.html) / [利用法](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-1.html#download) / [コンテンツ](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-1.html#contents) / [ブラウザ](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-1.html#browsers-devices) / [JavaScript](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-1.html#javascript)
     * [カスタマイズ](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-2.html) / [ビルド](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-2.html#build) / [Webpack](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-2.html#webpack) / [アクセシビリティ](https://higuma.github.io/bootstrap-4-tutorial/ja/getting-started-2.html#accessibility)
