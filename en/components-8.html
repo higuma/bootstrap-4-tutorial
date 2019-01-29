@@ -252,7 +252,8 @@
           </ul>
         </li>
       </ul>
-      <div class="alert alert-info mt-3" role="alert">There are so many markups. But most of them are fixed presets (without title, body and additional button(s)). Making a template is convenient to make use of modals. This page utilizes pug <code>mixin</code> templates (see source).</div>
+      <div class="alert alert-info mt-3" role="alert">This modal has a complex structure which consists of twelve(!) elements. But most of them are fixed presets. You typically change only a title and body contents. This page uses <a href="https://pugjs.org/language/mixins.html" target="_blank">Pug <code>mixin</code> templates</a> (see <a href="https://github.com/higuma/bootstrap-4-tutorial/blob/master/src/pug/en/components-8.pug" target="_blank">source</a> ).
+      </div>
       <h4 class="mt-4" id="live-demo"><a href="https://getbootstrap.com/docs/4.2/components/modal/#live-demo" target="_blank">Modal invocation</a>
       </h4>
       <p class="my-2">Modals can be invoked with buttons.</p>
@@ -285,7 +286,7 @@
           </div>
         </div>
       </div>
-      <div class="alert alert-info mt-3" role="alert">Example above finds the modal element by ID. However, <code>data-target</code> accepts arbitrary CSS selector. It is possible to use a selector to query mutiple elements but invokes only the first one. Modals also do not support nesting invocations.</div>
+      <div class="alert alert-info mt-3" role="alert">The example above finds the modal element by ID. However, <code>data-target</code> accepts arbitrary CSS selector. It is possible to use an any selector to query mutiple elements invokes only the first one. Furthermore, nested modal invocations are not supported.</div>
       <h5 class="mt-4" id="behaviors">Behaviors (summary)</h5>
       <ul class="my-1">
         <li>Background is covered by a dark translucent whole-screen element (<strong>backdrop</strong>) (Z-index = <code>1040</code> )</li>
