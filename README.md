@@ -8,7 +8,9 @@ English(en) | [日本語(ja)](README.ja.md)
 
 * [About this tutorial](https://higuma.github.io/bootstrap-4-tutorial/en/#about)
     * [Notation](https://higuma.github.io/bootstrap-4-tutorial/en/#notation)
-* [Getting started](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started.html)
+* Getting started
+    * [Startup](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-1.html) / [Download](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-1.html#download) / [Contents](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-1.html#contents) / [Browsers](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-1.html#browsers-devices) / [JavaScript](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-1.html#javascript)
+    * [Customising CSS](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-2.html) / [Build](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-2.html#build) / [Webpack](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-2.html#webpack) / [Accessibility](https://higuma.github.io/bootstrap-4-tutorial/en/getting-started-2.html#accessibility)
 * Layout
     * [Overview](https://higuma.github.io/bootstrap-4-tutorial/en/layout-1.html) / [Grid system](https://higuma.github.io/bootstrap-4-tutorial/en/layout-1.html#grid) / [Utilities for layout](https://higuma.github.io/bootstrap-4-tutorial/en/layout-1.html#utilities)
 * Content

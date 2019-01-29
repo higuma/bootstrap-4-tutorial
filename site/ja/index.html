@@ -30,27 +30,32 @@
       </div>
       <h2 class="mt-4" id="toc">目次</h2>
       <ul>
-        <li id="toc-about"><a href="#about">このチュートリアルについて</a>
+        <li class="mb-2" id="toc-about"><a href="#about">このチュートリアルについて</a>
           <ul>
-            <li class="mb-2"><a href="#notation">記法</a></li>
+            <li><a href="#notation">記法</a> / <a href="#source-code">ソースコード</a></li>
           </ul>
         </li>
-        <li id="toc-getting-started"><a href="getting-started.html">Getting started (はじめに)</a></li>
+        <li id="toc-getting-started">Getting started (はじめに)
+          <ul>
+            <li><a href="getting-started-1.html">スタートアップ</a> / <a href="getting-started-1.html#download">利用法</a> / <a href="getting-started-1.html#contents">コンテンツ</a> / <a href="getting-started-1.html#browsers-devices">ブラウザ</a> / <a href="getting-started-1.html#javascript">JavaScript</a></li>
+            <li><a href="getting-started-2.html">カスタマイズ</a> / <a href="getting-started-2.html#build">ビルド</a> / <a href="getting-started-2.html#webpack">Webpack</a> / <a href="getting-started-2.html#accessibility">アクセシビリティ</a></li>
+          </ul>
+        </li>
         <li id="toc-layout">レイアウト
           <ul>
             <li><a href="layout-1.html">概要</a> / <a href="layout-1.html#grid">グリッド</a> / <a href="layout-1.html#utilities">レイアウトユーティリティ</a></li>
           </ul>
         </li>
         <li id="toc-contents">コンテント
-          <ol>
+          <ul>
             <li><a href="content-1.html">Reboot</a> / <a href="content-1.html#typography">タイポグラフィ</a> / <a href="content-1.html#code">コード</a></li>
             <li><a href="content-2.html">画像</a></li>
             <li><a href="content-3.html">表</a></li>
             <li><a href="content-4.html">図</a></li>
-          </ol>
+          </ul>
         </li>
         <li id="toc-components">コンポーネント
-          <ol>
+          <ul>
             <li><a href="components-1.html">アラート</a> / <a href="components-1.html#badges">バッジ</a> / <a href="components-1.html#breadcrumb">パンくずリスト</a></li>
             <li><a href="components-2.html">ボタン</a> / <a href="components-2.html#button-group">ボタングループ</a></li>
             <li><a href="components-3.html">カード</a></li>
@@ -63,23 +68,21 @@
             <li><a href="components-10.html">ナビゲーションバー</a></li>
             <li><a href="components-11.html">ページネーション</a> / <a href="components-11.html#popovers">ポップオーバー</a> / <a href="components-11.html#progress">プログレスバー</a></li>
             <li><a href="components-12.html">スクロールスパイ</a> / <a href="components-12.html#spinners">スピナー</a> / <a href="components-12.html#toasts">トースト</a> / <a href="components-12.html#tooltips">ツールチップ</a></li>
-          </ol>
+          </ul>
         </li>
         <li id="toc-utilities">ユーティリティ
-          <ol>
+          <ul>
             <li><a href="utilities-1.html">ボーダー</a> / <a href="utilities-1.html#clearfix">クリアフィックス</a> / <a href="utilities-1.html#close-icon">クローズアイコン</a></li>
             <li><a href="utilities-2.html">色</a> / <a href="utilities-2.html#display">表示</a> / <a href="utilities-2.html#embed">埋め込み</a></li>
             <li><a href="utilities-3.html">Flexbox</a> / <a href="utilities-3.html#float">フロート</a> / <a href="utilities-3.html#image-replacement">画像置換</a></li>
             <li><a href="utilities-4.html">配置</a> / <a href="utilities-4.html#screenreaders">スクリーンリーダ</a> / <a href="utilities-4.html#shadows">シャドウ</a> / <a href="utilities-4.html#sizing">サイズ</a> / <a href="utilities-4.html#spacing">空白</a></li>
             <li><a href="utilities-5.html">テキスト</a> / <a href="utilities-5.html#vertical-align">上下アライン</a> / <a href="utilities-5.html#visibility">可視性</a></li>
-          </ol>
+          </ul>
         </li>
         <li id="toc-extend-migration-about"><a href="extend+migration+about.html">Extend</a> / <a href="extend+migration+about.html#migration">Migration</a> / <a href="extend+migration+about.html#about">About</a></li>
       </ul>
       <h2 class="mt-5" id="about">このチュートリアルについて</h2>
-      <p class="my-2"> <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> 4の自習用チュートリアルです。<a href="https://getbootstrap.com/docs/4.2/" target="_blank">公式ドキュメント</a>と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
-      </p>
-      <p class="my-2">このチュートリアル自身は<a href="https://pugjs.org/" target="_blank">pug</a>で記述し、<a href="https://nodejs.org/" target="_blank">node.js</a>/<a href="https://docs.npmjs.com/" target="_blank">npm</a>環境の<a href="https://webpack.js.org/" target="_blank">Webpack</a>でビルドしています。<a href="https://github.com/higuma/bootstrap-4-tutorial" target="_blank">ソースコード</a>は<a href="https://github.com/" target="_blank">GitHub</a>で公開し、サイトのホスティングは<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>を用いています。
+      <p class="my-2"> <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> 4の自習用チュートリアルです。おおむね<a href="https://getbootstrap.com/docs/4.2/" target="_blank">公式ドキュメント</a>と同じ順に従っていますが読む順番は特にありません。どこからどのように読んでもけっこうです。
       </p>
       <h4 class="mt-4" id="notation">記法</h4>
       <p class="mt-2 mb-3">本チュートリアルではHTMLの説明に独自の方法を用います。次の<a href="components-2.html#button-group-button-toolbar">ボタンツールバー</a>を例に説明します。</p>
@@ -165,6 +168,18 @@
           </ul>
         </li>
       </ul>
+      <h4 class="mt-4" id="source-code">ソースコード</h4>
+      <p class="my-2">本サイトのマスターレポジトリは<a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank">GitHub</a>にあり、ホスティングに<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>を用いて公開しています。チュートリアルのHTMLは<a href="https://pugjs.org/" target="_blank">Pug</a>で記述し、<a href="https://nodejs.org/" target="_blank">node.js</a>/<a href="https://docs.npmjs.com/" target="_blank">npm</a>環境の<a href="https://webpack.js.org/" target="_blank">Webpack</a>でビルドしています。ソースコードはnode.js実行環境で次の手順でビルドできます。
+      </p>
+      <ul>
+        <li><a href="https://github.com/higuma/bootstrap-4-tutorial/archive/master.zip" target="_blank">ZIPソースコード</a>をダウンロードして解凍
+        </li>
+        <li><kbd>npm install</kbd> でインストール</li>
+        <li><kbd>npm run build</kbd> でビルド (<code>./site/*</code> にファイルを生成)</li>
+        <li><kbd>npm run start</kbd> で開発サーバー起動 (⇒ <code>http://localhost:6022/</code>)</li>
+      </ul>
+      <p class="my-2">その他の開発用コマンドは <a href="https://github.com/higuma/bootstrap-4-tutorial/blob/master/package.json" target="_blank"><code class="text-danger"> package.json</code></a> 中の <code>scripts:</code> エントリーを参照して下さい。
+      </p>
       <nav class="mt-4 mb-5" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item active" aria-current="page">ホーム</li>

@@ -278,7 +278,11 @@ block body
                             code type="button"
                           li.txt テキスト 
                             code Save changes
-    div.alert.alert-info.mt-3(role="alert") 設定量は多いがボディ内部以外はほとんど同じ定型構造なのでテンプレートを作っておくとよい(このページのpugソースはmixinによるテンプレートを用いている)。
+    div.alert.alert-info.mt-3(role="alert") 設定量は多いがボディ内部以外はほとんど同じ定型構造なのでテンプレートを作っておくとよい(このページの
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/blob/master/src/pug/ja/components-8.pug") pugソース
+      | を参照: 
+      +extLink("https://pugjs.org/language/mixins.html") mixin
+      |  によるテンプレートを用いている)。
     h4.mt-4#live-demo
       +extLink("https://getbootstrap.com/docs/4.2/components/modal/#live-demo") モーダルの起動
     p.mt-2.mb-1 モーダルはボタンを使って起動できる。起動ボタンの基本構成は次の通り。
@@ -300,9 +304,9 @@ block body
       p Woohoo, you're reading this text in a modal!
     div.alert.alert-info.mt-3(role="alert")
       code data-target
-      |  には任意のCSSセレクタ書式が可能。そのため 
+      |  には任意のCSSセレクタ書式が可能で、
       code id
-      |  以外のセレクタ指定も可能だが、もし複数該当してもモーダルはひとつしか起動しない。起動するモーダルは常に一つで、ネスト(モーダル表示中に別のモーダルを起動)にも対応していない。
+      |  以外のセレクタ指定も可能だが、もし複数該当してもモーダルは(クエリに該当する先頭要素)ひとつしか起動しない。またモーダルのネスト(モーダル表示中に別のモーダルを起動)にも対応していない。
     h5.mt-4#behaviors 動作のポイント(まとめ)
     ul.my-1
       li 背後の元ページを暗転するため全画面を半透明要素(

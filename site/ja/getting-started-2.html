@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      ul.struct li     { list-style: disc; }
+      ul.struct li.cls { list-style: circle; }
+      ul.struct li.att { list-style: circle; }
+      ul.struct li.txt { list-style: none; }
+      a.heading-link { text-decoration: none; margin-left: 0.5rem; color: white; }
+      a.heading-link:hover { color: skyblue; }
+      .custom-file-input:lang(ja) ~ .custom-file-label::after { content: "ファイル選択"; }
+      .custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+      .breadcrumb-item + .breadcrumb-item::before { content: "\00bb" }
+    </style>
+    <title>Bootstrap 4 tutorial: Getting started</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <h1 class="display-4 mb-0">Bootstrap 4 tutorial</h1>
+          <p class="lead">Getting started (2): <a href="#css">カスタマイズ</a> / <a href="#build">ビルド</a> / <a href="#webpack">Webpack</a> / <a href="#accessibility">アクセシビリティ</a></p>
+        </div>
+        <div class="col-auto dropdown mt-3"><a href="https://github.com/higuma/bootstrap-4-tutorial/" target="_blank"><img class="mr-1" src="../img/GitHub-Mark-32px.png"></a>
+          <button class="btn btn-outline-secondary dropdown-toggle" id="lang-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">言語</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-select"><a class="dropdown-item" href="#">日本語 (Japanese)</a><a class="dropdown-item" href="../en/getting-started-2.html">英語 (English)</a></div>
+        </div>
+      </div>
+      <h2 class="mt-4" id="css"><a href="https://getbootstrap.com/docs/4.2/getting-started/theming/" target="_blank">CSSのカスタマイズ</a>
+      </h2>
+      <p class="my-2">バージョン4以上のBootstrap CSSのソースファイルは <a href="https://sass-lang.com/" target="_blank">Sass</a> (⇒ <a href="https://ja.wikipedia.org/wiki/Sass" target="_blank">Wikipedia</a>)で記述されており、現在のBootstrapは拡張用Sassソースを自分で書き、Bootstrap Sassソースコードをインポートしてカスタマイズする方法を推奨している。ただし当然ながらSassの習得が必須で、さらに開発ツールの知識も必要なため初心者にはややハードルが高い。
+      </p>
+      <h4 class="mt-3" id="css-overriding">CSSのオーバーライド</h4>
+      <p class="my-2">バージョン3.1.1まではソース(当時はSassではなく<a href="http://lesscss.org/" target="_blank">Less</a>)のコンパイルは行わず、コンパイル済み(配布版)CSSの後にカスタマイズ用CSSを追加して設定をオーバーライドする方法を推奨していた。この方がより簡単で追加ツールも必要ない。
+      </p>
+      <p class="my-2">本チュートリアルはSassを知らなくても理解できるようにこの昔の方法を採用して部分的にCSSをオーバーライドしており、具体的には次の2箇所に用いている。</p>
+      <ul>
+        <li><a href="components-1.html#breadcrumb-changing-the-separator">パンくずリスト - セパレータの変更</a></li>
+        <li><a href="components-5.html#translating-or-customizing-the-strings-with-custom-css">フォーム - 文字のカスタマイズ/多言語対応</a> - <a class="btn btn-outline-info btn-sm" href="components-5.html#custom-file-css-button">CSSコード例</a> ボタンで表示</li>
+      </ul>
+      <p class="my-2">基本的にはBootstrap CSSの後にそれを上書きするように設定すればよい(考え方としても分かりやすい)。ただしCSSセレクタの優先順位に注意(Bootstrapソースを検索してそれと同じCSSセレクタを使うのが確実)。</p>
+      <h4 class="mt-3" id="css-customizing">Sassソースからのカスタマイズ</h4>
+      <p class="my-2">現在の推奨方法はSassソースからの拡張で、ややレベルは高いがカスタマイズの自由度ははるかに高い。</p>
+      <ul>
+        <li>拡張用Sassファイルを作成
+          <ul>
+            <li>カスタマイズ用変数を定義して値を設定</li>
+            <li>Bootstrap Sassコードをインポート</li>
+            <li>(オプション) 必要に応じて追加スタイルを記述</li>
+          </ul>
+        </li>
+        <li><strong>(必須) </strong> SassファイルをCSSへコンパイル</li>
+        <li><strong>(必須) </strong> Autoprefixerでベンダープリフィクスを設定(追加)</li>
+        <li>(オプション) CSS圧縮ツールで最適化</li>
+      </ul>
+      <p class="mt-2">しかし公式ドキュメントには(事前準備としての)SassとAutoprefixerのツール説明がほとんどない(Sass経験者用のコード解説しか書かれていない)。そこで初心者からでもカスタマイズを習得できるように専用チュートリアルを作成した。</p>
+      <p class="mt-2">⇒ <a href="https://higuma.github.io/bootstrap-4-css-customization/ja/" target="_blank"><strong>カスタマイズ法のチュートリアルに進む(別サイト)</strong></a>
+      </p>
+      <div class="alert alert-info">別サイトにした理由は単なる解説ではなく読者が実際に操作できるようにするため。npmパッケージ形式になっており、ツールのインストールやカスタマイズ(ビルド)作業すべてを実際にnpmコマンドで行う事ができる。</div>
+      <h2 class="mt-5" id="build"><a href="https://getbootstrap.com/docs/4.2/getting-started/build-tools/" target="_blank">Bootstrapのビルド</a>
+      </h2>
+      <div class="alert alert-info" role="alert">配布版を利用する場合は読む必要なし。しかしスタイルのカスタマイズには(Autoprefixerが必須なので)npmの知識が必要になる。スタイルをカスタマイズしたいが方法が分からない人は一回これを実際にやってみるとよい勉強になる。</div>
+      <p class="my-2">BootstrapのソースファイルはGitHubにあり <a href="https://github.com/twbs/bootstrap/releases" target="_blank">Releases</a> ページで全バージョンのソースを入手できる。ここではGitHubから入手したソース(バージョン4.0.0以上)からビルドやテストを行う方法を説明する。
+      </p>
+      <p class="my-2">まず実行環境として次の2つが必要(インストール方法が分からない人は各自検索すること)。
+        <ul>
+          <li> <a href="https://nodejs.org/" target="_blank">node.js</a> (メインのビルドツールとして<a href="https://www.npmjs.com/" target="_blank">npm</a>を用いる)
+          </li>
+          <li> <a href="https://www.ruby-lang.org/ja/" target="_blank">Ruby</a> (ドキュメント生成用 - <a href="https://jekyllrb.com/" target="_blank">jekyll</a>を用いるために必要)
+          </li>
+        </ul>
+      </p>
+      <div class="alert alert-warning" role="alert">またドキュメントには書かれていないが、一部のバージョンでテストツールがJavaに対する依存性を持つ。もしテスト実行時に「Javaが利用できない」というメッセージが出る場合はJava環境(JRE)をインストールすること。</div>
+      <h4 class="mt-4" id="build-install">ツールのインストール</h4>
+      <p class="my-2">GitHubのソースからビルドする事前準備として開発ツールをインストールする。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#build-install-list" aria-control="#build-install-list" aria-expanded="false">手順</a>
+      </p>
+      <ul class="collapse" id="build-install-list">
+        <li>まずGitHubソースを展開</li>
+        <li>ディレクトリ内に移動(<code>package.json</code> と <code>Gemfile</code> のある場所)</li>
+        <li>node.js用ツールをインストール ⇒ <kbd>npm run install</kbd></li>
+        <li>Ruby用ツールをインストール(ドキュメント生成に必要) ⇒ <kbd>(sudo) bundle install</kbd>
+          <ul>
+            <li>Unix系環境では必要に応じ先頭に <kbd>sudo</kbd> が必要</li>
+            <li><code>bundle</code> コマンド(<a href="https://bundler.io/" target="_blank">Bundler</a>)が入っていない場合は要インストール ⇒ <kbd>(sudo) gem install bundler</kbd>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="mt-4" id="build-commands">ビルドコマンド</h4>
+      <p class="my-2">Bootstrap 4はビルド用ツールとしてnpmを用いる。コマンド一覧は <kbd>npm run</kbd> で表示できるが、それより <code>package.json</code> の <code>"scripts":</code> フィールドを直接読んだ方が仕組みがよく分かる(お勧め)。主なコマンドだけ示す。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#build-commands-list" aria-control="#build-commands-list" aria-expanded="false">コマンド</a>
+      </p>
+      <ul class="collapse" id="build-commands-list">
+        <li><kbd>npm run dist</kbd> - CSSとJavaScriptのビルドを実行し<code>./dist</code> ディレクトリに出力</li>
+        <li><kbd>npm test</kbd> - ビルド実行後にテストも実行</li>
+        <li><kbd>npm run docs</kbd> - ドキュメント用のCSSとJavaScriptを生成しlintを実行</li>
+        <li><kbd>npm run docs-serve</kbd> - ドキュメントサイトのローカルサーバ起動 ⇒ <a href="http://localhost:9001/" target="_blank"><code>http://localhost:9001/</code></a>
+        </li>
+      </ul>
+      <h2 class="mt-5" id="webpack"><a href="https://getbootstrap.com/docs/4.2/getting-started/webpack/" target="_blank">Webpack</a>
+      </h2>
+      <p class="my-2">(2018年8月現在) <a href="https://webpack.js.org/" target="_blank">Webpack</a> はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(記述が不十分)。
+      </p>
+      <p class="my-2">そこで最新バージョン(具体的にはWebpack 4とBootstrap 4の組み合わせ)で動作するサンプルプロジェクトを作成した。詳しくは次のGitHub repoを参照(実際に動くものでなければ意味がない)。</p>
+      <ul>
+        <li><a href="https://github.com/higuma/webpack-bootstrap-starter" target="_blank">webpack-bootstrap-starter (GitHub)</a>
+        </li>
+      </ul>
+      <div class="alert alert-info" role="alert">本チュートリアルもWebpackでビルドしているが、難解にならないようJavaScriptやCSSのバンドル、カスタマイズは行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。</div>
+      <h2 class="mt-5" id="accessibility"><a href="https://getbootstrap.com/docs/4.2/getting-started/accessibility/" target="_blank">アクセシビリティ</a>
+      </h2>
+      <p class="my-2">Webアクセシビリティの標準仕様はW3Cにより <a href="https://www.w3.org/WAI/" target="_blank">WAI</a>-<a href="https://www.w3.org/WAI/intro/aria" target="_blank">ARIA</a> としてまとめられている。⇒ <a class="btn btn-outline-info" data-toggle="collapse" href="#accessibility-reference" aria-control="#accessibility-reference" aria-expanded="false">リファレンス</a>
+      </p>
+      <ul class="collapse" id="accessibility-reference">
+        <li><a href="https://www.w3.org/TR/wai-aria-1.1/" target="_blank">WAI-ARIA 1.1仕様書</a> (<a href="https://momdo.github.io/wai-aria-1.1/" target="_blank">和訳</a>)
+        </li>
+        <li><a href="https://developer.mozilla.org/ja/docs/Learn/Accessibility/WAI-ARIA_basics" target="_blank">MDN: WAI-ARIAの基本</a>
+        </li>
+      </ul>
+      <p class="my-2">具体的には次の2種類のアクセシビリティ属性が用いられる。</p>
+      <ul>
+        <li>ロール属性(例) <code>role="navigation"</code></li>
+        <li>ARIA属性(例) <code>aria-expanded="false"</code></li>
+      </ul>
+      <p class="my-2">本チュートリアルでは各コンポーネントの構造説明の際に用いるアクセシビリティ属性を具体的に示す。</p>
+      <p class="my-2">⇒ <a href="components-8.html#modal-components">説明例(モーダル)</a> (リンク先に進み 
+        <button class="btn btn-outline-info btn-sm">構造</button> で表示、さらに
+        <button class="btn btn-outline-info btn-sm px-1 py-0">属性</button> でアクセシビリティ属性を展開)
+      </p>
+      <p class="my-2">またBootstrapはアクセシビリティ用ユーティリティとして <code>.sr-only</code> と <code>.sr-only-focusable</code> を用意している(⇒ <a href="utilities-4.html#screenreaders">スクリーンリーダ</a>)。これらについても利用しているコンポーネントの構造説明の際に示す。</p>
+      <nav class="mt-4 mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Getting started (2): カスタマイズ/ビルド/Webpack/アクセシビリティ</li>
+        </ol>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+</html>

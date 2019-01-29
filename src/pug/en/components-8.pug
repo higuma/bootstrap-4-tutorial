@@ -275,9 +275,13 @@ block body
                             code type="button"
                           li.txt Text 
                             code Save changes
-    div.alert.alert-info.mt-3(role="alert") There are so many markups. But most of them are fixed presets (without title, body and additional button(s)). Making a template is convenient to make use of modals. This page utilizes pug 
-      code mixin
-      |  templates (see source).
+    div.alert.alert-info.mt-3(role="alert") This modal has a complex structure which consists of twelve(!) elements. But most of them are fixed presets. You typically change only a title and body contents. This page uses 
+      +extLink("https://pugjs.org/language/mixins.html") Pug 
+        code mixin
+        |  templates
+      |  (see 
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/blob/master/src/pug/en/components-8.pug") source
+      |  ).
     h4.mt-4#live-demo
       +extLink("https://getbootstrap.com/docs/4.2/components/modal/#live-demo") Modal invocation
     p.my-2 Modals can be invoked with buttons.
@@ -297,9 +301,9 @@ block body
     p.my-2 See the example below (clicking the button show a modal).
     +modalDemo("exampleModal", "exampleModalLabel")
       p Woohoo, you're reading this text in a modal!
-    div.alert.alert-info.mt-3(role="alert") Example above finds the modal element by ID. However, 
+    div.alert.alert-info.mt-3(role="alert") The example above finds the modal element by ID. However, 
       code data-target
-      |  accepts arbitrary CSS selector. It is possible to use a selector to query mutiple elements but invokes only the first one. Modals also do not support nesting invocations.
+      |  accepts arbitrary CSS selector. It is possible to use an any selector to query mutiple elements invokes only the first one. Furthermore, nested modal invocations are not supported.
     h5.mt-4#behaviors Behaviors (summary)
     ul.my-1
       li Background is covered by a dark translucent whole-screen element (

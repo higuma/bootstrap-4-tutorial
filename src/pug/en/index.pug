@@ -9,13 +9,33 @@ block body
     +pageHeader("index")
     h2.mt-4#toc Table of contents
     ul
-      li#toc-about
+      li.mb-2#toc-about
         a(href="#about") About this tutorial
         ul
-          li.mb-2
+          li
             a(href="#notation") Notation
-      li#toc-getting-started
-        a(href="getting-started.html") Getting started
+            |  / 
+            a(href="#source-code") Source code
+      li#toc-getting-started Getting started
+        ul
+          li
+            a(href="getting-started-1.html") Startup
+            |  / 
+            a(href="getting-started-1.html#download") Download
+            |  / 
+            a(href="getting-started-1.html#contents") Contents
+            |  / 
+            a(href="getting-started-1.html#browsers-devices") Browsers
+            |  / 
+            a(href="getting-started-1.html#javascript") JavaScript
+          li
+            a(href="getting-started-2.html") Customizing CSS
+            |  / 
+            a(href="getting-started-2.html#build") Build
+            |  / 
+            a(href="getting-started-2.html#webpack") Webpack
+            |  / 
+            a(href="getting-started-2.html#accessibility") Accessibility
       li#toc-layout Layout
         ul
           li
@@ -25,7 +45,7 @@ block body
             |  / 
             a(href="layout-1.html#utilities") Utilities for layout
       li#toc-contents Content
-        ol
+        ul
           li
             a(href="content-1.html") Reboot
             |  / 
@@ -36,7 +56,7 @@ block body
           li: a(href="content-3.html") Tables
           li: a(href="content-4.html") Figures
       li#toc-components Components
-        ol
+        ul
           li
             a(href="components-1.html") Alerts
             |  / 
@@ -84,7 +104,7 @@ block body
             |  / 
             a(href="components-12.html#tooltips") Tooltips
       li#toc-utilities Utilities
-        ol
+        ul
           li
             a(href="utilities-1.html") Borders
             |  / 
@@ -128,21 +148,6 @@ block body
 
     h2.mt-5#about About this tutorial
     p.my-2 This is a self-study tutorial for Bootstrap version 4. It is basically written in the same order as official Bootstrap 4.2 document. But you can read in any order you like.
-    p.my-2 The tutorial is written in 
-      +extLink("https://pugjs.org/") pug
-      |  and built with 
-      +extLink("https://webpack.js.org/") webpack
-      |  under 
-      +extLink("https://nodejs.org/") node.js
-      | /
-      +extLink("https://docs.npmjs.com/") npm
-      |  environment. You can get full 
-      +extLink("https://github.com/higuma/bootstrap-4-tutorial") source code
-      |  from 
-      +extLink("https://github.com/") GitHub
-      | . The site is hosted by 
-      +extLink("https://pages.github.com/") GitHub Pages
-      | .
     h4.mt-4#notation Notation
     p.mt-2.mb-3 This tutorial uses a special notation for representing HTML structures. For example, consider a 
       a(href="components-2.html#button-group-button-toolbar") button toolbar
@@ -240,7 +245,7 @@ block body
         | ), element name with 
         code code
         |  (red monospace text)
-      li Element with class(es): CSS dot notation: g. 
+      li Element with class(es): CSS dot notation: e.g. 
         code div.modal.fade
       li Attributes, (additional) classes, and child elements are described with nested lists
         ul
@@ -257,5 +262,42 @@ block body
             | ), e.g. 
             code Text content
           li Descendant elements use same notation as parents, also use nesting to describe hierarchy
+
+    h4.mt-4#source-code Source code
+    p.my-2 The master repositry of the site is maintained by 
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/") GitHub
+      |  and hosted by 
+      +extLink("https://pages.github.com/") GitHub Pages
+      | . HTML pages are written in 
+      +extLink("https://pugjs.org/") Pug
+      |  and built with 
+      +extLink("https://webpack.js.org/") Webpack
+      |  on 
+      +extLink("https://nodejs.org/") node.js
+      | /
+      +extLink("https://docs.npmjs.com/") npm
+      | . You can build this site by yourself as following instructions.
+    ul
+      li Download 
+        +extLink("https://github.com/higuma/bootstrap-4-tutorial/archive/master.zip") Zipped source code
+        |  and extract it
+      li Install with 
+        kbd npm install
+      li Build with 
+        kbd npm run build
+        |  (site files are generated in 
+        code ./site/*
+        | )
+      li Start development server with 
+        kbd npm run start
+        |  (⇒ 
+        code http://localhost:6022/
+        | )
+    p.my-2 See 
+      code scripts:
+      |  entries of 
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/blob/master/package.json")
+        code.text-danger  package.json
+      |  for more development commands.
 
     +breadcrumbLevel0

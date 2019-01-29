@@ -6,8 +6,17 @@ block head
 
 block body
   div.container
-    +pageHeader("getting-started")
-      p.lead Getting started
+    +pageHeader("getting-started-1")
+      p.lead Getting started (1): 
+        a(href="#intro") スタートアップ
+        |  / 
+        a(href="#download") 利用法
+        |  / 
+        a(href="#contents") コンテンツ
+        |  / 
+        a(href="#browsers-devices") ブラウザ
+        |  / 
+        a(href="#javascript") JavaScript
 
     h2.mt-4#intro
       +extLink("https://getbootstrap.com/docs/4.2/getting-started/introduction/") スタートアップ
@@ -301,7 +310,7 @@ block body
       li Popper.js
       li Bootstrap JavaScript
     div.alert.alert-info(role="alert") 開発の初期段階はCDNを利用し、ある程度理解した後でカスタマイズを検討するのがお勧め。ここから下は大部分がカスタマイズを行う人向けの内容なので、最初は飛ばして
-      a(href="#accessibility") アクセシビリティ
+      a(href="getting-started-2.html/#accessibility") アクセシビリティ
       | だけ確認して先に進むとよい。
 
     h2.mt-5#download
@@ -493,7 +502,7 @@ block body
     p.my-2 この情報は 
       +extLink("https://github.com/postcss/autoprefixer") Autoprefixer
       |  を用いてCSSにベンダープリフィクスを付加する処理に用いられる。なおAutoprefixerはBootstrap CSSをカスタマイズする際の必須ツール(V3.2以降で導入)。詳しくは
-      a(href="#css-customizing") CSSのカスタマイズ
+      a(href="getting-started-2.html/#css-customizing") CSSのカスタマイズ
       | を参照。
     p.my-2 具体的なサポート状況はオフィシャルページを参照すること。
     ul
@@ -615,166 +624,4 @@ block body
         | // 例: モーダルのキーボード操作のデフォルト動作をOFFにする
         | $.fn.modal.Constructor.Default.keyboard = false;
 
-    h2.mt-5#css
-      +extLink("https://getbootstrap.com/docs/4.2/getting-started/theming/") CSSのカスタマイズ
-    p.my-2 バージョン4以上のBootstrap CSSのソースファイルは 
-      +extLink("https://sass-lang.com/") Sass
-      |  (⇒ 
-      +extLink("https://ja.wikipedia.org/wiki/Sass") Wikipedia
-      | )で記述されており、現在のBootstrapは拡張用Sassソースを自分で書き、Bootstrap Sassソースコードをインポートしてカスタマイズする方法を推奨している。ただし当然ながらSassの習得が必須で、さらに開発ツールの知識も必要なため初心者にはややハードルが高い。
-    h4.mt-3#css-overriding CSSのオーバーライド
-    p.my-2 バージョン3.1.1まではソース(当時はSassではなく
-      +extLink("http://lesscss.org/") Less
-      | )のコンパイルは行わず、コンパイル済み(配布版)CSSの後にカスタマイズ用CSSを追加して設定をオーバーライドする方法を推奨していた。この方がより簡単で追加ツールも必要ない。
-    p.my-2 本チュートリアルはSassを知らなくても理解できるようにこの昔の方法を採用して部分的にCSSをオーバーライドしており、具体的には次の2箇所に用いている。
-    ul
-      li
-        a(href="components-1.html#breadcrumb-changing-the-separator") パンくずリスト - セパレータの変更
-      li
-        a(href="components-5.html#translating-or-customizing-the-strings-with-custom-css") フォーム - 文字のカスタマイズ/多言語対応
-        |  - 
-        a.btn.btn-outline-info.btn-sm(href="components-5.html#custom-file-css-button") CSSコード例
-        |  ボタンで表示
-    p.my-2 基本的にはBootstrap CSSの後にそれを上書きするように設定すればよい(考え方としても分かりやすい)。ただしCSSセレクタの優先順位に注意(Bootstrapソースを検索してそれと同じCSSセレクタを使うのが確実)。
-    h4.mt-3#css-customizing Sassソースからのカスタマイズ
-    p.my-2 現在の推奨方法はSassソースからの拡張で、ややレベルは高いがカスタマイズの自由度ははるかに高い。
-    ul
-      li 拡張用Sassファイルを作成
-        ul
-          li カスタマイズ用変数を定義して値を設定
-          li Bootstrap Sassコードをインポート
-          li (オプション) 必要に応じて追加スタイルを記述
-      li
-        strong (必須) 
-        |  SassファイルをCSSへコンパイル
-      li
-        strong (必須) 
-        |  Autoprefixerでベンダープリフィクスを設定(追加)
-      li (オプション) CSS圧縮ツールで最適化
-    p.mt-2 しかし公式ドキュメントには(事前準備としての)SassとAutoprefixerのツール説明がほとんどない(Sass経験者用のコード解説しか書かれていない)。そこで初心者からでもカスタマイズを習得できるように専用チュートリアルを作成した。
-    p.mt-2 ⇒ 
-      +extLink("https://higuma.github.io/bootstrap-4-css-customization/ja/")
-        strong カスタマイズ法のチュートリアルに進む(別サイト)
-    div.alert.alert-info 別サイトにした理由は単なる解説ではなく読者が実際に操作できるようにするため。npmパッケージ形式になっており、ツールのインストールやカスタマイズ(ビルド)作業すべてを実際にnpmコマンドで行う事ができる。
-
-    h2.mt-5#build
-      +extLink("https://getbootstrap.com/docs/4.2/getting-started/build-tools/") Bootstrapのビルド
-    div.alert.alert-info(role="alert") 配布版を利用する場合は読む必要なし。しかしスタイルのカスタマイズには(Autoprefixerが必須なので)npmの知識が必要になる。スタイルをカスタマイズしたいが方法が分からない人は一回これを実際にやってみるとよい勉強になる。
-    p.my-2 BootstrapのソースファイルはGitHubにあり 
-      +extLink("https://github.com/twbs/bootstrap/releases") Releases
-      |  ページで全バージョンのソースを入手できる。ここではGitHubから入手したソース(バージョン4.0.0以上)からビルドやテストを行う方法を説明する。
-    p.my-2 まず実行環境として次の2つが必要(インストール方法が分からない人は各自検索すること)。
-      ul
-        li 
-          +extLink("https://nodejs.org/") node.js
-          |  (メインのビルドツールとして
-          +extLink("https://www.npmjs.com/") npm
-          | を用いる)
-        li 
-          +extLink("https://www.ruby-lang.org/ja/") Ruby
-          |  (ドキュメント生成用 - 
-          +extLink("https://jekyllrb.com/") jekyll
-          | を用いるために必要)
-    div.alert.alert-warning(role="alert") またドキュメントには書かれていないが、一部のバージョンでテストツールがJavaに対する依存性を持つ。もしテスト実行時に「Javaが利用できない」というメッセージが出る場合はJava環境(JRE)をインストールすること。
-    h4.mt-4#build-install ツールのインストール
-    p.my-2 GitHubのソースからビルドする事前準備として開発ツールをインストールする。⇒ 
-      +collapseButton("#build-install-list") 手順
-    ul.collapse#build-install-list
-      li まずGitHubソースを展開
-      li ディレクトリ内に移動(
-        code package.json
-        |  と 
-        code Gemfile
-        |  のある場所)
-      li node.js用ツールをインストール ⇒ 
-        kbd npm run install
-      li Ruby用ツールをインストール(ドキュメント生成に必要) ⇒ 
-        kbd (sudo) bundle install
-        ul
-          li Unix系環境では必要に応じ先頭に 
-            kbd sudo
-            |  が必要
-          li
-            code bundle
-            |  コマンド(
-            +extLink("https://bundler.io/") Bundler
-            | )が入っていない場合は要インストール ⇒ 
-            kbd (sudo) gem install bundler
-    h4.mt-4#build-commands ビルドコマンド
-    p.my-2 Bootstrap 4はビルド用ツールとしてnpmを用いる。コマンド一覧は 
-      kbd npm run
-      |  で表示できるが、それより 
-      code package.json
-      |  の 
-      code "scripts":
-      |  フィールドを直接読んだ方が仕組みがよく分かる(お勧め)。主なコマンドだけ示す。⇒ 
-      +collapseButton("#build-commands-list") コマンド
-    ul.collapse#build-commands-list
-      li
-        kbd npm run dist
-        |  - CSSとJavaScriptのビルドを実行し
-        code ./dist
-        |  ディレクトリに出力
-      li
-        kbd npm test
-        |  - ビルド実行後にテストも実行
-      li
-        kbd npm run docs
-        |  - ドキュメント用のCSSとJavaScriptを生成しlintを実行
-      li
-        kbd npm run docs-serve
-        |  - ドキュメントサイトのローカルサーバ起動 ⇒ 
-        +extLink("http://localhost:9001/")
-          code http://localhost:9001/
-
-    h2.mt-5#webpack
-      +extLink("https://getbootstrap.com/docs/4.2/getting-started/webpack/") Webpack
-    p.my-2 (2018年8月現在) 
-      +extLink("https://webpack.js.org/") Webpack
-      |  はWeb開発で最もメジャーなツールの一つだが、開発ペースが非常に早くBootstrap公式ドキュメントが追い付いていない(記述が不十分)。
-    p.my-2 そこで最新バージョン(具体的にはWebpack 4とBootstrap 4の組み合わせ)で動作するサンプルプロジェクトを作成した。詳しくは次のGitHub repoを参照(実際に動くものでなければ意味がない)。
-    ul
-      li
-        +extLink("https://github.com/higuma/webpack-bootstrap-starter") webpack-bootstrap-starter (GitHub)
-    div.alert.alert-info(role="alert") 本チュートリアルもWebpackでビルドしているが、難解にならないようJavaScriptやCSSのバンドル、カスタマイズは行っていない(CDNを利用)。あえてWebpackを使ったのは単純に今最もメジャーで多くの人に馴染みがあると判断したため。
-
-    h2.mt-5#accessibility
-      +extLink("https://getbootstrap.com/docs/4.2/getting-started/accessibility/") アクセシビリティ
-    p.my-2 Webアクセシビリティの標準仕様はW3Cにより 
-      +extLink("https://www.w3.org/WAI/") WAI
-      | -
-      +extLink("https://www.w3.org/WAI/intro/aria") ARIA
-      |  としてまとめられている。⇒ 
-      +collapseButton("#accessibility-reference") リファレンス
-    ul.collapse#accessibility-reference
-      li
-        +extLink("https://www.w3.org/TR/wai-aria-1.1/") WAI-ARIA 1.1仕様書
-        |  (
-        +extLink("https://momdo.github.io/wai-aria-1.1/") 和訳
-        | )
-      li
-        +extLink("https://developer.mozilla.org/ja/docs/Learn/Accessibility/WAI-ARIA_basics") MDN: WAI-ARIAの基本
-    p.my-2 具体的には次の2種類のアクセシビリティ属性が用いられる。
-    ul
-      li ロール属性(例) 
-        code role="navigation"
-      li ARIA属性(例) 
-        code aria-expanded="false"
-    p.my-2 本チュートリアルでは各コンポーネントの構造説明の際に用いるアクセシビリティ属性を具体的に示す。
-    p.my-2 ⇒ 
-      a(href="components-8.html#modal-components") 説明例(モーダル)
-      |  (リンク先に進み 
-      button.btn.btn-outline-info.btn-sm 構造
-      |  で表示、さらに
-      button.btn.btn-outline-info.btn-sm.px-1.py-0 属性
-      |  でアクセシビリティ属性を展開)
-    
-    p.my-2 またBootstrapはアクセシビリティ用ユーティリティとして 
-      code .sr-only
-      |  と 
-      code .sr-only-focusable
-      |  を用意している(⇒ 
-      a(href="utilities-4.html#screenreaders") スクリーンリーダ
-      | )。これらについても利用しているコンポーネントの構造説明の際に示す。
-
-    +breadcrumbLevel1("Getting started")
+    +breadcrumbLevel1("Getting started (1): スタートアップ/利用法/コンテンツ/ブラウザ/JavaScript")

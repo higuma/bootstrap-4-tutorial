@@ -1,0 +1,190 @@
+extends ../template-cdn-en
+include ../mixins-en
+
+block head
+  title Bootstrap 4 tutorial: Getting started
+
+block body
+  div.container
+    +pageHeader("getting-started-2")
+      p.lead Getting started (2): 
+        a(href="#css") Customizing CSS
+        |  / 
+        a(href="#build") Build
+        |  / 
+        a(href="#webpack") Webpack
+        |  / 
+        a(href="#accessibility") Accessibility
+
+    h2.mt-4#css
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/theming/") Customizing CSS
+    p.my-2 Bootstrap 4 CSS source files are written in 
+      +extLink("https://sass-lang.com/") Sass
+      |  (⇒ 
+      +extLink("https://en.wikipedia.org/wiki/Sass_(stylesheet_language)") Wikipedia
+      | ). The official document recommends writing an extension Sass code to customize Bootstrap styles. It enables you to modify all-over features of Bootstrap styles but requires skills for Sass, Autoprefixer and so on.
+    h4.mt-3#css-overriding Overriding CSS
+    p.my-2 Former official documents (until version 3.1.1) recommended appending your CSS code to override Bootstrap styles. It does not require knowledge of Sass and Autoprefixer (much easier). This tutorial employs this method. Overriding CSS is actually used for these two topics.
+    ul
+      li
+        a(href="components-1.html#breadcrumb-changing-the-separator") Breadcrumb - Changing the separator
+      li
+        a(href="components-5.html#translating-or-customizing-the-strings-with-custom-css") Forms - Translating or customizing the strings with custom CSS
+        |  (press 
+        button.btn.btn-outline-info CSS example
+        |  to display)
+    p.my-2 Basically, you can override styles by appending your own CSS code (just) 
+      strong after
+      |  Bootstrap CSS (Styles are overridden by order).
+    h4.mt-3#css-customizing Customizing from Sass source code
+    p.my-2 Current official document recommends writing a Sass extension code to customize Bootstrap styles. A typical workflow is as follows.
+    ul
+      li Make your own Sass file for extension
+        ul
+          li Initialize customization variables
+          li Import Bootstrap Sass code
+          li (Optional) append your own styles
+      li Compile Sass source code to CSS
+      li Process vendor prefixes with Autoprefixer
+      li (Optional) Minify CSS
+    p.mt-2 However, information about tools (Sass, Autoprefixer, etc.) is very few in the whole official documents. It only explains about Bootstrap source code (for experienced Sass developers). So we have made a separate tutorial for Bootstrap style customization.
+    p.mt-2 ⇒ 
+      +extLink("https://higuma.github.io/bootstrap-4-css-customization/en/")
+        strong Bootstrap 4 CSS customization tutorial (external site)
+    div.alert.alert-info This separate tutorial has been made as an npm package (⇒ 
+      +extLink("https://github.com/higuma/bootstrap-4-css-customization/archive/master.zip") Download ZIP
+      | ). You can install required tools and build samples (in fact, site contents themselves) with npm commands.
+
+    h2.mt-5#build
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/build-tools/") Building Bootstrap
+    div.alert.alert-info(role="alert") You do not have to read this section if you just want to use precompiled Bootstrap distribution. But customizing Bootstrap styles needs basic knowlkedge of node.js and npm. Building bootstrap by yourself is a good study to learn npm-based development for beginners.
+    p.my-2 Bootstrap repositry is published in GitHub. You can get source code of all versions from 
+      +extLink("https://github.com/twbs/bootstrap/releases") Releases
+      |  page. You can also build Bootstrap distribution files (CSS, JavaScript, and documentation) from source code.
+    p.my-2 This section decribes how to build Bootstrap distribution files from GitHub source code (&ge; v4.0.0).
+    h4.mt-4#build-prerequisites Prerequisites
+    p.my-2 Building Bootstrap requires node.js and Ruby.
+      ul
+        li 
+          +extLink("https://nodejs.org/") node.js
+          |  (&ge; Version 6.0, uses 
+          +extLink("https://npmjs.org/") npm
+          |  as a main build tool)
+        li 
+          +extLink("https://www.ruby-lang.org/en/") Ruby
+          |  (&ge; Version 2.1, needed for 
+          +extLink("https://jekyllrb.com/") jekyll
+          |  documentation tool)
+    div.alert.alert-warning(role="alert")
+      strong (Officially undocumented): 
+      | Some test tools also may need Java (depends on Bootstrap versions). If you see a error message like "cannot find Java", install Java Runtime Envirionment (JRE).
+    h4.mt-4#build-install Installation
+    p.my-2 Before building Bootstrap, you need to install modules on npm and Ruby. ⇒ 
+      +collapseButton("#build-install-list") Instruction
+    ul.collapse#build-install-list
+      li Unzip GitHub source code
+        ul
+          li See 
+            a(href="getting-started-1.html/#contents-source-code") Bootstrap source code
+            |  for detail
+      li Move to the folder where 
+        code package.json
+        |  and 
+        code Gemfile
+        |  exist
+      li Install npm tools ⇒ 
+        kbd npm run install
+      li Install Ruby tools (required for documentation) ⇒ 
+        kbd (sudo) bundle install
+        ul
+          li May need 
+            kbd sudo
+            |  for Unix-based environments
+          li Requires 
+            +extLink("https://bundler.io/") Bundler
+            |  gem (
+            code bundle
+            |  command) ⇒ 
+            kbd (sudo) gem install bundler
+            |  if not installed
+
+    h4.mt-4#build-commands Commands
+    p.my-2 Bootstrap 4 uses npm as a build tool. ⇒ 
+      +collapseButton("#build-commands-list") Commands
+    ul.collapse#build-commands-list
+      li
+        kbd npm run dist
+        |  - builds CSS and JavaScript (outputs to 
+        code ./dist
+        | )
+      li
+        kbd npm test
+        |  - builds all and performs tests afterward
+      li
+        kbd npm run docs
+        |  - generates and lints CSS and JavaScript for documentation
+      li
+        kbd npm run docs-serve
+        |  - invokes local server for documentation ⇒ 
+        +extLink("http://localhost:9001/")
+          code http://localhost:9001/
+      li
+        kbd npm run
+        |  - Show the list of all npm scripts (so many!)
+    p.my-2 You can also read 
+      code "scripts":
+      |  entries of 
+      +extLink("https://github.com/twbs/bootstrap/blob/v4.1.0/package.json")
+        code package.json
+      |  directly to check full commands. It is a better way to study how internal building processes are formed using npm scripts.
+
+    h2.mt-5#webpack
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/webpack/") Webpack
+    p.my-2 (May 2018) 
+      +extLink("https://webpack.js.org/") Webpack
+      |  is one of the most popular Web development tools. But Webpack itself has been developing very fast. Webpack 4 was released on Feb. 2018. But Bootstrap documentation (still about Webpack 3) has not catch up with Webpack 4.
+    p.my-2 Then we have made sample start projects for Webpack 4 and Bootstrap 4 as below.
+    ul
+      li
+        +extLink("https://github.com/higuma/webpack-bootstrap-starter") webpack-bootstrap-starter (GitHub)
+    div.alert.alert-info(role="alert") As Webpack develops too fast, starter examples above will get depretated soon. Please check for yourself to find newest examples.
+    div.alert.alert-info(role="alert") This tutorial also uses Webpack for a build tool. But it is actually used only for pug compilation and file operations. CSS and JavaScript files are not customized to avoid complexity for beginners. 
+
+    h2.mt-5#accessibility
+      +extLink("https://getbootstrap.com/docs/4.2/getting-started/accessibility/") Accessibility
+    p.my-2 
+      +extLink("https://www.w3.org/WAI/") WAI
+      | -
+      +extLink("https://www.w3.org/WAI/intro/aria") ARIA
+      |  (⇒ 
+      +extLink("https://en.wikipedia.org/wiki/WAI-ARIA") Wikipedia
+      | ) is a web standard specification for accessibility. ⇒ 
+      +collapseButton("#accessibility-reference") Reference
+    ul.collapse#accessibility-reference
+      li
+        +extLink("https://www.w3.org/TR/wai-aria-1.1/") W3C - WAI-ARIA 1.1
+      li
+        +extLink("https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics") MDN - WAI-ARIA basics
+    p.my-2 Actually, two kinds of attributes are used.
+    ul
+      li Role attributes: e.g. 
+        code role="navigation"
+      li ARIA attributes: e.g. 
+        code aria-expanded="false"
+    p.my-2 This tutorial explains these accessibility attributes on showing component structures.
+    p.my-2 ⇒ 
+      a(href="components-8.html#modal-components") Example (Modal)
+      |  - displays with
+      button.btn.btn-outline-info.btn-sm Structure
+      |  , expands attributes with 
+      button.btn.btn-outline-info.btn-sm.px-1.py-0 Attributes
+    p.my-2 Bootstrap also has 
+      a(href="utilities-4.html#screenreaders") Screenreaders
+      |  utility classes (
+      code .sr-only
+      |  and 
+      code .sr-only-focusable
+      |  ). These classes are also explained on showing component structures.
+      explanation.
+
+    +breadcrumbLevel1("Getting started (2): Customizing CSS/Build/Webpack/Accessibility")

@@ -9,13 +9,33 @@ block body
     +pageHeader("index")
     h2.mt-4#toc 目次
     ul
-      li#toc-about
+      li.mb-2#toc-about
         a(href="#about") このチュートリアルについて
         ul
-          li.mb-2
+          li
             a(href="#notation") 記法
-      li#toc-getting-started
-        a(href="getting-started.html") Getting started (はじめに)
+            |  / 
+            a(href="#source-code") ソースコード
+      li#toc-getting-started Getting started (はじめに)
+        ul
+          li
+            a(href="getting-started-1.html") スタートアップ
+            |  / 
+            a(href="getting-started-1.html#download") 利用法
+            |  / 
+            a(href="getting-started-1.html#contents") コンテンツ
+            |  / 
+            a(href="getting-started-1.html#browsers-devices") ブラウザ
+            |  / 
+            a(href="getting-started-1.html#javascript") JavaScript
+          li
+            a(href="getting-started-2.html") カスタマイズ
+            |  / 
+            a(href="getting-started-2.html#build") ビルド
+            |  / 
+            a(href="getting-started-2.html#webpack") Webpack
+            |  / 
+            a(href="getting-started-2.html#accessibility") アクセシビリティ
       li#toc-layout レイアウト
         ul
           li
@@ -25,7 +45,7 @@ block body
             |  / 
             a(href="layout-1.html#utilities") レイアウトユーティリティ
       li#toc-contents コンテント
-        ol
+        ul
           li
             a(href="content-1.html") Reboot
             |  / 
@@ -36,7 +56,7 @@ block body
           li: a(href="content-3.html") 表
           li: a(href="content-4.html") 図
       li#toc-components コンポーネント
-        ol
+        ul
           li
             a(href="components-1.html") アラート
             |  / 
@@ -86,7 +106,7 @@ block body
             |  / 
             a(href="components-12.html#tooltips") ツールチップ
       li#toc-utilities ユーティリティ
-        ol
+        ul
           li
             a(href="utilities-1.html") ボーダー
             |  / 
@@ -131,24 +151,9 @@ block body
     h2.mt-5#about このチュートリアルについて
     p.my-2 
       +extLink("https://getbootstrap.com/") Bootstrap
-      |  4の自習用チュートリアルです。
+      |  4の自習用チュートリアルです。おおむね
       +extLink("https://getbootstrap.com/docs/4.2/") 公式ドキュメント
-      | と同じ順に従っていますが読む順番は特にありません(どこからどのように読んでも構いません)。
-    p.my-2 このチュートリアル自身は
-      +extLink("https://pugjs.org/") pug
-      | で記述し、
-      +extLink("https://nodejs.org/") node.js
-      | /
-      +extLink("https://docs.npmjs.com/") npm
-      | 環境の
-      +extLink("https://webpack.js.org/") Webpack
-      | でビルドしています。
-      +extLink("https://github.com/higuma/bootstrap-4-tutorial") ソースコード
-      | は
-      +extLink("https://github.com/") GitHub
-      | で公開し、サイトのホスティングは
-      +extLink("https://pages.github.com/") GitHub Pages
-      | を用いています。
+      | と同じ順に従っていますが読む順番は特にありません。どこからどのように読んでもけっこうです。
     h4.mt-4#notation 記法
     p.mt-2.mb-3 本チュートリアルではHTMLの説明に独自の方法を用います。次の
       a(href="components-2.html#button-group-button-toolbar") ボタンツールバー
@@ -257,5 +262,42 @@ block body
           li.txt テキストは先頭文字なし 
             code テキストコンテント
           li 子要素は親要素と同じ書式(先頭は黒丸)、以下子孫も同様
+    h4.mt-4#source-code ソースコード
+    p.my-2 本サイトのマスターレポジトリは
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/") GitHub
+      | にあり、ホスティングに
+      +extLink("https://pages.github.com/") GitHub Pages
+      | を用いて公開しています。チュートリアルのHTMLは
+      +extLink("https://pugjs.org/") Pug
+      | で記述し、
+      +extLink("https://nodejs.org/") node.js
+      | /
+      +extLink("https://docs.npmjs.com/") npm
+      | 環境の
+      +extLink("https://webpack.js.org/") Webpack
+      | でビルドしています。ソースコードはnode.js実行環境で次の手順でビルドできます。
+    ul
+      li
+        +extLink("https://github.com/higuma/bootstrap-4-tutorial/archive/master.zip") ZIPソースコード
+        | をダウンロードして解凍
+      li
+        kbd npm install
+        |  でインストール
+      li
+        kbd npm run build
+        |  でビルド (
+        code ./site/*
+        |  にファイルを生成)
+      li
+        kbd npm run start
+        |  で開発サーバー起動 (⇒ 
+        code http://localhost:6022/
+        | )
+    p.my-2 その他の開発用コマンドは 
+      +extLink("https://github.com/higuma/bootstrap-4-tutorial/blob/master/package.json")
+        code.text-danger  package.json
+      |  中の 
+      code scripts:
+      |  エントリーを参照して下さい。
 
     +breadcrumbLevel0
