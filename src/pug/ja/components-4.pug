@@ -50,14 +50,18 @@ block body
             ul
               li アイテムは表示順に 
                 code div.carousel-item
+                +attrsBtn(".a1-2")
                 ul
-                  li.cls 初期表示アイテムに 
+                  li.cls.collapse.a1-2 最初に表示するアイテムに 
                     code .active
-                    |  を設定
+                    |  を設定(ひとつだけ)
+                  li.cls.collapse.a1-2 (オプション) 
+                    code data-interval="{msec}"
+                    |  でスライド表示時間を設定可能
                   li スライド画像 
                     code img.d-block.w-100
-                    +attrBtn(".a2-1")
-                    ul.collapse.a2-1
+                    +attrBtn(".a1-3")
+                    ul.collapse.a1-3
                       li.att 属性 
                         code src="..."
     h4.mt-4#carousel-with-controls
@@ -449,13 +453,15 @@ block body
             ul
               li.att.collapse.a6-2 アクセシビリティ属性 
                 code aria-labelledby="{dropdown-id}"
-              li メニューアイテム 
+              li メニューアイテム(通常複数) 
                 code a.dropdown-item
                 +attrBtn(".a6-3")
-                ul.collapse.a6-3
-                  li.att 属性 
+                ul
+                  li.att.collapse.a6-3 属性 
                     code href="..."
-              li 上下区切り 
+                  li.txt テキスト(例) 
+                    code Action
+              li 上下区切りは 
                 code div.dropdown-divider
                 |  ⇒ 
                 a(href="#dropdowns-dividers") ディバイダ

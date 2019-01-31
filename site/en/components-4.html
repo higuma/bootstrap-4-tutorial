@@ -46,12 +46,13 @@
             <li class="att collapse a1-1">Attribute (auto-slide) <code>data-ride="carousel"</code> (remove to slide by controls only)</li>
             <li>Carousel (inner) <code>div.carousel-inner</code>
               <ul>
-                <li>Items <code>div.carousel-item</code> (&times;3)
+                <li>Items <code>div.carousel-item</code> (&times;3) <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attributes</a>
                   <ul>
-                    <li class="cls">Add <code>.active</code> to the initially-visible item</li>
-                    <li>Image <code>img.d-block.w-100</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">Attribute</a>
+                    <li class="cls collapse a1-2">(One item only) add <code>.active</code> to the initially-visible item</li>
+                    <li class="cls collapse a1-2">(Optional) interval can be set with <code>data-interval="{msec}"</code>.</li>
+                    <li>Image <code>img.d-block.w-100</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">Attribute</a>
                       <ul>
-                        <li class="att collapse a1-2">Attribute <code>src="..."</code></li>
+                        <li class="att collapse a1-3">Attribute <code>src="..."</code></li>
                       </ul>
                     </li>
                   </ul>
@@ -428,9 +429,10 @@
             <li>Dropdown menu <code>div.dropdown-menu</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">Attribute</a>
               <ul>
                 <li class="att collapse a6-2">Accessibility attribute <code>aria-labelledby="{dropdown-id}"</code></li>
-                <li>Menu item <code>a.dropdown-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-3" aria-control=".a6-3" aria-expanded="false">Attribute</a>
-                  <ul class="collapse a6-3">
-                    <li class="att">Attribute <code>href="..."</code></li>
+                <li>Menu item(s) (usually multiple) <code>a.dropdown-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-3" aria-control=".a6-3" aria-expanded="false">Attribute</a>
+                  <ul>
+                    <li class="att collapse a6-3">Attribute <code>href="..."</code></li>
+                    <li class="txt">Text (e.g.) <code>Action</code></li>
                   </ul>
                 </li>
                 <li>Divider <code>div.dropdown-divider</code> ⇒ <a href="#dropdowns-dividers">Dividers</a></li>

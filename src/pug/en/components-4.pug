@@ -51,15 +51,19 @@ block body
               li Items 
                 code div.carousel-item
                 |  (&times;3)
+                +attrsBtn(".a1-2")
                 ul
-                  li.cls Add 
+                  li.cls.collapse.a1-2 (One item only) add 
                     code .active
                     |  to the initially-visible item
+                  li.cls.collapse.a1-2 (Optional) interval can be set with 
+                    code data-interval="{msec}"
+                    | .
                   li Image 
                     code img.d-block.w-100
-                    +attrBtn(".a1-2")
+                    +attrBtn(".a1-3")
                     ul
-                      li.att.collapse.a1-2 Attribute 
+                      li.att.collapse.a1-3 Attribute 
                         code src="..."
     h4.mt-4#carousel-with-controls
       +extLink("https://getbootstrap.com/docs/4.2/components/carousel/#with-controls") With controls
@@ -447,12 +451,14 @@ block body
             ul
               li.att.collapse.a6-2 Accessibility attribute 
                 code aria-labelledby="{dropdown-id}"
-              li Menu item 
+              li Menu item(s) (usually multiple) 
                 code a.dropdown-item
                 +attrBtn(".a6-3")
-                ul.collapse.a6-3
-                  li.att Attribute 
+                ul
+                  li.att.collapse.a6-3 Attribute 
                     code href="..."
+                  li.txt Text (e.g.) 
+                    code Action
               li Divider 
                 code div.dropdown-divider
                 |  ⇒ 

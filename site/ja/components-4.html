@@ -46,11 +46,12 @@
             <li class="att collapse a1-1">属性 <code>data-ride="carousel"</code> で自動スライド(除去するとコントロール移動のみ)</li>
             <li>カルーセル(内側) <code>div.carousel-inner</code>
               <ul>
-                <li>アイテムは表示順に <code>div.carousel-item</code>
+                <li>アイテムは表示順に <code>div.carousel-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-2" aria-control=".a1-2" aria-expanded="false">属性</a>
                   <ul>
-                    <li class="cls">初期表示アイテムに <code>.active</code> を設定</li>
-                    <li>スライド画像 <code>img.d-block.w-100</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a2-1" aria-control=".a2-1" aria-expanded="false">属性</a>
-                      <ul class="collapse a2-1">
+                    <li class="cls collapse a1-2">最初に表示するアイテムに <code>.active</code> を設定(ひとつだけ)</li>
+                    <li class="cls collapse a1-2">(オプション) <code>data-interval="{msec}"</code> でスライド表示時間を設定可能</li>
+                    <li>スライド画像 <code>img.d-block.w-100</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a1-3" aria-control=".a1-3" aria-expanded="false">属性</a>
+                      <ul class="collapse a1-3">
                         <li class="att">属性 <code>src="..."</code></li>
                       </ul>
                     </li>
@@ -423,12 +424,13 @@
             <li>ドロップダウンメニュー <code>div.dropdown-menu</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-2" aria-control=".a6-2" aria-expanded="false">属性</a>
               <ul>
                 <li class="att collapse a6-2">アクセシビリティ属性 <code>aria-labelledby="{dropdown-id}"</code></li>
-                <li>メニューアイテム <code>a.dropdown-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-3" aria-control=".a6-3" aria-expanded="false">属性</a>
-                  <ul class="collapse a6-3">
-                    <li class="att">属性 <code>href="..."</code></li>
+                <li>メニューアイテム(通常複数) <code>a.dropdown-item</code> <a class="btn btn-sm btn-outline-info my-1 px-1 py-0" data-toggle="collapse" href=".a6-3" aria-control=".a6-3" aria-expanded="false">属性</a>
+                  <ul>
+                    <li class="att collapse a6-3">属性 <code>href="..."</code></li>
+                    <li class="txt">テキスト(例) <code>Action</code></li>
                   </ul>
                 </li>
-                <li>上下区切り <code>div.dropdown-divider</code> ⇒ <a href="#dropdowns-dividers">ディバイダ</a></li>
+                <li>上下区切りは <code>div.dropdown-divider</code> ⇒ <a href="#dropdowns-dividers">ディバイダ</a></li>
               </ul>
             </li>
           </ul>
